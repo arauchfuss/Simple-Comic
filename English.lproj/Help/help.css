@@ -1,0 +1,33 @@
+.changes
+{
+    font: 10pt Verdana, sans-serif;
+    color: black;
+    background: white;
+    text-align: left;
+}
+
+
+dl
+{
+    margin-left: 1em;
+    margin-top: 1em;
+    padding-bottom: 2em;
+}
+
+
+
+dt
+{
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+
+
+dd
+{
+    margin-top: 0.2em;
+    color: #888888;
+    margin-left: 1em;
+}
+
