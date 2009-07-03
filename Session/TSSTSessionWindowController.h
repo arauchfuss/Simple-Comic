@@ -124,7 +124,6 @@
 - (IBAction)toggleLoupe:(id)sender;
 
 // Selection Actions
-- (IBAction)exportPage:(id)sender;
 - (IBAction)removePages:(id)sender;
 - (IBAction)turnPage:(id)sender;
 - (IBAction)pageRight:(id)sender;
@@ -140,8 +139,8 @@
 - (IBAction)launchJumpPanel:(id)sender;
 - (IBAction)cancleJumpPanel:(id)sender;
 - (IBAction)setArchiveIcon:(id)sender;
+- (IBAction)extractPage:(id)sender;
 
-//- (IBAction)addBookmark:(id)sender;
 - (void)closeSheet:(int)code;
 
 - (NSImage *)imageForPageAtIndex:(int)index;
@@ -153,10 +152,10 @@
 - (void)scaleToWindow;
 - (void)changeViewImages;
 - (void)fullscreen;
-//- (void)animateBezel;
 - (void)adjustStatusBar;
 - (void)resizeWindow;
 - (void)prepareToEnd;
+
 
 - (void)nextPage;
 - (void)previousPage;

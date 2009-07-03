@@ -42,13 +42,13 @@
 
 
 
-@interface TSSTHumanReadableIndex: NSValueTransformer
-{
-    
-}
-
-
-@end
+//@interface TSSTHumanReadableIndex: NSValueTransformer
+//{
+//    
+//}
+//
+//
+//@end
 
 
 //

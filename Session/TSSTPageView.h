@@ -53,6 +53,10 @@
     
 	// This controls the drawing of the accepting drag-drop border highlighting 
     BOOL acceptingDrag;
+	
+	/*	While page selection is in progress this method has a value of 1 or 2.
+		The selection number coresponds to a highlighted page. */
+	int pageSelection;
 }
 
 @property (assign) NSInteger rotation;
@@ -113,6 +117,8 @@
 
 - (void)pageUp;
 - (void)pageDown;
+
+- (int)selectPage;
 
 @end
 

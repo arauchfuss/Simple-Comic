@@ -210,39 +210,39 @@
 
 
 
-@implementation TSSTHumanReadableIndex
-
-
-+ (Class)transformedValueClass
-{
-    return [NSNumber class];
-}
-
-
-
-+ (BOOL)allowsReverseTransformation
-{
-    return NO;
-}
-
-
-- (id)transformedValue:(NSNumber *)rawValue
-{
-	if(!rawValue)
-	{
-		return nil;
-	}
-    
-    NSInteger index = [rawValue intValue];
-    index = (index == NSNotFound) ? 0 : index + 1;
-
-    return [NSNumber numberWithInt: index];
-}
-
-
-@end
-
-
+//@implementation TSSTHumanReadableIndex
+//
+//
+//+ (Class)transformedValueClass
+//{
+//    return [NSNumber class];
+//}
+//
+//
+//
+//+ (BOOL)allowsReverseTransformation
+//{
+//    return NO;
+//}
+//
+//
+//- (id)transformedValue:(NSNumber *)rawValue
+//{
+//	if(!rawValue)
+//	{
+//		return nil;
+//	}
+//    
+//    NSInteger index = [rawValue intValue];
+//    index = (index == NSNotFound) ? 0 : index + 1;
+//
+//    return [NSNumber numberWithInt: index];
+//}
+//
+//
+//@end
+//
+//
 //
 //@implementation TSSTFormattedKeyEquivalent
 //

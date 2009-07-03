@@ -77,6 +77,8 @@ Copyright (c) 2007 Dancing Tortoise Software
     [segmentImage setTemplate: YES];
 	segmentImage = [NSImage imageNamed: @"thumbnails"];
     [segmentImage setTemplate: YES];
+	segmentImage = [NSImage imageNamed: @"extract"];
+    [segmentImage setTemplate: YES];
 }
 
 
@@ -238,7 +240,7 @@ Copyright (c) 2007 Dancing Tortoise Software
     if([[pageController arrangedObjects] count] <= 0)
     {
         SetSystemUIMode(kUIModeNormal, 0);
-        [[NSApp delegate] endSession: self];
+        [self prepareToEnd];
         return;
     }
 	
@@ -482,12 +484,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 #pragma mark Actions
 
 
-- (IBAction)exportPage:(id)sender
-{
-	
-}
-
-
 
 - (IBAction)removePages:(id)sender
 {
@@ -544,7 +540,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 
 /*! Method flips the page to the right calling nextPage or previousPage
-depending on the prefered page ordering.
+	depending on the prefered page ordering.
 */
 - (IBAction)pageRight:(id)sender
 {
@@ -835,20 +831,44 @@ depending on the prefered page ordering.
 	TSSTManagedGroup * currentGroup = [currentPage valueForKey: @"group"];
 	if(currentGroup == [currentGroup topLevelGroup])
 	{
-		int coverIndex = [[currentPage valueForKey: @"index"] intValue];
-		NSData * coverIndexData = [NSArchiver archivedDataWithRootObject: [NSNumber numberWithInt: coverIndex]];
-		NSString * archivePath = [[currentGroup valueForKey: @"path"] stringByStandardizingPath];
-		[UKXattrMetadataStore setData: coverIndexData forKey: @"QCCoverIndex" atPath: archivePath traverseLink: NO];
-		[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" arguments: [NSArray arrayWithObject: archivePath]];
+		int selection = [pageView selectPage];
+		if(selection != -1)
+		{
+			int coverIndex = [[currentPage valueForKey: @"index"] intValue];
+			coverIndex += selection;
+			NSData * coverIndexData = [NSArchiver archivedDataWithRootObject: [NSNumber numberWithInt: coverIndex]];
+			NSString * archivePath = [[currentGroup valueForKey: @"path"] stringByStandardizingPath];
+			[UKXattrMetadataStore setData: coverIndexData forKey: @"QCCoverIndex" atPath: archivePath traverseLink: NO];
+			[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" arguments: [NSArray arrayWithObject: archivePath]];
+		}
 	}
 }
 
 
-
-//- (IBAction)addBookmark:(id)sender
-//{
-//	[[NSApp delegate] addBookmarkWithSession: [self session]];
-//}
+/*	This is an archive only method.
+	Finds the index of the page within an archive and then extracts
+	it to a location designated by the user. */
+- (IBAction)extractPage:(id)sender
+{
+	/*	selectpage returns prompts the user for which page they wish to use.
+		If there is only one page or the user selects the first page 0 is returned,
+		otherwise 1. */
+	int selection = [pageView selectPage];
+	if(selection != -1)
+	{
+		int index = [pageController selectionIndex];
+		index += selection;
+		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+		
+		NSSavePanel * savePanel = [NSSavePanel savePanel];
+		[savePanel setTitle: @"Extract Page"];
+		[savePanel setPrompt: @"Extract"];
+		if(NSOKButton == [savePanel runModalForDirectory: nil file: [selectedPage name]])
+		{
+			[[selectedPage pageData] writeToFile: [savePanel filename] atomically: YES];
+		}
+	}
+}
 
 
 
@@ -1341,7 +1361,7 @@ images are currently visible and then skips over them.
 - (BOOL)windowShouldClose:(id)sender
 {
 	[self prepareToEnd];
-    [[NSApp delegate] endSession: self];
+	[[NSNotificationCenter defaultCenter] postNotificationName: TSSTSessionEndNotification object: self];
     return YES;
 }
 

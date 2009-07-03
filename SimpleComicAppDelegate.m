@@ -32,18 +32,13 @@
 #import <XADMaster/XADArchive.h>
 #import "TSSTSessionWindowController.h"
 #import "TSSTSortDescriptor.h"
-//#import "TSSTShortcutController.h"
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedBookmarkGroup.h"
-//#import "TSSTManagedBookmark.h"
 #import "TSSTManagedSession.h"
 #import "SS_PrefsController.h"
 #import "TSSTCustomValueTransformers.h"
-//#import "TSSTBookmarkWindowController.h"
 
-
-@class TSSTHumanReadableIndex;
 
 
 NSString * TSSTPageOrder =         @"pageOrder";
@@ -69,6 +64,8 @@ NSString * TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString * TSSTLonelyFirstPage =   @"lonelyFirstPage";
 NSString * TSSTNestedArchives =	   @"nestedArchives";
 NSString * TSSTUpdateSelection =   @"updateSelection";
+
+NSString * TSSTSessionEndNotification = @"sessionEnd";
 
 
 #pragma mark -
@@ -212,14 +209,15 @@ static NSArray * allAvailableStringEncodings(void)
     id transformer = [[TSSTLastPathComponent new] autorelease];
 	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTLastPathComponent"];
 
-    transformer = [[TSSTHumanReadableIndex new] autorelease];
-	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTHumanReadableIndex"];
+//    transformer = [[TSSTHumanReadableIndex new] autorelease];
+//	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTHumanReadableIndex"];
 }
 
 
 - (void) dealloc
 {
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTUpdateSelection];
+	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTSessionRestore];
 
     [sessions release];
     [preferences release];
@@ -231,19 +229,28 @@ static NSArray * allAvailableStringEncodings(void)
 #pragma mark Application Delegate Methods
 
 
+/*	Stores any files that were opened on launch till applicationDidFinishLaunching:
+	is called. */
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
+	autoSave = nil;
 	launchFiles = nil;
 	launchInProgress = YES;
 	preferences = nil;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSession:) name: TSSTSessionEndNotification object: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTUpdateSelection options: 0 context: nil];
+	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTSessionRestore options: 0 context: nil];
+	[self generateEncodingMenu];
 }
+
 
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+	/* Sets the Sparkle update feed to corespond to user prefs */
 	NSURL * feedURL;
-	if([[[NSUserDefaults standardUserDefaults] valueForKey: TSSTUpdateSelection] intValue] == 0)
+	if([[userDefaults valueForKey: TSSTUpdateSelection] intValue] == 0)
 	{
 		feedURL = [NSURL URLWithString:@"http://www.dancingtortoise.com/simplecomic/simplecomic.xml"];
 	}
@@ -253,12 +260,14 @@ static NSArray * allAvailableStringEncodings(void)
 	}
 	[updater setFeedURL: feedURL];
 	
-    [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self selector: @selector(saveContext) userInfo: nil repeats: YES];
+	/* Starts the auto save timer */
+	if([[userDefaults valueForKey: TSSTSessionRestore] boolValue])
+	{
+		autoSave = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self selector: @selector(saveContext) userInfo: nil repeats: YES];
+	}
     sessions = [NSMutableArray new];
 	[self sessionRelaunch];
-//	[self buildBookmarkMenu];
 	launchInProgress = NO;
-//	[bookmarkMenu setDelegate: self];
 
 	if(launchFiles)
 	{
@@ -272,7 +281,6 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {	
-//	TSSTManagedSession * sessionToRemove;
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 	BOOL saveSessions = [[userDefaults valueForKey: TSSTSessionRestore] boolValue];
 	
@@ -288,6 +296,7 @@ static NSArray * allAvailableStringEncodings(void)
 	}
 	
     int reply = NSTerminateNow;
+	/* TODO: some day I really need to add the fallback error handling */
     if(![self saveContext])
     {
         // Error handling wasn't implemented. Fall back to displaying a "quit anyway" panel.
@@ -318,21 +327,18 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
-- (void)applicationWillBecomeActive:(NSNotification *)aNotification
-{
-//	[sessions setValue: [[NSUserDefaults standardUserDefaults] valueForKey: TSSTFullscreen] forKeyPath: @"session.fullscreen"];
-}
-
-
+/* Used to watch and react to pref changes */
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object 
 						change:(NSDictionary *)change 
 					   context:(void *)context
 {
+	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+
 	if([keyPath isEqualToString: TSSTUpdateSelection])
 	{
 		NSURL * feedURL;
-		if([[[NSUserDefaults standardUserDefaults] valueForKey: TSSTUpdateSelection] intValue] == 0)
+		if([[userDefaults valueForKey: TSSTUpdateSelection] intValue] == 0)
 		{
 			feedURL = [NSURL URLWithString:@"http://www.dancingtortoise.com/simplecomic/simplecomic.xml"];
 		}
@@ -341,6 +347,15 @@ static NSArray * allAvailableStringEncodings(void)
 			feedURL = [NSURL URLWithString: @"http://www.dancingtortoise.com/simplecomic/simplecomic_beta.xml"];
 		}
 		[updater setFeedURL: feedURL];
+	}
+	else if([keyPath isEqualToString: TSSTSessionRestore])
+	{
+		[autoSave invalidate];
+		autoSave = nil;
+		if([[userDefaults valueForKey: TSSTSessionRestore] boolValue])
+		{
+			autoSave = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self selector: @selector(saveContext) userInfo: nil repeats: YES];
+		}
 	}
 }
 
@@ -377,12 +392,10 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
-/**
- Returns the persistent store coordinator for the application.  This 
- implementation will create and return a coordinator, having added the 
- store for the application to it.  (The folder for the store is created, 
- if necessary.)
- */
+/*	Returns the persistent store coordinator for the application.  This 
+	implementation will create and return a coordinator, having added the 
+	store for the application to it.  (The folder for the store is created, 
+	if necessary.) */
 - (NSPersistentStoreCoordinator *) persistentStoreCoordinator
 {	
     if (persistentStoreCoordinator != nil)
@@ -446,7 +459,7 @@ static NSArray * allAvailableStringEncodings(void)
 /*  Method creates an application support directory for Simpl Comic if one
     is does not already exist.
     @return The absolute path to Simple Comic's application support directory 
-            as a string.  */
+	as a string.  */
 - (NSString *)applicationSupportFolder
 {
 	
@@ -508,16 +521,16 @@ static NSArray * allAvailableStringEncodings(void)
         [sessions addObject: comicWindow];
         [comicWindow release];
         [comicWindow showWindow: self];
-//		[settings setValue: [[NSUserDefaults standardUserDefaults] valueForKey: TSSTFullscreen] forKeyPath: TSSTFullscreen];
     }
 }
 
 
 
-- (void)endSession:(TSSTSessionWindowController *)manager
+- (void)endSession:(NSNotification *)notification
 {
-	TSSTManagedSession * sessionToRemove = [[manager session] retain];
-	[sessions removeObject: manager];
+	TSSTSessionWindowController * controller = [notification object];
+	TSSTManagedSession * sessionToRemove = [[controller session] retain];
+	[sessions removeObject: controller];
 	[[self managedObjectContext] deleteObject: sessionToRemove];
 	[sessionToRemove release];
 }
@@ -777,64 +790,6 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 
-//- (void)addToHistoryWithGroup:(TSSTManagedGroup *)group
-//{
-//	if([group class] == [TSSTManagedArchive class])
-//	{
-//		TSSTManagedBookmarkGroup * historyGroup = [self findBookmarkGroupWithIdentifier: @"history"];
-//		NSArray * historyItems = [[historyGroup valueForKey: @"bookmarks"] allObjects];
-//		NSArray * aliases = [historyItems valueForKey: @"alias"];
-//		NSInteger index = [aliases indexOfObject: group.alias];
-//		
-//		if(index == NSNotFound)
-//		{
-//			TSSTManagedArchive * parentArchive = [group valueForKey: @"topLevelGroup"];
-//			NSString * name = [[parentArchive valueForKey: @"path"] lastPathComponent];
-//			
-//			NSEntityDescription * historyItem = [NSEntityDescription insertNewObjectForEntityForName: @"Bookmark" inManagedObjectContext: [self managedObjectContext]];
-//			[historyItem setValue: name  forKey: @"name"];
-//			[historyItem setValue: [parentArchive valueForKey: @"path"] forKey: @"filePath"];
-//			[historyItem setValue: historyGroup forKey: @"group"];	
-//		}
-//	}
-//}
-//
-//
-//
-//- (void)addBookmarkWithSession:(TSSTManagedSession *)session
-//{
-//	NSArray * images = [[session valueForKey: @"images"] allObjects];
-//	
-//	TSSTSortDescriptor * fileNameSort = [[TSSTSortDescriptor alloc] initWithKey: @"imagePath" ascending: YES];
-//	TSSTSortDescriptor * archivePathSort = [[TSSTSortDescriptor alloc] initWithKey: @"group.name" ascending: YES];
-//	NSArray * imageSort = [NSArray arrayWithObjects: archivePathSort, fileNameSort, nil];
-//	[fileNameSort release];
-//	[archivePathSort release];
-//	images = [images sortedArrayUsingDescriptors: imageSort];
-//	
-//	TSSTPage * selectedPage = [images objectAtIndex: [[session valueForKey: @"selection"] intValue]];
-//	TSSTManagedGroup * group = [selectedPage valueForKeyPath: @"group"];
-//	if([group class] == [TSSTManagedArchive class])
-//	{
-//		TSSTManagedArchive * parentArchive = [group valueForKey: @"topLevelGroup"];
-//		NSString * topPath = [[parentArchive valueForKey: @"path"] lastPathComponent];
-//		NSString * bookmarkName = [NSString stringWithFormat: @"%@ %@", topPath, [[selectedPage valueForKeyPath: @"imagePath"] lastPathComponent]];
-//		[bookmarkNameField setStringValue: bookmarkName];
-//		
-//		if([NSApp runModalForWindow: bookmarkAddPanel] != NSCancelButton)
-//		{
-//			NSEntityDescription * bookmark = [NSEntityDescription insertNewObjectForEntityForName: @"Bookmark" inManagedObjectContext: [self managedObjectContext]];
-//			[bookmark setValue: [bookmarkNameField stringValue]  forKey: @"name"];
-//			[bookmark setValue: [parentArchive valueForKey: @"path"] forKey: @"filePath"];
-//			[bookmark setValue: [selectedPage valueForKey: @"deconflictionName"] forKey: @"pageName"];
-//			[bookmark setValue: [[bookmarkGroupAddController selectedObjects] objectAtIndex: 0] forKey: @"group"];
-//		}
-//		
-//		[bookmarkAddPanel close];
-//	}
-//}
-
-
 - (IBAction)donate:(id)sender
 {
     NSURL * donationPage = [NSURL URLWithString: @"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=arauchfuss@gmail.com&item_name=Simple+Comic&item_number=Donation&currency_code=USD"];
@@ -854,6 +809,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (void)generateEncodingMenu
 {
+	NSMenu * encodingMenu = [encodingPopup menu];
 	NSMenuItem * encodingMenuItem;
     NSArray * allEncodings = allAvailableStringEncodings();
     NSNumber * encodingIdent;
@@ -884,7 +840,7 @@ static NSArray * allAvailableStringEncodings(void)
             [encodingMenuItem release];
         }
     }
-    
+    [encodingPopup bind: @"selectedIndex" toObject: self withKeyPath: @"encodingSelection" options: nil];
 }
 
 
@@ -895,7 +851,7 @@ static NSArray * allAvailableStringEncodings(void)
     NSMenuItem * encodingMenuItem;
     NSString * testText;
     
-    for(encodingMenuItem in [encodingMenu itemArray])
+    for(encodingMenuItem in [[encodingPopup menu] itemArray])
     {
         stringEncoding = [[encodingMenuItem representedObject] unsignedLongValue];
         [encodingMenuItem setEnabled: NO];
@@ -937,7 +893,7 @@ static NSArray * allAvailableStringEncodings(void)
     NSString * testText = [NSString stringWithCString: bytes encoding: guess];
     if(confidence < 0.8 || !testText)
     {
-		[self generateEncodingMenu];
+		NSMenu * encodingMenu = [encodingPopup menu];
         [self updateEncodingMenuTestedAgainst: bytes];
         NSArray * encodingIdentifiers = [[encodingMenu itemArray] valueForKey: @"representedObject"];
 		
@@ -974,7 +930,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (IBAction)testEncoding:(id)sender
 {
-    NSMenuItem * encodingMenuItem = [encodingMenu itemAtIndex: encodingSelection];
+    NSMenuItem * encodingMenuItem = [[encodingPopup menu] itemAtIndex: encodingSelection];
     NSString * testText = [NSString stringWithCString: encodingTestString encoding: [[encodingMenuItem representedObject] unsignedLongValue]];
     
     if(!testText)
@@ -991,100 +947,6 @@ static NSArray * allAvailableStringEncodings(void)
 {
     
 }
-
-
-
-#pragma mark -
-#pragma mark Bookmark Menu
-
-
-
-//- (void)menuWillOpen:(NSMenu *)menu
-//{
-//	if([[menu title] isEqualToString: @"Bookmarks"])
-//	{
-//		[self buildBookmarkMenu];
-//	}
-//}
-
-
-//- (void)buildHistoryMenu
-//{
-//	TSSTManagedBookmarkGroup * historyGroup = [self findBookmarkGroupWithIdentifier: @"history"];
-//	
-//	for(NSMenuItem * item in [historyMenu itemArray])
-//	{
-//		[historyMenu removeItem: item];
-//	}
-//	
-//	NSArray * historyItems = [[historyGroup valueForKey: @"bookmarks"] allObjects];
-//	NSMenuItem * menuItem;
-//	for(TSSTManagedBookmark * historyItem in historyItems)
-//	{
-//		menuItem  = [historyMenu addItemWithTitle: [historyItem valueForKey: @"name"]
-//										   action: @selector(openBookmarkFromMenu:)
-//									keyEquivalent: @""];
-//		[menuItem setRepresentedObject: historyItem];
-//	}
-//}
-//
-//
-//
-//- (void)buildBookmarkMenu
-//{	
-//	TSSTManagedBookmarkGroup * bookmarkGroup = [self findBookmarkGroupWithIdentifier: @"bookmarks"];
-//	
-//	for(NSMenuItem * item in [bookmarkMenu itemArray])
-//	{
-//		[bookmarkMenu removeItem: item];
-//	}
-//	
-//	NSMenuItem * menuItem  = [bookmarkMenu addItemWithTitle: @"Bookmark This Page"  action: @selector(addBookmark:) keyEquivalent: @"b"];
-//	menuItem = [bookmarkMenu addItemWithTitle: @"Bookmark Manager" action: @selector(showBookmarks:) keyEquivalent: @"B"];
-//	[menuItem setTarget: bookmarkWindowController];
-//	[bookmarkMenu addItem: [NSMenuItem separatorItem]];
-//	
-//	/* Call the recursive function that builds the menu. */
-//	[self buildSubMenu: bookmarkMenu withNode: bookmarkGroup];
-//}
-//
-//
-//
-//- (void)buildSubMenu:(NSMenu *)menu withNode:(TSSTManagedBookmarkGroup *)node
-//{
-//	TSSTManagedBookmarkGroup * bookmarkGroup;
-//	NSArray * children = [[node valueForKey: @"children"] allObjects];
-//	NSMenuItem * menuItem;
-//	NSMenu * subMenu;
-//	for(bookmarkGroup in children)
-//	{
-//		menuItem  = [menu addItemWithTitle: [bookmarkGroup valueForKey: @"name"]
-//									action: nil
-//							 keyEquivalent: @""];
-//		subMenu = [NSMenu new];
-//		[menu setSubmenu: subMenu  forItem: menuItem];
-//		[subMenu release];
-//		[self buildSubMenu: subMenu withNode: bookmarkGroup];
-//	}
-//	
-//	NSArray * bookmarks = [[node valueForKey: @"bookmarks"] allObjects];
-//	TSSTManagedBookmark * bookmark;
-//	for(bookmark in bookmarks)
-//	{
-//		menuItem  = [menu addItemWithTitle: [bookmark valueForKey: @"name"]
-//									action: @selector(openBookmarkFromMenu:)
-//							 keyEquivalent: @""];
-//		[menuItem setRepresentedObject: bookmark];
-//	}
-//}
-//
-//
-//
-//- (IBAction)openBookmarkFromMenu:(id)sender
-//{
-//	NSManagedObject * bookmark = [sender representedObject];
-//	[bookmarkWindowController openBookmarkWithManagedObject: bookmark];
-//}
 
 
 

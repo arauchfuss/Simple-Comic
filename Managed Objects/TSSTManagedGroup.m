@@ -283,6 +283,7 @@ static NSArray * TSSTComicArchiveTypes = nil;
 }
 
 
+
 - (void)nestedArchiveContents
 {
     XADArchive * imageArchive = [self valueForKey: @"instance"];

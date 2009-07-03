@@ -9,7 +9,7 @@
 #import "TSSTImageView.h"
 #import "TSSTImageUtilities.h"
 
-static NSDictionary * stringAttirbutes;
+static NSDictionary * stringAttributes;
 
 @implementation TSSTImageView
 
@@ -21,7 +21,7 @@ static NSDictionary * stringAttirbutes;
 {
     NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setLineBreakMode: NSLineBreakByTruncatingHead];
-    stringAttirbutes = [[NSDictionary dictionaryWithObjectsAndKeys: 
+    stringAttributes = [[NSDictionary dictionaryWithObjectsAndKeys: 
                          [NSFont fontWithName: @"Lucida Grande" size: 14], NSFontAttributeName,
                          [NSColor colorWithCalibratedWhite: 1 alpha: 1.0], NSForegroundColorAttributeName,
                          style, NSParagraphStyleAttributeName,
@@ -73,11 +73,11 @@ static NSDictionary * stringAttirbutes;
     if(self.imageName)
     {
         imageRect = NSInsetRect(imageRect,  10, 10);
-        NSRect stringRect = [self.imageName boundingRectWithSize: imageRect.size options: 0 attributes: stringAttirbutes];
+        NSRect stringRect = [self.imageName boundingRectWithSize: imageRect.size options: 0 attributes: stringAttributes];
         stringRect = rectWithSizeCenteredInRect(stringRect.size, imageRect);
         [[NSColor colorWithCalibratedWhite: 0 alpha: 0.8] set];
         [roundedRectWithCornerRadius(NSInsetRect(stringRect, -5, -5), 10) fill];
-        [self.imageName drawInRect: stringRect withAttributes: stringAttirbutes];
+        [self.imageName drawInRect: stringRect withAttributes: stringAttributes];
     }
     
     [NSGraphicsContext restoreGraphicsState];

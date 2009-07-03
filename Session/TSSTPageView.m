@@ -59,7 +59,8 @@
 		[self setFirstPage: nil secondPageImage: nil];
         scrollKeys = 0;
         scrollTimer = nil;
-        acceptingDrag = NO; 
+        acceptingDrag = NO;
+		pageSelection = -1;
 	}
 	return self;
 }
@@ -117,7 +118,7 @@
 #pragma mark Animations
 
 
-
+/* Animated GIF method */
 - (void)startAnimationForImage:(NSImage *)image
 {
     id testImageRep = [image bestRepresentationForDevice: nil];
@@ -325,6 +326,35 @@
 
     [NSGraphicsContext restoreGraphicsState];
     
+	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
+	NSBezierPath * highlight;
+	
+	if(pageSelection == 1)
+	{
+		highlight = [NSBezierPath bezierPathWithRect: firstRect];
+		[highlight fill];
+	}
+	else if(pageSelection == 2)
+	{
+		highlight = [NSBezierPath bezierPathWithRect: secondRect];
+		[highlight fill];
+	}
+	
+	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
+	if(pageSelection != -1)
+	{
+		NSDictionary * stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys: 
+										   [NSFont fontWithName: @"Lucida Grande" size: 24], NSFontAttributeName, 
+										   [NSColor colorWithCalibratedWhite: 1 alpha: 1.0], NSForegroundColorAttributeName,
+										   nil];
+		NSString * selectionText = [NSString stringWithString: @"Click to select page"];
+		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
+		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
+		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 10);
+		[bezel fill];
+		[selectionText drawInRect: bezelRect withAttributes: stringAttributes];
+	}
+	
     if(acceptingDrag)
     {
         [NSBezierPath setDefaultLineWidth: 6];
@@ -602,6 +632,69 @@
 }
 
 
+- (int)selectPage
+{
+	/*	If there is only one page currently being displayed this method
+		automatically returns zero. */
+	if(![secondPageImage isValid])
+	{
+		return 0;
+	}
+	
+	unsigned int charNumber = 0;
+	NSPoint cursorPoint = NSZeroPoint;
+	NSRect secondRect, firstRect, imageRect = imageBounds;
+    firstRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
+    secondRect.size = scaleSize([secondPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
+	if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+    {
+        firstRect.origin = imageRect.origin;
+        secondRect.origin = NSMakePoint(NSMaxX(firstRect), NSMinY(imageRect));
+    }
+    else
+    {
+        secondRect.origin = imageRect.origin;
+        firstRect.origin = NSMakePoint(NSMaxX(secondRect), NSMinY(imageRect));
+    }
+	
+	NSEvent * theEvent;
+	cursorPoint = [NSEvent mouseLocation];
+    cursorPoint = [self convertPoint: [[self window] convertScreenToBase: cursorPoint] fromView: nil];
+
+	do
+	{
+		if(NSPointInRect(cursorPoint, firstRect))
+		{
+			pageSelection = 1;
+		}
+		else if(NSPointInRect(cursorPoint, secondRect))
+		{
+			pageSelection = 2;
+		}
+		else
+		{
+			pageSelection = 0;
+		}
+		
+		[self setNeedsDisplay: YES];
+		
+		theEvent = [[self window] nextEventMatchingMask: NSLeftMouseDownMask | NSMouseMovedMask | NSKeyUpMask];
+		if([theEvent type] == NSKeyUp)
+		{
+			charNumber = [[theEvent charactersIgnoringModifiers] characterAtIndex: 0];
+		}
+		else if([theEvent type] == NSMouseMoved)
+		{
+			cursorPoint = [self convertPoint: [theEvent locationInWindow] fromView: nil];
+		}
+	} while ([theEvent type] != NSLeftMouseDown && charNumber != 27);
+	int finalSelection = pageSelection && charNumber != 27 ? pageSelection - 1 : -1;
+	pageSelection = -1;
+	[self setNeedsDisplay: YES];
+	
+	return finalSelection;
+}
+
 
 #pragma mark -
 #pragma mark Event handling
@@ -647,15 +740,15 @@
 	}
 	else if([[[dataSource session] valueForKey: TSSTPageScaleOptions] intValue] == 1)
 	{
-		if([theEvent deltaX] > 0)
+		if([theEvent deltaX] > 2)
 		{
 			[dataSource pageLeft: self];
 		}
-		else if([theEvent deltaX] < 0)
+		else if([theEvent deltaX] < 2)
 		{
 			[dataSource pageRight: self];
 		}
-		else if([theEvent deltaY] > 0)
+		else if([theEvent deltaY] > 2)
 		{
 			if([[[dataSource session] valueForKey: TSSTPageOrder] boolValue])
 			{
@@ -666,7 +759,7 @@
 				[dataSource pageLeft: self];
 			}	
 		}
-		else if([theEvent deltaY] < 0)
+		else if([theEvent deltaY] < 2)
 		{
 			if([[[dataSource session] valueForKey: TSSTPageOrder] boolValue])
 			{
