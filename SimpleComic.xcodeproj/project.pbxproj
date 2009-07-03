@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28073CB00FF9956600D2602B /* extract.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073CAF0FF9956500D2602B /* extract.tiff */; };
+		28073DB00FFB0EED00D2602B /* icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073DAF0FFB0EED00D2602B /* icon.tiff */; };
+		28073E610FFC347200D2602B /* QuickComic.qlgenerator in Copy Quicklook plugin */ = {isa = PBXBuildFile; fileRef = 28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */; };
 		280CFF130C48943B0099D111 /* TSSTCRTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */; };
 		280E16CF0C52719200FC7439 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 280E16CE0C52719200FC7439 /* Help */; };
 		281314570C0A7D2D00EC007B /* TSSTSessionWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314520C0A7D2D00EC007B /* TSSTSessionWindow.nib */; };
@@ -48,7 +51,6 @@
 		288693060FED553A002C6BF7 /* sc_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FF0FED553A002C6BF7 /* sc_icon.icns */; };
 		288693070FED553A002C6BF7 /* zip.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288693000FED553A002C6BF7 /* zip.icns */; };
 		2886931D0FED554E002C6BF7 /* Loupe.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930A0FED554E002C6BF7 /* Loupe.tiff */; };
-		2886931E0FED554E002C6BF7 /* Search.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2886930B0FED554E002C6BF7 /* Search.pdf */; };
 		288693200FED554E002C6BF7 /* arrow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930D0FED554E002C6BF7 /* arrow.tiff */; };
 		288693210FED554E002C6BF7 /* equal.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930E0FED554E002C6BF7 /* equal.tiff */; };
 		288693220FED554E002C6BF7 /* fullscreen.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930F0FED554E002C6BF7 /* fullscreen.tiff */; };
@@ -90,6 +92,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		28073E2E0FFC327700D2602B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D576316048677EA00EA77CD /* QuickComic.qlgenerator */;
+			remoteInfo = QuickComic;
+		};
 		28FACCA00CD0CEDB007B7918 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -107,6 +116,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		28073E0A0FFC305400D2602B /* Copy Quicklook plugin */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/QuickLook;
+			dstSubfolderSpec = 1;
+			files = (
+				28073E610FFC347200D2602B /* QuickComic.qlgenerator in Copy Quicklook plugin */,
+			);
+			name = "Copy Quicklook plugin";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		280B6BBA0A1BB34600EE91B0 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +145,9 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		2803B2FE0D5E541800CD7906 /* TSSTManagedSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedSession.h; sourceTree = "<group>"; };
 		2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedSession.m; sourceTree = "<group>"; };
+		28073CAF0FF9956500D2602B /* extract.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = extract.tiff; sourceTree = "<group>"; };
+		28073DAF0FFB0EED00D2602B /* icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.tiff; sourceTree = "<group>"; };
+		28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickComic.xcodeproj; path = QuickComic/QuickComic.xcodeproj; sourceTree = "<group>"; };
 		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
 		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
 		280E168C0C52477300FC7439 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
@@ -137,8 +160,8 @@
 		281954E70C1201E5001F5E95 /* TSSTManagedGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedGroup.h; sourceTree = "<group>"; };
 		281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedGroup.m; sourceTree = "<group>"; };
 		28195B410C166DF5001F5E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTImageUtilities.m; path = Helpers/TSSTImageUtilities.m; sourceTree = "<group>"; };
-		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTImageUtilities.h; path = Helpers/TSSTImageUtilities.h; sourceTree = "<group>"; };
+		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; };
+		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
 		283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTGradientView.m; sourceTree = "<group>"; };
 		283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TSSTGradientView.h; sourceTree = "<group>"; };
 		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
@@ -160,7 +183,7 @@
 		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTImageView.h; path = "Progress Bar/TSSTImageView.h"; sourceTree = "<group>"; };
 		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTShortcutController.h; sourceTree = "<group>"; };
 		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTShortcutController.m; sourceTree = "<group>"; };
-		28728E040D4A9F3600AA16C0 /* KeyboardPrefPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardPrefPane.preferencePane; sourceTree = BUILT_PRODUCTS_DIR; };
+		28728E040D4A9F3600AA16C0 /* KeyboardPrefPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = KeyboardPrefPane.preferencePane; path = /Users/arau/Developer/simplecomic/build/Release/KeyboardPrefPane.preferencePane; sourceTree = "<absolute>"; };
 		28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KeyboardPrefsPane-Info.plist"; path = "../KeyboardPrefsPane-Info.plist"; sourceTree = "<group>"; };
 		28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardPrefController.h; sourceTree = "<group>"; };
 		28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardPrefController.m; sourceTree = "<group>"; };
@@ -222,8 +245,8 @@
 		28C49D8B0DD53C05008E4857 /* TSSTBookmarkTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkTableView.m; sourceTree = "<group>"; };
 		28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+UTI_Category.h"; sourceTree = "<group>"; };
 		28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+UTI_Category.m"; sourceTree = "<group>"; };
-		28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UKXattrMetadataStore.h; path = Helpers/UKXattrMetadataStore.h; sourceTree = "<group>"; };
-		28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UKXattrMetadataStore.m; path = Helpers/UKXattrMetadataStore.m; sourceTree = "<group>"; };
+		28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKXattrMetadataStore.h; sourceTree = "<group>"; };
+		28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKXattrMetadataStore.m; sourceTree = "<group>"; };
 		28F59A9A0B784892003530FB /* TSSTSortDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTSortDescriptor.h; sourceTree = "<group>"; };
 		28F5A5F00B7E0F8B003530FB /* TSSTPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPage.h; sourceTree = "<group>"; };
 		28F998310A1FF52C0047BD97 /* TSSTKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTKeyWindow.h; path = "Custom Windows/Fullscreen/TSSTKeyWindow.h"; sourceTree = "<group>"; };
@@ -311,7 +334,6 @@
 				288C0C420DCDAB7200EAFF46 /* Thumbnail View */,
 				289CD7620BF15CCC00B5AE01 /* Progress Bar */,
 				28195CFA0C179DBD001F5E95 /* Fullscreen */,
-				FAB0905F08AECEE00047E63D /* Utilities */,
 				FA9FB59508AAE3690085AA55 /* Preferences */,
 				28770B670DBA8B1C00A78646 /* Segmented Controls */,
 				28FA4DD50B8A6F3B00496668 /* Managed Objects */,
@@ -351,7 +373,14 @@
 				8D1107320486CEB800E47090 /* Simple Comic.app */,
 				28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */,
 				28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */,
-				28728E040D4A9F3600AA16C0 /* KeyboardPrefPane.preferencePane */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28073E2B0FFC327700D2602B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -370,6 +399,10 @@
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */,
+				28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */,
+				283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */,
+				283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */,
 				28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */,
 				28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */,
 				283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */,
@@ -414,6 +447,8 @@
 		288693080FED554E002C6BF7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				28073DAF0FFB0EED00D2602B /* icon.tiff */,
+				28073CAF0FF9956500D2602B /* extract.tiff */,
 				288693090FED554E002C6BF7 /* Keyboard.icns */,
 				2886930A0FED554E002C6BF7 /* Loupe.tiff */,
 				2886930B0FED554E002C6BF7 /* Search.pdf */,
@@ -500,6 +535,7 @@
 			children = (
 				7756732906782D8800D1FEB8 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -591,17 +627,6 @@
 			name = Session;
 			sourceTree = "<group>";
 		};
-		FAB0905F08AECEE00047E63D /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */,
-				28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */,
-				283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */,
-				283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -664,6 +689,7 @@
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				280B6BBA0A1BB34600EE91B0 /* CopyFiles */,
 				8D1107290486CEB800E47090 /* Resources */,
+				28073E0A0FFC305400D2602B /* Copy Quicklook plugin */,
 			);
 			buildRules = (
 			);
@@ -698,6 +724,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MetaComic */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 28073E2B0FFC327700D2602B /* Products */;
+					ProjectRef = 28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				28728E030D4A9F3600AA16C0 /* KeyboardPrefsPane */,
@@ -707,6 +739,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = QuickComic.qlgenerator;
+			remoteRef = 28073E2E0FFC327700D2602B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		28728E000D4A9F3600AA16C0 /* Resources */ = {
@@ -754,7 +796,6 @@
 				288693060FED553A002C6BF7 /* sc_icon.icns in Resources */,
 				288693070FED553A002C6BF7 /* zip.icns in Resources */,
 				2886931D0FED554E002C6BF7 /* Loupe.tiff in Resources */,
-				2886931E0FED554E002C6BF7 /* Search.pdf in Resources */,
 				288693200FED554E002C6BF7 /* arrow.tiff in Resources */,
 				288693210FED554E002C6BF7 /* equal.tiff in Resources */,
 				288693220FED554E002C6BF7 /* fullscreen.tiff in Resources */,
@@ -770,6 +811,8 @@
 				2886932C0FED554E002C6BF7 /* thumbnails.tiff in Resources */,
 				2886932D0FED554E002C6BF7 /* two_page.tiff in Resources */,
 				2886932E0FED554E002C6BF7 /* win_scale.tiff in Resources */,
+				28073CB00FF9956600D2602B /* extract.tiff in Resources */,
+				28073DB00FFB0EED00D2602B /* icon.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
