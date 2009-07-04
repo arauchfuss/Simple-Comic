@@ -577,7 +577,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 593";
 		rLen = 1;
-		rLoc = 18837;
+		rLoc = 18878;
 		rType = 0;
 		vrLen = 509;
 		vrLoc = 18580;
@@ -647,7 +647,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 593";
 		rLen = 1;
-		rLoc = 18837;
+		rLoc = 18878;
 		rType = 0;
 		vrLen = 494;
 		vrLoc = 18580;
@@ -667,7 +667,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 594";
 		rLen = 0;
-		rLoc = 18838;
+		rLoc = 18879;
 		rType = 0;
 		vrLen = 509;
 		vrLoc = 18580;
@@ -687,7 +687,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 853";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 971;
 		vrLoc = 24850;
@@ -737,7 +737,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 876";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 1044;
 		vrLoc = 25488;
@@ -922,7 +922,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 875";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 898;
 		vrLoc = 25677;
@@ -952,7 +952,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 856";
 		rLen = 0;
-		rLoc = 25710;
+		rLoc = 25751;
 		rType = 0;
 		vrLen = 1050;
 		vrLoc = 25495;
@@ -992,7 +992,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 874";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 1050;
 		vrLoc = 25495;
@@ -1012,7 +1012,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 856";
 		rLen = 0;
-		rLoc = 25860;
+		rLoc = 25901;
 		rType = 0;
 		vrLen = 1267;
 		vrLoc = 25077;
@@ -1112,7 +1112,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 839";
 		rLen = 0;
-		rLoc = 25521;
+		rLoc = 25562;
 		rType = 0;
 		vrLen = 1278;
 		vrLoc = 24336;
@@ -1132,7 +1132,7 @@
 		comments = "warning: initialization makes integer from pointer without a cast";
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		rLen = 0;
-		rLoc = 852;
+		rLoc = 854;
 		rType = 1;
 	};
 	28073C320FF6AA3400D2602B /* PBXTextBookmark */ = {
@@ -1150,7 +1150,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 853";
 		rLen = 0;
-		rLoc = 25710;
+		rLoc = 25751;
 		rType = 0;
 		vrLen = 754;
 		vrLoc = 25534;
@@ -1170,7 +1170,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 864";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 754;
 		vrLoc = 25534;
@@ -1190,7 +1190,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 835";
 		rLen = 0;
-		rLoc = 24826;
+		rLoc = 24867;
 		rType = 0;
 		vrLen = 1280;
 		vrLoc = 24336;
@@ -1200,7 +1200,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 835";
 		rLen = 0;
-		rLoc = 24826;
+		rLoc = 24867;
 		rType = 0;
 		vrLen = 1280;
 		vrLoc = 24336;
@@ -1220,7 +1220,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 835";
 		rLen = 0;
-		rLoc = 24826;
+		rLoc = 24867;
 		rType = 0;
 		vrLen = 1280;
 		vrLoc = 24336;
@@ -1290,7 +1290,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 864";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 725;
 		vrLoc = 25534;
@@ -1367,7 +1367,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1230";
 		rLen = 0;
-		rLoc = 37640;
+		rLoc = 37651;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 36852;
@@ -1407,7 +1407,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1230";
 		rLen = 0;
-		rLoc = 37640;
+		rLoc = 37651;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 36852;
@@ -1427,7 +1427,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1230";
 		rLen = 0;
-		rLoc = 37640;
+		rLoc = 37651;
 		rType = 0;
 		vrLen = 1226;
 		vrLoc = 36852;
@@ -1467,7 +1467,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1230";
 		rLen = 0;
-		rLoc = 37640;
+		rLoc = 37651;
 		rType = 0;
 		vrLen = 1226;
 		vrLoc = 36852;
@@ -1627,7 +1627,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 864";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 725;
 		vrLoc = 25534;
@@ -1657,7 +1657,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 864";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 754;
 		vrLoc = 25534;
@@ -1687,7 +1687,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 864";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 754;
 		vrLoc = 25534;
@@ -1777,7 +1777,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1230";
 		rLen = 0;
-		rLoc = 37640;
+		rLoc = 37651;
 		rType = 0;
 		vrLen = 1262;
 		vrLoc = 36846;
@@ -1797,7 +1797,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 842";
 		rLen = 0;
-		rLoc = 25094;
+		rLoc = 25135;
 		rType = 0;
 		vrLen = 1470;
 		vrLoc = 24551;
@@ -1807,7 +1807,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 864";
 		rLen = 0;
-		rLoc = 26011;
+		rLoc = 26052;
 		rType = 0;
 		vrLen = 993;
 		vrLoc = 25495;
@@ -1817,7 +1817,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 868";
 		rLen = 41;
-		rLoc = 26153;
+		rLoc = 26194;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 21105;
@@ -1827,7 +1827,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 868";
 		rLen = 41;
-		rLoc = 26153;
+		rLoc = 26194;
 		rType = 0;
 		vrLen = 1127;
 		vrLoc = 21105;
@@ -2035,7 +2035,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 482";
 		rLen = 0;
-		rLoc = 16687;
+		rLoc = 16728;
 		rType = 0;
 		vrLen = 791;
 		vrLoc = 16159;
@@ -2049,7 +2049,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 482";
 		rLen = 0;
-		rLoc = 16687;
+		rLoc = 16728;
 		rType = 0;
 		vrLen = 791;
 		vrLoc = 16159;
@@ -2189,7 +2189,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 870";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 25083;
@@ -2389,7 +2389,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 870";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 25083;
@@ -2506,7 +2506,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 870";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 25083;
@@ -2646,7 +2646,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 870";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 25083;
@@ -2706,7 +2706,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1365";
 		rLen = 0;
-		rLoc = 41015;
+		rLoc = 41026;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 40527;
@@ -2726,7 +2726,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1363";
 		rLen = 0;
-		rLoc = 40890;
+		rLoc = 40901;
 		rType = 0;
 		vrLen = 542;
 		vrLoc = 40527;
@@ -2756,7 +2756,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1365";
 		rLen = 0;
-		rLoc = 41015;
+		rLoc = 41026;
 		rType = 0;
 		vrLen = 562;
 		vrLoc = 40527;
@@ -2786,7 +2786,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 870";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 25083;
@@ -2813,7 +2813,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 870";
 		rLen = 0;
-		rLoc = 26405;
+		rLoc = 26446;
 		rType = 0;
 		vrLen = 923;
 		vrLoc = 25083;
@@ -3687,6 +3687,536 @@
 		vrLen = 1411;
 		vrLoc = 7530;
 	};
+	28073E770FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */;
+		name = "TSSTManagedGroup.m: 290";
+		rLen = 0;
+		rLoc = 7101;
+		rType = 0;
+		vrLen = 825;
+		vrLoc = 6706;
+	};
+	28073E780FFE98A100D2602B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 288693130FED554E002C6BF7 /* org_size.tiff */;
+	};
+	28073E790FFE98A100D2602B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 28073DAF0FFB0EED00D2602B /* icon.tiff */;
+	};
+	28073E7A0FFE98A100D2602B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 28073CAF0FF9956500D2602B /* extract.tiff */;
+	};
+	28073E7B0FFE98A100D2602B /* XDModelBookmark */ = {
+		isa = XDModelBookmark;
+		fRef = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */;
+		fallbackIsa = PBXBookmark;
+		uiCtxt = {
+			UIContextForDetailArea = {
+				_indexOfSelectedPane = 0;
+				_indexOfSelectedView = 0;
+			};
+			UIContextForEntityArea = {
+				_indexOfSelectedView = 0;
+				chosenTableColumnns = (
+					"ET Entity",
+					"ET Abstract",
+					"ET Class",
+				);
+				chosenTableColumnns_sortDirections = (
+					YES,
+				);
+				chosenTableColumnns_sortKeys = (
+					name,
+				);
+				chosenTableColumnns_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableWidths = (
+					103.000000,
+					22.000000,
+					133.080078,
+				);
+			};
+			UIContextForLayoutManager = {
+				detailSplitGeometry = {
+					_collapsingFrameDimension = 0;
+					_indexOfCollapsedView = 0;
+					_percentageOfCollapsedView = 0;
+					isCollapsed = yes;
+					sizes = (
+						"{{0, 0}, {694, 218}}",
+						"{{699, 0}, {308, 218}}",
+					);
+				};
+				diagramSplitGeometry = {
+					_collapsingFrameDimension = 0;
+					_indexOfCollapsedView = 0;
+					_percentageOfCollapsedView = 0;
+					isCollapsed = yes;
+					sizes = (
+						"{{0, 0}, {1007, 220}}",
+						"{{0, 225}, {1007, 370}}",
+					);
+				};
+				tableSplitGeometry = {
+					_collapsingFrameDimension = 0;
+					_indexOfCollapsedView = 0;
+					_percentageOfCollapsedView = 0;
+					isCollapsed = yes;
+					sizes = (
+						"{{0, 0}, {283, 218}}",
+						"{{288, 0}, {404, 218}}",
+					);
+				};
+			};
+			UIContextForPropertyArea = {
+				_indexOfSelectedView = 0;
+				chosenTableColumnnFRTs = (
+					"FT Fetch Request",
+					"FT Predicate",
+				);
+				chosenTableColumnnFRTs_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnFRTs_sortKeys = (
+					name,
+				);
+				chosenTableColumnnFRTs_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsAT = (
+					"AT Attribute",
+					"AT Type",
+				);
+				chosenTableColumnnsAT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsAT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsAT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsFPT = (
+					"FP FetchedProperty",
+					"FP Destination",
+					"FP Predicate",
+				);
+				chosenTableColumnnsFPT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsFPT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsFPT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsPT = (
+					"PT Property",
+					"PT Kind",
+					"PT SharedKeyOne",
+				);
+				chosenTableColumnnsPT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsPT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsPT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsRT = (
+					"RT Relationship",
+					"RT Destination",
+				);
+				chosenTableColumnnsRT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsRT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsRT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableWidthsAT = (
+					128.000000,
+					64.000000,
+				);
+				chosenTableWidthsFPT = (
+					128.000000,
+					64.000000,
+					144.764160,
+				);
+				chosenTableWidthsFRT = (
+					128.000000,
+					249.764160,
+				);
+				chosenTableWidthsPT = (
+					128.000000,
+					108.110840,
+					141.570801,
+				);
+				chosenTableWidthsRT = (
+					128.000000,
+					197.000000,
+				);
+			};
+			"xdesign model browser state key - shown/hidden" = 1;
+			"xdesign model diagram view visible rect key" = "{{-172, 0}, {992, 355}}";
+			"xdesign model selected entities key" = (
+			);
+			"xdesign model selected properties key" = (
+			);
+		};
+	};
+	28073E7C0FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */;
+		name = "SimpleComicAppDelegate.m: 808";
+		rLen = 0;
+		rLoc = 28023;
+		rType = 0;
+		vrLen = 945;
+		vrLoc = 27440;
+	};
+	28073E7D0FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */;
+		name = "SimpleComicAppDelegate.h: 89";
+		rLen = 17;
+		rLoc = 3020;
+		rType = 0;
+		vrLen = 1220;
+		vrLoc = 2551;
+	};
+	28073E7E0FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28A8EAB00B412DE5006C036D /* TSSTPageView.h */;
+		name = "TSSTPageView.h: 68";
+		rLen = 0;
+		rLoc = 2228;
+		rType = 0;
+		vrLen = 1032;
+		vrLoc = 1617;
+	};
+	28073E7F0FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */;
+		name = "TSSTPageView.m: 680";
+		rLen = 0;
+		rLoc = 21055;
+		rType = 0;
+		vrLen = 1240;
+		vrLoc = 19329;
+	};
+	28073E800FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 417";
+		rLen = 24;
+		rLoc = 14727;
+		rType = 0;
+		vrLen = 2049;
+		vrLoc = 6132;
+	};
+	28073E810FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */;
+		name = "TSSTManagedGroup.m: 290";
+		rLen = 0;
+		rLoc = 7101;
+		rType = 0;
+		vrLen = 825;
+		vrLoc = 6706;
+	};
+	28073E820FFE98A100D2602B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 288693130FED554E002C6BF7 /* org_size.tiff */;
+	};
+	28073E830FFE98A100D2602B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 28073DAF0FFB0EED00D2602B /* icon.tiff */;
+	};
+	28073E840FFE98A100D2602B /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 28073CAF0FF9956500D2602B /* extract.tiff */;
+	};
+	28073E850FFE98A100D2602B /* XDModelBookmark */ = {
+		isa = XDModelBookmark;
+		fRef = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */;
+		fallbackIsa = PBXBookmark;
+		uiCtxt = {
+			UIContextForDetailArea = {
+				_indexOfSelectedPane = 0;
+				_indexOfSelectedView = 0;
+			};
+			UIContextForEntityArea = {
+				_indexOfSelectedView = 0;
+				chosenTableColumnns = (
+					"ET Entity",
+					"ET Abstract",
+					"ET Class",
+				);
+				chosenTableColumnns_sortDirections = (
+					YES,
+				);
+				chosenTableColumnns_sortKeys = (
+					name,
+				);
+				chosenTableColumnns_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableWidths = (
+					103.000000,
+					22.000000,
+					133.080078,
+				);
+			};
+			UIContextForLayoutManager = {
+				detailSplitGeometry = {
+					_collapsingFrameDimension = 0;
+					_indexOfCollapsedView = 0;
+					_percentageOfCollapsedView = 0;
+					isCollapsed = yes;
+					sizes = (
+						"{{0, 0}, {694, 218}}",
+						"{{699, 0}, {308, 218}}",
+					);
+				};
+				diagramSplitGeometry = {
+					_collapsingFrameDimension = 0;
+					_indexOfCollapsedView = 0;
+					_percentageOfCollapsedView = 0;
+					isCollapsed = yes;
+					sizes = (
+						"{{0, 0}, {1007, 220}}",
+						"{{0, 225}, {1007, 370}}",
+					);
+				};
+				tableSplitGeometry = {
+					_collapsingFrameDimension = 0;
+					_indexOfCollapsedView = 0;
+					_percentageOfCollapsedView = 0;
+					isCollapsed = yes;
+					sizes = (
+						"{{0, 0}, {283, 218}}",
+						"{{288, 0}, {404, 218}}",
+					);
+				};
+			};
+			UIContextForPropertyArea = {
+				_indexOfSelectedView = 0;
+				chosenTableColumnnFRTs = (
+					"FT Fetch Request",
+					"FT Predicate",
+				);
+				chosenTableColumnnFRTs_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnFRTs_sortKeys = (
+					name,
+				);
+				chosenTableColumnnFRTs_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsAT = (
+					"AT Attribute",
+					"AT Type",
+				);
+				chosenTableColumnnsAT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsAT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsAT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsFPT = (
+					"FP FetchedProperty",
+					"FP Destination",
+					"FP Predicate",
+				);
+				chosenTableColumnnsFPT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsFPT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsFPT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsPT = (
+					"PT Property",
+					"PT Kind",
+					"PT SharedKeyOne",
+				);
+				chosenTableColumnnsPT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsPT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsPT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableColumnnsRT = (
+					"RT Relationship",
+					"RT Destination",
+				);
+				chosenTableColumnnsRT_sortDirections = (
+					YES,
+				);
+				chosenTableColumnnsRT_sortKeys = (
+					name,
+				);
+				chosenTableColumnnsRT_sortSelectors = (
+					"_xdcaseInsensitiveNumericCompare:",
+				);
+				chosenTableWidthsAT = (
+					128.000000,
+					64.000000,
+				);
+				chosenTableWidthsFPT = (
+					128.000000,
+					64.000000,
+					144.764160,
+				);
+				chosenTableWidthsFRT = (
+					128.000000,
+					249.764160,
+				);
+				chosenTableWidthsPT = (
+					128.000000,
+					108.110840,
+					141.570801,
+				);
+				chosenTableWidthsRT = (
+					128.000000,
+					197.000000,
+				);
+			};
+			"xdesign model browser state key - shown/hidden" = 1;
+			"xdesign model diagram view visible rect key" = "{{-172, 0}, {992, 355}}";
+			"xdesign model selected entities key" = (
+			);
+			"xdesign model selected properties key" = (
+			);
+		};
+	};
+	28073E860FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */;
+		name = "SimpleComicAppDelegate.m: 808";
+		rLen = 0;
+		rLoc = 28023;
+		rType = 0;
+		vrLen = 945;
+		vrLoc = 27440;
+	};
+	28073E870FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */;
+		name = "SimpleComicAppDelegate.h: 89";
+		rLen = 17;
+		rLoc = 3020;
+		rType = 0;
+		vrLen = 1220;
+		vrLoc = 2551;
+	};
+	28073E880FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 417";
+		rLen = 24;
+		rLoc = 14727;
+		rType = 0;
+		vrLen = 2049;
+		vrLoc = 6132;
+	};
+	28073E890FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28A8EAB00B412DE5006C036D /* TSSTPageView.h */;
+		name = "TSSTPageView.h: 68";
+		rLen = 0;
+		rLoc = 2228;
+		rType = 0;
+		vrLen = 1032;
+		vrLoc = 1617;
+	};
+	28073E8A0FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */;
+		name = "TSSTPageView.m: 680";
+		rLen = 0;
+		rLoc = 21055;
+		rType = 0;
+		vrLen = 1240;
+		vrLoc = 19329;
+	};
+	28073E8B0FFE98A100D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 1389";
+		rLen = 0;
+		rLoc = 41609;
+		rType = 0;
+		vrLen = 789;
+		vrLoc = 41074;
+	};
+	28073E8E0FFE992800D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 423";
+		rLen = 0;
+		rLoc = 15212;
+		rType = 0;
+		vrLen = 1126;
+		vrLoc = 14617;
+	};
+	28073E980FFEBD2D00D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 411";
+		rLen = 0;
+		rLoc = 14614;
+		rType = 0;
+		vrLen = 1019;
+		vrLoc = 14347;
+	};
+	28073E9B0FFEBDB700D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 414";
+		rLen = 17;
+		rLoc = 14625;
+		rType = 0;
+		vrLen = 1023;
+		vrLoc = 14419;
+	};
+	28073EA00FFEF9A600D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 417";
+		rLen = 0;
+		rLoc = 14745;
+		rType = 0;
+		vrLen = 1112;
+		vrLoc = 14419;
+	};
+	28073EAE0FFFC9A400D2602B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
+		name = "TSSTSessionWindowController.m: 1055";
+		rLen = 0;
+		rLoc = 32533;
+		rType = 0;
+		vrLen = 1023;
+		vrLoc = 31726;
+	};
 	280C14B60CDAC13A00CFECC2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28F5A5F00B7E0F8B003530FB /* TSSTPage.h */;
@@ -3820,9 +4350,9 @@
 	};
 	281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1404, 7837}}";
-			sepNavSelRange = "{8569, 0}";
-			sepNavVisRange = "{7530, 1411}";
+			sepNavIntBoundsRect = "{{0, 0}, {1228, 7973}}";
+			sepNavSelRange = "{7101, 0}";
+			sepNavVisRange = "{6706, 825}";
 			sepNavVisRect = "{{0, 0}, {856, 379}}";
 			sepNavWindowFrame = "{{38, 26}, {911, 752}}";
 		};
@@ -4691,9 +5221,9 @@
 	};
 	28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {940, 2363}}";
+			sepNavIntBoundsRect = "{{0, 0}, {940, 2346}}";
 			sepNavSelRange = "{467, 19}";
-			sepNavVisRange = "{233, 466}";
+			sepNavVisRange = "{233, 460}";
 			sepNavWindowFrame = "{{15, -5}, {1092, 778}}";
 		};
 	};
@@ -5731,7 +6261,7 @@
 		fRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */;
 		name = "TSSTSessionWindowController.m: 1422";
 		rLen = 0;
-		rLoc = 43213;
+		rLoc = 43308;
 		rType = 0;
 		vrLen = 1699;
 		vrLoc = 42226;
@@ -6065,9 +6595,9 @@
 	};
 	28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {948, 2023}}";
+			sepNavIntBoundsRect = "{{0, 0}, {948, 1989}}";
 			sepNavSelRange = "{2228, 0}";
-			sepNavVisRange = "{1773, 876}";
+			sepNavVisRange = "{1617, 1032}";
 			sepNavVisRect = "{{0, 832}, {928, 612}}";
 			sepNavWindowFrame = "{{68, 49}, {967, 729}}";
 		};
@@ -6977,9 +7507,9 @@
 	};
 	28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1084, 26367}}";
-			sepNavSelRange = "{10293, 0}";
-			sepNavVisRange = "{10147, 497}";
+			sepNavIntBoundsRect = "{{0, 0}, {1148, 26775}}";
+			sepNavSelRange = "{32533, 0}";
+			sepNavVisRange = "{31726, 1023}";
 			sepNavVisRect = "{{0, 9576}, {856, 379}}";
 			sepNavWindowFrame = "{{149, 0}, {572, 746}}";
 		};
@@ -7628,6 +8158,32 @@
 			28073E1E0FFC31FE00D2602B /* PBXTextBookmark */ = 28073E1E0FFC31FE00D2602B /* PBXTextBookmark */;
 			28073E630FFC347800D2602B /* PBXTextBookmark */ = 28073E630FFC347800D2602B /* PBXTextBookmark */;
 			28073E6B0FFC354300D2602B /* PBXTextBookmark */ = 28073E6B0FFC354300D2602B /* PBXTextBookmark */;
+			28073E770FFE98A100D2602B /* PBXTextBookmark */ = 28073E770FFE98A100D2602B /* PBXTextBookmark */;
+			28073E780FFE98A100D2602B /* PBXBookmark */ = 28073E780FFE98A100D2602B /* PBXBookmark */;
+			28073E790FFE98A100D2602B /* PBXBookmark */ = 28073E790FFE98A100D2602B /* PBXBookmark */;
+			28073E7A0FFE98A100D2602B /* PBXBookmark */ = 28073E7A0FFE98A100D2602B /* PBXBookmark */;
+			28073E7B0FFE98A100D2602B /* XDModelBookmark */ = 28073E7B0FFE98A100D2602B /* XDModelBookmark */;
+			28073E7C0FFE98A100D2602B /* PBXTextBookmark */ = 28073E7C0FFE98A100D2602B /* PBXTextBookmark */;
+			28073E7D0FFE98A100D2602B /* PBXTextBookmark */ = 28073E7D0FFE98A100D2602B /* PBXTextBookmark */;
+			28073E7E0FFE98A100D2602B /* PBXTextBookmark */ = 28073E7E0FFE98A100D2602B /* PBXTextBookmark */;
+			28073E7F0FFE98A100D2602B /* PBXTextBookmark */ = 28073E7F0FFE98A100D2602B /* PBXTextBookmark */;
+			28073E800FFE98A100D2602B /* PBXTextBookmark */ = 28073E800FFE98A100D2602B /* PBXTextBookmark */;
+			28073E810FFE98A100D2602B /* PBXTextBookmark */ = 28073E810FFE98A100D2602B /* PBXTextBookmark */;
+			28073E820FFE98A100D2602B /* PBXBookmark */ = 28073E820FFE98A100D2602B /* PBXBookmark */;
+			28073E830FFE98A100D2602B /* PBXBookmark */ = 28073E830FFE98A100D2602B /* PBXBookmark */;
+			28073E840FFE98A100D2602B /* PBXBookmark */ = 28073E840FFE98A100D2602B /* PBXBookmark */;
+			28073E850FFE98A100D2602B /* XDModelBookmark */ = 28073E850FFE98A100D2602B /* XDModelBookmark */;
+			28073E860FFE98A100D2602B /* PBXTextBookmark */ = 28073E860FFE98A100D2602B /* PBXTextBookmark */;
+			28073E870FFE98A100D2602B /* PBXTextBookmark */ = 28073E870FFE98A100D2602B /* PBXTextBookmark */;
+			28073E880FFE98A100D2602B /* PBXTextBookmark */ = 28073E880FFE98A100D2602B /* PBXTextBookmark */;
+			28073E890FFE98A100D2602B /* PBXTextBookmark */ = 28073E890FFE98A100D2602B /* PBXTextBookmark */;
+			28073E8A0FFE98A100D2602B /* PBXTextBookmark */ = 28073E8A0FFE98A100D2602B /* PBXTextBookmark */;
+			28073E8B0FFE98A100D2602B /* PBXTextBookmark */ = 28073E8B0FFE98A100D2602B /* PBXTextBookmark */;
+			28073E8E0FFE992800D2602B /* PBXTextBookmark */ = 28073E8E0FFE992800D2602B /* PBXTextBookmark */;
+			28073E980FFEBD2D00D2602B /* PBXTextBookmark */ = 28073E980FFEBD2D00D2602B /* PBXTextBookmark */;
+			28073E9B0FFEBDB700D2602B /* PBXTextBookmark */ = 28073E9B0FFEBDB700D2602B /* PBXTextBookmark */;
+			28073EA00FFEF9A600D2602B /* PBXTextBookmark */ = 28073EA00FFEF9A600D2602B /* PBXTextBookmark */;
+			28073EAE0FFFC9A400D2602B /* PBXTextBookmark */ = 28073EAE0FFFC9A400D2602B /* PBXTextBookmark */;
 			280C14B60CDAC13A00CFECC2 = 280C14B60CDAC13A00CFECC2 /* PBXTextBookmark */;
 			280C150D0CDAF26700CFECC2 = 280C150D0CDAF26700CFECC2 /* PBXTextBookmark */;
 			280C150E0CDAF26700CFECC2 = 280C150E0CDAF26700CFECC2 /* PBXTextBookmark */;
@@ -7916,7 +8472,7 @@
 			"Xdesign Model Editor Bookmark Key" = {
 				UIContextForDetailArea = {
 					_indexOfSelectedPane = 0;
-					_indexOfSelectedView = 1;
+					_indexOfSelectedView = 0;
 				};
 				UIContextForEntityArea = {
 					_indexOfSelectedView = 0;
@@ -7937,7 +8493,7 @@
 					chosenTableWidths = (
 						103.000000,
 						22.000000,
-						134.080078,
+						133.080078,
 					);
 				};
 				UIContextForLayoutManager = {
@@ -7947,8 +8503,8 @@
 						_percentageOfCollapsedView = 0;
 						isCollapsed = yes;
 						sizes = (
-							"{{0, 0}, {694, 220}}",
-							"{{699, 0}, {308, 220}}",
+							"{{0, 0}, {694, 218}}",
+							"{{699, 0}, {308, 218}}",
 						);
 					};
 					diagramSplitGeometry = {
@@ -7958,7 +8514,7 @@
 						isCollapsed = yes;
 						sizes = (
 							"{{0, 0}, {1007, 220}}",
-							"{{0, 225}, {1007, 334}}",
+							"{{0, 225}, {1007, 370}}",
 						);
 					};
 					tableSplitGeometry = {
@@ -7967,8 +8523,8 @@
 						_percentageOfCollapsedView = 0;
 						isCollapsed = yes;
 						sizes = (
-							"{{0, 0}, {284, 220}}",
-							"{{289, 0}, {405, 220}}",
+							"{{0, 0}, {283, 218}}",
+							"{{288, 0}, {404, 218}}",
 						);
 					};
 				};
@@ -8057,7 +8613,7 @@
 					chosenTableWidthsPT = (
 						128.000000,
 						108.110840,
-						142.570801,
+						141.570801,
 					);
 					chosenTableWidthsRT = (
 						128.000000,
@@ -8065,25 +8621,25 @@
 					);
 				};
 				"xdesign model browser state key - shown/hidden" = 1;
-				"xdesign model diagram view visible rect key" = "{{-172, 51}, {992, 319}}";
+				"xdesign model diagram view visible rect key" = "{{-172, 0}, {992, 355}}";
 			};
 			sepNavWindowFrame = "{{332, 0}, {863, 778}}";
 		};
 	};
 	77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {948, 3196}}";
+			sepNavIntBoundsRect = "{{0, 0}, {948, 3230}}";
 			sepNavSelRange = "{3020, 17}";
-			sepNavVisRange = "{2725, 1018}";
+			sepNavVisRange = "{2551, 1220}";
 			sepNavVisRect = "{{0, 1515}, {708, 512}}";
 			sepNavWindowFrame = "{{202, 0}, {732, 778}}";
 		};
 	};
 	77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1596, 16473}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1596, 16422}}";
 			sepNavSelRange = "{28023, 0}";
-			sepNavVisRange = "{27581, 753}";
+			sepNavVisRange = "{27440, 945}";
 			sepNavVisRect = "{{0, 11304}, {708, 512}}";
 			sepNavWindowFrame = "{{413, 355}, {903, 703}}";
 		};
@@ -8096,9 +8652,9 @@
 	};
 	FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {948, 20400}}";
-			sepNavSelRange = "{21021, 0}";
-			sepNavVisRange = "{20820, 763}";
+			sepNavIntBoundsRect = "{{0, 0}, {988, 20468}}";
+			sepNavSelRange = "{21055, 0}";
+			sepNavVisRange = "{19329, 1240}";
 			sepNavVisRect = "{{0, 4755}, {1048, 292}}";
 			sepNavWindowFrame = "{{1063, 0}, {967, 778}}";
 		};

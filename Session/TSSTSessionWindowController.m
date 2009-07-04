@@ -418,7 +418,9 @@ Copyright (c) 2007 Dancing Tortoise Software
     NSWindow * currentWindow = [[session valueForKey: TSSTFullscreen] boolValue] ? fullscreenWindow : [self window];
     NSPoint localPoint = [pageView convertPoint: [currentWindow convertScreenToBase: mouse] fromView: nil];
 	NSPoint scrollPoint = [pageScrollView convertPoint: [currentWindow convertScreenToBase: mouse] fromView: nil];
-    if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) && loupe)
+    if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
+	   && loupe 
+	   && [currentWindow isKeyWindow])
     {
 		if(![loupeWindow isVisible])
 		{
@@ -1050,7 +1052,6 @@ Copyright (c) 2007 Dancing Tortoise Software
     [[loupeWindow parentWindow] removeChildWindow: loupeWindow];
     [loupeWindow orderOut: self];
 	
-    [self refreshLoupePanel];
     [pageScrollView release];
 }
 
@@ -1384,6 +1385,7 @@ images are currently visible and then skips over them.
 			mouseMovedTimer = nil;
 		}
 		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
+		[self refreshLoupePanel];
     }
     
     if([aNotification object] == [self window])
@@ -1393,6 +1395,7 @@ images are currently visible and then skips over them.
 		{
 			[NSCursor hide];
 		}
+		[self refreshLoupePanel];
     }
 }
 
@@ -1408,6 +1411,7 @@ images are currently visible and then skips over them.
 	if([aNotification object] == [self window] || [aNotification object] == fullscreenWindow)
 	{
 		[NSCursor unhide];
+		[self refreshLoupePanel];
 	}
 }
 

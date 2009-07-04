@@ -265,22 +265,21 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>28073DE20FFC2F8B00D2602B</string>
-								<string>19C28FACFE9D520D11CA2CBB</string>
+								<string>080E96DDFE201D6D7F000001</string>
+								<string>FAA1C3E808BAB158006F7EC4</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>28073BC60FF115E100D2602B</string>
 								<string>1C37FAAC04509CD000000102</string>
 								<string>1CC0EA4004350EF90041110B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>16</integer>
-									<integer>12</integer>
+									<integer>37</integer>
+									<integer>36</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {245, 688}}</string>
+							<string>{{0, 43}, {245, 688}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -299,7 +298,7 @@
 							<real>245</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>4 31 1276 747 0 0 1280 778 </string>
+						<string>0 31 1276 747 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -317,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TSSTManagedGroup.m</string>
+								<string>TSSTSessionWindowController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TSSTManagedGroup.m</string>
+										<string>TSSTSessionWindowController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>28073E6B0FFC354300D2602B</string>
+										<string>28073EAE0FFFC9A400D2602B</string>
 										<key>history</key>
 										<array>
 											<string>281C0DB50CEE8469009A9696</string>
@@ -429,26 +428,27 @@
 											<string>288693E00FEEA248002C6BF7</string>
 											<string>288693E10FEEA248002C6BF7</string>
 											<string>28073BE60FF6AA0D00D2602B</string>
-											<string>28073BE90FF6AA0D00D2602B</string>
 											<string>28073CB30FF9958200D2602B</string>
 											<string>28073CB40FF9958200D2602B</string>
 											<string>28073CB50FF9958200D2602B</string>
 											<string>28073CB60FF9958200D2602B</string>
 											<string>28073CB70FF9958200D2602B</string>
 											<string>28073CB80FF9958200D2602B</string>
-											<string>28073CB90FF9958200D2602B</string>
-											<string>28073CBB0FF9958200D2602B</string>
 											<string>28073CDD0FF9965400D2602B</string>
 											<string>28073D070FF9A7D800D2602B</string>
-											<string>28073D990FFAEF5A00D2602B</string>
-											<string>28073DBA0FFB2AB800D2602B</string>
 											<string>28073DBC0FFB2AB800D2602B</string>
-											<string>28073DD50FFC2F7100D2602B</string>
 											<string>28073DD60FFC2F7100D2602B</string>
-											<string>28073DD70FFC2F7100D2602B</string>
-											<string>28073DD80FFC2F7100D2602B</string>
 											<string>28073DD90FFC2F7100D2602B</string>
-											<string>28868E580FE31448002C6BF7</string>
+											<string>28073E770FFE98A100D2602B</string>
+											<string>28073E780FFE98A100D2602B</string>
+											<string>28073E790FFE98A100D2602B</string>
+											<string>28073E7A0FFE98A100D2602B</string>
+											<string>28073E7B0FFE98A100D2602B</string>
+											<string>28073E7C0FFE98A100D2602B</string>
+											<string>28073E7D0FFE98A100D2602B</string>
+											<string>28073E7E0FFE98A100D2602B</string>
+											<string>28073E7F0FFE98A100D2602B</string>
+											<string>28073E800FFE98A100D2602B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -707,6 +707,16 @@
 											<string>28073DDE0FFC2F7100D2602B</string>
 											<string>28073DDF0FFC2F7100D2602B</string>
 											<string>28073DE00FFC2F7100D2602B</string>
+											<string>28073E810FFE98A100D2602B</string>
+											<string>28073E820FFE98A100D2602B</string>
+											<string>28073E830FFE98A100D2602B</string>
+											<string>28073E840FFE98A100D2602B</string>
+											<string>28073E850FFE98A100D2602B</string>
+											<string>28073E860FFE98A100D2602B</string>
+											<string>28073E870FFE98A100D2602B</string>
+											<string>28073E880FFE98A100D2602B</string>
+											<string>28073E890FFE98A100D2602B</string>
+											<string>28073E8A0FFE98A100D2602B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -720,7 +730,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1009, 612}}</string>
 								<key>RubberWindowFrame</key>
-								<string>4 31 1276 747 0 0 1280 778 </string>
+								<string>0 31 1276 747 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -740,7 +750,7 @@
 								<key>Frame</key>
 								<string>{{0, 617}, {1009, 89}}</string>
 								<key>RubberWindowFrame</key>
-								<string>4 31 1276 747 0 0 1280 778 </string>
+								<string>0 31 1276 747 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -919,12 +929,12 @@
 		<string>28073C7D0FF6C62600D2602B</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>283F15660CD4114A0030E10D</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>283F15660CD4114A0030E10D</string>
 		<string>/Users/arau/Dropbox/Simple-Comic/SimpleComic.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>4 31 1276 747 0 0 1280 778 </string>
+	<string>0 31 1276 747 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -1014,7 +1024,7 @@
 			<key>WindowToolGUID</key>
 			<string>283F15660CD4114A0030E10D</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>

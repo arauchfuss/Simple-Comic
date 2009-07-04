@@ -148,6 +148,7 @@
 		28073CAF0FF9956500D2602B /* extract.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = extract.tiff; sourceTree = "<group>"; };
 		28073DAF0FFB0EED00D2602B /* icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.tiff; sourceTree = "<group>"; };
 		28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickComic.xcodeproj; path = QuickComic/QuickComic.xcodeproj; sourceTree = "<group>"; };
+		28073E900FFEBC4D00D2602B /* KeyboardPrefPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardPrefPane.preferencePane; sourceTree = BUILT_PRODUCTS_DIR; };
 		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
 		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
 		280E168C0C52477300FC7439 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
@@ -183,7 +184,6 @@
 		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTImageView.h; path = "Progress Bar/TSSTImageView.h"; sourceTree = "<group>"; };
 		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTShortcutController.h; sourceTree = "<group>"; };
 		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTShortcutController.m; sourceTree = "<group>"; };
-		28728E040D4A9F3600AA16C0 /* KeyboardPrefPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = KeyboardPrefPane.preferencePane; path = /Users/arau/Developer/simplecomic/build/Release/KeyboardPrefPane.preferencePane; sourceTree = "<absolute>"; };
 		28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KeyboardPrefsPane-Info.plist"; path = "../KeyboardPrefsPane-Info.plist"; sourceTree = "<group>"; };
 		28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardPrefController.h; sourceTree = "<group>"; };
 		28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardPrefController.m; sourceTree = "<group>"; };
@@ -373,6 +373,7 @@
 				8D1107320486CEB800E47090 /* Simple Comic.app */,
 				28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */,
 				28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */,
+				28073E900FFEBC4D00D2602B /* KeyboardPrefPane.preferencePane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -644,7 +645,7 @@
 			);
 			name = KeyboardPrefsPane;
 			productName = KeyboardPrefPane;
-			productReference = 28728E040D4A9F3600AA16C0 /* KeyboardPrefPane.preferencePane */;
+			productReference = 28073E900FFEBC4D00D2602B /* KeyboardPrefPane.preferencePane */;
 			productType = "com.apple.product-type.bundle";
 		};
 		28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */ = {
@@ -1226,6 +1227,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = "";
@@ -1290,6 +1292,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
