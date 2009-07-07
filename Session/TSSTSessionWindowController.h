@@ -43,13 +43,13 @@
 	- First and most importantly it controlls the navigation 
 		within a given session's pages.  This includes figuring 
 		out whether or not two pages should be layed out side by side.
-	- It handles almost all actions that affects its given session.
-		event handling is mainly taken care of by the page view class.
+	- It handles almost all actions that affect its given session.
+		Event handling is mainly taken care of by the page view class.
 	- As the session window controller it handles the transition from
 		windowed to fullscreen mode.
 	- Mouse moved events are handled here. Which results in the following
 		- Handles the movement and positioning of the page loupe.
-		- Handles the layout of the info window that is displayed 
+		- Handles the layout of the info window 
 			when the user scrubs the progress bar.
 */
 @interface TSSTSessionWindowController : NSWindowController
@@ -85,14 +85,14 @@
     IBOutlet TSSTInfoWindow * loupeWindow;
     IBOutlet NSImageView    * zoomView;
 	
+	/* Panel and view for the page expose method */
     IBOutlet NSPanel * exposeBezel;
     IBOutlet NSView * exposeView;
 	IBOutlet TSSTInfoWindow * thumbnailPanel;
-        
+	
+	/* The session object used to maintain settings */
     TSSTManagedSession * session;
-    
-    NSViewAnimation * bezelAnimation;
-    
+        
     NSString * pageNames;
     NSInteger pageTurn;
 	NSArray * pageSortDescriptor;

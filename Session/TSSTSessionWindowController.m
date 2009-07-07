@@ -93,7 +93,6 @@ Copyright (c) 2007 Dancing Tortoise Software
     {
 		mouseMovedTimer = nil;
 		closing = NO;
-        bezelAnimation = nil;
         session = [aSession retain];
         BOOL cascade = [session valueForKey: @"position"] ? NO : YES;
         [self setShouldCascadeWindows: cascade];
@@ -184,7 +183,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 - (void)dealloc
 {
 	[(TSSTThumbnailView *)exposeView setDataSource: nil];
-    [bezelAnimation stopAnimation];    
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
     [defaults removeObserver: self forKeyPath: @"statusBarVisisble"];
