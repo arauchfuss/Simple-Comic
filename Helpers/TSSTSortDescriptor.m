@@ -34,7 +34,8 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 - (NSComparisonResult)compareObject:(id)object1 toObject:(id)object2
 {
-    return [[object1 valueForKeyPath: [self key]] compare: [object2 valueForKeyPath: [self key]] options: NSCaseInsensitiveSearch | NSNumericSearch];
+    return [[object1 valueForKeyPath: [self key]] compare: [object2 valueForKeyPath: [self key]] 
+												  options: NSCaseInsensitiveSearch | NSNumericSearch | NSWidthInsensitiveSearch | NSForcedOrderingSearch];
 }
 
 
