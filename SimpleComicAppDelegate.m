@@ -75,7 +75,7 @@ NSString * TSSTSessionEndNotification = @"sessionEnd";
 
 static NSArray * allAvailableStringEncodings(void)
 {
-    unsigned long encodings[] = {
+    NSStringEncoding encodings[] = {
         kCFStringEncodingMacRoman,
         kCFStringEncodingISOLatin1,
         kCFStringEncodingASCII,
@@ -138,7 +138,7 @@ static NSArray * allAvailableStringEncodings(void)
     
     NSMutableArray * codeNumbers = [NSMutableArray array];
     int counter = 0;
-    unsigned long encoding;
+    NSStringEncoding encoding;
     while(encodings[counter] != NSNotFound)
     {
         if(encodings[counter] != 101)
@@ -150,11 +150,11 @@ static NSArray * allAvailableStringEncodings(void)
             encoding = 101;
         }
 		
-        [codeNumbers addObject: [NSNumber numberWithUnsignedLong: encoding]];
+        [codeNumbers addObject: [NSNumber numberWithUnsignedInteger: encoding]];
         ++counter;
     }
     
-    return codeNumbers;
+    return [[codeNumbers retain] autorelease];
 }
 
 
@@ -240,7 +240,6 @@ static NSArray * allAvailableStringEncodings(void)
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSession:) name: TSSTSessionEndNotification object: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTUpdateSelection options: 0 context: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTSessionRestore options: 0 context: nil];
-	[self generateEncodingMenu];
 }
 
 
@@ -248,6 +247,7 @@ static NSArray * allAvailableStringEncodings(void)
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+	[self generateEncodingMenu];
 	/* Sets the Sparkle update feed to corespond to user prefs */
 	NSURL * feedURL;
 	if([[userDefaults valueForKey: TSSTUpdateSelection] intValue] == 0)
@@ -815,7 +815,7 @@ static NSArray * allAvailableStringEncodings(void)
     NSNumber * encodingIdent;
     NSStringEncoding stringEncoding;
     NSString * encodingName;
-	
+	self.encodingSelection = 0;
 	[encodingMenu setAutoenablesItems: NO];
 	for(encodingMenuItem in [encodingMenu itemArray])
 	{
@@ -824,7 +824,7 @@ static NSArray * allAvailableStringEncodings(void)
 	
     for(encodingIdent in allEncodings)
     {
-        stringEncoding = [encodingIdent unsignedLongValue];
+		stringEncoding = [encodingIdent unsignedIntegerValue];
         encodingName = [NSString localizedNameOfStringEncoding: stringEncoding];
         if(stringEncoding == 101)
         {
@@ -835,7 +835,7 @@ static NSArray * allAvailableStringEncodings(void)
         {
             encodingMenuItem = [[NSMenuItem alloc] initWithTitle: encodingName action: nil keyEquivalent: @""];
             [encodingMenuItem setRepresentedObject: encodingIdent];
-            [encodingMenuItem setTag: stringEncoding];
+//            [encodingMenuItem setTag: stringEncoding];
             [encodingMenu addItem: encodingMenuItem];
             [encodingMenuItem release];
         }
@@ -844,7 +844,7 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
-- (void)updateEncodingMenuTestedAgainst:(const char *)string
+- (void)updateEncodingMenuTestedAgainst:(NSData *)data
 {
     
     NSStringEncoding stringEncoding;
@@ -853,17 +853,18 @@ static NSArray * allAvailableStringEncodings(void)
     
     for(encodingMenuItem in [[encodingPopup menu] itemArray])
     {
-        stringEncoding = [[encodingMenuItem representedObject] unsignedLongValue];
+        stringEncoding = [[encodingMenuItem representedObject] unsignedIntegerValue];
         [encodingMenuItem setEnabled: NO];
         if(stringEncoding != 101)
         {
-            testText = [[NSString alloc] initWithCString: string encoding: stringEncoding];
-            if(testText)
-            {
-                [encodingMenuItem setEnabled: YES];
-            }
-            
-            [testText release];
+			NSLog([NSString localizedNameOfStringEncoding: stringEncoding]);
+			testText = [[NSString alloc] initWithData: data encoding: stringEncoding];
+
+			NSLog(testText);
+			
+			[encodingMenuItem setEnabled: testText ? YES : NO];
+
+			[testText release];
         }
     }
 }
@@ -885,25 +886,28 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
--(NSStringEncoding)archive: (XADArchive *)archive
-           encodingForName: (const char *)bytes
-                     guess: (NSStringEncoding)guess
-                confidence: (float)confidence
+-(NSStringEncoding)archive:(XADArchive *)archive 
+		   encodingForData:(NSData *)data 
+					 guess:(NSStringEncoding)guess 
+				confidence:(float)confidence
 {
-    NSString * testText = [NSString stringWithCString: bytes encoding: guess];
+    NSString * testText = [[NSString alloc] initWithData: data encoding: guess];
+//	NSLog(@"guess %lu", guess);
+	NSLog(@"confidence: %f", confidence);
     if(confidence < 0.8 || !testText)
     {
 		NSMenu * encodingMenu = [encodingPopup menu];
-        [self updateEncodingMenuTestedAgainst: bytes];
+        [self updateEncodingMenuTestedAgainst: data];
         NSArray * encodingIdentifiers = [[encodingMenu itemArray] valueForKey: @"representedObject"];
 		
-		unsigned long index = [encodingIdentifiers indexOfObject: [NSNumber numberWithUnsignedLong: guess]];
-		int counter = 0;
+		NSUInteger index = [encodingIdentifiers indexOfObject: [NSNumber numberWithUnsignedInteger: guess]];
+		NSUInteger counter = 0;
 		NSStringEncoding encoding;
 		while(!testText)
 		{
-			encoding = [[encodingIdentifiers objectAtIndex: counter] unsignedLongValue];
-			testText = [NSString stringWithCString: bytes encoding: encoding];
+			[testText release];
+			encoding = [[encodingIdentifiers objectAtIndex: counter] unsignedIntegerValue];
+			testText = [[NSString alloc] initWithData: data encoding: guess];
 			index = counter++;
 		}
 
@@ -912,17 +916,19 @@ static NSArray * allAvailableStringEncodings(void)
             self.encodingSelection = index;
         }
         
-        encodingTestString = bytes;
+        encodingTestData = data;
+		
         [self testEncoding: self];
 		guess = NSNotFound;
         if([NSApp runModalForWindow: encodingPanel] != NSCancelButton)
         {
-            guess = [[[encodingMenu itemAtIndex: encodingSelection] representedObject] unsignedLongValue];
+            guess = [[[encodingMenu itemAtIndex: encodingSelection] representedObject] unsignedIntegerValue];
         }
         [encodingPanel close];
         [archive setNameEncoding: guess];
     }
     
+	[testText release];
     return guess;
 }
 
@@ -931,14 +937,16 @@ static NSArray * allAvailableStringEncodings(void)
 - (IBAction)testEncoding:(id)sender
 {
     NSMenuItem * encodingMenuItem = [[encodingPopup menu] itemAtIndex: encodingSelection];
-    NSString * testText = [NSString stringWithCString: encodingTestString encoding: [[encodingMenuItem representedObject] unsignedLongValue]];
+	NSString * testText = [[NSString alloc] initWithData: encodingTestData encoding: [[encodingMenuItem representedObject] unsignedIntegerValue]];
     
+	NSLog(@"test %lu", [[encodingMenuItem representedObject] unsignedIntegerValue]);
     if(!testText)
     {
         testText = @"invalid Selection";
     }
     
     [encodingTestField setStringValue: testText];
+	[testText release];
 }
 
 

@@ -85,7 +85,7 @@ extern NSString * TSSTSessionEndNotification;
 /*  This panel appears when the text encoding auto-detection fails */
     IBOutlet NSPanel           * encodingPanel;
     IBOutlet NSTextField       * encodingTestField;
-    const char                 * encodingTestString;
+    NSData					   * encodingTestData;
     NSInteger					 encodingSelection;
     IBOutlet NSPopUpButton     * encodingPopup;
 
@@ -159,7 +159,7 @@ extern NSString * TSSTSessionEndNotification;
 /*  Updates the encoding menu for an archive.
     Grays out all encodings that do not work with the
     argument string  */
-- (void)updateEncodingMenuTestedAgainst:(const char *)string;
+- (void)updateEncodingMenuTestedAgainst:(NSData *)data;
 /*  Modal that displays all available string encodings
     and allows the user to pick one. */
 - (IBAction)testEncoding:(id)sender;
