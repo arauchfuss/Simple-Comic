@@ -27,12 +27,11 @@
 
 - (void)caretAtPoint:(NSPoint)point size:(NSSize)size withLimitLeft:(float)left right:(float)right
 {
-	right += 5;
-	left -= 5;
+	left -= 30;
+	right += 30;
     float limitWidth = right - left;
     float relativePosition = (point.x - left) / limitWidth;
-    NSRect frame = [self frame];
-    float offset = NSWidth(frame) * relativePosition;
+    float offset = size.width * relativePosition;
 	[[self contentView] setCaretPosition: offset];
     [self setFrame: NSMakeRect( point.x - offset, point.y, size.width, size.height) display: YES];
 }
@@ -99,10 +98,11 @@
     [[NSColor colorWithCalibratedWhite: 0 alpha: 0.8] set];
     [outline fill];
 	
-	int borderWidth = bordered ? 4 : 2;
+//	int borderWidth = bordered ? 4 : 2;
+	int borderWidth = 4;
 
 	[outline addClip];
-	[[NSColor colorWithCalibratedWhite: 0.8 alpha: 1] set];
+	[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
 	[outline setLineWidth: borderWidth];
 	[outline setLineJoinStyle: NSRoundLineJoinStyle];
 	[outline stroke];
