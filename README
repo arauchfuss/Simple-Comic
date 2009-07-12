@@ -1,2 +1,5 @@
-Just a note about the build path.
-Due to the way my file system is laid out the Build Products Path is non-standard.
+Simple Comic is a streamlined comic viewer for OS-X.
+
+The basic feature drive is to reduce the number of interactions required to browse a comic.
+
+Quick Comic is a bundled quicklook preview and thumbnail generation plugin for cbr and cbz files.
