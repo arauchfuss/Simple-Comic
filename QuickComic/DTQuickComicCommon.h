@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @class XADArchive;
 
-
 NSMutableArray * fileListForArchive(XADArchive * archive);
 
 NSArray * fileSort(void);
+

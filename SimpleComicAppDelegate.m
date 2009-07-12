@@ -857,13 +857,9 @@ static NSArray * allAvailableStringEncodings(void)
         [encodingMenuItem setEnabled: NO];
         if(stringEncoding != 101)
         {
-			NSLog([NSString localizedNameOfStringEncoding: stringEncoding]);
 			testText = [[NSString alloc] initWithData: data encoding: stringEncoding];
 
-			NSLog(testText);
-			
 			[encodingMenuItem setEnabled: testText ? YES : NO];
-
 			[testText release];
         }
     }
@@ -892,8 +888,6 @@ static NSArray * allAvailableStringEncodings(void)
 				confidence:(float)confidence
 {
     NSString * testText = [[NSString alloc] initWithData: data encoding: guess];
-//	NSLog(@"guess %lu", guess);
-	NSLog(@"confidence: %f", confidence);
     if(confidence < 0.8 || !testText)
     {
 		NSMenu * encodingMenu = [encodingPopup menu];
@@ -939,7 +933,6 @@ static NSArray * allAvailableStringEncodings(void)
     NSMenuItem * encodingMenuItem = [[encodingPopup menu] itemAtIndex: encodingSelection];
 	NSString * testText = [[NSString alloc] initWithData: encodingTestData encoding: [[encodingMenuItem representedObject] unsignedIntegerValue]];
     
-	NSLog(@"test %lu", [[encodingMenuItem representedObject] unsignedIntegerValue]);
     if(!testText)
     {
         testText = @"invalid Selection";

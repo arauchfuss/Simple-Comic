@@ -27,13 +27,13 @@
 
 - (void)caretAtPoint:(NSPoint)point size:(NSSize)size withLimitLeft:(float)left right:(float)right
 {
-	left -= 30;
-	right += 30;
     float limitWidth = right - left;
     float relativePosition = (point.x - left) / limitWidth;
     float offset = size.width * relativePosition;
-	[[self contentView] setCaretPosition: offset];
-    [self setFrame: NSMakeRect( point.x - offset, point.y, size.width, size.height) display: YES];
+	NSRect frameRect = NSMakeRect( point.x - offset - 10, point.y, size.width + 20, size.height + 25);
+	
+	[[self contentView] setCaretPosition: offset + 10];
+    [self setFrame: frameRect display: YES];
 }
 
 

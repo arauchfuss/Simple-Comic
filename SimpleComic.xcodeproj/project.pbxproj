@@ -29,7 +29,6 @@
 		284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		2851C5A00FC8651C002927E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2851C59F0FC8651C002927E0 /* dsa_pub.pem */; };
 		285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */; };
-		285C129A0D55169D00FD0EB6 /* TSSTShortcutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */; };
 		285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */; };
 		285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285FE32F0F945E2300CD8F96 /* Carbon.framework */; };
 		286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286236010AADDB6200B83E77 /* QuartzCore.framework */; };
@@ -37,9 +36,6 @@
 		286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */; };
 		286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */; };
 		286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19C0C4D819400E9D06D /* TSSTImageView.m */; };
-		28728E310D4AA53C00AA16C0 /* KeyboardPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */; };
-		28728E320D4AA55800AA16C0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		287293E00D4D9DFE00AA16C0 /* TSSTKeyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */; };
 		28770B6F0DBA8B1C00A78646 /* TSSTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */; };
 		28770B700DBA8B1C00A78646 /* TSSTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */; };
 		28770BF70DBAC74600A78646 /* TSSTFullscreenProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */; };
@@ -71,7 +67,6 @@
 		28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
-		28C1D6740DF20253003392B4 /* KeyboardPrefPaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 287A34750DF0F8C6008BAEDA /* KeyboardPrefPaneView.nib */; };
 		28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */; };
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F998340A1FF52C0047BD97 /* TSSTKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */; };
@@ -96,7 +91,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8D576316048677EA00EA77CD /* QuickComic.qlgenerator */;
+			remoteGlobalIDString = 8D576316048677EA00EA77CD;
+			remoteInfo = QuickComic;
+		};
+		283637F2100A9C16004D9131 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D57630D048677EA00EA77CD /* QuickComic */;
 			remoteInfo = QuickComic;
 		};
 		28FACCA00CD0CEDB007B7918 /* PBXContainerItemProxy */ = {
@@ -148,7 +150,6 @@
 		28073CAF0FF9956500D2602B /* extract.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = extract.tiff; sourceTree = "<group>"; };
 		28073DAF0FFB0EED00D2602B /* icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.tiff; sourceTree = "<group>"; };
 		28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickComic.xcodeproj; path = QuickComic/QuickComic.xcodeproj; sourceTree = "<group>"; };
-		28073E900FFEBC4D00D2602B /* KeyboardPrefPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardPrefPane.preferencePane; sourceTree = BUILT_PRODUCTS_DIR; };
 		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
 		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
 		280E168C0C52477300FC7439 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
@@ -282,14 +283,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28728E020D4A9F3600AA16C0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28728E320D4AA55800AA16C0 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		28FACC7A0CD03BBB007B7918 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,7 +366,6 @@
 				8D1107320486CEB800E47090 /* Simple Comic.app */,
 				28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */,
 				28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */,
-				28073E900FFEBC4D00D2602B /* KeyboardPrefPane.preferencePane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,12 +392,10 @@
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */,
-				28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */,
 				283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */,
 				283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */,
-				28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */,
-				28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */,
+				28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */,
+				28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */,
 				283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */,
 				283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */,
 				288C09C30DC809DF00EAFF46 /* BDAlias.h */,
@@ -416,6 +406,8 @@
 				FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */,
 				28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */,
 				28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */,
+				28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */,
+				28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -631,23 +623,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		28728E030D4A9F3600AA16C0 /* KeyboardPrefsPane */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28728E090D4A9F3700AA16C0 /* Build configuration list for PBXNativeTarget "KeyboardPrefsPane" */;
-			buildPhases = (
-				28728E000D4A9F3600AA16C0 /* Resources */,
-				28728E010D4A9F3600AA16C0 /* Sources */,
-				28728E020D4A9F3600AA16C0 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = KeyboardPrefsPane;
-			productName = KeyboardPrefPane;
-			productReference = 28073E900FFEBC4D00D2602B /* KeyboardPrefPane.preferencePane */;
-			productType = "com.apple.product-type.bundle";
-		};
 		28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 28FACC7E0CD03BBB007B7918 /* Build configuration list for PBXNativeTarget "AdvancedPrefsPane" */;
@@ -697,6 +672,7 @@
 			dependencies = (
 				28FACCAF0CD0CF64007B7918 /* PBXTargetDependency */,
 				28FACCA10CD0CEDB007B7918 /* PBXTargetDependency */,
+				283637F3100A9C16004D9131 /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";
@@ -733,7 +709,6 @@
 			);
 			projectRoot = "";
 			targets = (
-				28728E030D4A9F3600AA16C0 /* KeyboardPrefsPane */,
 				28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */,
 				28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */,
 				8D1107260486CEB800E47090 /* Simple Comic */,
@@ -752,14 +727,6 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		28728E000D4A9F3600AA16C0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28C1D6740DF20253003392B4 /* KeyboardPrefPaneView.nib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		28FACC780CD03BBB007B7918 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -820,16 +787,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		28728E010D4A9F3600AA16C0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28728E310D4AA53C00AA16C0 /* KeyboardPrefController.m in Sources */,
-				287293E00D4D9DFE00AA16C0 /* TSSTKeyTableView.m in Sources */,
-				285C129A0D55169D00FD0EB6 /* TSSTShortcutController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		28FACC790CD03BBB007B7918 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -881,6 +838,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		283637F3100A9C16004D9131 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QuickComic;
+			targetProxy = 283637F2100A9C16004D9131 /* PBXContainerItemProxy */;
+		};
 		28FACCA10CD0CEDB007B7918 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */;
@@ -977,92 +939,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		28728E060D4A9F3700AA16C0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "KeyboardPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = KeyboardPrefPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		28728E070D4A9F3700AA16C0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "KeyboardPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = KeyboardPrefPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		28728E080D4A9F3700AA16C0 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
-				);
-				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)\"";
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "KeyboardPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = KeyboardPrefPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = YES;
-			};
-			name = Default;
-		};
 		28FACC7F0CD03BBB007B7918 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1315,7 +1191,6 @@
 					unzip,
 				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-				SYMROOT = "~/Developer/simplecomic/build";
 			};
 			name = Debug;
 		};
@@ -1331,7 +1206,6 @@
 					unzip,
 				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-				SYMROOT = "~/Developer/simplecomic/build";
 			};
 			name = Release;
 		};
@@ -1344,23 +1218,12 @@
 					unzip,
 				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
-				SYMROOT = "~/Developer/simplecomic/build";
 			};
 			name = Default;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28728E090D4A9F3700AA16C0 /* Build configuration list for PBXNativeTarget "KeyboardPrefsPane" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				28728E060D4A9F3700AA16C0 /* Debug */,
-				28728E070D4A9F3700AA16C0 /* Release */,
-				28728E080D4A9F3700AA16C0 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
 		28FACC7E0CD03BBB007B7918 /* Build configuration list for PBXNativeTarget "AdvancedPrefsPane" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

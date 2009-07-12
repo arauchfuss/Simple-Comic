@@ -92,13 +92,18 @@
 	
 	/* The session object used to maintain settings */
     TSSTManagedSession * session;
-        
+    
+    /* This var is bound to the session window name */
     NSString * pageNames;
     NSInteger pageTurn;
+	
+	/* Exactly what it sounds like */
 	NSArray * pageSortDescriptor;
 	
+	/* Manages the cursor hiding while in fullscreen */
 	NSTimer * mouseMovedTimer;
 	
+	/* This is a hack that should die */
 	BOOL closing;
 }
 
@@ -111,20 +116,24 @@
 // View Actions
 - (IBAction)changePageOrder:(id)sender;
 - (IBAction)changeFullscreen:(id)sender;
+/* Toggles between two page spread and single page */
 - (IBAction)changeTwoPage:(id)sender;
+/* Action that changes the view scaling between the three modes */
 - (IBAction)changeScaling:(id)sender;
+
 - (IBAction)zoom:(id)sender;
 - (IBAction)zoomIn:(id)sender;
 - (IBAction)zoomOut:(id)sender;
 - (IBAction)zoomReset:(id)sender;
+
 - (IBAction)rotate:(id)sender;
 - (IBAction)rotateRight:(id)sender;
 - (IBAction)rotateLeft:(id)sender;
 - (IBAction)noRotation:(id)sender;
+
 - (IBAction)toggleLoupe:(id)sender;
 
 // Selection Actions
-- (IBAction)removePages:(id)sender;
 - (IBAction)turnPage:(id)sender;
 - (IBAction)pageRight:(id)sender;
 - (IBAction)pageLeft:(id)sender;
@@ -134,37 +143,46 @@
 - (IBAction)skipLeft:(id)sender;
 - (IBAction)firstPage:(id)sender;
 - (IBAction)lastPage:(id)sender;
-- (IBAction)togglePageExpose:(id)sender;
-- (IBAction)goToPage:(id)sender;
+
 - (IBAction)launchJumpPanel:(id)sender;
 - (IBAction)cancleJumpPanel:(id)sender;
+- (IBAction)goToPage:(id)sender;
+
+- (IBAction)removePages:(id)sender;
 - (IBAction)setArchiveIcon:(id)sender;
 - (IBAction)extractPage:(id)sender;
 
+- (IBAction)togglePageExpose:(id)sender;
+
+/* Used by the jump to page method */
 - (void)closeSheet:(int)code;
 
 - (NSImage *)imageForPageAtIndex:(int)index;
 - (NSString *)nameForPageAtIndex:(int)index;
 
-- (void)refreshLoupePanel;
-- (void)infoPanelSetupAtPoint:(NSPoint)point;
 - (void)restoreSession;
-- (void)scaleToWindow;
-- (void)changeViewImages;
-- (void)fullscreen;
-- (void)adjustStatusBar;
-- (void)resizeWindow;
 - (void)prepareToEnd;
 
+- (void)refreshLoupePanel;
+- (void)infoPanelSetupAtPoint:(NSPoint)point;
+
+- (void)resizeWindow;
+- (void)scaleToWindow;
+- (void)adjustStatusBar;
+- (void)changeViewImages;
+- (void)fullscreen;
 
 - (void)nextPage;
 - (void)previousPage;
 - (void)updateSessionObject;
 - (float)toolbarHeight;
 
-
 - (TSSTManagedSession *)session;
 - (NSManagedObjectContext *)managedObjectContext;
+
+
+/*	Methods that kill page expose, the loupe, and fullscreen.
+	In that order. */
 - (void)killAllOptionalUIElements;
 - (void)killTopOptionalUIElement;
 

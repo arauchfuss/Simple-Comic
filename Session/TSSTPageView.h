@@ -25,7 +25,7 @@
 	Simple Comic
 	TSSTPageView.h
  
-	Composites one or two images to the screen.  making sure that they
+	Composites one or two images to the screen, making sure that they
 	are horizontally alligned.
 	None of the logic involving the aspect ratios of the images is
 	in this class.
@@ -46,7 +46,6 @@
     int scrollKeys; // Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
     NSTimer * scrollTimer; // Timer that fires in between each keydown event to smooth out the scrolling.
 
-	// These should go away
     NSInteger rotation;
 	
     id dataSource;

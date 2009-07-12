@@ -32,6 +32,8 @@
 		28749D180CFB502C00559E8E /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
 		28749D190CFB502C00559E8E /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; };
 		2889E8390FDAE7DA00574407 /* XADMaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XADMaster.framework; path = ../Frameworks/XADMaster.framework; sourceTree = "<group>"; };
+		288EF2C8100A45DA009719EF /* DTPartialArchiveParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPartialArchiveParser.h; sourceTree = "<group>"; };
+		288EF2C9100A45DA009719EF /* DTPartialArchiveParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPartialArchiveParser.m; sourceTree = "<group>"; };
 		28ADB9270D037F24001A09B4 /* UniversalDetector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniversalDetector.framework; path = ../Frameworks/UniversalDetector.framework; sourceTree = "<group>"; };
 		28ADBF440D0C727D001A09B4 /* TSSTSortDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTSortDescriptor.h; sourceTree = "<group>"; };
 		28ADBF450D0C727D001A09B4 /* TSSTSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSortDescriptor.m; sourceTree = "<group>"; };
@@ -114,6 +116,8 @@
 				28ADBF450D0C727D001A09B4 /* TSSTSortDescriptor.m */,
 				28CA24980E5D1A1F00A6F592 /* UKXattrMetadataStore.h */,
 				28CA24990E5D1A1F00A6F592 /* UKXattrMetadataStore.m */,
+				288EF2C8100A45DA009719EF /* DTPartialArchiveParser.h */,
+				288EF2C9100A45DA009719EF /* DTPartialArchiveParser.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -220,7 +224,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Quicklook;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				PRODUCT_NAME = QuickComic;
 				SYMROOT = "~/Developer/quickcomic/build";
 				WRAPPER_EXTENSION = qlgenerator;
@@ -244,7 +248,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Quicklook;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = QuickComic;
 				SYMROOT = "~/Developer/quickcomic/build";

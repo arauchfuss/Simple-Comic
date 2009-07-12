@@ -82,7 +82,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 }
 
 
-
 /*  Inits the window controller and sets the session.
     If this is a new session as opposed to a saved session
     then the window cascades */
@@ -179,7 +178,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 }
 
 
-
 - (void)dealloc
 {
 	[(TSSTThumbnailView *)exposeView setDataSource: nil];
@@ -219,7 +217,6 @@ Copyright (c) 2007 Dancing Tortoise Software
     [pageNames release];
     [super dealloc];
 }
-
 
 
 /*  Observes changes to the page controller.  Changes are reflected by the 
@@ -304,17 +301,14 @@ Copyright (c) 2007 Dancing Tortoise Software
 }
 
 
-
 #pragma mark -
 #pragma mark Progress Bar
-
 
 
 - (NSImage *)imageForPageAtIndex:(int)index
 {
     return [[[pageController arrangedObjects] objectAtIndex: index] valueForKey: @"thumbnail"];
 }
-
 
 
 - (NSString *)nameForPageAtIndex:(int)index
@@ -327,9 +321,13 @@ Copyright (c) 2007 Dancing Tortoise Software
 #pragma mark Event handling
 
 
-
 - (void)mouseMoved:(NSEvent *)theEvent
 {
+	if([pageView inLiveResize])
+	{
+		return;
+	}
+	
 	NSPoint location = [theEvent locationInWindow];
 	NSRect progressRect;
 	
@@ -408,7 +406,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 }
 
 
-
 - (void)refreshLoupePanel
 {
     BOOL loupe = [[session valueForKey: @"loupe"] boolValue];
@@ -473,7 +470,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 	
     cursorPoint = [[bar window] convertBaseToScreen: point];
 	
-    [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width + 20, thumbSize.height + 25) 
+    [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height) 
 			   withLimitLeft: NSMinX([[bar window] frame]) 
 					   right: NSMaxX([[bar window] frame])];
 }

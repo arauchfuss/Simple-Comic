@@ -8,7 +8,7 @@
 
 #import "DTQuickComicCommon.h"
 #import "TSSTSortDescriptor.h"
-#include <XADMaster/XADArchive.h>
+#import <XADMaster/XADArchive.h>
 
 
 static NSArray * fileNameSort = nil;
@@ -47,5 +47,4 @@ NSArray * fileSort(void)
     
     return fileNameSort;
 }
-
 
