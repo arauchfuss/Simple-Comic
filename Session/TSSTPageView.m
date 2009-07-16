@@ -742,7 +742,6 @@
 	}
 	else if([[[dataSource session] valueForKey: TSSTPageScaleOptions] intValue] == 1)
 	{
-		BOOL pageOrder = [[[dataSource session] valueForKey: TSSTPageOrder] boolValue];
 		if([theEvent deltaX] > 0)
 		{
 			scrollwheel.left += [theEvent deltaX];
@@ -785,25 +784,11 @@
 		}
 		else if(scrollwheel.up > 10)
 		{
-			if(pageOrder)
-			{
-				[dataSource pageRight: self];
-			}
-			else
-			{
-				[dataSource pageLeft: self];
-			}
+			[dataSource previousPage];
 		}
 		else if(scrollwheel.down < -10)
 		{
-			if(pageOrder)
-			{
-				[dataSource pageLeft: self];
-			}
-			else
-			{
-				[dataSource pageRight: self];
-			}
+			[dataSource nextPage];
 		}
 
 	}
