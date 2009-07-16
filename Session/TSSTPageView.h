@@ -35,7 +35,12 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
-
+typedef struct {
+	float left;
+	float right;
+	float up;
+	float down;
+} direction;
 
 @interface TSSTPageView : NSView
 {
@@ -49,6 +54,8 @@
     NSInteger rotation;
 	
     id dataSource;
+	
+	direction scrollwheel;
     
 	// This controls the drawing of the accepting drag-drop border highlighting 
     BOOL acceptingDrag;

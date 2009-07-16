@@ -58,6 +58,10 @@
 	{
 		[self setFirstPage: nil secondPageImage: nil];
         scrollKeys = 0;
+		scrollwheel.left = 0;
+		scrollwheel.right = 0;
+		scrollwheel.up = 0;
+		scrollwheel.down = 0;
         scrollTimer = nil;
         acceptingDrag = NO;
 		pageSelection = -1;
@@ -718,8 +722,6 @@
 	}
 	else if(modifier & NSAlternateKeyMask)
 	{
-		NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
-
 		if([theEvent deltaX])
 		{
 			int loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] intValue];
@@ -740,36 +742,70 @@
 	}
 	else if([[[dataSource session] valueForKey: TSSTPageScaleOptions] intValue] == 1)
 	{
-		if([theEvent deltaX] > 2)
+		BOOL pageOrder = [[[dataSource session] valueForKey: TSSTPageOrder] boolValue];
+		if([theEvent deltaX] > 0)
 		{
-			[dataSource pageLeft: self];
+			scrollwheel.left += [theEvent deltaX];
+			scrollwheel.right = 0;
+			scrollwheel.up = 0;
+			scrollwheel.down = 0;
 		}
-		else if([theEvent deltaX] < 2)
+		else if([theEvent deltaX] < 0)
+		{
+			scrollwheel.right += [theEvent deltaX];
+			scrollwheel.left = 0;
+			scrollwheel.up = 0;
+			scrollwheel.down = 0;
+		}
+		else if([theEvent deltaY] > 0)
+		{
+			scrollwheel.up += [theEvent deltaY];
+			scrollwheel.left = 0;
+			scrollwheel.right = 0;
+			scrollwheel.down = 0;
+		}
+		else if([theEvent deltaY] < 0)
+		{
+			scrollwheel.down += [theEvent deltaY];
+			scrollwheel.left = 0;
+			scrollwheel.right = 0;
+			scrollwheel.up = 0;
+		}
+		
+		if(scrollwheel.left > 5)
+		{
+
+			[dataSource pageLeft: self];
+			scrollwheel.left = 0;
+		}
+		else if(scrollwheel.right < -5)
 		{
 			[dataSource pageRight: self];
+			scrollwheel.right = 0;
 		}
-		else if([theEvent deltaY] > 2)
+		else if(scrollwheel.up > 10)
 		{
-			if([[[dataSource session] valueForKey: TSSTPageOrder] boolValue])
+			if(pageOrder)
 			{
 				[dataSource pageRight: self];
 			}
 			else
 			{
 				[dataSource pageLeft: self];
-			}	
+			}
 		}
-		else if([theEvent deltaY] < 2)
+		else if(scrollwheel.down < -10)
 		{
-			if([[[dataSource session] valueForKey: TSSTPageOrder] boolValue])
+			if(pageOrder)
 			{
 				[dataSource pageLeft: self];
 			}
 			else
 			{
 				[dataSource pageRight: self];
-			}	
+			}
 		}
+
 	}
 	else
 	{
