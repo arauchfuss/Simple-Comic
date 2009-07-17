@@ -27,9 +27,9 @@ extern NSString *XADFinderFlags;
 	NSTimeInterval update_interval;
 	XADError lasterror;
 
-	NSMutableArray *entries;
+	NSMutableArray *dataentries,*resourceentries;
+	NSMutableArray *deferredentries;
 	NSMutableDictionary *namedict;
-	NSMutableArray *writeperms;
 
 	off_t extractsize,totalsize;
 	NSString *immediatedestination;
@@ -89,12 +89,12 @@ extern NSString *XADFinderFlags;
 -(NSString *)description;
 
 
-
 -(NSDictionary *)dataForkParserDictionaryForEntry:(int)n;
 -(NSDictionary *)resourceForkParserDictionaryForEntry:(int)n;
 -(NSDictionary *)combinedParserDictionaryForEntry:(int)n;
 
 -(NSString *)nameOfEntry:(int)n;
+-(XADString *)rawNameOfEntry:(int)n;
 -(BOOL)entryHasSize:(int)n;
 -(off_t)uncompressedSizeOfEntry:(int)n;
 -(off_t)compressedSizeOfEntry:(int)n;
@@ -122,9 +122,9 @@ extern NSString *XADFinderFlags;
 -(BOOL)extractEntries:(NSIndexSet *)entryset to:(NSString *)destination subArchives:(BOOL)sub;
 -(BOOL)extractEntry:(int)n to:(NSString *)destination;
 -(BOOL)extractEntry:(int)n to:(NSString *)destination withName:(NSString *)name;
--(BOOL)extractEntry:(int)n to:(NSString *)destination withName:(NSString *)name overrideWritePermissions:(BOOL)override resourceFork:(BOOL)resfork;
--(BOOL)extractEntry:(int)n to:(NSString *)destination overrideWritePermissions:(BOOL)override;
--(BOOL)extractEntry:(int)n to:(NSString *)destination overrideWritePermissions:(BOOL)override resourceFork:(BOOL)resfork;
+-(BOOL)extractEntry:(int)n to:(NSString *)destination deferDirectories:(BOOL)defer;
+-(BOOL)extractEntry:(int)n to:(NSString *)destination deferDirectories:(BOOL)defer resourceFork:(BOOL)resfork;
+-(BOOL)extractEntry:(int)n to:(NSString *)destination withName:(NSString *)name deferDirectories:(BOOL)defer resourceFork:(BOOL)resfork;
 -(BOOL)extractArchiveEntry:(int)n to:(NSString *)destination;
 
 -(BOOL)_extractEntry:(int)n as:(NSString *)destfile;
@@ -132,14 +132,17 @@ extern NSString *XADFinderFlags;
 -(BOOL)_extractDirectoryEntry:(int)n as:(NSString *)destfile;
 -(BOOL)_extractLinkEntry:(int)n as:(NSString *)destfile;
 -(BOOL)_ensureDirectoryExists:(NSString *)directory;
--(BOOL)_changeAllAttributesForEntry:(int)n atPath:(NSString *)path resourceFork:(BOOL)resfork overrideWritePermissions:(BOOL)override;
+-(BOOL)_changeAllAttributesForEntry:(int)n atPath:(NSString *)path deferDirectories:(BOOL)defer resourceFork:(BOOL)resfork;
 
--(void)fixWritePermissions;
+-(void)updateAttributesForDeferredDirectories;
 
 // Deprecated
 
 -(int)sizeOfEntry:(int)n;
 -(void *)xadFileInfoForEntry:(int)n;
+-(BOOL)extractEntry:(int)n to:(NSString *)destination overrideWritePermissions:(BOOL)override;
+-(BOOL)extractEntry:(int)n to:(NSString *)destination overrideWritePermissions:(BOOL)override resourceFork:(BOOL)resfork;
+-(void)fixWritePermissions;
 
 @end
 

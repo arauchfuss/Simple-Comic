@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2806E99F0CDFC1BA00CD0E97 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2806E99E0CDFC1BA00CD0E97 /* Cocoa.framework */; };
+		2836383A100AA61F004D9131 /* DTPartialArchiveParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 288EF2C9100A45DA009719EF /* DTPartialArchiveParser.m */; };
 		2889E83A0FDAE7DA00574407 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2889E8390FDAE7DA00574407 /* XADMaster.framework */; };
 		28ADB9380D0381F3001A09B4 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28ADB9270D037F24001A09B4 /* UniversalDetector.framework */; };
 		28ADBF460D0C727D001A09B4 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 28ADBF450D0C727D001A09B4 /* TSSTSortDescriptor.m */; };
@@ -191,6 +192,7 @@
 				28ADBF460D0C727D001A09B4 /* TSSTSortDescriptor.m in Sources */,
 				28CA249A0E5D1A1F00A6F592 /* UKXattrMetadataStore.m in Sources */,
 				28CA24D90E5D5F7700A6F592 /* TSSTImageUtilities.m in Sources */,
+				2836383A100AA61F004D9131 /* DTPartialArchiveParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

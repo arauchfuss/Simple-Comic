@@ -7,16 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class XADArchiveParser;
+@class XADArchiveParser, XADString;
 
 @interface DTPartialArchiveParser : NSObject 
 {
-	int searchIndex;
+	NSString * searchString;
 	NSData * foundData;
-	NSMutableDictionary * fileNames;
 }
 
-- (id)initWithPath:(NSString *)archivePath searchIndex:(int)search;
+- (id)initWithPath:(NSString *)archivePath searchString:(NSString *)search;
 - (NSData *)searchResult;
 
 -(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict;

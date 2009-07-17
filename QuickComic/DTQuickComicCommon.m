@@ -22,13 +22,17 @@ NSMutableArray * fileListForArchive(XADArchive * archive)
     int count = [archive numberOfEntries];
     int index = 0;
     NSString * fileName;
+	NSString * rawName;
     for ( ; index < count; ++index)
     {
         fileName = [archive nameOfEntry: index];
+		XADString * dataString = [archive rawNameOfEntry: index];
+		rawName = [dataString stringWithEncoding: NSNonLossyASCIIStringEncoding];
         if([[NSImage imageFileTypes] containsObject: [fileName pathExtension]])
         {
-            fileDescription = [NSDictionary dictionaryWithObjectsAndKeys: [archive nameOfEntry: index], @"name",
-                               [NSNumber numberWithInt: index], @"index", nil];
+            fileDescription = [NSDictionary dictionaryWithObjectsAndKeys: fileName, @"name",
+                               [NSNumber numberWithInt: index], @"index",
+							   rawName, @"rawName", nil];
             [fileDescriptions addObject: fileDescription];
         }
     }

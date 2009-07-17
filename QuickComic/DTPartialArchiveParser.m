@@ -16,19 +16,17 @@
 	self = [super init];
 	if (self != nil) {
 		foundData = nil;
-		fileNames = [[NSMutableDictionary dictionary] retain];
 	}
 	return self;
 }
 
 
-- (id)initWithPath:(NSString *)archivePath searchIndex:(int)search
+- (id)initWithPath:(NSString *)archivePath searchString:(NSString *)search
 {
-	NSLog(@"test");
 	self=[self init];	
 	if(self)
 	{
-		searchIndex = search;
+		searchString = [search retain];
 		XADArchiveParser * parser = [XADArchiveParser archiveParserForPath: archivePath];
 		if(parser)
 		{
@@ -48,7 +46,7 @@
 
 - (void) dealloc
 {
-	[fileNames release];
+	[searchString release];
 	[foundData release];
 	[super dealloc];
 }
@@ -66,42 +64,23 @@
 	NSNumber * resnum = [dict objectForKey: XADIsResourceForkKey];
 	BOOL isres = resnum&&[resnum boolValue];
 	
-	XADString * name = [dict objectForKey:XADFileNameKey];
-	NSNumber * index = [fileNames objectForKey: name];
-	
-	if(index)
+	if(!isres)
 	{
-		int n=[index intValue];
-		if(n != searchIndex || isres)
+		XADString * name = [dict objectForKey: XADFileNameKey];
+		NSString * encodedName = [name stringWithEncoding: NSNonLossyASCIIStringEncoding];
+		if([searchString isEqualToString: encodedName])
 		{
-			dict = nil;
+			CSHandle * handle = [parser handleForEntryWithDictionary: dict wantChecksum:YES];
+			if(!handle) [XADException raiseDecrunchException];
+			foundData = [[handle remainingFileContents] retain];
+			if([handle hasChecksum]&&![handle isChecksumCorrect]) [XADException raiseChecksumException];
 		}
-	}
-	else
-	{
-		if(isres)
-		{
-			dict = nil;
-		}
-		
-		[fileNames setObject:[NSNumber numberWithInt: [fileNames count]] forKey: name];
-	}
-	// Create a new entry instead
-	
-	if(dict)
-	{
-		CSHandle * handle = [parser handleForEntryWithDictionary: dict wantChecksum:YES];
-		if(!handle) [XADException raiseDecrunchException];
-		foundData = [[handle remainingFileContents] retain];
-		if([handle hasChecksum]&&![handle isChecksumCorrect]) [XADException raiseChecksumException];
-		
 	}
 }
 
 
 -(BOOL)archiveParsingShouldStop:(XADArchiveParser *)parser
 {
-	NSLog(@"stop?");
 	return foundData ? YES : NO;
 }
 

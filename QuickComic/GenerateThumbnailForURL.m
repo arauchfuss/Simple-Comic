@@ -6,7 +6,7 @@
 #import "DTQuickComicCommon.h"
 #import "UKXattrMetadataStore.h"
 #import "TSSTImageUtilities.h"
-//#import "DTPartialArchiveParser.h"
+#import "DTPartialArchiveParser.h"
 
 
 /* -----------------------------------------------------------------------------
@@ -20,31 +20,30 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	
 	NSString * archivePath = [(NSURL *)url path];
 	NSData * imageData = nil;
-	NSData * coverIndexData = [UKXattrMetadataStore dataForKey: @"QCCoverIndex" atPath: archivePath traverseLink: NO];
+	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
 	int coverIndex;
-	XADArchive * archive = [[XADArchive alloc] initWithFile: archivePath];
-	if(coverIndexData)
+	if(![coverName isEqualToString: @""])
 	{
-		coverIndex = [[NSUnarchiver unarchiveObjectWithData: coverIndexData] intValue];
-		imageData = [archive contentsOfEntry: coverIndex];
-//		DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithPath: archivePath searchIndex: coverIndex];
-//		imageData = [partialArchive searchResult];
-//		[DTPartialArchiveParser release];
+		DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithPath: archivePath searchString: coverName];
+		imageData = [partialArchive searchResult];
+		[DTPartialArchiveParser release];
 	}
 	else
     {
+		XADArchive * archive = [[XADArchive alloc] initWithFile: archivePath];
 		NSMutableArray * fileList = fileListForArchive(archive);
+		
 		if([fileList count] > 0)
 		{
 			[fileList sortUsingDescriptors: fileSort()];
+			coverName = [[fileList objectAtIndex: 0] valueForKey: @"rawName"];
 			coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] intValue];
-			coverIndexData = [NSArchiver archivedDataWithRootObject: [NSNumber numberWithInt: coverIndex]];
-			[UKXattrMetadataStore setData: coverIndexData forKey: @"QCCoverIndex" atPath: archivePath traverseLink: NO];
-			
+			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}
+		[archive release];
+
     }
-	[archive release];
 
 	if(imageData)
 	{
