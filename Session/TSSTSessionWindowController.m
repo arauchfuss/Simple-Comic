@@ -28,6 +28,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 
 #import <Carbon/Carbon.h>
+#import <XADMaster/XADArchive.h>
 #import "UKXattrMetadataStore.h"
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
@@ -363,7 +364,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 				[bezelWindow orderOut: self];
 			}
 		}
-		
 	}
 	else
 	{
@@ -484,9 +484,15 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 - (IBAction)removePages:(id)sender
 {
-    NSManagedObject * page = [[pageController selectedObjects] objectAtIndex: 0];
-    [pageController removeObject: page];
-    [[self managedObjectContext] deleteObject: page];
+	int selection = [pageView selectPage];
+	if(selection != -1)
+	{
+		int index = [pageController selectionIndex];
+		index += selection;
+		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+		[pageController removeObject: selectedPage];
+		[[self managedObjectContext] deleteObject: selectedPage];
+	}
 }
 
 
@@ -833,14 +839,19 @@ Copyright (c) 2007 Dancing Tortoise Software
 		{
 			int coverIndex = [[currentPage valueForKey: @"index"] intValue];
 			coverIndex += selection;
-			NSData * coverIndexData = [NSArchiver archivedDataWithRootObject: [NSNumber numberWithInt: coverIndex]];
+			XADString * coverName = [(XADArchive *)[currentGroup instance] rawNameOfEntry: coverIndex];
 			NSString * archivePath = [[currentGroup valueForKey: @"path"] stringByStandardizingPath];
-			[UKXattrMetadataStore setData: coverIndexData forKey: @"QCCoverIndex" atPath: archivePath traverseLink: NO];
-			[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" arguments: [NSArray arrayWithObject: archivePath]];
+			[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
+									 forKey: @"QCCoverName" 
+									 atPath: archivePath 
+							   traverseLink: NO];
+			[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
+									 arguments: [NSArray arrayWithObject: archivePath]];
 		}
 	}
 }
 
+			
 
 /*	This is an archive only method.
 	Finds the index of the page within an archive and then extracts
