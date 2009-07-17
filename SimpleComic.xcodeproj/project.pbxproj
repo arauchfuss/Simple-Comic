@@ -98,7 +98,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D57630D048677EA00EA77CD /* QuickComic */;
+			remoteGlobalIDString = 8D57630D048677EA00EA77CD;
 			remoteInfo = QuickComic;
 		};
 		28FACCA00CD0CEDB007B7918 /* PBXContainerItemProxy */ = {

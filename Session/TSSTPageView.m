@@ -773,7 +773,6 @@
 		
 		if(scrollwheel.left > 5)
 		{
-
 			[dataSource pageLeft: self];
 			scrollwheel.left = 0;
 		}

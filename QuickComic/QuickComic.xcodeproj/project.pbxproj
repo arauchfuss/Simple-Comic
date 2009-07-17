@@ -228,7 +228,6 @@
 				INSTALL_PATH = /Library/Quicklook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				PRODUCT_NAME = QuickComic;
-				SYMROOT = "~/Developer/quickcomic/build";
 				WRAPPER_EXTENSION = qlgenerator;
 				ZERO_LINK = YES;
 			};
@@ -253,7 +252,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = QuickComic;
-				SYMROOT = "~/Developer/quickcomic/build";
 				WRAPPER_EXTENSION = qlgenerator;
 				ZERO_LINK = NO;
 			};
