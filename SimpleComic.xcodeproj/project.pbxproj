@@ -50,7 +50,6 @@
 		2886931D0FED554E002C6BF7 /* Loupe.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930A0FED554E002C6BF7 /* Loupe.tiff */; };
 		288693200FED554E002C6BF7 /* arrow.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930D0FED554E002C6BF7 /* arrow.tiff */; };
 		288693210FED554E002C6BF7 /* equal.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930E0FED554E002C6BF7 /* equal.tiff */; };
-		288693220FED554E002C6BF7 /* fullscreen.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886930F0FED554E002C6BF7 /* fullscreen.tiff */; };
 		288693230FED554E002C6BF7 /* hor_scale.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 288693100FED554E002C6BF7 /* hor_scale.tiff */; };
 		288693240FED554E002C6BF7 /* lr_order.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 288693110FED554E002C6BF7 /* lr_order.tiff */; };
 		288693250FED554E002C6BF7 /* one_page.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 288693120FED554E002C6BF7 /* one_page.tiff */; };
@@ -453,17 +452,17 @@
 				2886930E0FED554E002C6BF7 /* equal.tiff */,
 				2886930F0FED554E002C6BF7 /* fullscreen.tiff */,
 				288693100FED554E002C6BF7 /* hor_scale.tiff */,
+				2886931B0FED554E002C6BF7 /* win_scale.tiff */,
 				288693110FED554E002C6BF7 /* lr_order.tiff */,
-				288693120FED554E002C6BF7 /* one_page.tiff */,
 				288693130FED554E002C6BF7 /* org_size.tiff */,
 				288693140FED554E002C6BF7 /* preview_1.png */,
 				288693150FED554E002C6BF7 /* preview_2.png */,
 				288693160FED554E002C6BF7 /* rl_order.tiff */,
 				288693170FED554E002C6BF7 /* rotate_l.tiff */,
 				288693180FED554E002C6BF7 /* rotate_r.tiff */,
-				288693190FED554E002C6BF7 /* thumbnails.tiff */,
+				288693120FED554E002C6BF7 /* one_page.tiff */,
 				2886931A0FED554E002C6BF7 /* two_page.tiff */,
-				2886931B0FED554E002C6BF7 /* win_scale.tiff */,
+				288693190FED554E002C6BF7 /* thumbnails.tiff */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -771,7 +770,6 @@
 				2886931D0FED554E002C6BF7 /* Loupe.tiff in Resources */,
 				288693200FED554E002C6BF7 /* arrow.tiff in Resources */,
 				288693210FED554E002C6BF7 /* equal.tiff in Resources */,
-				288693220FED554E002C6BF7 /* fullscreen.tiff in Resources */,
 				288693230FED554E002C6BF7 /* hor_scale.tiff in Resources */,
 				288693240FED554E002C6BF7 /* lr_order.tiff in Resources */,
 				288693250FED554E002C6BF7 /* one_page.tiff in Resources */,
