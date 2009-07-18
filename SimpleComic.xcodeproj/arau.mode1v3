@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,11 +270,6 @@
 								<string>7756732906782D8800D1FEB8</string>
 								<string>080E96DDFE201D6D7F000001</string>
 								<string>FAA1C3E808BAB158006F7EC4</string>
-								<string>28073DE20FFC2F8B00D2602B</string>
-								<string>29B97323FDCFA39411CA2CEA</string>
-								<string>1058C7A0FEA54F0111CA2CBB</string>
-								<string>1058C7A2FEA54F0111CA2CBB</string>
-								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>284D37C11011316700A37AB2</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -281,13 +278,20 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
-									<integer>19</integer>
+									<integer>11</integer>
+									<integer>6</integer>
+									<integer>3</integer>
+									<integer>0</integer>
+								</array>
+								<array>
+									<integer>12</integer>
+									<integer>6</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 332}, {270, 688}}</string>
+							<string>{{0, 0}, {270, 688}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -317,8 +321,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -336,7 +338,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>284D37C21011316700A37AB2</string>
+										<string>284D382D1012540F00A37AB2</string>
 										<key>history</key>
 										<array>
 											<string>281C0DB50CEE8469009A9696</string>
@@ -442,9 +444,9 @@
 											<string>28002D3B101013E600DB3386</string>
 											<string>28002D3C101013E600DB3386</string>
 											<string>28002D3D101013E600DB3386</string>
-											<string>28002D3E101013E600DB3386</string>
 											<string>284D378A10112DEA00A37AB2</string>
-											<string>284D378B10112DEA00A37AB2</string>
+											<string>284D38251012540F00A37AB2</string>
+											<string>284D38261012540F00A37AB2</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -543,7 +545,6 @@
 											<string>289C32D80FC8C51F0077F0A6</string>
 											<string>289C34610FCA28890077F0A6</string>
 											<string>28691CB90FCE2622005E1265</string>
-											<string>2889E7450FDA0DB800574407</string>
 											<string>28073CBF0FF9958200D2602B</string>
 											<string>28073CD10FF9958200D2602B</string>
 											<string>28073CD90FF9958200D2602B</string>
@@ -554,6 +555,22 @@
 											<string>28363965100AC75E004D9131</string>
 											<string>284D3776101026F800A37AB2</string>
 											<string>284D378C10112DEA00A37AB2</string>
+											<string>284D37DF1012319A00A37AB2</string>
+											<string>284D37E11012319A00A37AB2</string>
+											<string>284D37ED1012387C00A37AB2</string>
+											<string>284D380110123F7300A37AB2</string>
+											<string>284D380210123F7300A37AB2</string>
+											<string>284D380310123F7300A37AB2</string>
+											<string>284D380410123F7300A37AB2</string>
+											<string>284D380510123F7300A37AB2</string>
+											<string>284D380610123F7300A37AB2</string>
+											<string>284D380710123F7300A37AB2</string>
+											<string>284D38271012540F00A37AB2</string>
+											<string>284D38281012540F00A37AB2</string>
+											<string>284D38291012540F00A37AB2</string>
+											<string>284D382A1012540F00A37AB2</string>
+											<string>284D382B1012540F00A37AB2</string>
+											<string>284D382C1012540F00A37AB2</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -762,6 +779,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>283F15660CD4114A0030E10D</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -1063,8 +1081,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>2843A082100AEDC80092F549</string>
-				<string>2843A083100AEDC80092F549</string>
+				<string>284D37E61012325E00A37AB2</string>
+				<string>284D37E71012325E00A37AB2</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>

@@ -177,6 +177,14 @@
 - (void)updateSessionObject;
 - (float)toolbarHeight;
 
+
+/* Bindings */
+- (BOOL)canTurnPreviousPage;
+- (BOOL)canTurnPageNext;
+- (BOOL)canTurnPageLeft;
+- (BOOL)canTurnPageRight;
+
+
 - (TSSTManagedSession *)session;
 - (NSManagedObjectContext *)managedObjectContext;
 

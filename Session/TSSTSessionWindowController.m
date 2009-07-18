@@ -1281,11 +1281,52 @@ images are currently visible and then skips over them.
 }
 
 
+- (BOOL)canTurnPageLeft
+{
+	if([[session valueForKey: TSSTPageOrder] boolValue])
+    {
+        return [self canTurnPreviousPage];
+    }
+    else
+    {
+        return [self canTurnPageNext];
+    }
+}
+
+
+- (BOOL)canTurnPageRight
+{
+	if([[session valueForKey: TSSTPageOrder] boolValue])
+    {
+        return [self canTurnPageNext];
+    }
+    else
+    {
+        return [self canTurnPreviousPage];
+    }
+}
+
+
+/*	TODO: make the following a bit smarter.  Also the next/previous page turn logic
+	ie. Should not be able to turn the page if 2 pages from the end */
+- (BOOL)canTurnPreviousPage
+{
+	return !([pageController selectionIndex] <= 0);
+}
+
+
+- (BOOL)canTurnPageNext
+{
+	return !([pageController selectionIndex] >= ([[pageController content] count] - 1));
+}
+
+
 #pragma mark Menus
 
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	BOOL valid = YES;
     int state;
     if([menuItem action] == @selector(changeFullscreen:))
     {
@@ -1308,6 +1349,38 @@ images are currently visible and then skips over them.
             [menuItem setTitle: NSLocalizedString(@"Left To Right", @"Left to right page order menu item text")];
         }
     }
+	else if([menuItem action] == @selector(pageRight:))
+	{
+		valid = [self canTurnPageRight];
+	}
+	else if([menuItem action] == @selector(pageLeft:))
+	{
+		valid = [self canTurnPageLeft];
+	}
+	else if ([menuItem action] == @selector(firstPage:))
+	{
+		valid = !([pageController selectionIndex] <= 0);
+	}
+	else if ([menuItem action] == @selector(lastPage:))
+	{
+		valid = !([pageController selectionIndex] >= ([[pageController content] count] - 1));
+	}
+	else if ([menuItem action] == @selector(shiftPageRight:))
+	{
+		valid = [self canTurnPageRight];
+	}
+	else if ([menuItem action] == @selector(shiftPageLeft:))
+	{
+		valid = [self canTurnPageLeft];
+	}
+	else if ([menuItem action] == @selector(skipRight:))
+	{
+		valid = [self canTurnPageRight];
+	}
+	else if ([menuItem action] == @selector(skipLeft:))
+	{
+		valid = [self canTurnPageLeft];
+	}
     else if([menuItem tag] == 400)
     {
         state = [[session valueForKey: TSSTPageScaleOptions] intValue] == 0 ? NSOnState : NSOffState;
@@ -1323,14 +1396,9 @@ images are currently visible and then skips over them.
         state = [[session valueForKey: TSSTPageScaleOptions] intValue] == 2 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
-    else if([menuItem tag] == 403)
-    {
-        state = [[session valueForKey: TSSTPageScaleOptions] intValue] == 3 ? NSOnState : NSOffState;
-        [menuItem setState: state];
-    }
-    return YES;
+	
+    return valid;
 }
-
 
 
 #pragma mark -

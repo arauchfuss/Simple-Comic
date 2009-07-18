@@ -433,6 +433,7 @@
 													<string key="NSClassName">NSImage</string>
 													<string key="NSResourceName">NSRightFacingTriangleTemplate</string>
 												</object>
+												<string key="NSSegmentItemLabel"/>
 												<string key="NSSegmentItemTooltip">Right Page Turn</string>
 												<int key="NSSegmentItemTag">702</int>
 												<int key="NSSegmentItemImageScaling">0</int>
@@ -1784,14 +1785,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">turnPage:</string>
-						<reference key="source" ref="642751089"/>
-						<reference key="destination" ref="138422164"/>
-					</object>
-					<int key="connectionID">556</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">zoom:</string>
 						<reference key="source" ref="642751089"/>
 						<reference key="destination" ref="1063529762"/>
@@ -1965,6 +1958,14 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 						<reference key="destination" ref="997995836"/>
 					</object>
 					<int key="connectionID">696</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">turnPage:</string>
+						<reference key="source" ref="642751089"/>
+						<reference key="destination" ref="979521007"/>
+					</object>
+					<int key="connectionID">698</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2762,6 +2763,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 					<string>518.ImportedFromIB2</string>
 					<string>521.IBPluginDependency</string>
 					<string>521.ImportedFromIB2</string>
+					<string>553.CustomClassName</string>
 					<string>554.IBPluginDependency</string>
 					<string>554.ImportedFromIB2</string>
 					<string>557.IBPluginDependency</string>
@@ -2926,7 +2928,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 					<reference ref="9"/>
 					<reference ref="9"/>
 					<reference ref="9"/>
-					<string>{{91, 390}, {616, 0}}</string>
+					<string>{{307, 577}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{134, 706}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2935,6 +2937,7 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
+					<string>DTPageTurnToolbarItem</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2965,9 +2968,9 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{169, -175}, {460, 564}}</string>
+					<string>{{385, 11}, {460, 564}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{169, -175}, {460, 564}}</string>
+					<string>{{385, 11}, {460, 564}}</string>
 					<reference ref="9"/>
 					<string>{{212, 142}, {460, 564}}</string>
 					<reference ref="8"/>
@@ -3047,11 +3050,19 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">696</int>
+			<int key="maxID">698</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">DTPageTurnToolbarItem</string>
+					<string key="superclassName">NSToolbarItem</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">DTToolbarItems.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">FirstResponder</string>
 					<string key="superclassName">NSObject</string>
