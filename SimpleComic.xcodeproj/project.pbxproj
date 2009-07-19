@@ -64,6 +64,7 @@
 		2886932E0FED554E002C6BF7 /* win_scale.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886931B0FED554E002C6BF7 /* win_scale.tiff */; };
 		288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */ = {isa = PBXBuildFile; fileRef = 288C09C20DC809DF00EAFF46 /* BDAlias.m */; };
 		2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2895F9D80B67D224008683C6 /* TSSTPage.m */; };
+		28B34A731013779B006C551C /* DTSessionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34A721013779B006C551C /* DTSessionWindow.m */; };
 		28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
@@ -238,6 +239,8 @@
 		288C0BD80DCD470200EAFF46 /* TSSTBookmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkWindowController.m; sourceTree = "<group>"; };
 		2895F9D80B67D224008683C6 /* TSSTPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPage.m; sourceTree = "<group>"; };
 		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTPageView.h; path = Session/TSSTPageView.h; sourceTree = "<group>"; };
+		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "Custom Windows/DTSessionWindow.h"; sourceTree = "<group>"; };
+		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "Custom Windows/DTSessionWindow.m"; sourceTree = "<group>"; };
 		28BD08E50C9836E600BD7EAF /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
 		28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+QuickLook.h"; sourceTree = "<group>"; };
 		28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+QuickLook.m"; sourceTree = "<group>"; };
@@ -620,6 +623,8 @@
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D3819101249BE00A37AB2 /* DTToolbarItems.h */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.m */,
+				28B34A711013779A006C551C /* DTSessionWindow.h */,
+				28B34A721013779B006C551C /* DTSessionWindow.m */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -836,6 +841,7 @@
 				285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
+				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

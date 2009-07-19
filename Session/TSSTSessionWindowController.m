@@ -117,7 +117,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 /*  Sets up all of the observers and bindings. */
 - (void)awakeFromNib
 {
-    [pageScrollView setPostsFrameChangedNotifications: YES];
     /* This needs to be set as the window subclass that the expose window
         uses has mouse events turned off by default */
     [exposeBezel setIgnoresMouseEvents: NO];
@@ -146,6 +145,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 	
     [session bind: @"selection" toObject: pageController withKeyPath: @"selectionIndex" options: nil];
     
+	[pageScrollView setPostsFrameChangedNotifications: YES];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(resizeView) name: NSViewFrameDidChangeNotification object: pageScrollView];
     [pageController addObserver: self forKeyPath: @"selectionIndex" options: 0 context: nil];
     [pageController addObserver: self forKeyPath: @"arrangedObjects.@count" options: 0 context: nil];
@@ -1020,7 +1020,7 @@ Copyright (c) 2007 Dancing Tortoise Software
         NSValue * rectangleValue = [NSValue valueWithRect: [[self window] frame]];
         NSData * rectData = [NSArchiver archivedDataWithRootObject: rectangleValue];
         [session setValue: rectData forKey: @"position" ];
-        
+//		[fullscreenWindow setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
         SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
         [[self window] orderOut: self];
         [fullscreenWindow setFrame: [[[self window] screen] frame] display: NO];
@@ -1029,6 +1029,7 @@ Copyright (c) 2007 Dancing Tortoise Software
         contentRect.size = [[pageScrollView window] frame].size;
         [pageScrollView setFrame: contentRect];
         [fullscreenWindow makeKeyAndOrderFront: self];
+//		[fullscreenWindow setCollectionBehavior: NSWindowCollectionBehaviorDefault];
 		if(mouseMovedTimer)
 		{
 			[mouseMovedTimer invalidate];
@@ -1039,6 +1040,7 @@ Copyright (c) 2007 Dancing Tortoise Software
     }
     else
     {
+//		[[self window] setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
         SetSystemUIMode(kUIModeNormal, 0);
         [fullscreenWindow orderOut: self];
         [pageScrollView removeFromSuperview];
@@ -1050,6 +1052,7 @@ Copyright (c) 2007 Dancing Tortoise Software
         [self adjustStatusBar];
         [self resizeWindow];
         [[self window] makeKeyAndOrderFront: self];
+//		[[self window] setCollectionBehavior: NSWindowCollectionBehaviorDefault];
     }
 	
 	[[infoWindow parentWindow] removeChildWindow: infoWindow];
@@ -1594,8 +1597,6 @@ images are currently visible and then skips over them.
 	
     return defaultFrame;
 }
-
-
 
 - (void)resizeView
 {

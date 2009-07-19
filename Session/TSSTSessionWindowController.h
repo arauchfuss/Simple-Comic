@@ -167,6 +167,7 @@
 - (void)infoPanelSetupAtPoint:(NSPoint)point;
 
 - (void)resizeWindow;
+- (void)resizeView;
 - (void)scaleToWindow;
 - (void)adjustStatusBar;
 - (void)changeViewImages;
