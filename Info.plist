@@ -183,8 +183,8 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>cbz</string>
-				<string>CBZ</string>
+				<string>cb7</string>
+				<string>CB7</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cb7</string>
@@ -382,6 +382,31 @@
 				<array>
 					<string>cbr</string>
 					<string>CBR</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data </string>
+				<string>public.archive </string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Comic Book 7-Zip Archive</string>
+			<key>UTTypeIconFile</key>
+			<string>sc_7z</string>
+			<key>UTTypeIdentifier</key>
+			<string>cx.c3.cb7-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>CB7</string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cb7</string>
+					<string>CB7</string>
 				</array>
 			</dict>
 		</dict>
