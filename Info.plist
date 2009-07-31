@@ -183,6 +183,29 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>cbz</string>
+				<string>CBZ</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>cb7</string>
+			<key>CFBundleTypeName</key>
+			<string>Comic 7-Zip</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.macitbetter.cb7-archive</string>
+				<string>public.cb7-archive</string>
+				<string>cx.c3.cb7-archive</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>cbr</string>
 				<string>CBR</string>
 			</array>
@@ -293,7 +316,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7 beta</string>
+	<string>1.7 beta (trajano)</string>
 	<key>CFBundleSignature</key>
 	<string>TSST</string>
 	<key>CFBundleVersion</key>

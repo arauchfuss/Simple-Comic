@@ -189,7 +189,7 @@ static NSArray * TSSTComicArchiveTypes = nil;
 {
 	if(!TSSTComicArchiveTypes)
 	{
-		TSSTComicArchiveTypes = [[NSArray arrayWithObjects: @"rar", @"cbr", @"zip", @"cbz", @"7z", @"lha", @"lzh", nil] retain];
+		TSSTComicArchiveTypes = [[NSArray arrayWithObjects: @"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh", nil] retain];
 	}
 	
 	return TSSTComicArchiveTypes;
