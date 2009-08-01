@@ -47,6 +47,7 @@
 
 - (void)awakeFromNib
 {
+	/* Doing this so users can drag files into a view. */
     [self registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
 }
 
@@ -91,7 +92,6 @@
 {
 	return YES;
 }
-
 
 
 - (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second
@@ -376,7 +376,7 @@
 }
 
 
-
+/* This method is used to generate the composite loupe image. */
 -(NSImage *)imageInRect:(NSRect)rect
 {
     if(![firstPageImage isValid])
@@ -386,6 +386,7 @@
 
     NSRect imageRect = imageBounds;
     NSPoint cursorPoint = NSZeroPoint;
+	/* Re-orients the rectangle based on the current page rotation */
     switch (rotation)
 	{
     case 0:
@@ -771,21 +772,21 @@
 			scrollwheel.up = 0;
 		}
 		
-		if(scrollwheel.left > 5)
+		if(scrollwheel.left > 7)
 		{
 			[dataSource pageLeft: self];
 			scrollwheel.left = 0;
 		}
-		else if(scrollwheel.right < -5)
+		else if(scrollwheel.right < -7)
 		{
 			[dataSource pageRight: self];
 			scrollwheel.right = 0;
 		}
-		else if(scrollwheel.up > 10)
+		else if(scrollwheel.up > 20)
 		{
 			[dataSource previousPage];
 		}
-		else if(scrollwheel.down < -10)
+		else if(scrollwheel.down < -20)
 		{
 			[dataSource nextPage];
 		}
