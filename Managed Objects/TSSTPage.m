@@ -40,6 +40,8 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 static NSMutableArray * TSSTComicImageTypes = nil;
 static NSArray * TSSTComicTextTypes = nil;
+static NSDictionary * TSSTInfoPageAttributes = nil;
+static NSSize monospaceCharacterSize;
 
 @implementation TSSTPage
 
@@ -65,6 +67,37 @@ static NSArray * TSSTComicTextTypes = nil;
 	
 	return TSSTComicTextTypes;
 }
+
+
++ (void)initialize
+{
+	/* Figure out the size of a single monospace character to set the tab stops */
+	NSDictionary * fontAttributes = [NSDictionary dictionaryWithObjectsAndKeys: [NSFont fontWithName: @"Monaco" size: 14], NSFontAttributeName, nil];
+	monospaceCharacterSize = [@"A" boundingRectWithSize: NSZeroSize options: 0 attributes: fontAttributes].size;
+	
+	NSTextTab * tabStop;
+	NSMutableArray * tabStops = [NSMutableArray array];
+	int tabSize;
+	float tabLocation;
+	/* Loop through the tab stops */
+	for (tabSize = 8; tabSize < 120; tabSize+=8)
+	{
+		tabLocation = tabSize * monospaceCharacterSize.width;
+		tabStop = [[NSTextTab alloc] initWithType: NSLeftTabStopType location: tabLocation];
+		[tabStops addObject: tabStop];
+		[tabStop release];
+	}
+	
+	NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+	[style setTabStops: tabStops];
+	
+	TSSTInfoPageAttributes = [NSDictionary dictionaryWithObjectsAndKeys: [NSFont fontWithName: @"Monaco" size: 14],  NSFontAttributeName,
+							  style, NSParagraphStyleAttributeName, nil];
+	[TSSTInfoPageAttributes retain];
+	
+	[style release];
+}
+
 
 - (void)awakeFromInsert
 {
@@ -242,16 +275,46 @@ static NSArray * TSSTComicTextTypes = nil;
 
 - (NSImage *)textPage
 {
-	NSImage * textImage = [[NSImage alloc] initWithSize: NSMakeSize(950, 1400)];
-	NSData * textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] intValue]];
+	NSData * textData;
+	if([self valueForKey: @"index"])
+	{
+		textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] intValue]];
+	}
+	else
+	{
+		textData = [NSData dataWithContentsOfFile: [self valueForKey: @"imagePath"]];
+	}
+	
 	UniversalDetector * encodingDetector = [UniversalDetector detector];
 	[encodingDetector analyzeData: textData];
 	NSString * text = [[NSString alloc] initWithData: textData encoding: [encodingDetector encoding]];
+	NSArray * lines = [text componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
+//	int lineCount = 0;
+	NSRect lineRect;
+	NSRect pageRect = NSZeroRect;
+	for(NSString * singleLine in lines)
+	{
+		if(![singleLine isEqualToString: @""])
+		{
+			lineRect = [singleLine boundingRectWithSize: NSMakeSize(800, 100) options: 0 attributes: TSSTInfoPageAttributes];
+			if(NSWidth(lineRect) > NSWidth(pageRect))
+			{
+				pageRect.size.width = lineRect.size.width;
+			}
+			
+			pageRect.size.height += NSHeight(lineRect);
+//			NSLog(@"Line: %@ Page: %@", NSStringFromRect(lineRect), NSStringFromRect(pageRect));
+		}
+	}
+	
+	pageRect.size.width += 10;
+	pageRect.size.height += 10;
+	NSImage * textImage = [[NSImage alloc] initWithSize: pageRect.size];
+
 	[textImage lockFocus];
 	[[NSColor whiteColor] set];
-	NSRectFill(NSMakeRect(0, 0, 950, 1400));
-	[text drawInRect: NSMakeRect(50, 50, 850, 1300)
-	  withAttributes: [NSDictionary dictionaryWithObject:[NSFont fontWithName: @"Monaco" size: 18] forKey: NSFontAttributeName]];
+	NSRectFill(pageRect);
+	[text drawInRect: NSInsetRect( pageRect, 5, 5) withAttributes: TSSTInfoPageAttributes];
 	[textImage unlockFocus];
 	[text release];
 	
