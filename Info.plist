@@ -129,8 +129,8 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>7z</string>
-				<string>7Z</string>
+				<string>cb7</string>
+				<string>CB7</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>7z</string>
