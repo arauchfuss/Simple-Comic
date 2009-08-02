@@ -129,6 +129,29 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>cb7</string>
+				<string>CB7</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>7z</string>
+			<key>CFBundleTypeMIMETypes</key>
+			<array/>
+			<key>CFBundleTypeName</key>
+			<string>7-Zip Comic Archive</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>org.7-zip.7-zip-comic-archive</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>lha</string>
 				<string>lzh</string>
 				<string>LHA</string>
@@ -320,7 +343,7 @@
 	<key>CFBundleSignature</key>
 	<string>TSST</string>
 	<key>CFBundleVersion</key>
-	<string>222</string>
+	<string>223</string>
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>NSMainNibFile</key>
@@ -376,7 +399,7 @@
 			<dict>
 				<key>com.apple.ostype</key>
 				<array>
-					<string>CBR </string>
+					<string>CBR</string>
 				</array>
 				<key>public.filename-extension</key>
 				<array>
@@ -463,6 +486,36 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/x-7z-compressed</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.archive</string>
+				<string>org.7-zip.7-zip-archive</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>7z Comic Archive Archive</string>
+			<key>UTTypeIconFile</key>
+			<string>sc_7z</string>
+			<key>UTTypeIdentifier</key>
+			<string>org.7-zip.7-zip-comic-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-cb7-compressed</string>
+				</array>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>CB7</string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cb7</string>
+					<string>CB7</string>
 				</array>
 			</dict>
 		</dict>

@@ -19,7 +19,7 @@
 				<string>com.macitbetter.cb7-archive</string>
 				<string>public.cbr-archive</string>
 				<string>public.cbz-archive</string>
-				<string>public.cb7-archive</string>
+				<string>org.7-zip.7-zip-comic-archive</string>
 			</array>
 		</dict>
 	</array>
