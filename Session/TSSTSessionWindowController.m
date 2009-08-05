@@ -325,7 +325,7 @@
 
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-	if([pageView inLiveResize])
+	if([pageView inLiveResize] || closing)
 	{
 		return;
 	}
