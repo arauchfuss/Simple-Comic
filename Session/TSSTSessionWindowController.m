@@ -325,11 +325,6 @@
 
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-	if([pageView inLiveResize] || closing)
-	{
-		return;
-	}
-	
 	NSPoint location = [theEvent locationInWindow];
 	NSRect progressRect;
 	
@@ -1431,6 +1426,8 @@ images are currently visible and then skips over them.
 
 - (void)prepareToEnd
 {
+	[[self window] setAcceptsMouseMovedEvents: NO];
+	[fullscreenWindow setAcceptsMouseMovedEvents: NO];
 	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
     [NSCursor unhide];
@@ -1511,7 +1508,7 @@ images are currently visible and then skips over them.
 			NSPoint mouseLocation = [[self window] convertScreenToBase: [NSEvent mouseLocation]];
             NSRect progressRect = [[[self window] contentView] convertRect: [progressBar progressRect] fromView: progressBar];
 			BOOL cursorInside = NSMouseInRect(mouseLocation, progressRect, [[[self window] contentView] isFlipped]);
-			if(cursorInside)
+			if(cursorInside && ![pageView inLiveResize])
 			{
 				[self infoPanelSetupAtPoint: mouseLocation];
 				[[self window] addChildWindow: infoWindow ordered: NSWindowAbove];
