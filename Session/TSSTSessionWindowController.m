@@ -831,17 +831,21 @@
 
 - (IBAction)setArchiveIcon:(id)sender
 {
-	TSSTPage * currentPage = [[pageController selectedObjects] objectAtIndex: 0];
-	TSSTManagedGroup * currentGroup = [currentPage valueForKey: @"group"];
-	if(currentGroup == [currentGroup topLevelGroup])
+	int selection = [pageView selectPage];
+	if(selection != -1)
 	{
-		int selection = [pageView selectPage];
-		if(selection != -1)
+		int index = [pageController selectionIndex];
+		index += selection;
+		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
+		/* Makes sure that the group is both an archive and not nested */
+		if([selectedGroup class] == [TSSTManagedArchive class] && 
+		   selectedGroup == [selectedGroup topLevelGroup] &&
+		   ![[selectedPage valueForKey: @"text"] boolValue])
 		{
-			int coverIndex = [[currentPage valueForKey: @"index"] intValue];
-			coverIndex += selection;
-			XADString * coverName = [(XADArchive *)[currentGroup instance] rawNameOfEntry: coverIndex];
-			NSString * archivePath = [[currentGroup valueForKey: @"path"] stringByStandardizingPath];
+			int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
+			XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
+			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
 			[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
 									 forKey: @"QCCoverName" 
 									 atPath: archivePath 
@@ -854,9 +858,7 @@
 
 			
 
-/*	This is an archive only method.
-	Finds the index of the page within an archive and then extracts
-	it to a location designated by the user. */
+/*	Saves the selected page to a user specified location. */
 - (IBAction)extractPage:(id)sender
 {
 	/*	selectpage returns prompts the user for which page they wish to use.
@@ -1609,12 +1611,6 @@ images are currently visible and then skips over them.
 - (float)toolbarHeight
 {
     return NSHeight([[self window] frame]) - NSHeight([[[self window] contentView] frame]);
-}
-
-
-- (void)toolbarDidRemoveItem:(NSNotification *)notification
-{
-	NSToolbarItem * item = [[notification userInfo] objectForKey: @"item"];
 }
 
 
