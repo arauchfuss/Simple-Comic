@@ -1,5 +1,6 @@
 /*	
-Copyright (c) 2007 Dancing Tortoise Software
+	Copyright (c) 2006-2009 Dancing Tortoise Software
+	Created by Alexander Rauchfuss
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -1598,11 +1599,11 @@ images are currently visible and then skips over them.
     return defaultFrame;
 }
 
+
 - (void)resizeView
 {
     [pageView resizeView];
 }
-
 
 
 - (float)toolbarHeight
@@ -1611,7 +1612,38 @@ images are currently visible and then skips over them.
 }
 
 
+- (void)toolbarDidRemoveItem:(NSNotification *)notification
+{
+	NSToolbarItem * item = [[notification userInfo] objectForKey: @"item"];
+}
+
+
+- (void)toolbarWillAddItem:(NSNotification *)notification
+{
+	NSToolbarItem * item = [[notification userInfo] objectForKey: @"item"];
+	
+	if([[item label] isEqualToString: @"Page Scaling"])
+	{
+		[[item view] bind: @"selectedIndex" toObject: self withKeyPath: @"session.scaleOptions" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Page Order"])
+	{
+		[[item view] bind: @"selectedIndex" toObject: self withKeyPath: @"session.pageOrder" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Page Layout"])
+	{
+		[[item view] bind: @"selectedIndex" toObject: self withKeyPath: @"session.twoPageSpread" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Loupe"])
+	{
+		[[item view] bind: @"value" toObject: self withKeyPath: @"session.loupe" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Fullscreen"])
+	{
+		[[item view] bind: @"value" toObject: self withKeyPath: @"session.fullscreen" options: nil];
+	}
+}
+
 
 @end
-
 
