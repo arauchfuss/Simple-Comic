@@ -1,5 +1,5 @@
 /*	
-	Copyright (c) 2006 Dancing Tortoise Software
+	Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -92,6 +92,7 @@
 {
 	return YES;
 }
+
 
 
 - (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second
@@ -249,8 +250,6 @@
 	if([[pboard types] containsObject: NSFilenamesPboardType])
 	{
 		NSArray * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
-        // This has to be here so that the addFiles method knows that the files
-        // are being added to an existing session.
         [[self dataSource] updateSessionObject];
 		[[NSApp delegate] addFiles: filePaths toSession: [[self dataSource] session]];
 		return YES;
@@ -374,6 +373,7 @@
     [self setNeedsDisplay: YES];
     [super viewDidEndLiveResize];
 }
+
 
 
 /* This method is used to generate the composite loupe image. */
@@ -579,7 +579,9 @@
 
     NSSize viewSize;
     float scaleToFit;
-    switch ([[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue])
+	int scaling = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
+	scaling = [[self dataSource] currentPageIsText] ? 2 : scaling;
+    switch (scaling)
     {
     case 0:
         viewSize.width = imageSize.width > NSWidth(visibleRect) ? imageSize.width : NSWidth(visibleRect);
@@ -710,6 +712,8 @@
 {
 	int modifier = [theEvent modifierFlags];
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
+	int scaling = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
+	scaling = [[self dataSource] currentPageIsText] ? 2 : scaling;
 	if(modifier & NSAlternateKeyMask && modifier & NSShiftKeyMask)
 	{
 		if([theEvent deltaY])
@@ -741,7 +745,7 @@
 			[defaultsController setValue: [NSNumber numberWithFloat: loupePower] forKey: TSSTLoupePower];
 		}
 	}
-	else if([[[dataSource session] valueForKey: TSSTPageScaleOptions] intValue] == 1)
+	else if(scaling == 1)
 	{
 		if([theEvent deltaX] > 0)
 		{
@@ -813,12 +817,11 @@
     NSPoint scrollPoint = visible.origin;
     BOOL scrolling = NO;
     float delta = shiftKey ? 50 * 3 : 50;
-	int scaling = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
     
 	switch ([charNumber unsignedIntValue])
 	{
 		case NSUpArrowFunctionKey:
-			if(scaling == 1)
+			if(![self verticalScrollIsPossible])
 			{
 				[dataSource previousPage];
 			}
@@ -830,7 +833,7 @@
 			}
 			break;
 		case NSDownArrowFunctionKey:
-			if(scaling == 1)
+			if(![self verticalScrollIsPossible])
 			{
 				[dataSource nextPage];
 			}
@@ -842,7 +845,7 @@
 			}
 			break;
 		case NSLeftArrowFunctionKey:
-			if(scaling != 0)
+			if(![self horizontalScrollIsPossible])
 			{
 				[dataSource pageLeft: self];
 			}
@@ -854,7 +857,7 @@
 			}
 			break;
 		case NSRightArrowFunctionKey:
-			if(scaling != 0)
+			if(![self horizontalScrollIsPossible])
 			{
 				[dataSource pageRight: self];
 			}
@@ -1223,13 +1226,30 @@
 
 - (BOOL)dragIsPossible
 {
-    int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
+//    int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
     NSSize total = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
     
-    return (scaleToWindow != 1 && (visible.width < total.width || visible.height < total.height));
+    return (visible.width < total.width || visible.height < total.height);
 }
 
+
+- (BOOL)horizontalScrollIsPossible
+{
+//	int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
+    NSSize total = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
+    NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
+    //scaleToWindow != 1 && 
+    return (visible.width < total.width);
+}
+
+
+- (BOOL)verticalScrollIsPossible
+{
+	NSSize total = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
+    NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
+    return (visible.height < total.height);
+}
 
 
 - (void)resetCursorRects

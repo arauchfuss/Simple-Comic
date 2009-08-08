@@ -983,7 +983,7 @@
     [self setValue: titleString forKey: @"pageNames"];
     [pageView setFirstPage: [pageOne valueForKey: @"pageImage"] secondPageImage: [pageTwo valueForKey: @"pageImage"]];
     
-    [self resizeWindow];
+    [self scaleToWindow];
 
     [self refreshLoupePanel];
 }
@@ -1068,8 +1068,10 @@
 {
     BOOL hasVert = NO;
     BOOL hasHor = NO;
+	int scaling = [[session valueForKey: TSSTPageScaleOptions] intValue];
+	scaling = [self currentPageIsText] ? 2 : scaling;
 
-	switch ([[session valueForKey: TSSTPageScaleOptions] intValue])
+	switch (scaling)
 	{
 	case  0:
 		hasVert = YES;
@@ -1546,7 +1548,7 @@ images are currently visible and then skips over them.
         correctedFrame.size.width -= horOffset;
         correctedFrame.size.height -= vertOffset;
         NSSize newSize;
-        if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1)
+        if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
         {
             float scale;
             if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
@@ -1608,6 +1610,13 @@ images are currently visible and then skips over them.
 - (float)toolbarHeight
 {
     return NSHeight([[self window] frame]) - NSHeight([[[self window] contentView] frame]);
+}
+
+
+- (BOOL)currentPageIsText
+{
+	TSSTPage * page = [[pageController selectedObjects] objectAtIndex: 0];
+	return [[page valueForKey: @"text"] boolValue];
 }
 
 

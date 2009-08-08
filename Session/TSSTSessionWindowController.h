@@ -178,7 +178,7 @@
 - (void)previousPage;
 - (void)updateSessionObject;
 - (float)toolbarHeight;
-
+- (BOOL)currentPageIsText;
 
 /* Bindings */
 - (BOOL)canTurnPreviousPage;
