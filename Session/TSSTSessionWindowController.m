@@ -554,10 +554,6 @@
     {
         [self previousPage];
     }
-	if([self pageTurn] == 2)
-	{
-		NSLog(@"correct right");
-	}
 }
 
 
@@ -567,7 +563,6 @@
 */
 - (IBAction)pageLeft:(id)sender
 {
-	NSLog(@"called");
     [self setPageTurn: 1];
 	
     if([[session valueForKey: TSSTPageOrder] boolValue])
@@ -578,12 +573,6 @@
     {
         [self nextPage];
     }
-	
-	if([self pageTurn] == 1)
-	{
-		NSLog(@"correct left");
-	}
-	
 }
 
 
@@ -865,7 +854,6 @@
 	
 	int selection = [pageView selectPageWithCrop: YES];
 	NSRect cropRect = [pageView imageCropRectangle];
-//	NSLog(NSStringFromRect(cropRect));
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];

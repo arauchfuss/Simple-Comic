@@ -64,6 +64,8 @@
 		scrollwheel.up = 0;
 		scrollwheel.down = 0;
 		cropRect = NSZeroRect;
+		firstPageRect = NSZeroRect;
+		secondPageRect = NSZeroRect;
         scrollTimer = nil;
         acceptingDrag = NO;
 		pageSelection = -1;
@@ -114,7 +116,6 @@
 	}
 
     [self resizeView];
-	NSLog(@"%i", [[self dataSource] pageTurn]);
     [self correctViewPoint];
 //	[dataSource setPageTurn: 0];
 }
@@ -558,6 +559,8 @@
 
 - (void)resizeView
 {
+	firstPageRect = NSZeroRect;
+	secondPageRect = NSZeroRect;
     NSRect visibleRect = [[self enclosingScrollView] documentVisibleRect];
     NSRect frameRect = [self frame];
     float xpercent = NSMidX(visibleRect) / frameRect.size.width;
@@ -625,18 +628,25 @@
                                                NSMakeRect( 0, 0, NSHeight([self frame]), NSWidth([self frame])));
     }
 	firstPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
-    secondPageRect.size = [secondPageImage isValid] ? [secondPageImage size] : NSZeroSize;
-    secondPageRect.size = scaleSize(secondPageRect.size , NSHeight(imageRect) / NSHeight(secondPageRect));
-    if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
-    {
-        firstPageRect.origin = imageRect.origin;
-        secondPageRect.origin = NSMakePoint(NSMaxX(firstPageRect), NSMinY(imageRect));
-    }
-    else
-    {
-        secondPageRect.origin = imageRect.origin;
-        firstPageRect.origin = NSMakePoint(NSMaxX(secondPageRect), NSMinY(imageRect));
-    }
+	if([secondPageImage isValid])
+	{
+		secondPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
+		if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+		{
+			firstPageRect.origin = imageRect.origin;
+			secondPageRect.origin = NSMakePoint(NSMaxX(firstPageRect), NSMinY(imageRect));
+		}
+		else
+		{
+			secondPageRect.origin = imageRect.origin;
+			firstPageRect.origin = NSMakePoint(NSMaxX(secondPageRect), NSMinY(imageRect));
+		}
+	}
+	else
+	{
+		firstPageRect.origin = imageRect.origin;
+	}
+	
     float xOrigin = viewSize.width * xpercent;
     float yOrigin = viewSize.height * ypercent;
     NSPoint recenter = NSMakePoint(xOrigin - visibleRect.size.width / 2, yOrigin - visibleRect.size.height / 2);
@@ -645,6 +655,8 @@
 }
 
 
+/*  TODO: add some sort of canSelectPage: to TSSTSessionWindowController
+	so that non archive pages can be ommitted during icon selection */
 - (int)selectPageWithCrop:(BOOL)crop
 {
 	unsigned int charNumber = 0;
@@ -658,7 +670,8 @@
 	
 	if(NSEqualRects(secondPageRect, NSZeroRect))
 	{
-		firstPageSide = bounds;
+		NSLog(@"single page");
+		firstPageSide = [[self enclosingScrollView] documentVisibleRect];
 	}
 	else if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
 	{
@@ -706,7 +719,6 @@
 			dragRect.size.width = currentPoint.x - dragRect.origin.x;
 			dragRect.size.height = currentPoint.y - dragRect.origin.y;
 			cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), firstPageRect);
-//			NSLog(NSStringFromRect(cropRect));
 		}
 		else if([theEvent type] == NSLeftMouseDown)
 		{
@@ -733,7 +745,6 @@
 		return NSZeroRect;
 	}
 	
-//	NSLog(@"unmodified: %@",NSStringFromRect(cropRect));
 	NSPoint center = centerPointOfRect(cropRect);
 	int pageNumber = 0;
 	NSRect pageRect = NSZeroRect;
