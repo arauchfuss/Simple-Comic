@@ -45,6 +45,8 @@ typedef struct {
 @interface TSSTPageView : NSView
 {
     NSRect imageBounds;
+	NSRect firstPageRect;
+	NSRect secondPageRect;
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
     
@@ -63,6 +65,7 @@ typedef struct {
 	/*	While page selection is in progress this method has a value of 1 or 2.
 		The selection number coresponds to a highlighted page. */
 	int pageSelection;
+	NSRect cropRect;
 }
 
 @property (assign) NSInteger rotation;
@@ -126,7 +129,8 @@ typedef struct {
 - (void)pageUp;
 - (void)pageDown;
 
-- (int)selectPage;
+- (int)selectPageWithCrop:(BOOL)crop;
+- (NSRect)imageCropRectangle;
 
 @end
 

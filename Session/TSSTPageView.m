@@ -63,6 +63,7 @@
 		scrollwheel.right = 0;
 		scrollwheel.up = 0;
 		scrollwheel.down = 0;
+		cropRect = NSZeroRect;
         scrollTimer = nil;
         acceptingDrag = NO;
 		pageSelection = -1;
@@ -287,64 +288,48 @@
     [NSGraphicsContext saveGraphicsState];
     NSRect frame = [self frame];
     [self rotationTransformWithFrame: frame];
-    NSRect secondRect, firstRect, imageRect = imageBounds;
-    
-    if(rotation == 1 || rotation == 3)
-    {
-        imageRect = rectWithSizeCenteredInRect(NSMakeSize( NSHeight(imageRect), NSWidth(imageRect)), 
-                                               NSMakeRect( 0, 0, NSHeight(frame), NSWidth(frame)));
-    }
-    
-    // Images have been scaled to their pixel size, so these are accurate.
-    firstRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
-    secondRect.size = [secondPageImage isValid] ? [secondPageImage size] : NSZeroSize;
-    secondRect.size = scaleSize(secondRect.size , NSHeight(imageRect) / NSHeight(secondRect));
-    
-    if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
-    {
-        firstRect.origin = imageRect.origin;
-        secondRect.origin = NSMakePoint(NSMaxX(firstRect), NSMinY(imageRect));
-    }
-    else
-    {
-        secondRect.origin = imageRect.origin;
-        firstRect.origin = NSMakePoint(NSMaxX(secondRect), NSMinY(imageRect));
-    }
-    
+
     NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
     [[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
     
-    [firstPageImage drawInRect: [self centerScanRect: firstRect]
+    [firstPageImage drawInRect: [self centerScanRect: firstPageRect]
                       fromRect: NSZeroRect
                      operation: NSCompositeSourceOver 
                       fraction: 1.0];
     
     if([secondPageImage isValid])
     {
-        [secondPageImage drawInRect: [self centerScanRect: secondRect]
+        [secondPageImage drawInRect: [self centerScanRect: secondPageRect]
                            fromRect: NSZeroRect
                           operation: NSCompositeSourceOver 
                            fraction: 1.0];
     }
 
-    [NSGraphicsContext restoreGraphicsState];
     
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
 	NSBezierPath * highlight;
-	
-	if(pageSelection == 1)
+	if(pageSelection != -1 && !NSEqualRects(cropRect, NSZeroRect))
 	{
-		highlight = [NSBezierPath bezierPathWithRect: firstRect];
+		highlight = [NSBezierPath bezierPathWithRect: cropRect];
+		[highlight fill];
+		[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
+		[NSBezierPath setDefaultLineWidth: 2];
+		[NSBezierPath strokeRect: cropRect];
+	}
+	else if(pageSelection == 1)
+	{
+		highlight = [NSBezierPath bezierPathWithRect: firstPageRect];
 		[highlight fill];
 	}
 	else if(pageSelection == 2)
 	{
-		highlight = [NSBezierPath bezierPathWithRect: secondRect];
+		highlight = [NSBezierPath bezierPathWithRect: secondPageRect];
 		[highlight fill];
 	}
-	
+
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
-	if(pageSelection != -1)
+
+	if((pageSelection == 1 || pageSelection == 2))
 	{
 		NSDictionary * stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys: 
 										   [NSFont fontWithName: @"Lucida Grande" size: 24], NSFontAttributeName, 
@@ -358,6 +343,8 @@
 		[selectionText drawInRect: bezelRect withAttributes: stringAttributes];
 	}
 	
+	[NSGraphicsContext restoreGraphicsState];
+
     if(acceptingDrag)
     {
         [NSBezierPath setDefaultLineWidth: 6];
@@ -630,7 +617,25 @@
     }
     
     imageBounds = rectWithSizeCenteredInRect(imageSize, NSMakeRect(0,0,viewSize.width, viewSize.height));
-    
+	NSRect imageRect = imageBounds;
+    if(rotation == 1 || rotation == 3)
+    {
+        imageRect = rectWithSizeCenteredInRect(NSMakeSize( NSHeight(imageRect), NSWidth(imageRect)), 
+                                               NSMakeRect( 0, 0, NSHeight([self frame]), NSWidth([self frame])));
+    }
+	firstPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
+    secondPageRect.size = [secondPageImage isValid] ? [secondPageImage size] : NSZeroSize;
+    secondPageRect.size = scaleSize(secondPageRect.size , NSHeight(imageRect) / NSHeight(secondPageRect));
+    if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+    {
+        firstPageRect.origin = imageRect.origin;
+        secondPageRect.origin = NSMakePoint(NSMaxX(firstPageRect), NSMinY(imageRect));
+    }
+    else
+    {
+        secondPageRect.origin = imageRect.origin;
+        firstPageRect.origin = NSMakePoint(NSMaxX(secondPageRect), NSMinY(imageRect));
+    }
     float xOrigin = viewSize.width * xpercent;
     float yOrigin = viewSize.height * ypercent;
     NSPoint recenter = NSMakePoint(xOrigin - visibleRect.size.width / 2, yOrigin - visibleRect.size.height / 2);
@@ -639,42 +644,41 @@
 }
 
 
-- (int)selectPage
+- (int)selectPageWithCrop:(BOOL)crop
 {
-	/*	If there is only one page currently being displayed this method
-		automatically returns zero. */
-	if(![secondPageImage isValid])
-	{
-		return 0;
-	}
-	
 	unsigned int charNumber = 0;
 	NSPoint cursorPoint = NSZeroPoint;
-	NSRect secondRect, firstRect, imageRect = imageBounds;
-    firstRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
-    secondRect.size = scaleSize([secondPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
-	if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
-    {
-        firstRect.origin = imageRect.origin;
-        secondRect.origin = NSMakePoint(NSMaxX(firstRect), NSMinY(imageRect));
-    }
-    else
-    {
-        secondRect.origin = imageRect.origin;
-        firstRect.origin = NSMakePoint(NSMaxX(secondRect), NSMinY(imageRect));
-    }
-	
+	NSPoint currentPoint;
+	NSRect dragRect = NSZeroRect;
 	NSEvent * theEvent;
+	NSRect firstPageSide, secondPageSide = NSZeroRect;
+	cropRect = NSZeroRect;
+	NSRect bounds = [self bounds];
+	
+	if(NSEqualRects(secondPageRect, NSZeroRect))
+	{
+		firstPageSide = bounds;
+	}
+	else if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+	{
+		firstPageSide = NSMakeRect(0, 0, NSMaxX(firstPageRect), NSHeight(bounds));
+		secondPageSide = NSMakeRect(NSMinX(secondPageRect), 0, NSWidth(bounds) - NSMinX(secondPageRect), NSHeight(bounds));
+	}
+	else
+	{
+		secondPageSide = NSMakeRect(0, 0, NSMaxX(secondPageRect), NSHeight(bounds));
+		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
+	}
+	
 	cursorPoint = [NSEvent mouseLocation];
     cursorPoint = [self convertPoint: [[self window] convertScreenToBase: cursorPoint] fromView: nil];
-
 	do
 	{
-		if(NSPointInRect(cursorPoint, firstRect))
+		if(NSPointInRect(cursorPoint, firstPageSide))
 		{
 			pageSelection = 1;
 		}
-		else if(NSPointInRect(cursorPoint, secondRect))
+		else if(NSPointInRect(cursorPoint, secondPageSide))
 		{
 			pageSelection = 2;
 		}
@@ -685,21 +689,74 @@
 		
 		[self setNeedsDisplay: YES];
 		
-		theEvent = [[self window] nextEventMatchingMask: NSLeftMouseDownMask | NSMouseMovedMask | NSKeyUpMask];
+		NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
+		if(crop)
+		{
+			capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
+		}
+		theEvent = [[self window] nextEventMatchingMask: capturedEvents];
+		currentPoint = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		if([theEvent type] == NSKeyUp)
 		{
 			charNumber = [[theEvent charactersIgnoringModifiers] characterAtIndex: 0];
 		}
+		else if([theEvent type] == NSLeftMouseDragged)
+		{
+			dragRect.size.width = currentPoint.x - dragRect.origin.x;
+			dragRect.size.height = currentPoint.y - dragRect.origin.y;
+			cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), firstPageRect);
+//			NSLog(NSStringFromRect(cropRect));
+		}
+		else if([theEvent type] == NSLeftMouseDown)
+		{
+			dragRect.origin = cursorPoint;
+		}
 		else if([theEvent type] == NSMouseMoved)
 		{
-			cursorPoint = [self convertPoint: [theEvent locationInWindow] fromView: nil];
+			cursorPoint = currentPoint;
 		}
-	} while ([theEvent type] != NSLeftMouseDown && charNumber != 27);
+		
+	} while ([theEvent type] != NSLeftMouseUp && charNumber != 27);
 	int finalSelection = pageSelection && charNumber != 27 ? pageSelection - 1 : -1;
 	pageSelection = -1;
 	[self setNeedsDisplay: YES];
 	
 	return finalSelection;
+}
+
+
+- (NSRect)imageCropRectangle
+{
+	if(NSEqualRects(NSZeroRect, cropRect))
+	{
+		return NSZeroRect;
+	}
+	
+//	NSLog(@"unmodified: %@",NSStringFromRect(cropRect));
+	NSPoint center = centerPointOfRect(cropRect);
+	int pageNumber = 0;
+	NSRect pageRect = NSZeroRect;
+	NSSize originalSize;
+	if(NSPointInRect(center, firstPageRect))
+	{
+		pageNumber = 1;
+		pageRect = firstPageRect;
+		originalSize = [firstPageImage size];
+	}
+	else if(NSPointInRect(center, secondPageRect))
+	{
+		pageNumber = 2;
+		pageRect = secondPageRect;
+		originalSize = [secondPageImage size];
+	}
+	
+	pageRect.origin = NSMakePoint(cropRect.origin.x - pageRect.origin.x, cropRect.origin.y - pageRect.origin.y);
+	float scaling = originalSize.height / pageRect.size.height;
+	pageRect = NSMakeRect(pageRect.origin.x * scaling,
+						  pageRect.origin.y * scaling,
+						  cropRect.size.width * scaling, 
+						  cropRect.size.height * scaling);
+	return pageRect;
 }
 
 
@@ -1227,7 +1284,7 @@
 - (BOOL)dragIsPossible
 {
 //    int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
-    NSSize total = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
+    NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
     
     return (visible.width < total.width || visible.height < total.height);
@@ -1237,7 +1294,7 @@
 - (BOOL)horizontalScrollIsPossible
 {
 //	int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
-    NSSize total = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
+    NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
     //scaleToWindow != 1 && 
     return (visible.width < total.width);
@@ -1246,7 +1303,7 @@
 
 - (BOOL)verticalScrollIsPossible
 {
-	NSSize total = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
+	NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
     return (visible.height < total.height);
 }

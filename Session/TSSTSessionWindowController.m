@@ -480,7 +480,7 @@
 
 - (IBAction)removePages:(id)sender
 {
-	int selection = [pageView selectPage];
+	int selection = [pageView selectPageWithCrop: NO];
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -826,7 +826,9 @@
 
 - (IBAction)setArchiveIcon:(id)sender
 {
-	int selection = [pageView selectPage];
+	int selection = [pageView selectPageWithCrop: YES];
+	NSRect cropRect = [pageView imageCropRectangle];
+	NSLog(NSStringFromRect(cropRect));
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -845,6 +847,11 @@
 									 forKey: @"QCCoverName" 
 									 atPath: archivePath 
 							   traverseLink: NO];
+			[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
+									 forKey: @"QCCoverRect" 
+									 atPath: archivePath 
+							   traverseLink: NO];
+				
 			[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
 									 arguments: [NSArray arrayWithObject: archivePath]];
 		}
@@ -859,7 +866,7 @@
 	/*	selectpage returns prompts the user for which page they wish to use.
 		If there is only one page or the user selects the first page 0 is returned,
 		otherwise 1. */
-	int selection = [pageView selectPage];
+	int selection = [pageView selectPageWithCrop: NO];
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
