@@ -104,6 +104,7 @@
 	/* Manages the cursor hiding while in fullscreen */
 	NSTimer * mouseMovedTimer;
 	
+	BOOL pageSelectionInProgress;
 	/* This is a hack that should die */
 	BOOL closing;
 }

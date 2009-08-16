@@ -50,7 +50,6 @@
 
 @synthesize pageTurn, pageNames, pageSortDescriptor;
 
-
 + (void)initialize
 {
     NSImage * segmentImage = [NSImage imageNamed: @"org_size"];
@@ -92,6 +91,8 @@
     self = [super init];
     if (self != nil)
     {
+		pageTurn = 0;
+		pageSelectionInProgress = NO;
 		mouseMovedTimer = nil;
 		closing = NO;
         session = [aSession retain];
@@ -411,7 +412,8 @@
 	NSPoint scrollPoint = [pageScrollView convertPoint: [currentWindow convertScreenToBase: mouse] fromView: nil];
     if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
 	   && loupe 
-	   && [currentWindow isKeyWindow])
+	   && [currentWindow isKeyWindow]
+	   && !pageSelectionInProgress)
     {
 		if(![loupeWindow isVisible])
 		{
@@ -552,6 +554,10 @@
     {
         [self previousPage];
     }
+	if([self pageTurn] == 2)
+	{
+		NSLog(@"correct right");
+	}
 }
 
 
@@ -561,7 +567,9 @@
 */
 - (IBAction)pageLeft:(id)sender
 {
+	NSLog(@"called");
     [self setPageTurn: 1];
+	
     if([[session valueForKey: TSSTPageOrder] boolValue])
     {
         [self previousPage];
@@ -570,6 +578,12 @@
     {
         [self nextPage];
     }
+	
+	if([self pageTurn] == 1)
+	{
+		NSLog(@"correct left");
+	}
+	
 }
 
 
@@ -680,7 +694,6 @@
         float factor = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoomLevel: 0].width;
         previousZoom = (factor * 10) - 10;
     }
-    
     [session setValue: [NSNumber numberWithInt: ++previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
 	
@@ -826,9 +839,33 @@
 
 - (IBAction)setArchiveIcon:(id)sender
 {
+	pageSelectionInProgress = YES;
+	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
+	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
+	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
+	float factor;
+
+	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
+	{
+		factor = scrollerBounds.width / imageSize.width;
+	}
+	else
+	{		
+		factor = scrollerBounds.height / imageSize.height;
+	}
+	
+	int selectionZoom = (factor * 10) - 10;
+	NSLog(@"%i",selectionZoom);
+	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
+	[session setValue: [NSNumber numberWithInt: selectionZoom - 2] forKey: TSSTZoomLevel];
+	
+    [pageView resizeView];
+    [self refreshLoupePanel];
+	
 	int selection = [pageView selectPageWithCrop: YES];
 	NSRect cropRect = [pageView imageCropRectangle];
-	NSLog(NSStringFromRect(cropRect));
+//	NSLog(NSStringFromRect(cropRect));
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -856,6 +893,12 @@
 									 arguments: [NSArray arrayWithObject: archivePath]];
 		}
 	}
+	pageSelectionInProgress = NO;
+	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
+	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
+	
+    [pageView resizeView];
+	[self refreshLoupePanel];
 }
 
 			
@@ -1108,7 +1151,10 @@
     
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
-    [self resizeWindow];
+	if(!pageSelectionInProgress)
+	{
+		[self resizeWindow];
+	}
     [pageView resizeView];
     [self refreshLoupePanel];
 }
@@ -1276,6 +1322,7 @@ images are currently visible and then skips over them.
 
 #pragma mark -
 #pragma mark Binding Methods
+
 
 
 - (TSSTManagedSession *)session

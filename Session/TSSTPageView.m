@@ -114,8 +114,9 @@
 	}
 
     [self resizeView];
+	NSLog(@"%i", [[self dataSource] pageTurn]);
     [self correctViewPoint];
-	[dataSource setPageTurn: 0];
+//	[dataSource setPageTurn: 0];
 }
 
 
@@ -985,6 +986,7 @@
 			}
 			else
 			{
+				[dataSource setPageTurn: 1];
 				[dataSource previousPage];
 			}
 		}
@@ -997,6 +999,7 @@
 			}
 			else 
 			{
+				[dataSource setPageTurn: 2];
 				[dataSource previousPage];
 			}
 		}
@@ -1026,6 +1029,7 @@
 			}
 			else 
 			{
+				[dataSource setPageTurn: 2];
 				[dataSource nextPage];
 			}
 		}
@@ -1038,6 +1042,7 @@
 			}
 			else
 			{
+				[dataSource setPageTurn: 1];
 				[dataSource nextPage];
 			}
 		}                    
