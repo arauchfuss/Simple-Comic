@@ -630,7 +630,7 @@
 	firstPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
 	if([secondPageImage isValid])
 	{
-		secondPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
+		secondPageRect.size = scaleSize([secondPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
 		if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
 		{
 			firstPageRect.origin = imageRect.origin;
@@ -670,7 +670,6 @@
 	
 	if(NSEqualRects(secondPageRect, NSZeroRect))
 	{
-		NSLog(@"single page");
 		firstPageSide = [[self enclosingScrollView] documentVisibleRect];
 	}
 	else if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
@@ -686,6 +685,7 @@
 	
 	cursorPoint = [NSEvent mouseLocation];
     cursorPoint = [self convertPoint: [[self window] convertScreenToBase: cursorPoint] fromView: nil];
+	
 	do
 	{
 		if(NSPointInRect(cursorPoint, firstPageSide))

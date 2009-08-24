@@ -1,5 +1,5 @@
 /*	
-	Copyright (c) 2006 Dancing Tortoise Software
+	Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -82,7 +82,15 @@ NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
     return NSMakeRect(x, y, size.width, size.height);
 }
 
-
+NSRect rectFromNegativeRect(NSRect rect)
+{
+	CGFloat possibleXOrigin = rect.origin.x + rect.size.width;
+	CGFloat possibleYOrigin = rect.origin.y + rect.size.height;
+	
+	return NSMakeRect(possibleXOrigin < rect.origin.x ? possibleXOrigin : rect.origin.x,
+					  possibleYOrigin < rect.origin.y ? possibleYOrigin : rect.origin.y,
+					  fabsf(rect.size.width), fabsf(rect.size.height));
+}
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)
 {

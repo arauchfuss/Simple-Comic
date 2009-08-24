@@ -825,7 +825,9 @@
 }
 
 
-
+/*  Method that allows the user to select an icon for comic archives.
+	Calls pageView and verifies that the images selected are from an
+	archive. */
 - (IBAction)setArchiveIcon:(id)sender
 {
 	pageSelectionInProgress = YES;
@@ -833,8 +835,9 @@
     int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
 	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
 	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
+	scrollerBounds.height -= 50;
+	scrollerBounds.width -= 50;
 	float factor;
-
 	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
 	{
 		factor = scrollerBounds.width / imageSize.width;
@@ -844,10 +847,9 @@
 		factor = scrollerBounds.height / imageSize.height;
 	}
 	
-	int selectionZoom = (factor * 10) - 10;
-	NSLog(@"%i",selectionZoom);
+	int selectionZoom = floorf((factor * 10) - 10);
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
-	[session setValue: [NSNumber numberWithInt: selectionZoom - 2] forKey: TSSTZoomLevel];
+	[session setValue: [NSNumber numberWithInt: selectionZoom] forKey: TSSTZoomLevel];
 	
     [pageView resizeView];
     [self refreshLoupePanel];
@@ -865,20 +867,53 @@
 		   selectedGroup == [selectedGroup topLevelGroup] &&
 		   ![[selectedPage valueForKey: @"text"] boolValue])
 		{
-			int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
-			XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
 			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
-			[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
-									 forKey: @"QCCoverName" 
-									 atPath: archivePath 
-							   traverseLink: NO];
-			[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
-									 forKey: @"QCCoverRect" 
-									 atPath: archivePath 
-							   traverseLink: NO];
+			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
+			{
+				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
+				XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
+				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
+										 forKey: @"QCCoverName" 
+										 atPath: archivePath 
+								   traverseLink: NO];
+				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
+										 forKey: @"QCCoverRect" 
+										 atPath: archivePath 
+								   traverseLink: NO];
 				
-			[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
-									 arguments: [NSArray arrayWithObject: archivePath]];
+				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
+										 arguments: [NSArray arrayWithObject: archivePath]];
+			}
+			else
+			{
+				NSRect drawRect = NSMakeRect(0, 0, 496, 496);
+				NSImage * iconImage = [[NSImage alloc] initWithSize: drawRect.size];
+				cropRect.size = NSEqualSizes(cropRect.size, NSZeroSize) ? NSMakeSize([[selectedPage valueForKey: @"width"] floatValue], [[selectedPage valueForKey: @"height"] floatValue]) : cropRect.size;
+				drawRect = rectWithSizeCenteredInRect( cropRect.size, drawRect);
+				
+				[iconImage lockFocus];
+					[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
+					[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
+				[iconImage unlockFocus];
+				
+				NSImage * shadowImage = [[NSImage alloc] initWithSize: NSMakeSize(512, 512)];
+				
+				NSShadow * thumbShadow = [NSShadow new];
+				[thumbShadow setShadowOffset: NSMakeSize(0.0, -8.0)];
+				[thumbShadow setShadowBlurRadius: 25.0];
+				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];				
+				
+				[shadowImage lockFocus];
+					[thumbShadow set];
+					[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
+				[shadowImage unlockFocus];
+				
+				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
+
+				[thumbShadow release];
+				[iconImage release];
+				[shadowImage release];
+			}
 		}
 	}
 	pageSelectionInProgress = NO;

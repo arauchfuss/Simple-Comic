@@ -1,5 +1,5 @@
 /*	
-Copyright (c) 2007 Dancing Tortoise Software
+Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -33,9 +33,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 #import "TSSTImageUtilities.h"
 #import "TSSTManagedGroup.h"
 #import <XADMaster/XADArchive.h>
-//#import <QuickTime/ImageCompression.h>
-//#import <QuickTime/Movies.h>
-//#import <QuickTime/QuickTimeComponents.h>
 
 
 static NSMutableArray * TSSTComicImageTypes = nil;
@@ -129,8 +126,9 @@ static NSSize monospaceCharacterSize;
 {   
 	if([[self valueForKey: @"text"] boolValue])
 	{
-		return YES;
+		return NO;
 	}
+	
 	float defaultAspect = 1;
 	float aspect = [[self valueForKey: @"aspectRatio"] floatValue];
 	if(!aspect)
@@ -147,36 +145,9 @@ static NSSize monospaceCharacterSize;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData
 {
 	float aspect;
-//	GraphicsImportComponent quickTimeImporter = 0;
-//	ImageDescriptionHandle imageParametersHandle = 0;
 	NSSize imageSize;
-//
-//	if(imageData)
-//	{
-//		ComponentInstance dataHandler;
-//		PointerDataRef dataref = (PointerDataRef)NewHandle(sizeof(PointerDataRefRecord));
-//		(** dataref).data = (void *)[imageData bytes];
-//		(** dataref).dataLength = [imageData length];
-//		[loaderLock lock];
-//		OpenADataHandler( (Handle)dataref, PointerDataHandlerSubType, NULL, (OSType)0, NULL, kDataHCanRead, &dataHandler);
-//		GetGraphicsImporterForDataRef((Handle)dataref, PointerDataHandlerSubType, &quickTimeImporter);
-//		GraphicsImportGetImageDescription(quickTimeImporter, &imageParametersHandle);
-//		DisposeHandle((Handle)dataref);
-//		[loaderLock unlock];
-//	}
-//	
-//	if(imageParametersHandle)
-//	{
-//		imageSize = NSMakeSize((*imageParametersHandle)->width , (*imageParametersHandle)->height); 
-//		CloseComponent(quickTimeImporter);
-//		DisposeHandle((Handle)imageParametersHandle);
-//	}
-//	else
-//	{
-		NSBitmapImageRep * pageRep = [NSBitmapImageRep imageRepWithData: imageData];
-		imageSize = NSMakeSize([pageRep pixelsWide], [pageRep pixelsHigh]);
-//	}
-
+	NSBitmapImageRep * pageRep = [NSBitmapImageRep imageRepWithData: imageData];
+	imageSize = NSMakeSize([pageRep pixelsWide], [pageRep pixelsHigh]);
 
 	if(!NSEqualSizes(NSZeroSize, imageSize))
 	{

@@ -1,5 +1,5 @@
 /*	
-Copyright (c) 2007 Dancing Tortoise Software
+Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -61,8 +61,10 @@ Copyright (c) 2007 Dancing Tortoise Software
 }
 
 + (NSArray *)archiveExtensions;
++ (NSArray *)quicklookExtensions;
 /*  Recurses through archives looking for archives and images */
 - (void)nestedArchiveContents;
+- (BOOL)quicklookCompatible;
 
 @end
 
