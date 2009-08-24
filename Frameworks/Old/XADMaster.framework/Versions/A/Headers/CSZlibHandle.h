@@ -11,9 +11,9 @@ extern NSString *CSZlibException;
 	CSHandle *parent;
 	off_t startoffs;
 	z_stream zs;
-	BOOL inited,seekback,endstreamateof;
+	BOOL inited,seekback;
 
-	uint8_t inbuffer[0x4000];
+	uint8_t inbuffer[16*1024];
 }
 
 +(CSZlibHandle *)zlibHandleWithHandle:(CSHandle *)handle;
@@ -26,7 +26,6 @@ extern NSString *CSZlibException;
 -(void)dealloc;
 
 -(void)setSeekBackAtEOF:(BOOL)seekateof;
--(void)setEndStreamAtInputEOF:(BOOL)endateof;
 
 -(void)resetStream;
 -(int)streamAtMost:(int)num toBuffer:(void *)buffer;

@@ -73,8 +73,6 @@ extern NSString *XADVolumesKey;
 	NSMutableDictionary *firstsoliddict,*prevsoliddict;
 	id currsolidobj;
 	CSHandle *currsolidhandle;
-
-	BOOL shouldstop;
 }
 
 +(void)initialize;
@@ -133,7 +131,6 @@ extern NSString *XADVolumesKey;
 
 -(XADPath *)XADPath;
 -(XADPath *)XADPathWithString:(NSString *)string;
--(XADPath *)XADPathWithUnseparatedString:(NSString *)string;
 -(XADPath *)XADPathWithData:(NSData *)data separators:(const char *)separators;
 -(XADPath *)XADPathWithData:(NSData *)data encoding:(NSStringEncoding)encoding separators:(const char *)separators;
 -(XADPath *)XADPathWithBytes:(const void *)bytes length:(int)length separators:(const char *)separators;
