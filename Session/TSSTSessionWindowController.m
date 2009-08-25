@@ -1057,7 +1057,7 @@
     [pageView setFirstPage: [pageOne valueForKey: @"pageImage"] secondPageImage: [pageTwo valueForKey: @"pageImage"]];
     
     [self scaleToWindow];
-
+	[pageView correctViewPoint];
     [self refreshLoupePanel];
 }
 
@@ -1174,7 +1174,6 @@
 		break;
 	}
     
-	NSLog(@"%@", hasVert ? @"YES" : @"NO");
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
 	if(!pageSelectionInProgress)

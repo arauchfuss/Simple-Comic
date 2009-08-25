@@ -116,7 +116,7 @@
 	}
 
     [self resizeView];
-    [self correctViewPoint];
+//    [self correctViewPoint]; // Moved to sessionwindow
 //	[dataSource setPageTurn: 0];
 }
 
@@ -497,7 +497,7 @@
 }
 
 
-
+/*  This fixes clipping rect of the scrollview after a page turn. */
 - (void)correctViewPoint
 {
     NSPoint correctOrigin = NSZeroPoint;
