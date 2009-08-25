@@ -1142,7 +1142,15 @@
     BOOL hasVert = NO;
     BOOL hasHor = NO;
 	int scaling = [[session valueForKey: TSSTPageScaleOptions] intValue];
-	scaling = [self currentPageIsText] ? 2 : scaling;
+	
+	if(pageSelectionInProgress || [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTScrollersVisible] boolValue])
+	{
+		scaling = 1;
+	}
+	else if([self currentPageIsText])
+	{
+		scaling = 2;
+	}
 
 	switch (scaling)
 	{
@@ -1161,17 +1169,12 @@
 			hasVert = YES;
 		}
 		break;
-	default:
+	default:	
 		[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTZoomLevel];
 		break;
 	}
-	
-	if(![[[NSUserDefaults standardUserDefaults] valueForKey: TSSTScrollersVisible] boolValue])
-    {
-		hasVert = NO;
-		hasHor = NO;
-	}
     
+//	NSLog(@"%@", hasVert ? @"YES" : @"NO");
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
 	if(!pageSelectionInProgress)

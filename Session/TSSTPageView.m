@@ -718,7 +718,14 @@
 		{
 			dragRect.size.width = currentPoint.x - dragRect.origin.x;
 			dragRect.size.height = currentPoint.y - dragRect.origin.y;
-			cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), firstPageRect);
+			if(NSPointInRect(dragRect.origin, firstPageSide))
+			{
+				cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), firstPageRect);
+			}
+			else if(NSPointInRect(dragRect.origin, secondPageSide))
+			{
+				cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), secondPageRect);
+			}
 		}
 		else if([theEvent type] == NSLeftMouseDown)
 		{
