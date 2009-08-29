@@ -1399,7 +1399,24 @@ images are currently visible and then skips over them.
 
 - (BOOL)canTurnPageNext
 {
-	return !([pageController selectionIndex] >= ([[pageController content] count] - 1));
+	int selectionIndex = [pageController selectionIndex];
+	if([pageController selectionIndex] >= ([[pageController content] count] - 1))
+	{
+		return NO;
+	}
+	
+	if((selectionIndex + 1) == ([[pageController content] count] - 1) && [[session valueForKey: TSSTTwoPageSpread] boolValue])
+	{
+		NSArray * arrangedPages = [pageController arrangedObjects];
+		BOOL displayCurrentAlone = [[arrangedPages objectAtIndex: selectionIndex] shouldDisplayAlone];
+		BOOL displayNextAlone = [[arrangedPages objectAtIndex: selectionIndex + 1] shouldDisplayAlone];
+
+		if (!displayCurrentAlone && !displayNextAlone) {
+			return NO;
+		}
+	}
+	
+	return YES;	
 }
 
 
