@@ -122,11 +122,11 @@ static NSSize monospaceCharacterSize;
 
 
 
-- (BOOL)hasAllowedAspectRatio
+- (BOOL)shouldDisplayAlone
 {   
 	if([[self valueForKey: @"text"] boolValue])
 	{
-		return NO;
+		return YES;
 	}
 	
 	float defaultAspect = 1;
@@ -138,7 +138,7 @@ static NSSize monospaceCharacterSize;
 		aspect = [[self valueForKey: @"aspectRatio"] floatValue];
 	}
     
-	return aspect != 0 ? aspect < defaultAspect : NO;
+	return aspect != 0 ? aspect > defaultAspect : YES;
 }
 
 

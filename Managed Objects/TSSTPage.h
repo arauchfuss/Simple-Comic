@@ -39,7 +39,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 - (NSString *)name;
 //- (NSString *)deconflictionName;
    
-- (BOOL )hasAllowedAspectRatio;
+- (BOOL )shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
 - (NSImage *)thumbnail;
 - (NSData *)prepThumbnail;

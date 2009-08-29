@@ -48,7 +48,7 @@
 @implementation TSSTSessionWindowController
 
 
-@synthesize pageTurn, pageNames, pageSortDescriptor;
+@synthesize pageTurn, pageNames, pageSortDescriptor, pageSelectionInProgress;
 
 + (void)initialize
 {
@@ -1031,10 +1031,10 @@
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSString * representationPath;
 	
-    BOOL currentAllowed = [pageOne hasAllowedAspectRatio] && 
+    BOOL currentAllowed = ![pageOne shouldDisplayAlone] && 
         !(index == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
     
-    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && [pageTwo hasAllowedAspectRatio])
+    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && ![pageTwo shouldDisplayAlone])
     {
         if([[session valueForKey: TSSTPageOrder] boolValue])
         {
@@ -1239,9 +1239,9 @@ images are currently visible and then skips over them.
 	}
     
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-	BOOL current = [[[pageController arrangedObjects] objectAtIndex: selectionIndex] hasAllowedAspectRatio] &&
+	BOOL current = ![[[pageController arrangedObjects] objectAtIndex: selectionIndex] shouldDisplayAlone] &&
         !(selectionIndex == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
-	BOOL next = [[[pageController arrangedObjects] objectAtIndex: (selectionIndex + 1)] hasAllowedAspectRatio];
+	BOOL next = ![[[pageController arrangedObjects] objectAtIndex: (selectionIndex + 1)] shouldDisplayAlone];
 	
 	if((!current || !next) && ((selectionIndex + 1) < numberOfImages))
 	{
@@ -1275,8 +1275,8 @@ images are currently visible and then skips over them.
 	{
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
-        BOOL previousPage = [[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 1)] hasAllowedAspectRatio];
-		BOOL pageBeforeLast = [[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 2)] hasAllowedAspectRatio] && 
+        BOOL previousPage = ![[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 1)] shouldDisplayAlone];
+		BOOL pageBeforeLast = ![[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 2)] shouldDisplayAlone] && 
             !((selectionIndex - 2) == 0 && [[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);	
         
         if(!previousPage || !pageBeforeLast)
