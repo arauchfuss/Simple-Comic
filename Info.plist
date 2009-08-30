@@ -206,6 +206,29 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>cb7</string>
+				<string>CB7</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>cb7</string>
+			<key>CFBundleTypeName</key>
+			<string>Comic 7-Zip</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.macitbetter.cb7-archive</string>
+				<string>public.cb7-archive</string>
+				<string>cx.c3.cb7-archive</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>cbr</string>
 				<string>CBR</string>
 			</array>
@@ -382,6 +405,31 @@
 				<array>
 					<string>cbr</string>
 					<string>CBR</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data </string>
+				<string>public.archive </string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Comic Book 7-Zip Archive</string>
+			<key>UTTypeIconFile</key>
+			<string>sc_7z</string>
+			<key>UTTypeIdentifier</key>
+			<string>cx.c3.cb7-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>CB7</string>
+				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cb7</string>
+					<string>CB7</string>
 				</array>
 			</dict>
 		</dict>
