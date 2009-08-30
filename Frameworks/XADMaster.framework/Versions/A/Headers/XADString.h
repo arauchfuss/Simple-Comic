@@ -29,14 +29,9 @@
 
 +(XADString *)XADStringWithString:(NSString *)knownstring;
 
-
 -(id)initWithData:(NSData *)bytedata source:(XADStringSource *)stringsource;
 -(id)initWithString:(NSString *)knownstring;
 -(void)dealloc;
-
--(void)encodeWithCoder:(NSCoder *)encoder;
--(id)initWithCoder:(NSCoder *)decoder;
-
 
 -(NSString *)string;
 -(NSString *)stringWithEncoding:(NSStringEncoding)encoding;
@@ -48,7 +43,7 @@
 
 -(XADStringSource *)source;
 
--(BOOL)isEqual:(XADString *)other;
+-(BOOL)isEqual:(id)other;
 -(unsigned)hash;
 -(id)copyWithZone:(NSZone *)zone;
 

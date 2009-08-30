@@ -1,5 +1,6 @@
 /*	
-	Copyright (c) 2007 Dancing Tortoise Software
+	Copyright (c) 2006-2009 Dancing Tortoise Software
+	Created by Alexander Rauchfuss
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -103,6 +104,7 @@
 	/* Manages the cursor hiding while in fullscreen */
 	NSTimer * mouseMovedTimer;
 	
+	BOOL pageSelectionInProgress;
 	/* This is a hack that should die */
 	BOOL closing;
 }
@@ -177,7 +179,7 @@
 - (void)previousPage;
 - (void)updateSessionObject;
 - (float)toolbarHeight;
-
+- (BOOL)currentPageIsText;
 
 /* Bindings */
 - (BOOL)canTurnPreviousPage;
@@ -188,7 +190,7 @@
 
 - (TSSTManagedSession *)session;
 - (NSManagedObjectContext *)managedObjectContext;
-
+- (void)toolbarWillAddItem:(NSNotification *)notification;
 
 /*	Methods that kill page expose, the loupe, and fullscreen.
 	In that order. */

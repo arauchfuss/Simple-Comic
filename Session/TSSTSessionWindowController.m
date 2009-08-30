@@ -1,5 +1,6 @@
 /*	
-Copyright (c) 2007 Dancing Tortoise Software
+	Copyright (c) 2006-2009 Dancing Tortoise Software
+	Created by Alexander Rauchfuss
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -47,8 +48,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 @implementation TSSTSessionWindowController
 
 
-@synthesize pageTurn, pageNames, pageSortDescriptor;
-
+@synthesize pageTurn, pageNames, pageSortDescriptor, pageSelectionInProgress;
 
 + (void)initialize
 {
@@ -91,6 +91,8 @@ Copyright (c) 2007 Dancing Tortoise Software
     self = [super init];
     if (self != nil)
     {
+		pageTurn = 0;
+		pageSelectionInProgress = NO;
 		mouseMovedTimer = nil;
 		closing = NO;
         session = [aSession retain];
@@ -324,11 +326,6 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-	if([pageView inLiveResize])
-	{
-		return;
-	}
-	
 	NSPoint location = [theEvent locationInWindow];
 	NSRect progressRect;
 	
@@ -415,7 +412,8 @@ Copyright (c) 2007 Dancing Tortoise Software
 	NSPoint scrollPoint = [pageScrollView convertPoint: [currentWindow convertScreenToBase: mouse] fromView: nil];
     if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
 	   && loupe 
-	   && [currentWindow isKeyWindow])
+	   && [currentWindow isKeyWindow]
+	   && !pageSelectionInProgress)
     {
 		if(![loupeWindow isVisible])
 		{
@@ -484,7 +482,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 
 - (IBAction)removePages:(id)sender
 {
-	int selection = [pageView selectPage];
+	int selection = [pageView selectPageWithCrop: NO];
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -566,6 +564,7 @@ Copyright (c) 2007 Dancing Tortoise Software
 - (IBAction)pageLeft:(id)sender
 {
     [self setPageTurn: 1];
+	
     if([[session valueForKey: TSSTPageOrder] boolValue])
     {
         [self previousPage];
@@ -684,7 +683,6 @@ Copyright (c) 2007 Dancing Tortoise Software
         float factor = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoomLevel: 0].width;
         previousZoom = (factor * 10) - 10;
     }
-    
     [session setValue: [NSNumber numberWithInt: ++previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
 	
@@ -827,41 +825,114 @@ Copyright (c) 2007 Dancing Tortoise Software
 }
 
 
-
+/*  Method that allows the user to select an icon for comic archives.
+	Calls pageView and verifies that the images selected are from an
+	archive. */
 - (IBAction)setArchiveIcon:(id)sender
 {
-	TSSTPage * currentPage = [[pageController selectedObjects] objectAtIndex: 0];
-	TSSTManagedGroup * currentGroup = [currentPage valueForKey: @"group"];
-	if(currentGroup == [currentGroup topLevelGroup])
+	pageSelectionInProgress = YES;
+	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
+	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
+	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
+	scrollerBounds.height -= 50;
+	scrollerBounds.width -= 50;
+	float factor;
+	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
 	{
-		int selection = [pageView selectPage];
-		if(selection != -1)
+		factor = scrollerBounds.width / imageSize.width;
+	}
+	else
+	{		
+		factor = scrollerBounds.height / imageSize.height;
+	}
+	
+	int selectionZoom = floorf((factor * 10) - 10);
+	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
+	[session setValue: [NSNumber numberWithInt: selectionZoom] forKey: TSSTZoomLevel];
+	
+    [pageView resizeView];
+    [self refreshLoupePanel];
+	
+	int selection = [pageView selectPageWithCrop: YES];
+	NSRect cropRect = [pageView imageCropRectangle];
+	if(selection != -1)
+	{
+		int index = [pageController selectionIndex];
+		index += selection;
+		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
+		/* Makes sure that the group is both an archive and not nested */
+		if([selectedGroup class] == [TSSTManagedArchive class] && 
+		   selectedGroup == [selectedGroup topLevelGroup] &&
+		   ![[selectedPage valueForKey: @"text"] boolValue])
 		{
-			int coverIndex = [[currentPage valueForKey: @"index"] intValue];
-			coverIndex += selection;
-			XADString * coverName = [(XADArchive *)[currentGroup instance] rawNameOfEntry: coverIndex];
-			NSString * archivePath = [[currentGroup valueForKey: @"path"] stringByStandardizingPath];
-			[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
-									 forKey: @"QCCoverName" 
-									 atPath: archivePath 
-							   traverseLink: NO];
-			[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
-									 arguments: [NSArray arrayWithObject: archivePath]];
+			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
+			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
+			{
+				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
+				XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
+				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
+										 forKey: @"QCCoverName" 
+										 atPath: archivePath 
+								   traverseLink: NO];
+				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
+										 forKey: @"QCCoverRect" 
+										 atPath: archivePath 
+								   traverseLink: NO];
+				
+				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
+										 arguments: [NSArray arrayWithObject: archivePath]];
+			}
+			else
+			{
+				NSRect drawRect = NSMakeRect(0, 0, 496, 496);
+				NSImage * iconImage = [[NSImage alloc] initWithSize: drawRect.size];
+				cropRect.size = NSEqualSizes(cropRect.size, NSZeroSize) ? NSMakeSize([[selectedPage valueForKey: @"width"] floatValue], [[selectedPage valueForKey: @"height"] floatValue]) : cropRect.size;
+				drawRect = rectWithSizeCenteredInRect( cropRect.size, drawRect);
+				
+				[iconImage lockFocus];
+					[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
+					[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
+				[iconImage unlockFocus];
+				
+				NSImage * shadowImage = [[NSImage alloc] initWithSize: NSMakeSize(512, 512)];
+				
+				NSShadow * thumbShadow = [NSShadow new];
+				[thumbShadow setShadowOffset: NSMakeSize(0.0, -8.0)];
+				[thumbShadow setShadowBlurRadius: 25.0];
+				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];				
+				
+				[shadowImage lockFocus];
+					[thumbShadow set];
+					[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
+				[shadowImage unlockFocus];
+				
+				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
+
+				[thumbShadow release];
+				[iconImage release];
+				[shadowImage release];
+			}
 		}
 	}
+	pageSelectionInProgress = NO;
+	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
+	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
+	
+    [pageView resizeView];
+	[self refreshLoupePanel];
 }
 
 			
 
-/*	This is an archive only method.
-	Finds the index of the page within an archive and then extracts
-	it to a location designated by the user. */
+/*	Saves the selected page to a user specified location. */
 - (IBAction)extractPage:(id)sender
 {
 	/*	selectpage returns prompts the user for which page they wish to use.
 		If there is only one page or the user selects the first page 0 is returned,
 		otherwise 1. */
-	int selection = [pageView selectPage];
+	int selection = [pageView selectPageWithCrop: NO];
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -960,10 +1031,10 @@ Copyright (c) 2007 Dancing Tortoise Software
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSString * representationPath;
 	
-    BOOL currentAllowed = [pageOne hasAllowedAspectRatio] && 
+    BOOL currentAllowed = ![pageOne shouldDisplayAlone] && 
         !(index == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
     
-    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && [pageTwo hasAllowedAspectRatio])
+    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && ![pageTwo shouldDisplayAlone])
     {
         if([[session valueForKey: TSSTPageOrder] boolValue])
         {
@@ -985,8 +1056,8 @@ Copyright (c) 2007 Dancing Tortoise Software
     [self setValue: titleString forKey: @"pageNames"];
     [pageView setFirstPage: [pageOne valueForKey: @"pageImage"] secondPageImage: [pageTwo valueForKey: @"pageImage"]];
     
-    [self resizeWindow];
-
+    [self scaleToWindow];
+	[pageView correctViewPoint];
     [self refreshLoupePanel];
 }
 
@@ -1070,8 +1141,18 @@ Copyright (c) 2007 Dancing Tortoise Software
 {
     BOOL hasVert = NO;
     BOOL hasHor = NO;
+	int scaling = [[session valueForKey: TSSTPageScaleOptions] intValue];
+	
+	if(pageSelectionInProgress || ![[[NSUserDefaults standardUserDefaults] valueForKey: TSSTScrollersVisible] boolValue])
+	{
+		scaling = 1;
+	}
+	else if([self currentPageIsText])
+	{
+		scaling = 2;
+	}
 
-	switch ([[session valueForKey: TSSTPageScaleOptions] intValue])
+	switch (scaling)
 	{
 	case  0:
 		hasVert = YES;
@@ -1088,20 +1169,17 @@ Copyright (c) 2007 Dancing Tortoise Software
 			hasVert = YES;
 		}
 		break;
-	default:
+	default:	
 		[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTZoomLevel];
 		break;
-	}
-	
-	if(![[[NSUserDefaults standardUserDefaults] valueForKey: TSSTScrollersVisible] boolValue])
-    {
-		hasVert = NO;
-		hasHor = NO;
 	}
     
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
-    [self resizeWindow];
+	if(!pageSelectionInProgress)
+	{
+		[self resizeWindow];
+	}
     [pageView resizeView];
     [self refreshLoupePanel];
 }
@@ -1161,9 +1239,9 @@ images are currently visible and then skips over them.
 	}
     
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-	BOOL current = [[[pageController arrangedObjects] objectAtIndex: selectionIndex] hasAllowedAspectRatio] &&
+	BOOL current = ![[[pageController arrangedObjects] objectAtIndex: selectionIndex] shouldDisplayAlone] &&
         !(selectionIndex == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
-	BOOL next = [[[pageController arrangedObjects] objectAtIndex: (selectionIndex + 1)] hasAllowedAspectRatio];
+	BOOL next = ![[[pageController arrangedObjects] objectAtIndex: (selectionIndex + 1)] shouldDisplayAlone];
 	
 	if((!current || !next) && ((selectionIndex + 1) < numberOfImages))
 	{
@@ -1197,8 +1275,8 @@ images are currently visible and then skips over them.
 	{
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
-        BOOL previousPage = [[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 1)] hasAllowedAspectRatio];
-		BOOL pageBeforeLast = [[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 2)] hasAllowedAspectRatio] && 
+        BOOL previousPage = ![[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 1)] shouldDisplayAlone];
+		BOOL pageBeforeLast = ![[[pageController arrangedObjects] objectAtIndex: (selectionIndex - 2)] shouldDisplayAlone] && 
             !((selectionIndex - 2) == 0 && [[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);	
         
         if(!previousPage || !pageBeforeLast)
@@ -1271,6 +1349,7 @@ images are currently visible and then skips over them.
 #pragma mark Binding Methods
 
 
+
 - (TSSTManagedSession *)session
 {
     return session;
@@ -1320,7 +1399,24 @@ images are currently visible and then skips over them.
 
 - (BOOL)canTurnPageNext
 {
-	return !([pageController selectionIndex] >= ([[pageController content] count] - 1));
+	int selectionIndex = [pageController selectionIndex];
+	if([pageController selectionIndex] >= ([[pageController content] count] - 1))
+	{
+		return NO;
+	}
+	
+	if((selectionIndex + 1) == ([[pageController content] count] - 1) && [[session valueForKey: TSSTTwoPageSpread] boolValue])
+	{
+		NSArray * arrangedPages = [pageController arrangedObjects];
+		BOOL displayCurrentAlone = [[arrangedPages objectAtIndex: selectionIndex] shouldDisplayAlone];
+		BOOL displayNextAlone = [[arrangedPages objectAtIndex: selectionIndex + 1] shouldDisplayAlone];
+
+		if (!displayCurrentAlone && !displayNextAlone) {
+			return NO;
+		}
+	}
+	
+	return YES;	
 }
 
 
@@ -1428,6 +1524,8 @@ images are currently visible and then skips over them.
 
 - (void)prepareToEnd
 {
+	[[self window] setAcceptsMouseMovedEvents: NO];
+	[fullscreenWindow setAcceptsMouseMovedEvents: NO];
 	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
     [NSCursor unhide];
@@ -1508,7 +1606,7 @@ images are currently visible and then skips over them.
 			NSPoint mouseLocation = [[self window] convertScreenToBase: [NSEvent mouseLocation]];
             NSRect progressRect = [[[self window] contentView] convertRect: [progressBar progressRect] fromView: progressBar];
 			BOOL cursorInside = NSMouseInRect(mouseLocation, progressRect, [[[self window] contentView] isFlipped]);
-			if(cursorInside)
+			if(cursorInside && ![pageView inLiveResize])
 			{
 				[self infoPanelSetupAtPoint: mouseLocation];
 				[[self window] addChildWindow: infoWindow ordered: NSWindowAbove];
@@ -1546,7 +1644,7 @@ images are currently visible and then skips over them.
         correctedFrame.size.width -= horOffset;
         correctedFrame.size.height -= vertOffset;
         NSSize newSize;
-        if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1)
+        if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
         {
             float scale;
             if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
@@ -1598,11 +1696,11 @@ images are currently visible and then skips over them.
     return defaultFrame;
 }
 
+
 - (void)resizeView
 {
     [pageView resizeView];
 }
-
 
 
 - (float)toolbarHeight
@@ -1611,7 +1709,39 @@ images are currently visible and then skips over them.
 }
 
 
+- (BOOL)currentPageIsText
+{
+	TSSTPage * page = [[pageController selectedObjects] objectAtIndex: 0];
+	return [[page valueForKey: @"text"] boolValue];
+}
+
+
+- (void)toolbarWillAddItem:(NSNotification *)notification
+{
+	NSToolbarItem * item = [[notification userInfo] objectForKey: @"item"];
+	
+	if([[item label] isEqualToString: @"Page Scaling"])
+	{
+		[[item view] bind: @"selectedIndex" toObject: self withKeyPath: @"session.scaleOptions" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Page Order"])
+	{
+		[[item view] bind: @"selectedIndex" toObject: self withKeyPath: @"session.pageOrder" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Page Layout"])
+	{
+		[[item view] bind: @"selectedIndex" toObject: self withKeyPath: @"session.twoPageSpread" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Loupe"])
+	{
+		[[item view] bind: @"value" toObject: self withKeyPath: @"session.loupe" options: nil];
+	}
+	else if([[item label] isEqualToString: @"Fullscreen"])
+	{
+		[[item view] bind: @"value" toObject: self withKeyPath: @"session.fullscreen" options: nil];
+	}
+}
+
 
 @end
-
 

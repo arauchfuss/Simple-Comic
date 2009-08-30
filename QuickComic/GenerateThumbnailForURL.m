@@ -21,11 +21,17 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	NSString * archivePath = [(NSURL *)url path];
 	NSData * imageData = nil;
 	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
+	NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO];
+	CGRect cropRect = CGRectZero;
 	int coverIndex;
 	if(![coverName isEqualToString: @""])
 	{
 		DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithPath: archivePath searchString: coverName];
 		imageData = [partialArchive searchResult];
+		if(![coverRectString isEqualToString: @""])
+		{
+			cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
+		}
 		[DTPartialArchiveParser release];
 	}
 	else
@@ -47,16 +53,30 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 
 	if(imageData)
 	{
+//		NSImage * coverImage = [[NSImage alloc] initWithData: imageData];
 		CGImageSourceRef pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)imageData,  NULL);
         CGImageRef currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
         CFRelease(pageSourceRef);
-        
-		CGSize canvasSize = fitSizeInSize(maxSize, CGSizeMake( CGImageGetWidth(currentImage), CGImageGetHeight(currentImage)));
-        CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasSize, false, NULL);
-		CGRect canvasRect = CGRectMake(0, 0, canvasSize.width, canvasSize.height);
+		CGRect canvasRect;
+		CGRect drawRect;
+        if(CGRectEqualToRect(cropRect, CGRectZero))
+		{
+			canvasRect.size = fitSizeInSize(maxSize, CGSizeMake( CGImageGetWidth(currentImage), CGImageGetHeight(currentImage)));
+			canvasRect.origin = CGPointZero;
+			drawRect = canvasRect;
+		}
+		else
+		{
+			canvasRect.size = fitSizeInSize(maxSize, cropRect.size);
+			float vertScale = canvasRect.size.height / CGImageGetHeight(currentImage);
+			float horScale = canvasRect.size.width / CGImageGetWidth(currentImage);
+			drawRect.origin = CGPointMake(-(cropRect.origin.x), -(cropRect.origin.y));
+			drawRect.size = CGSizeMake(cropRect.size.width / horScale, cropRect.size.height / vertScale);
+		}
+        CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, NULL);
         if(cgContext)
         {
-            CGContextDrawImage(cgContext, canvasRect, currentImage);
+            CGContextDrawImage(cgContext, drawRect, currentImage);
         }
 
         CFRelease(currentImage);

@@ -12,7 +12,6 @@
 }
 
 -(id)init;
--(id)initWithPath:(XADPath *)parent lastPathComponent:(XADString *)name;
 -(id)initWithComponents:(NSArray *)pathcomponents;
 -(id)initWithString:(NSString *)pathstring;
 -(id)initWithBytes:(const char *)bytes length:(int)length
@@ -32,6 +31,7 @@ separators:(const char *)separators source:(XADStringSource *)stringsource;
 -(XADPath *)pathByDeletingLastPathComponent;
 -(XADPath *)pathByDeletingFirstPathComponent;
 -(XADPath *)pathByAppendingPathComponent:(XADString *)component;
+-(XADPath *)pathByAppendingPath:(XADPath *)path;
 -(XADPath *)safePath;
 
 -(BOOL)isAbsolute;

@@ -1,5 +1,5 @@
 /*	
-	Copyright (c) 2006 Dancing Tortoise Software
+	Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
 	obtaining a copy of this software and associated documentation
@@ -45,6 +45,8 @@ typedef struct {
 @interface TSSTPageView : NSView
 {
     NSRect imageBounds;
+	NSRect firstPageRect;
+	NSRect secondPageRect;
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
     
@@ -63,6 +65,7 @@ typedef struct {
 	/*	While page selection is in progress this method has a value of 1 or 2.
 		The selection number coresponds to a highlighted page. */
 	int pageSelection;
+	NSRect cropRect;
 }
 
 @property (assign) NSInteger rotation;
@@ -112,6 +115,8 @@ typedef struct {
 	This is what enables the page rotation. */
 - (void)rotationTransformWithFrame:(NSRect)rect;
 
+- (BOOL)horizontalScrollIsPossible;
+- (BOOL)verticalScrollIsPossible;
 
 // Timers
 - (void)startAnimationForImage:(NSImage *)image;
@@ -124,7 +129,8 @@ typedef struct {
 - (void)pageUp;
 - (void)pageDown;
 
-- (int)selectPage;
+- (int)selectPageWithCrop:(BOOL)crop;
+- (NSRect)imageCropRectangle;
 
 @end
 

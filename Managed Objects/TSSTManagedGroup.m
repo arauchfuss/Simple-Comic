@@ -180,6 +180,7 @@
 @end
 
 static NSArray * TSSTComicArchiveTypes = nil;
+static NSArray * TSSTQuicklookArchiveTypes = nil;
 
 
 @implementation TSSTManagedArchive
@@ -193,6 +194,16 @@ static NSArray * TSSTComicArchiveTypes = nil;
 	}
 	
 	return TSSTComicArchiveTypes;
+}
+
++ (NSArray *)quicklookExtensions
+{
+	if(!TSSTQuicklookArchiveTypes)
+	{
+		TSSTQuicklookArchiveTypes = [[NSArray arrayWithObjects: @"cbr", @"cbz", nil] retain];
+	}
+	
+	return TSSTQuicklookArchiveTypes;
 }
 
 
@@ -375,7 +386,9 @@ static NSArray * TSSTComicArchiveTypes = nil;
                     fileName = [NSString stringWithFormat: @"%i-%@", collision, fileName];
                     archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
                 }
-                [imageArchive extractEntry: counter to: NSTemporaryDirectory() withName: fileName];
+				fileData = [imageArchive contentsOfEntry: counter];
+				[fileData writeToFile: archivePath atomically: YES];
+
                 [nestedDescription setValue: archivePath forKey: @"path"];
                 [nestedDescription setValue: [NSNumber numberWithBool: YES] forKey: @"nested"];
 				[(TSSTManagedPDF *)nestedDescription pdfContents];
@@ -389,6 +402,12 @@ static NSArray * TSSTComicArchiveTypes = nil;
     }
 }
 
+
+- (BOOL)quicklookCompatible
+{	
+	NSString * extension = [[[self valueForKey: @"name"] pathExtension] lowercaseString];
+	return [[TSSTManagedArchive quicklookExtensions] containsObject: extension];
+}
 
 
 @end
