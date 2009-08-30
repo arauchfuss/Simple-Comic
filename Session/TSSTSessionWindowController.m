@@ -47,8 +47,8 @@
 
 @implementation TSSTSessionWindowController
 
+@synthesize pageTurn, pageNames, pageSortDescriptor;
 
-@synthesize pageTurn, pageNames, pageSortDescriptor, pageSelectionInProgress;
 
 + (void)initialize
 {
