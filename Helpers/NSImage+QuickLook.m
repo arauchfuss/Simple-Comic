@@ -21,7 +21,8 @@
     
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:icon] 
                                                      forKey:(NSString *)kQLThumbnailOptionIconModeKey];
-    CGImageRef ref = QLThumbnailImageCreate(kCFAllocatorDefault, 
+    
+	CGImageRef ref = QLThumbnailImageCreate(kCFAllocatorDefault, 
                                             (CFURLRef)fileURL, 
                                             CGSizeMake(size.width, size.height),
                                             (CFDictionaryRef)dict);
@@ -30,7 +31,7 @@
         // Take advantage of NSBitmapImageRep's -initWithCGImage: initializer, new in Leopard,
         // which is a lot more efficient than copying pixel data into a brand new NSImage.
         // Thanks to Troy Stephens @ Apple for pointing this new method out to me.
-        NSBitmapImageRep *bitmapImageRep = [[NSBitmapImageRep alloc] initWithCGImage:ref];
+        NSBitmapImageRep * bitmapImageRep = [[NSBitmapImageRep alloc] initWithCGImage:ref];
         NSImage *newImage = nil;
         if (bitmapImageRep) {
             newImage = [[NSImage alloc] initWithSize:[bitmapImageRep size]];

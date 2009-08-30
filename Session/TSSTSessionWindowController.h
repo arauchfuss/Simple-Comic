@@ -112,6 +112,7 @@
 @property (retain) NSArray * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
 @property (retain) NSString * pageNames;
+@property (readonly) BOOL pageSelectionInProgress;
 
 - (id)initWithSession:(TSSTManagedSession *)aSession;
 
@@ -197,6 +198,7 @@
 - (void)killAllOptionalUIElements;
 - (void)killTopOptionalUIElement;
 
+- (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect;
 
 @end
 

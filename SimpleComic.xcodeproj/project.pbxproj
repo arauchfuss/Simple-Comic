@@ -456,10 +456,10 @@
 				2886930F0FED554E002C6BF7 /* fullscreen.tiff */,
 				288693100FED554E002C6BF7 /* hor_scale.tiff */,
 				2886931B0FED554E002C6BF7 /* win_scale.tiff */,
-				288693110FED554E002C6BF7 /* lr_order.tiff */,
 				288693130FED554E002C6BF7 /* org_size.tiff */,
 				288693140FED554E002C6BF7 /* preview_1.png */,
 				288693150FED554E002C6BF7 /* preview_2.png */,
+				288693110FED554E002C6BF7 /* lr_order.tiff */,
 				288693160FED554E002C6BF7 /* rl_order.tiff */,
 				288693170FED554E002C6BF7 /* rotate_l.tiff */,
 				288693180FED554E002C6BF7 /* rotate_r.tiff */,
@@ -1096,8 +1096,6 @@
 		FA7257E308A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1115,7 +1113,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
@@ -1127,8 +1124,6 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
@@ -1150,11 +1145,9 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_CFLAGS = "-mdynamic-no-pic";
 				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 				STRIP_INSTALLED_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1180,7 +1173,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lstdc++",
@@ -1207,8 +1199,9 @@
 		FA7257E808A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "ppc i386 ppc64 x86_64";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PREFIX_HEADER = "";
 				HEADER_SEARCH_PATHS = (

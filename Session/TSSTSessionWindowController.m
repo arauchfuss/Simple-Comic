@@ -1069,7 +1069,7 @@
        [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
     {
         NSRect allowedRect = [[[self window] screen] visibleFrame];
-        NSRect zoomFrame = [self windowWillUseStandardFrame: [self window] defaultFrame: allowedRect];
+        NSRect zoomFrame = [self optimalPageViewRectForRect: allowedRect];
         [[self window] setFrame: zoomFrame display: YES animate: NO];
     }
 }
@@ -1632,68 +1632,78 @@ images are currently visible and then skips over them.
 {
     if(sender == [self window])
     {
-        NSSize maxImageSize = [pageView combinedImageSizeForZoomLevel: [[session valueForKey: TSSTZoomLevel] intValue]];
-        float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [self toolbarHeight];
-        if([pageScrollView hasHorizontalScroller])
-        {
-            vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
-        }
-        float horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
-        
-        NSRect correctedFrame = defaultFrame;
-        correctedFrame.size.width -= horOffset;
-        correctedFrame.size.height -= vertOffset;
-        NSSize newSize;
-        if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
-        {
-            float scale;
-            if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
-            {
-                scale = 1;
-            }
-            else if( NSWidth(correctedFrame) / NSHeight(correctedFrame) < maxImageSize.width / maxImageSize.height)
-            {
-                scale = NSWidth(correctedFrame) / maxImageSize.width;
-            }
-            else
-            {
-                scale = NSHeight(correctedFrame) / maxImageSize.height;
-            }
-            newSize = scaleSize(maxImageSize, scale);
-        }
-        else
-        {
-            newSize.width = maxImageSize.width < NSWidth(correctedFrame) ? maxImageSize.width : NSWidth(correctedFrame);
-            newSize.height = maxImageSize.height < NSHeight(correctedFrame) ? maxImageSize.height : NSHeight(correctedFrame);
-        }
-        
-		NSSize minSize = [[self window] minSize];
-		newSize.width = newSize.width < minSize.width ? minSize.width : newSize.width;
-		newSize.height = newSize.height < minSize.height ? minSize.height : newSize.height;
-        NSRect windowFrame = [[self window] frame];
-        NSPoint centerPoint = NSMakePoint(NSMinX(windowFrame) + NSWidth(windowFrame) / 2, 
-                                          NSMinY(windowFrame) + NSHeight(windowFrame) / 2);
-		newSize.width += horOffset;
-        newSize.height += vertOffset;
-		NSRect screenRect = [[[self window] screen] visibleFrame];
-		
-        if((NSMinX(windowFrame) + newSize.width) > NSWidth(screenRect))
-		{
-			windowFrame.origin.x = NSWidth(screenRect) - newSize.width;
-		}
-		
-		windowFrame.origin.y += NSHeight(windowFrame) - newSize.height;
-		if((NSMinY(windowFrame) + newSize.height) > NSHeight(screenRect))
-		{
-			windowFrame.origin.y = NSHeight(screenRect) - newSize.height;
-		}
-		
-        defaultFrame = NSMakeRect( centerPoint.x - newSize.width / 2, centerPoint.y - newSize.height / 2, newSize.width, newSize.height);
-        defaultFrame.origin.x = defaultFrame.origin.x > NSMinX(screenRect) ? defaultFrame.origin.x : NSMinX(screenRect);
-        defaultFrame.origin.y = defaultFrame.origin.y > NSMinY(screenRect) ? defaultFrame.origin.y : NSMinY(screenRect);
+        defaultFrame = [self optimalPageViewRectForRect: defaultFrame];
     }
 	
     return defaultFrame;
+}
+
+
+/*	Added for 10.6 compatibility.  As I can no longer just call 
+	windowWillUseStandardFrame:defaultRect: */
+- (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
+{
+	NSSize maxImageSize = [pageView combinedImageSizeForZoomLevel: [[session valueForKey: TSSTZoomLevel] intValue]];
+	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [self toolbarHeight];
+	if([pageScrollView hasHorizontalScroller])
+	{
+		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
+	}
+	float horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
+	
+	NSRect correctedFrame = boundingRect;
+	correctedFrame.size.width -= horOffset;
+	correctedFrame.size.height -= vertOffset;
+	NSSize newSize;
+	if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
+	{
+		float scale;
+		if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
+		{
+			scale = 1;
+		}
+		else if( NSWidth(correctedFrame) / NSHeight(correctedFrame) < maxImageSize.width / maxImageSize.height)
+		{
+			scale = NSWidth(correctedFrame) / maxImageSize.width;
+		}
+		else
+		{
+			scale = NSHeight(correctedFrame) / maxImageSize.height;
+		}
+		newSize = scaleSize(maxImageSize, scale);
+	}
+	else
+	{
+		newSize.width = maxImageSize.width < NSWidth(correctedFrame) ? maxImageSize.width : NSWidth(correctedFrame);
+		newSize.height = maxImageSize.height < NSHeight(correctedFrame) ? maxImageSize.height : NSHeight(correctedFrame);
+	}
+	
+	NSSize minSize = [[self window] minSize];
+	newSize.width = newSize.width < minSize.width ? minSize.width : newSize.width;
+	newSize.height = newSize.height < minSize.height ? minSize.height : newSize.height;
+	NSRect windowFrame = [[self window] frame];
+	NSPoint centerPoint = NSMakePoint(NSMinX(windowFrame) + NSWidth(windowFrame) / 2, 
+									  NSMinY(windowFrame) + NSHeight(windowFrame) / 2);
+	newSize.width += horOffset;
+	newSize.height += vertOffset;
+	NSRect screenRect = [[[self window] screen] visibleFrame];
+	
+	if((NSMinX(windowFrame) + newSize.width) > NSWidth(screenRect))
+	{
+		windowFrame.origin.x = NSWidth(screenRect) - newSize.width;
+	}
+	
+	windowFrame.origin.y += NSHeight(windowFrame) - newSize.height;
+	if((NSMinY(windowFrame) + newSize.height) > NSHeight(screenRect))
+	{
+		windowFrame.origin.y = NSHeight(screenRect) - newSize.height;
+	}
+	
+	boundingRect = NSMakeRect( centerPoint.x - newSize.width / 2, centerPoint.y - newSize.height / 2, newSize.width, newSize.height);
+	boundingRect.origin.x = boundingRect.origin.x > NSMinX(screenRect) ? boundingRect.origin.x : NSMinX(screenRect);
+	boundingRect.origin.y = boundingRect.origin.y > NSMinY(screenRect) ? boundingRect.origin.y : NSMinY(screenRect);
+	
+	return boundingRect;
 }
 
 

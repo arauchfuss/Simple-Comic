@@ -320,7 +320,7 @@
 	<key>CFBundleSignature</key>
 	<string>TSST</string>
 	<key>CFBundleVersion</key>
-	<string>223</string>
+	<string>226</string>
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>NSMainNibFile</key>
@@ -456,10 +456,6 @@
 			<string>org.7-zip.7-zip-comic-archive</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
-				<key>public.mime-type</key>
-				<array>
-					<string>application/x-cb7-compressed</string>
-				</array>
 				<key>com.apple.ostype</key>
 				<array>
 					<string>CB7</string>
@@ -468,6 +464,10 @@
 				<array>
 					<string>cb7</string>
 					<string>CB7</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-cb7-compressed</string>
 				</array>
 			</dict>
 		</dict>

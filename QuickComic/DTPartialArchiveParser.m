@@ -33,9 +33,9 @@
 			[parser setDelegate: self];
 			
 			@try { [parser parse]; }
-			@catch(id e)
+			@catch(NSException * exception)
 			{
-				NSLog([e name]);
+				NSLog(@"DTPartialArchiveParser: Caught %@: %@", [exception name], [exception reason]);
 			}
 		}
 	}

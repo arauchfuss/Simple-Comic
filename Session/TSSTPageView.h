@@ -65,6 +65,7 @@ typedef struct {
 	/*	While page selection is in progress this method has a value of 1 or 2.
 		The selection number coresponds to a highlighted page. */
 	int pageSelection;
+	/* This is the rect describing the users page selection. */
 	NSRect cropRect;
 }
 

@@ -279,7 +279,6 @@
 
 
 
-/*! this needs a rewrite bad! Too stinking long. */
 - (void)drawRect:(NSRect)aRect
 {
     if(!firstPageImage)
@@ -331,7 +330,7 @@
 
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
 
-	if((pageSelection == 1 || pageSelection == 2))
+	if([dataSource pageSelectionInProgress])
 	{
 		NSDictionary * stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys: 
 										   [NSFont fontWithName: @"Lucida Grande" size: 24], NSFontAttributeName, 

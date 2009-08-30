@@ -1,33 +1,70 @@
-.changes
-{
-    font: 10pt Verdana, sans-serif;
+body {
+    font: 10pt Helvetica, sans-serif;
     color: black;
     background: white;
     text-align: left;
 }
 
+#title {
+	padding: 1em;
+}
 
-dl
-{
+#title h2 {
+	display: inline;
+	padding: 0;
+	margin: 0 0 0 0.5em;
+	width: 2em;
+	height: 2em;
+
+}
+
+#title img {
+	float: left;
+	width: 2em;
+	height: 2em;
+	padding: 0;
+	margin: 0;
+}
+
+
+#contents {
+	padding: 1em;
+}
+
+#contents a {
+	color: #778fbd;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#contents dl {
+	list-style: none;
+}
+
+
+/*dl {
     margin-left: 1em;
     margin-top: 1em;
     padding-bottom: 2em;
 }
+*/
 
-
-
-dt
-{
+dt {
     margin-top: 0.5em;
     font-weight: bold;
 }
 
 
 
-dd
-{
+dd {
+/*	font-style: italic;*/
     margin-top: 0.2em;
-    color: #888888;
+/*    color: #888888;*/
     margin-left: 1em;
 }
 
+
+/*dd:before
+{
+	content: "- ";
+}*/
