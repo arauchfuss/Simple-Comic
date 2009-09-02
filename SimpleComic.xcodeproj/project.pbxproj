@@ -1152,6 +1152,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
 				STRIP_INSTALLED_PRODUCT = YES;
+				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1211,7 +1212,8 @@
 					unrar,
 					unzip,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Release;
 		};
