@@ -13,8 +13,10 @@
 			<array>
 				<string>cx.c3.cbr-archive</string>
 				<string>cx.c3.cbz-archive</string>
+				<string>cx.c3.cb7-archive</string>
 				<string>com.macitbetter.cbr-archive</string>
 				<string>com.macitbetter.cbz-archive</string>
+				<string>com.macitbetter.cb7-archive</string>
 				<string>public.cbr-archive</string>
 				<string>public.cbz-archive</string>
 				<string>org.7-zip.7-zip-comic-archive</string>
