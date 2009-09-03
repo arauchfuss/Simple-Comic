@@ -343,7 +343,7 @@
 	<key>CFBundleSignature</key>
 	<string>TSST</string>
 	<key>CFBundleVersion</key>
-	<string>226</string>
+	<string>227</string>
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>NSMainNibFile</key>

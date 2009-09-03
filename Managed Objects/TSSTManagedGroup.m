@@ -115,7 +115,7 @@
 	NSString * folderPath = [self valueForKey: @"path"];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSManagedObject * nestedDescription;
-	NSError * error;
+	NSError * error = nil;
 	NSArray * nestedFiles = [fileManager contentsOfDirectoryAtPath: folderPath error: &error];
 	if (error) {
 		NSLog(@"%@",[error localizedDescription]);
