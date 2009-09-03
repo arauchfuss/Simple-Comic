@@ -404,7 +404,7 @@ static NSArray * allAvailableStringEncodings(void)
     }
 	
     NSURL * url;
-    NSError * error;
+    NSError * error = nil;
     
 	NSFileManager * fileManager = [NSFileManager defaultManager];
     NSString * applicationSupportFolder = [self applicationSupportFolder];
@@ -420,7 +420,7 @@ static NSArray * allAvailableStringEncodings(void)
 															  forKey: NSMigratePersistentStoresAutomaticallyOption];
     url = [NSURL fileURLWithPath: [applicationSupportFolder stringByAppendingPathComponent: @"SimpleComic.sql"]];
 	
-	
+	error = nil;
 	NSDictionary * storeInfo = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType: NSSQLiteStoreType URL: url error: &error];
 	if(error)
 	{
