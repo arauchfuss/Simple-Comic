@@ -410,18 +410,29 @@ static NSArray * allAvailableStringEncodings(void)
     NSString * applicationSupportFolder = [self applicationSupportFolder];
     if (![fileManager fileExistsAtPath: applicationSupportFolder isDirectory: NULL] )
 	{
-        [fileManager createDirectoryAtPath: applicationSupportFolder attributes: nil];
+		if(![fileManager createDirectoryAtPath: applicationSupportFolder withIntermediateDirectories: YES attributes: nil error: &error])
+		{
+			NSLog(@"%@",[error localizedDescription]);
+		}
     }
 	
 	NSDictionary * storeOptions = [NSDictionary dictionaryWithObject: [NSNumber numberWithBool: YES] 
 															  forKey: NSMigratePersistentStoresAutomaticallyOption];
     url = [NSURL fileURLWithPath: [applicationSupportFolder stringByAppendingPathComponent: @"SimpleComic.sql"]];
 	
-	NSDictionary * storeInfo = [NSPersistentStoreCoordinator metadataForPersistentStoreWithURL: url error: &error];
-    
+	
+	NSDictionary * storeInfo = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType: NSSQLiteStoreType URL: url error: &error];
+	if(error)
+	{
+		NSLog(@"%@",[error localizedDescription]);
+	}    
+
 	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1704"])
 	{
-		[fileManager removeFileAtPath: [url path] handler: nil];
+		if(![fileManager removeItemAtPath: [url path] error: &error])
+		{
+			NSLog(@"%@",[error localizedDescription]);
+		}
 	}
 	
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];

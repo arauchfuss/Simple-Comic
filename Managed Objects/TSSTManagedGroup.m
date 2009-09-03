@@ -47,9 +47,13 @@
 
 - (void)willTurnIntoFault
 {
+	NSError * error = nil;
 	if([[self valueForKey: @"nested"] boolValue])
 	{
-		[[NSFileManager defaultManager] removeFileAtPath: [self valueForKey: @"path"] handler: nil];
+		if(![[NSFileManager defaultManager] removeItemAtPath: [self valueForKey: @"path"] error: &error])
+		{
+			NSLog(@"%@",[error localizedDescription]);
+		}
 	}
 }
 
@@ -111,7 +115,11 @@
 	NSString * folderPath = [self valueForKey: @"path"];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSManagedObject * nestedDescription;
-	NSArray * nestedFiles = [fileManager directoryContentsAtPath: folderPath];
+	NSError * error;
+	NSArray * nestedFiles = [fileManager contentsOfDirectoryAtPath: folderPath error: &error];
+	if (error) {
+		NSLog(@"%@",[error localizedDescription]);
+	}
 	NSString * path, * fileExtension, * fullPath;
 	BOOL isDirectory, exists;
 	
@@ -209,15 +217,22 @@ static NSArray * TSSTQuicklookArchiveTypes = nil;
 
 - (void)willTurnIntoFault
 {
+	NSError * error;
 	if([[self valueForKey: @"nested"] boolValue])
 	{
-		[[NSFileManager defaultManager] removeFileAtPath: [self valueForKey: @"path"] handler: nil];
+		if(![[NSFileManager defaultManager] removeItemAtPath: [self valueForKey: @"path"] error: &error])
+		{
+			NSLog(@"%@",[error localizedDescription]);
+		}
 	}
 	
 	NSString * solid  = [self valueForKey: @"solidDirectory"];
 	if(solid)
 	{
-		[[NSFileManager defaultManager] removeFileAtPath: solid handler: nil];
+		if(![[NSFileManager defaultManager] removeItemAtPath: solid error: &error])
+		{
+			NSLog(@"%@",[error localizedDescription]);
+		}
 	}
 }
 
@@ -325,14 +340,14 @@ static NSArray * TSSTQuicklookArchiveTypes = nil;
     NSString * extension, * archivePath = nil;
 	NSString * fileName = [self valueForKey: @"name"];
 	int counter, archivedFilesCount = [imageArchive numberOfEntries];
-
+	NSError * error;
 	if([imageArchive isSolid])
 	{
 		do {
 			archivePath = [NSString stringWithFormat: @"SC-images-%i", collision];
 			archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: archivePath];
 			++collision;
-		} while (![fileManager createDirectoryAtPath: archivePath attributes: nil]);
+		} while (![fileManager createDirectoryAtPath: archivePath withIntermediateDirectories: YES attributes: nil error: &error]);
 		[self setValue: archivePath forKey: @"solidDirectory"];
 	}
     
