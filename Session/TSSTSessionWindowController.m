@@ -123,6 +123,7 @@
         uses has mouse events turned off by default */
     [exposeBezel setIgnoresMouseEvents: NO];
     [exposeBezel setFloatingPanel: YES];
+	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
     /*  This needs to be set so that mouse moved events from the fullscreen window
         are passed to its delegate, this window controller */
