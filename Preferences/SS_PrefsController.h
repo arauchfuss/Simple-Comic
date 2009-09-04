@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SS_PrefsController : NSObject
+@interface SS_PrefsController : NSObject < NSToolbarDelegate, NSWindowDelegate >
 {
     NSWindow *prefsWindow;
     NSMutableDictionary *preferencePanes;
@@ -71,10 +71,8 @@ float ToolbarHeightForWindow(NSWindow *window);
 - (void)setAlwaysOpensCentered:(BOOL)newAlwaysOpensCentered;
 - (NSToolbarDisplayMode)toolbarDisplayMode;
 - (void)setToolbarDisplayMode:(NSToolbarDisplayMode)displayMode;
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_2
 - (NSToolbarSizeMode)toolbarSizeMode;
 - (void)setToolbarSizeMode:(NSToolbarSizeMode)sizeMode;
-#endif
 
 @end
 

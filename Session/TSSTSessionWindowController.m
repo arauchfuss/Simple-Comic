@@ -177,7 +177,6 @@
 	[newArea release];
 	[jumpField setDelegate: self];
     [self restoreSession];
-//	[self fullscreen];
 }
 
 

@@ -68,9 +68,7 @@
         panesOrder = [[NSMutableArray alloc] init];
         
         [self setToolbarDisplayMode:NSToolbarDisplayModeIconAndLabel];
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_2
         [self setToolbarSizeMode:NSToolbarSizeModeDefault];
-#endif
         [self setUsesTexturedWindow:NO];
         [self setAlwaysShowsToolbar:NO];
         [self setAlwaysOpensCentered:YES];		
@@ -474,9 +472,7 @@ float ToolbarHeightForWindow(NSWindow *window)
     [prefsToolbar setAllowsUserCustomization:NO];
     [prefsToolbar setAutosavesConfiguration:NO];
     [prefsToolbar setDisplayMode:toolbarDisplayMode];
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_2
     [prefsToolbar setSizeMode:toolbarSizeMode];
-#endif
     if ((prefsToolbarItems && ([prefsToolbarItems count] > 1)) || alwaysShowsToolbar) {
         [prefsWindow setToolbar:prefsToolbar];
     } else if (!alwaysShowsToolbar && prefsToolbarItems && ([prefsToolbarItems count] == 1)) {
@@ -500,7 +496,6 @@ float ToolbarHeightForWindow(NSWindow *window)
 }
 
 
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_2
 - (NSToolbarSizeMode)toolbarSizeMode
 {
     return toolbarSizeMode;
@@ -511,7 +506,6 @@ float ToolbarHeightForWindow(NSWindow *window)
 {
     toolbarSizeMode = sizeMode;
 }
-#endif
 
 
 - (void)prefsToolbarItemClicked:(NSToolbarItem*)item

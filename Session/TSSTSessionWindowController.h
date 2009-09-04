@@ -39,6 +39,18 @@
 @class TSSTManagedSession;
 @class TSSTFullscreenProgressBar;
 
+@protocol TSSTPageTurnProtocol
+
+@optional
+
+- (BOOL)canTurnPreviousPage;
+- (BOOL)canTurnPageNext;
+- (BOOL)canTurnPageLeft;
+- (BOOL)canTurnPageRight;
+
+@end
+
+
 
 /*	This class deals with an unholy crapload of functionality
 	- First and most importantly it controlls the navigation 
@@ -53,7 +65,7 @@
 		- Handles the layout of the info window 
 			when the user scrubs the progress bar.
 */
-@interface TSSTSessionWindowController : NSWindowController
+@interface TSSTSessionWindowController : NSWindowController < TSSTPageTurnProtocol, NSTextFieldDelegate >
 {
     /* Controller for all of the page entities related to the session object */
     IBOutlet NSArrayController * pageController;
@@ -182,13 +194,6 @@
 - (float)toolbarHeight;
 - (BOOL)currentPageIsText;
 
-/* Bindings */
-- (BOOL)canTurnPreviousPage;
-- (BOOL)canTurnPageNext;
-- (BOOL)canTurnPageLeft;
-- (BOOL)canTurnPageRight;
-
-
 - (TSSTManagedSession *)session;
 - (NSManagedObjectContext *)managedObjectContext;
 - (void)toolbarWillAddItem:(NSNotification *)notification;
@@ -199,6 +204,7 @@
 - (void)killTopOptionalUIElement;
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect;
+- (BOOL)control:(NSTextField *)control didFailToFormatString:(NSString *)string errorDescription:(NSString *)error;
 
 @end
 

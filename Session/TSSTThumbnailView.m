@@ -172,7 +172,7 @@
     switch ([charNumber unsignedIntValue])
     {
         case 27:
-            [[[self window] delegate] killTopOptionalUIElement];
+            [[[self window] windowController] killTopOptionalUIElement];
             break;
         default:
             break;
