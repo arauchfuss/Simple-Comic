@@ -39,8 +39,24 @@ static NSMutableArray * TSSTComicImageTypes = nil;
 static NSArray * TSSTComicTextTypes = nil;
 static NSDictionary * TSSTInfoPageAttributes = nil;
 static NSSize monospaceCharacterSize;
+static NSCache * thumbnailCache = nil;
 
 @implementation TSSTPage
+
+
+
++ (NSCache *)thumbnailCache
+{
+	if (!thumbnailCache)
+	{
+		thumbnailCache = [[NSCache alloc] init];
+		[thumbnailCache setName: @"thumbnailCache"];
+	}
+	
+	return thumbnailCache;
+}
+
+
 
 + (NSArray *)imageExtensions
 {
@@ -55,6 +71,8 @@ static NSSize monospaceCharacterSize;
 	return TSSTComicImageTypes;
 }
 
+
+
 + (NSArray *)textExtensions
 {
 	if(!TSSTComicTextTypes)
@@ -64,6 +82,7 @@ static NSSize monospaceCharacterSize;
 	
 	return TSSTComicTextTypes;
 }
+
 
 
 + (void)initialize
@@ -165,6 +184,19 @@ static NSSize monospaceCharacterSize;
 }
 
 
+- (NSString *)uniqueName
+{
+	TSSTManagedGroup * group = [self valueForKey: @"group"];
+	NSString * groupPath = @"";
+	if(group)
+	{
+		groupPath = [group valueForKey: @"path"];
+	}
+	
+	return [groupPath stringByAppendingString: [self valueForKey: @"imagePath"]];
+}
+
+
 - (NSImage *)thumbnail
 {
 	NSImage * thumbnail = nil;
@@ -260,7 +292,6 @@ static NSSize monospaceCharacterSize;
 	[encodingDetector analyzeData: textData];
 	NSString * text = [[NSString alloc] initWithData: textData encoding: [encodingDetector encoding]];
 	NSArray * lines = [text componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
-//	int lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;
 	for(NSString * singleLine in lines)
@@ -274,7 +305,6 @@ static NSSize monospaceCharacterSize;
 			}
 			
 			pageRect.size.height += NSHeight(lineRect);
-//			NSLog(@"Line: %@ Page: %@", NSStringFromRect(lineRect), NSStringFromRect(pageRect));
 		}
 	}
 	

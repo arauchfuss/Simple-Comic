@@ -1195,7 +1195,7 @@
 					unrar,
 					unzip,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Debug;
 		};
@@ -1223,7 +1223,7 @@
 					unrar,
 					unzip,
 				);
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Default;
 		};

@@ -176,7 +176,6 @@
 - (NSString *)nameForPageAtIndex:(int)index;
 
 - (void)restoreSession;
-- (void)prepareToEnd;
 
 - (void)refreshLoupePanel;
 - (void)infoPanelSetupAtPoint:(NSPoint)point;

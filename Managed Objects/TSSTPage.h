@@ -32,12 +32,14 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 {
     NSLock * thumbLock;
     NSLock * loaderLock;
+	NSData * transientThumbnailData;
 }
 
++ (NSCache *)thumbnailCache;
 + (NSArray *)imageExtensions;
 + (NSArray *)textExtensions;
 - (NSString *)name;
-//- (NSString *)deconflictionName;
+- (NSString *)uniqueName;
    
 - (BOOL )shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;

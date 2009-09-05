@@ -238,7 +238,7 @@
     if([[pageController arrangedObjects] count] <= 0)
     {
         SetSystemUIMode(kUIModeNormal, 0);
-        [self prepareToEnd];
+        [self close];
         return;
     }
 	
@@ -1521,8 +1521,7 @@ images are currently visible and then skips over them.
 }
 
 
-
-- (void)prepareToEnd
+- (BOOL)windowShouldClose:(id)sender
 {
 	[[self window] setAcceptsMouseMovedEvents: NO];
 	[fullscreenWindow setAcceptsMouseMovedEvents: NO];
@@ -1531,13 +1530,8 @@ images are currently visible and then skips over them.
     [NSCursor unhide];
     SetSystemUIMode(kUIModeNormal, 0);
 	closing = YES;
-}
-
-
-- (BOOL)windowShouldClose:(id)sender
-{
-	[self prepareToEnd];
 	[[NSNotificationCenter defaultCenter] postNotificationName: TSSTSessionEndNotification object: self];
+	
     return YES;
 }
 

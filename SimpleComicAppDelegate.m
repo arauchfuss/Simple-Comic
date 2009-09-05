@@ -282,16 +282,13 @@ static NSArray * allAvailableStringEncodings(void)
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {	
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-	BOOL saveSessions = [[userDefaults valueForKey: TSSTSessionRestore] boolValue];
 	
-	if(!saveSessions)
+	if(![[userDefaults valueForKey: TSSTSessionRestore] boolValue])
 	{
 		/* Goes through and deletes all active sessions if the user has auto save turned off */
 		for(TSSTSessionWindowController * sessionWindow in sessions)
 		{
-			[sessionWindow close];
-			[sessionWindow prepareToEnd];
-			[[self managedObjectContext] deleteObject: [sessionWindow session]];
+			[[sessionWindow window] performClose: self];
 		}
 	}
 	
