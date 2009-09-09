@@ -1032,9 +1032,9 @@
 	NSString * representationPath;
 	
     BOOL currentAllowed = ![pageOne shouldDisplayAlone] && 
-        !(index == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
+        !(index == 0 && [[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
     
-    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && ![pageTwo shouldDisplayAlone])
+    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && pageTwo && ![pageTwo shouldDisplayAlone])
     {
         if([[session valueForKey: TSSTPageOrder] boolValue])
         {
