@@ -238,7 +238,7 @@
     if([[pageController arrangedObjects] count] <= 0)
     {
         SetSystemUIMode(kUIModeNormal, 0);
-        [self close];
+        [[self window] close];
         return;
     }
 	
@@ -482,7 +482,9 @@
 
 - (IBAction)removePages:(id)sender
 {
+	pageSelectionInProgress = YES;
 	int selection = [pageView selectPageWithCrop: NO];
+	pageSelectionInProgress = NO;
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -856,6 +858,7 @@
 	
 	int selection = [pageView selectPageWithCrop: YES];
 	NSRect cropRect = [pageView imageCropRectangle];
+	pageSelectionInProgress = NO;
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -916,7 +919,6 @@
 			}
 		}
 	}
-	pageSelectionInProgress = NO;
 	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
 	
@@ -932,7 +934,9 @@
 	/*	selectpage returns prompts the user for which page they wish to use.
 		If there is only one page or the user selects the first page 0 is returned,
 		otherwise 1. */
+	pageSelectionInProgress = YES;
 	int selection = [pageView selectPageWithCrop: NO];
+	pageSelectionInProgress = NO;
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -1523,13 +1527,13 @@ images are currently visible and then skips over them.
 
 - (BOOL)windowShouldClose:(id)sender
 {
+	closing = YES;
 	[[self window] setAcceptsMouseMovedEvents: NO];
 	[fullscreenWindow setAcceptsMouseMovedEvents: NO];
 	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
     [NSCursor unhide];
     SetSystemUIMode(kUIModeNormal, 0);
-	closing = YES;
 	[[NSNotificationCenter defaultCenter] postNotificationName: TSSTSessionEndNotification object: self];
 	
     return YES;

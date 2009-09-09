@@ -13,18 +13,6 @@
 		<key>Tabs</key>
 		<array>
 			<dict>
-				<key>StateType</key>
-				<string>PreviewTab</string>
-				<key>URL</key>
-				<string>file:///Users/arau/Developer/Simple-Comic/English.lproj/Help/sctitle.html</string>
-			</dict>
-			<dict>
-				<key>DocumentURL</key>
-				<string>file://localhost/Users/arau/Developer/Simple-Comic/English.lproj/Help/sctitle.html</string>
-				<key>StateType</key>
-				<string>DefaultTab</string>
-			</dict>
-			<dict>
 				<key>DocumentURL</key>
 				<string>file://localhost/Users/arau/Developer/Simple-Comic/English.lproj/Help/help.css</string>
 				<key>StateType</key>

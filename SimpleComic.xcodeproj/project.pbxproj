@@ -1191,10 +1191,6 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = (
-					unrar,
-					unzip,
-				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Debug;
@@ -1207,10 +1203,6 @@
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = (
-					unrar,
-					unzip,
-				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Release;
@@ -1219,10 +1211,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREFIX_HEADER = "";
-				HEADER_SEARCH_PATHS = (
-					unrar,
-					unzip,
-				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.6.sdk";
 			};
 			name = Default;
