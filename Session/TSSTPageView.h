@@ -67,6 +67,7 @@ typedef struct {
 	int pageSelection;
 	/* This is the rect describing the users page selection. */
 	NSRect cropRect;
+	BOOL canCrop;
 }
 
 @property (assign) NSInteger rotation;

@@ -129,7 +129,7 @@
 /* Animated GIF method */
 - (void)startAnimationForImage:(NSImage *)image
 {
-    id testImageRep = [image bestRepresentationForDevice: nil];
+    id testImageRep = [image bestRepresentationForDevice: nil];;
     int frameCount;
     float frameDuration;
     NSDictionary * animationInfo;
@@ -164,7 +164,7 @@
         return;
     }
     
-    NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForDevice: nil];
+    NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForDevice: nil];;
     int loopCount = [[animationInfo valueForKey: @"loopCount"] intValue];
     int frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] intValue] - 1);
     int currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] intValue];
@@ -332,11 +332,19 @@
 
 	if([dataSource pageSelectionInProgress])
 	{
+		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+		[style setAlignment: NSCenterTextAlignment];
 		NSDictionary * stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys: 
 										   [NSFont fontWithName: @"Lucida Grande" size: 24], NSFontAttributeName, 
 										   [NSColor colorWithCalibratedWhite: 1 alpha: 1.0], NSForegroundColorAttributeName,
+										   style, NSParagraphStyleAttributeName,
 										   nil];
+		[style release];
 		NSString * selectionText = [NSString stringWithString: @"Click to select page"];
+		if(canCrop)
+		{
+			selectionText = [selectionText stringByAppendingString: @"\nDrag to crop"];
+		}
 		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
 		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
 		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 10);
@@ -658,6 +666,7 @@
 	so that non archive pages can be ommitted during icon selection */
 - (int)selectPageWithCrop:(BOOL)crop
 {
+	canCrop = crop;
 	unsigned int charNumber = 0;
 	NSPoint cursorPoint = NSZeroPoint;
 	NSPoint currentPoint;
@@ -703,7 +712,7 @@
 		[self setNeedsDisplay: YES];
 		
 		NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
-		if(crop)
+		if(canCrop)
 		{
 			capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
 		}
