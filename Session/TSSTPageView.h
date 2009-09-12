@@ -35,12 +35,14 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+
 typedef struct {
 	float left;
 	float right;
 	float up;
 	float down;
 } direction;
+
 
 @interface TSSTPageView : NSView
 {

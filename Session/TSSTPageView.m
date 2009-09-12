@@ -186,6 +186,7 @@
                                        userInfo: animationInfo
                                         repeats: NO];
     }
+	
     [self setNeedsDisplay: YES];
 }
 

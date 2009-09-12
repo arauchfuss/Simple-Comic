@@ -92,7 +92,7 @@
     if (self != nil)
     {
 		pageTurn = 0;
-		self.pageSelectionInProgress = NO;
+		pageSelectionInProgress = NO;
 		mouseMovedTimer = nil;
 		closing = NO;
         session = [aSession retain];
@@ -403,6 +403,7 @@
 }
 
 
+
 - (void)refreshLoupePanel
 {
     BOOL loupe = [[session valueForKey: @"loupe"] boolValue];
@@ -482,9 +483,10 @@
 
 - (IBAction)removePages:(id)sender
 {
-	self.pageSelectionInProgress = YES;
+	pageSelectionInProgress = YES;
 	int selection = [pageView selectPageWithCrop: NO];
-	self.pageSelectionInProgress = NO;
+	pageSelectionInProgress = NO;
+	
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -832,7 +834,7 @@
 	archive. */
 - (IBAction)setArchiveIcon:(id)sender
 {
-	self.pageSelectionInProgress = YES;
+	pageSelectionInProgress = YES;
 	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
     int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
 	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
@@ -918,7 +920,7 @@
 			}
 		}
 	}
-	self.pageSelectionInProgress = NO;
+	pageSelectionInProgress = NO;
 	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
 	
@@ -934,7 +936,9 @@
 	/*	selectpage returns prompts the user for which page they wish to use.
 		If there is only one page or the user selects the first page 0 is returned,
 		otherwise 1. */
+	pageSelectionInProgress = YES;
 	int selection = [pageView selectPageWithCrop: NO];
+	pageSelectionInProgress = NO;
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];

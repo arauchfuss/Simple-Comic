@@ -8,6 +8,18 @@
 
 #import "DTToolbarItems.h"
 #import "TSSTSessionWindowController.h"
+#import "SimpleComicAppDelegate.h"
+
+@implementation DTToolbarItem
+
+-(void)validate
+{
+	[(NSControl *)[self view] setEnabled: ![[[self toolbar] delegate] pageSelectionInProgress]];
+}
+
+@end
+
+
 
 @implementation DTPageTurnToolbarItem
 
@@ -16,6 +28,7 @@
 {
 	[(NSSegmentedControl *)[self view] setEnabled: [[[self toolbar] delegate] canTurnPageLeft] forSegment: 0];
 	[(NSSegmentedControl *)[self view] setEnabled: [[[self toolbar] delegate] canTurnPageRight] forSegment: 1];
+	[super validate];
 }
 
 
