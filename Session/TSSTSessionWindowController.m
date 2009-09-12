@@ -92,7 +92,7 @@
     if (self != nil)
     {
 		pageTurn = 0;
-		pageSelectionInProgress = NO;
+		self.pageSelectionInProgress = NO;
 		mouseMovedTimer = nil;
 		closing = NO;
         session = [aSession retain];
@@ -482,7 +482,9 @@
 
 - (IBAction)removePages:(id)sender
 {
+	self.pageSelectionInProgress = YES;
 	int selection = [pageView selectPageWithCrop: NO];
+	self.pageSelectionInProgress = NO;
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
@@ -830,7 +832,7 @@
 	archive. */
 - (IBAction)setArchiveIcon:(id)sender
 {
-	pageSelectionInProgress = YES;
+	self.pageSelectionInProgress = YES;
 	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
     int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
 	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
@@ -916,7 +918,7 @@
 			}
 		}
 	}
-	pageSelectionInProgress = NO;
+	self.pageSelectionInProgress = NO;
 	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
 	
@@ -1425,6 +1427,11 @@ images are currently visible and then skips over them.
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	if(pageSelectionInProgress)
+	{
+		return NO;
+	}
+	
 	BOOL valid = YES;
     int state;
     if([menuItem action] == @selector(changeFullscreen:))
@@ -1479,6 +1486,18 @@ images are currently visible and then skips over them.
 	else if ([menuItem action] == @selector(skipLeft:))
 	{
 		valid = [self canTurnPageLeft];
+	}
+	else if ([menuItem action] == @selector(setArchiveIcon:))
+	{
+		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+	}
+	else if ([menuItem action] == @selector(extractPage:))
+	{
+		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+	}
+	else if ([menuItem action] == @selector(removePages:))
+	{
+		valid = ![[session valueForKey: TSSTViewRotation] intValue];
 	}
     else if([menuItem tag] == 400)
     {
