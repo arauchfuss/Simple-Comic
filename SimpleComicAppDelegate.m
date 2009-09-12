@@ -283,7 +283,7 @@ static NSArray * allAvailableStringEncodings(void)
 {	
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 	
-	if([[userDefaults valueForKey: TSSTSessionRestore] boolValue]);
+	if(![[userDefaults valueForKey: TSSTSessionRestore] boolValue])
 	{
 		/* Goes through and deletes all active sessions if the user has auto save turned off */
 		for(TSSTSessionWindowController * sessionWindow in sessions)
