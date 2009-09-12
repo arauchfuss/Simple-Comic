@@ -1038,7 +1038,7 @@
     BOOL currentAllowed = ![pageOne shouldDisplayAlone] && 
         !(index == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
     
-    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && ![pageTwo shouldDisplayAlone])
+    if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && pageTwo && ![pageTwo shouldDisplayAlone])
     {
         if([[session valueForKey: TSSTPageOrder] boolValue])
         {
@@ -1429,6 +1429,11 @@ images are currently visible and then skips over them.
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	if(pageSelectionInProgress)
+	{
+		return NO;
+	}
+	
 	BOOL valid = YES;
     int state;
     if([menuItem action] == @selector(changeFullscreen:))
@@ -1483,6 +1488,18 @@ images are currently visible and then skips over them.
 	else if ([menuItem action] == @selector(skipLeft:))
 	{
 		valid = [self canTurnPageLeft];
+	}
+	else if ([menuItem action] == @selector(setArchiveIcon:))
+	{
+		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+	}
+	else if ([menuItem action] == @selector(extractPage:))
+	{
+		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+	}
+	else if ([menuItem action] == @selector(removePages:))
+	{
+		valid = ![[session valueForKey: TSSTViewRotation] intValue];
 	}
     else if([menuItem tag] == 400)
     {

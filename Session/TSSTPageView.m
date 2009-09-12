@@ -972,9 +972,6 @@
 		case 27:
 			[[self dataSource] killTopOptionalUIElement];
 			break;
-		case 127:
-			[[self dataSource] removePages: self];
-			break;
 		default:
 			[super keyDown: event];
 			break;
