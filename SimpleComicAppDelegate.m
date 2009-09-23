@@ -903,12 +903,15 @@ static NSArray * allAvailableStringEncodings(void)
 		
 		NSUInteger index = [encodingIdentifiers indexOfObject: [NSNumber numberWithUnsignedInteger: guess]];
 		NSUInteger counter = 0;
-		NSStringEncoding encoding;
+//		NSStringEncoding encoding;
+		NSNumber * encoding;
 		while(!testText)
 		{
 			[testText release];
-			encoding = [[encodingIdentifiers objectAtIndex: counter] unsignedIntegerValue];
-			testText = [[NSString alloc] initWithData: data encoding: guess];
+			encoding = [encodingIdentifiers objectAtIndex: counter];
+			if ([encoding class] != [NSNull class]) {
+				testText = [[NSString alloc] initWithData: data encoding: [encoding unsignedIntegerValue]];
+			}
 			index = counter++;
 		}
 
