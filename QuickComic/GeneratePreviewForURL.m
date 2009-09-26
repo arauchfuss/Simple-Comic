@@ -36,8 +36,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         {
             int counter = 0;
             int count = [fileList count];
-            count = count < 20 ? count : 20;
-            for( ; counter < count; ++counter)
+//            count = count < 20 ? count : 20;
+			NSDate * pageRenderStartTime = [NSDate date];
+			NSDate * currentTime = nil;
+            do
             {
                 index = [[[fileList objectAtIndex: counter] valueForKey: @"index"] intValue];
                 pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
@@ -50,7 +52,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 				
                 CFRelease(currentImage);
                 CFRelease(pageSourceRef);
-            }
+				currentTime = [NSDate date];
+				counter ++;
+            }while(1 > [currentTime timeIntervalSinceDate: pageRenderStartTime] && counter < count);
             
             QLPreviewRequestFlushContext(preview, cgContext);
             CFRelease(cgContext);
