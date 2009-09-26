@@ -15,7 +15,7 @@
 // ************************************************
 
 
-+ (int)version
++ (NSInteger)version
 {
     return 1; // 28th June 2003
 }
