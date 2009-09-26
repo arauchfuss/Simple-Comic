@@ -44,7 +44,7 @@
 -(XADStringSource *)source;
 
 -(BOOL)isEqual:(id)other;
--(unsigned)hash;
+-(NSUInteger)hash;
 -(id)copyWithZone:(NSZone *)zone;
 
 @end

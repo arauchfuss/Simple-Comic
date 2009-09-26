@@ -113,6 +113,7 @@ extern NSString *XADVolumesKey;
 -(CSHandle *)handle;
 -(CSHandle *)handleAtDataOffsetForDictionary:(NSDictionary *)dict;
 -(XADSkipHandle *)skipHandle;
+-(CSHandle *)zeroLengthHandleWithChecksum:(BOOL)checksum;
 
 -(NSArray *)volumes;
 -(off_t)offsetForVolume:(int)disk offset:(off_t)offset;
@@ -142,7 +143,7 @@ extern NSString *XADVolumesKey;
 -(XADPath *)XADPathWithCString:(const char *)cstring encoding:(NSStringEncoding)encoding separators:(const char *)separators;
 
 -(NSData *)encodedPassword;
--(char *)encodedCStringPassword;
+-(const char *)encodedCStringPassword;
 
 
 // Subclasses implement these:

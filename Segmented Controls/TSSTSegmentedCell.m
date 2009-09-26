@@ -15,7 +15,7 @@
 
 
 
-- (void)drawSegment:(int)segment inFrame:(NSRect)frame withView:(TSSTSegmentedControl *)controlView
+- (void)drawSegment:(NSInteger)segment inFrame:(NSRect)frame withView:(TSSTSegmentedControl *)controlView
 {
     if([controlView mouseDownSegment] == segment || [controlView selectedSegment] == segment)
     {
