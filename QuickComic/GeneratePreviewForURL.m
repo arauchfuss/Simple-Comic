@@ -60,7 +60,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             CFRelease(cgContext);
         }
     }
-    
+    [archive release];
     [pool release];
     return noErr;
 }

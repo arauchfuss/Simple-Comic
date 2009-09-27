@@ -805,14 +805,17 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
+
 #pragma mark -
 #pragma mark Archive Encoding Handling
+
 
 
 - (IBAction)testEncodingMenu:(id)sender
 {
 	[NSApp runModalForWindow: encodingPanel];
 }
+
 
 
 - (void)generateEncodingMenu
@@ -851,6 +854,7 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
+
 - (void)updateEncodingMenuTestedAgainst:(NSData *)data
 {
     
@@ -887,6 +891,7 @@ static NSArray * allAvailableStringEncodings(void)
     [passwordPanel close];
     return password;
 }
+
 
 
 -(NSStringEncoding)archive:(XADArchive *)archive 

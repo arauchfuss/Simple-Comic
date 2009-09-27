@@ -39,6 +39,8 @@
 		28770B6F0DBA8B1C00A78646 /* TSSTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */; };
 		28770B700DBA8B1C00A78646 /* TSSTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */; };
 		28770BF70DBAC74600A78646 /* TSSTFullscreenProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */; };
+		287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */; };
+		287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */; };
 		288693010FED553A002C6BF7 /* 7z.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FA0FED553A002C6BF7 /* 7z.icns */; };
 		288693020FED553A002C6BF7 /* cbr.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FB0FED553A002C6BF7 /* cbr.icns */; };
 		288693030FED553A002C6BF7 /* cbz.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FC0FED553A002C6BF7 /* cbz.icns */; };
@@ -76,8 +78,6 @@
 		28FACC970CD03CC5007B7918 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		28FACCB00CD0CF6B007B7918 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		28FACCB20CD0CF83007B7918 /* GeneralPrefPaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FACB920CD01F65007B7918 /* GeneralPrefPaneView.nib */; };
-		28FACCC00CD10A5A007B7918 /* AdvancedPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */; };
-		28FACCC70CD10A8B007B7918 /* GeneralPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */; };
 		28FAD2140CD3A21E007B7918 /* GeneralPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACBD80CD02643007B7918 /* GeneralPrefController.m */; };
 		28FAD2170CD3A226007B7918 /* AdvancedPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACBD40CD02635007B7918 /* AdvancedPrefController.m */; };
 		28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */; };
@@ -102,18 +102,18 @@
 			remoteGlobalIDString = 8D57630D048677EA00EA77CD;
 			remoteInfo = QuickComic;
 		};
-		28FACCA00CD0CEDB007B7918 /* PBXContainerItemProxy */ = {
+		287C6066106F03C5001463C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28FACC7B0CD03BBB007B7918;
+			remoteGlobalIDString = 28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */;
 			remoteInfo = AdvancedPrefsPane;
 		};
-		28FACCAE0CD0CF64007B7918 /* PBXContainerItemProxy */ = {
+		287C6068106F03C5001463C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28FACCA70CD0CF3E007B7918;
+			remoteGlobalIDString = 28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */;
 			remoteInfo = GeneralPrefsPane;
 		};
 /* End PBXContainerItemProxy section */
@@ -679,9 +679,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				28FACCAF0CD0CF64007B7918 /* PBXTargetDependency */,
-				28FACCA10CD0CEDB007B7918 /* PBXTargetDependency */,
 				283637F3100A9C16004D9131 /* PBXTargetDependency */,
+				287C6067106F03C5001463C6 /* PBXTargetDependency */,
+				287C6069106F03C5001463C6 /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";
@@ -756,8 +756,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28FACCC70CD10A8B007B7918 /* GeneralPrefsPane.preferencePane in Resources */,
-				28FACCC00CD10A5A007B7918 /* AdvancedPrefsPane.preferencePane in Resources */,
+				287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */,
+				287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */,
 				281314570C0A7D2D00EC007B /* TSSTSessionWindow.nib in Resources */,
 				281314580C0A7D2D00EC007B /* MainMenu.nib in Resources */,
 				2813145B0C0A7D5200EC007B /* Credits.rtf in Resources */,
@@ -853,15 +853,15 @@
 			name = QuickComic;
 			targetProxy = 283637F2100A9C16004D9131 /* PBXContainerItemProxy */;
 		};
-		28FACCA10CD0CEDB007B7918 /* PBXTargetDependency */ = {
+		287C6067106F03C5001463C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */;
-			targetProxy = 28FACCA00CD0CEDB007B7918 /* PBXContainerItemProxy */;
+			targetProxy = 287C6066106F03C5001463C6 /* PBXContainerItemProxy */;
 		};
-		28FACCAF0CD0CF64007B7918 /* PBXTargetDependency */ = {
+		287C6069106F03C5001463C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */;
-			targetProxy = 28FACCAE0CD0CF64007B7918 /* PBXContainerItemProxy */;
+			targetProxy = 287C6068106F03C5001463C6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1107,6 +1107,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleComic_Prefix.pch;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
@@ -1139,11 +1140,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleComic_Prefix.pch;
 				GCC_THREADSAFE_STATICS = YES;
-				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
@@ -1173,6 +1173,7 @@
 				GCC_PREFIX_HEADER = SimpleComic_Prefix.pch;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
@@ -1194,6 +1195,7 @@
 			buildSettings = {
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					unrar,
 					unzip,
@@ -1222,6 +1224,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = (
 					unrar,
 					unzip,

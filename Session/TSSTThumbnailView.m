@@ -209,6 +209,7 @@
         }
         ++limit;
     }
+	[localPool release];
     [thumbLock unlock];
     [pool release];
     [self setNeedsDisplay: YES];

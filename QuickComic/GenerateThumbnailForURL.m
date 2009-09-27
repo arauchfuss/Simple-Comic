@@ -32,7 +32,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		{
 			cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
 		}
-		[DTPartialArchiveParser release];
+		[partialArchive release];
 	}
 	else
     {
