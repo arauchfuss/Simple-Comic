@@ -100,7 +100,7 @@
         [self setShouldCascadeWindows: cascade];
         [session setValue: [NSNumber numberWithBool: NO] forKey: @"loupe"];
 		TSSTSortDescriptor * fileNameSort = [[TSSTSortDescriptor alloc] initWithKey: @"imagePath" ascending: YES];
-		TSSTSortDescriptor * archivePathSort = [[TSSTSortDescriptor alloc] initWithKey: @"group.name" ascending: YES];
+		TSSTSortDescriptor * archivePathSort = [[TSSTSortDescriptor alloc] initWithKey: @"group.path" ascending: YES];
 		self.pageSortDescriptor = [NSArray arrayWithObjects: archivePathSort, fileNameSort, nil];
 		[fileNameSort release];
 		[archivePathSort release];
