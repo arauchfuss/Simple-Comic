@@ -1312,14 +1312,51 @@
 }
 
 
+- (void)swipeWithEvent:(NSEvent *)event
+{
+    if ([event deltaX] > 0.0)
+	{
+        [dataSource pageLeft: self];
+    } 
+	else if ([event deltaX] < 0.0)
+	{
+        [dataSource pageRight: self];
+    }
+}
+
+
+//- (void)rotateWithEvent:(NSEvent *)event
+//{
+//	if ([event rotation] > 1.0)
+//	{
+//        [dataSource rotateRight: self];
+//    } 
+//	else if ([event rotation] < -1.0)
+//	{
+//        [dataSource rotateLeft: self];
+//    }
+//}
+
+//- (void)magnifyWithEvent:(NSEvent *)event
+//{
+//	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
+//	if (([event magnification] > 0.03) && !isFullscreen)
+//	{
+//		NSLog(@"full");
+//		[[dataSource session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
+//	}
+//	else if(([event magnification] > -0.03) && isFullscreen)
+//	{
+//		[[dataSource session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
+//	}
+//	NSLog([event description]);
+//}
+
+
 
 - (BOOL)dragIsPossible
 {
-//    int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
-    NSSize total = imageBounds.size;
-    NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    
-    return (visible.width < total.width || visible.height < total.height);
+    return ([self horizontalScrollIsPossible] || [self verticalScrollIsPossible]);
 }
 
 
@@ -1329,7 +1366,8 @@
     NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
     //scaleToWindow != 1 && 
-    return (visible.width < total.width);
+	NSLog(@"Visible: %f Total: %f", visible.width, total.width);
+    return (visible.width < roundf(total.width));
 }
 
 
@@ -1337,13 +1375,13 @@
 {
 	NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    return (visible.height < total.height);
+//	NSLog(@"Visible: %f Total: %f", visible.height, total.height);
+    return (visible.height < roundf(total.height));
 }
 
 
 - (void)resetCursorRects
 {   
-	
     if([self dragIsPossible])
     {
         [self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];

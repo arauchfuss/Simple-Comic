@@ -19,13 +19,13 @@
 		281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */; };
 		281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */; };
 		283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
-		283C4D6A0C43DE8D00DB4FE9 /* TSSTGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */; };
 		283C4E1D0C43E6C300DB4FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283C4E1A0C43E6C200DB4FE9 /* Sparkle.framework */; };
 		283C4E3D0C43E6C700DB4FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 283C4E1A0C43E6C200DB4FE9 /* Sparkle.framework */; };
 		284348130DA95C4A00F602E2 /* UniversalDetector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; };
 		284348140DA95C4A00F602E2 /* XADMaster.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		284348CD0DA95C5300F602E2 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; };
 		284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
+		284741461071B4820033BD88 /* TSSTGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */; };
 		284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 284D381A101249BE00A37AB2 /* DTToolbarItems.m */; };
 		2851C5A00FC8651C002927E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2851C59F0FC8651C002927E0 /* dsa_pub.pem */; };
 		285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */; };
@@ -106,14 +106,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */;
+			remoteGlobalIDString = 28FACC7B0CD03BBB007B7918;
 			remoteInfo = AdvancedPrefsPane;
 		};
 		287C6068106F03C5001463C6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */;
+			remoteGlobalIDString = 28FACCA70CD0CF3E007B7918;
 			remoteInfo = GeneralPrefsPane;
 		};
 /* End PBXContainerItemProxy section */
@@ -397,22 +397,19 @@
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				287C611C106F80A9001463C6 /* Unused */,
+				283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */,
+				283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */,
 				283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */,
 				283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */,
 				28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */,
 				28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */,
-				283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */,
-				283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */,
 				288C09C30DC809DF00EAFF46 /* BDAlias.h */,
 				288C09C20DC809DF00EAFF46 /* BDAlias.m */,
 				28F59A9A0B784892003530FB /* TSSTSortDescriptor.h */,
 				286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */,
 				280FB7A50CD577730053F375 /* TSSTCustomValueTransformers.h */,
 				FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */,
-				28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */,
-				28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */,
-				28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */,
-				28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -426,6 +423,17 @@
 				28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */,
 			);
 			path = "Segmented Controls";
+			sourceTree = "<group>";
+		};
+		287C611C106F80A9001463C6 /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */,
+				28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */,
+				28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */,
+				28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */,
+			);
+			name = Unused;
 			sourceTree = "<group>";
 		};
 		288692F90FED553A002C6BF7 /* icons */ = {
@@ -826,7 +834,6 @@
 				281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */,
 				286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */,
 				283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */,
-				283C4D6A0C43DE8D00DB4FE9 /* TSSTGradientView.m in Sources */,
 				280CFF130C48943B0099D111 /* TSSTCRTProgressBar.m in Sources */,
 				286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */,
 				286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */,
@@ -842,6 +849,7 @@
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
 				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
+				284741461071B4820033BD88 /* TSSTGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
