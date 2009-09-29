@@ -973,7 +973,7 @@
 			[[self dataSource] killTopOptionalUIElement];
 			break;
 		case 127:
-			[[self dataSource] removePages: self];
+			[self pageUp];
 			break;
 		default:
 			[super keyDown: event];
@@ -1337,20 +1337,20 @@
 //    }
 //}
 
-//- (void)magnifyWithEvent:(NSEvent *)event
-//{
-//	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
-//	if (([event magnification] > 0.03) && !isFullscreen)
-//	{
+- (void)magnifyWithEvent:(NSEvent *)event
+{
+	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
+	if (([event deltaZ] > 0.03) && !isFullscreen)
+	{
 //		NSLog(@"full");
-//		[[dataSource session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
-//	}
-//	else if(([event magnification] > -0.03) && isFullscreen)
-//	{
-//		[[dataSource session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
-//	}
+		[[dataSource session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
+	}
+	else if(([event deltaZ] < -0.03) && isFullscreen)
+	{
+		[[dataSource session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
+	}
 //	NSLog([event description]);
-//}
+}
 
 
 
