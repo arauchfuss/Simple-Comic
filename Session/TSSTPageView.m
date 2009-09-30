@@ -691,6 +691,11 @@
 		secondPageSide = NSMakeRect(0, 0, NSMaxX(secondPageRect), NSHeight(bounds));
 		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
 	}
+//	
+//	if(canCrop)
+//	{
+//		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
+//	}
 	
 	cursorPoint = [NSEvent mouseLocation];
     cursorPoint = [self convertPoint: [[self window] convertScreenToBase: cursorPoint] fromView: nil];
@@ -715,6 +720,7 @@
 		NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
 		if(canCrop)
 		{
+			[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
 			capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
 		}
 		theEvent = [[self window] nextEventMatchingMask: capturedEvents];
@@ -748,8 +754,9 @@
 	} while ([theEvent type] != NSLeftMouseUp && charNumber != 27);
 	int finalSelection = pageSelection && charNumber != 27 ? pageSelection - 1 : -1;
 	pageSelection = -1;
+//	canCrop = NO;
+//	[[self window] invalidateCursorRectsForView: self];
 	[self setNeedsDisplay: YES];
-	
 	return finalSelection;
 }
 
@@ -1342,16 +1349,13 @@
 	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
 	if (([event deltaZ] > 0.03) && !isFullscreen)
 	{
-//		NSLog(@"full");
 		[[dataSource session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
 	}
 	else if(([event deltaZ] < -0.03) && isFullscreen)
 	{
 		[[dataSource session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
 	}
-//	NSLog([event description]);
 }
-
 
 
 - (BOOL)dragIsPossible
@@ -1362,11 +1366,8 @@
 
 - (BOOL)horizontalScrollIsPossible
 {
-//	int scaleToWindow = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
     NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    //scaleToWindow != 1 && 
-	NSLog(@"Visible: %f Total: %f", visible.width, total.width);
     return (visible.width < roundf(total.width));
 }
 
@@ -1375,7 +1376,6 @@
 {
 	NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-//	NSLog(@"Visible: %f Total: %f", visible.height, total.height);
     return (visible.height < roundf(total.height));
 }
 
@@ -1386,6 +1386,10 @@
     {
         [self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];
     }
+//	else if (canCrop)
+//	{
+//		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
+//	}
     else
     {
         [super resetCursorRects];
