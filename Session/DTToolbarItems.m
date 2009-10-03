@@ -10,15 +10,17 @@
 #import "TSSTSessionWindowController.h"
 #import "SimpleComicAppDelegate.h"
 
+
 @implementation DTToolbarItem
+
 
 -(void)validate
 {
 	[(NSControl *)[self view] setEnabled: ![[[self toolbar] delegate] pageSelectionInProgress]];
 }
 
-@end
 
+@end
 
 
 @implementation DTPageTurnToolbarItem

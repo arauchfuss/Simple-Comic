@@ -754,7 +754,7 @@
 	} while ([theEvent type] != NSLeftMouseUp && charNumber != 27);
 	int finalSelection = pageSelection && charNumber != 27 ? pageSelection - 1 : -1;
 	pageSelection = -1;
-//	canCrop = NO;
+	canCrop = NO;
 //	[[self window] invalidateCursorRectsForView: self];
 	[self setNeedsDisplay: YES];
 	return finalSelection;
@@ -1386,7 +1386,7 @@
     {
         [self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];
     }
-//	else if (canCrop)
+//	else if(canCrop)
 //	{
 //		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
 //	}

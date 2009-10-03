@@ -265,7 +265,7 @@
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.compuserve.gif</string>
+				<string>public.jpeg</string>
 			</array>
 		</dict>
 		<dict>
