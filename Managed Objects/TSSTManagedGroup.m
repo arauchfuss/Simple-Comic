@@ -187,31 +187,32 @@
 
 @end
 
-static NSArray * TSSTComicArchiveTypes = nil;
-static NSArray * TSSTQuicklookArchiveTypes = nil;
-
 
 @implementation TSSTManagedArchive
 
 
 + (NSArray *)archiveExtensions
 {
-	if(!TSSTComicArchiveTypes)
+	static NSArray * extensions = nil;
+	if(!extensions)
 	{
-		TSSTComicArchiveTypes = [[NSArray arrayWithObjects: @"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh", nil] retain];
+		extensions = [[NSArray arrayWithObjects: @"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh", nil] retain];
 	}
 	
-	return TSSTComicArchiveTypes;
+	return extensions;
 }
+
 
 + (NSArray *)quicklookExtensions
 {
-	if(!TSSTQuicklookArchiveTypes)
+	static NSArray * extensions = nil;
+
+	if(!extensions)
 	{
-		TSSTQuicklookArchiveTypes = [[NSArray arrayWithObjects: @"cbr", @"cbz", nil] retain];
+		extensions = [[NSArray arrayWithObjects: @"cbr", @"cbz", nil] retain];
 	}
 	
-	return TSSTQuicklookArchiveTypes;
+	return extensions;
 }
 
 

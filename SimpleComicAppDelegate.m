@@ -525,6 +525,7 @@ static NSArray * allAvailableStringEncodings(void)
 	NSArray * existingSessions = [sessions valueForKey: @"session"];
     if([[settings valueForKey: @"images"] count] > 0 && ![existingSessions containsObject: settings])
     {
+		[settings setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
         TSSTSessionWindowController * comicWindow = [[TSSTSessionWindowController alloc] initWithSession: settings];
         [sessions addObject: comicWindow];
         [comicWindow release];
@@ -561,6 +562,7 @@ static NSArray * allAvailableStringEncodings(void)
 		}
 		else
 		{
+			
 			[self windowForSession: session];
 		}
 	}

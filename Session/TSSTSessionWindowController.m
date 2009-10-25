@@ -364,7 +364,7 @@
 			}
 			else if(!NSMouseInRect(location, bezelFrame, NO))
 			{
-				[[self window] removeChildWindow: bezelWindow];
+				[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
 				[bezelWindow orderOut: self];
 			}
 		}
@@ -1089,8 +1089,6 @@
 
 - (void)fullscreen
 {
-//    NSRect contentRect = NSZeroRect;
-    [pageScrollView retain];
     if(mouseMovedTimer)
 	{
 		[mouseMovedTimer invalidate];
@@ -1110,17 +1108,13 @@
 		[(DTSessionWindow *)[self window] setFullscreen: YES];
 		[self adjustStatusBar];
 		[[self window] setFrame: windowRect display: NO];
-		if(mouseMovedTimer)
-		{
-			[mouseMovedTimer invalidate];
-			mouseMovedTimer = nil;
-		}
 		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
-		
     }
     else
     {
         SetSystemUIMode(kUIModeNormal, 0);
+		[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
+		[bezelWindow orderOut: self];
 		[(DTSessionWindow *)[self window] setFullscreen: NO];
 		rectData = [session valueForKey: @"position" ];
 		rectangleValue = [NSUnarchiver unarchiveObjectWithData: rectData];
@@ -1134,8 +1128,6 @@
 	
     [[loupeWindow parentWindow] removeChildWindow: loupeWindow];
     [loupeWindow orderOut: self];
-	
-    [pageScrollView release];
 }
 
 
