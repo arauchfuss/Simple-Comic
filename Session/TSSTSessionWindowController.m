@@ -43,6 +43,7 @@
 #import "TSSTThumbnailView.h"
 #import "TSSTManagedSession.h"
 #import "TSSTFullscreenProgressBar.h"
+#import "DTSessionWindow.h"
 
 
 @implementation TSSTSessionWindowController
@@ -124,10 +125,6 @@
     [exposeBezel setIgnoresMouseEvents: NO];
     [exposeBezel setFloatingPanel: YES];
     [[self window] setAcceptsMouseMovedEvents: YES];
-    /*  This needs to be set so that mouse moved events from the fullscreen window
-        are passed to its delegate, this window controller */
-    [fullscreenWindow setNextResponder: self];
-    [fullscreenWindow setAcceptsMouseMovedEvents: YES];
         
     [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
 
@@ -329,7 +326,7 @@
 	NSPoint location = [theEvent locationInWindow];
 	NSRect progressRect;
 	
-	if([[session valueForKey: TSSTFullscreen] boolValue] && [fullscreenWindow isKeyWindow])
+	if([[session valueForKey: TSSTFullscreen] boolValue])
 	{
 		if(mouseMovedTimer)
 		{
@@ -349,15 +346,15 @@
 		}
 		else
 		{
-			NSRect fullscreenFrame = [fullscreenWindow frame];
+			NSRect fullscreenFrame = [[self window] frame];
 			NSRect bezelFrame = [bezelWindow frame];
 			if(NSMouseInRect(location, NSMakeRect(0, 0, NSWidth(fullscreenFrame), 4), NO))
 			{
-				[fullscreenWindow addChildWindow: bezelWindow ordered: NSWindowAbove];
+				[[self window] addChildWindow: bezelWindow ordered: NSWindowAbove];
 			}
 			else if(!NSMouseInRect(location, bezelFrame, NO))
 			{
-				[fullscreenWindow removeChildWindow: bezelWindow];
+				[[self window] removeChildWindow: bezelWindow];
 				[bezelWindow orderOut: self];
 			}
 		}
@@ -408,17 +405,16 @@
 {
     BOOL loupe = [[session valueForKey: @"loupe"] boolValue];
     NSPoint mouse = [NSEvent mouseLocation];
-    NSWindow * currentWindow = [[session valueForKey: TSSTFullscreen] boolValue] ? fullscreenWindow : [self window];
-    NSPoint localPoint = [pageView convertPoint: [currentWindow convertScreenToBase: mouse] fromView: nil];
-	NSPoint scrollPoint = [pageScrollView convertPoint: [currentWindow convertScreenToBase: mouse] fromView: nil];
+    NSPoint localPoint = [pageView convertPoint: [[self window] convertScreenToBase: mouse] fromView: nil];
+	NSPoint scrollPoint = [pageScrollView convertPoint: [[self window] convertScreenToBase: mouse] fromView: nil];
     if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
 	   && loupe 
-	   && [currentWindow isKeyWindow]
+	   && [[self window] isKeyWindow]
 	   && !pageSelectionInProgress)
     {
 		if(![loupeWindow isVisible])
 		{
-			[currentWindow addChildWindow: loupeWindow ordered: NSWindowAbove];
+			[[self window] addChildWindow: loupeWindow ordered: NSWindowAbove];
 			[NSCursor hide];
 		}
 		
@@ -804,8 +800,7 @@
 - (IBAction)launchJumpPanel:(id)sender
 {
 	[jumpField setIntValue: [pageController selectionIndex] + 1];
-	NSWindow * current = [fullscreenWindow isVisible] ? fullscreenWindow : [self window];
-	[NSApp beginSheet: jumpPanel modalForWindow: current modalDelegate: self didEndSelector: @selector(closeSheet:) contextInfo: NULL];
+	[NSApp beginSheet: jumpPanel modalForWindow: [self window] modalDelegate: self didEndSelector: @selector(closeSheet:) contextInfo: NULL];
 }
 
 
@@ -1084,29 +1079,27 @@
 
 - (void)fullscreen
 {
-    NSRect contentRect = NSZeroRect;
+//    NSRect contentRect = NSZeroRect;
     [pageScrollView retain];
     if(mouseMovedTimer)
 	{
 		[mouseMovedTimer invalidate];
 		mouseMovedTimer = nil;
 	}
-	
+	NSValue * rectangleValue;
+	NSData * rectData;
+	NSRect windowRect;
     if([[session valueForKey: TSSTFullscreen] boolValue])
     {
-        NSValue * rectangleValue = [NSValue valueWithRect: [[self window] frame]];
-        NSData * rectData = [NSArchiver archivedDataWithRootObject: rectangleValue];
+        rectangleValue = [NSValue valueWithRect: [[self window] frame]];
+        rectData = [NSArchiver archivedDataWithRootObject: rectangleValue];
         [session setValue: rectData forKey: @"position" ];
-//		[fullscreenWindow setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
         SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
-        [[self window] orderOut: self];
-        [fullscreenWindow setFrame: [[[self window] screen] frame] display: NO];
-        [pageScrollView removeFromSuperview];
-        [[fullscreenWindow contentView] addSubview: pageScrollView];
-        contentRect.size = [[pageScrollView window] frame].size;
-        [pageScrollView setFrame: contentRect];
-        [fullscreenWindow makeKeyAndOrderFront: self];
-//		[fullscreenWindow setCollectionBehavior: NSWindowCollectionBehaviorDefault];
+		windowRect = [[[self window] screen] frame];
+		windowRect.size.height += [(DTSessionWindow *)[self window] toolbarHeight];
+		[(DTSessionWindow *)[self window] setFullscreen: YES];
+		[self adjustStatusBar];
+		[[self window] setFrame: windowRect display: NO];
 		if(mouseMovedTimer)
 		{
 			[mouseMovedTimer invalidate];
@@ -1117,19 +1110,13 @@
     }
     else
     {
-//		[[self window] setCollectionBehavior: NSWindowCollectionBehaviorCanJoinAllSpaces];
         SetSystemUIMode(kUIModeNormal, 0);
-        [fullscreenWindow orderOut: self];
-        [pageScrollView removeFromSuperview];
-        [[[self window] contentView] addSubview: pageScrollView];
-        contentRect.size = [[pageView window] contentRectForFrameRect: [[self window] frame]].size;
-        contentRect.origin.y = [[self window] contentBorderThicknessForEdge: NSMinYEdge];
-        contentRect.size.height -= contentRect.origin.y;
-        [pageScrollView setFrame: contentRect];
+		[(DTSessionWindow *)[self window] setFullscreen: NO];
+		rectData = [session valueForKey: @"position" ];
+		rectangleValue = [NSUnarchiver unarchiveObjectWithData: rectData];
+		windowRect = [rectangleValue rectValue];
+		[[self window] setFrame: windowRect display: NO];
         [self adjustStatusBar];
-        [self resizeWindow];
-        [[self window] makeKeyAndOrderFront: self];
-//		[[self window] setCollectionBehavior: NSWindowCollectionBehaviorDefault];
     }
 	
 	[[infoWindow parentWindow] removeChildWindow: infoWindow];
@@ -1193,15 +1180,9 @@
 
 - (void)adjustStatusBar
 {
-    
-    if([[session valueForKey: TSSTFullscreen] boolValue])
-    {
-        return;
-    }
-    
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSRect scrollViewRect;
-    BOOL statusBar = [[defaults valueForKey: TSSTStatusbarVisible] boolValue];
+    BOOL statusBar = [[defaults valueForKey: TSSTStatusbarVisible] boolValue] && ![[session valueForKey: TSSTFullscreen] boolValue];
     if(statusBar)
     {
         scrollViewRect = [[[self window] contentView] frame];
@@ -1548,7 +1529,6 @@ images are currently visible and then skips over them.
 - (void)prepareToEnd
 {
 	[[self window] setAcceptsMouseMovedEvents: NO];
-	[fullscreenWindow setAcceptsMouseMovedEvents: NO];
 	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
     [NSCursor unhide];
@@ -1568,7 +1548,7 @@ images are currently visible and then skips over them.
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-    if([aNotification object] == fullscreenWindow)
+    if([aNotification object] == [self window] && [[session valueForKey: TSSTFullscreen] boolValue])
     {
         SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
         [pageView setNeedsDisplay: YES];
@@ -1585,8 +1565,7 @@ images are currently visible and then skips over them.
 		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
 		[self refreshLoupePanel];
     }
-    
-    if([aNotification object] == [self window])
+    else if([aNotification object] == [self window])
     {
         SetSystemUIMode(kUIModeNormal, 0);
 		if([[session valueForKey: @"loupe"] boolValue])
@@ -1606,7 +1585,7 @@ images are currently visible and then skips over them.
         [exposeBezel orderOut: self];
     }
 	
-	if([aNotification object] == [self window] || [aNotification object] == fullscreenWindow)
+	if([aNotification object] == [self window])
 	{
 		[NSCursor unhide];
 		[self refreshLoupePanel];
@@ -1617,12 +1596,26 @@ images are currently visible and then skips over them.
 
 - (void)windowDidResize:(NSNotification *)aNotification
 {
-    NSRect frame;
+	BOOL statusBar;
     if([aNotification object] == [self window])
     {
-        BOOL statusBar = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTStatusbarVisible] boolValue];
-        [[infoWindow parentWindow] removeChildWindow: infoWindow];
+		NSRect frame = [[self window] frame];
+		[[infoWindow parentWindow] removeChildWindow: infoWindow];
         [infoWindow orderOut: self];
+
+		if([[session valueForKey: TSSTFullscreen] boolValue])
+		{
+			statusBar = NO;
+			NSRect bezelRect = [bezelWindow frame];
+			bezelRect.origin.x = NSWidth(frame) / 2 - NSWidth(bezelRect) / 2 + NSMinX(frame);
+			bezelRect.origin.y = NSMinY(frame) - 1.5; 
+			[bezelWindow setFrame: bezelRect display: NO];
+		}
+		else 
+		{
+			statusBar = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTStatusbarVisible] boolValue];
+		}
+
 		
         if(statusBar)
         {
@@ -1635,15 +1628,7 @@ images are currently visible and then skips over them.
 				[[self window] addChildWindow: infoWindow ordered: NSWindowAbove];
 			}
         }
-    }
-    else if([aNotification object] == fullscreenWindow)
-    {
-        frame = [fullscreenWindow frame];
-        NSRect bezelRect = [bezelWindow frame];
-        bezelRect.origin.x = NSWidth(frame) / 2 - NSWidth(bezelRect) / 2 + NSMinX(frame);
-        bezelRect.origin.y = NSMinY(frame) - 1.5; 
-        [bezelWindow setFrame: bezelRect display: NO];
-    }
+	}
 }
 
 
@@ -1667,7 +1652,7 @@ images are currently visible and then skips over them.
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
 	NSSize maxImageSize = [pageView combinedImageSizeForZoomLevel: [[session valueForKey: TSSTZoomLevel] intValue]];
-	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [self toolbarHeight];
+	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
 	{
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
@@ -1733,12 +1718,6 @@ images are currently visible and then skips over them.
 - (void)resizeView
 {
     [pageView resizeView];
-}
-
-
-- (float)toolbarHeight
-{
-    return NSHeight([[self window] frame]) - NSHeight([[[self window] contentView] frame]);
 }
 
 

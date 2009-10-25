@@ -338,7 +338,7 @@ static NSArray * TSSTQuicklookArchiveTypes = nil;
 	int collision = 0;
     TSSTManagedGroup * nestedDescription;
     NSString * extension, * archivePath = nil;
-	NSString * fileName = [self valueForKey: @"name"];
+	NSString * fileName = nil;
 	int counter, archivedFilesCount = [imageArchive numberOfEntries];
 	NSError * error;
 	if([imageArchive isSolid])

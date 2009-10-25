@@ -72,7 +72,7 @@
 		28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */; };
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
-		28F998340A1FF52C0047BD97 /* TSSTKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */; };
+		28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */; };
 		28FACB850CD01D93007B7918 /* SS_PrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACB820CD01D93007B7918 /* SS_PrefsController.m */; };
 		28FACC880CD03C49007B7918 /* AdvancedPrefPaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FACB950CD01FB8007B7918 /* AdvancedPrefPaneView.nib */; };
 		28FACC970CD03CC5007B7918 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -827,7 +827,6 @@
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
 				28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
-				28F998340A1FF52C0047BD97 /* TSSTKeyWindow.m in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
 				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
@@ -850,6 +849,7 @@
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
 				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
 				284741461071B4820033BD88 /* TSSTGradientView.m in Sources */,
+				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

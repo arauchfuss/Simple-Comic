@@ -11,11 +11,45 @@
 
 @implementation DTSessionWindow
 
+@synthesize fullscreen;
+
+- (id) init
+{
+	self = [super init];
+	if (self != nil)
+	{
+		self.fullscreen = NO;
+	}
+	return self;
+}
+
+
 - (void)toggleToolbarShown:(id)sender
 {
 	[super toggleToolbarShown: sender];
 	[(TSSTSessionWindowController *)[self windowController] resizeWindow];
 	[(TSSTSessionWindowController *)[self windowController] resizeView];
 }
+
+
+- (NSRect)constrainFrameRect:(NSRect)frameRect toScreen:(NSScreen *)screen
+{
+	if (self.fullscreen)
+	{
+		NSRect screenFrame = [[self screen] frame];
+		screenFrame.size.height += [self toolbarHeight];
+		frameRect = NSIntersectionRect(screenFrame, frameRect);
+		return frameRect;
+	}
+	
+	return [super constrainFrameRect: frameRect toScreen: screen];;
+}
+
+
+- (float)toolbarHeight
+{
+    return NSHeight([self frame]) - NSHeight([[self contentView] frame]);
+}
+
 
 @end

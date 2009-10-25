@@ -9,8 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DTSessionWindow : NSWindow {
-
+@interface DTSessionWindow : NSWindow
+{
+	BOOL fullscreen;
 }
+
+@property (assign) BOOL fullscreen;
+
+- (float)toolbarHeight;
 
 @end

@@ -769,18 +769,18 @@
 	}
 	
 	NSPoint center = centerPointOfRect(cropRect);
-	int pageNumber = 0;
+//	int pageNumber = 0;
 	NSRect pageRect = NSZeroRect;
 	NSSize originalSize;
 	if(NSPointInRect(center, firstPageRect))
 	{
-		pageNumber = 1;
+//		pageNumber = 1;
 		pageRect = firstPageRect;
 		originalSize = [firstPageImage size];
 	}
 	else if(NSPointInRect(center, secondPageRect))
 	{
-		pageNumber = 2;
+//		pageNumber = 2;
 		pageRect = secondPageRect;
 		originalSize = [secondPageImage size];
 	}

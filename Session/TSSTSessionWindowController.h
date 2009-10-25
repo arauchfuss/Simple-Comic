@@ -65,7 +65,7 @@
     IBOutlet NSScrollView  * pageScrollView;
     /* When session goes into fullscreen mode the scrollview and its
 		pageview sub-view are moved into this window. */
-    IBOutlet NSWindow * fullscreenWindow;
+//    IBOutlet NSWindow * fullscreenWindow;
     
     /* Fullscreen control bezel. */
     IBOutlet NSWindow      * bezelWindow;
@@ -179,7 +179,6 @@
 - (void)nextPage;
 - (void)previousPage;
 - (void)updateSessionObject;
-- (float)toolbarHeight;
 - (BOOL)currentPageIsText;
 
 /* Bindings */
