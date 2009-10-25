@@ -78,7 +78,6 @@
 @implementation TSSTTransparentView
 
 
-
 - (void)drawRect:(NSRect)rect
 {
     [[NSColor colorWithCalibratedWhite: 0 alpha: 0.7] set];

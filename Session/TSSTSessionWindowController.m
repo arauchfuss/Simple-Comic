@@ -51,6 +51,7 @@
 @synthesize pageTurn, pageNames, pageSortDescriptor, pageSelectionInProgress;
 
 
+
 + (void)initialize
 {
     NSImage * segmentImage = [NSImage imageNamed: @"org_size"];
@@ -84,6 +85,7 @@
 }
 
 
+
 /*  Inits the window controller and sets the session.
     If this is a new session as opposed to a saved session
     then the window cascades */
@@ -111,10 +113,12 @@
 }
 
 
+
 - (NSString *)windowNibName
 {
     return @"TSSTSessionWindow";
 }
+
 
 
 /*  Sets up all of the observers and bindings. */
@@ -178,6 +182,7 @@
 }
 
 
+
 - (void)dealloc
 {
 	[(TSSTThumbnailView *)exposeView setDataSource: nil];
@@ -217,6 +222,7 @@
     [pageNames release];
     [super dealloc];
 }
+
 
 
 /*  Observes changes to the page controller.  Changes are reflected by the 
@@ -301,8 +307,10 @@
 }
 
 
+
 #pragma mark -
 #pragma mark Progress Bar
+
 
 
 - (NSImage *)imageForPageAtIndex:(int)index
@@ -317,8 +325,10 @@
 }
 
 
+
 #pragma mark -
 #pragma mark Event handling
+
 
 
 - (void)mouseMoved:(NSEvent *)theEvent
@@ -1176,6 +1186,7 @@
     [pageView resizeView];
     [self refreshLoupePanel];
 }
+
 
 
 - (void)adjustStatusBar

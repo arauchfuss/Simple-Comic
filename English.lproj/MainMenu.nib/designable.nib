@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="256"/>
+			<integer value="864"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -596,6 +596,7 @@
 									<reference key="NSMenu" ref="741004078"/>
 									<string key="NSTitle">Page Right</string>
 									<string key="NSKeyEquiv"></string>
+									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="605556304"/>
 									<reference key="NSMixedImage" ref="879043522"/>
@@ -604,6 +605,7 @@
 									<reference key="NSMenu" ref="741004078"/>
 									<string key="NSTitle">Page Left</string>
 									<string key="NSKeyEquiv"></string>
+									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="605556304"/>
 									<reference key="NSMixedImage" ref="879043522"/>
@@ -3601,7 +3603,6 @@
 							<string>exposeBezel</string>
 							<string>exposeView</string>
 							<string>fullscreenProgressBar</string>
-							<string>fullscreenWindow</string>
 							<string>infoPicture</string>
 							<string>infoWindow</string>
 							<string>jumpField</string>
@@ -3620,7 +3621,6 @@
 							<string>NSPanel</string>
 							<string>NSView</string>
 							<string>TSSTFullscreenProgressBar</string>
-							<string>NSWindow</string>
 							<string>NSImageView</string>
 							<string>TSSTInfoWindow</string>
 							<string>NSTextField</string>
