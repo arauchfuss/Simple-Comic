@@ -8,6 +8,7 @@
 
 #import "DTSessionWindow.h"
 #import "TSSTSessionWindowController.h"
+#import "SimpleComicAppDelegate.h"
 
 @implementation DTSessionWindow
 
@@ -26,6 +27,12 @@
 
 - (void)toggleToolbarShown:(id)sender
 {
+	TSSTManagedSession * session = [(TSSTSessionWindowController *)[self windowController] session];
+	if ([[session valueForKey: TSSTFullscreen] boolValue])
+	{
+		return;
+	}
+	
 	[super toggleToolbarShown: sender];
 	[(TSSTSessionWindowController *)[self windowController] resizeWindow];
 	[(TSSTSessionWindowController *)[self windowController] resizeView];
