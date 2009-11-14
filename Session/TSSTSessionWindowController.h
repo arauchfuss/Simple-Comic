@@ -33,11 +33,10 @@
 @class TSSTPageView;
 @class TSSTKeyWindow;
 @class TSSTPage;
-@class TSSTCRTProgressBar;
+@class DTPolishedProgressBar;
 @class TSSTInfoWindow;
 @class TSSTImageView;
 @class TSSTManagedSession;
-@class TSSTFullscreenProgressBar;
 
 
 /*	This class deals with an unholy crapload of functionality
@@ -68,15 +67,15 @@
 //    IBOutlet NSWindow * fullscreenWindow;
     
     /* Fullscreen control bezel. */
-    IBOutlet NSWindow      * bezelWindow;
+    IBOutlet NSPanel      * bezelWindow;
     
 	/*	Allows the user to jump to a specific page via a small slide in modal dialog. */
 	IBOutlet NSPanel	   * jumpPanel;
 	IBOutlet NSTextField   * jumpField;
 	
     /* Progress bar */
-    IBOutlet TSSTCRTProgressBar * progressBar;
-	IBOutlet TSSTFullscreenProgressBar * fullscreenProgressBar;
+    IBOutlet DTPolishedProgressBar * progressBar;
+	IBOutlet DTPolishedProgressBar * fullscreenProgressBar;
 	
 	/* Page info window with caret. */
     IBOutlet TSSTInfoWindow     * infoWindow;
@@ -105,8 +104,6 @@
 	NSTimer * mouseMovedTimer;
 	
 	BOOL pageSelectionInProgress;
-	/* This is a hack that should die */
-	BOOL closing;
 }
 
 @property (retain) NSArray * pageSortDescriptor;

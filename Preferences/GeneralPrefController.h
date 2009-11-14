@@ -4,7 +4,6 @@
 @interface GeneralPrefController : NSObject <SS_PreferencePaneProtocol> 
 {
     IBOutlet NSView * prefsView;
-	IBOutlet NSView * preview;
 }
 
 @end

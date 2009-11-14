@@ -24,3 +24,12 @@
 - (void)layoutPages;
 
 @end
+
+
+@interface TSSTPageOrderPreview : NSView
+{
+	
+}
+
+
+@end

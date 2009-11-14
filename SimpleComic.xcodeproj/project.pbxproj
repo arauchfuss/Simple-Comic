@@ -10,7 +10,6 @@
 		28073CB00FF9956600D2602B /* extract.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073CAF0FF9956500D2602B /* extract.tiff */; };
 		28073DB00FFB0EED00D2602B /* icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073DAF0FFB0EED00D2602B /* icon.tiff */; };
 		28073E610FFC347200D2602B /* QuickComic.qlgenerator in Copy Quicklook plugin */ = {isa = PBXBuildFile; fileRef = 28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */; };
-		280CFF130C48943B0099D111 /* TSSTCRTProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */; };
 		281314570C0A7D2D00EC007B /* TSSTSessionWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314520C0A7D2D00EC007B /* TSSTSessionWindow.nib */; };
 		281314580C0A7D2D00EC007B /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314540C0A7D2D00EC007B /* MainMenu.nib */; };
 		2813145B0C0A7D5200EC007B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 281314590C0A7D5200EC007B /* Credits.rtf */; };
@@ -37,8 +36,6 @@
 		286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */; };
 		286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19C0C4D819400E9D06D /* TSSTImageView.m */; };
 		28770B6F0DBA8B1C00A78646 /* TSSTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */; };
-		28770B700DBA8B1C00A78646 /* TSSTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */; };
-		28770BF70DBAC74600A78646 /* TSSTFullscreenProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */; };
 		287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */; };
 		287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */; };
 		288693010FED553A002C6BF7 /* 7z.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FA0FED553A002C6BF7 /* 7z.icns */; };
@@ -70,6 +67,7 @@
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
 		28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */; };
+		28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */; };
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
 		28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */; };
@@ -151,8 +149,8 @@
 		28073CAF0FF9956500D2602B /* extract.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = extract.tiff; sourceTree = "<group>"; };
 		28073DAF0FFB0EED00D2602B /* icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.tiff; sourceTree = "<group>"; };
 		28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickComic.xcodeproj; path = QuickComic/QuickComic.xcodeproj; sourceTree = "<group>"; };
-		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
-		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
+		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "../Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
+		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "../Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
 		280FB7A50CD577730053F375 /* TSSTCustomValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTCustomValueTransformers.h; sourceTree = "<group>"; };
 		281314530C0A7D2D00EC007B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/TSSTSessionWindow.nib; sourceTree = "<group>"; };
 		281314550C0A7D2D00EC007B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
@@ -196,8 +194,8 @@
 		28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedCell.m; path = "Segmented Controls/TSSTSegmentedCell.m"; sourceTree = SOURCE_ROOT; };
 		28770B6C0DBA8B1C00A78646 /* TSSTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSegmentedControl.h; path = "Segmented Controls/TSSTSegmentedControl.h"; sourceTree = SOURCE_ROOT; };
 		28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedControl.m; path = "Segmented Controls/TSSTSegmentedControl.m"; sourceTree = SOURCE_ROOT; };
-		28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTFullscreenProgressBar.h; path = "Custom Controls/TSSTFullscreenProgressBar.h"; sourceTree = "<group>"; };
-		28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTFullscreenProgressBar.m; path = "Custom Controls/TSSTFullscreenProgressBar.m"; sourceTree = "<group>"; };
+		28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTFullscreenProgressBar.h; path = "../Custom Controls/TSSTFullscreenProgressBar.h"; sourceTree = "<group>"; };
+		28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTFullscreenProgressBar.m; path = "../Custom Controls/TSSTFullscreenProgressBar.m"; sourceTree = "<group>"; };
 		287A34740DF0F8C6008BAEDA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/TSSTBookmarkWindow.nib; sourceTree = "<group>"; };
 		287A34760DF0F8C6008BAEDA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/KeyboardPrefPaneView.nib; sourceTree = "<group>"; };
 		288692FA0FED553A002C6BF7 /* 7z.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = 7z.icns; sourceTree = "<group>"; };
@@ -248,6 +246,8 @@
 		28C1D70F0DF21DA7003392B4 /* TSSTCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTCoverView.m; sourceTree = "<group>"; };
 		28C49D8A0DD53C05008E4857 /* TSSTBookmarkTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkTableView.h; sourceTree = "<group>"; };
 		28C49D8B0DD53C05008E4857 /* TSSTBookmarkTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkTableView.m; sourceTree = "<group>"; };
+		28E39CC910A5CD6900A027A3 /* DTPolishedProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTPolishedProgressBar.h; path = "Progress Bar/DTPolishedProgressBar.h"; sourceTree = "<group>"; };
+		28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTPolishedProgressBar.m; path = "Progress Bar/DTPolishedProgressBar.m"; sourceTree = "<group>"; };
 		28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+UTI_Category.h"; sourceTree = "<group>"; };
 		28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+UTI_Category.m"; sourceTree = "<group>"; };
 		28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKXattrMetadataStore.h; sourceTree = "<group>"; };
@@ -328,7 +328,6 @@
 				77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */,
 				77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */,
 				FAA1C3E808BAB158006F7EC4 /* Session */,
-				288C0BDA0DCD471100EAFF46 /* Bookmarks */,
 				288C0C420DCDAB7200EAFF46 /* Thumbnail View */,
 				289CD7620BF15CCC00B5AE01 /* Progress Bar */,
 				28195CFA0C179DBD001F5E95 /* Fullscreen */,
@@ -336,6 +335,7 @@
 				28770B670DBA8B1C00A78646 /* Segmented Controls */,
 				28FA4DD50B8A6F3B00496668 /* Managed Objects */,
 				281C0DC40CEEA16D009A9696 /* Helpers */,
+				287C611C106F80A9001463C6 /* Unused */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -397,7 +397,6 @@
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				287C611C106F80A9001463C6 /* Unused */,
 				283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */,
 				283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */,
 				283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */,
@@ -428,12 +427,18 @@
 		287C611C106F80A9001463C6 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */,
+				280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */,
+				28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */,
+				28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */,
+				288C0BDA0DCD471100EAFF46 /* Bookmarks */,
 				28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */,
 				28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */,
 				28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */,
 				28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */,
 			);
 			name = Unused;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		288692F90FED553A002C6BF7 /* icons */ = {
@@ -492,7 +497,8 @@
 				28C1D70E0DF21DA7003392B4 /* TSSTCoverView.h */,
 				28C1D70F0DF21DA7003392B4 /* TSSTCoverView.m */,
 			);
-			path = Bookmarks;
+			name = Bookmarks;
+			path = ../Bookmarks;
 			sourceTree = "<group>";
 		};
 		288C0C420DCDAB7200EAFF46 /* Thumbnail View */ = {
@@ -507,10 +513,8 @@
 		289CD7620BF15CCC00B5AE01 /* Progress Bar */ = {
 			isa = PBXGroup;
 			children = (
-				280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */,
-				280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */,
-				28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */,
-				28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */,
+				28E39CC910A5CD6900A027A3 /* DTPolishedProgressBar.h */,
+				28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */,
 				286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */,
 				286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */,
 				286BA19D0C4D819400E9D06D /* TSSTImageView.h */,
@@ -833,15 +837,12 @@
 				281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */,
 				286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */,
 				283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */,
-				280CFF130C48943B0099D111 /* TSSTCRTProgressBar.m in Sources */,
 				286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */,
 				286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */,
 				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
 				28FACB850CD01D93007B7918 /* SS_PrefsController.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
 				28770B6F0DBA8B1C00A78646 /* TSSTSegmentedCell.m in Sources */,
-				28770B700DBA8B1C00A78646 /* TSSTSegmentedControl.m in Sources */,
-				28770BF70DBAC74600A78646 /* TSSTFullscreenProgressBar.m in Sources */,
 				288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */,
@@ -850,6 +851,7 @@
 				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
 				284741461071B4820033BD88 /* TSSTGradientView.m in Sources */,
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
+				28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

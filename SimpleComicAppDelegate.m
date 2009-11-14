@@ -30,6 +30,7 @@
 #import "SimpleComicAppDelegate.h"
 #import <Sparkle/Sparkle.h>
 #import <XADMaster/XADArchive.h>
+#import <Carbon/Carbon.h>
 #import "TSSTSessionWindowController.h"
 #import "TSSTSortDescriptor.h"
 #import "TSSTPage.h"
@@ -132,7 +133,6 @@ static NSArray * allAvailableStringEncodings(void)
         kCFStringEncodingWindowsVietnamese,
         kCFStringEncodingDOSPortuguese,
         kCFStringEncodingWindowsBalticRim,
-		
         NSNotFound
     };
     
@@ -237,6 +237,7 @@ static NSArray * allAvailableStringEncodings(void)
 	launchFiles = nil;
 	launchInProgress = YES;
 	preferences = nil;
+	optionHeldAtlaunch = NO;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSession:) name: TSSTSessionEndNotification object: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTUpdateSelection options: 0 context: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTSessionRestore options: 0 context: nil];
@@ -271,8 +272,34 @@ static NSArray * allAvailableStringEncodings(void)
 
 	if(launchFiles)
 	{
-		TSSTManagedSession * session = [self newSessionWithFiles: launchFiles];
-		[self windowForSession: session];
+		TSSTManagedSession * session;
+//		if (optionHeldAtlaunch)
+//		{
+//			NSMutableArray * looseImages = [NSMutableArray array];
+//			for(NSString * path in launchFiles)
+//			{
+//				if([[TSSTManagedArchive archiveExtensions] containsObject: [[path pathExtension] lowercaseString]])
+//				{
+//					session = [self newSessionWithFiles: [NSArray arrayWithObject: path]];
+//					[self windowForSession: session];
+//				}
+//				else {
+//					[looseImages addObject: path];
+//				}
+//				
+//				if ([looseImages count]> 0) {
+//					session = [self newSessionWithFiles: looseImages];
+//					[self windowForSession: session];
+//				}
+//				
+//			}
+//		}
+//		else
+//		{
+			session = [self newSessionWithFiles: launchFiles];
+			[self windowForSession: session];
+//		}
+		
 		[launchFiles release];
 		launchFiles = nil;
 	}
@@ -359,15 +386,43 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
-{
+{	
+	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
 	if(!launchInProgress)
 	{
-		TSSTManagedSession * session = [self newSessionWithFiles: filenames];
-		[self windowForSession: session];
+		TSSTManagedSession * session;
+//		if (option)
+//		{
+//			NSMutableArray * looseImages = [NSMutableArray array];
+//			for(NSString * path in filenames)
+//			{
+//				if([[TSSTManagedArchive archiveExtensions] containsObject: [[path pathExtension] lowercaseString]])
+//				{
+//					session = [self newSessionWithFiles: [NSArray arrayWithObject: path]];
+//					[self windowForSession: session];
+//				}
+//				else
+//				{
+//					[looseImages addObject: path];
+//				}
+//				
+//				if ([looseImages count]> 0) {
+//					session = [self newSessionWithFiles: looseImages];
+//					[self windowForSession: session];
+//				}
+//
+//			}
+//		}
+//		else
+//		{
+			session = [self newSessionWithFiles: filenames];
+			[self windowForSession: session];
+//		}
 	}
 	else
 	{
 		launchFiles = [filenames retain];
+		optionHeldAtlaunch = option;
 	}
 }
 
@@ -525,7 +580,6 @@ static NSArray * allAvailableStringEncodings(void)
 	NSArray * existingSessions = [sessions valueForKey: @"session"];
     if([[settings valueForKey: @"images"] count] > 0 && ![existingSessions containsObject: settings])
     {
-		[settings setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
         TSSTSessionWindowController * comicWindow = [[TSSTSessionWindowController alloc] initWithSession: settings];
         [sessions addObject: comicWindow];
         [comicWindow release];
@@ -588,8 +642,8 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (void)addFiles:(NSArray *)paths toSession:(TSSTManagedSession *)session
 {	
-	[[self managedObjectContext] retain];
-	[[self managedObjectContext] lock];
+//	[[self managedObjectContext] retain];
+//	[[self managedObjectContext] lock];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSString * path, * fileExtension;
 	BOOL isDirectory, exists;
@@ -648,8 +702,8 @@ static NSArray * allAvailableStringEncodings(void)
 	
 	[session setValue: pageSet forKey: @"images"];
 	[pageSet release];
-	[[self managedObjectContext] unlock];
-	[[self managedObjectContext] release];
+//	[[self managedObjectContext] unlock];
+//	[[self managedObjectContext] release];
 }
 
 

@@ -34,6 +34,7 @@
 	
 	[[self contentView] setCaretPosition: offset + 10];
     [self setFrame: frameRect display: YES];
+	[self invalidateShadow];
 }
 
 
@@ -95,17 +96,17 @@
                                       toPoint: NSMakePoint(caretPosition + 5, 5)
                                        radius: 5];
     [outline closePath];
-    [[NSColor colorWithCalibratedWhite: 0 alpha: 0.8] set];
+    [[NSColor colorWithCalibratedWhite: 1 alpha: 1] set];
     [outline fill];
 	
 //	int borderWidth = bordered ? 4 : 2;
-	int borderWidth = 4;
-
-	[outline addClip];
-	[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
-	[outline setLineWidth: borderWidth];
-	[outline setLineJoinStyle: NSRoundLineJoinStyle];
-	[outline stroke];
+//	int borderWidth = 4;
+//
+//	[outline addClip];
+//	[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
+//	[outline setLineWidth: borderWidth];
+//	[outline setLineJoinStyle: NSRoundLineJoinStyle];
+//	[outline stroke];
 }
 
 

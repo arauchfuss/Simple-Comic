@@ -110,6 +110,7 @@ extern NSString * TSSTSessionEndNotification;
 /*	Vars to delay the loading of files from an app launch until the core data store
 	has finished initializing */
     BOOL      launchInProgress;
+	BOOL	  optionHeldAtlaunch;
 	NSArray	* launchFiles;
 	
 }

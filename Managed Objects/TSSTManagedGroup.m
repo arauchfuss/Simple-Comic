@@ -380,7 +380,12 @@
 					++collision;
 				} while ([fileManager fileExistsAtPath: archivePath]);
 				
-				[fileData writeToFile: archivePath atomically: YES];
+				[[NSFileManager defaultManager] createDirectoryAtPath: [archivePath stringByDeletingLastPathComponent] 
+										  withIntermediateDirectories: YES 
+														   attributes: nil 
+																error: NULL];
+				[[NSFileManager defaultManager] createFileAtPath: archivePath contents: fileData attributes: nil];
+				
 				[nestedDescription setValue: archivePath forKey: @"path"];
 				[(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
             }

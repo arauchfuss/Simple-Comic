@@ -35,8 +35,6 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 #import <XADMaster/XADArchive.h>
 
 
-static NSMutableArray * TSSTComicImageTypes = nil;
-static NSArray * TSSTComicTextTypes = nil;
 static NSDictionary * TSSTInfoPageAttributes = nil;
 static NSSize monospaceCharacterSize;
 
@@ -44,25 +42,28 @@ static NSSize monospaceCharacterSize;
 
 + (NSArray *)imageExtensions
 {
-	if(!TSSTComicImageTypes)
+	static NSMutableArray * imageTypes = nil;
+	if(!imageTypes)
 	{
-		TSSTComicImageTypes = [NSMutableArray arrayWithArray: [NSImage imageFileTypes]];
-		[TSSTComicImageTypes removeObject: @"pdf"];
-		[TSSTComicImageTypes removeObject: @"eps"];
-		[TSSTComicImageTypes retain];
+		imageTypes = [NSMutableArray arrayWithArray: [NSImage imageFileTypes]];
+		[imageTypes removeObject: @"pdf"];
+		[imageTypes removeObject: @"eps"];
+		[imageTypes retain];
 	}
 	
-	return TSSTComicImageTypes;
+	return imageTypes;
 }
 
 + (NSArray *)textExtensions
 {
-	if(!TSSTComicTextTypes)
+	static NSMutableArray * textTypes = nil;
+
+	if(!textTypes)
 	{
-		TSSTComicTextTypes = [[NSArray arrayWithObjects: @"txt", @"nfo", @"info", nil] retain];
+		textTypes = [[NSArray arrayWithObjects: @"txt", @"nfo", @"info", nil] retain];
 	}
 	
-	return TSSTComicTextTypes;
+	return textTypes;
 }
 
 

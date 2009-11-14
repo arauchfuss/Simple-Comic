@@ -53,6 +53,8 @@ static NSDictionary * stringAttirbutes;
 	[self removeObserver: self forKeyPath: @"leftToRight"];
 	[self removeObserver: self forKeyPath: @"currentValue"];
 	[self removeObserver: self forKeyPath: @"maxValue"];
+	[self removeTrackingArea: [[self trackingAreas] objectAtIndex: 0]];
+
 	[super dealloc];
 }
 
@@ -180,15 +182,15 @@ static NSDictionary * stringAttirbutes;
 
 - (void)setFrameSize:(NSSize)size
 {
-    int width =  size.width - [self horizontalMargin] * 2;
-    /*  This is to make sure that the width allows the progress
-        tick marks to allign properly. */
-    if(width % 2)  
-    {
-        ++width;
-    }
-    
-    [self setProgressRect: NSMakeRect([self horizontalMargin] , 4.5, width, size.height - 9)];
+//    int width =  size.width - [self horizontalMargin] * 2;
+//    /*  This is to make sure that the width allows the progress
+//        tick marks to allign properly. */
+//    if(width % 2)  
+//    {
+//        ++width;
+//    }
+//    
+//    [self setProgressRect: NSMakeRect([self horizontalMargin] , 4.5, width, size.height - 9)];
     [super setFrameSize: size];
 }
 

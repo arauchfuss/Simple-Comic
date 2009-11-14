@@ -17,13 +17,23 @@
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
 {
-    self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask | NSNonactivatingPanelMask backing: bufferingType defer: flag];
+    self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask backing: bufferingType defer: flag];
     if(self)
     {
-        [self setOpaque: NO];
+//        [self setOpaque: YES];
     }
     return self;
 }
+
+- (BOOL)canBecomeKeyWindow
+{
+	return YES;
+}
+
+//- (BOOL)acceptsMouseMovedEvents
+//{
+//	return YES;
+//}
 
 
 @end
@@ -36,27 +46,14 @@
 {
     [[NSColor clearColor] set];
     NSRectFill(aRect);
-
 	NSRect bounds = [self bounds];
-	NSBezierPath * bezelBackgroundPath = [NSBezierPath bezierPath];
-	[bezelBackgroundPath moveToPoint: NSMakePoint(0,0)];
-    [bezelBackgroundPath appendBezierPathWithArcFromPoint: NSMakePoint(0 , NSMaxY(bounds)) 
-												  toPoint: NSMakePoint(NSMidX(bounds), NSMaxY(bounds)) 
-												   radius: 5];
-	[bezelBackgroundPath appendBezierPathWithArcFromPoint: NSMakePoint(NSMaxX(bounds) , NSMaxY(bounds)) 
-												  toPoint: NSMakePoint(NSMaxX(bounds), NSMidY(bounds)) 
-												   radius: 5];
-	[bezelBackgroundPath lineToPoint: NSMakePoint(NSMaxX(bounds), NSMinY(bounds))];
-    [bezelBackgroundPath closePath];
+	NSGradient * polishedGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.3 alpha: 1], 0.0,
+									 [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.5,
+									 [NSColor colorWithDeviceWhite: 0.2 alpha: 1], 0.5,
+									 [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil];
 	
-    [[NSColor colorWithCalibratedWhite: 0 alpha: 0.8] set];
-    [bezelBackgroundPath fill];
-	
-	[bezelBackgroundPath addClip];
-	[[NSColor colorWithCalibratedWhite: 0.8 alpha: 1] set];
-	[bezelBackgroundPath setLineWidth: 3];
-	[bezelBackgroundPath stroke];
-	
+	[polishedGradient drawInRect: bounds angle: 270];
+	[polishedGradient release];
 }
 
 

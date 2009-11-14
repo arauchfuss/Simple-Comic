@@ -27,8 +27,10 @@
     root.frame = previewFrame;
     root.delegate = self;
 	root.layoutManager = [CAConstraintLayoutManager layoutManager];
+//	CGColorRef colorRef = CGColorCreateGenericGray( 1, 1);
+//	root.backgroundColor = colorRef;
+//	CGColorRelease(colorRef);
 	
-
 	[self bind: @"pageBackground" 
 	  toObject: [NSUserDefaults standardUserDefaults] 
    withKeyPath: TSSTBackgroundColor 
@@ -61,8 +63,7 @@
 	[arrowLayer release];
 	
 	image = CGImageRefNamed(@"preview_1");
-//	CGColorRef colorRef = CGColorCreateGenericGray( 1, 1);
-//	firstPage.backgroundColor = colorRef;
+
 	firstPage.shadowOpacity = 0.8;
 	firstPage.contents = (id)image;
 	CGImageRelease(image);
@@ -172,13 +173,6 @@
 
 @end
 
-@interface TSSTPageOrderPreview : NSView
-{
-
-}
-
-
-@end
 
 @implementation TSSTPageOrderPreview
 
