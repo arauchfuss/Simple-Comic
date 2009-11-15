@@ -139,7 +139,7 @@
     [bezelWindow setFloatingPanel: YES];
 	[bezelWindow setNextResponder: self];
     [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
-	[fullscreenProgressBar setHighContrast: YES];
+	[fullscreenProgressBar setHighlightColor: nil];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
@@ -454,7 +454,7 @@
 	{
 		bar = progressBar;
 		[[infoWindow contentView] setBordered: NO];
-		point.y = (NSMaxY([bar frame]) - 7);
+		point.y = (NSMaxY([bar frame]) - 6);
 	}
 	
 	cursorPoint = [bar convertPoint: point fromView: nil];

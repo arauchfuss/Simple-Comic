@@ -41,18 +41,36 @@
 	NSRect progressRect; /* This is the section of the view. Users can mouse over and click here. */
 	float horizontalMargin; /* How much room is given for the text on either side. */
 	float cornerRadius;
-	BOOL highContrast;	/* if true fullscreen colors are used. */
+	
+	NSGradient * emptyGradient;
+	NSGradient * barGradient;
+	NSGradient * shadowGradient;
+	NSColor * highlightColor;
+	NSDictionary * numberStyle;
 }
 
+/*
+ List of replacements for the highcontrast flag
+ Highlight: NSColor if nil then layout is slightly shifted.
+ barFill: This is the gradient of the empty portion of the progress bar
+ progressFill: This is the gradient of the filled portion of the pr ituogress bar.
+ shadow:  This is the gradient that give the illusion of depth.
+ textStyle: Dictionary of string attributes.
+ */
+
 @property (assign) BOOL leftToRight;
+@property (assign) int maxValue;
+@property (assign) int currentValue;
 
 @property (assign) NSRect progressRect;
 @property (assign) float horizontalMargin;
 
-@property (assign) int maxValue;
-@property (assign) int currentValue;
 @property (assign) float cornerRadius;
-@property (assign) BOOL highContrast;
+@property (retain) NSGradient * emptyGradient;
+@property (retain) NSGradient * barGradient;
+@property (retain) NSGradient * shadowGradient;
+@property (retain) NSColor * highlightColor;
+@property (retain) NSDictionary * numberStyle;
 
 - (int)indexForPoint:(NSPoint)point;
 

@@ -13,15 +13,36 @@
 @implementation DTPolishedProgressBar
 
 
-@synthesize progressRect, horizontalMargin, leftToRight, maxValue, currentValue, cornerRadius, highContrast;
-
+@synthesize progressRect, horizontalMargin, leftToRight, maxValue, currentValue, 
+cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, numberStyle;
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-		self.highContrast = NO;
+		self.shadowGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.3 alpha: 1], 0.0,
+							   [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.5,
+							   [NSColor colorWithDeviceWhite: 0.2 alpha: 1], 0.5,
+							   [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil];
+		self.highlightColor = [NSColor colorWithCalibratedWhite: 0.88 alpha: 1];
+		
+		self.emptyGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.0,
+							  [NSColor colorWithDeviceWhite: 0.45 alpha: 1], 1.0, nil];
+		self.barGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.7 alpha: 1], 0.0,
+							[NSColor colorWithDeviceWhite: 0.75 alpha: 1], 0.5,
+							[NSColor colorWithDeviceWhite: 0.82 alpha: 1], 0.5,
+							[NSColor colorWithDeviceWhite: 0.92 alpha: 1], 1.0, nil];
+		NSShadow * stringEmboss = [NSShadow new];
+		[stringEmboss setShadowColor: [NSColor colorWithDeviceWhite: 0.9 alpha: 1]];
+		[stringEmboss setShadowBlurRadius: 0];
+		[stringEmboss setShadowOffset: NSMakeSize(1, -1)];
+		self.numberStyle = [NSDictionary dictionaryWithObjectsAndKeys: 
+							 [NSFont fontWithName: @"Lucida Grande Bold" size: 10], NSFontAttributeName,
+							 [NSColor colorWithDeviceWhite: 0.2 alpha: 1], NSForegroundColorAttributeName,
+							 stringEmboss, NSShadowAttributeName,
+							 nil];
+		[stringEmboss release];
 		self.horizontalMargin = 35;
 		self.cornerRadius = 4.0;
         [self setLeftToRight: YES];
@@ -41,6 +62,11 @@
 	[self removeObserver: self forKeyPath: @"maxValue"];
 	[self removeTrackingArea: [[self trackingAreas] objectAtIndex: 0]];
 	
+	[numberStyle release];
+	[barGradient release];
+	[emptyGradient release];
+	[shadowGradient release];
+	[highlightColor release];
 	[super dealloc];
 }
 
@@ -71,9 +97,9 @@
 	NSBezierPath * highlight = roundedRectWithCornerRadius(barRect, self.cornerRadius);
 	barRect.origin.y+=0.5;
 	NSRect fillRect = NSInsetRect(barRect, 1, 1);
-	if(!self.highContrast)
+	if(self.highlightColor)
 	{
-		[[NSColor colorWithCalibratedWhite: 0.88 alpha: 1] set];
+		[self.highlightColor set];
 		[highlight stroke];
 	}
 	
@@ -81,36 +107,20 @@
 	
 	[NSGraphicsContext saveGraphicsState];
 	
-	NSGradient * shadowGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.3 alpha: 1], 0.0,
-								   [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.5,
-								   [NSColor colorWithDeviceWhite: 0.2 alpha: 1], 0.5,
-								   [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil];
-	
-
 	[shadowGradient drawInBezierPath: roundedMask angle: 90];
-	[shadowGradient release];
 	roundedMask = roundedRectWithCornerRadius(fillRect, self.cornerRadius - 1);
 	[roundedMask addClip];
-	shadowGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0 alpha: 0.1], 0.0,
-					  [NSColor colorWithDeviceWhite: 0 alpha: 0.3], 1.0, nil];
+//	shadowGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0 alpha: 0.1], 0.0,
+//					  [NSColor colorWithDeviceWhite: 0 alpha: 0.3], 1.0, nil];
 	
 
-	NSGradient * fillGradient;
-	if(self.highContrast)
-	{
-		fillGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.424 alpha: 1], 0.0,
-						[NSColor colorWithDeviceWhite: 0.427 alpha: 1], 1.0, nil];
-	}
-	else {
-		fillGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.0,
-						[NSColor colorWithDeviceWhite: 0.45 alpha: 1], 1.0, nil];
-	}
+//		fillGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.424 alpha: 1], 0.0,
+//						[NSColor colorWithDeviceWhite: 0.427 alpha: 1], 1.0, nil];
 
-	[fillGradient drawInRect: fillRect angle: 270];
-	[fillGradient release];
+	[emptyGradient drawInRect: fillRect angle: 270];
 
-	[shadowGradient drawInRect: fillRect angle: 90];
-	[shadowGradient release];
+//	[shadowGradient drawInRect: fillRect angle: 90];
+//	[shadowGradient release];
 
     if(leftToRight)
     {
@@ -122,54 +132,29 @@
 		fillRect.origin.x = NSMinX(barRect) + (NSWidth(barRect) - NSWidth(fillRect) - 1);
     }
 	
-	NSGradient * progressGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.7 alpha: 1], 0.0,
-								 [NSColor colorWithDeviceWhite: 0.75 alpha: 1], 0.5,
-								 [NSColor colorWithDeviceWhite: 0.82 alpha: 1], 0.5,
-								 [NSColor colorWithDeviceWhite: 0.92 alpha: 1], 1.0, nil];
 	NSBezierPath * roundFill = roundedRectWithCornerRadius(fillRect, cornerRadius - 1);
 	
-	[progressGradient drawInBezierPath: roundFill angle: 90];
-	[progressGradient release];
+	[self.barGradient drawInBezierPath: roundFill angle: 90];
+	
 	[NSGraphicsContext restoreGraphicsState];
 	
-	NSDictionary * stringAttirbutes;
-	NSShadow * stringEmboss = nil;
-	if(self.highContrast)
-	{
-		stringAttirbutes = [[NSDictionary dictionaryWithObjectsAndKeys: 
-							 [NSFont fontWithName: @"Lucida Grande" size: 10], NSFontAttributeName,
-							 [NSColor colorWithDeviceWhite: 0.82 alpha: 1], NSForegroundColorAttributeName,
-							 nil] retain];
-		stringEmboss = [NSShadow new];
-		[stringEmboss setShadowColor: [NSColor colorWithDeviceWhite: 0.6 alpha: 0.7]];
-		[stringEmboss setShadowBlurRadius: 0];
-		[stringEmboss setShadowOffset: NSMakeSize(1, -1)];
-	}
-	else
-	{
-		stringAttirbutes = [[NSDictionary dictionaryWithObjectsAndKeys: 
-							 [NSFont fontWithName: @"Lucida Grande Bold" size: 10], NSFontAttributeName,
-							 [NSColor colorWithDeviceWhite: 0.2 alpha: 1], NSForegroundColorAttributeName,
-							 nil] retain];
-		stringEmboss = [NSShadow new];
-		[stringEmboss setShadowColor: [NSColor colorWithDeviceWhite: 0.9 alpha: 1]];
-		[stringEmboss setShadowBlurRadius: 0];
-		[stringEmboss setShadowOffset: NSMakeSize(1, -1)];
-		[stringEmboss set];
-	}
+//		stringAttirbutes = [[NSDictionary dictionaryWithObjectsAndKeys: 
+//							 [NSFont fontWithName: @"Lucida Grande" size: 10], NSFontAttributeName,
+//							 [NSColor colorWithDeviceWhite: 0.82 alpha: 1], NSForegroundColorAttributeName,
+//							 nil] retain];
+
 
     NSRect rightStringRect = NSMakeRect(NSMaxX(progressRect) + self.cornerRadius, NSMinY(bounds), self.horizontalMargin, NSHeight(bounds));
 	NSRect leftStringRect = NSMakeRect(0, NSMinY(bounds), self.horizontalMargin, NSHeight(bounds));
 	NSString * totalString = [NSString stringWithFormat: @"%i", maxValue];
-    NSSize stringSize = [totalString sizeWithAttributes: stringAttirbutes];
+    NSSize stringSize = [totalString sizeWithAttributes: self.numberStyle];
     NSRect stringRect = rectWithSizeCenteredInRect(stringSize, self.leftToRight ? rightStringRect : leftStringRect);
-	[totalString drawInRect: stringRect withAttributes: stringAttirbutes];
+	[totalString drawInRect: stringRect withAttributes: self.numberStyle];
 
 	NSString * progressString = [NSString stringWithFormat: @"%i", self.currentValue + 1];
-    stringSize = [progressString sizeWithAttributes: stringAttirbutes];
+    stringSize = [progressString sizeWithAttributes: self.numberStyle];
     stringRect = rectWithSizeCenteredInRect(stringSize, self.leftToRight ? leftStringRect : rightStringRect);
-    [progressString drawInRect: stringRect withAttributes: stringAttirbutes];
-	[stringEmboss release];
+    [progressString drawInRect: stringRect withAttributes: self.numberStyle];
 }
 
 

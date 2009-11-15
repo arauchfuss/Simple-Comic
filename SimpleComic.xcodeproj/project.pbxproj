@@ -67,6 +67,7 @@
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
 		28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */; };
+		28E039A510B0B2D2003B40F8 /* welcome3.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E039A410B0B2D2003B40F8 /* welcome3.png */; };
 		28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */; };
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
@@ -246,6 +247,7 @@
 		28C1D70F0DF21DA7003392B4 /* TSSTCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTCoverView.m; sourceTree = "<group>"; };
 		28C49D8A0DD53C05008E4857 /* TSSTBookmarkTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkTableView.h; sourceTree = "<group>"; };
 		28C49D8B0DD53C05008E4857 /* TSSTBookmarkTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkTableView.m; sourceTree = "<group>"; };
+		28E039A410B0B2D2003B40F8 /* welcome3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome3.png; sourceTree = "<group>"; };
 		28E39CC910A5CD6900A027A3 /* DTPolishedProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTPolishedProgressBar.h; path = "Progress Bar/DTPolishedProgressBar.h"; sourceTree = "<group>"; };
 		28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTPolishedProgressBar.m; path = "Progress Bar/DTPolishedProgressBar.m"; sourceTree = "<group>"; };
 		28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+UTI_Category.h"; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				288693130FED554E002C6BF7 /* org_size.tiff */,
 				288693140FED554E002C6BF7 /* preview_1.png */,
 				288693150FED554E002C6BF7 /* preview_2.png */,
+				28E039A410B0B2D2003B40F8 /* welcome3.png */,
 				288693110FED554E002C6BF7 /* lr_order.tiff */,
 				288693160FED554E002C6BF7 /* rl_order.tiff */,
 				288693170FED554E002C6BF7 /* rotate_l.tiff */,
@@ -801,6 +804,7 @@
 				28073CB00FF9956600D2602B /* extract.tiff in Resources */,
 				28073DB00FFB0EED00D2602B /* icon.tiff in Resources */,
 				28F660461067255600EC8A34 /* Help in Resources */,
+				28E039A510B0B2D2003B40F8 /* welcome3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
