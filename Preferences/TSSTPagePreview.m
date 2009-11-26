@@ -27,9 +27,6 @@
     root.frame = previewFrame;
     root.delegate = self;
 	root.layoutManager = [CAConstraintLayoutManager layoutManager];
-//	CGColorRef colorRef = CGColorCreateGenericGray( 1, 1);
-//	root.backgroundColor = colorRef;
-//	CGColorRelease(colorRef);
 	
 	[self bind: @"pageBackground" 
 	  toObject: [NSUserDefaults standardUserDefaults] 
@@ -64,14 +61,14 @@
 	
 	image = CGImageRefNamed(@"preview_1");
 
-	firstPage.shadowOpacity = 0.8;
+//	firstPage.shadowOpacity = 0.8;
 	firstPage.contents = (id)image;
 	CGImageRelease(image);
 	firstPage.zPosition = 1;
 	
 	image = CGImageRefNamed(@"preview_2");
 //	secondPage.backgroundColor = colorRef;
-	secondPage.shadowOpacity = 0.8;
+//	secondPage.shadowOpacity = 0.8;
 	secondPage.contents = (id)image;
 	CGImageRelease(image);
 //	CGColorRelease(colorRef);
@@ -140,6 +137,8 @@
 		CGRect rightRect = CGRectMake( CGRectGetWidth(frame) / 2, 0, width, height);
 		leftRect = CGRectInset(leftRect, 10, 10);
 		rightRect = CGRectInset(rightRect, 10, 10);
+		leftRect.origin.x += 10;
+		rightRect.origin.x -= 10;
 		if(order)
 		{
 			firstPage.frame = leftRect;
@@ -152,6 +151,7 @@
 		}
 	}
 }
+
 
 
 - (void)setPageBackground:(NSColor *)color
@@ -168,13 +168,16 @@
 }
 
 
+
 #pragma mark -
 #pragma mark CA Delegates
+
 
 @end
 
 
 @implementation TSSTPageOrderPreview
+
 
 - (void)mouseUp:(NSEvent *)theEvent
 {

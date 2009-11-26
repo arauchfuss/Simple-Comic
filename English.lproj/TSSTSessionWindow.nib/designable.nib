@@ -2,16 +2,17 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10B504</string>
+		<string key="IBDocument.SystemVersion">10C540</string>
 		<string key="IBDocument.InterfaceBuilderVersion">740</string>
-		<string key="IBDocument.AppKitVersion">1038.2</string>
-		<string key="IBDocument.HIToolboxVersion">437.00</string>
+		<string key="IBDocument.AppKitVersion">1038.25</string>
+		<string key="IBDocument.HIToolboxVersion">458.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">740</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="6"/>
 			<integer value="274"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -776,7 +777,7 @@
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<string key="NSWindowContentMinSize">{350, 400}</string>
 				<object class="NSView" key="NSWindowView" id="1020484870">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -802,6 +803,7 @@
 									</object>
 									<string key="NSFrameSize">{445, 515}</string>
 									<reference key="NSSuperview" ref="447490665"/>
+									<reference key="NSNextKeyView" ref="229327460"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSDocView" ref="229327460"/>
 									<object class="NSColor" key="NSBGColor" id="632681898">
@@ -833,6 +835,7 @@
 							</object>
 							<string key="NSFrame">{{0, 23}, {460, 530}}</string>
 							<reference key="NSSuperview" ref="1020484870"/>
+							<reference key="NSNextKeyView" ref="687147521"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<int key="NSsFlags">48</int>
 							<reference key="NSVScroller" ref="136009895"/>
@@ -850,6 +853,7 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{460, 553}</string>
+					<reference key="NSSuperview"/>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
@@ -889,8 +893,8 @@
 				<object class="NSMutableString" key="NSViewClass">
 					<characters key="NS.bytes">View</characters>
 				</object>
-				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
-				<string key="NSWindowContentMinSize">{200, 30}</string>
+				<string key="NSWindowContentMaxSize">{672, 32}</string>
+				<string key="NSWindowContentMinSize">{672, 32}</string>
 				<object class="NSView" key="NSWindowView" id="763131527">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -898,7 +902,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSCustomView" id="278110821">
 							<reference key="NSNextResponder" ref="763131527"/>
-							<int key="NSvFlags">268</int>
+							<int key="NSvFlags">274</int>
 							<string key="NSFrame">{{266, 0}, {372, 31}}</string>
 							<reference key="NSSuperview" ref="763131527"/>
 							<string key="NSClassName">DTPolishedProgressBar</string>
@@ -1037,8 +1041,8 @@
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
-				<string key="NSMinSize">{200, 52}</string>
-				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
+				<string key="NSMinSize">{672, 54}</string>
+				<string key="NSMaxSize">{672, 54}</string>
 			</object>
 			<object class="NSWindowTemplate" id="196533896">
 				<int key="NSWindowStyleMask">1</int>
@@ -2708,15 +2712,12 @@
 					<string>699.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 					<string>7.ImportedFromIB2</string>
-					<string>700.CustomClassName</string>
 					<string>700.IBPluginDependency</string>
 					<string>700.IBSegmentedControlInspectorSelectedSegmentMetadataKey</string>
 					<string>705.IBPluginDependency</string>
-					<string>706.CustomClassName</string>
 					<string>706.IBPluginDependency</string>
 					<string>706.IBSegmentedControlInspectorSelectedSegmentMetadataKey</string>
 					<string>709.IBPluginDependency</string>
-					<string>710.CustomClassName</string>
 					<string>710.IBPluginDependency</string>
 					<string>710.IBSegmentedControlInspectorSelectedSegmentMetadataKey</string>
 					<string>713.IBPluginDependency</string>
@@ -2741,10 +2742,10 @@
 					<string>{{146, 712}, {672, 32}}</string>
 					<integer value="1"/>
 					<string>{{617, 728}, {213, 28}}</string>
-					<integer value="0"/>
+					<boolean value="YES"/>
 					<integer value="1"/>
-					<string>{3.40282e+38, 3.40282e+38}</string>
-					<string>{200, 30}</string>
+					<string>{672, 32}</string>
+					<string>{672, 32}</string>
 					<string>TSSTBezelView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
@@ -2826,7 +2827,7 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{86, 663}, {616, 0}}</string>
+					<string>{{-41, 663}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{134, 706}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2884,9 +2885,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{164, 110}, {460, 553}}</string>
+					<string>{{9, 0}, {460, 553}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{164, 110}, {460, 553}}</string>
+					<string>{{9, 0}, {460, 553}}</string>
 					<integer value="1"/>
 					<string>{{212, 142}, {460, 564}}</string>
 					<integer value="0"/>
@@ -2935,15 +2936,12 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>TSSTSegmentedCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="2"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>TSSTSegmentedCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="0"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>TSSTSegmentedCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3205,14 +3203,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TSSTSegmentedCell</string>
-					<string key="superclassName">NSSegmentedCell</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Segmented Controls/TSSTSegmentedCell.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

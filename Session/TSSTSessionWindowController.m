@@ -139,7 +139,13 @@
     [bezelWindow setFloatingPanel: YES];
 	[bezelWindow setNextResponder: self];
     [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
+	
 	[fullscreenProgressBar setHighlightColor: nil];
+	NSDictionary * fullscreenNumberStyle = [[NSDictionary dictionaryWithObjectsAndKeys: 
+											 [NSFont fontWithName: @"Lucida Grande" size: 10], NSFontAttributeName,
+											 [NSColor colorWithDeviceWhite: 0.82 alpha: 1], NSForegroundColorAttributeName,
+											 nil] retain];
+	[fullscreenProgressBar setNumberStyle: fullscreenNumberStyle];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
@@ -1099,8 +1105,8 @@
 		windowRect = [[[self window] screen] frame];
 		windowRect.size.height += [(DTSessionWindow *)[self window] toolbarHeight];
 		[(DTSessionWindow *)[self window] setFullscreen: YES];
+		[[self window] setFrame: windowRect display: NO animate: NO];
 		[self adjustStatusBar];
-		[[self window] setFrame: windowRect display: NO];
 		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
     }
     else
@@ -1112,7 +1118,7 @@
 		rectData = [session valueForKey: @"position" ];
 		rectangleValue = [NSUnarchiver unarchiveObjectWithData: rectData];
 		windowRect = [rectangleValue rectValue];
-		[[self window] setFrame: windowRect display: NO];
+		[[self window] setFrame: windowRect display: NO animate: NO];
         [self adjustStatusBar];
     }
 	
@@ -1615,7 +1621,7 @@ images are currently visible and then skips over them.
 			NSRect bezelRect = [bezelWindow frame];
 			bezelRect.origin.x = NSWidth(frame) / 2 - NSWidth(bezelRect) / 2 + NSMinX(frame);
 			bezelRect.origin.y = NSMinY(frame) - 1.5; 
-			[bezelWindow setFrame: bezelRect display: NO];
+			[bezelWindow setFrameOrigin: bezelRect.origin];
 		}
 		else 
 		{

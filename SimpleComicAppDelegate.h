@@ -91,6 +91,8 @@ extern NSString * TSSTSessionEndNotification;
 
     IBOutlet NSPanel * donationPanel;
 	
+	IBOutlet NSPanel * launchPanel;
+	
 	IBOutlet SUUpdater		   * updater;
 
 /*  Core Data stuff. */
@@ -177,7 +179,7 @@ extern NSString * TSSTSessionEndNotification;
 
 /* Takes user to the Simple Comic paypal page. */
 - (IBAction)donate:(id)sender;
-
+- (IBAction)endLaunchPanel:(id)sender;
 - (IBAction)actionStub:(id)sender;
 
 @end

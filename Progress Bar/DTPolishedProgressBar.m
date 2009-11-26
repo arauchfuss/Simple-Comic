@@ -137,11 +137,6 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	[self.barGradient drawInBezierPath: roundFill angle: 90];
 	
 	[NSGraphicsContext restoreGraphicsState];
-	
-//		stringAttirbutes = [[NSDictionary dictionaryWithObjectsAndKeys: 
-//							 [NSFont fontWithName: @"Lucida Grande" size: 10], NSFontAttributeName,
-//							 [NSColor colorWithDeviceWhite: 0.82 alpha: 1], NSForegroundColorAttributeName,
-//							 nil] retain];
 
 
     NSRect rightStringRect = NSMakeRect(NSMaxX(progressRect) + self.cornerRadius, NSMinY(bounds), self.horizontalMargin, NSHeight(bounds));

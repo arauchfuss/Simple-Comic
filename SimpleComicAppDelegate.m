@@ -387,7 +387,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {	
-	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
+//	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
 	if(!launchInProgress)
 	{
 		TSSTManagedSession * session;
@@ -422,7 +422,7 @@ static NSArray * allAvailableStringEncodings(void)
 	else
 	{
 		launchFiles = [filenames retain];
-		optionHeldAtlaunch = option;
+//		optionHeldAtlaunch = option;
 	}
 }
 
@@ -927,6 +927,11 @@ static NSArray * allAvailableStringEncodings(void)
     
 }
 
+
+- (IBAction)endLaunchPanel:(id)sender
+{
+	[launchPanel close];
+}
 
 
 @end

@@ -35,7 +35,6 @@
 		286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */; };
 		286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */; };
 		286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19C0C4D819400E9D06D /* TSSTImageView.m */; };
-		28770B6F0DBA8B1C00A78646 /* TSSTSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */; };
 		287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */; };
 		287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */; };
 		288693010FED553A002C6BF7 /* 7z.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FA0FED553A002C6BF7 /* 7z.icns */; };
@@ -184,13 +183,13 @@
 		286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTInfoWindow.h; path = "Progress Bar/TSSTInfoWindow.h"; sourceTree = "<group>"; };
 		286BA19C0C4D819400E9D06D /* TSSTImageView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTImageView.m; path = "Progress Bar/TSSTImageView.m"; sourceTree = "<group>"; };
 		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTImageView.h; path = "Progress Bar/TSSTImageView.h"; sourceTree = "<group>"; };
-		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTShortcutController.h; sourceTree = "<group>"; };
-		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTShortcutController.m; sourceTree = "<group>"; };
+		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTShortcutController.h; path = ../Preferences/TSSTShortcutController.h; sourceTree = "<group>"; };
+		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTShortcutController.m; path = ../Preferences/TSSTShortcutController.m; sourceTree = "<group>"; };
 		28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KeyboardPrefsPane-Info.plist"; path = "../KeyboardPrefsPane-Info.plist"; sourceTree = "<group>"; };
-		28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardPrefController.h; sourceTree = "<group>"; };
-		28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardPrefController.m; sourceTree = "<group>"; };
-		287293DE0D4D9DFE00AA16C0 /* TSSTKeyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTKeyTableView.h; sourceTree = "<group>"; };
-		287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTKeyTableView.m; sourceTree = "<group>"; };
+		28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardPrefController.h; path = ../Preferences/KeyboardPrefController.h; sourceTree = "<group>"; };
+		28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardPrefController.m; path = ../Preferences/KeyboardPrefController.m; sourceTree = "<group>"; };
+		287293DE0D4D9DFE00AA16C0 /* TSSTKeyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTKeyTableView.h; path = ../Preferences/TSSTKeyTableView.h; sourceTree = "<group>"; };
+		287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyTableView.m; path = ../Preferences/TSSTKeyTableView.m; sourceTree = "<group>"; };
 		28770B6A0DBA8B1C00A78646 /* TSSTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSegmentedCell.h; path = "Segmented Controls/TSSTSegmentedCell.h"; sourceTree = SOURCE_ROOT; };
 		28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedCell.m; path = "Segmented Controls/TSSTSegmentedCell.m"; sourceTree = SOURCE_ROOT; };
 		28770B6C0DBA8B1C00A78646 /* TSSTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSegmentedControl.h; path = "Segmented Controls/TSSTSegmentedControl.h"; sourceTree = SOURCE_ROOT; };
@@ -227,10 +226,10 @@
 		2886931B0FED554E002C6BF7 /* win_scale.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = win_scale.tiff; sourceTree = "<group>"; };
 		288C09C20DC809DF00EAFF46 /* BDAlias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDAlias.m; sourceTree = "<group>"; };
 		288C09C30DC809DF00EAFF46 /* BDAlias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDAlias.h; sourceTree = "<group>"; };
-		288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedBookmark.h; sourceTree = "<group>"; };
-		288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedBookmark.m; sourceTree = "<group>"; };
-		288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedBookmarkGroup.h; sourceTree = "<group>"; };
-		288C0AF60DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedBookmarkGroup.m; sourceTree = "<group>"; };
+		288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmark.h; path = "../Managed Objects/TSSTManagedBookmark.h"; sourceTree = "<group>"; };
+		288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmark.m; path = "../Managed Objects/TSSTManagedBookmark.m"; sourceTree = "<group>"; };
+		288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmarkGroup.h; path = "../Managed Objects/TSSTManagedBookmarkGroup.h"; sourceTree = "<group>"; };
+		288C0AF60DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmarkGroup.m; path = "../Managed Objects/TSSTManagedBookmarkGroup.m"; sourceTree = "<group>"; };
 		288C0B1B0DCCD82200EAFF46 /* TSSTBookmarkTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkTreeController.h; sourceTree = "<group>"; };
 		288C0B1C0DCCD82200EAFF46 /* TSSTBookmarkTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkTreeController.m; sourceTree = "<group>"; };
 		288C0BD70DCD470200EAFF46 /* TSSTBookmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkWindowController.h; sourceTree = "<group>"; };
@@ -334,7 +333,6 @@
 				289CD7620BF15CCC00B5AE01 /* Progress Bar */,
 				28195CFA0C179DBD001F5E95 /* Fullscreen */,
 				FA9FB59508AAE3690085AA55 /* Preferences */,
-				28770B670DBA8B1C00A78646 /* Segmented Controls */,
 				28FA4DD50B8A6F3B00496668 /* Managed Objects */,
 				281C0DC40CEEA16D009A9696 /* Helpers */,
 				287C611C106F80A9001463C6 /* Unused */,
@@ -423,12 +421,21 @@
 				28770B6C0DBA8B1C00A78646 /* TSSTSegmentedControl.h */,
 				28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */,
 			);
-			path = "Segmented Controls";
+			name = "Segmented Controls";
+			path = "../Segmented Controls";
 			sourceTree = "<group>";
 		};
 		287C611C106F80A9001463C6 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				28770B670DBA8B1C00A78646 /* Segmented Controls */,
+				28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */,
+				28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */,
+				28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */,
+				28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */,
+				28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */,
+				287293DE0D4D9DFE00AA16C0 /* TSSTKeyTableView.h */,
+				287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */,
 				280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */,
 				280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */,
 				28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */,
@@ -489,6 +496,10 @@
 		288C0BDA0DCD471100EAFF46 /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
+				288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */,
+				288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */,
+				288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */,
+				288C0AF60DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.m */,
 				288C0BD70DCD470200EAFF46 /* TSSTBookmarkWindowController.h */,
 				288C0BD80DCD470200EAFF46 /* TSSTBookmarkWindowController.m */,
 				288C0B1B0DCCD82200EAFF46 /* TSSTBookmarkTreeController.h */,
@@ -535,10 +546,6 @@
 				281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */,
 				2803B2FE0D5E541800CD7906 /* TSSTManagedSession.h */,
 				2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */,
-				288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */,
-				288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */,
-				288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */,
-				288C0AF60DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.m */,
 			);
 			path = "Managed Objects";
 			sourceTree = "<group>";
@@ -607,8 +614,6 @@
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */,
-				28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */,
 				28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */,
 				28FACB810CD01D93007B7918 /* SS_PrefsController.h */,
 				28FACB820CD01D93007B7918 /* SS_PrefsController.m */,
@@ -618,11 +623,6 @@
 				28FACC7D0CD03BBB007B7918 /* AdvancedPrefsPane-Info.plist */,
 				28FACBD30CD02635007B7918 /* AdvancedPrefController.h */,
 				28FACBD40CD02635007B7918 /* AdvancedPrefController.m */,
-				28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */,
-				28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */,
-				28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */,
-				287293DE0D4D9DFE00AA16C0 /* TSSTKeyTableView.h */,
-				287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */,
 				285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */,
 				285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */,
 			);
@@ -846,7 +846,6 @@
 				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
 				28FACB850CD01D93007B7918 /* SS_PrefsController.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
-				28770B6F0DBA8B1C00A78646 /* TSSTSegmentedCell.m in Sources */,
 				288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */,
@@ -1210,10 +1209,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					unrar,
-					unzip,
-				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Debug;
@@ -1226,10 +1221,6 @@
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					unrar,
-					unzip,
-				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Release;
@@ -1239,10 +1230,6 @@
 			buildSettings = {
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				HEADER_SEARCH_PATHS = (
-					unrar,
-					unzip,
-				);
 				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
 			};
 			name = Default;

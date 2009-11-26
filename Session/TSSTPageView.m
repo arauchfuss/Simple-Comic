@@ -258,6 +258,7 @@
 		[[NSApp delegate] addFiles: filePaths toSession: [[self dataSource] session]];
 		return YES;
 	}
+	
 	return NO;
 }
 
@@ -1347,11 +1348,11 @@
 - (void)magnifyWithEvent:(NSEvent *)event
 {
 	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
-	if (([event deltaZ] > 0.03) && !isFullscreen)
+	if (([event deltaZ] > 5) && !isFullscreen)
 	{
 		[[dataSource session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
 	}
-	else if(([event deltaZ] < -0.03) && isFullscreen)
+	else if(([event deltaZ] < -5) && isFullscreen)
 	{
 		[[dataSource session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
 	}
