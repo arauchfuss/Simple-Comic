@@ -141,10 +141,10 @@
     [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
 	
 	[fullscreenProgressBar setHighlightColor: nil];
-	NSDictionary * fullscreenNumberStyle = [[NSDictionary dictionaryWithObjectsAndKeys: 
+	NSDictionary * fullscreenNumberStyle = [NSDictionary dictionaryWithObjectsAndKeys: 
 											 [NSFont fontWithName: @"Lucida Grande" size: 10], NSFontAttributeName,
 											 [NSColor colorWithDeviceWhite: 0.82 alpha: 1], NSForegroundColorAttributeName,
-											 nil] retain];
+											 nil];
 	[fullscreenProgressBar setNumberStyle: fullscreenNumberStyle];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
