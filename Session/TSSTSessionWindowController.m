@@ -360,6 +360,14 @@
 		{
 			[[self window] addChildWindow: bezelWindow ordered: NSWindowAbove];
 			[bezelWindow makeKeyWindow];
+			
+			windowLocation = [bezelWindow convertScreenToBase: screenLocation];
+			progressRect = [fullscreenProgressBar convertRect: [fullscreenProgressBar progressRect] toView: nil];
+			if(NSMouseInRect(windowLocation, progressRect, [fullscreenProgressBar isFlipped]))
+			{
+				[self infoPanelSetupAtPoint: windowLocation];
+				[bezelWindow addChildWindow: infoWindow ordered: NSWindowAbove];
+			}	
 		}
 		else
 		{
