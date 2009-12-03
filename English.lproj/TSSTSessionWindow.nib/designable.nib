@@ -1872,6 +1872,14 @@
 					</object>
 					<int key="connectionID">712</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">changeFullscreen:</string>
+						<reference key="source" ref="642751089"/>
+						<reference key="destination" ref="164867539"/>
+					</object>
+					<int key="connectionID">747</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -2885,9 +2893,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{9, 0}, {460, 553}}</string>
+					<string>{{427, 0}, {460, 553}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{9, 0}, {460, 553}}</string>
+					<string>{{427, 0}, {460, 553}}</string>
 					<integer value="1"/>
 					<string>{{212, 142}, {460, 564}}</string>
 					<integer value="0"/>
@@ -2964,7 +2972,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">746</int>
+			<int key="maxID">747</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
