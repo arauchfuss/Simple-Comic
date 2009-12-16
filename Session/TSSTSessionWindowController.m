@@ -137,7 +137,7 @@
     [[self window] setAcceptsMouseMovedEvents: YES];
     [bezelWindow setAcceptsMouseMovedEvents: YES];
     [bezelWindow setFloatingPanel: YES];
-	[bezelWindow setNextResponder: self];
+	[bezelWindow setNextResponder: [self window]];
     [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
 	
 	[fullscreenProgressBar setHighlightColor: nil];
@@ -1609,6 +1609,14 @@ images are currently visible and then skips over them.
 	{
 		[NSCursor unhide];
 		[self refreshLoupePanel];
+		[[infoWindow parentWindow] removeChildWindow: infoWindow];
+		[infoWindow orderOut: self];
+	}
+	
+	if([aNotification object] == bezelWindow)
+	{
+		[[infoWindow parentWindow] removeChildWindow: infoWindow];
+		[infoWindow orderOut: self];
 	}
 }
 

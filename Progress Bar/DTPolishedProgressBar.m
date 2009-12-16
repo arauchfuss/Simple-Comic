@@ -84,6 +84,9 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 }
 
 
+/*
+ Draws the progressbar.
+ */
 - (void)drawRect:(NSRect)rect
 {
 	NSRect bounds = [self bounds];
@@ -110,17 +113,8 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	[shadowGradient drawInBezierPath: roundedMask angle: 90];
 	roundedMask = roundedRectWithCornerRadius(fillRect, self.cornerRadius - 1);
 	[roundedMask addClip];
-//	shadowGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0 alpha: 0.1], 0.0,
-//					  [NSColor colorWithDeviceWhite: 0 alpha: 0.3], 1.0, nil];
-	
-
-//		fillGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.424 alpha: 1], 0.0,
-//						[NSColor colorWithDeviceWhite: 0.427 alpha: 1], 1.0, nil];
 
 	[emptyGradient drawInRect: fillRect angle: 270];
-
-//	[shadowGradient drawInRect: fillRect angle: 90];
-//	[shadowGradient release];
 
     if(leftToRight)
     {
@@ -153,7 +147,10 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 }
 
 
-
+/*
+ This method has been over-ridden to change the progressRect porperty every time the
+ progress view is re-sized.
+ */
 - (void)setFrameSize:(NSSize)size
 {
     [self setProgressRect: NSMakeRect( self.cornerRadius + self.horizontalMargin,0, 
@@ -164,8 +161,18 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 
 
 
+/*
+ If there has been a mouse tracking area added to this view it will be updated
+ every time the progress bar is re-sized.
+ The tracking area is based on the progressRect property.
+ */
 - (void)updateTrackingAreas
 {
+	if([[self trackingAreas] count] == 0)
+	{
+		return;
+	}
+	
 	NSTrackingArea * oldArea = [[self trackingAreas] objectAtIndex: 0];
 	[oldArea retain];
 	[self removeTrackingArea: oldArea];
@@ -180,32 +187,38 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 }
 
 
+/*
+ Changes the currentValue based on where the user clicks.
+ */
 - (void)mouseDown:(NSEvent *)event
 {
-    int result;
     NSPoint cursorPoint = [self convertPoint: [event locationInWindow] fromView: nil];
     if(NSMouseInRect( cursorPoint, progressRect, [self isFlipped]))
     {
-        result = [self indexForPoint: cursorPoint];
-        [self setValue: [NSNumber numberWithInt: result] forKey: @"currentValue"];
+		self.currentValue = [self indexForPoint: cursorPoint];
     }
 }
 
 
 
+/*
+ Kind of surprised that the mouseDown event method would not refresh.  
+ Not enough code to be worth abstracting.
+ */
 - (void)mouseDragged:(NSEvent *)event
 {
-    int result;
     NSPoint cursorPoint = [self convertPoint: [event locationInWindow] fromView: nil];
     if(NSMouseInRect( cursorPoint, progressRect, [self isFlipped]))
     {
-        result = [self indexForPoint: cursorPoint];
-        [self setValue: [NSNumber numberWithInt: result] forKey: @"currentValue"];
+		self.currentValue = [self indexForPoint: cursorPoint];
     }
 }
 
 
-
+/*
+ Translates a point within the view to an index between 0 and maxValue.
+ Progress indicator direction affects the index.
+ */
 - (int)indexForPoint:(NSPoint)point
 {
     int index;

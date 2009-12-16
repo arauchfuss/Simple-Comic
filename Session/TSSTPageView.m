@@ -1005,6 +1005,7 @@
 }
 
 
+
 - (void)pageUp
 {
 	NSRect visible = [[self enclosingScrollView] documentVisibleRect];
@@ -1048,6 +1049,7 @@
 }
 
 
+
 - (void)pageDown
 {
 	NSRect visible = [[self enclosingScrollView] documentVisibleRect];
@@ -1088,6 +1090,7 @@
 		[self scrollPoint: scrollPoint];
 	}
 }
+
 
 
 - (void)keyUp:(NSEvent *)event
@@ -1243,11 +1246,13 @@
 }
 
 
+
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
 	BOOL loupe = [[[dataSource session] valueForKey: @"loupe"] boolValue];
 	[[dataSource session] setValue: [NSNumber numberWithBool: !loupe] forKey: @"loupe"];
 }
+
 
 
 - (void)mouseDown:(NSEvent *)theEvent

@@ -387,10 +387,46 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {	
-//	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
 	if(!launchInProgress)
 	{
 		TSSTManagedSession * session;
+		session = [self newSessionWithFiles: filenames];
+		[self windowForSession: session];
+	}
+	else
+	{
+		launchFiles = [filenames retain];
+	}
+}
+
+
+
+- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
+{	
+	if(!launchInProgress)
+	{
+		TSSTManagedSession * session;
+		session = [self newSessionWithFiles: [NSArray arrayWithObject: filename]];
+		[self windowForSession: session];
+		return YES;
+
+	}
+	
+	return NO;
+
+//	else
+//	{
+//		launchFiles = [filenames retain];
+//	}
+}
+
+
+//- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
+//{	
+//	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
+//	if(!launchInProgress)
+//	{
+//		TSSTManagedSession * session;
 //		if (option)
 //		{
 //			NSMutableArray * looseImages = [NSMutableArray array];
@@ -410,21 +446,22 @@ static NSArray * allAvailableStringEncodings(void)
 //					session = [self newSessionWithFiles: looseImages];
 //					[self windowForSession: session];
 //				}
-//
+//				
 //			}
 //		}
 //		else
 //		{
-			session = [self newSessionWithFiles: filenames];
-			[self windowForSession: session];
+//			session = [self newSessionWithFiles: filenames];
+//			[self windowForSession: session];
 //		}
-	}
-	else
-	{
-		launchFiles = [filenames retain];
+//	}
+//	else
+//	{
+//		launchFiles = [filenames retain];
 //		optionHeldAtlaunch = option;
-	}
-}
+//	}
+//}
+
 
 
 #pragma mark -

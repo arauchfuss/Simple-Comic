@@ -30,23 +30,23 @@
 #import <Cocoa/Cocoa.h>
 
 /*
- A dual use progress bar.  Used in both windowed mode and fullscreen.
- The differenct between the two is merely the coloration and contrast.
- */
+	Configurable progress bar.  Allows the setting of various style attributes.
+	Progress direction can be set.
+*/
 @interface DTPolishedProgressBar : NSView
 {
-	int maxValue; /* The maximum value of the progress bar. */
-	int currentValue; /* The progress bar is filled to this level. */
-	BOOL leftToRight; /* The direction of the porgress bar. */
+	int maxValue;		/* The maximum value of the progress bar. */
+	int currentValue;	/* The progress bar is filled to this level. */
+	BOOL leftToRight;	/* The direction of the porgress bar. */
 	NSRect progressRect; /* This is the section of the view. Users can mouse over and click here. */
 	float horizontalMargin; /* How much room is given for the text on either side. */
 	float cornerRadius;
 	
-	NSGradient * emptyGradient;
-	NSGradient * barGradient;
-	NSGradient * shadowGradient;
-	NSColor * highlightColor;
-	NSDictionary * numberStyle;
+	NSGradient * emptyGradient; /* This is the color of the unfilled bar. */
+	NSGradient * barGradient;	/* The color of the filled bar. */
+	NSGradient * shadowGradient; /* */
+	NSColor * highlightColor;	/* The highlight on the bottom lip of the bar. */
+	NSDictionary * numberStyle; /* The font attributes of the progress numbers. */
 }
 
 /*

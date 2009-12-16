@@ -98,36 +98,8 @@
     [outline closePath];
     [[NSColor colorWithCalibratedWhite: 1 alpha: 1] set];
     [outline fill];
-	
-//	int borderWidth = bordered ? 4 : 2;
-//	int borderWidth = 4;
-//
-//	[outline addClip];
-//	[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
-//	[outline setLineWidth: borderWidth];
-//	[outline setLineJoinStyle: NSRoundLineJoinStyle];
-//	[outline stroke];
 }
 
-
-@end
-
-
-@implementation TSSTTransparentContent
-
-- (id)initWithFrame:(NSRect)frame {
-    self = [super initWithFrame:frame];
-    if (self)
-    {
-    }
-    return self;
-}
-
-//- (void)drawRect:(NSRect)rect
-//{
-//    [[NSColor clearColor] set];
-//    NSRectFill( rect);
-//}
 
 @end
 
