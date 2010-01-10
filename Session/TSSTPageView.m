@@ -26,8 +26,6 @@
 	TSSTPageView.m
 */
 
-
-
 #import "TSSTPageView.h"
 #import "TSSTImageUtilities.h"
 #import "SimpleComicAppDelegate.h"
@@ -42,7 +40,6 @@
 
 @synthesize rotation;
 @synthesize dataSource;
-
 
 
 - (void)awakeFromNib
@@ -1350,6 +1347,7 @@
 //    }
 //}
 
+
 - (void)magnifyWithEvent:(NSEvent *)event
 {
 	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
@@ -1403,7 +1401,5 @@
 }
 
 
-
 @end
-
 

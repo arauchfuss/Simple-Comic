@@ -28,18 +28,13 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 #import <Cocoa/Cocoa.h>
 
-@class BDAlias;
 
 
 @interface TSSTManagedGroup : NSManagedObject
 {
-	BDAlias * alias;
     id instance;
     NSLock * groupLock;
 }
-
-
-@property (retain) BDAlias * alias;
 
 - (id)instance;
 
@@ -54,7 +49,6 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 @end
 
-
 @interface TSSTManagedArchive : TSSTManagedGroup
 {
 
@@ -68,7 +62,6 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 @end
 
-
 @interface TSSTManagedPDF : TSSTManagedGroup
 {
     
@@ -78,5 +71,4 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 - (void)pdfContents;
 
 @end
-
 

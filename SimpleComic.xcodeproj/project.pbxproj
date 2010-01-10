@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,7 @@
 		286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19C0C4D819400E9D06D /* TSSTImageView.m */; };
 		287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */; };
 		287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */; };
+		287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */; };
 		288693010FED553A002C6BF7 /* 7z.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FA0FED553A002C6BF7 /* 7z.icns */; };
 		288693020FED553A002C6BF7 /* cbr.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FB0FED553A002C6BF7 /* cbr.icns */; };
 		288693030FED553A002C6BF7 /* cbz.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FC0FED553A002C6BF7 /* cbz.icns */; };
@@ -65,7 +66,6 @@
 		28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
-		28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */; };
 		28E039A510B0B2D2003B40F8 /* welcome3.png in Resources */ = {isa = PBXBuildFile; fileRef = 28E039A410B0B2D2003B40F8 /* welcome3.png */; };
 		28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */; };
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
@@ -606,7 +606,7 @@
 		7756732906782D8800D1FEB8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */,
+				287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -710,7 +710,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = FA7257E608A6CDEB006A2A19 /* Build configuration list for PBXProject "SimpleComic" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -833,7 +833,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
-				28C2FA050DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
@@ -855,6 +854,7 @@
 				284741461071B4820033BD88 /* TSSTGradientView.m in Sources */,
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 				28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */,
+				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1109,6 +1109,7 @@
 		FA7257E308A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1127,6 +1128,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
@@ -1138,6 +1140,7 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_OPENMP_SUPPORT = YES;
@@ -1164,6 +1167,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_CFLAGS = "-mdynamic-no-pic";
 				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
@@ -1175,6 +1179,7 @@
 		FA7257E508A6CDEB006A2A19 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1193,6 +1198,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lstdc++",
@@ -1209,19 +1215,18 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
 		FA7257E808A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
@@ -1230,7 +1235,7 @@
 			buildSettings = {
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
@@ -1280,13 +1285,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		28C2FA040DEB559000AB5E35 /* Sessions_DataModel.xcdatamodeld */ = {
+		287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */,
 			);
 			currentVersion = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */;
-			includeInIndex = 0;
 			path = Sessions_DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

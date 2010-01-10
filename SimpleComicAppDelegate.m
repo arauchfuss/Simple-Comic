@@ -208,9 +208,6 @@ static NSArray * allAvailableStringEncodings(void)
 	
     id transformer = [[TSSTLastPathComponent new] autorelease];
 	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTLastPathComponent"];
-
-//    transformer = [[TSSTHumanReadableIndex new] autorelease];
-//	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTHumanReadableIndex"];
 }
 
 
@@ -401,24 +398,24 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 
-- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
-{	
-	if(!launchInProgress)
-	{
-		TSSTManagedSession * session;
-		session = [self newSessionWithFiles: [NSArray arrayWithObject: filename]];
-		[self windowForSession: session];
-		return YES;
-
-	}
-	
-	return NO;
-
-//	else
+//- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
+//{	
+//	if(!launchInProgress)
 //	{
-//		launchFiles = [filenames retain];
+//		TSSTManagedSession * session;
+//		session = [self newSessionWithFiles: [NSArray arrayWithObject: filename]];
+//		[self windowForSession: session];
+//		return YES;
+//
 //	}
-}
+//	
+//	return NO;
+//
+////	else
+////	{
+////		launchFiles = [filenames retain];
+////	}
+//}
 
 
 //- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
@@ -516,7 +513,7 @@ static NSArray * allAvailableStringEncodings(void)
 		NSLog(@"%@",[error localizedDescription]);
 	}    
 
-	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1704"])
+	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1705"])
 	{
 		if(![fileManager removeItemAtPath: [url path] error: &error])
 		{
@@ -531,7 +528,7 @@ static NSArray * allAvailableStringEncodings(void)
         [[NSApplication sharedApplication] presentError: error];
     }    
 	
-	[SimpleComicAppDelegate setMetadata: @"Version 1704" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
+	[SimpleComicAppDelegate setMetadata: @"Version 1705" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
 
     return persistentStoreCoordinator;
 }
@@ -658,7 +655,6 @@ static NSArray * allAvailableStringEncodings(void)
 		}
 	}
 }
-
 
 
 - (TSSTManagedSession *)newSessionWithFiles:(NSArray *)files

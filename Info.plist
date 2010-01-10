@@ -302,7 +302,9 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>Simple Comic</string>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>Help</string>
 	<key>CFBundleHelpBookName</key>

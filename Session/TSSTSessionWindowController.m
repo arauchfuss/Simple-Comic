@@ -134,6 +134,7 @@
         uses has mouse events turned off by default */
     [exposeBezel setIgnoresMouseEvents: NO];
     [exposeBezel setFloatingPanel: YES];
+	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
     [bezelWindow setAcceptsMouseMovedEvents: YES];
     [bezelWindow setFloatingPanel: YES];
@@ -317,6 +318,7 @@
 {
     return [[[pageController arrangedObjects] objectAtIndex: index] valueForKey: @"thumbnail"];
 }
+
 
 
 - (NSString *)nameForPageAtIndex:(int)index

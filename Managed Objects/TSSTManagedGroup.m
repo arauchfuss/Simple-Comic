@@ -18,9 +18,6 @@
 @implementation TSSTManagedGroup
 
 
-@synthesize alias;
-
-
 - (void)awakeFromInsert
 {
 	[super awakeFromInsert];
@@ -31,17 +28,18 @@
 
 - (void)awakeFromFetch
 {
+//	NSLog(@"wake");
 	[super awakeFromFetch];
     groupLock = [NSLock new];
     instance = nil;
-	NSData * aliasData = [self valueForKey: @"pathData"];
-	
-    if (aliasData != nil)
-    {
-        BDAlias * savedAlias = [[BDAlias alloc] initWithData: aliasData];
-		[self setValue: savedAlias forKey: @"alias"];
-		[savedAlias release];
-    }
+//	NSData * aliasData = [self valueForKey: @"pathData"];
+//	
+//    if (aliasData != nil)
+//    {
+//        BDAlias * savedAlias = [[BDAlias alloc] initWithData: aliasData];
+//		[self setValue: savedAlias forKey: @"alias"];
+//		[savedAlias release];
+//    }
 }
 
 
@@ -60,7 +58,6 @@
 
 - (void)didTurnIntoFault
 {	
-	[alias release];
     [groupLock release];
     [instance release];
 	instance = nil;
@@ -72,7 +69,6 @@
 - (void)setPath:(NSString *)newPath
 {
 	BDAlias * newAlias = [[BDAlias alloc] initWithPath: newPath];
-	[self setValue: newAlias forKey: @"alias"];
 	[self setValue: [newAlias aliasData] forKey: @"pathData"];
 	[newAlias release];
 }
@@ -81,11 +77,16 @@
 
 - (NSString *)path
 {
-	NSString * hardPath = [[self valueForKey: @"alias"] fullPath];
+	BDAlias * alias = [[BDAlias alloc] initWithData: [self valueForKey: @"pathData"]];
+	NSString * hardPath = [alias fullPath];
+	[alias release];
+	
 	if(!hardPath)
 	{
+		NSLog(@"Could not find image group");
 		[[self managedObjectContext] deleteObject: self];
 	}
+	
 	return hardPath;
 }
 

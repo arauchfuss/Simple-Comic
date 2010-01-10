@@ -40,7 +40,7 @@
 
 
 /*	This class deals with an unholy crapload of functionality
-	- First and most importantly it controlls the navigation 
+	- First and most importantly it controls the navigation 
 		within a given session's pages.  This includes figuring 
 		out whether or not two pages should be layed out side by side.
 	- It handles almost all actions that affect its given session.
@@ -52,7 +52,7 @@
 		- Handles the layout of the info window 
 			when the user scrubs the progress bar.
 */
-@interface TSSTSessionWindowController : NSWindowController
+@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate>
 {
     /* Controller for all of the page entities related to the session object */
     IBOutlet NSArrayController * pageController;

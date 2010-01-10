@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SS_PrefsController : NSObject
+@interface SS_PrefsController : NSObject <NSWindowDelegate, NSToolbarDelegate>
 {
     NSWindow *prefsWindow;
     NSMutableDictionary *preferencePanes;
