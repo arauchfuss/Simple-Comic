@@ -91,6 +91,7 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 {
 	NSRect bounds = [self bounds];
 	
+	[NSBezierPath setDefaultLineWidth: 1.0];
 	NSRect barRect = bounds;
 	/* The 4 is half the height of the progress bar */
 	barRect.origin.y = NSHeight(bounds) / 2 - 4;
