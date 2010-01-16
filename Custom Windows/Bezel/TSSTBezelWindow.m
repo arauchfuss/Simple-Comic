@@ -3,7 +3,7 @@
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 5/30/07.
-//  Copyright 2007 __MyCompanyName__. All rights reserved.
+//  Copyright 2007 Dancing Tortoise Software. All rights reserved.
 //
 
 
@@ -12,7 +12,9 @@
 #import "TSSTImageUtilities.h"
 
 
+
 @implementation TSSTBezelWindow
+
 
 
 - (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
@@ -20,26 +22,37 @@
     self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask backing: bufferingType defer: flag];
     if(self)
     {
-//        [self setOpaque: YES];
+		
     }
     return self;
 }
+
+
 
 - (BOOL)canBecomeKeyWindow
 {
 	return YES;
 }
 
-//- (BOOL)acceptsMouseMovedEvents
-//{
-//	return YES;
-//}
+
+- (void)performClose:(id)sender
+{
+    [[self delegate] windowShouldClose: self];
+}
+
+
+- (BOOL)validateMenuItem:(NSMenuItem *)anItem
+{
+    return ([anItem action] == @selector(performClose:)) ? YES : NO;
+}
 
 
 @end
 
 
+
 @implementation TSSTBezelView
+
 
 
 - (void)drawRect:(NSRect)aRect

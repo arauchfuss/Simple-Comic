@@ -3,7 +3,7 @@
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 2/9/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Dancing Tortoise Software. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
