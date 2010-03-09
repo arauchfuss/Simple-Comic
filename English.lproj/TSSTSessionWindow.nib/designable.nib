@@ -3,17 +3,16 @@
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
 		<string key="IBDocument.SystemVersion">10C540</string>
-		<string key="IBDocument.InterfaceBuilderVersion">740</string>
+		<string key="IBDocument.InterfaceBuilderVersion">759</string>
 		<string key="IBDocument.AppKitVersion">1038.25</string>
 		<string key="IBDocument.HIToolboxVersion">458.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">740</string>
+			<string key="NS.object.0">759</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="274"/>
-			<integer value="363"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1147,7 +1146,7 @@
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<string key="NSWindowContentMinSize">{175, 107}</string>
 				<object class="NSView" key="NSWindowView" id="33915098">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1181,42 +1180,9 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{200, 200}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMinSize">{175, 129}</string>
-				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
-			</object>
-			<object class="NSWindowTemplate" id="102220774">
-				<int key="NSWindowStyleMask">15</int>
-				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{545, 211}, {480, 360}}</string>
-				<int key="NSWTFlags">1886912512</int>
-				<string key="NSWindowTitle">Window</string>
-				<string key="NSWindowClass">TSSTKeyWindow</string>
-				<object class="NSMutableString" key="NSViewClass">
-					<characters key="NS.bytes">View</characters>
-				</object>
-				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
-				<string key="NSWindowContentMinSize">{213, 107}</string>
-				<object class="NSView" key="NSWindowView" id="836141465">
-					<nil key="NSNextResponder"/>
-					<int key="NSvFlags">256</int>
-					<object class="NSMutableArray" key="NSSubviews">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSCustomView" id="650262412">
-							<reference key="NSNextResponder" ref="836141465"/>
-							<int key="NSvFlags">274</int>
-							<string key="NSFrameSize">{480, 360}</string>
-							<reference key="NSSuperview" ref="836141465"/>
-							<string key="NSClassName">TSSTThumbnailView</string>
-							<string key="NSExtension">NSView</string>
-						</object>
-					</object>
-					<string key="NSFrameSize">{480, 360}</string>
-				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
-				<string key="NSMinSize">{213, 129}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 			<object class="NSUserDefaultsController" id="1033318014">
@@ -1419,6 +1385,16 @@
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
+			<object class="NSCustomObject" id="911164153">
+				<string key="NSClassName">DTThumbnailController</string>
+			</object>
+			<object class="NSCustomView" id="681066077">
+				<nil key="NSNextResponder"/>
+				<int key="NSvFlags">274</int>
+				<string key="NSFrameSize">{495, 375}</string>
+				<string key="NSClassName">TSSTThumbnailView</string>
+				<string key="NSExtension">NSView</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -1561,46 +1537,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">exposeBezel</string>
-						<reference key="source" ref="642751089"/>
-						<reference key="destination" ref="102220774"/>
-					</object>
-					<int key="connectionID">375</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="102220774"/>
-						<reference key="destination" ref="642751089"/>
-					</object>
-					<int key="connectionID">376</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">dataSource</string>
-						<reference key="source" ref="650262412"/>
-						<reference key="destination" ref="642751089"/>
-					</object>
-					<int key="connectionID">379</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">exposeView</string>
-						<reference key="source" ref="642751089"/>
-						<reference key="destination" ref="650262412"/>
-					</object>
-					<int key="connectionID">380</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">pageController</string>
-						<reference key="source" ref="650262412"/>
-						<reference key="destination" ref="1000209489"/>
-					</object>
-					<int key="connectionID">381</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">dataSource</string>
 						<reference key="source" ref="229327460"/>
 						<reference key="destination" ref="642751089"/>
@@ -1654,14 +1590,6 @@
 						<reference key="destination" ref="25021281"/>
 					</object>
 					<int key="connectionID">465</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">thumbnailView</string>
-						<reference key="source" ref="650262412"/>
-						<reference key="destination" ref="603130555"/>
-					</object>
-					<int key="connectionID">489</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -1881,22 +1809,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">selectedIndex: session.twoPageSpread</string>
-						<reference key="source" ref="605679086"/>
-						<reference key="destination" ref="642751089"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="605679086"/>
-							<reference key="NSDestination" ref="642751089"/>
-							<string key="NSLabel">selectedIndex: session.twoPageSpread</string>
-							<string key="NSBinding">selectedIndex</string>
-							<string key="NSKeyPath">session.twoPageSpread</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">711</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">selectedIndex: session.pageOrder</string>
 						<reference key="source" ref="656366758"/>
 						<reference key="destination" ref="642751089"/>
@@ -1918,6 +1830,54 @@
 						<reference key="destination" ref="164867539"/>
 					</object>
 					<int key="connectionID">747</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">pageController</string>
+						<reference key="source" ref="911164153"/>
+						<reference key="destination" ref="1000209489"/>
+					</object>
+					<int key="connectionID">754</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">exposeController</string>
+						<reference key="source" ref="642751089"/>
+						<reference key="destination" ref="911164153"/>
+					</object>
+					<int key="connectionID">755</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">view</string>
+						<reference key="source" ref="911164153"/>
+						<reference key="destination" ref="681066077"/>
+					</object>
+					<int key="connectionID">772</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">thumbnailView</string>
+						<reference key="source" ref="642751089"/>
+						<reference key="destination" ref="681066077"/>
+					</object>
+					<int key="connectionID">773</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectedIndex: session.pageOrder</string>
+						<reference key="source" ref="605679086"/>
+						<reference key="destination" ref="642751089"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="605679086"/>
+							<reference key="NSDestination" ref="642751089"/>
+							<string key="NSLabel">selectedIndex: session.pageOrder</string>
+							<string key="NSBinding">selectedIndex</string>
+							<string key="NSKeyPath">session.pageOrder</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">774</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2059,30 +2019,6 @@
 							<reference ref="654413911"/>
 						</object>
 						<reference key="parent" ref="276861109"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">373</int>
-						<reference key="object" ref="102220774"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="836141465"/>
-						</object>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">expose</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">374</int>
-						<reference key="object" ref="836141465"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="650262412"/>
-						</object>
-						<reference key="parent" ref="102220774"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">378</int>
-						<reference key="object" ref="650262412"/>
-						<reference key="parent" ref="836141465"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">403</int>
@@ -2577,6 +2513,16 @@
 						<reference key="object" ref="979666777"/>
 						<reference key="parent" ref="654413911"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">752</int>
+						<reference key="object" ref="911164153"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">771</int>
+						<reference key="object" ref="681066077"/>
+						<reference key="parent" ref="0"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -2635,19 +2581,6 @@
 					<string>366.CustomClassName</string>
 					<string>366.IBPluginDependency</string>
 					<string>366.ImportedFromIB2</string>
-					<string>373.IBPluginDependency</string>
-					<string>373.IBWindowTemplateEditedContentRect</string>
-					<string>373.ImportedFromIB2</string>
-					<string>373.editorWindowContentRectSynchronizationRect</string>
-					<string>373.windowTemplate.hasMaxSize</string>
-					<string>373.windowTemplate.hasMinSize</string>
-					<string>373.windowTemplate.maxSize</string>
-					<string>373.windowTemplate.minSize</string>
-					<string>374.CustomClassName</string>
-					<string>374.IBPluginDependency</string>
-					<string>374.ImportedFromIB2</string>
-					<string>378.IBPluginDependency</string>
-					<string>378.ImportedFromIB2</string>
 					<string>403.IBPluginDependency</string>
 					<string>403.ImportedFromIB2</string>
 					<string>445.IBEditorWindowLastContentRect</string>
@@ -2667,6 +2600,7 @@
 					<string>454.ImportedFromIB2</string>
 					<string>463.IBPluginDependency</string>
 					<string>463.ImportedFromIB2</string>
+					<string>483.IBEditorWindowLastContentRect</string>
 					<string>483.IBPluginDependency</string>
 					<string>483.IBWindowTemplateEditedContentRect</string>
 					<string>483.ImportedFromIB2</string>
@@ -2775,6 +2709,8 @@
 					<string>713.IBAttributePlaceholdersKey</string>
 					<string>713.IBPluginDependency</string>
 					<string>714.IBPluginDependency</string>
+					<string>771.IBPluginDependency</string>
+					<string>771.ImportedFromIB2</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2790,9 +2726,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{345, 712}, {672, 32}}</string>
+					<string>{{469, 708}, {672, 32}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{345, 712}, {672, 32}}</string>
+					<string>{{469, 708}, {672, 32}}</string>
 					<integer value="1"/>
 					<string>{{617, 728}, {213, 28}}</string>
 					<boolean value="YES"/>
@@ -2816,9 +2752,9 @@
 					<string>TSSTImageView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{65, 447}, {200, 200}}</string>
+					<string>{{556, 366}, {200, 200}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{65, 447}, {200, 200}}</string>
+					<string>{{556, 366}, {200, 200}}</string>
 					<integer value="1"/>
 					<string>{{468, 284}, {200, 200}}</string>
 					<integer value="0"/>
@@ -2828,19 +2764,6 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>TSSTCircularImageView</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<integer value="1"/>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{295, 211}, {480, 360}}</string>
-					<integer value="1"/>
-					<string>{{295, 211}, {480, 360}}</string>
-					<integer value="0"/>
-					<integer value="1"/>
-					<string>{3.40282e+38, 3.40282e+38}</string>
-					<string>{213, 107}</string>
-					<string>TSSTTransparentView</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2862,8 +2785,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
+					<string>{{465, 395}, {350, 350}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{190, 326}, {350, 350}}</string>
+					<string>{{465, 395}, {350, 350}}</string>
 					<integer value="1"/>
 					<string>{{190, 326}, {350, 350}}</string>
 					<string>{3.40282e+38, 3.40282e+38}</string>
@@ -3012,6 +2936,8 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<integer value="1"/>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -3030,7 +2956,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">748</int>
+			<int key="maxID">774</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3057,6 +2983,18 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Custom Windows/DTSessionWindow.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">DTThumbnailController</string>
+					<string key="superclassName">NSViewController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">pageController</string>
+						<string key="NS.object.0">NSArrayController</string>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">DTThumbnailController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -3236,22 +3174,6 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
-					<string key="className">TSSTKeyWindow</string>
-					<string key="superclassName">NSPanel</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="523874341">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">Custom Windows/Fullscreen/TSSTKeyWindow.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TSSTKeyWindow</string>
-					<string key="superclassName">NSPanel</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">TSSTPageView</string>
 					<string key="superclassName">NSView</string>
 					<object class="NSMutableDictionary" key="outlets">
@@ -3346,8 +3268,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>bezelWindow</string>
-							<string>exposeBezel</string>
-							<string>exposeView</string>
+							<string>exposeController</string>
 							<string>fullscreenProgressBar</string>
 							<string>infoPicture</string>
 							<string>infoWindow</string>
@@ -3359,13 +3280,13 @@
 							<string>pageView</string>
 							<string>progressBar</string>
 							<string>thumbnailPanel</string>
+							<string>thumbnailView</string>
 							<string>zoomView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSPanel</string>
-							<string>NSPanel</string>
-							<string>NSView</string>
+							<string>DTThumbnailController</string>
 							<string>DTPolishedProgressBar</string>
 							<string>NSImageView</string>
 							<string>TSSTInfoWindow</string>
@@ -3377,6 +3298,7 @@
 							<string>TSSTPageView</string>
 							<string>DTPolishedProgressBar</string>
 							<string>TSSTInfoWindow</string>
+							<string>NSView</string>
 							<string>NSImageView</string>
 						</object>
 					</object>
@@ -3396,45 +3318,9 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">TSSTThumbnailView</string>
 					<string key="superclassName">NSView</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>dataSource</string>
-							<string>pageController</string>
-							<string>thumbnailView</string>
-						</object>
-						<object class="NSMutableArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>NSArrayController</string>
-							<string>TSSTImageView</string>
-						</object>
-					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Session/TSSTThumbnailView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TSSTThumbnailView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TSSTTransparentView</string>
-					<string key="superclassName">NSView</string>
-					<reference key="sourceIdentifier" ref="523874341"/>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">TSSTTransparentView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
 					</object>
 				</object>
 			</object>
@@ -4070,6 +3956,18 @@
 					<reference key="sourceIdentifier" ref="124250728"/>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">NSViewController</string>
+					<string key="superclassName">NSResponder</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">view</string>
+						<string key="NS.object.0">NSView</string>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">AppKit.framework/Headers/NSViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">NSWindow</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
@@ -4106,13 +4004,14 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
+		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
 			<integer value="1050" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1050" key="NS.object.0"/>
+			<integer value="1060" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>
@@ -4121,5 +4020,28 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../SimpleComic.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<bool key="EncodedWithXMLCoder">YES</bool>
+			<object class="NSArray" key="dict.sortedKeys">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>Loupe</string>
+				<string>NSEnterFullScreenTemplate</string>
+				<string>NSExitFullScreenTemplate</string>
+				<string>NSStopProgressFreestandingTemplate</string>
+				<string>extract</string>
+				<string>icon</string>
+				<string>thumbnails</string>
+			</object>
+			<object class="NSMutableArray" key="dict.values">
+				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{15, 16}</string>
+				<string>{16, 15}</string>
+				<string>{16, 15}</string>
+				<string>{83, 83}</string>
+				<string>{17, 12}</string>
+				<string>{11, 16}</string>
+				<string>{12, 12}</string>
+			</object>
+		</object>
 	</data>
 </archive>

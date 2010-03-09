@@ -193,7 +193,7 @@ static NSSize monospaceCharacterSize;
 	NSSize pixelSize = [managedImage size];
 	if(managedImage)
 	{
-		pixelSize = sizeConstrainedByDimension(pixelSize, 256);	
+		pixelSize = sizeConstrainedByDimension(pixelSize, 128);	
 		NSImage * temp = [[NSImage alloc] initWithSize: pixelSize];
 		[temp lockFocus];
 		[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];

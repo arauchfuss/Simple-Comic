@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2806FFFA113B211E00CD53FB /* DTThumbnailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2806FFF9113B211E00CD53FB /* DTThumbnailController.m */; };
 		28073CB00FF9956600D2602B /* extract.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073CAF0FF9956500D2602B /* extract.tiff */; };
 		28073DB00FFB0EED00D2602B /* icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073DAF0FFB0EED00D2602B /* icon.tiff */; };
 		28073E610FFC347200D2602B /* QuickComic.qlgenerator in Copy Quicklook plugin */ = {isa = PBXBuildFile; fileRef = 28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */; };
@@ -62,6 +63,7 @@
 		2886932E0FED554E002C6BF7 /* win_scale.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886931B0FED554E002C6BF7 /* win_scale.tiff */; };
 		288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */ = {isa = PBXBuildFile; fileRef = 288C09C20DC809DF00EAFF46 /* BDAlias.m */; };
 		2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2895F9D80B67D224008683C6 /* TSSTPage.m */; };
+		289ED537113DFECB00D7E8B0 /* TSSTThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */; };
 		28B34A731013779B006C551C /* DTSessionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34A721013779B006C551C /* DTSessionWindow.m */; };
 		28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
@@ -78,7 +80,6 @@
 		28FACCB20CD0CF83007B7918 /* GeneralPrefPaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FACB920CD01F65007B7918 /* GeneralPrefPaneView.nib */; };
 		28FAD2140CD3A21E007B7918 /* GeneralPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACBD80CD02643007B7918 /* GeneralPrefController.m */; };
 		28FAD2170CD3A226007B7918 /* AdvancedPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACBD40CD02635007B7918 /* AdvancedPrefController.m */; };
-		28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -146,6 +147,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		2803B2FE0D5E541800CD7906 /* TSSTManagedSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedSession.h; sourceTree = "<group>"; };
 		2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedSession.m; sourceTree = "<group>"; };
+		2806FFF8113B211E00CD53FB /* DTThumbnailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTThumbnailController.h; sourceTree = "<group>"; };
+		2806FFF9113B211E00CD53FB /* DTThumbnailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTThumbnailController.m; sourceTree = "<group>"; };
 		28073CAF0FF9956500D2602B /* extract.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = extract.tiff; sourceTree = "<group>"; };
 		28073DAF0FFB0EED00D2602B /* icon.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = icon.tiff; sourceTree = "<group>"; };
 		28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickComic.xcodeproj; path = QuickComic/QuickComic.xcodeproj; sourceTree = "<group>"; };
@@ -520,6 +523,8 @@
 			children = (
 				28FAECCC0C7CA801001D7001 /* TSSTThumbnailView.h */,
 				28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */,
+				2806FFF8113B211E00CD53FB /* DTThumbnailController.h */,
+				2806FFF9113B211E00CD53FB /* DTThumbnailController.m */,
 			);
 			name = "Thumbnail View";
 			sourceTree = "<group>";
@@ -842,7 +847,6 @@
 				283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */,
 				286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */,
 				286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */,
-				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
 				28FACB850CD01D93007B7918 /* SS_PrefsController.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
 				288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */,
@@ -855,6 +859,8 @@
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 				28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */,
 				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
+				2806FFFA113B211E00CD53FB /* DTThumbnailController.m in Sources */,
+				289ED537113DFECB00D7E8B0 /* TSSTThumbnailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1109,7 +1115,7 @@
 		FA7257E308A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "Simple Comic Application Cert";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1140,7 +1146,7 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "Simple Comic Application Cert";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_OPENMP_SUPPORT = YES;
@@ -1179,7 +1185,7 @@
 		FA7257E508A6CDEB006A2A19 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "Simple Comic Application Cert";
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;

@@ -20,6 +20,10 @@
 				<string>public.cbr-archive</string>
 				<string>public.cbz-archive</string>
 				<string>org.7-zip.7-zip-comic-archive</string>
+				<string>com.milke.cbr-archive</string>
+				<string>com.milke.cbz-archive</string>
+				<string>com.bitcartel.comicbooklover.cbr</string>
+				<string>com.bitcartel.comicbooklover.cbz</string>
 			</array>
 		</dict>
 	</array>
@@ -38,7 +42,7 @@
 	<key>CFBundleSignature</key>
 	<string>TSST</string>
 	<key>CFBundleVersion</key>
-	<string>11</string>
+	<string>12</string>
 	<key>CFPlugInDynamicRegisterFunction</key>
 	<string></string>
 	<key>CFPlugInDynamicRegistration</key>
@@ -66,6 +70,6 @@
 	<key>QLSupportsConcurrentRequests</key>
 	<true/>
 	<key>QLThumbnailMinimumSize</key>
-	<real>17</real>
+	<integer>17</integer>
 </dict>
 </plist>

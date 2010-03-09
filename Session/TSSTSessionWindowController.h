@@ -37,6 +37,7 @@
 @class TSSTInfoWindow;
 @class TSSTImageView;
 @class TSSTManagedSession;
+@class DTThumbnailController;
 
 
 /*	This class deals with an unholy crapload of functionality
@@ -86,8 +87,9 @@
     IBOutlet NSImageView    * zoomView;
 	
 	/* Panel and view for the page expose method */
-    IBOutlet NSPanel * exposeBezel;
-    IBOutlet NSView * exposeView;
+	BOOL thumbnailViewEnabled;
+    IBOutlet DTThumbnailController * exposeController;
+	IBOutlet NSView * thumbnailView;
 	IBOutlet TSSTInfoWindow * thumbnailPanel;
 	
 	/* The session object used to maintain settings */

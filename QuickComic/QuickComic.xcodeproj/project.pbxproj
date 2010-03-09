@@ -213,7 +213,7 @@
 		2CA3261F0896AD4900168862 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "Simple Comic Application Cert";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -228,7 +228,9 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Quicklook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = QuickComic;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = qlgenerator;
 				ZERO_LINK = YES;
 			};
@@ -237,7 +239,7 @@
 		2CA326200896AD4900168862 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Don't Code Sign";
+				CODE_SIGN_IDENTITY = "Simple Comic Application Cert";
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -252,7 +254,9 @@
 				INSTALL_PATH = /Library/Quicklook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = QuickComic;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = qlgenerator;
 				ZERO_LINK = NO;
 			};

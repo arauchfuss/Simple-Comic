@@ -39,10 +39,10 @@
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTInfoWindow.h"
-#import "TSSTThumbnailView.h"
 #import "TSSTManagedSession.h"
 #import "DTPolishedProgressBar.h"
 #import "DTSessionWindow.h"
+#import "DTThumbnailController.h"
 
 
 @implementation TSSTSessionWindowController
@@ -100,6 +100,7 @@
 		pageTurn = 0;
 		pageSelectionInProgress = NO;
 		mouseMovedTimer = nil;
+		thumbnailViewEnabled = NO;
 //		closing = NO;
         session = [aSession retain];
         BOOL cascade = [session valueForKey: @"position"] ? NO : YES;
@@ -130,11 +131,10 @@
 /*  Sets up all of the observers and bindings. */
 - (void)awakeFromNib
 {
+	[[pageView enclosingScrollView] retain];
+	[[thumbnailView enclosingScrollView] retain];
     /* This needs to be set as the window subclass that the expose window
         uses has mouse events turned off by default */
-    [exposeBezel setIgnoresMouseEvents: NO];
-    [exposeBezel setFloatingPanel: YES];
-	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
     [bezelWindow setAcceptsMouseMovedEvents: YES];
     [bezelWindow setFloatingPanel: YES];
@@ -200,7 +200,6 @@
 
 - (void)dealloc
 {
-	[(TSSTThumbnailView *)exposeView setDataSource: nil];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
     [defaults removeObserver: self forKeyPath: @"statusBarVisisble"];
@@ -226,6 +225,8 @@
     [pageView setDataSource: nil];
 	[pageSortDescriptor release];
 	[pageNames release];
+	[[pageView enclosingScrollView] release];
+	[[thumbnailView enclosingScrollView] release];
     [session release];
     [super dealloc];
 }
@@ -270,13 +271,12 @@
     }
     else if([keyPath isEqualToString: @"arrangedObjects.@count"])
     {
-        [NSThread detachNewThreadSelector: @selector(processThumbs) toTarget: exposeView withObject: nil];
+		[exposeController processThumbs];
         [self changeViewImages];
     }
     else if([keyPath isEqualToString: TSSTPageOrder])
 	{
-		[(TSSTThumbnailView *)exposeView setNeedsDisplay: YES];
-		[(TSSTThumbnailView *)exposeView buildTrackingRects];
+		[exposeController rebuildGrid];
         [self changeViewImages];
 	}
 	else if([keyPath isEqualToString: @"pageBackgroundColor"])
@@ -335,6 +335,12 @@
 
 - (void)mouseMoved:(NSEvent *)theEvent
 {
+	if(thumbnailViewEnabled)
+	{
+//		[exposeController mouseMoved: theEvent];
+		return;
+	}
+	
 	NSRect progressRect;
 	NSPoint screenLocation = [[theEvent window] convertBaseToScreen: [theEvent locationInWindow]];
 	NSPoint windowLocation = [theEvent locationInWindow];
@@ -796,22 +802,28 @@
 
 - (IBAction)togglePageExpose:(id)sender
 {
-    if([exposeBezel isVisible])
+    if(thumbnailViewEnabled)
     {
-        [[thumbnailPanel parentWindow] removeChildWindow: thumbnailPanel];
-        [thumbnailPanel orderOut: self];
-        [exposeBezel orderOut: self];
-		[[self window] makeKeyAndOrderFront: self];
-		[[self window] makeFirstResponder: pageView];
+//		[pageView setNextResponder: self];
+		NSRect frame = [thumbnailView frame];
+		[thumbnailView  removeFromSuperview];
+		[[[self window] contentView] addSubview: [pageView enclosingScrollView]];
+		[[pageView enclosingScrollView] setFrame: frame];
+//		[[self window] makeFirstResponder: pageView];
     }
     else
     {
-        [NSCursor unhide];
-        [(TSSTThumbnailView *)exposeView buildTrackingRects];
-        [exposeBezel setFrame: [[[self window] screen] frame] display: NO];
-        [exposeBezel makeKeyAndOrderFront: self];
-        [NSThread detachNewThreadSelector: @selector(processThumbs) toTarget: exposeView withObject: nil];
+		NSRect frame = [[pageView enclosingScrollView] frame];
+		[[pageView enclosingScrollView] removeFromSuperview];
+		[thumbnailView setFrame: frame];
+		[exposeController processThumbs];
+		[[[self window] contentView] addSubview: thumbnailView];
+//		[thumbnailView setNextResponder: exposeController];
+//		[exposeController setNextResponder: self];
+
     }
+	
+	thumbnailViewEnabled = !thumbnailViewEnabled;
 }
 
 
@@ -1316,13 +1328,14 @@ images are currently visible and then skips over them.
 
 - (void)killTopOptionalUIElement
 {
-	if([exposeBezel isVisible])
-	{
-		[exposeBezel removeChildWindow: thumbnailPanel];
-        [thumbnailPanel orderOut: self];
-		[exposeBezel orderOut: self];
-	}
-	else if([[session valueForKey: @"loupe"] boolValue])
+//	if([exposeBezel isVisible])
+//	{
+//		[exposeBezel removeChildWindow: thumbnailPanel];
+//        [thumbnailPanel orderOut: self];
+//		[exposeBezel orderOut: self];
+//	}
+//	else 
+	if([[session valueForKey: @"loupe"] boolValue])
 	{
 		[session setValue: [NSNumber numberWithBool: NO] forKey: @"loupe"];
 	}
@@ -1338,9 +1351,7 @@ images are currently visible and then skips over them.
     [session setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
     [session setValue: [NSNumber numberWithBool: NO] forKey: @"loupe"];
     [self refreshLoupePanel];
-	[exposeBezel removeChildWindow: thumbnailPanel];
 	[thumbnailPanel orderOut: self];
-	[exposeBezel orderOut: self];
 }
 
 
@@ -1602,10 +1613,10 @@ images are currently visible and then skips over them.
 
 - (void)windowDidResignKey:(NSNotification *)aNotification
 {
-    if([aNotification object] == exposeBezel)
-    {
-        [exposeBezel orderOut: self];
-    }
+//    if([aNotification object] == exposeBezel)
+//    {
+//        [exposeBezel orderOut: self];
+//    }
 	
 	if([aNotification object] == [self window])
 	{
