@@ -20,6 +20,10 @@
 				<string>public.cbr-archive</string>
 				<string>public.cbz-archive</string>
 				<string>org.7-zip.7-zip-comic-archive</string>
+				<string>com.bitcartel.comicbooklover.cbz</string>
+				<string>com.bitcartel.comicbooklover.cbr</string>
+				<string>com.milke.cbz-archive</string>
+				<string>com.milke.cbr-archive</string>
 			</array>
 		</dict>
 	</array>
