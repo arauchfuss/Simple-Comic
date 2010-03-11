@@ -689,22 +689,31 @@
 		secondPageSide = NSMakeRect(0, 0, NSMaxX(secondPageRect), NSHeight(bounds));
 		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
 	}
-//	
-//	if(canCrop)
-//	{
-//		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
-//	}
-	
-	cursorPoint = [NSEvent mouseLocation];
-    cursorPoint = [self convertPoint: [[self window] convertScreenToBase: cursorPoint] fromView: nil];
 	
 	do
 	{
-		if(NSPointInRect(cursorPoint, firstPageSide))
+		NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
+		if(canCrop)
+		{
+			capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
+		}
+		
+		theEvent = [[self window] nextEventMatchingMask: capturedEvents];
+		if ([theEvent window] == [self window])
+		{
+			currentPoint = [self convertPoint: [theEvent locationInWindow] fromView: nil];
+		}
+		else
+		{
+			currentPoint = [NSEvent mouseLocation];
+			currentPoint = [self convertPoint: [[self window] convertScreenToBase: currentPoint] fromView: nil];
+		}
+		
+		if(NSPointInRect(currentPoint, firstPageSide))
 		{
 			pageSelection = 1;
 		}
-		else if(NSPointInRect(cursorPoint, secondPageSide))
+		else if(NSPointInRect(currentPoint, secondPageSide))
 		{
 			pageSelection = 2;
 		}
@@ -715,14 +724,7 @@
 		
 		[self setNeedsDisplay: YES];
 		
-		NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
-		if(canCrop)
-		{
-			[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
-			capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
-		}
-		theEvent = [[self window] nextEventMatchingMask: capturedEvents];
-		currentPoint = [self convertPoint: [theEvent locationInWindow] fromView: nil];
+		
 		if([theEvent type] == NSKeyUp)
 		{
 			charNumber = [[theEvent charactersIgnoringModifiers] characterAtIndex: 0];
@@ -742,7 +744,7 @@
 		}
 		else if([theEvent type] == NSLeftMouseDown)
 		{
-			dragRect.origin = cursorPoint;
+			dragRect.origin = currentPoint;
 		}
 		else if([theEvent type] == NSMouseMoved)
 		{
@@ -753,7 +755,6 @@
 	int finalSelection = pageSelection && charNumber != 27 ? pageSelection - 1 : -1;
 	pageSelection = -1;
 	canCrop = NO;
-//	[[self window] invalidateCursorRectsForView: self];
 	[self setNeedsDisplay: YES];
 	return finalSelection;
 }
