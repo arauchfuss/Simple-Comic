@@ -49,7 +49,7 @@
 		return frameRect;
 	}
 	
-	return [super constrainFrameRect: frameRect toScreen: screen];;
+	return [super constrainFrameRect: frameRect toScreen: screen];
 }
 
 

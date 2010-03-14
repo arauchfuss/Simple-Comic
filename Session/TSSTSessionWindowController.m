@@ -1116,6 +1116,7 @@
 		windowRect.size.height += [(DTSessionWindow *)[self window] toolbarHeight];
 		[(DTSessionWindow *)[self window] setFullscreen: YES];
 		[[self window] setFrame: windowRect display: NO animate: NO];
+		[[self window] setShowsResizeIndicator: NO];
 		[self adjustStatusBar];
 		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
     }
@@ -1128,6 +1129,7 @@
 		rectData = [session valueForKey: @"position" ];
 		rectangleValue = [NSUnarchiver unarchiveObjectWithData: rectData];
 		windowRect = [rectangleValue rectValue];
+		[[self window] setShowsResizeIndicator: YES];
 		[[self window] setFrame: windowRect display: NO animate: NO];
         [self adjustStatusBar];
     }
@@ -1619,6 +1621,24 @@ images are currently visible and then skips over them.
 	{
 		[[infoWindow parentWindow] removeChildWindow: infoWindow];
 		[infoWindow orderOut: self];
+	}
+}
+
+
+- (NSSize)windowWillResize:(NSWindow *)resizeWindow toSize:(NSSize)newSize
+{
+	if(resizeWindow != [self window])
+	{
+		return newSize;
+	}
+	
+	if([resizeWindow showsResizeIndicator])
+	{
+		return newSize;
+	}
+	else
+	{
+		return [resizeWindow frame].size;
 	}
 }
 
