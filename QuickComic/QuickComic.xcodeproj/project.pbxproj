@@ -228,7 +228,9 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Library/Quicklook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = QuickComic;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = qlgenerator;
 				ZERO_LINK = YES;
 			};
@@ -252,7 +254,9 @@
 				INSTALL_PATH = /Library/Quicklook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PRODUCT_NAME = QuickComic;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = qlgenerator;
 				ZERO_LINK = NO;
 			};
