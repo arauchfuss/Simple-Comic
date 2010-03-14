@@ -690,14 +690,14 @@
 		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
 	}
 	
+	NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
+	if(canCrop)
+	{
+		capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
+	}
+	
 	do
 	{
-		NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
-		if(canCrop)
-		{
-			capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
-		}
-		
 		theEvent = [[self window] nextEventMatchingMask: capturedEvents];
 		if ([theEvent window] == [self window])
 		{
@@ -741,6 +741,7 @@
 			{
 				cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), secondPageRect);
 			}
+//			NSLog(NSStringFromRect(cropRect));
 		}
 		else if([theEvent type] == NSLeftMouseDown)
 		{
@@ -768,18 +769,15 @@
 	}
 	
 	NSPoint center = centerPointOfRect(cropRect);
-//	int pageNumber = 0;
 	NSRect pageRect = NSZeroRect;
 	NSSize originalSize;
 	if(NSPointInRect(center, firstPageRect))
 	{
-//		pageNumber = 1;
 		pageRect = firstPageRect;
 		originalSize = [firstPageImage size];
 	}
 	else if(NSPointInRect(center, secondPageRect))
 	{
-//		pageNumber = 2;
 		pageRect = secondPageRect;
 		originalSize = [secondPageImage size];
 	}
@@ -805,7 +803,7 @@
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
 	int scaling = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
 	scaling = [[self dataSource] currentPageIsText] ? 2 : scaling;
-	if(modifier & NSAlternateKeyMask && modifier & NSShiftKeyMask)
+	if(modifier & NSAlternateKeyMask & NSShiftKeyMask)
 	{
 		if([theEvent deltaY])
 		{
