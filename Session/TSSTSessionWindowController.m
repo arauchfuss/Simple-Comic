@@ -223,7 +223,7 @@
     [fullscreenProgressBar unbind: @"maxValue"];
     [fullscreenProgressBar unbind: @"leftToRight"];
         
-    [pageView setDataSource: nil];
+    [pageView setSessionController: nil];
 	[pageSortDescriptor release];
 	[pageNames release];
     [session release];
@@ -498,18 +498,18 @@
 
 - (IBAction)removePages:(id)sender
 {
-	pageSelectionInProgress = YES;
-	int selection = [pageView selectPageWithCrop: NO];
-	pageSelectionInProgress = NO;
-	
-	if(selection != -1)
-	{
-		int index = [pageController selectionIndex];
-		index += selection;
-		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
-		[pageController removeObject: selectedPage];
-		[[self managedObjectContext] deleteObject: selectedPage];
-	}
+//	pageSelectionInProgress = YES;
+//	int selection = [pageView selectPageWithCrop: NO];
+//	pageSelectionInProgress = NO;
+//	
+//	if(selection != -1)
+//	{
+//		int index = [pageController selectionIndex];
+//		index += selection;
+//		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+//		[pageController removeObject: selectedPage];
+//		[[self managedObjectContext] deleteObject: selectedPage];
+//	}
 }
 
 
@@ -849,33 +849,126 @@
 - (IBAction)setArchiveIcon:(id)sender
 {
 	pageSelectionInProgress = YES;
-	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
-	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
-	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
-	scrollerBounds.height -= 20;
-	scrollerBounds.width -= 20;
-	float factor;
-	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
-	{
-		factor = scrollerBounds.width / imageSize.width;
-	}
-	else
-	{		
-		factor = scrollerBounds.height / imageSize.height;
-	}
-	
-	int selectionZoom = floor(((factor * 10) - 10));
-	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
-	[session setValue: [NSNumber numberWithInt: selectionZoom] forKey: TSSTZoomLevel];
-	
-    [pageView resizeView];
+	canCrop = YES;
+//	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+//    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
+//	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
+//	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
+//	scrollerBounds.height -= 20;
+//	scrollerBounds.width -= 20;
+//	float factor;
+//	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
+//	{
+//		factor = scrollerBounds.width / imageSize.width;
+//	}
+//	else
+//	{		
+//		factor = scrollerBounds.height / imageSize.height;
+//	}
+//	
+//	int selectionZoom = floor(((factor * 10) - 10));
+//	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
+//	[session setValue: [NSNumber numberWithInt: selectionZoom] forKey: TSSTZoomLevel];
+//	
+//    [pageView resizeView];
     [self refreshLoupePanel];
 	
-	int selection = [pageView selectPageWithCrop: YES];
-	NSRect cropRect = [pageView imageCropRectangle];
+	//int selection = [pageView selectPageWithCrop: YES];
+//	NSRect cropRect = [pageView imageCropRectangle];
+//	if(selection != -1)
+//	{
+//		int index = [pageController selectionIndex];
+//		index += selection;
+//		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+//		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
+//		/* Makes sure that the group is both an archive and not nested */
+//		if([selectedGroup class] == [TSSTManagedArchive class] && 
+//		   selectedGroup == [selectedGroup topLevelGroup] &&
+//		   ![[selectedPage valueForKey: @"text"] boolValue])
+//		{
+//			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
+//			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
+//			{
+//				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
+//				XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
+//				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
+//										 forKey: @"QCCoverName" 
+//										 atPath: archivePath 
+//								   traverseLink: NO];
+//				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
+//										 forKey: @"QCCoverRect" 
+//										 atPath: archivePath 
+//								   traverseLink: NO];
+//				
+//				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
+//										 arguments: [NSArray arrayWithObject: archivePath]];
+//			}
+//			else
+//			{
+//				NSRect drawRect = NSMakeRect(0, 0, 496, 496);
+//				NSImage * iconImage = [[NSImage alloc] initWithSize: drawRect.size];
+//				cropRect.size = NSEqualSizes(cropRect.size, NSZeroSize) ? NSMakeSize([[selectedPage valueForKey: @"width"] floatValue], [[selectedPage valueForKey: @"height"] floatValue]) : cropRect.size;
+//				drawRect = rectWithSizeCenteredInRect( cropRect.size, drawRect);
+//				
+//				[iconImage lockFocus];
+//					[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
+//					[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
+//				[iconImage unlockFocus];
+//				
+//				NSImage * shadowImage = [[NSImage alloc] initWithSize: NSMakeSize(512, 512)];
+//				
+//				NSShadow * thumbShadow = [NSShadow new];
+//				[thumbShadow setShadowOffset: NSMakeSize(0.0, -8.0)];
+//				[thumbShadow setShadowBlurRadius: 25.0];
+//				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];				
+//				
+//				[shadowImage lockFocus];
+//					[thumbShadow set];
+//					[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
+//				[shadowImage unlockFocus];
+//				
+//				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
+//
+//				[thumbShadow release];
+//				[iconImage release];
+//				[shadowImage release];
+//			}
+//		}
+//	}
+//	pageSelectionInProgress = NO;
+//	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
+//	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
+//	
+//    [pageView resizeView];
+//	[self refreshLoupePanel];
+}
+
+
+- (BOOL)pageSelectionCanCrop
+{
+	return canCrop;
+}
+
+
+- (BOOL)canSelectPageIndex:(NSInteger)index
+{
+	return YES;
+}
+
+
+- (void)cancelPageSelection
+{
+	pageSelectionInProgress = NO;
+	canCrop = NO;
+	[self refreshLoupePanel];
+}
+
+
+- (void)selectedPage:(NSInteger)selection withCropRect:(NSRect)cropRect
+{
 	if(selection != -1)
 	{
+		selection -=1;
 		int index = [pageController selectionIndex];
 		index += selection;
 		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
@@ -935,10 +1028,7 @@
 		}
 	}
 	pageSelectionInProgress = NO;
-	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
-	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
-	
-    [pageView resizeView];
+	canCrop = NO;
 	[self refreshLoupePanel];
 }
 
@@ -947,26 +1037,26 @@
 /*	Saves the selected page to a user specified location. */
 - (IBAction)extractPage:(id)sender
 {
-	/*	selectpage returns prompts the user for which page they wish to use.
-		If there is only one page or the user selects the first page 0 is returned,
-		otherwise 1. */
-	pageSelectionInProgress = YES;
-	int selection = [pageView selectPageWithCrop: NO];
-	pageSelectionInProgress = NO;
-	if(selection != -1)
-	{
-		int index = [pageController selectionIndex];
-		index += selection;
-		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
-		
-		NSSavePanel * savePanel = [NSSavePanel savePanel];
-		[savePanel setTitle: @"Extract Page"];
-		[savePanel setPrompt: @"Extract"];
-		if(NSOKButton == [savePanel runModalForDirectory: nil file: [selectedPage name]])
-		{
-			[[selectedPage pageData] writeToFile: [savePanel filename] atomically: YES];
-		}
-	}
+//	/*	selectpage returns prompts the user for which page they wish to use.
+//		If there is only one page or the user selects the first page 0 is returned,
+//		otherwise 1. */
+//	pageSelectionInProgress = YES;
+//	int selection = [pageView selectPageWithCrop: NO];
+//	pageSelectionInProgress = NO;
+//	if(selection != -1)
+//	{
+//		int index = [pageController selectionIndex];
+//		index += selection;
+//		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+//		
+//		NSSavePanel * savePanel = [NSSavePanel savePanel];
+//		[savePanel setTitle: @"Extract Page"];
+//		[savePanel setPrompt: @"Extract"];
+//		if(NSOKButton == [savePanel runModalForDirectory: nil file: [selectedPage name]])
+//		{
+//			[[selectedPage pageData] writeToFile: [savePanel filename] atomically: YES];
+//		}
+//	}
 }
 
 

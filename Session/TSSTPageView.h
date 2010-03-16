@@ -34,7 +34,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
-
+@class TSSTSessionWindowController;
 
 typedef struct {
 	float left;
@@ -42,6 +42,33 @@ typedef struct {
 	float up;
 	float down;
 } direction;
+
+@protocol DTPageSelection_Protocol
+
+- (BOOL)pageSelectionInProgress;
+- (BOOL)pageSelectionCanCrop;
+- (void)selectedPage:(NSInteger)index withCropRect:(NSRect)crop;
+- (BOOL)canSelectPageIndex:(NSInteger)index;
+- (void)cancelPageSelection;
+
+@end
+
+@protocol DTPageLayout_Protocol
+
+- (NSInteger)pageScaling;
+- (BOOL)leftToRightOrder;
+- (BOOL)singlePageLayout;
+
+@end
+
+@protocol DTPageSource_Protocol
+
+- (NSImage *)pageOne;
+- (NSImage *)pageTwo;
+
+@end
+
+
 
 
 @interface TSSTPageView : NSView
@@ -52,12 +79,13 @@ typedef struct {
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
     
-    int scrollKeys; // Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
-    NSTimer * scrollTimer; // Timer that fires in between each keydown event to smooth out the scrolling.
-
+    int scrollKeys;			// Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
+    NSTimer * scrollTimer;	// Timer that fires in between each keydown event to smooth out the scrolling.
+	NSDate * interfaceDelay;
+	
     NSInteger rotation;
 	
-    id dataSource;
+    TSSTSessionWindowController * sessionController;
 	
 	direction scrollwheel;
     
@@ -66,14 +94,14 @@ typedef struct {
 	
 	/*	While page selection is in progress this method has a value of 1 or 2.
 		The selection number coresponds to a highlighted page. */
+//	BOOL pageSelectionInProgress;
 	int pageSelection;
 	/* This is the rect describing the users page selection. */
 	NSRect cropRect;
-	BOOL canCrop;
 }
 
 @property (assign) NSInteger rotation;
-@property (assign) id dataSource;
+@property (assign)IBOutlet TSSTSessionWindowController * sessionController;
 
 
 /*  This is where it all begins sets the two pages.  
@@ -114,6 +142,8 @@ typedef struct {
     selected images. */
 - (void)resizeView;
 
+/* Used to find the click area for page selection */
+- (NSRect)pageSelectionRect:(NSInteger)selection;
 
 /*	Concatinates an affine transform to the context.
 	This is what enables the page rotation. */
@@ -133,7 +163,6 @@ typedef struct {
 - (void)pageUp;
 - (void)pageDown;
 
-- (int)selectPageWithCrop:(BOOL)crop;
 - (NSRect)imageCropRectangle;
 
 @end

@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="446"/>
 			<integer value="6"/>
 			<integer value="274"/>
 		</object>
@@ -42,7 +43,7 @@
 			<object class="NSWindowTemplate" id="415368231">
 				<int key="NSWindowStyleMask">4111</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{0, 225}, {460, 553}}</string>
+				<string key="NSWindowRect">{{0, 145}, {460, 553}}</string>
 				<int key="NSWTFlags">1081606144</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">DTSessionWindow</string>
@@ -87,11 +88,9 @@
 								<string key="NSToolbarItemPaletteLabel">Rotate Pages</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="781108242">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{13, 14}, {51, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="291449196">
 										<int key="NSCellFlags">67239424</int>
@@ -150,11 +149,9 @@
 								<string key="NSToolbarItemPaletteLabel">Loupe</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="239383554">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{7, 14}, {27, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="179540892">
 										<int key="NSCellFlags">67239424</int>
@@ -193,11 +190,9 @@
 								<string key="NSToolbarItemPaletteLabel">Page Layout</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="773415693">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{11, 14}, {51, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="399130150">
 										<int key="NSCellFlags">67239424</int>
@@ -249,11 +244,9 @@
 								<string key="NSToolbarItemPaletteLabel">Set Icon</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="315762997">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{12, 14}, {27, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="349522909">
 										<int key="NSCellFlags">67239424</int>
@@ -292,11 +285,9 @@
 								<string key="NSToolbarItemPaletteLabel">Capture Page</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="554673346">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{26, 14}, {27, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="824020377">
 										<int key="NSCellFlags">67239424</int>
@@ -335,11 +326,9 @@
 								<string key="NSToolbarItemPaletteLabel">Page Order</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="299051792">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{8, 14}, {51, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="216990349">
 										<int key="NSCellFlags">67239424</int>
@@ -391,11 +380,9 @@
 								<string key="NSToolbarItemPaletteLabel">Thumbnails</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="203162773">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{22, 14}, {27, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="630820395">
 										<int key="NSCellFlags">67239424</int>
@@ -434,11 +421,9 @@
 								<string key="NSToolbarItemPaletteLabel">Turn Page</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="979521007">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{5, 14}, {51, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="138422164">
 										<int key="NSCellFlags">67239424</int>
@@ -492,11 +477,9 @@
 								<string key="NSToolbarItemPaletteLabel">Zoom</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="1063529762">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{0, 14}, {74, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="513444165">
 										<int key="NSCellFlags">67239424</int>
@@ -561,11 +544,9 @@
 								<string key="NSToolbarItemPaletteLabel">Fullscreen</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="832961168">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{17, 14}, {27, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="711751553">
 										<int key="NSCellFlags">67239424</int>
@@ -604,11 +585,9 @@
 								<string key="NSToolbarItemPaletteLabel">Page Scaling</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="105859976">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{0, 14}, {74, 25}}</string>
-									<reference key="NSSuperview"/>
-									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="73306586">
 										<int key="NSCellFlags">67239424</int>
@@ -880,7 +859,7 @@
 					<reference key="NSSuperview"/>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 698}}</string>
 				<string key="NSMinSize">{350, 470}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
@@ -1224,7 +1203,7 @@
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<object class="NSView" key="NSWindowView" id="699367481">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1380,6 +1359,7 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{186, 41}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -1590,14 +1570,6 @@
 						<reference key="destination" ref="1000209489"/>
 					</object>
 					<int key="connectionID">381</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">dataSource</string>
-						<reference key="source" ref="229327460"/>
-						<reference key="destination" ref="642751089"/>
-					</object>
-					<int key="connectionID">382</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1910,6 +1882,14 @@
 						</object>
 					</object>
 					<int key="connectionID">749</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">sessionController</string>
+						<reference key="source" ref="229327460"/>
+						<reference key="destination" ref="642751089"/>
+					</object>
+					<int key="connectionID">750</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -2782,9 +2762,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{345, 712}, {672, 32}}</string>
+					<string>{{345, 644}, {672, 32}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{345, 712}, {672, 32}}</string>
+					<string>{{345, 644}, {672, 32}}</string>
 					<integer value="1"/>
 					<string>{{617, 728}, {213, 28}}</string>
 					<boolean value="YES"/>
@@ -2837,9 +2817,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{21, 681}, {186, 41}}</string>
+					<string>{{21, 635}, {186, 41}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{21, 681}, {186, 41}}</string>
+					<string>{{21, 635}, {186, 41}}</string>
 					<integer value="1"/>
 					<string>{{196, 469}, {186, 41}}</string>
 					<string>{3.40282e+38, 3.40282e+38}</string>
@@ -2935,9 +2915,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{427, 0}, {460, 553}}</string>
+					<string>{{426, 75}, {460, 553}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{427, 0}, {460, 553}}</string>
+					<string>{{426, 75}, {460, 553}}</string>
 					<integer value="1"/>
 					<string>{{212, 142}, {460, 564}}</string>
 					<integer value="0"/>
@@ -3022,7 +3002,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">749</int>
+			<int key="maxID">750</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3247,8 +3227,8 @@
 					<string key="className">TSSTPageView</string>
 					<string key="superclassName">NSView</string>
 					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">dataSource</string>
-						<string key="NS.object.0">id</string>
+						<string key="NS.key.0">sessionController</string>
+						<string key="NS.object.0">TSSTSessionWindowController</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>

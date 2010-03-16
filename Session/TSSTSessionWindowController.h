@@ -28,7 +28,7 @@
 
 
 #import <Cocoa/Cocoa.h>
-
+#import "TSSTPageView.h"
 
 @class TSSTPageView;
 @class TSSTKeyWindow;
@@ -52,7 +52,7 @@
 		- Handles the layout of the info window 
 			when the user scrubs the progress bar.
 */
-@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate>
+@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelection_Protocol>
 {
     /* Controller for all of the page entities related to the session object */
     IBOutlet NSArrayController * pageController;
@@ -104,6 +104,7 @@
 	NSTimer * mouseMovedTimer;
 	
 	BOOL pageSelectionInProgress;
+	BOOL canCrop;
 }
 
 @property (retain) NSArray * pageSortDescriptor;

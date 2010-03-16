@@ -39,12 +39,12 @@
 @implementation TSSTPageView
 
 @synthesize rotation;
-@synthesize dataSource;
+@synthesize sessionController;
 
 
 - (void)awakeFromNib
 {
-	/* Doing this so users can drag files into a view. */
+	/* Doing this so users can drag archives into the view. */
     [self registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
 }
 
@@ -114,7 +114,7 @@
 
     [self resizeView];
 //    [self correctViewPoint]; // Moved to sessionwindow
-//	[dataSource setPageTurn: 0];
+//	[sessionController setPageTurn: 0];
 }
 
 
@@ -156,7 +156,7 @@
     NSMutableDictionary * animationInfo = [NSMutableDictionary dictionaryWithDictionary: [timer userInfo]];
     float frameDuration;
     NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] intValue] == 1 ? firstPageImage : secondPageImage;
-    if([animationInfo valueForKey: @"pageImage"] != pageImage || [self dataSource] == nil)
+    if([animationInfo valueForKey: @"pageImage"] != pageImage || sessionController == nil)
     {
         return;
     }
@@ -251,8 +251,8 @@
 	if([[pboard types] containsObject: NSFilenamesPboardType])
 	{
 		NSArray * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
-        [[self dataSource] updateSessionObject];
-		[[NSApp delegate] addFiles: filePaths toSession: [[self dataSource] session]];
+        [sessionController updateSessionObject];
+		[[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
 		return YES;
 	}
 	
@@ -308,13 +308,21 @@
     
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
 	NSBezierPath * highlight;
-	if(pageSelection != -1 && !NSEqualRects(cropRect, NSZeroRect))
+	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
-		highlight = [NSBezierPath bezierPathWithRect: cropRect];
+		NSRect selection;
+		if (pageSelection ==1) {
+			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
+		}
+		else{
+			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
+		}
+
+		highlight = [NSBezierPath bezierPathWithRect: selection];
 		[highlight fill];
 		[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
 		[NSBezierPath setDefaultLineWidth: 2];
-		[NSBezierPath strokeRect: cropRect];
+		[NSBezierPath strokeRect: selection];
 	}
 	else if(pageSelection == 1)
 	{
@@ -329,7 +337,7 @@
 
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
 
-	if([dataSource pageSelectionInProgress])
+	if([sessionController pageSelectionInProgress])
 	{
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment: NSCenterTextAlignment];
@@ -340,7 +348,7 @@
 										   nil];
 		[style release];
 		NSString * selectionText = [NSString stringWithString: @"Click to select page"];
-		if(canCrop)
+		if([sessionController pageSelectionCanCrop])
 		{
 			selectionText = [selectionText stringByAppendingString: @"\nDrag to crop"];
 		}
@@ -411,7 +419,7 @@
     NSRect secondFragment = NSZeroRect;
     NSSize zoomSize;
 
-    if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue] || ![secondPageImage isValid])
+    if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue] || ![secondPageImage isValid])
     {
         scale = NSHeight(imageRect) / [firstPageImage size].height;
         zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
@@ -514,7 +522,7 @@
 		return;
 	}
     
-	if([[self dataSource] pageTurn] == 1)
+	if([sessionController pageTurn] == 1)
 	{
 		correctOrigin.x = (frameSize.width > viewSize.width) ? (frameSize.width - viewSize.width) : 0;
 	}
@@ -571,13 +579,13 @@
     NSRect frameRect = [self frame];
     float xpercent = NSMidX(visibleRect) / frameRect.size.width;
     float ypercent = NSMidY(visibleRect) / frameRect.size.height;
-    NSSize imageSize = [self combinedImageSizeForZoomLevel: [[[dataSource session] valueForKey: TSSTZoomLevel] intValue]];
+    NSSize imageSize = [self combinedImageSizeForZoomLevel: [[[sessionController session] valueForKey: TSSTZoomLevel] intValue]];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
     NSSize viewSize;
     float scaleToFit;
-	int scaling = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
-	scaling = [[self dataSource] currentPageIsText] ? 2 : scaling;
+	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+	scaling = [sessionController currentPageIsText] ? 2 : scaling;
     switch (scaling)
     {
     case 0:
@@ -613,7 +621,7 @@
     [self setFrameSize: viewSize];
 
     if(![[defaults valueForKey: TSSTConstrainScale] boolValue] && 
-	[[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue] != 0 )
+	[[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue] != 0 )
     {
         if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
         {
@@ -637,7 +645,7 @@
 	if([secondPageImage isValid])
 	{
 		secondPageRect.size = scaleSize([secondPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
-		if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+		if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
 		{
 			firstPageRect.origin = imageRect.origin;
 			secondPageRect.origin = NSMakePoint(NSMaxX(firstPageRect), NSMinY(imageRect));
@@ -661,25 +669,11 @@
 }
 
 
-/*  TODO: add some sort of canSelectPage: to TSSTSessionWindowController
-	so that non archive pages can be ommitted during icon selection */
-- (int)selectPageWithCrop:(BOOL)crop
+- (NSRect)pageSelectionRect:(NSInteger)selection
 {
-	canCrop = crop;
-	unsigned int charNumber = 0;
-	NSPoint cursorPoint = NSZeroPoint;
-	NSPoint currentPoint;
-	NSRect dragRect = NSZeroRect;
-	NSEvent * theEvent;
-	NSRect firstPageSide, secondPageSide = NSZeroRect;
-	cropRect = NSZeroRect;
+	NSRect firstPageSide, secondPageSide;
 	NSRect bounds = [self bounds];
-	
-	if(NSEqualRects(secondPageRect, NSZeroRect))
-	{
-		firstPageSide = [[self enclosingScrollView] documentVisibleRect];
-	}
-	else if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+	if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
 	{
 		firstPageSide = NSMakeRect(0, 0, NSMaxX(firstPageRect), NSHeight(bounds));
 		secondPageSide = NSMakeRect(NSMinX(secondPageRect), 0, NSWidth(bounds) - NSMinX(secondPageRect), NSHeight(bounds));
@@ -690,74 +684,16 @@
 		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
 	}
 	
-	NSEventType capturedEvents = NSLeftMouseDownMask | NSLeftMouseUpMask | NSMouseMovedMask | NSKeyUpMask;
-	if(canCrop)
-	{
-		capturedEvents = capturedEvents | NSLeftMouseDraggedMask;
+	if (selection == 1) {
+		return firstPageSide;
 	}
-	
-	do
+	else if (selection == 2)
 	{
-		theEvent = [[self window] nextEventMatchingMask: capturedEvents];
-		if ([theEvent window] == [self window])
-		{
-			currentPoint = [self convertPoint: [theEvent locationInWindow] fromView: nil];
-		}
-		else
-		{
-			currentPoint = [NSEvent mouseLocation];
-			currentPoint = [self convertPoint: [[self window] convertScreenToBase: currentPoint] fromView: nil];
-		}
-		
-		if(NSPointInRect(currentPoint, firstPageSide))
-		{
-			pageSelection = 1;
-		}
-		else if(NSPointInRect(currentPoint, secondPageSide))
-		{
-			pageSelection = 2;
-		}
-		else
-		{
-			pageSelection = 0;
-		}
-		
-		[self setNeedsDisplay: YES];
-		
-		
-		if([theEvent type] == NSKeyUp)
-		{
-			charNumber = [[theEvent charactersIgnoringModifiers] characterAtIndex: 0];
-		}
-		else if([theEvent type] == NSLeftMouseDragged)
-		{
-			dragRect.size.width = currentPoint.x - dragRect.origin.x;
-			dragRect.size.height = currentPoint.y - dragRect.origin.y;
-			if(NSPointInRect(dragRect.origin, firstPageSide))
-			{
-				cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), firstPageRect);
-			}
-			else if(NSPointInRect(dragRect.origin, secondPageSide))
-			{
-				cropRect = NSIntersectionRect(rectFromNegativeRect(dragRect), secondPageRect);
-			}
-//			NSLog(NSStringFromRect(cropRect));
-		}
-		else if([theEvent type] == NSLeftMouseDown)
-		{
-			dragRect.origin = currentPoint;
-		}
-		else if([theEvent type] == NSMouseMoved)
-		{
-			cursorPoint = currentPoint;
-		}
-		
-	} while ([theEvent type] != NSLeftMouseUp && charNumber != 27);
-	int finalSelection = pageSelection && charNumber != 27 ? pageSelection - 1 : -1;
-	pageSelection = -1;
-	canCrop = NO;
-	[self setNeedsDisplay: YES];
-	return finalSelection;
+		return secondPageSide;
+	}
+	else {
+		return NSZeroRect;
+	}
 }
 
 
@@ -768,7 +704,15 @@
 		return NSZeroRect;
 	}
 	
-	NSPoint center = centerPointOfRect(cropRect);
+	NSRect selection;
+	if (pageSelection ==1) {
+		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
+	}
+	else {
+		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
+	}
+	
+	NSPoint center = centerPointOfRect(selection);
 	NSRect pageRect = NSZeroRect;
 	NSSize originalSize;
 	if(NSPointInRect(center, firstPageRect))
@@ -782,12 +726,12 @@
 		originalSize = [secondPageImage size];
 	}
 	
-	pageRect.origin = NSMakePoint(cropRect.origin.x - pageRect.origin.x, cropRect.origin.y - pageRect.origin.y);
+	pageRect.origin = NSMakePoint(selection.origin.x - pageRect.origin.x, selection.origin.y - pageRect.origin.y);
 	float scaling = originalSize.height / pageRect.size.height;
 	pageRect = NSMakeRect(pageRect.origin.x * scaling,
 						  pageRect.origin.y * scaling,
-						  cropRect.size.width * scaling, 
-						  cropRect.size.height * scaling);
+						  selection.size.width * scaling, 
+						  selection.size.height * scaling);
 	return pageRect;
 }
 
@@ -799,10 +743,15 @@
 
 - (void)scrollWheel:(NSEvent *)theEvent
 {
+	if ([sessionController pageSelectionInProgress])
+	{
+		return;
+	}
+	
 	int modifier = [theEvent modifierFlags];
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
-	int scaling = [[[[self dataSource] session] valueForKey: TSSTPageScaleOptions] intValue];
-	scaling = [[self dataSource] currentPageIsText] ? 2 : scaling;
+	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 	if(modifier & NSAlternateKeyMask & NSShiftKeyMask)
 	{
 		if([theEvent deltaY])
@@ -865,23 +814,25 @@
 			scrollwheel.up = 0;
 		}
 		
-		if(scrollwheel.left > 7)
+		NSLog(@"%f", [theEvent deltaY]);
+		
+		if(scrollwheel.left > 0.1)
 		{
-			[dataSource pageLeft: self];
+			[sessionController pageLeft: self];
 			scrollwheel.left = 0;
 		}
-		else if(scrollwheel.right < -7)
+		else if(scrollwheel.right < -0.1)
 		{
-			[dataSource pageRight: self];
+			[sessionController pageRight: self];
 			scrollwheel.right = 0;
 		}
-		else if(scrollwheel.up > 20)
+		else if(scrollwheel.up > 0.1)
 		{
-			[dataSource previousPage];
+			[sessionController previousPage];
 		}
-		else if(scrollwheel.down < -20)
+		else if(scrollwheel.down < -0.1)
 		{
-			[dataSource nextPage];
+			[sessionController nextPage];
 		}
 
 	}
@@ -892,13 +843,17 @@
 		[self scrollPoint: scrollPoint];
 	}
 	
-    [[self dataSource] refreshLoupePanel];
+    [sessionController refreshLoupePanel];
 }
-
 
 
 - (void)keyDown:(NSEvent *)event
 {
+	if ([sessionController pageSelectionInProgress])
+	{
+		return;
+	}
+	
     int modifier = [event modifierFlags];
     BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
     NSNumber * charNumber = [NSNumber numberWithUnsignedInt: [[event charactersIgnoringModifiers] characterAtIndex: 0]];
@@ -912,7 +867,7 @@
 		case NSUpArrowFunctionKey:
 			if(![self verticalScrollIsPossible])
 			{
-				[dataSource previousPage];
+				[sessionController previousPage];
 			}
 			else
 			{
@@ -924,7 +879,7 @@
 		case NSDownArrowFunctionKey:
 			if(![self verticalScrollIsPossible])
 			{
-				[dataSource nextPage];
+				[sessionController nextPage];
 			}
 			else
 			{
@@ -936,7 +891,7 @@
 		case NSLeftArrowFunctionKey:
 			if(![self horizontalScrollIsPossible])
 			{
-				[dataSource pageLeft: self];
+				[sessionController pageLeft: self];
 			}
 			else
 			{
@@ -948,7 +903,7 @@
 		case NSRightArrowFunctionKey:
 			if(![self horizontalScrollIsPossible])
 			{
-				[dataSource pageRight: self];
+				[sessionController pageRight: self];
 			}
 			else
 			{
@@ -974,7 +929,7 @@
 			}
 			break;
 		case 27:
-			[[self dataSource] killTopOptionalUIElement];
+			[sessionController killTopOptionalUIElement];
 			break;
 		case 127:
 			[self pageUp];
@@ -987,7 +942,7 @@
     if(scrolling && !scrollTimer)
     {
         [self scrollPoint: scrollPoint];
-        [[self dataSource] refreshLoupePanel];
+        [sessionController refreshLoupePanel];
         NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
             [NSDate date], @"lastTime", [NSNumber numberWithBool: shiftKey], @"accelerate",
             nil, @"leftTurnStart", nil, @"rightTurnStart", nil];
@@ -1009,7 +964,7 @@
 
 	if(NSMaxY([self bounds]) <= NSMaxY(visible))
 	{
-		if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+		if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
 		{
 			if(NSMinX(visible) > 0)
 			{
@@ -1018,8 +973,8 @@
 			}
 			else
 			{
-				[dataSource setPageTurn: 1];
-				[dataSource previousPage];
+				[sessionController setPageTurn: 1];
+				[sessionController previousPage];
 			}
 		}
 		else
@@ -1031,8 +986,8 @@
 			}
 			else 
 			{
-				[dataSource setPageTurn: 2];
-				[dataSource previousPage];
+				[sessionController setPageTurn: 2];
+				[sessionController previousPage];
 			}
 		}
 	}
@@ -1053,7 +1008,7 @@
 	
 	if(scrollPoint.y <= 0)
 	{
-		if([[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue])
+		if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
 		{
 			if(NSMaxX(visible) < NSWidth([self bounds]))
 			{
@@ -1062,8 +1017,8 @@
 			}
 			else 
 			{
-				[dataSource setPageTurn: 2];
-				[dataSource nextPage];
+				[sessionController setPageTurn: 2];
+				[sessionController nextPage];
 			}
 		}
 		else
@@ -1075,8 +1030,8 @@
 			}
 			else
 			{
-				[dataSource setPageTurn: 1];
-				[dataSource nextPage];
+				[sessionController setPageTurn: 1];
+				[sessionController nextPage];
 			}
 		}                    
 	}
@@ -1146,7 +1101,7 @@
     int delta = 1000 * difference * multiplier;
     int turn = NOTURN;
     NSString * directionString = nil;
-    BOOL turnDirection = [[[[self dataSource] session] valueForKey: TSSTPageOrder] boolValue];
+    BOOL turnDirection = [[[sessionController session] valueForKey: TSSTPageOrder] boolValue];
     BOOL finishTurn = NO;
     if(scrollKeys & 1)
     {
@@ -1210,12 +1165,12 @@
         {
             if(turn == LEFTTURN)
             {
-                [dataSource pageLeft: self];
+                [sessionController pageLeft: self];
                 finishTurn = YES;
             }
             else if(turn == RIGHTTURN)
             {
-                [dataSource pageRight: self];
+                [sessionController pageRight: self];
                 finishTurn = YES;
             }
             
@@ -1238,43 +1193,88 @@
         [scrollView reflectScrolledClipView: clipView];
     }
     
-    [[self dataSource] refreshLoupePanel];
+    [sessionController refreshLoupePanel];
 }
 
 
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
-	BOOL loupe = [[[dataSource session] valueForKey: @"loupe"] boolValue];
-	[[dataSource session] setValue: [NSNumber numberWithBool: !loupe] forKey: @"loupe"];
+	BOOL loupe = [[[sessionController session] valueForKey: @"loupe"] boolValue];
+	[[sessionController session] setValue: [NSNumber numberWithBool: !loupe] forKey: @"loupe"];
 }
 
 
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-	if([self dragIsPossible])
+	if ([sessionController pageSelectionInProgress]) {
+		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
+		cropRect.origin = cursor;
+	}
+	else if([self dragIsPossible])
     {
         [[NSCursor closedHandCursor] set];
     }
 }
 
 
+- (void)mouseMoved:(NSEvent *)theEvent
+{
+	if ([sessionController pageSelectionInProgress])
+	{
+		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
+		if(NSPointInRect(cursor, firstPageRect))
+		{
+			pageSelection = 1;
+		}
+		else if(NSPointInRect(cursor, secondPageRect))
+		{
+			pageSelection = 2;
+		}
+		else
+		{
+			pageSelection = -1;
+		}
+		[self setNeedsDisplay: YES];
+	}
+	else
+	{
+		[super mouseMoved: theEvent];
+	}
+
+}
+
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-    NSPoint viewOrigin = [[self enclosingScrollView] documentVisibleRect].origin;
-    NSPoint startPoint = [theEvent locationInWindow];
-    NSPoint currentPoint;
-    if([self dragIsPossible])
+	NSPoint viewOrigin = [[self enclosingScrollView] documentVisibleRect].origin;
+    NSPoint cursor = [theEvent locationInWindow];
+	NSPoint currentPoint;
+	if ([sessionController pageSelectionInProgress])
+	{
+		cursor = [self convertPoint: cursor fromView: nil];
+		cropRect.size.width = cursor.x - cropRect.origin.x;
+		cropRect.size.height = cursor.y - cropRect.origin.y;
+		if(NSPointInRect(cropRect.origin, [self pageSelectionRect: 1]))
+		{
+			pageSelection = 1;
+		}
+		else if(NSPointInRect(cropRect.origin, [self pageSelectionRect: 2]))
+		{
+			pageSelection = 2;
+		}
+		[self setNeedsDisplay: YES];
+	}
+    else if([self dragIsPossible])
     {
         while ([theEvent type] != NSLeftMouseUp)
         {
             if ([theEvent type] == NSLeftMouseDragged)
             {
                 currentPoint = [theEvent locationInWindow];
-                [self scrollPoint: NSMakePoint(viewOrigin.x + startPoint.x - currentPoint.x,viewOrigin.y + startPoint.y - currentPoint.y)];
-                [[self dataSource] refreshLoupePanel];
+                [self scrollPoint: NSMakePoint(viewOrigin.x + cursor.x - currentPoint.x,viewOrigin.y + cursor.y - currentPoint.y)];
+                [sessionController refreshLoupePanel];
             }
             theEvent = [[self window] nextEventMatchingMask: NSLeftMouseUpMask | NSLeftMouseDraggedMask];
         }
@@ -1283,9 +1283,19 @@
 }
 
 
-
 - (void)mouseUp:(NSEvent *)theEvent
 {
+	if ([sessionController pageSelectionInProgress])
+	{
+		[sessionController selectedPage: pageSelection withCropRect: [self imageCropRectangle]];
+		pageSelection = -1;
+		cropRect = NSZeroRect;
+
+		[self setNeedsDisplay: YES];
+		return;
+	}
+	
+	
     if([self dragIsPossible])
     {
         [[NSCursor openHandCursor] set];
@@ -1325,11 +1335,11 @@
 {
     if ([event deltaX] > 0.0)
 	{
-        [dataSource pageLeft: self];
+        [sessionController pageLeft: self];
     } 
 	else if ([event deltaX] < 0.0)
 	{
-        [dataSource pageRight: self];
+        [sessionController pageRight: self];
     }
 }
 
@@ -1338,32 +1348,34 @@
 //{
 //	if ([event rotation] > 1.0)
 //	{
-//        [dataSource rotateRight: self];
+//        [sessionController rotateRight: self];
 //    } 
 //	else if ([event rotation] < -1.0)
 //	{
-//        [dataSource rotateLeft: self];
+//        [sessionController rotateLeft: self];
 //    }
 //}
 
 
 - (void)magnifyWithEvent:(NSEvent *)event
 {
-	BOOL isFullscreen = [[[dataSource session] valueForKey: TSSTFullscreen] boolValue];
+	BOOL isFullscreen = [[[sessionController session] valueForKey: TSSTFullscreen] boolValue];
 	if (([event deltaZ] > 5) && !isFullscreen)
 	{
-		[[dataSource session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
+		[[sessionController session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
 	}
 	else if(([event deltaZ] < -5) && isFullscreen)
 	{
-		[[dataSource session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
+		[[sessionController session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
 	}
 }
 
 
 - (BOOL)dragIsPossible
 {
-    return ([self horizontalScrollIsPossible] || [self verticalScrollIsPossible]);
+    return ([self horizontalScrollIsPossible] || 
+			[self verticalScrollIsPossible] && 
+			![sessionController pageSelectionInProgress]);
 }
 
 
