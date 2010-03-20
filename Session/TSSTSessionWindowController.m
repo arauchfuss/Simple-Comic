@@ -656,6 +656,8 @@
 }
 
 
+
+/* Zoom method for the zoom segmented control. Each segment has its own tag. */
 - (IBAction)zoom:(id)sender
 {
     int segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
@@ -678,13 +680,14 @@
 - (IBAction)zoomIn:(id)sender
 {
     int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
+    float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
     if(scalingOption != 0)
     {
-        float factor = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoomLevel: 0].width;
-        previousZoom = (factor * 10) - 10;
+        previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
     }
-    [session setValue: [NSNumber numberWithInt: ++previousZoom] forKey: TSSTZoomLevel];
+	
+	previousZoom += 0.1;
+    [session setValue: [NSNumber numberWithFloat: previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
 	
     [pageView resizeView];
@@ -696,14 +699,14 @@
 - (IBAction)zoomOut:(id)sender
 {
     int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
+    float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
     if(scalingOption != 0)
     {
-        float factor = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoomLevel: 0].width;
-        previousZoom = (factor * 10) - 10;
+        previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
     }
     
-    [session setValue: [NSNumber numberWithInt: (previousZoom > -9 ? previousZoom - 1 : previousZoom)] forKey: TSSTZoomLevel];
+	previousZoom -= 0.1;
+    [session setValue: [NSNumber numberWithFloat: previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
 	
     [pageView resizeView];
@@ -715,7 +718,7 @@
 - (IBAction)zoomReset:(id)sender
 {
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
-    [session setValue: [NSNumber numberWithInt: 0] forKey: TSSTZoomLevel];
+    [session setValue: [NSNumber numberWithFloat: 1.0] forKey: TSSTZoomLevel];
 	[pageView resizeView];
     [self refreshLoupePanel];
 }
@@ -1203,7 +1206,7 @@
 		hasHor = YES;
 		break;
 	case  2:
-		[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTZoomLevel];
+		[session setValue: [NSNumber numberWithFloat: 1] forKey: TSSTZoomLevel];
 		if([pageView rotation] == 1 || [pageView rotation] == 3)
 		{
 			hasHor = YES;
@@ -1214,7 +1217,7 @@
 		}
 		break;
 	default:	
-		[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTZoomLevel];
+		[session setValue: [NSNumber numberWithFloat: 1] forKey: TSSTZoomLevel];
 		break;
 	}
     
@@ -1743,7 +1746,7 @@ images are currently visible and then skips over them.
 	windowWillUseStandardFrame:defaultRect: */
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
-	NSSize maxImageSize = [pageView combinedImageSizeForZoomLevel: [[session valueForKey: TSSTZoomLevel] intValue]];
+	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
 	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
 	{

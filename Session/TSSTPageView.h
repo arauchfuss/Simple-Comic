@@ -113,7 +113,7 @@ typedef struct {
 
 /*  Finds the size of the pages that are to be renedered.
     This includes minor scaling to equalize the height of facing pages. */
-- (NSSize)combinedImageSizeForZoomLevel:(int)level;
+- (NSSize)combinedImageSizeForZoom:(float)level;
 
 
 /*  If the view are is larger than the display area 

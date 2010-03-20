@@ -533,9 +533,10 @@
 
 
 
-- (NSSize)combinedImageSizeForZoomLevel:(int)level
+- (NSSize)combinedImageSizeForZoom:(float)zoomScale
 {
-    float zoomScale = (float)(10.0 + level) / 10.0;
+	NSLog(@"zoom power %f", zoomScale);
+//    float zoomScale = (float)(10.0 + level) / 10.0;
 	NSSize firstSize = firstPageImage ? [firstPageImage size] : NSZeroSize;
 	NSSize secondSize = secondPageImage ? [secondPageImage size] : NSZeroSize;
     
@@ -554,8 +555,11 @@
     {
         firstSize = NSMakeSize(firstSize.height, firstSize.width);
     }
-    
-	return scaleSize(firstSize, zoomScale);
+	
+	NSLog(@"Unscaled %@",NSStringFromSize(firstSize));
+	NSSize zoomedSize = scaleSize(firstSize, zoomScale);
+	NSLog(@"Zoomed %@",NSStringFromSize(zoomedSize));
+	return zoomedSize;
 }
 
 
@@ -575,7 +579,7 @@
     NSRect frameRect = [self frame];
     float xpercent = NSMidX(visibleRect) / frameRect.size.width;
     float ypercent = NSMidY(visibleRect) / frameRect.size.height;
-    NSSize imageSize = [self combinedImageSizeForZoomLevel: [[[sessionController session] valueForKey: TSSTZoomLevel] intValue]];
+    NSSize imageSize = [self combinedImageSizeForZoom: [[[sessionController session] valueForKey: TSSTZoomLevel] floatValue]];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
     NSSize viewSize;
