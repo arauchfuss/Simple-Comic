@@ -430,6 +430,7 @@
 	   && [[self window] isKeyWindow]
 	   && pageSelectionInProgress == None)
     {
+		NSLog(@"loupe");
 		if(![loupeWindow isVisible])
 		{
 			[[self window] addChildWindow: loupeWindow ordered: NSWindowAbove];
@@ -866,7 +867,9 @@
 - (void)changeViewForSelection
 {
 	savedZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
-	[self scaleToWindow];
+	[pageScrollView setHasVerticalScroller: NO];
+    [pageScrollView setHasHorizontalScroller: NO];
+	[self refreshLoupePanel];
 	NSSize imageSize = [pageView combinedImageSizeForZoom: 1];
 	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
 	scrollerBounds.height -= 20;
@@ -941,8 +944,7 @@
 	
 	[session setValue: [NSNumber numberWithFloat: savedZoom] forKey: TSSTZoomLevel];
 	pageSelectionInProgress = None;
-	[self resizeView];
-	[self refreshLoupePanel];
+	[self scaleToWindow];
 }
 
 
