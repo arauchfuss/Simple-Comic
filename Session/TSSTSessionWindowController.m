@@ -714,7 +714,6 @@
 }
 
 
-
 - (IBAction)zoomReset:(id)sender
 {
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
@@ -828,10 +827,11 @@
 }
 
 
+
 - (IBAction)removePages:(id)sender
 {
 	pageSelectionInProgress = Delete;
-	[self refreshLoupePanel];
+	[self changeViewForSelection];
 }
 
 
@@ -841,22 +841,50 @@
 - (IBAction)setArchiveIcon:(id)sender
 {
 	pageSelectionInProgress = Icon;
-    [self refreshLoupePanel];
+	[self changeViewForSelection];
 }
+
+
 
 /*	Saves the selected page to a user specified location. */
 - (IBAction)extractPage:(id)sender
 {
 	pageSelectionInProgress = Extract;
-    [self refreshLoupePanel];
+	[self changeViewForSelection];
 }
+
 
 
 - (BOOL)pageSelectionCanCrop
 {
-	
 	return (pageSelectionInProgress == Icon);
 }
+
+
+/* Used by all of the page selection methods to make both pages visible.  Also adds a small
+	gutter around the images for cropping. */
+- (void)changeViewForSelection
+{
+	savedZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
+	[self scaleToWindow];
+	NSSize imageSize = [pageView combinedImageSizeForZoom: 1];
+	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
+	scrollerBounds.height -= 20;
+	scrollerBounds.width -= 20;
+	float factor;
+	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
+	{
+		factor = scrollerBounds.width / imageSize.width;
+	}
+	else
+	{		
+		factor = scrollerBounds.height / imageSize.height;
+	}
+	
+	[session setValue: [NSNumber numberWithFloat: factor] forKey: TSSTZoomLevel];
+	[pageView resizeView];
+}
+
 
 
 - (BOOL)canSelectPageIndex:(NSInteger)selection
@@ -877,22 +905,27 @@
 }
 
 
+
 - (BOOL)pageSelectionInProgress
 {
 	return (pageSelectionInProgress != None);
 }
 
 
+
 - (void)cancelPageSelection
 {
+	[session setValue: [NSNumber numberWithFloat: savedZoom] forKey: TSSTZoomLevel];
 	pageSelectionInProgress = None;
-	[self refreshLoupePanel];
+	[self scaleToWindow];
 }
+
 
 
 - (void)selectedPage:(NSInteger)selection withCropRect:(NSRect)cropRect
 {
-	switch (pageSelectionInProgress) {
+	switch (pageSelectionInProgress)
+	{
 		case Icon:
 			[self setIconWithSelection: selection andCropRect: cropRect];
 			break;
@@ -905,9 +938,13 @@
 		default:
 			break;
 	}
+	
+	[session setValue: [NSNumber numberWithFloat: savedZoom] forKey: TSSTZoomLevel];
 	pageSelectionInProgress = None;
+	[self resizeView];
 	[self refreshLoupePanel];
 }
+
 
 
 - (void)deletePageWithSelection:(NSInteger)selection
@@ -921,6 +958,7 @@
 		[[self managedObjectContext] deleteObject: selectedPage];
 	}
 }
+
 
 
 - (void)extractPageWithSelection:(NSInteger)selection
@@ -943,6 +981,7 @@
 		}
 	}
 }
+
 
 
 - (void)setIconWithSelection:(NSInteger)selection andCropRect:(NSRect)cropRect
@@ -1007,8 +1046,8 @@
 			}
 		}
 	}
+	[session setValue: [NSNumber numberWithFloat: savedZoom] forKey: TSSTZoomLevel];
 }
-
 
 
 
@@ -1224,7 +1263,7 @@
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
 	
-	if(!pageSelectionInProgress)
+	if(pageSelectionInProgress == None)
 	{
 		[self resizeWindow];
 	}

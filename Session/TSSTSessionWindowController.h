@@ -111,6 +111,7 @@ enum PageSelectionMode {
 	NSTimer * mouseMovedTimer;
 	
 	enum PageSelectionMode pageSelectionInProgress;
+	float savedZoom;
 }
 
 @property (retain) NSArray * pageSortDescriptor;
@@ -163,7 +164,7 @@ enum PageSelectionMode {
 - (void)setIconWithSelection:(NSInteger)selection andCropRect:(NSRect)cropRect;
 - (void)deletePageWithSelection:(NSInteger)selection;
 - (void)extractPageWithSelection:(NSInteger)selection;
-
+- (void)changeViewForSelection;
 
 /* Used by the jump to page method */
 - (void)closeSheet:(int)code;

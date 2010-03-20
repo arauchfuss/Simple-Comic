@@ -535,7 +535,6 @@
 
 - (NSSize)combinedImageSizeForZoom:(float)zoomScale
 {
-	NSLog(@"zoom power %f", zoomScale);
 //    float zoomScale = (float)(10.0 + level) / 10.0;
 	NSSize firstSize = firstPageImage ? [firstPageImage size] : NSZeroSize;
 	NSSize secondSize = secondPageImage ? [secondPageImage size] : NSZeroSize;
@@ -556,9 +555,7 @@
         firstSize = NSMakeSize(firstSize.height, firstSize.width);
     }
 	
-	NSLog(@"Unscaled %@",NSStringFromSize(firstSize));
 	NSSize zoomedSize = scaleSize(firstSize, zoomScale);
-	NSLog(@"Zoomed %@",NSStringFromSize(zoomedSize));
 	return zoomedSize;
 }
 
@@ -813,9 +810,7 @@
 			scrollwheel.right = 0;
 			scrollwheel.up = 0;
 		}
-		
-		NSLog(@"%f", [theEvent deltaY]);
-		
+				
 		if(scrollwheel.left > 0.1)
 		{
 			[sessionController pageLeft: self];
