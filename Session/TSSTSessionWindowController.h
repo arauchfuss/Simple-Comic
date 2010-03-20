@@ -152,7 +152,7 @@ enum PageSelectionMode {
 - (IBAction)lastPage:(id)sender;
 
 - (IBAction)launchJumpPanel:(id)sender;
-- (IBAction)cancleJumpPanel:(id)sender;
+- (IBAction)cancelJumpPanel:(id)sender;
 - (IBAction)goToPage:(id)sender;
 
 - (IBAction)removePages:(id)sender;

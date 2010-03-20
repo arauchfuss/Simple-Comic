@@ -1341,17 +1341,17 @@
 }
 
 
-//- (void)rotateWithEvent:(NSEvent *)event
-//{
-//	if ([event rotation] > 1.0)
-//	{
-//        [sessionController rotateRight: self];
-//    } 
-//	else if ([event rotation] < -1.0)
-//	{
-//        [sessionController rotateLeft: self];
-//    }
-//}
+- (void)rotateWithEvent:(NSEvent *)event
+{
+	if ([event rotation] > 1.0)
+	{
+        [sessionController rotateRight: self];
+    } 
+	else if ([event rotation] < -1.0)
+	{
+        [sessionController rotateLeft: self];
+    }
+}
 
 
 - (void)magnifyWithEvent:(NSEvent *)event
@@ -1366,6 +1366,37 @@
 		[[sessionController session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
 	}
 }
+
+//int scalingOption = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+//float previousZoom = [[[sessionController session] valueForKey: TSSTZoomLevel] floatValue];
+//if(scalingOption != 0)
+//{
+//	previousZoom = NSWidth([self imageBounds]) / [self combinedImageSizeForZoom: 1].width;
+//}
+//
+//previousZoom += [event magnification]/2;
+//previousZoom = previousZoom < 0.1 ? 0.1 : previousZoom;
+//[[sessionController session] setValue: [NSNumber numberWithFloat: previousZoom] forKey: TSSTZoomLevel];
+//[[sessionController session] setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
+//
+//[self resizeView];
+//[sessionController refreshLoupePanel];
+
+
+//- (void)touchesBeganWithEvent:(NSEvent *)event
+//{
+//	NSLog(@"start");
+//}
+//
+//
+//- (void)touchesEndedWithEvent:(NSEvent *)event
+//{
+//	NSLog(@"end");
+//	if ([event type] == NSEventTypeMagnify)
+//	{
+//		NSLog(@"end magnify");
+//	}
+//}
 
 
 - (BOOL)dragIsPossible

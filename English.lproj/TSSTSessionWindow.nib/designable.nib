@@ -13,8 +13,6 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="446"/>
-			<integer value="6"/>
-			<integer value="274"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -799,6 +797,7 @@
 											<int key="NSvFlags">274</int>
 											<string key="NSFrameSize">{135, 65}</string>
 											<reference key="NSSuperview" ref="687147521"/>
+											<reference key="NSWindow"/>
 											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 											<string key="NSClassName">TSSTPageView</string>
 											<string key="NSExtension">NSView</string>
@@ -806,6 +805,7 @@
 									</object>
 									<string key="NSFrameSize">{445, 515}</string>
 									<reference key="NSSuperview" ref="447490665"/>
+									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="229327460"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSDocView" ref="229327460"/>
@@ -820,6 +820,7 @@
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{445, 0}, {15, 515}}</string>
 									<reference key="NSSuperview" ref="447490665"/>
+									<reference key="NSWindow"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSTarget" ref="447490665"/>
 									<string key="NSAction">_doScroller:</string>
@@ -829,6 +830,7 @@
 									<int key="NSvFlags">256</int>
 									<string key="NSFrame">{{0, 515}, {445, 15}}</string>
 									<reference key="NSSuperview" ref="447490665"/>
+									<reference key="NSWindow"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="447490665"/>
@@ -838,6 +840,7 @@
 							</object>
 							<string key="NSFrame">{{0, 23}, {460, 530}}</string>
 							<reference key="NSSuperview" ref="1020484870"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="687147521"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<int key="NSsFlags">48</int>
@@ -850,6 +853,7 @@
 							<int key="NSvFlags">290</int>
 							<string key="NSFrame">{{0, -1}, {450, 23}}</string>
 							<reference key="NSSuperview" ref="1020484870"/>
+							<reference key="NSWindow"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<string key="NSClassName">DTPolishedProgressBar</string>
 							<string key="NSExtension">NSView</string>
@@ -857,6 +861,7 @@
 					</object>
 					<string key="NSFrameSize">{460, 553}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 698}}</string>
@@ -899,7 +904,7 @@
 				<string key="NSWindowContentMaxSize">{672, 32}</string>
 				<string key="NSWindowContentMinSize">{672, 32}</string>
 				<object class="NSView" key="NSWindowView" id="763131527">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1048,7 +1053,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{672, 32}</string>
-					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMinSize">{672, 54}</string>
@@ -1612,14 +1616,6 @@
 					<int key="connectionID">462</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">cancleJumpPanel:</string>
-						<reference key="source" ref="642751089"/>
-						<reference key="destination" ref="25021281"/>
-					</object>
-					<int key="connectionID">465</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">thumbnailView</string>
 						<reference key="source" ref="650262412"/>
@@ -1890,6 +1886,14 @@
 						<reference key="destination" ref="642751089"/>
 					</object>
 					<int key="connectionID">750</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">cancelJumpPanel:</string>
+						<reference key="source" ref="642751089"/>
+						<reference key="destination" ref="25021281"/>
+					</object>
+					<int key="connectionID">751</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3002,7 +3006,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">750</int>
+			<int key="maxID">751</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3250,7 +3254,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>cancleJumpPanel:</string>
+							<string>cancelJumpPanel:</string>
 							<string>changeFullscreen:</string>
 							<string>changePageOrder:</string>
 							<string>changeScaling:</string>

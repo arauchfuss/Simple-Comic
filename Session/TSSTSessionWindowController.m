@@ -707,6 +707,7 @@
     }
     
 	previousZoom -= 0.1;
+	previousZoom = previousZoom < 0.1 ? 0.1 : previousZoom;
     [session setValue: [NSNumber numberWithFloat: previousZoom] forKey: TSSTZoomLevel];
 	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
 	
@@ -809,7 +810,7 @@
 
 
 
-- (IBAction)cancleJumpPanel:(id)sender
+- (IBAction)cancelJumpPanel:(id)sender
 {
 	[NSApp endSheet: jumpPanel returnCode: 0];
 }
