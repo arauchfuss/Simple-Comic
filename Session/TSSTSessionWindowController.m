@@ -47,7 +47,7 @@
 
 @implementation TSSTSessionWindowController
 
-@synthesize pageTurn, pageNames, pageSortDescriptor, pageSelectionInProgress;
+@synthesize pageTurn, pageNames, pageSortDescriptor;
 
 
 
@@ -98,7 +98,7 @@
     if (self != nil)
     {
 		pageTurn = 0;
-		pageSelectionInProgress = NO;
+		pageSelectionInProgress = None;
 		mouseMovedTimer = nil;
 //		closing = NO;
         session = [aSession retain];
@@ -428,7 +428,7 @@
     if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
 	   && loupe 
 	   && [[self window] isKeyWindow]
-	   && !pageSelectionInProgress)
+	   && pageSelectionInProgress == None)
     {
 		if(![loupeWindow isVisible])
 		{
@@ -493,24 +493,6 @@
 
 #pragma mark -
 #pragma mark Actions
-
-
-
-- (IBAction)removePages:(id)sender
-{
-//	pageSelectionInProgress = YES;
-//	int selection = [pageView selectPageWithCrop: NO];
-//	pageSelectionInProgress = NO;
-//	
-//	if(selection != -1)
-//	{
-//		int index = [pageController selectionIndex];
-//		index += selection;
-//		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
-//		[pageController removeObject: selectedPage];
-//		[[self managedObjectContext] deleteObject: selectedPage];
-//	}
-}
 
 
 
@@ -843,132 +825,127 @@
 }
 
 
+- (IBAction)removePages:(id)sender
+{
+	pageSelectionInProgress = Delete;
+	[self refreshLoupePanel];
+}
+
+
 /*  Method that allows the user to select an icon for comic archives.
 	Calls pageView and verifies that the images selected are from an
 	archive. */
 - (IBAction)setArchiveIcon:(id)sender
 {
-	pageSelectionInProgress = YES;
-	canCrop = YES;
-//	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-//    int previousZoom = [[session valueForKey: TSSTZoomLevel] intValue];
-//	NSSize imageSize = [pageView combinedImageSizeForZoomLevel: 0];
-//	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
-//	scrollerBounds.height -= 20;
-//	scrollerBounds.width -= 20;
-//	float factor;
-//	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
-//	{
-//		factor = scrollerBounds.width / imageSize.width;
-//	}
-//	else
-//	{		
-//		factor = scrollerBounds.height / imageSize.height;
-//	}
-//	
-//	int selectionZoom = floor(((factor * 10) - 10));
-//	[session setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
-//	[session setValue: [NSNumber numberWithInt: selectionZoom] forKey: TSSTZoomLevel];
-//	
-//    [pageView resizeView];
+	pageSelectionInProgress = Icon;
     [self refreshLoupePanel];
-	
-	//int selection = [pageView selectPageWithCrop: YES];
-//	NSRect cropRect = [pageView imageCropRectangle];
-//	if(selection != -1)
-//	{
-//		int index = [pageController selectionIndex];
-//		index += selection;
-//		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
-//		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
-//		/* Makes sure that the group is both an archive and not nested */
-//		if([selectedGroup class] == [TSSTManagedArchive class] && 
-//		   selectedGroup == [selectedGroup topLevelGroup] &&
-//		   ![[selectedPage valueForKey: @"text"] boolValue])
-//		{
-//			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
-//			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
-//			{
-//				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
-//				XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
-//				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
-//										 forKey: @"QCCoverName" 
-//										 atPath: archivePath 
-//								   traverseLink: NO];
-//				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
-//										 forKey: @"QCCoverRect" 
-//										 atPath: archivePath 
-//								   traverseLink: NO];
-//				
-//				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
-//										 arguments: [NSArray arrayWithObject: archivePath]];
-//			}
-//			else
-//			{
-//				NSRect drawRect = NSMakeRect(0, 0, 496, 496);
-//				NSImage * iconImage = [[NSImage alloc] initWithSize: drawRect.size];
-//				cropRect.size = NSEqualSizes(cropRect.size, NSZeroSize) ? NSMakeSize([[selectedPage valueForKey: @"width"] floatValue], [[selectedPage valueForKey: @"height"] floatValue]) : cropRect.size;
-//				drawRect = rectWithSizeCenteredInRect( cropRect.size, drawRect);
-//				
-//				[iconImage lockFocus];
-//					[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-//					[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
-//				[iconImage unlockFocus];
-//				
-//				NSImage * shadowImage = [[NSImage alloc] initWithSize: NSMakeSize(512, 512)];
-//				
-//				NSShadow * thumbShadow = [NSShadow new];
-//				[thumbShadow setShadowOffset: NSMakeSize(0.0, -8.0)];
-//				[thumbShadow setShadowBlurRadius: 25.0];
-//				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];				
-//				
-//				[shadowImage lockFocus];
-//					[thumbShadow set];
-//					[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
-//				[shadowImage unlockFocus];
-//				
-//				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
-//
-//				[thumbShadow release];
-//				[iconImage release];
-//				[shadowImage release];
-//			}
-//		}
-//	}
-//	pageSelectionInProgress = NO;
-//	[session setValue: [NSNumber numberWithInt: previousZoom] forKey: TSSTZoomLevel];
-//	[session setValue: [NSNumber numberWithInt: scalingOption] forKey: TSSTPageScaleOptions];
-//	
-//    [pageView resizeView];
-//	[self refreshLoupePanel];
+}
+
+/*	Saves the selected page to a user specified location. */
+- (IBAction)extractPage:(id)sender
+{
+	pageSelectionInProgress = Extract;
+    [self refreshLoupePanel];
 }
 
 
 - (BOOL)pageSelectionCanCrop
 {
-	return canCrop;
+	
+	return (pageSelectionInProgress == Icon);
 }
 
 
-- (BOOL)canSelectPageIndex:(NSInteger)index
+- (BOOL)canSelectPageIndex:(NSInteger)selection
 {
-	return YES;
+	int index = [pageController selectionIndex];
+	index += selection;
+	TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+	TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
+	/* Makes sure that the group is both an archive and not nested */
+	if([selectedGroup class] == [TSSTManagedArchive class] && 
+	   selectedGroup == [selectedGroup topLevelGroup] &&
+	   ![[selectedPage valueForKey: @"text"] boolValue])
+	{
+		return YES;
+	}
+	
+	return NO;
+}
+
+
+- (BOOL)pageSelectionInProgress
+{
+	return (pageSelectionInProgress != None);
 }
 
 
 - (void)cancelPageSelection
 {
-	pageSelectionInProgress = NO;
-	canCrop = NO;
+	pageSelectionInProgress = None;
 	[self refreshLoupePanel];
 }
 
 
 - (void)selectedPage:(NSInteger)selection withCropRect:(NSRect)cropRect
 {
+	switch (pageSelectionInProgress) {
+		case Icon:
+			[self setIconWithSelection: selection andCropRect: cropRect];
+			break;
+		case Delete:
+			[self deletePageWithSelection: selection];
+			break;
+		case Extract:
+			[self extractPageWithSelection: selection];
+			break;
+		default:
+			break;
+	}
+	pageSelectionInProgress = None;
+	[self refreshLoupePanel];
+}
+
+
+- (void)deletePageWithSelection:(NSInteger)selection
+{
 	if(selection != -1)
 	{
-		selection -=1;
+		int index = [pageController selectionIndex];
+		index += selection;
+		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+		[pageController removeObject: selectedPage];
+		[[self managedObjectContext] deleteObject: selectedPage];
+	}
+}
+
+
+- (void)extractPageWithSelection:(NSInteger)selection
+{
+	/*	selectpage returns prompts the user for which page they wish to use.
+	 If there is only one page or the user selects the first page 0 is returned,
+	 otherwise 1. */
+	if(selection != -1)
+	{
+		int index = [pageController selectionIndex];
+		index += (selection - 1);
+		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
+		
+		NSSavePanel * savePanel = [NSSavePanel savePanel];
+		[savePanel setTitle: @"Extract Page"];
+		[savePanel setPrompt: @"Extract"];
+		if(NSOKButton == [savePanel runModalForDirectory: nil file: [selectedPage name]])
+		{
+			[[selectedPage pageData] writeToFile: [savePanel filename] atomically: YES];
+		}
+	}
+}
+
+
+- (void)setIconWithSelection:(NSInteger)selection andCropRect:(NSRect)cropRect
+{
+	if(selection != -1)
+	{
 		int index = [pageController selectionIndex];
 		index += selection;
 		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
@@ -1003,8 +980,8 @@
 				drawRect = rectWithSizeCenteredInRect( cropRect.size, drawRect);
 				
 				[iconImage lockFocus];
-					[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-					[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
+				[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
+				[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
 				[iconImage unlockFocus];
 				
 				NSImage * shadowImage = [[NSImage alloc] initWithSize: NSMakeSize(512, 512)];
@@ -1015,49 +992,20 @@
 				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];				
 				
 				[shadowImage lockFocus];
-					[thumbShadow set];
-					[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
+				[thumbShadow set];
+				[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
 				[shadowImage unlockFocus];
 				
 				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
-
+				
 				[thumbShadow release];
 				[iconImage release];
 				[shadowImage release];
 			}
 		}
 	}
-	pageSelectionInProgress = NO;
-	canCrop = NO;
-	[self refreshLoupePanel];
 }
 
-			
-
-/*	Saves the selected page to a user specified location. */
-- (IBAction)extractPage:(id)sender
-{
-//	/*	selectpage returns prompts the user for which page they wish to use.
-//		If there is only one page or the user selects the first page 0 is returned,
-//		otherwise 1. */
-//	pageSelectionInProgress = YES;
-//	int selection = [pageView selectPageWithCrop: NO];
-//	pageSelectionInProgress = NO;
-//	if(selection != -1)
-//	{
-//		int index = [pageController selectionIndex];
-//		index += selection;
-//		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
-//		
-//		NSSavePanel * savePanel = [NSSavePanel savePanel];
-//		[savePanel setTitle: @"Extract Page"];
-//		[savePanel setPrompt: @"Extract"];
-//		if(NSOKButton == [savePanel runModalForDirectory: nil file: [selectedPage name]])
-//		{
-//			[[selectedPage pageData] writeToFile: [savePanel filename] atomically: YES];
-//		}
-//	}
-}
 
 
 
@@ -1272,10 +1220,12 @@
     
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
+	
 	if(!pageSelectionInProgress)
 	{
 		[self resizeWindow];
 	}
+	
     [pageView resizeView];
     [self refreshLoupePanel];
 }
@@ -1772,6 +1722,7 @@ images are currently visible and then skips over them.
 }
 
 
+
 /*	This method deals with window resizing.  It is called every time the user clicks 
 	the nice little plus button in the upper left of the window.
 	It is also called optionally every time the page is turned.  That is if the
@@ -1785,6 +1736,7 @@ images are currently visible and then skips over them.
 	
     return defaultFrame;
 }
+
 
 
 /*	Added for 10.6 compatibility.  As I can no longer just call 

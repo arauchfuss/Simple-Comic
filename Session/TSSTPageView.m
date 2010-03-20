@@ -49,7 +49,6 @@
 }
 
 
-
 - (id)initWithFrame:(NSRect)aRectangle;
 {
 	if(self = [super initWithFrame: aRectangle])
@@ -71,7 +70,6 @@
 }
 
 
-
 - (void) dealloc
 {
     id temp;
@@ -87,12 +85,10 @@
 }
 
 
-
 - (BOOL)acceptsFirstResponder
 {
 	return YES;
 }
-
 
 
 - (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second
@@ -121,6 +117,7 @@
 
 #pragma mark -
 #pragma mark Animations
+
 
 
 /* Animated GIF method */
@@ -191,7 +188,6 @@
 
 #pragma mark -
 #pragma mark Drag and Drop
-
 
 
 
@@ -311,7 +307,7 @@
 	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
 		NSRect selection;
-		if (pageSelection ==1) {
+		if (pageSelection ==0) {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 		}
 		else{
@@ -324,12 +320,12 @@
 		[NSBezierPath setDefaultLineWidth: 2];
 		[NSBezierPath strokeRect: selection];
 	}
-	else if(pageSelection == 1)
+	else if(pageSelection == 0)
 	{
 		highlight = [NSBezierPath bezierPathWithRect: firstPageRect];
 		[highlight fill];
 	}
-	else if(pageSelection == 2)
+	else if(pageSelection == 1)
 	{
 		highlight = [NSBezierPath bezierPathWithRect: secondPageRect];
 		[highlight fill];
@@ -705,7 +701,7 @@
 	}
 	
 	NSRect selection;
-	if (pageSelection ==1) {
+	if (pageSelection == 0) {
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 	}
 	else {
@@ -851,6 +847,9 @@
 {
 	if ([sessionController pageSelectionInProgress])
 	{
+		[sessionController cancelPageSelection];
+		pageSelection = -1;
+		[self setNeedsDisplay: YES];
 		return;
 	}
 	
@@ -1224,13 +1223,13 @@
 	if ([sessionController pageSelectionInProgress])
 	{
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
-		if(NSPointInRect(cursor, firstPageRect))
+		if(NSPointInRect(cursor, firstPageRect) && [sessionController canSelectPageIndex: 0])
+		{
+			pageSelection = 0;
+		}
+		else if(NSPointInRect(cursor, secondPageRect) && [sessionController canSelectPageIndex: 1])
 		{
 			pageSelection = 1;
-		}
-		else if(NSPointInRect(cursor, secondPageRect))
-		{
-			pageSelection = 2;
 		}
 		else
 		{
@@ -1258,11 +1257,11 @@
 		cropRect.size.height = cursor.y - cropRect.origin.y;
 		if(NSPointInRect(cropRect.origin, [self pageSelectionRect: 1]))
 		{
-			pageSelection = 1;
+			pageSelection = 0;
 		}
 		else if(NSPointInRect(cropRect.origin, [self pageSelectionRect: 2]))
 		{
-			pageSelection = 2;
+			pageSelection = 1;
 		}
 		[self setNeedsDisplay: YES];
 	}
@@ -1294,7 +1293,6 @@
 		[self setNeedsDisplay: YES];
 		return;
 	}
-	
 	
     if([self dragIsPossible])
     {

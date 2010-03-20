@@ -38,6 +38,13 @@
 @class TSSTImageView;
 @class TSSTManagedSession;
 
+enum PageSelectionMode {
+	None,
+	Icon,
+	Delete,
+	Extract
+};
+
 
 /*	This class deals with an unholy crapload of functionality
 	- First and most importantly it controls the navigation 
@@ -103,14 +110,12 @@
 	/* Manages the cursor hiding while in fullscreen */
 	NSTimer * mouseMovedTimer;
 	
-	BOOL pageSelectionInProgress;
-	BOOL canCrop;
+	enum PageSelectionMode pageSelectionInProgress;
 }
 
 @property (retain) NSArray * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
 @property (retain) NSString * pageNames;
-@property (readonly) BOOL pageSelectionInProgress;
 
 - (id)initWithSession:(TSSTManagedSession *)aSession;
 
@@ -154,6 +159,11 @@
 - (IBAction)extractPage:(id)sender;
 
 - (IBAction)togglePageExpose:(id)sender;
+
+- (void)setIconWithSelection:(NSInteger)selection andCropRect:(NSRect)cropRect;
+- (void)deletePageWithSelection:(NSInteger)selection;
+- (void)extractPageWithSelection:(NSInteger)selection;
+
 
 /* Used by the jump to page method */
 - (void)closeSheet:(int)code;
