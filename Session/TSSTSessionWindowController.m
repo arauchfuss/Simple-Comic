@@ -1769,14 +1769,12 @@ images are currently visible and then skips over them.
 
 
 /*	This method deals with window resizing.  It is called every time the user clicks 
-	the nice little plus button in the upper left of the window.
-	It is also called optionally every time the page is turned.  That is if the
-	user has auto resize enabled. */
+	the nice little plus button in the upper left of the window. */
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)sender defaultFrame:(NSRect)defaultFrame
 {
     if(sender == [self window])
     {
-        defaultFrame = [self optimalPageViewRectForRect: defaultFrame];
+        defaultFrame = [self maximumPageViewRectForRect: defaultFrame];
     }
 	
     return defaultFrame;
@@ -1784,9 +1782,39 @@ images are currently visible and then skips over them.
 
 
 
-/*	Added for 10.6 compatibility.  As I can no longer just call 
-	windowWillUseStandardFrame:defaultRect: */
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
+{
+	NSRect windowFrame = [[self window] frame];
+	if([[session valueForKey: TSSTPageScaleOptions] intValue] != 1 || [self currentPageIsText])
+	{
+		return windowFrame;
+	}
+	
+	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
+	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
+	if([pageScrollView hasHorizontalScroller])
+	{
+		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
+	}
+	float horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
+	
+	float scaling = maxImageSize.height / (NSHeight(windowFrame) - vertOffset);
+	
+	NSRect correctedWindowFrame = windowFrame;
+	correctedWindowFrame.size.width = (maxImageSize.width / scaling) + horOffset;
+	
+	
+	return correctedWindowFrame;
+}
+
+
+
+/*	
+	It is also called optionally every time the page is turned.  That is if the
+	user has auto resize enabled.
+	Added for 10.6 compatibility.  As I can no longer just call 
+	windowWillUseStandardFrame:defaultRect: */
+- (NSRect)maximumPageViewRectForRect:(NSRect)boundingRect
 {
 	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
 	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];

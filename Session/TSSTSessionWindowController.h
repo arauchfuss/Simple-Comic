@@ -207,6 +207,7 @@ enum PageSelectionMode {
 - (void)killTopOptionalUIElement;
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect;
+- (NSRect)maximumPageViewRectForRect:(NSRect)boundingRect;
 
 @end
 
