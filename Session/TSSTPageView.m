@@ -670,7 +670,12 @@
 {
 	NSRect firstPageSide, secondPageSide;
 	NSRect bounds = [self bounds];
-	if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
+	if([secondPageImage isValid] == NO)
+	{
+		firstPageSide = bounds;
+		secondPageSide = NSZeroRect;
+	}
+	else if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
 	{
 		firstPageSide = NSMakeRect(0, 0, NSMaxX(firstPageRect), NSHeight(bounds));
 		secondPageSide = NSMakeRect(NSMinX(secondPageRect), 0, NSWidth(bounds) - NSMinX(secondPageRect), NSHeight(bounds));
