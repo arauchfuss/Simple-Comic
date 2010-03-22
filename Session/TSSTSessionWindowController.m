@@ -1099,22 +1099,18 @@
     {
         positionValue = [NSUnarchiver unarchiveObjectWithData: posData];
         [[self window] setFrame: [positionValue rectValue] display: NO];
+		NSData * scrollData = [session valueForKey: TSSTScrollPosition];
+		if(scrollData)
+		{
+			[self setShouldCascadeWindows: NO];
+			positionValue = [NSUnarchiver unarchiveObjectWithData: scrollData];
+			[pageView scrollPoint: [positionValue pointValue]];
+		}
     }
-	
-    posData = [session valueForKey: TSSTScrollPosition];
-    if(posData)
-    {
-		[self setShouldCascadeWindows: NO];
-        positionValue = [NSUnarchiver unarchiveObjectWithData: posData];
-        [pageView scrollPoint: [positionValue pointValue]];
-    }
-    else
+	else
     {
 		[self setShouldCascadeWindows: YES];
-        if(![[defaults valueForKey: TSSTWindowAutoResize] boolValue])
-        {
-            [[self window] zoom: self];
-        }
+		[[self window] zoom: self];
         [pageView correctViewPoint];
     }
 }
@@ -1797,12 +1793,23 @@ images are currently visible and then skips over them.
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
 	}
 	float horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
-	
-	float scaling = maxImageSize.height / (NSHeight(windowFrame) - vertOffset);
+	float currentHeight = NSHeight(windowFrame) - vertOffset;
+	float minWidth = [[self window] minSize].width;
+	float autoWidth;
 	
 	NSRect correctedWindowFrame = windowFrame;
-	correctedWindowFrame.size.width = (maxImageSize.width / scaling) + horOffset;
-	
+	if (maxImageSize.height < currentHeight)
+	{
+		autoWidth = maxImageSize.width;
+	}
+	else
+	{
+		float scaling = maxImageSize.height / currentHeight;
+		autoWidth = (maxImageSize.width / scaling) + horOffset;
+	}
+
+	autoWidth = autoWidth < minWidth ? minWidth : autoWidth;
+	correctedWindowFrame.size.width = autoWidth;
 	
 	return correctedWindowFrame;
 }

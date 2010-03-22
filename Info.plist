@@ -322,11 +322,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7 RC</string>
+	<string>1.7 RC2</string>
 	<key>CFBundleSignature</key>
 	<string>TSST</string>
 	<key>CFBundleVersion</key>
-	<string>245</string>
+	<string>247</string>
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>NSMainNibFile</key>
