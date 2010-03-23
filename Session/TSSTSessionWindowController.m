@@ -972,7 +972,7 @@
 	if(selection != -1)
 	{
 		int index = [pageController selectionIndex];
-		index += (selection - 1);
+		index += selection;
 		TSSTPage * selectedPage = [[pageController arrangedObjects] objectAtIndex: index];
 		
 		NSSavePanel * savePanel = [NSSavePanel savePanel];
