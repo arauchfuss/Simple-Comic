@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="6"/>
+			<integer value="507"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -86,9 +86,10 @@
 								<string key="NSToolbarItemPaletteLabel">Rotate Pages</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="781108242">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{13, 14}, {51, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="291449196">
 										<int key="NSCellFlags">67239424</int>
@@ -147,9 +148,10 @@
 								<string key="NSToolbarItemPaletteLabel">Loupe</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="239383554">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{7, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="179540892">
 										<int key="NSCellFlags">67239424</int>
@@ -188,9 +190,10 @@
 								<string key="NSToolbarItemPaletteLabel">Page Layout</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="773415693">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{11, 14}, {51, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="399130150">
 										<int key="NSCellFlags">67239424</int>
@@ -242,9 +245,10 @@
 								<string key="NSToolbarItemPaletteLabel">Set Icon</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="315762997">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{12, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="349522909">
 										<int key="NSCellFlags">67239424</int>
@@ -254,9 +258,9 @@
 										<reference key="NSControlView" ref="315762997"/>
 										<int key="NSButtonFlags">-2030812929</int>
 										<int key="NSButtonFlags2">160</int>
-										<object class="NSCustomResource" key="NSNormalImage" id="223158380">
+										<object class="NSCustomResource" key="NSNormalImage" id="128467455">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">icon</string>
+											<string key="NSResourceName">quicklook</string>
 										</object>
 										<string key="NSAlternateContents"/>
 										<string key="NSKeyEquivalent"/>
@@ -264,7 +268,7 @@
 										<int key="NSPeriodicInterval">75</int>
 									</object>
 								</object>
-								<reference key="NSToolbarItemImage" ref="223158380"/>
+								<reference key="NSToolbarItemImage" ref="128467455"/>
 								<nil key="NSToolbarItemTarget"/>
 								<nil key="NSToolbarItemAction"/>
 								<string key="NSToolbarItemMinSize">{27, 25}</string>
@@ -283,9 +287,10 @@
 								<string key="NSToolbarItemPaletteLabel">Capture Page</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="554673346">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{26, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="824020377">
 										<int key="NSCellFlags">67239424</int>
@@ -324,9 +329,10 @@
 								<string key="NSToolbarItemPaletteLabel">Page Order</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="299051792">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{8, 14}, {51, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="216990349">
 										<int key="NSCellFlags">67239424</int>
@@ -378,9 +384,10 @@
 								<string key="NSToolbarItemPaletteLabel">Thumbnails</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="203162773">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{22, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="630820395">
 										<int key="NSCellFlags">67239424</int>
@@ -419,9 +426,10 @@
 								<string key="NSToolbarItemPaletteLabel">Turn Page</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="979521007">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{5, 14}, {51, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="138422164">
 										<int key="NSCellFlags">67239424</int>
@@ -475,9 +483,10 @@
 								<string key="NSToolbarItemPaletteLabel">Zoom</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="1063529762">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{0, 14}, {74, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="513444165">
 										<int key="NSCellFlags">67239424</int>
@@ -542,9 +551,10 @@
 								<string key="NSToolbarItemPaletteLabel">Fullscreen</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="832961168">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{17, 14}, {27, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="711751553">
 										<int key="NSCellFlags">67239424</int>
@@ -583,9 +593,10 @@
 								<string key="NSToolbarItemPaletteLabel">Page Scaling</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSegmentedControl" key="NSToolbarItemView" id="105859976">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">292</int>
 									<string key="NSFrame">{{0, 14}, {74, 25}}</string>
+									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSegmentedCell" key="NSCell" id="73306586">
 										<int key="NSCellFlags">67239424</int>
@@ -1200,7 +1211,7 @@
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<object class="NSView" key="NSWindowView" id="699367481">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1209,7 +1220,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{50, 10}, {41, 22}}</string>
 							<reference key="NSSuperview" ref="699367481"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="609406817">
 								<int key="NSCellFlags">-1804468671</int>
@@ -1312,7 +1322,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{7, 13}, {38, 17}}</string>
 							<reference key="NSSuperview" ref="699367481"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="1004633438">
 								<int key="NSCellFlags">67239488</int>
@@ -1340,7 +1349,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{99, 8}, {56, 25}}</string>
 							<reference key="NSSuperview" ref="699367481"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="624344910">
 								<int key="NSCellFlags">-2080244224</int>
@@ -1361,7 +1369,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{163, 8}, {56, 25}}</string>
 							<reference key="NSSuperview" ref="699367481"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="87377565">
 								<int key="NSCellFlags">-2080244224</int>
@@ -1379,8 +1386,6 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{229, 42}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -2894,7 +2899,7 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{349, 553}, {616, 0}}</string>
+					<string>{{78, 343}, {616, 285}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{134, 706}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2957,9 +2962,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{58, 17}, {460, 553}}</string>
+					<string>{{156, 75}, {460, 553}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{58, 17}, {460, 553}}</string>
+					<string>{{156, 75}, {460, 553}}</string>
 					<integer value="1"/>
 					<string>{{212, 142}, {460, 564}}</string>
 					<integer value="0"/>
@@ -4148,7 +4153,7 @@
 				<string>NSEnterFullScreenTemplate</string>
 				<string>NSExitFullScreenTemplate</string>
 				<string>extract</string>
-				<string>icon</string>
+				<string>quicklook</string>
 				<string>thumbnails</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
@@ -4157,7 +4162,7 @@
 				<string>{16, 15}</string>
 				<string>{16, 15}</string>
 				<string>{17, 12}</string>
-				<string>{11, 16}</string>
+				<string>{16, 16}</string>
 				<string>{12, 12}</string>
 			</object>
 		</object>

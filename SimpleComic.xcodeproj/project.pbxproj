@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		28073CB00FF9956600D2602B /* extract.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073CAF0FF9956500D2602B /* extract.tiff */; };
-		28073DB00FFB0EED00D2602B /* icon.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073DAF0FFB0EED00D2602B /* icon.tiff */; };
 		28073E610FFC347200D2602B /* QuickComic.qlgenerator in Copy Quicklook plugin */ = {isa = PBXBuildFile; fileRef = 28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */; };
 		281314570C0A7D2D00EC007B /* TSSTSessionWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314520C0A7D2D00EC007B /* TSSTSessionWindow.nib */; };
 		281314580C0A7D2D00EC007B /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314540C0A7D2D00EC007B /* MainMenu.nib */; };
@@ -31,6 +30,7 @@
 		285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */; };
 		285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285FE32F0F945E2300CD8F96 /* Carbon.framework */; };
 		286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286236010AADDB6200B83E77 /* QuartzCore.framework */; };
+		286AB66A1159838C0087BA97 /* quicklook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 286AB6691159838C0087BA97 /* quicklook.tiff */; };
 		286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
 		286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */; };
 		286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */; };
@@ -178,6 +178,7 @@
 		285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPagePreview.m; sourceTree = "<group>"; };
 		285FE32F0F945E2300CD8F96 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		286236010AADDB6200B83E77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		286AB6691159838C0087BA97 /* quicklook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = quicklook.tiff; sourceTree = "<group>"; };
 		286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSortDescriptor.m; sourceTree = "<group>"; };
 		286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTInfoWindow.m; path = "Progress Bar/TSSTInfoWindow.m"; sourceTree = "<group>"; };
 		286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTInfoWindow.h; path = "Progress Bar/TSSTInfoWindow.h"; sourceTree = "<group>"; };
@@ -467,6 +468,7 @@
 		288693080FED554E002C6BF7 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				286AB6691159838C0087BA97 /* quicklook.tiff */,
 				28073DAF0FFB0EED00D2602B /* icon.tiff */,
 				28073CAF0FF9956500D2602B /* extract.tiff */,
 				288693090FED554E002C6BF7 /* Keyboard.icns */,
@@ -802,9 +804,9 @@
 				2886932D0FED554E002C6BF7 /* two_page.tiff in Resources */,
 				2886932E0FED554E002C6BF7 /* win_scale.tiff in Resources */,
 				28073CB00FF9956600D2602B /* extract.tiff in Resources */,
-				28073DB00FFB0EED00D2602B /* icon.tiff in Resources */,
 				28F660461067255600EC8A34 /* Help in Resources */,
 				28E039A510B0B2D2003B40F8 /* welcome3.png in Resources */,
+				286AB66A1159838C0087BA97 /* quicklook.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
