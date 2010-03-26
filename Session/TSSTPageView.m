@@ -754,88 +754,74 @@
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
 	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
-	if(modifier & NSAlternateKeyMask & NSShiftKeyMask)
-	{
-		if([theEvent deltaY])
-		{
-			int loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] intValue];
-			loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
-			loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
-			loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
-			[defaultsController setValue: [NSNumber numberWithInt: loupeDiameter] forKey: TSSTLoupeDiameter];
-		}
-	}
-	else if(modifier & NSAlternateKeyMask)
-	{
-		if([theEvent deltaX])
-		{
-			int loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] intValue];
-			loupeDiameter += [theEvent deltaX] > 0 ? 30 : -30;
-			loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
-			loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
-			[defaultsController setValue: [NSNumber numberWithInt: loupeDiameter] forKey: TSSTLoupeDiameter];
-		}
 		
-		if([theEvent deltaY])
-		{
-			int loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
-			loupePower += [theEvent deltaY] > 0 ? 1 : -1;
-			loupePower = loupePower < 2 ? 2 : loupePower;
-			loupePower = loupePower > 6 ? 6 : loupePower;
-			[defaultsController setValue: [NSNumber numberWithFloat: loupePower] forKey: TSSTLoupePower];
-		}
-	}
-	else if(scaling == 1)
+	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
-		if([theEvent deltaX] > 0)
-		{
-			scrollwheel.left += [theEvent deltaX];
-			scrollwheel.right = 0;
-			scrollwheel.up = 0;
-			scrollwheel.down = 0;
-		}
-		else if([theEvent deltaX] < 0)
-		{
-			scrollwheel.right += [theEvent deltaX];
-			scrollwheel.left = 0;
-			scrollwheel.up = 0;
-			scrollwheel.down = 0;
-		}
-		else if([theEvent deltaY] > 0)
-		{
-			scrollwheel.up += [theEvent deltaY];
-			scrollwheel.left = 0;
-			scrollwheel.right = 0;
-			scrollwheel.down = 0;
-		}
-		else if([theEvent deltaY] < 0)
-		{
-			scrollwheel.down += [theEvent deltaY];
-			scrollwheel.left = 0;
-			scrollwheel.right = 0;
-			scrollwheel.up = 0;
-		}
-				
-		if(scrollwheel.left > 0.1)
-		{
-			[sessionController pageLeft: self];
-			scrollwheel.left = 0;
-		}
-		else if(scrollwheel.right < -0.1)
-		{
-			[sessionController pageRight: self];
-			scrollwheel.right = 0;
-		}
-		else if(scrollwheel.up > 0.1)
-		{
-			[sessionController previousPage];
-		}
-		else if(scrollwheel.down < -0.1)
-		{
-			[sessionController nextPage];
-		}
-
+		int loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] intValue];
+		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
+		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
+		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
+		[defaultsController setValue: [NSNumber numberWithInt: loupeDiameter] forKey: TSSTLoupeDiameter];
 	}
+	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
+	{
+		int loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
+		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
+		loupePower = loupePower < 2 ? 2 : loupePower;
+		loupePower = loupePower > 6 ? 6 : loupePower;
+		[defaultsController setValue: [NSNumber numberWithFloat: loupePower] forKey: TSSTLoupePower];
+	}
+//	else if(scaling == 1)
+//	{
+//		if([theEvent deltaX] > 0)
+//		{
+//			scrollwheel.left += [theEvent deltaX];
+//			scrollwheel.right = 0;
+//			scrollwheel.up = 0;
+//			scrollwheel.down = 0;
+//		}
+//		else if([theEvent deltaX] < 0)
+//		{
+//			scrollwheel.right += [theEvent deltaX];
+//			scrollwheel.left = 0;
+//			scrollwheel.up = 0;
+//			scrollwheel.down = 0;
+//		}
+//		else if([theEvent deltaY] > 0)
+//		{
+//			scrollwheel.up += [theEvent deltaY];
+//			scrollwheel.left = 0;
+//			scrollwheel.right = 0;
+//			scrollwheel.down = 0;
+//		}
+//		else if([theEvent deltaY] < 0)
+//		{
+//			scrollwheel.down += [theEvent deltaY];
+//			scrollwheel.left = 0;
+//			scrollwheel.right = 0;
+//			scrollwheel.up = 0;
+//		}
+//				
+//		if(scrollwheel.left > 0.1)
+//		{
+//			[sessionController pageLeft: self];
+//			scrollwheel.left = 0;
+//		}
+//		else if(scrollwheel.right < -0.1)
+//		{
+//			[sessionController pageRight: self];
+//			scrollwheel.right = 0;
+//		}
+//		else if(scrollwheel.up > 0.1)
+//		{
+//			[sessionController previousPage];
+//		}
+//		else if(scrollwheel.down < -0.1)
+//		{
+//			[sessionController nextPage];
+//		}
+//
+//	}
 	else
 	{
 		NSRect visible = [[self enclosingScrollView] documentVisibleRect];

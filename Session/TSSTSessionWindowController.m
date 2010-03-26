@@ -430,7 +430,6 @@
 	   && [[self window] isKeyWindow]
 	   && pageSelectionInProgress == None)
     {
-		NSLog(@"loupe");
 		if(![loupeWindow isVisible])
 		{
 			[[self window] addChildWindow: loupeWindow ordered: NSWindowAbove];
@@ -1109,6 +1108,7 @@
     }
 	else
     {
+		newSession = YES;
 		[self setShouldCascadeWindows: YES];
 		[[self window] zoom: self];
         [pageView correctViewPoint];
@@ -1807,7 +1807,13 @@ images are currently visible and then skips over them.
 		float scaling = maxImageSize.height / currentHeight;
 		autoWidth = (maxImageSize.width / scaling) + horOffset;
 	}
-
+	
+	if(NSMaxX(boundingRect) < NSMinX(windowFrame) + autoWidth)
+	{
+		float widthDifference = NSMinX(windowFrame) + autoWidth - NSMaxX(boundingRect);
+		autoWidth -= widthDifference;
+	}
+	
 	autoWidth = autoWidth < minWidth ? minWidth : autoWidth;
 	correctedWindowFrame.size.width = autoWidth;
 	
@@ -1859,6 +1865,13 @@ images are currently visible and then skips over them.
 	}
 	
 	NSSize minSize = [[self window] minSize];
+	/* This is to make sure the first window is not too short to comfortably view later pages. */
+	if (newSession == YES)
+	{
+		minSize.height = NSHeight(boundingRect) < 1400 ? NSHeight(boundingRect) : 1400;
+		newSession = NO;
+	}
+	
 	newSize.width = newSize.width < minSize.width ? minSize.width : newSize.width;
 	newSize.height = newSize.height < minSize.height ? minSize.height : newSize.height;
 	NSRect windowFrame = [[self window] frame];
@@ -1866,7 +1879,7 @@ images are currently visible and then skips over them.
 									  NSMinY(windowFrame) + NSHeight(windowFrame) / 2);
 	newSize.width += horOffset;
 	newSize.height += vertOffset;
-	NSRect screenRect = [[[self window] screen] visibleFrame];
+	NSRect screenRect = boundingRect;
 	
 	if((NSMinX(windowFrame) + newSize.width) > NSWidth(screenRect))
 	{

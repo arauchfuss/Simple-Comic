@@ -110,6 +110,8 @@ enum PageSelectionMode {
 	/* Manages the cursor hiding while in fullscreen */
 	NSTimer * mouseMovedTimer;
 	
+	BOOL newSession;
+	
 	enum PageSelectionMode pageSelectionInProgress;
 	float savedZoom;
 }
