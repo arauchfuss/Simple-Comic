@@ -701,7 +701,7 @@
 
 - (NSRect)imageCropRectangle
 {
-	if(NSEqualRects(NSZeroRect, cropRect))
+	if(NSEqualSizes(NSZeroSize, cropRect.size))
 	{
 		return NSZeroRect;
 	}
@@ -839,6 +839,7 @@
 	{
 		[sessionController cancelPageSelection];
 		pageSelection = -1;
+		cropRect = NSZeroRect;
 		[self setNeedsDisplay: YES];
 		return;
 	}
