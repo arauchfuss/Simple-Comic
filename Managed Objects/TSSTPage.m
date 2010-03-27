@@ -262,33 +262,39 @@ static NSSize monospaceCharacterSize;
 	UniversalDetector * encodingDetector = [UniversalDetector detector];
 	[encodingDetector analyzeData: textData];
 	NSString * text = [[NSString alloc] initWithData: textData encoding: [encodingDetector encoding]];
-	NSArray * lines = [text componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]];
 //	int lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;
-	for(NSString * singleLine in lines)
-	{
-		if(![singleLine isEqualToString: @""])
-		{
-			lineRect = [singleLine boundingRectWithSize: NSMakeSize(800, 100) options: 0 attributes: TSSTInfoPageAttributes];
-			if(NSWidth(lineRect) > NSWidth(pageRect))
-			{
-				pageRect.size.width = lineRect.size.width;
-			}
-			
-			pageRect.size.height += NSHeight(lineRect);
-//			NSLog(@"Line: %@ Page: %@", NSStringFromRect(lineRect), NSStringFromRect(pageRect));
-		}
-	}
 	
+	NSUInteger index = 0;
+	NSUInteger textLength = [text length];
+	NSRange lineRange;
+	NSString * singleLine;
+	while(index < textLength)
+	{
+		lineRange = [text lineRangeForRange: NSMakeRange(index, 0)];
+		index = NSMaxRange(lineRange);
+		singleLine = [text substringWithRange: lineRange];
+		lineRect = [singleLine boundingRectWithSize: NSMakeSize(800, 800) options: NSStringDrawingUsesLineFragmentOrigin attributes: TSSTInfoPageAttributes];
+		if(NSWidth(lineRect) > NSWidth(pageRect))
+		{
+			pageRect.size.width = lineRect.size.width;
+		}
+		
+		pageRect.size.height += (NSHeight(lineRect) - 19);
+		NSLog(@"Line: %@ Page: %@", NSStringFromRect(lineRect), NSStringFromRect(pageRect));
+
+	}
 	pageRect.size.width += 10;
 	pageRect.size.height += 10;
+	pageRect.size.height = NSHeight(pageRect) < 500 ? 500 : NSHeight(pageRect);
+	
 	NSImage * textImage = [[NSImage alloc] initWithSize: pageRect.size];
 
 	[textImage lockFocus];
 	[[NSColor whiteColor] set];
 	NSRectFill(pageRect);
-	[text drawInRect: NSInsetRect( pageRect, 5, 5) withAttributes: TSSTInfoPageAttributes];
+	[text drawWithRect: NSInsetRect( pageRect, 5, 5) options: NSStringDrawingUsesLineFragmentOrigin attributes: TSSTInfoPageAttributes];
 	[textImage unlockFocus];
 	[text release];
 	
