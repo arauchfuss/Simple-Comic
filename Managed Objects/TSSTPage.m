@@ -282,7 +282,6 @@ static NSSize monospaceCharacterSize;
 		}
 		
 		pageRect.size.height += (NSHeight(lineRect) - 19);
-		NSLog(@"Line: %@ Page: %@", NSStringFromRect(lineRect), NSStringFromRect(pageRect));
 
 	}
 	pageRect.size.width += 10;

@@ -1048,6 +1048,7 @@
 			}
 		}
 	}
+	
 	[session setValue: [NSNumber numberWithFloat: savedZoom] forKey: TSSTZoomLevel];
 }
 
@@ -1168,6 +1169,10 @@
        [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
     {
         NSRect allowedRect = [[[self window] screen] visibleFrame];
+		NSRect frame = [[self window] frame];
+		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect), 
+								 NSMaxX(allowedRect) - NSMinX(frame), 
+								 NSMaxY(frame) - NSMinY(allowedRect));
         NSRect zoomFrame = [self optimalPageViewRectForRect: allowedRect];
         [[self window] setFrame: zoomFrame display: YES animate: NO];
     }
@@ -1770,7 +1775,7 @@ images are currently visible and then skips over them.
 {
     if(sender == [self window])
     {
-        defaultFrame = [self maximumPageViewRectForRect: defaultFrame];
+        defaultFrame = [self optimalPageViewRectForRect: defaultFrame];
     }
 	
     return defaultFrame;
@@ -1780,12 +1785,6 @@ images are currently visible and then skips over them.
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
-	NSRect windowFrame = [[self window] frame];
-	if([[session valueForKey: TSSTPageScaleOptions] intValue] != 1 || [self currentPageIsText])
-	{
-		return windowFrame;
-	}
-	
 	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
 	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
@@ -1793,31 +1792,44 @@ images are currently visible and then skips over them.
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
 	}
 	float horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
-	float currentHeight = NSHeight(windowFrame) - vertOffset;
-	float minWidth = [[self window] minSize].width;
-	float autoWidth;
-	
-	NSRect correctedWindowFrame = windowFrame;
-	if (maxImageSize.height < currentHeight)
+	NSSize minSize = [[self window] minSize];
+	NSRect correctedFrame = boundingRect;
+	correctedFrame.size.width = NSWidth(correctedFrame) < minSize.width ? minSize.width : NSWidth(correctedFrame);
+	correctedFrame.size.height = NSHeight(correctedFrame) < minSize.height ? minSize.height : NSHeight(correctedFrame);
+	correctedFrame.size.width -= horOffset;
+	correctedFrame.size.height -= vertOffset;
+	NSSize newSize;
+	if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
 	{
-		autoWidth = maxImageSize.width;
+		float scale;
+		if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
+		{
+			scale = 1;
+		}
+		else if( NSWidth(correctedFrame) / NSHeight(correctedFrame) < maxImageSize.width / maxImageSize.height)
+		{
+			scale = NSWidth(correctedFrame) / maxImageSize.width;
+		}
+		else
+		{
+			scale = NSHeight(correctedFrame) / maxImageSize.height;
+		}
+		newSize = scaleSize(maxImageSize, scale);
 	}
 	else
 	{
-		float scaling = maxImageSize.height / currentHeight;
-		autoWidth = (maxImageSize.width / scaling) + horOffset;
+		newSize.width = maxImageSize.width < NSWidth(correctedFrame) ? maxImageSize.width : NSWidth(correctedFrame);
+		newSize.height = maxImageSize.height < NSHeight(correctedFrame) ? maxImageSize.height : NSHeight(correctedFrame);
 	}
 	
-	if(NSMaxX(boundingRect) < NSMinX(windowFrame) + autoWidth)
-	{
-		float widthDifference = NSMinX(windowFrame) + autoWidth - NSMaxX(boundingRect);
-		autoWidth -= widthDifference;
-	}
+	newSize.width += horOffset;
+	newSize.height += vertOffset;
 	
-	autoWidth = autoWidth < minWidth ? minWidth : autoWidth;
-	correctedWindowFrame.size.width = autoWidth;
+	newSize.width = newSize.width < minSize.width ? minSize.width : newSize.width;
+	newSize.height = newSize.height < minSize.height ? minSize.height : newSize.height;
 	
-	return correctedWindowFrame;
+	NSRect windowFrame = NSMakeRect(NSMinX(boundingRect), NSMaxY(boundingRect) - newSize.height, newSize.width, newSize.height);
+	return windowFrame;
 }
 
 
@@ -1865,20 +1877,16 @@ images are currently visible and then skips over them.
 	}
 	
 	NSSize minSize = [[self window] minSize];
-	/* This is to make sure the first window is not too short to comfortably view later pages. */
-	if (newSession == YES)
-	{
-		minSize.height = NSHeight(boundingRect) < 1400 ? NSHeight(boundingRect) : 1400;
-		newSession = NO;
-	}
 	
-	newSize.width = newSize.width < minSize.width ? minSize.width : newSize.width;
-	newSize.height = newSize.height < minSize.height ? minSize.height : newSize.height;
 	NSRect windowFrame = [[self window] frame];
 	NSPoint centerPoint = NSMakePoint(NSMinX(windowFrame) + NSWidth(windowFrame) / 2, 
 									  NSMinY(windowFrame) + NSHeight(windowFrame) / 2);
 	newSize.width += horOffset;
 	newSize.height += vertOffset;
+	
+	newSize.width = newSize.width < minSize.width ? minSize.width : newSize.width;
+	newSize.height = newSize.height < minSize.height ? minSize.height : newSize.height;
+	
 	NSRect screenRect = boundingRect;
 	
 	if((NSMinX(windowFrame) + newSize.width) > NSWidth(screenRect))
