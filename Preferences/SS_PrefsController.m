@@ -127,7 +127,8 @@
 
 - (void)dealloc
 {
-	[prefsWindow close]; prefsWindow = nil;
+	[prefsWindow close];
+	prefsWindow = nil;
 	[prefsToolbar release];
 	[prefsToolbarItems release];
 	[preferencePanes release];
@@ -191,7 +192,7 @@
                                                 backing:NSBackingStoreBuffered
                                                   defer:NO];
     [prefsWindow setDelegate:self];
-    [prefsWindow setReleasedWhenClosed:YES];
+    [prefsWindow setReleasedWhenClosed: YES];
     [prefsWindow setTitle:@"Preferences"]; // initial default title
 
     [self createPrefsToolbar];
@@ -261,7 +262,11 @@
 
 	//Let the preference panes know we're closing	
 //	[[preferencePanes allValues] makeObjectsPerformSelector:@selector(closeView)];
-
+	if([[NSColorPanel sharedColorPanel] isVisible])
+	{
+		[[NSColorPanel sharedColorPanel] close];
+	}
+	
 	//Tell the delegate
 	if ([delegate respondsToSelector:@selector(prefsWindowWillClose:)]) {
 		[delegate prefsWindowWillClose:self];		
