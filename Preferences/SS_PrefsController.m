@@ -174,6 +174,7 @@
 	[prefsWindow displayIfNeeded];
 }
 
+
 - (void)createPreferencesWindowAndDisplay:(BOOL)shouldDisplay
 {
     if (prefsWindow) {
@@ -254,6 +255,7 @@
 	[prefsWindow close];
     prefsWindow = nil;
 }
+
 
 - (void)windowWillClose:(NSNotification *)aNotification
 {

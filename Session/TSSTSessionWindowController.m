@@ -1687,7 +1687,6 @@ images are currently visible and then skips over them.
 }
 
 
-
 - (void)windowDidResignKey:(NSNotification *)aNotification
 {
     if([aNotification object] == exposeBezel)
@@ -1709,6 +1708,7 @@ images are currently visible and then skips over them.
 		[infoWindow orderOut: self];
 	}
 }
+
 
 
 - (NSSize)windowWillResize:(NSWindow *)resizeWindow toSize:(NSSize)newSize
