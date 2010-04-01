@@ -1335,13 +1335,19 @@
 
 - (void)rotateWithEvent:(NSEvent *)event
 {
-	if ([event rotation] > 1.0)
+    static NSTimeInterval nextValidLeft = -1;
+    static NSTimeInterval nextValidRight = -1;
+    
+    // Prevent more than one rotation in the same direction per second
+	if ([event rotation] > 0.5 && [event timestamp] > nextValidRight)
 	{
-        [sessionController rotateRight: self];
+		[sessionController rotateLeft: self];
+        nextValidRight = [event timestamp] + 0.75;
     } 
-	else if ([event rotation] < -1.0)
+	else if ([event rotation] < -0.5 && [event timestamp] > nextValidLeft)
 	{
-        [sessionController rotateLeft: self];
+		[sessionController rotateRight: self];
+        nextValidLeft = [event timestamp] + 0.75;
     }
 }
 
