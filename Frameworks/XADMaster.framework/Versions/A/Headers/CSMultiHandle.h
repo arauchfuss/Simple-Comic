@@ -10,16 +10,19 @@ extern NSString *CSSizeOfSegmentUnknownException;
 	int currhandle;
 }
 
-+(CSHandle *)multiHandleWithHandleArray:(NSArray *)handlearray;
-+(CSHandle *)multiHandleWithHandles:(CSHandle *)firsthandle,...;
++(CSMultiHandle *)multiHandleWithHandleArray:(NSArray *)handlearray;
++(CSMultiHandle *)multiHandleWithHandles:(CSHandle *)firsthandle,...;
 
+// Initializers
 -(id)initWithHandles:(NSArray *)handlearray;
 -(id)initAsCopyOf:(CSMultiHandle *)other;
 -(void)dealloc;
 
+// Public methods
 -(NSArray *)handles;
 -(CSHandle *)currentHandle;
 
+// Implemented by this class
 -(off_t)fileSize;
 -(off_t)offsetInFile;
 -(BOOL)atEndOfFile;
@@ -28,6 +31,7 @@ extern NSString *CSSizeOfSegmentUnknownException;
 -(void)seekToEndOfFile;
 -(int)readAtMost:(int)num toBuffer:(void *)buffer;
 
+// Internal methods
 -(void)_raiseSizeUnknownForSegment:(int)i;
 
 @end

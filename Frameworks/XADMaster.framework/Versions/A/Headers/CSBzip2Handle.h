@@ -19,12 +19,15 @@ extern NSString *CSBzip2Exception;
 +(CSBzip2Handle *)bzip2HandleWithHandle:(CSHandle *)handle;
 +(CSBzip2Handle *)bzip2HandleWithHandle:(CSHandle *)handle length:(off_t)length;
 
+// Initializers
 -(id)initWithHandle:(CSHandle *)handle length:(off_t)length name:(NSString *)descname;
 -(void)dealloc;
 
+// Implemented by this class
 -(void)resetStream;
 -(int)streamAtMost:(int)num toBuffer:(void *)buffer;
 
+// Internal methods
 -(void)_raiseBzip2:(int)error;
 
 @end

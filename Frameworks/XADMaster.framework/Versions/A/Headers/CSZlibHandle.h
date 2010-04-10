@@ -21,16 +21,20 @@ extern NSString *CSZlibException;
 +(CSZlibHandle *)deflateHandleWithHandle:(CSHandle *)handle;
 +(CSZlibHandle *)deflateHandleWithHandle:(CSHandle *)handle length:(off_t)length;
 
+// Intializers
 -(id)initWithHandle:(CSHandle *)handle length:(off_t)length header:(BOOL)header name:(NSString *)descname;
 -(id)initAsCopyOf:(CSZlibHandle *)other;
 -(void)dealloc;
 
+// Public methods
 -(void)setSeekBackAtEOF:(BOOL)seekateof;
 -(void)setEndStreamAtInputEOF:(BOOL)endateof;
 
+// Implemented by this class
 -(void)resetStream;
 -(int)streamAtMost:(int)num toBuffer:(void *)buffer;
 
+// Internal methods
 -(void)_raiseZlib;
 
 @end

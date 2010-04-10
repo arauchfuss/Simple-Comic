@@ -81,7 +81,6 @@ extern NSString *XADVolumesKey;
 +(Class)archiveParserClassForHandle:(CSHandle *)handle name:(NSString *)name;
 +(XADArchiveParser *)archiveParserForHandle:(CSHandle *)handle name:(NSString *)name;
 +(XADArchiveParser *)archiveParserForPath:(NSString *)filename;
-+(NSArray *)volumesForFilename:(NSString *)name;
 
 -(id)_initWithHandle:(CSHandle *)handle;
 -(id)initWithHandle:(CSHandle *)handle name:(NSString *)name;
@@ -108,12 +107,16 @@ extern NSString *XADVolumesKey;
 
 // Internal functions
 
++(NSArray *)scanForVolumesWithFilename:(NSString *)filename
+regex:(XADRegex *)regex firstFileExtension:(NSString *)firstext;
+
 -(BOOL)shouldKeepParsing;
 
 -(CSHandle *)handle;
 -(CSHandle *)handleAtDataOffsetForDictionary:(NSDictionary *)dict;
 -(XADSkipHandle *)skipHandle;
 -(CSHandle *)zeroLengthHandleWithChecksum:(BOOL)checksum;
+-(CSHandle *)subHandleFromSolidStreamForEntryWithDictionary:(NSDictionary *)dict;
 
 -(NSArray *)volumes;
 -(off_t)offsetForVolume:(int)disk offset:(off_t)offset;
@@ -150,16 +153,12 @@ extern NSString *XADVolumesKey;
 
 +(int)requiredHeaderSize;
 +(BOOL)recognizeFileWithHandle:(CSHandle *)handle firstBytes:(NSData *)data name:(NSString *)name;
-+(XADRegex *)volumeRegexForFilename:(NSString *)filename;
-+(BOOL)isFirstVolume:(NSString *)filename;
++(NSArray *)volumesForFilename:(NSString *)name;
 
 -(void)parse;
 -(CSHandle *)handleForEntryWithDictionary:(NSDictionary *)dict wantChecksum:(BOOL)checksum;
 -(NSString *)formatName;
 
-// Solid archive helpers:
-
--(CSHandle *)subHandleFromSolidStreamForEntryWithDictionary:(NSDictionary *)dict;
 -(CSHandle *)handleForSolidStreamWithObject:(id)obj wantChecksum:(BOOL)checksum;
 
 @end

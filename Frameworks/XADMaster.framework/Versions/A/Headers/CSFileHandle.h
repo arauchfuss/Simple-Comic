@@ -20,10 +20,15 @@ extern NSString *CSFileErrorException;
 +(CSFileHandle *)fileHandleForWritingAtPath:(NSString *)path;
 +(CSFileHandle *)fileHandleForPath:(NSString *)path modes:(NSString *)modes;
 
+// Initializers
 -(id)initWithFilePointer:(FILE *)file closeOnDealloc:(BOOL)closeondealloc name:(NSString *)descname;
 -(id)initAsCopyOf:(CSFileHandle *)other;
 -(void)dealloc;
 
+// Public methods
+-(FILE *)filePointer;
+
+// Implemented by this class
 -(off_t)fileSize;
 -(off_t)offsetInFile;
 -(BOOL)atEndOfFile;
@@ -34,9 +39,8 @@ extern NSString *CSFileErrorException;
 -(int)readAtMost:(int)num toBuffer:(void *)buffer;
 -(void)writeBytes:(int)num fromBuffer:(const void *)buffer;
 
+// Internal methods
 -(void)_raiseError;
 -(void)_setMultiMode;
-
--(FILE *)filePointer;
 
 @end
