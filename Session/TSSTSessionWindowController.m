@@ -348,8 +348,11 @@
 		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
 		
 		NSRect bezelFrame = [bezelWindow frame];
-		NSRect fullscreenFrame = [[self window] frame];
+		NSRect fullscreenFrame = [[[self window] screen] frame];
 		BOOL inBezel = NSMouseInRect(screenLocation, bezelFrame, NO);
+		NSLog(@"screen point %@", NSStringFromPoint(screenLocation));
+		NSLog(@"screen frame %@", NSStringFromRect(fullscreenFrame));
+		fullscreenFrame.size.height = 4;
 		if(inBezel && [theEvent window] == bezelWindow)
 		{
 			progressRect = [fullscreenProgressBar convertRect: [fullscreenProgressBar progressRect] toView: nil];
@@ -358,7 +361,7 @@
 				[self infoPanelSetupAtPoint: windowLocation];
 			}		
 		}
-		else if(NSMouseInRect(screenLocation, NSMakeRect(0, 0, NSWidth(fullscreenFrame), 4), NO))
+		else if(NSMouseInRect(screenLocation, fullscreenFrame, NO))
 		{
 			[[self window] addChildWindow: bezelWindow ordered: NSWindowAbove];
 			[bezelWindow makeKeyWindow];
