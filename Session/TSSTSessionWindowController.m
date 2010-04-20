@@ -350,8 +350,6 @@
 		NSRect bezelFrame = [bezelWindow frame];
 		NSRect fullscreenFrame = [[[self window] screen] frame];
 		BOOL inBezel = NSMouseInRect(screenLocation, bezelFrame, NO);
-		NSLog(@"screen point %@", NSStringFromPoint(screenLocation));
-		NSLog(@"screen frame %@", NSStringFromRect(fullscreenFrame));
 		fullscreenFrame.size.height = 4;
 		if(inBezel && [theEvent window] == bezelWindow)
 		{
