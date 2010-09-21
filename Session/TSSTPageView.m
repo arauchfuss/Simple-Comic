@@ -136,7 +136,7 @@
                 firstPageImage, @"pageImage",
                 [testImageRep valueForProperty: NSImageLoopCount], @"loopCount",nil];
             frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
-            frameDuration = frameDuration > 0.01 ? frameDuration : 0.01;
+            frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
             [NSTimer scheduledTimerWithTimeInterval: frameDuration
                                              target: self 
                                            selector: @selector(animateImage:) 
@@ -174,7 +174,7 @@
     if(loopCount != 1)
     {
         frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
-        frameDuration = frameDuration > 0.01 ? frameDuration : 0.01;
+        frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
         [NSTimer scheduledTimerWithTimeInterval: frameDuration
                                          target: self selector: @selector(animateImage:) 
                                        userInfo: animationInfo
