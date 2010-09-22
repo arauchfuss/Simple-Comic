@@ -19,4 +19,5 @@ typedef struct PPMdModelVariantH
 
 void StartPPMdModelVariantH(PPMdModelVariantH *self,CSInputBuffer *input,
 PPMdSubAllocatorVariantH *alloc,int maxorder,BOOL sevenzip);
+void RestartPPMdVariantHRangeCoder(PPMdModelVariantH *self,CSInputBuffer *input,BOOL sevenzip);
 int NextPPMdVariantHByte(PPMdModelVariantH *self);

@@ -39,5 +39,6 @@
 -(void)endStream;
 -(BOOL)_prepareStreamSeekTo:(off_t)offs;
 -(void)setStreamLength:(off_t)length;
+-(void)setInputBuffer:(CSInputBuffer *)inputbuffer;
 
 @end

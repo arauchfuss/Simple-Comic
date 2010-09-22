@@ -2,18 +2,20 @@
 
 extern NSString *XADInvalidPrefixCodeException;
 
+typedef struct XADCodeTreeNode XADCodeTreeNode;
 typedef struct XADCodeTableEntry XADCodeTableEntry;
 
 @interface XADPrefixCode:NSObject
 {
-	int (*tree)[2];
-	int numentries;
+	XADCodeTreeNode *tree;
+	int numentries,minlength,maxlength;
 	BOOL isstatic;
 
 	int currnode;
 	NSMutableArray *stack;
 
-	XADCodeTableEntry *tables[9];
+	int tablesize;
+	XADCodeTableEntry *table1,*table2;
 }
 
 +(XADPrefixCode *)prefixCode;
@@ -38,6 +40,9 @@ maximumLength:(int)maxlength shortestCodeIsZeros:(BOOL)zeros;
 -(void)makeLeafWithValue:(int)value;
 -(void)_pushNode;
 -(void)_popNode;
+
+-(void)_makeTable;
+-(void)_makeTableLE;
 
 @end
 

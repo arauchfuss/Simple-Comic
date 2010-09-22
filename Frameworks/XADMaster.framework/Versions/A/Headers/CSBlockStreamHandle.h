@@ -4,10 +4,10 @@
 
 @interface CSBlockStreamHandle:CSStreamHandle
 {
-	uint8_t *currblock;
-	off_t blockstartpos;
-	int blocklength;
-	BOOL endofblocks;
+	uint8_t *_currblock;
+	off_t _blockstartpos;
+	int _blocklength;
+	BOOL _endofblocks;
 }
 
 // Intializers

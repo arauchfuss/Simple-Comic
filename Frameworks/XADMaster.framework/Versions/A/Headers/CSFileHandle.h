@@ -4,6 +4,7 @@
 
 #define CSFileHandle XADFileHandle
 
+extern NSString *CSCannotOpenFileException;
 extern NSString *CSFileErrorException;
 
 @interface CSFileHandle:CSHandle
@@ -24,6 +25,7 @@ extern NSString *CSFileErrorException;
 -(id)initWithFilePointer:(FILE *)file closeOnDealloc:(BOOL)closeondealloc name:(NSString *)descname;
 -(id)initAsCopyOf:(CSFileHandle *)other;
 -(void)dealloc;
+-(void)close;
 
 // Public methods
 -(FILE *)filePointer;

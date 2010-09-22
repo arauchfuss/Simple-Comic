@@ -29,14 +29,17 @@ typedef int XADError;
 #define XADShortBufferError      0x0018 /* buffer was too short */
 #define XADEncodingError         0x0019 /* text encoding was defective */
 
+#define XADSubArchiveError 0x10000
+
 extern NSString *XADExceptionName;
 
 @interface XADException:NSObject
 {
-	XADError error;
 }
 
 +(void)raiseUnknownException;
++(void)raiseInputException;
++(void)raiseOutputException;
 +(void)raiseIllegalDataException;
 +(void)raiseNotSupportedException;
 +(void)raiseDecrunchException;
@@ -45,8 +48,7 @@ extern NSString *XADExceptionName;
 +(void)raiseDataFormatException;
 +(void)raiseExceptionWithXADError:(XADError)errnum;
 
++(XADError)parseException:(id)exception;
 +(NSString *)describeXADError:(XADError)errnum;
-
--(XADError)error;
 
 @end

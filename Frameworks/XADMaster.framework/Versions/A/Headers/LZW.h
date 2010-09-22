@@ -21,14 +21,14 @@ typedef struct LZW
 } LZW;
 
 LZW *AllocLZW(int maxsymbols,int reservedsymbols);
-void FreeLZW(LZW *lzw);
-void ClearLZWTable(LZW *lzw);
-int NextLZWSymbol(LZW *lzw,int symbol);
-int LZWOutputLength(LZW *lzw);
-int LZWOutputToBuffer(LZW *lzw,uint8_t *buffer);
-int LZWReverseOutputToBuffer(LZW *lzw,uint8_t *buffer);
-int LZWSymbolCount(LZW *lzw);
-int LZWSymbolListFull(LZW *lzw);
+void FreeLZW(LZW *self);
+void ClearLZWTable(LZW *self);
+int NextLZWSymbol(LZW *self,int symbol);
+int LZWOutputLength(LZW *self);
+int LZWOutputToBuffer(LZW *self,uint8_t *buffer);
+int LZWReverseOutputToBuffer(LZW *self,uint8_t *buffer);
+int LZWSymbolCount(LZW *self);
+int LZWSymbolListFull(LZW *self);
 
 #endif
 

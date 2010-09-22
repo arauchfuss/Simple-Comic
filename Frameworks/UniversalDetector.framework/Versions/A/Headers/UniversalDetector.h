@@ -20,6 +20,8 @@
 -(NSString *)MIMECharset;
 -(float)confidence;
 
+#ifdef __APPLE__
 -(NSStringEncoding)encoding;
+#endif
 
 @end

@@ -41,8 +41,6 @@ extern NSString *XADFinderFlags;
 +(XADArchive *)archiveForFile:(NSString *)filename;
 +(XADArchive *)recursiveArchiveForFile:(NSString *)filename;
 
-+(NSArray *)volumesForFile:(NSString *)filename;
-
 
 
 -(id)init;
@@ -117,8 +115,6 @@ extern NSString *XADFinderFlags;
 -(NSData *)contentsOfEntry:(int)n;
 //-(NSData *)resourceContentsOfEntry:(int)n;
 
--(XADError)_parseException:(id)exception;
-
 -(BOOL)extractTo:(NSString *)destination;
 -(BOOL)extractTo:(NSString *)destination subArchives:(BOOL)sub;
 -(BOOL)extractEntries:(NSIndexSet *)entryset to:(NSString *)destination;
@@ -138,6 +134,8 @@ extern NSString *XADFinderFlags;
 -(void)updateAttributesForDeferredDirectories;
 
 // Deprecated
+
++(NSArray *)volumesForFile:(NSString *)filename;
 
 -(int)sizeOfEntry:(int)n;
 -(void *)xadFileInfoForEntry:(int)n;

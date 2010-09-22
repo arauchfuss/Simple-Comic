@@ -1,6 +1,12 @@
 #import "CSStreamHandle.h"
 
+#ifndef __MACTYPES__
+#define Byte zlibByte
 #include <zlib.h>
+#undef Byte
+#else
+#include <zlib.h>
+#endif
 
 #define CSZlibHandle XADZlibHandle
 
