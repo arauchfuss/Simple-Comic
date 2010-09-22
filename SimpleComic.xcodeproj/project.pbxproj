@@ -140,6 +140,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		28FD56E41224663D006AEB0F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -692,6 +701,7 @@
 				280B6BBA0A1BB34600EE91B0 /* CopyFiles */,
 				8D1107290486CEB800E47090 /* Resources */,
 				28073E0A0FFC305400D2602B /* Copy Quicklook plugin */,
+				28FD56E41224663D006AEB0F /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1141,7 +1151,7 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Simple Comic Application Cert";
+				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_OPENMP_SUPPORT = YES;
