@@ -19,7 +19,7 @@
 	NSColor * pageBackground;
 }
 
-@property (retain) NSColor * pageBackground;
+@property (nonatomic, retain) NSColor * pageBackground;
 
 - (void)layoutPages;
 

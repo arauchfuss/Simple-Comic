@@ -30,7 +30,7 @@
 }
 
 @property (assign) BOOL bordered;
-@property (assign) float caretPosition;
+@property (nonatomic, assign) float caretPosition;
 
 @end
 
