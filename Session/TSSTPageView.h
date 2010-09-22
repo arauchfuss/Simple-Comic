@@ -100,7 +100,7 @@ typedef struct {
 	NSRect cropRect;
 }
 
-@property (assign) NSInteger rotation;
+@property (nonatomic, assign) NSInteger rotation;
 @property (assign)IBOutlet TSSTSessionWindowController * sessionController;
 
 

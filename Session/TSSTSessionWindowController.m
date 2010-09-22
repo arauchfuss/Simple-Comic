@@ -150,12 +150,12 @@
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
-    [defaults addObserver: self forKeyPath: @"constrainScale" options: 0 context: nil];
-    [defaults addObserver: self forKeyPath: @"statusBarVisisble" options: 0 context: nil];
-    [defaults addObserver: self forKeyPath: @"scrollersVisible" options: 0 context: nil];
-    [defaults addObserver: self forKeyPath: @"pageBackgroundColor" options: 0 context: nil];
-    [defaults addObserver: self forKeyPath: @"loupeDiameter" options: 0 context: nil];
-	[defaults addObserver: self forKeyPath: @"loupePower" options: 0 context: nil];
+    [defaults addObserver: self forKeyPath: TSSTConstrainScale options: 0 context: nil];
+    [defaults addObserver: self forKeyPath: TSSTStatusbarVisible options: 0 context: nil];
+    [defaults addObserver: self forKeyPath: TSSTScrollersVisible options: 0 context: nil];
+    [defaults addObserver: self forKeyPath: TSSTBackgroundColor options: 0 context: nil];
+    [defaults addObserver: self forKeyPath: TSSTLoupeDiameter options: 0 context: nil];
+	[defaults addObserver: self forKeyPath: TSSTLoupePower options: 0 context: nil];
     [session addObserver: self forKeyPath: TSSTFullscreen options: 0 context: nil];
     [session addObserver: self forKeyPath: TSSTPageOrder options: 0 context: nil];
     [session addObserver: self forKeyPath: TSSTPageScaleOptions options: 0 context: nil];
@@ -203,12 +203,12 @@
 	[(TSSTThumbnailView *)exposeView setDataSource: nil];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
-    [defaults removeObserver: self forKeyPath: @"statusBarVisisble"];
-    [defaults removeObserver: self forKeyPath: @"scrollersVisible"];
-	[defaults removeObserver: self forKeyPath: @"pageBackgroundColor"];
-    [defaults removeObserver: self forKeyPath: @"constrainScale"];
-	[defaults removeObserver: self forKeyPath: @"loupeDiameter"];
-	[defaults removeObserver: self forKeyPath: @"loupePower"];
+    [defaults removeObserver: self forKeyPath: TSSTStatusbarVisible];
+    [defaults removeObserver: self forKeyPath: TSSTScrollersVisible];
+	[defaults removeObserver: self forKeyPath: TSSTBackgroundColor];
+    [defaults removeObserver: self forKeyPath: TSSTConstrainScale];
+	[defaults removeObserver: self forKeyPath: TSSTLoupeDiameter];
+	[defaults removeObserver: self forKeyPath: TSSTLoupePower];
     [pageController removeObserver: self forKeyPath: @"selectionIndex"];
     [pageController removeObserver: self forKeyPath: @"arrangedObjects.@count"];
     [[NSNotificationCenter defaultCenter] removeObserver: self];
@@ -253,7 +253,7 @@
         [self fullscreen];
     }
     else if([keyPath isEqualToString: TSSTPageScaleOptions] || 
-            [keyPath isEqualToString: @"scrollersVisible"])
+            [keyPath isEqualToString: TSSTScrollersVisible])
     {
         [self scaleToWindow];
     }
@@ -279,16 +279,16 @@
 		[(TSSTThumbnailView *)exposeView buildTrackingRects];
         [self changeViewImages];
 	}
-	else if([keyPath isEqualToString: @"pageBackgroundColor"])
+	else if([keyPath isEqualToString: TSSTBackgroundColor])
 	{
 		NSColor * color = [NSUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 		[pageScrollView setBackgroundColor: color];
 	}
-    else if([keyPath isEqualToString: @"statusBarVisisble"])
+    else if([keyPath isEqualToString: TSSTStatusbarVisible])
     {
         [self adjustStatusBar];
     }
-	else if([keyPath isEqualToString: @"loupeDiameter"])
+	else if([keyPath isEqualToString: TSSTLoupeDiameter])
     {
 		int loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] intValue];
 		[loupeWindow resizeToDiameter: loupeDiameter];
@@ -297,7 +297,7 @@
     {
 		[self refreshLoupePanel];
 	}
-	else if([keyPath isEqualToString: @"loupePower"])
+	else if([keyPath isEqualToString: TSSTLoupePower])
 	{
 		[self refreshLoupePanel];
 	}
@@ -1449,6 +1449,7 @@ images are currently visible and then skips over them.
 {
     return [[NSApp delegate] managedObjectContext];
 }
+
 
 
 - (BOOL)canTurnPageLeft

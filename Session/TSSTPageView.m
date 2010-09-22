@@ -482,7 +482,6 @@
 }
 
 
-
 - (void)rotationTransformWithFrame:(NSRect)rect
 {
     NSAffineTransform * transform = [NSAffineTransform transform];
