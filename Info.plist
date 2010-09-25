@@ -176,6 +176,7 @@
 				<string>cx.c3.cbz-archive</string>
 				<string>com.milke.cbz-archive</string>
 				<string>com.bitcartel.comicbooklover.cbz</string>
+				<string>public.archive.cbz</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -224,6 +225,7 @@
 				<string>cx.c3.cbr-archive</string>
 				<string>com.bitcartel.comicbooklover.cbr</string>
 				<string>com.milke.cbr-archive</string>
+				<string>public.archive.cbr</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>

@@ -108,7 +108,6 @@
 			children = (
 				61E3BCFA0870B4F2002186A0 /* GenerateThumbnailForURL.m */,
 				2C05A19B06CAA52B00D84F6F /* GeneratePreviewForURL.m */,
-				08FB77B6FE84183AC02AAC07 /* main.c */,
 				28EB5ACC0CE6A61500988DD4 /* DTQuickComicCommon.h */,
 				28EB5ACD0CE6A61500988DD4 /* DTQuickComicCommon.m */,
 				28749D180CFB502C00559E8E /* TSSTImageUtilities.h */,
@@ -119,6 +118,7 @@
 				28CA24990E5D1A1F00A6F592 /* UKXattrMetadataStore.m */,
 				288EF2C8100A45DA009719EF /* DTPartialArchiveParser.h */,
 				288EF2C9100A45DA009719EF /* DTPartialArchiveParser.m */,
+				08FB77B6FE84183AC02AAC07 /* main.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -213,6 +213,7 @@
 		2CA3261F0896AD4900168862 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				CODE_SIGN_IDENTITY = "Don't Code Sign";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (

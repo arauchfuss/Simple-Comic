@@ -24,6 +24,8 @@
 				<string>com.bitcartel.comicbooklover.cbr</string>
 				<string>com.milke.cbz-archive</string>
 				<string>com.milke.cbr-archive</string>
+				<string>public.archive.cbz</string>
+				<string>public.archive.cbr</string>
 			</array>
 		</dict>
 	</array>
