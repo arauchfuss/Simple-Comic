@@ -177,6 +177,7 @@ enum PageSelectionMode {
 - (void)restoreSession;
 - (void)prepareToEnd;
 
+
 - (void)refreshLoupePanel;
 - (void)infoPanelSetupAtPoint:(NSPoint)point;
 
@@ -202,6 +203,8 @@ enum PageSelectionMode {
 - (TSSTManagedSession *)session;
 - (NSManagedObjectContext *)managedObjectContext;
 - (void)toolbarWillAddItem:(NSNotification *)notification;
+- (void)deactivate:(NSNotification *)notification;
+
 
 /*	Methods that kill page expose, the loupe, and fullscreen.
 	In that order. */

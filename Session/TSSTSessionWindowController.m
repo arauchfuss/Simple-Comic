@@ -166,6 +166,7 @@
     
 	[pageScrollView setPostsFrameChangedNotifications: YES];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(resizeView) name: NSViewFrameDidChangeNotification object: pageScrollView];
+	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deactivate:) name: NSApplicationDidResignActiveNotification object: NSApp];
     [pageController addObserver: self forKeyPath: @"selectionIndex" options: 0 context: nil];
     [pageController addObserver: self forKeyPath: @"arrangedObjects.@count" options: 0 context: nil];
     
@@ -359,7 +360,7 @@
 				[self infoPanelSetupAtPoint: windowLocation];
 			}		
 		}
-		else if(NSMouseInRect(screenLocation, fullscreenFrame, NO))
+		else if(NSMouseInRect(screenLocation, fullscreenFrame, NO) && [NSApp isActive])
 		{
 			[[self window] addChildWindow: bezelWindow ordered: NSWindowAbove];
 			[bezelWindow makeKeyWindow];
@@ -1709,6 +1710,12 @@ images are currently visible and then skips over them.
 		[[infoWindow parentWindow] removeChildWindow: infoWindow];
 		[infoWindow orderOut: self];
 	}
+}
+
+- (void)deactivate:(NSNotification *)notification
+{
+	[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
+	[bezelWindow orderOut: self];
 }
 
 
