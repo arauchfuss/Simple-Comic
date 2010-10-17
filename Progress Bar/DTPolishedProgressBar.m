@@ -45,7 +45,7 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 		[stringEmboss release];
 		self.horizontalMargin = 35;
 		self.cornerRadius = 4.0;
-        [self setLeftToRight: YES];
+        self.leftToRight = YES;
         [self setFrameSize: frame.size];
 		[self addObserver: self forKeyPath: @"leftToRight" options: 0 context: nil];
 		[self addObserver: self forKeyPath: @"currentValue" options: 0 context: nil];
@@ -154,9 +154,9 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
  */
 - (void)setFrameSize:(NSSize)size
 {
-    [self setProgressRect: NSMakeRect( self.cornerRadius + self.horizontalMargin,0, 
-									  size.width - 2 * ( self.cornerRadius + self.horizontalMargin), 
-									  size.height)];
+    self.progressRect = NSMakeRect(self.cornerRadius + self.horizontalMargin,0, 
+								   size.width - 2 * ( self.cornerRadius + self.horizontalMargin),
+								   size.height);
     [super setFrameSize: size];
 }
 

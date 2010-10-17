@@ -787,7 +787,7 @@ static NSArray * allAvailableStringEncodings(void)
         preferences = [[SS_PrefsController alloc] initWithPanesSearchPath: nil];
         
         // Set which panes are included, and their order.
-        [preferences setPanesOrder: [NSArray arrayWithObjects:@"General", @"Advanced", nil]];
+        [preferences setPanesOrder: [NSArray arrayWithObjects: @"Advanced", nil]];
     }
     [preferences showPreferencesWindow];
 }

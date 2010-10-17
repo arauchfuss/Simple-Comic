@@ -276,9 +276,20 @@
     }
     else if([keyPath isEqualToString: TSSTPageOrder])
 	{
+		[defaults setValue: [session valueForKey: TSSTPageOrder] forKey: TSSTPageOrder];
 		[(TSSTThumbnailView *)exposeView setNeedsDisplay: YES];
 		[(TSSTThumbnailView *)exposeView buildTrackingRects];
         [self changeViewImages];
+	}
+	else if([keyPath isEqualToString: TSSTPageScaleOptions])
+	{
+		[defaults setValue: [session valueForKey: TSSTPageScaleOptions] forKey: TSSTPageScaleOptions];
+		[self changeViewImages];
+	}
+	else if([keyPath isEqualToString: TSSTTwoPageSpread])
+	{
+		[defaults setValue: [session valueForKey: TSSTTwoPageSpread] forKey: TSSTTwoPageSpread];
+		[self changeViewImages];
 	}
 	else if([keyPath isEqualToString: TSSTBackgroundColor])
 	{
@@ -501,6 +512,7 @@
 - (IBAction)changeTwoPage:(id)sender
 {
     BOOL spread = [[session valueForKey: TSSTTwoPageSpread] boolValue];
+
     [session setValue: [NSNumber numberWithBool: !spread] forKey: TSSTTwoPageSpread];
 }
 
@@ -726,7 +738,6 @@
 }
 
 
-
 - (IBAction)rotate:(id)sender
 {
     int segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
@@ -751,7 +762,6 @@
 }
 
 
-
 - (IBAction)rotateLeft:(id)sender
 {
     int currentRotation = [[session valueForKey: TSSTViewRotation] intValue];
@@ -762,7 +772,6 @@
 }
 
 
-
 - (IBAction)noRotation:(id)sender
 {
     [session setValue: [NSNumber numberWithInt: 0] forKey: TSSTViewRotation];
@@ -771,14 +780,12 @@
 }
 
 
-
 - (IBAction)toggleLoupe:(id)sender
 {
     BOOL loupe = [[session valueForKey: @"loupe"] boolValue];
     loupe = !loupe;
     [session setValue: [NSNumber numberWithBool: loupe] forKey: @"loupe"];
 }
-
 
 
 - (IBAction)togglePageExpose:(id)sender
@@ -802,7 +809,6 @@
 }
 
 
-
 - (IBAction)launchJumpPanel:(id)sender
 {
 	[jumpField setIntValue: [pageController selectionIndex] + 1];
@@ -810,12 +816,10 @@
 }
 
 
-
 - (IBAction)cancelJumpPanel:(id)sender
 {
 	[NSApp endSheet: jumpPanel returnCode: 0];
 }
-
 
 
 - (IBAction)goToPage:(id)sender
@@ -828,7 +832,6 @@
 	
 	[NSApp endSheet: jumpPanel returnCode: 1];
 }
-
 
 
 - (IBAction)removePages:(id)sender
@@ -848,14 +851,12 @@
 }
 
 
-
 /*	Saves the selected page to a user specified location. */
 - (IBAction)extractPage:(id)sender
 {
 	pageSelectionInProgress = Extract;
 	[self changeViewForSelection];
 }
-
 
 
 - (BOOL)pageSelectionCanCrop
@@ -891,7 +892,6 @@
 }
 
 
-
 - (BOOL)canSelectPageIndex:(NSInteger)selection
 {
 	int index = [pageController selectionIndex];
@@ -910,12 +910,10 @@
 }
 
 
-
 - (BOOL)pageSelectionInProgress
 {
 	return (pageSelectionInProgress != None);
 }
-
 
 
 - (void)cancelPageSelection
@@ -924,7 +922,6 @@
 	pageSelectionInProgress = None;
 	[self scaleToWindow];
 }
-
 
 
 - (void)selectedPage:(NSInteger)selection withCropRect:(NSRect)cropRect
@@ -950,7 +947,6 @@
 }
 
 
-
 - (void)deletePageWithSelection:(NSInteger)selection
 {
 	if(selection != -1)
@@ -962,7 +958,6 @@
 		[[self managedObjectContext] deleteObject: selectedPage];
 	}
 }
-
 
 
 - (void)extractPageWithSelection:(NSInteger)selection
@@ -985,7 +980,6 @@
 		}
 	}
 }
-
 
 
 - (void)setIconWithSelection:(NSInteger)selection andCropRect:(NSRect)cropRect
@@ -1055,7 +1049,6 @@
 }
 
 
-
 - (void)closeSheet:(int)code
 {
 	[jumpPanel close];
@@ -1064,7 +1057,6 @@
 
 #pragma mark -
 #pragma mark Convenience Methods
-
 
 
 - (void)hideCursor
@@ -1076,7 +1068,6 @@
 		[NSCursor setHiddenUntilMouseMoves: YES];
 	}
 }
-
 
 
 /*  When a session is launched this method is called.  It checks to see if the 
@@ -1117,7 +1108,6 @@
         [pageView correctViewPoint];
     }
 }
-
 
 
 /*  This method figures out which pages should be displayed in the view.  
@@ -1164,7 +1154,6 @@
 }
 
 
-
 - (void)resizeWindow
 {
     if(![[session valueForKey: TSSTFullscreen] boolValue] &&
@@ -1179,7 +1168,6 @@
         [[self window] setFrame: zoomFrame display: YES animate: NO];
     }
 }
-
 
 
 - (void)fullscreen
@@ -1226,7 +1214,6 @@
     [[loupeWindow parentWindow] removeChildWindow: loupeWindow];
     [loupeWindow orderOut: self];
 }
-
 
 
 - (void)scaleToWindow
@@ -1279,7 +1266,6 @@
 }
 
 
-
 - (void)adjustStatusBar
 {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -1306,7 +1292,6 @@
         [self resizeWindow];
     }
 }
-
 
 
 /*! Selects the next non visible page.  Logic looks figures out which 
@@ -1345,7 +1330,6 @@ images are currently visible and then skips over them.
 		[pageController setSelectionIndex: (selectionIndex + 1)];
 	}
 }
-
 
 
 /*! Selects the previous non visible page.  Logic looks figures out which 
@@ -1438,19 +1422,16 @@ images are currently visible and then skips over them.
 #pragma mark Binding Methods
 
 
-
 - (TSSTManagedSession *)session
 {
     return session;
 }
 
 
-
 - (NSManagedObjectContext *)managedObjectContext
 {
     return [[NSApp delegate] managedObjectContext];
 }
-
 
 
 - (BOOL)canTurnPageLeft
@@ -1628,7 +1609,6 @@ images are currently visible and then skips over them.
 }
 
 
-
 - (void)prepareToEnd
 {
 	[[self window] setAcceptsMouseMovedEvents: NO];
@@ -1647,8 +1627,6 @@ images are currently visible and then skips over them.
 }
 
 
-
-
 - (BOOL)windowShouldClose:(id)sender
 {
 	[self prepareToEnd];
@@ -1656,7 +1634,6 @@ images are currently visible and then skips over them.
 
     return YES;
 }
-
 
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
@@ -1712,12 +1689,12 @@ images are currently visible and then skips over them.
 	}
 }
 
+
 - (void)deactivate:(NSNotification *)notification
 {
 	[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
 	[bezelWindow orderOut: self];
 }
-
 
 
 - (NSSize)windowWillResize:(NSWindow *)resizeWindow toSize:(NSSize)newSize
@@ -1736,7 +1713,6 @@ images are currently visible and then skips over them.
 		return [resizeWindow frame].size;
 	}
 }
-
 
 
 - (void)windowDidResize:(NSNotification *)aNotification
@@ -1777,7 +1753,6 @@ images are currently visible and then skips over them.
 }
 
 
-
 /*	This method deals with window resizing.  It is called every time the user clicks 
 	the nice little plus button in the upper left of the window. */
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)sender defaultFrame:(NSRect)defaultFrame
@@ -1789,7 +1764,6 @@ images are currently visible and then skips over them.
 	
     return defaultFrame;
 }
-
 
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
@@ -1840,7 +1814,6 @@ images are currently visible and then skips over them.
 	NSRect windowFrame = NSMakeRect(NSMinX(boundingRect), NSMaxY(boundingRect) - newSize.height, newSize.width, newSize.height);
 	return windowFrame;
 }
-
 
 
 /*	
