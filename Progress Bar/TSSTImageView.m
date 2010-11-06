@@ -64,8 +64,8 @@ static NSDictionary * stringAttributes;
     }
     
     NSRect imageRect = rectWithSizeCenteredInRect([[self image] size], [self bounds]);
-    [NSGraphicsContext saveGraphicsState];
-    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
+//    [NSGraphicsContext saveGraphicsState];
+//    [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
     [[self image] drawInRect: imageRect
 					fromRect: NSZeroRect 
 				   operation: NSCompositeSourceOver 
@@ -80,7 +80,7 @@ static NSDictionary * stringAttributes;
         [self.imageName drawInRect: stringRect withAttributes: stringAttributes];
     }
     
-    [NSGraphicsContext restoreGraphicsState];
+//    [NSGraphicsContext restoreGraphicsState];
 }
 
 

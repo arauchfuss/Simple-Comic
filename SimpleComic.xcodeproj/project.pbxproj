@@ -9,16 +9,12 @@
 /* Begin PBXBuildFile section */
 		28073CB00FF9956600D2602B /* extract.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 28073CAF0FF9956500D2602B /* extract.tiff */; };
 		28073E610FFC347200D2602B /* QuickComic.qlgenerator in Copy Quicklook plugin */ = {isa = PBXBuildFile; fileRef = 28073E2F0FFC327700D2602B /* QuickComic.qlgenerator */; };
-		281314570C0A7D2D00EC007B /* TSSTSessionWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314520C0A7D2D00EC007B /* TSSTSessionWindow.nib */; };
-		281314580C0A7D2D00EC007B /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 281314540C0A7D2D00EC007B /* MainMenu.nib */; };
 		2813145B0C0A7D5200EC007B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 281314590C0A7D5200EC007B /* Credits.rtf */; };
 		2813145E0C0A7D7900EC007B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2813145C0C0A7D7900EC007B /* Localizable.strings */; };
 		281314830C0A7E4900EC007B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 281314810C0A7E4900EC007B /* InfoPlist.strings */; };
 		281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */; };
 		281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */; };
 		283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
-		283C4E1D0C43E6C300DB4FE9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283C4E1A0C43E6C200DB4FE9 /* Sparkle.framework */; };
-		283C4E3D0C43E6C700DB4FE9 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 283C4E1A0C43E6C200DB4FE9 /* Sparkle.framework */; };
 		284348130DA95C4A00F602E2 /* UniversalDetector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; };
 		284348140DA95C4A00F602E2 /* XADMaster.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		284348CD0DA95C5300F602E2 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; };
@@ -27,7 +23,6 @@
 		284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 284D381A101249BE00A37AB2 /* DTToolbarItems.m */; };
 		2851C5A00FC8651C002927E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2851C59F0FC8651C002927E0 /* dsa_pub.pem */; };
 		285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */; };
-		285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */; };
 		285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285FE32F0F945E2300CD8F96 /* Carbon.framework */; };
 		286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286236010AADDB6200B83E77 /* QuartzCore.framework */; };
 		286AB66A1159838C0087BA97 /* quicklook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 286AB6691159838C0087BA97 /* quicklook.tiff */; };
@@ -36,8 +31,6 @@
 		286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */; };
 		286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */; };
 		286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19C0C4D819400E9D06D /* TSSTImageView.m */; };
-		287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */; };
-		287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */ = {isa = PBXBuildFile; fileRef = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */; };
 		287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */; };
 		288693010FED553A002C6BF7 /* 7z.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FA0FED553A002C6BF7 /* 7z.icns */; };
 		288693020FED553A002C6BF7 /* cbr.icns in Resources */ = {isa = PBXBuildFile; fileRef = 288692FB0FED553A002C6BF7 /* cbr.icns */; };
@@ -62,6 +55,10 @@
 		2886932E0FED554E002C6BF7 /* win_scale.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886931B0FED554E002C6BF7 /* win_scale.tiff */; };
 		288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */ = {isa = PBXBuildFile; fileRef = 288C09C20DC809DF00EAFF46 /* BDAlias.m */; };
 		2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2895F9D80B67D224008683C6 /* TSSTPage.m */; };
+		28A2660A1285C34300ED6391 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A266081285C34300ED6391 /* Preferences.xib */; };
+		28A2660E1285C35700ED6391 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A2660C1285C35700ED6391 /* MainMenu.xib */; };
+		28A266161285C3A700ED6391 /* TSSTSessionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */; };
+		28A266301285C73200ED6391 /* DTPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2662F1285C73200ED6391 /* DTPreferencesController.m */; };
 		28B34A731013779B006C551C /* DTSessionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34A721013779B006C551C /* DTSessionWindow.m */; };
 		28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
@@ -71,13 +68,6 @@
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
 		28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */; };
-		28FACB850CD01D93007B7918 /* SS_PrefsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACB820CD01D93007B7918 /* SS_PrefsController.m */; };
-		28FACC880CD03C49007B7918 /* AdvancedPrefPaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FACB950CD01FB8007B7918 /* AdvancedPrefPaneView.nib */; };
-		28FACC970CD03CC5007B7918 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		28FACCB00CD0CF6B007B7918 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		28FACCB20CD0CF83007B7918 /* GeneralPrefPaneView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 28FACB920CD01F65007B7918 /* GeneralPrefPaneView.nib */; };
-		28FAD2140CD3A21E007B7918 /* GeneralPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACBD80CD02643007B7918 /* GeneralPrefController.m */; };
-		28FAD2170CD3A226007B7918 /* AdvancedPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FACBD40CD02635007B7918 /* AdvancedPrefController.m */; };
 		28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -99,20 +89,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8D57630D048677EA00EA77CD;
 			remoteInfo = QuickComic;
-		};
-		287C6066106F03C5001463C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28FACC7B0CD03BBB007B7918;
-			remoteInfo = AdvancedPrefsPane;
-		};
-		287C6068106F03C5001463C6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 28FACCA70CD0CF3E007B7918;
-			remoteInfo = GeneralPrefsPane;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -136,7 +112,6 @@
 			files = (
 				284348130DA95C4A00F602E2 /* UniversalDetector.framework in CopyFiles */,
 				284348140DA95C4A00F602E2 /* XADMaster.framework in CopyFiles */,
-				283C4E3D0C43E6C700DB4FE9 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +136,6 @@
 		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "../Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
 		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "../Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
 		280FB7A50CD577730053F375 /* TSSTCustomValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTCustomValueTransformers.h; sourceTree = "<group>"; };
-		281314530C0A7D2D00EC007B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/TSSTSessionWindow.nib; sourceTree = "<group>"; };
-		281314550C0A7D2D00EC007B /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2813145A0C0A7D5200EC007B /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2813145D0C0A7D7900EC007B /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		281314820C0A7E4900EC007B /* English */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -175,7 +148,6 @@
 		283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TSSTGradientView.h; sourceTree = "<group>"; };
 		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
 		283C4D7C0C43DF5300DB4FE9 /* TSSTBezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTBezelWindow.h; path = "Custom Windows/Bezel/TSSTBezelWindow.h"; sourceTree = "<group>"; };
-		283C4E1A0C43E6C200DB4FE9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		284348050DA95C4300F602E2 /* UniversalDetector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniversalDetector.framework; path = Frameworks/UniversalDetector.framework; sourceTree = "<group>"; };
 		284348060DA95C4300F602E2 /* XADMaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XADMaster.framework; path = Frameworks/XADMaster.framework; sourceTree = "<group>"; };
 		284A53550DEA60E40003F9F4 /* TSSTBookmarkSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkSplitView.h; sourceTree = "<group>"; };
@@ -183,8 +155,8 @@
 		284D3819101249BE00A37AB2 /* DTToolbarItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTToolbarItems.h; path = Session/DTToolbarItems.h; sourceTree = "<group>"; };
 		284D381A101249BE00A37AB2 /* DTToolbarItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTToolbarItems.m; path = Session/DTToolbarItems.m; sourceTree = "<group>"; };
 		2851C59F0FC8651C002927E0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPagePreview.h; sourceTree = "<group>"; };
-		285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPagePreview.m; sourceTree = "<group>"; };
+		285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTPagePreview.h; path = ../Preferences/TSSTPagePreview.h; sourceTree = "<group>"; };
+		285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPagePreview.m; path = ../Preferences/TSSTPagePreview.m; sourceTree = "<group>"; };
 		285FE32F0F945E2300CD8F96 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		286236010AADDB6200B83E77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		286AB6691159838C0087BA97 /* quicklook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = quicklook.tiff; sourceTree = "<group>"; };
@@ -207,8 +179,6 @@
 		28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedControl.m; path = "Segmented Controls/TSSTSegmentedControl.m"; sourceTree = SOURCE_ROOT; };
 		28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTFullscreenProgressBar.h; path = "../Custom Controls/TSSTFullscreenProgressBar.h"; sourceTree = "<group>"; };
 		28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTFullscreenProgressBar.m; path = "../Custom Controls/TSSTFullscreenProgressBar.m"; sourceTree = "<group>"; };
-		287A34740DF0F8C6008BAEDA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/TSSTBookmarkWindow.nib; sourceTree = "<group>"; };
-		287A34760DF0F8C6008BAEDA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/KeyboardPrefPaneView.nib; sourceTree = "<group>"; };
 		288692FA0FED553A002C6BF7 /* 7z.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = 7z.icns; sourceTree = "<group>"; };
 		288692FB0FED553A002C6BF7 /* cbr.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cbr.icns; sourceTree = "<group>"; };
 		288692FC0FED553A002C6BF7 /* cbz.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = cbz.icns; sourceTree = "<group>"; };
@@ -245,6 +215,11 @@
 		288C0BD70DCD470200EAFF46 /* TSSTBookmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkWindowController.h; sourceTree = "<group>"; };
 		288C0BD80DCD470200EAFF46 /* TSSTBookmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkWindowController.m; sourceTree = "<group>"; };
 		2895F9D80B67D224008683C6 /* TSSTPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPage.m; sourceTree = "<group>"; };
+		28A266091285C34300ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
+		28A2660D1285C35700ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		28A266151285C3A700ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
+		28A2662E1285C73200ED6391 /* DTPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPreferencesController.h; sourceTree = "<group>"; };
+		28A2662F1285C73200ED6391 /* DTPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPreferencesController.m; sourceTree = "<group>"; };
 		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTPageView.h; path = Session/TSSTPageView.h; sourceTree = "<group>"; };
 		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "Custom Windows/DTSessionWindow.h"; sourceTree = "<group>"; };
 		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "Custom Windows/DTSessionWindow.m"; sourceTree = "<group>"; };
@@ -270,19 +245,15 @@
 		28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyWindow.m; path = "Custom Windows/Fullscreen/TSSTKeyWindow.m"; sourceTree = "<group>"; };
 		28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSessionWindowController.h; path = Session/TSSTSessionWindowController.h; sourceTree = "<group>"; };
 		28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSessionWindowController.m; path = Session/TSSTSessionWindowController.m; sourceTree = "<group>"; };
-		28FACB810CD01D93007B7918 /* SS_PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SS_PrefsController.h; sourceTree = "<group>"; };
-		28FACB820CD01D93007B7918 /* SS_PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SS_PrefsController.m; sourceTree = "<group>"; };
-		28FACB930CD01F65007B7918 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/GeneralPrefPaneView.nib; sourceTree = "<group>"; };
-		28FACB960CD01FB8007B7918 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/AdvancedPrefPaneView.nib; sourceTree = "<group>"; };
-		28FACBD30CD02635007B7918 /* AdvancedPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = AdvancedPrefController.h; sourceTree = "<group>"; };
-		28FACBD40CD02635007B7918 /* AdvancedPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = AdvancedPrefController.m; sourceTree = "<group>"; };
-		28FACBD70CD02643007B7918 /* GeneralPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GeneralPrefController.h; sourceTree = "<group>"; };
-		28FACBD80CD02643007B7918 /* GeneralPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = GeneralPrefController.m; sourceTree = "<group>"; };
-		28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvancedPrefsPane.preferencePane; sourceTree = BUILT_PRODUCTS_DIR; };
+		28FACB810CD01D93007B7918 /* SS_PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SS_PrefsController.h; path = ../Preferences/SS_PrefsController.h; sourceTree = "<group>"; };
+		28FACB820CD01D93007B7918 /* SS_PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = SS_PrefsController.m; path = ../Preferences/SS_PrefsController.m; sourceTree = "<group>"; };
+		28FACBD30CD02635007B7918 /* AdvancedPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AdvancedPrefController.h; path = ../Preferences/AdvancedPrefController.h; sourceTree = "<group>"; };
+		28FACBD40CD02635007B7918 /* AdvancedPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AdvancedPrefController.m; path = ../Preferences/AdvancedPrefController.m; sourceTree = "<group>"; };
+		28FACBD70CD02643007B7918 /* GeneralPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GeneralPrefController.h; path = ../Preferences/GeneralPrefController.h; sourceTree = "<group>"; };
+		28FACBD80CD02643007B7918 /* GeneralPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GeneralPrefController.m; path = ../Preferences/GeneralPrefController.m; sourceTree = "<group>"; };
 		28FACC7D0CD03BBB007B7918 /* AdvancedPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AdvancedPrefsPane-Info.plist"; path = "../AdvancedPrefsPane-Info.plist"; sourceTree = "<group>"; };
-		28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneralPrefsPane.preferencePane; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FACCA90CD0CF3E007B7918 /* GeneralPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GeneralPrefsPane-Info.plist"; path = "../GeneralPrefsPane-Info.plist"; sourceTree = "<group>"; };
-		28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SS_PreferencePaneProtocol.h; sourceTree = "<group>"; };
+		28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SS_PreferencePaneProtocol.h; path = ../Preferences/SS_PreferencePaneProtocol.h; sourceTree = "<group>"; };
 		28FAECCC0C7CA801001D7001 /* TSSTThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTThumbnailView.h; path = Session/TSSTThumbnailView.h; sourceTree = "<group>"; };
 		28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTThumbnailView.m; path = Session/TSSTThumbnailView.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -299,22 +270,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		28FACC7A0CD03BBB007B7918 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28FACC970CD03CC5007B7918 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		28FACCA60CD0CF3E007B7918 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28FACCB00CD0CF6B007B7918 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,7 +278,6 @@
 				284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */,
-				283C4E1D0C43E6C300DB4FE9 /* Sparkle.framework in Frameworks */,
 				28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */,
 				28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */,
 				285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */,
@@ -367,7 +321,6 @@
 			children = (
 				284348050DA95C4300F602E2 /* UniversalDetector.framework */,
 				284348060DA95C4300F602E2 /* XADMaster.framework */,
-				283C4E1A0C43E6C200DB4FE9 /* Sparkle.framework */,
 				77C82804067257F0000B614F /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
@@ -379,8 +332,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* Simple Comic.app */,
-				28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */,
-				28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,6 +389,17 @@
 		287C611C106F80A9001463C6 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */,
+				28FACB810CD01D93007B7918 /* SS_PrefsController.h */,
+				28FACB820CD01D93007B7918 /* SS_PrefsController.m */,
+				28FACCA90CD0CF3E007B7918 /* GeneralPrefsPane-Info.plist */,
+				28FACBD70CD02643007B7918 /* GeneralPrefController.h */,
+				28FACBD80CD02643007B7918 /* GeneralPrefController.m */,
+				28FACC7D0CD03BBB007B7918 /* AdvancedPrefsPane-Info.plist */,
+				28FACBD30CD02635007B7918 /* AdvancedPrefController.h */,
+				28FACBD40CD02635007B7918 /* AdvancedPrefController.m */,
+				285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */,
+				285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */,
 				28770B670DBA8B1C00A78646 /* Segmented Controls */,
 				28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */,
 				28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */,
@@ -587,6 +549,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				28A266081285C34300ED6391 /* Preferences.xib */,
+				28A2660C1285C35700ED6391 /* MainMenu.xib */,
+				28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */,
 				28F6603B1067255600EC8A34 /* Help */,
 				288693080FED554E002C6BF7 /* images */,
 				288692F90FED553A002C6BF7 /* icons */,
@@ -595,12 +560,6 @@
 				281314810C0A7E4900EC007B /* InfoPlist.strings */,
 				2813145C0C0A7D7900EC007B /* Localizable.strings */,
 				281314590C0A7D5200EC007B /* Credits.rtf */,
-				281314520C0A7D2D00EC007B /* TSSTSessionWindow.nib */,
-				281314540C0A7D2D00EC007B /* MainMenu.nib */,
-				28FACB920CD01F65007B7918 /* GeneralPrefPaneView.nib */,
-				28FACB950CD01FB8007B7918 /* AdvancedPrefPaneView.nib */,
-				287A34730DF0F8C6008BAEDA /* TSSTBookmarkWindow.nib */,
-				287A34750DF0F8C6008BAEDA /* KeyboardPrefPaneView.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -625,17 +584,8 @@
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
-				28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */,
-				28FACB810CD01D93007B7918 /* SS_PrefsController.h */,
-				28FACB820CD01D93007B7918 /* SS_PrefsController.m */,
-				28FACCA90CD0CF3E007B7918 /* GeneralPrefsPane-Info.plist */,
-				28FACBD70CD02643007B7918 /* GeneralPrefController.h */,
-				28FACBD80CD02643007B7918 /* GeneralPrefController.m */,
-				28FACC7D0CD03BBB007B7918 /* AdvancedPrefsPane-Info.plist */,
-				28FACBD30CD02635007B7918 /* AdvancedPrefController.h */,
-				28FACBD40CD02635007B7918 /* AdvancedPrefController.m */,
-				285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */,
-				285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */,
+				28A2662E1285C73200ED6391 /* DTPreferencesController.h */,
+				28A2662F1285C73200ED6391 /* DTPreferencesController.m */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -658,40 +608,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28FACC7E0CD03BBB007B7918 /* Build configuration list for PBXNativeTarget "AdvancedPrefsPane" */;
-			buildPhases = (
-				28FACC780CD03BBB007B7918 /* Resources */,
-				28FACC790CD03BBB007B7918 /* Sources */,
-				28FACC7A0CD03BBB007B7918 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AdvancedPrefsPane;
-			productName = AdvancedPrefsPane;
-			productReference = 28FACC7C0CD03BBB007B7918 /* AdvancedPrefsPane.preferencePane */;
-			productType = "com.apple.product-type.bundle";
-		};
-		28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28FACCAA0CD0CF3E007B7918 /* Build configuration list for PBXNativeTarget "GeneralPrefsPane" */;
-			buildPhases = (
-				28FACCA40CD0CF3E007B7918 /* Resources */,
-				28FACCA50CD0CF3E007B7918 /* Sources */,
-				28FACCA60CD0CF3E007B7918 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GeneralPrefsPane;
-			productName = GeneralPrefsPane;
-			productReference = 28FACCA80CD0CF3E007B7918 /* GeneralPrefsPane.preferencePane */;
-			productType = "com.apple.product-type.bundle";
-		};
 		8D1107260486CEB800E47090 /* Simple Comic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA7257E208A6CDEB006A2A19 /* Build configuration list for PBXNativeTarget "Simple Comic" */;
@@ -707,8 +623,6 @@
 			);
 			dependencies = (
 				283637F3100A9C16004D9131 /* PBXTargetDependency */,
-				287C6067106F03C5001463C6 /* PBXTargetDependency */,
-				287C6069106F03C5001463C6 /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";
@@ -745,8 +659,6 @@
 			);
 			projectRoot = "";
 			targets = (
-				28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */,
-				28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */,
 				8D1107260486CEB800E47090 /* Simple Comic */,
 			);
 		};
@@ -763,30 +675,10 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		28FACC780CD03BBB007B7918 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28FACC880CD03C49007B7918 /* AdvancedPrefPaneView.nib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		28FACCA40CD0CF3E007B7918 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28FACCB20CD0CF83007B7918 /* GeneralPrefPaneView.nib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				287C606A106F03CD001463C6 /* AdvancedPrefsPane.preferencePane in Resources */,
-				287C606B106F03CD001463C6 /* GeneralPrefsPane.preferencePane in Resources */,
-				281314570C0A7D2D00EC007B /* TSSTSessionWindow.nib in Resources */,
-				281314580C0A7D2D00EC007B /* MainMenu.nib in Resources */,
 				2813145B0C0A7D5200EC007B /* Credits.rtf in Resources */,
 				2813145E0C0A7D7900EC007B /* Localizable.strings in Resources */,
 				281314830C0A7E4900EC007B /* InfoPlist.strings in Resources */,
@@ -817,28 +709,15 @@
 				28E039A510B0B2D2003B40F8 /* welcome3.png in Resources */,
 				286AB66A1159838C0087BA97 /* quicklook.tiff in Resources */,
 				286AB6D8115C3CFA0087BA97 /* sc_icon.icns in Resources */,
+				28A2660A1285C34300ED6391 /* Preferences.xib in Resources */,
+				28A2660E1285C35700ED6391 /* MainMenu.xib in Resources */,
+				28A266161285C3A700ED6391 /* TSSTSessionWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		28FACC790CD03BBB007B7918 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28FAD2170CD3A226007B7918 /* AdvancedPrefController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		28FACCA50CD0CF3E007B7918 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				28FAD2140CD3A21E007B7918 /* GeneralPrefController.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -855,11 +734,9 @@
 				286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */,
 				286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */,
 				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
-				28FACB850CD01D93007B7918 /* SS_PrefsController.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
 				288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
-				285D15630DFB8D8D00F648F7 /* TSSTPagePreview.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
 				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
@@ -867,6 +744,7 @@
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 				28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */,
 				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
+				28A266301285C73200ED6391 /* DTPreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,35 +756,9 @@
 			name = QuickComic;
 			targetProxy = 283637F2100A9C16004D9131 /* PBXContainerItemProxy */;
 		};
-		287C6067106F03C5001463C6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28FACC7B0CD03BBB007B7918 /* AdvancedPrefsPane */;
-			targetProxy = 287C6066106F03C5001463C6 /* PBXContainerItemProxy */;
-		};
-		287C6069106F03C5001463C6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 28FACCA70CD0CF3E007B7918 /* GeneralPrefsPane */;
-			targetProxy = 287C6068106F03C5001463C6 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		281314520C0A7D2D00EC007B /* TSSTSessionWindow.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				281314530C0A7D2D00EC007B /* English */,
-			);
-			name = TSSTSessionWindow.nib;
-			sourceTree = "<group>";
-		};
-		281314540C0A7D2D00EC007B /* MainMenu.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				281314550C0A7D2D00EC007B /* English */,
-			);
-			name = MainMenu.nib;
-			sourceTree = "<group>";
-		};
 		281314590C0A7D5200EC007B /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -931,20 +783,28 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		287A34730DF0F8C6008BAEDA /* TSSTBookmarkWindow.nib */ = {
+		28A266081285C34300ED6391 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				287A34740DF0F8C6008BAEDA /* English */,
+				28A266091285C34300ED6391 /* English */,
 			);
-			name = TSSTBookmarkWindow.nib;
+			name = Preferences.xib;
 			sourceTree = "<group>";
 		};
-		287A34750DF0F8C6008BAEDA /* KeyboardPrefPaneView.nib */ = {
+		28A2660C1285C35700ED6391 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				287A34760DF0F8C6008BAEDA /* English */,
+				28A2660D1285C35700ED6391 /* English */,
 			);
-			name = KeyboardPrefPaneView.nib;
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28A266151285C3A700ED6391 /* English */,
+			);
+			name = TSSTSessionWindow.xib;
 			sourceTree = "<group>";
 		};
 		28F6603B1067255600EC8A34 /* Help */ = {
@@ -955,169 +815,9 @@
 			name = Help;
 			sourceTree = "<group>";
 		};
-		28FACB920CD01F65007B7918 /* GeneralPrefPaneView.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28FACB930CD01F65007B7918 /* English */,
-			);
-			name = GeneralPrefPaneView.nib;
-			sourceTree = "<group>";
-		};
-		28FACB950CD01FB8007B7918 /* AdvancedPrefPaneView.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28FACB960CD01FB8007B7918 /* English */,
-			);
-			name = AdvancedPrefPaneView.nib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		28FACC7F0CD03BBB007B7918 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "AdvancedPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = AdvancedPrefsPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		28FACC800CD03BBB007B7918 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "AdvancedPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = AdvancedPrefsPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		28FACC810CD03BBB007B7918 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "AdvancedPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = AdvancedPrefsPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = YES;
-			};
-			name = Default;
-		};
-		28FACCAB0CD0CF3E007B7918 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "GeneralPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = GeneralPrefsPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		28FACCAC0CD0CF3E007B7918 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "GeneralPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = GeneralPrefsPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = NO;
-			};
-			name = Release;
-		};
-		28FACCAD0CD0CF3E007B7918 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
-				INFOPLIST_FILE = "GeneralPrefsPane-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					Foundation,
-					"-framework",
-					AppKit,
-				);
-				PREBINDING = NO;
-				PRODUCT_NAME = GeneralPrefsPane;
-				WRAPPER_EXTENSION = preferencePane;
-				ZERO_LINK = YES;
-			};
-			name = Default;
-		};
 		FA7257E308A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1162,15 +862,10 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G4;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SimpleComic_Prefix.pch;
 				GCC_THREADSAFE_STATICS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_MISSING_PARENTHESES = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
@@ -1232,7 +927,7 @@
 		FA7257E808A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1254,26 +949,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		28FACC7E0CD03BBB007B7918 /* Build configuration list for PBXNativeTarget "AdvancedPrefsPane" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				28FACC7F0CD03BBB007B7918 /* Debug */,
-				28FACC800CD03BBB007B7918 /* Release */,
-				28FACC810CD03BBB007B7918 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		28FACCAA0CD0CF3E007B7918 /* Build configuration list for PBXNativeTarget "GeneralPrefsPane" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				28FACCAB0CD0CF3E007B7918 /* Debug */,
-				28FACCAC0CD0CF3E007B7918 /* Release */,
-				28FACCAD0CD0CF3E007B7918 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
 		FA7257E208A6CDEB006A2A19 /* Build configuration list for PBXNativeTarget "Simple Comic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -253,8 +253,7 @@
     {
         [self fullscreen];
     }
-    else if([keyPath isEqualToString: TSSTPageScaleOptions] || 
-            [keyPath isEqualToString: TSSTScrollersVisible])
+    else if([keyPath isEqualToString: TSSTScrollersVisible])
     {
         [self scaleToWindow];
     }
@@ -284,7 +283,7 @@
 	else if([keyPath isEqualToString: TSSTPageScaleOptions])
 	{
 		[defaults setValue: [session valueForKey: TSSTPageScaleOptions] forKey: TSSTPageScaleOptions];
-		[self changeViewImages];
+        [self scaleToWindow];
 	}
 	else if([keyPath isEqualToString: TSSTTwoPageSpread])
 	{

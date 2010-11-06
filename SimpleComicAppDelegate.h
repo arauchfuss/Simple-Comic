@@ -36,8 +36,7 @@
 @class TSSTManagedGroup;
 @class TSSTManagedPDF;
 @class TSSTManagedSession;
-@class SUUpdater;
-
+@class DTPreferencesController;
 
 extern NSString * TSSTPageOrder;
 extern NSString * TSSTPageZoomRate;
@@ -93,8 +92,6 @@ extern NSString * TSSTSessionEndNotification;
 	
 	IBOutlet NSPanel * launchPanel;
 	
-	IBOutlet SUUpdater		   * updater;
-
 /*  Core Data stuff. */
     NSManagedObjectModel		 * managedObjectModel;
     NSManagedObjectContext		 * managedObjectContext;
@@ -104,7 +101,7 @@ extern NSString * TSSTSessionEndNotification;
 	NSTimer * autoSave;
 
 /*  Window controller for preferences. */
-    SS_PrefsController      * preferences;
+    DTPreferencesController      * preferences;
     
 /*  This is the array that maintains all of the session window managers. */
     NSMutableArray * sessions;
@@ -178,7 +175,6 @@ extern NSString * TSSTSessionEndNotification;
 - (IBAction)modalCancel:(id)sender;
 
 /* Takes user to the Simple Comic paypal page. */
-- (IBAction)donate:(id)sender;
 - (IBAction)endLaunchPanel:(id)sender;
 - (IBAction)actionStub:(id)sender;
 

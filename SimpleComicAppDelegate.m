@@ -28,7 +28,6 @@
 
 
 #import "SimpleComicAppDelegate.h"
-#import <Sparkle/Sparkle.h>
 #import <XADMaster/XADArchive.h>
 #import <Carbon/Carbon.h>
 #import "TSSTSessionWindowController.h"
@@ -37,9 +36,8 @@
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedBookmarkGroup.h"
 #import "TSSTManagedSession.h"
-#import "SS_PrefsController.h"
 #import "TSSTCustomValueTransformers.h"
-
+#import "DTPreferencesController.h"
 
 
 NSString * TSSTPageOrder =         @"pageOrder";
@@ -246,17 +244,6 @@ static NSArray * allAvailableStringEncodings(void)
 {
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 	[self generateEncodingMenu];
-	/* Sets the Sparkle update feed to corespond to user prefs */
-	NSURL * feedURL;
-	if([[userDefaults valueForKey: TSSTUpdateSelection] intValue] == 0)
-	{
-		feedURL = [NSURL URLWithString:@"http://www.dancingtortoise.com/simplecomic/simplecomic.xml"];
-	}
-	else
-	{
-		feedURL = [NSURL URLWithString: @"http://www.dancingtortoise.com/simplecomic/simplecomic_beta.xml"];
-	}
-	[updater setFeedURL: feedURL];
 	
 	/* Starts the auto save timer */
 	if([[userDefaults valueForKey: TSSTSessionRestore] boolValue])
@@ -327,16 +314,6 @@ static NSArray * allAvailableStringEncodings(void)
             reply = NSTerminateCancel;	
         }
     }
-    
-    BOOL ignoreDonate = [[userDefaults valueForKey: TSSTIgnoreDonation] boolValue];
-    if(reply != NSTerminateCancel && !ignoreDonate)
-    {
-        if([NSApp runModalForWindow: donationPanel] != NSCancelButton)
-        {
-            [self donate: self];
-        }
-        [donationPanel close];
-    }
 	
 	return reply;
 }
@@ -356,20 +333,7 @@ static NSArray * allAvailableStringEncodings(void)
 {
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 
-	if([keyPath isEqualToString: TSSTUpdateSelection])
-	{
-		NSURL * feedURL;
-		if([[userDefaults valueForKey: TSSTUpdateSelection] intValue] == 0)
-		{
-			feedURL = [NSURL URLWithString:@"http://www.dancingtortoise.com/simplecomic/simplecomic.xml"];
-		}
-		else
-		{
-			feedURL = [NSURL URLWithString: @"http://www.dancingtortoise.com/simplecomic/simplecomic_beta.xml"];
-		}
-		[updater setFeedURL: feedURL];
-	}
-	else if([keyPath isEqualToString: TSSTSessionRestore])
+	if([keyPath isEqualToString: TSSTSessionRestore])
 	{
 		[autoSave invalidate];
 		autoSave = nil;
@@ -784,21 +748,11 @@ static NSArray * allAvailableStringEncodings(void)
 {
     if(!preferences)
     {
-        preferences = [[SS_PrefsController alloc] initWithPanesSearchPath: nil];
-        
-        // Set which panes are included, and their order.
-        [preferences setPanesOrder: [NSArray arrayWithObjects: @"Advanced", nil]];
-    }
-    [preferences showPreferencesWindow];
+        preferences = [DTPreferencesController new];
+	}
+    [preferences showWindow: self];
 }
 
-
-
-- (IBAction)donate:(id)sender
-{
-    NSURL * donationPage = [NSURL URLWithString: @"https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=arauchfuss@gmail.com&item_name=Simple+Comic&item_number=Donation&currency_code=USD"];
-    [[NSWorkspace sharedWorkspace] openURL: donationPage];
-}
 
 
 

@@ -33,7 +33,7 @@
 	NSRect frameRect = NSMakeRect( point.x - offset - 10, point.y, size.width + 20, size.height + 25);
 	
 	[[self contentView] setCaretPosition: offset + 10];
-    [self setFrame: frameRect display: YES];
+    [self setFrame: frameRect display: YES animate: YES];
 	[self invalidateShadow];
 }
 
