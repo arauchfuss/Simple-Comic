@@ -51,7 +51,7 @@
 
 - (id)initWithFrame:(NSRect)aRectangle;
 {
-	if(self = [super initWithFrame: aRectangle])
+	if((self = [super initWithFrame: aRectangle]))
 	{
 		[self setFirstPage: nil secondPageImage: nil];
         scrollKeys = 0;
@@ -578,7 +578,7 @@
     NSSize imageSize = [self combinedImageSizeForZoom: [[[sessionController session] valueForKey: TSSTZoomLevel] floatValue]];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
-    NSSize viewSize;
+    NSSize viewSize = NSZeroSize;
     float scaleToFit;
 	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
@@ -715,7 +715,7 @@
 	
 	NSPoint center = centerPointOfRect(selection);
 	NSRect pageRect = NSZeroRect;
-	NSSize originalSize;
+	NSSize originalSize = NSZeroSize;
 	if(NSPointInRect(center, firstPageRect))
 	{
 		pageRect = firstPageRect;
@@ -751,8 +751,8 @@
 	
 	int modifier = [theEvent modifierFlags];
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
-	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
-	scaling = [sessionController currentPageIsText] ? 2 : scaling;
+//	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+//	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 		
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
