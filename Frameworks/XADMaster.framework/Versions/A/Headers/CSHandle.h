@@ -98,8 +98,10 @@ extern NSString *CSNotSupportedException;
 
 -(CSHandle *)subHandleOfLength:(off_t)length;
 -(CSHandle *)subHandleFrom:(off_t)start length:(off_t)length;
+-(CSHandle *)subHandleToEndOfFileFrom:(off_t)start;
 -(CSHandle *)nonCopiedSubHandleOfLength:(off_t)length;
 -(CSHandle *)nonCopiedSubHandleFrom:(off_t)start length:(off_t)length;
+-(CSHandle *)nonCopiedSubHandleToEndOfFileFrom:(off_t)start;
 
 -(void)writeInt8:(int8_t)val;
 -(void)writeUInt8:(uint8_t)val;

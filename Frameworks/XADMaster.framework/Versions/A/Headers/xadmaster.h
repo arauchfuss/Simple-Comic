@@ -37,7 +37,7 @@ typedef uint64_t           xadSize;
 typedef int64_t            xadSignSize;
 
 typedef void *             xadPTR;
-typedef char               xadSTRING;
+typedef unsigned char      xadSTRING;
 typedef xadSTRING *        xadSTRPTR;
 typedef unsigned int       xadUINT;
 typedef int                xadINT;
@@ -811,7 +811,7 @@ struct xadClient {
   xadSize            xc_RecogSize;  /* needed size to recog the type */
   xadUINT32          xc_Flags;      /* see XADCF_xxx defines */
   xadUINT32          xc_Identifier; /* ID of internal clients */
-  xadSTRPTR          xc_ArchiverName;
+  const char       * xc_ArchiverName;
   xadBOOL         (* xc_RecogData)(xadSize size, const xadUINT8 *data,
                   struct xadMasterBase *xadMasterBase);
   xadERROR        (* xc_GetInfo)(struct xadArchiveInfo *ai,

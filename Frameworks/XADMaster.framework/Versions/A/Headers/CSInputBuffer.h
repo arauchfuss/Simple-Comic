@@ -38,6 +38,7 @@ void CSInputSeekToBufferOffset(CSInputBuffer *self,off_t offset);
 void CSInputSetStartOffset(CSInputBuffer *self,off_t offset);
 off_t CSInputBufferOffset(CSInputBuffer *self);
 off_t CSInputFileOffset(CSInputBuffer *self);
+off_t CSInputBufferBitOffset(CSInputBuffer *self);
 
 void _CSInputFillBuffer(CSInputBuffer *self);
 
@@ -75,13 +76,13 @@ static inline int _CSInputPeekByteWithoutEOF(CSInputBuffer *self,int offs)
 
 static inline int CSInputPeekByte(CSInputBuffer *self,int offs)
 {
+	_CSInputCheckAndFillBuffer(self);
 	if(offs>=_CSInputBytesLeftInBuffer(self)) _CSInputBufferRaiseEOF(self);
 	return _CSInputPeekByteWithoutEOF(self,offs);
 }
 
 static inline int CSInputNextByte(CSInputBuffer *self)
 {
-	_CSInputCheckAndFillBuffer(self);
 	int byte=CSInputPeekByte(self,0);
 	CSInputSkipBytes(self,1);
 	return byte;
@@ -132,12 +133,14 @@ static inline void _CSInputCheckAndFillBitsLE(CSInputBuffer *self,int numbits)
 
 static inline unsigned int CSInputPeekBitString(CSInputBuffer *self,int numbits)
 {
+	if(numbits==0) return 0;
 	_CSInputCheckAndFillBits(self,numbits);
 	return self->bits>>(32-numbits);
 }
 
 static inline unsigned int CSInputPeekBitStringLE(CSInputBuffer *self,int numbits)
 {
+	if(numbits==0) return 0;
 	_CSInputCheckAndFillBitsLE(self,numbits);
 	return self->bits&((1<<numbits)-1);
 }

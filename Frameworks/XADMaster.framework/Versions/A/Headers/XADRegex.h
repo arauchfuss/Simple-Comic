@@ -13,6 +13,9 @@
 +(XADRegex *)regexWithPattern:(NSString *)pattern options:(int)options;
 +(XADRegex *)regexWithPattern:(NSString *)pattern;
 
++(NSString *)patternForLiteralString:(NSString *)string;
++(NSString *)patternForGlob:(NSString *)glob;
+
 +(NSString *)null;
 
 -(id)initWithPattern:(NSString *)pattern options:(int)options;

@@ -13,6 +13,10 @@
 -(id)initAsCopyOf:(CSSubHandle *)other;
 -(void)dealloc;
 
+// Public methods
+-(CSHandle *)parentHandle;
+-(off_t)startOffsetInParent;
+
 // Implemented by this class
 -(off_t)fileSize;
 -(off_t)offsetInFile;
