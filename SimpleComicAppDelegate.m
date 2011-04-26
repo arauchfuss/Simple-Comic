@@ -827,8 +827,7 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
-/*  Called when Simple Comic encounters a password protected
-    archive.  Brings a password dialog forward. */
+
 - (NSString*)passwordForArchiveWithPath:(NSString*)filename
 {
     NSString* password = nil;

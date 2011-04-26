@@ -244,18 +244,18 @@
 {
     if (!instance)
     {
-		NSFileManager * manager = [NSFileManager defaultManager];
-		if([manager fileExistsAtPath: [self valueForKey: @"path"]])
-		{
-			instance = [[XADArchive alloc] initWithFile: [self valueForKey: @"path"]];
-			// Set the archive delegate so that password and encoding queries can have a modal pop up.
-			[instance setDelegate: [NSApp delegate]];
+        NSFileManager * manager = [NSFileManager defaultManager];
+        if([manager fileExistsAtPath: [self valueForKey: @"path"]])
+        {
+            instance = [[XADArchive alloc] initWithFile: [self valueForKey: @"path"] delegate: self error:NULL];
+
+            // Set the archive delegate so that password and encoding queries can have a modal pop up.
 			
-			if([self valueForKey: @"password"])
-			{
-				[instance setPassword: [self valueForKey: @"password"]];
-			}
-		}
+            if([self valueForKey: @"password"])
+            {
+                [instance setPassword: [self valueForKey: @"password"]];
+            }
+        }
     }
 	
     return instance;
@@ -315,25 +315,6 @@
 - (void)nestedArchiveContents
 {
     XADArchive * imageArchive = [self valueForKey: @"instance"];
-	
-    if([imageArchive isEncrypted])
-    {
-        NSString * password = nil;
-        NSData * testData = nil;
-        do
-		{
-            password = [[NSApp delegate] passwordForArchiveWithPath: [self valueForKey: @"path"]];
-            [imageArchive setPassword: password];
-            testData = [self dataForPageIndex: 1];
-        } while(password && !testData);
-        
-		if(!testData)
-        {
-            return;
-        }
-		
-        [self setValue: password forKey: @"password"];
-    }
     
     NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSData * fileData;
@@ -369,26 +350,26 @@
             }
             else if([[[NSUserDefaults standardUserDefaults] valueForKey: TSSTNestedArchives] boolValue] && [[TSSTManagedArchive archiveExtensions] containsObject: extension])
             {
-				fileData = [imageArchive contentsOfEntry: counter];
-				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
-				[nestedDescription setValue: fileName forKey: @"name"];
-				[nestedDescription setValue: [NSNumber numberWithBool: YES] forKey: @"nested"];
+                fileData = [imageArchive contentsOfEntry: counter];
+                nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
+                [nestedDescription setValue: fileName forKey: @"name"];
+                [nestedDescription setValue: [NSNumber numberWithBool: YES] forKey: @"nested"];
 				
-				collision = 0;
-				do {
-					archivePath = [NSString stringWithFormat: @"%i-%@", collision, fileName];
-					archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: archivePath];
-					++collision;
-				} while ([fileManager fileExistsAtPath: archivePath]);
-				
-				[[NSFileManager defaultManager] createDirectoryAtPath: [archivePath stringByDeletingLastPathComponent] 
-										  withIntermediateDirectories: YES 
-														   attributes: nil 
-																error: NULL];
-				[[NSFileManager defaultManager] createFileAtPath: archivePath contents: fileData attributes: nil];
-				
-				[nestedDescription setValue: archivePath forKey: @"path"];
-				[(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
+                collision = 0;
+                do {
+                    archivePath = [NSString stringWithFormat: @"%i-%@", collision, fileName];
+                    archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: archivePath];
+                    ++collision;
+                } while ([fileManager fileExistsAtPath: archivePath]);
+
+                [[NSFileManager defaultManager] createDirectoryAtPath: [archivePath stringByDeletingLastPathComponent] 
+                                          withIntermediateDirectories: YES 
+                                                           attributes: nil 
+                                                                error: NULL];
+                [[NSFileManager defaultManager] createFileAtPath: archivePath contents: fileData attributes: nil];
+
+                [nestedDescription setValue: archivePath forKey: @"path"];
+                [(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
             }
 			else if([[TSSTPage textExtensions] containsObject: extension])
 			{
@@ -429,6 +410,27 @@
 {	
 	NSString * extension = [[[self valueForKey: @"name"] pathExtension] lowercaseString];
 	return [[TSSTManagedArchive quicklookExtensions] containsObject: extension];
+}
+
+
+/** Delegates **/
+
+/*  Called when Simple Comic encounters a password protected
+ archive.  Brings a password dialog forward. */
+-(void)archiveNeedsPassword:(XADArchive *)archive
+{
+    NSString * password = [self valueForKey: @"password"];
+    
+    if(password)
+    {
+        [archive setPassword: password];
+        return;
+    }
+    
+    password = [[NSApp delegate] passwordForArchiveWithPath: [self valueForKey: @"path"]];
+    [archive setPassword: password];
+    
+    [self setValue: password forKey: @"password"];
 }
 
 
