@@ -194,6 +194,9 @@
 	[fullscreenProgressBar addTrackingArea: newArea];
 	[newArea release];
 	[jumpField setDelegate: self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:@"SCMouseDragNotification" object:nil];
+
     [self restoreSession];
 }
 
@@ -427,6 +430,20 @@
         [[infoWindow parentWindow] removeChildWindow: infoWindow];
         [infoWindow orderOut: self];
     }
+}
+
+
+
+/* Handles mouse drag notifications relayed from progressbar */
+- (void)handleMouseDragged:(NSNotification*)notification {
+    [infoWindow orderOut:self];
+}
+
+
+
+- (void)mouseUp:(NSEvent *)theEvent{
+    [self infoPanelSetupAtPoint: [theEvent locationInWindow]];
+    [infoWindow orderFront:self];
 }
 
 
