@@ -202,12 +202,12 @@ static NSSize monospaceCharacterSize;
 					   operation: NSCompositeSourceOver 
 						fraction: 1.0];
 		[temp unlockFocus];
-		thumbnail = [[temp TIFFRepresentation] retain];
+		thumbnail = (NSImage *)[[temp TIFFRepresentation] retain];
 		[temp release];
 	}
 	[thumbLock unlock];
 	
-	return [thumbnail autorelease];
+	return (NSData *)[thumbnail autorelease];
 }
 
 

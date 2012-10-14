@@ -6,7 +6,13 @@ QuickComic/build/*
 .DS_Store
 *.mode1v3
 *.perspectivev3
+*.pbxproj
 *.pbxuser
+*.xcscheme
+*.xcsettings
+*.xcuserstate
+*.xcworkspacedata
+xcschememanagement.plist
 
 # SVN
 .svn

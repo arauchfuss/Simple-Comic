@@ -635,6 +635,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+			};
 			buildConfigurationList = FA7257E608A6CDEB006A2A19 /* Build configuration list for PBXProject "SimpleComic" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -822,10 +825,10 @@
 		FA7257E308A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G4;
@@ -838,8 +841,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = "";
-				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
@@ -849,10 +852,10 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
@@ -867,8 +870,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_CFLAGS = "-mdynamic-no-pic";
-				PREBINDING = NO;
 				PRODUCT_NAME = "Simple Comic";
 				STRIP_INSTALLED_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -878,6 +881,7 @@
 		FA7257E508A6CDEB006A2A19 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/Frameworks";
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -894,11 +898,11 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
+				MACOSX_DEPLOYMENT_TARGET = "";
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lstdc++",
 				);
-				PREBINDING = YES;
 				PRODUCT_NAME = "Simple Comic";
 				WRAPPER_EXTENSION = app;
 			};
@@ -911,7 +915,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -921,7 +926,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -931,7 +937,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = macosx10.6;
+				MACOSX_DEPLOYMENT_TARGET = "";
+				SDKROOT = macosx;
 			};
 			name = Default;
 		};
