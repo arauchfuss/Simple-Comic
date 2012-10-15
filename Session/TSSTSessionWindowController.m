@@ -1298,16 +1298,25 @@ images are currently visible and then skips over them.
 */
 - (void)nextPage
 {
+	int numberOfImages = [[pageController arrangedObjects] count];
+	int selectionIndex = [pageController selectionIndex];
+	
     if(![[session valueForKey: TSSTTwoPageSpread] boolValue])
     {
-        [pageController selectNext: self];
+		if(selectionIndex == (numberOfImages - 1))
+		{
+			[pageController setSelectionIndex: 0];
+		}
+		else
+		{
+			[pageController selectNext: self];
+		}
         return;
     }
     
-    int numberOfImages = [[pageController arrangedObjects] count];
-	int selectionIndex = [pageController selectionIndex];
 	if((selectionIndex + 1) >= numberOfImages)
 	{
+		[pageController setSelectionIndex: 0];
 		return;
 	}
     
@@ -1328,6 +1337,10 @@ images are currently visible and then skips over them.
 	{
 		[pageController setSelectionIndex: (selectionIndex + 1)];
 	}
+	else
+	{
+		[pageController setSelectionIndex: 0];
+	}
 }
 
 
@@ -1336,13 +1349,27 @@ images are currently visible and then skips over them.
 */
 - (void)previousPage
 {
+	int numberOfImages = [[pageController arrangedObjects] count];
+	int selectionIndex = [pageController selectionIndex];
+	
     if(![[session valueForKey: TSSTTwoPageSpread] boolValue])
     {
-        [pageController selectPrevious: self];
+		if(selectionIndex == 0)
+		{
+			[pageController setSelectionIndex: (numberOfImages - 1)];
+		}
+		else
+		{
+			[pageController selectPrevious: self];
+		}
         return;
     }
-    
-	int selectionIndex = [pageController selectionIndex];
+	
+	if(selectionIndex == 0)
+	{
+		selectionIndex = numberOfImages;
+	}
+	
 	if((selectionIndex - 2) >= 0)
 	{
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
