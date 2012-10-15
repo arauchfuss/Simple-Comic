@@ -3,7 +3,7 @@
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 7/18/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Dancing Tortoise Software. All rights reserved.
 //
 
 #import "DTToolbarItems.h"

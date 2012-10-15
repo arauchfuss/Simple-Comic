@@ -59,11 +59,10 @@ NSString * TSSTAutoPageTurn =      @"autoPageTurn";
 NSString * TSSTWindowAutoResize =  @"windowAutoResize";
 NSString * TSSTLoupeDiameter =     @"loupeDiameter";
 NSString * TSSTLoupePower =		   @"loupePower";
-NSString * TSSTStatusbarVisible =  @"statusBarVisisble";
+NSString * TSSTStatusbarVisible =  @"statusBarVisible";
 NSString * TSSTLonelyFirstPage =   @"lonelyFirstPage";
 NSString * TSSTNestedArchives =	   @"nestedArchives";
 NSString * TSSTUpdateSelection =   @"updateSelection";
-
 NSString * TSSTSessionEndNotification = @"sessionEnd";
 
 
@@ -182,15 +181,20 @@ static NSArray * allAvailableStringEncodings(void)
     NSMutableDictionary* standardDefaults = [NSMutableDictionary dictionary];
 	[standardDefaults setObject: [NSNumber numberWithBool: NO] forKey: TSSTPageOrder];
 	[standardDefaults setObject: [NSNumber numberWithFloat: 0.1] forKey: TSSTPageZoomRate];
-	[standardDefaults setObject: [NSNumber numberWithInt: 1] forKey: TSSTPageScaleOptions];
+	//Placeholder TSSTFullScreen
+	//Placeholder TSSTSavedSelection
     [standardDefaults setObject: [NSNumber numberWithInt: 100] forKey: TSSTThumbnailSize];
     [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTTwoPageSpread];
+	[standardDefaults setObject: [NSNumber numberWithInt: 1] forKey: TSSTPageScaleOptions];
     [standardDefaults setObject: [NSNumber numberWithBool: NO] forKey: TSSTIgnoreDonation];
+	//Placeholder TSSTScrollPosition
     [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTConstrainScale];
-    [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTScrollersVisible];
-    [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTSessionRestore];
-    [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTAutoPageTurn];
+	//Placeholder TSSTZoomLevel
+	//Placeholder TSSTViewRotation
 	[standardDefaults setObject: [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]] forKey: TSSTBackgroundColor];
+    [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTSessionRestore];
+    [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTScrollersVisible];
+    [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTAutoPageTurn];
     [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTWindowAutoResize];
     [standardDefaults setObject: [NSNumber numberWithInt: 500] forKey: TSSTLoupeDiameter];
 	[standardDefaults setObject: [NSNumber numberWithFloat: 2.0] forKey: TSSTLoupePower];
@@ -198,6 +202,7 @@ static NSArray * allAvailableStringEncodings(void)
     [standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTLonelyFirstPage];
 	[standardDefaults setObject: [NSNumber numberWithBool: YES] forKey: TSSTNestedArchives];
 	[standardDefaults setObject: [NSNumber numberWithInt: 0] forKey: TSSTUpdateSelection];
+	//Placeholder TSSTSessionEndNotification
 	
 	NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	[sharedDefaultsController setInitialValues: standardDefaults];
@@ -517,8 +522,8 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 
-/*  Method creates an application support directory for Simpl Comic if one
-    is does not already exist.
+/*  Method creates an application support directory for Simple Comic if one
+    does not already exist.
     @return The absolute path to Simple Comic's application support directory 
 	as a string.  */
 - (NSString *)applicationSupportFolder

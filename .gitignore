@@ -8,6 +8,7 @@ QuickComic/build/*
 *.perspectivev3
 *.pbxproj
 *.pbxuser
+*.xcbkptlist
 *.xcscheme
 *.xcsettings
 *.xcuserstate

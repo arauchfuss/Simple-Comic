@@ -3,7 +3,7 @@
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 1/25/08.
-//  Copyright 2008 __MyCompanyName__. All rights reserved.
+//  Copyright 2008 Dancing Tortoise Software. All rights reserved.
 //
 
 #import "TSSTShortcutController.h"
