@@ -276,7 +276,7 @@
 	else
 	{
 		NSString * name = [[self instance] nameOfEntry: index];
-		NSString * fileName = [NSString stringWithFormat:@"%i.%@", index, [name pathExtension]];
+		NSString * fileName = [NSString stringWithFormat:@"%i.%@", (int)index, [name pathExtension]];
 		fileName = [solidDirectory stringByAppendingPathComponent: fileName];
 		if(![[NSFileManager defaultManager] fileExistsAtPath: fileName])
 		{

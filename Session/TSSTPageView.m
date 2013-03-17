@@ -343,7 +343,7 @@
 										   style, NSParagraphStyleAttributeName,
 										   nil];
 		[style release];
-		NSString * selectionText = [NSString stringWithString: @"Click to select page"];
+		NSString * selectionText = @"Click to select page";
 		if([sessionController pageSelectionCanCrop])
 		{
 			selectionText = [selectionText stringByAppendingString: @"\nDrag to crop"];
@@ -827,6 +827,16 @@
 		NSPoint scrollPoint = NSMakePoint(NSMinX(visible) - ([theEvent deltaX] * 5), NSMinY(visible) + ([theEvent deltaY] * 5));
 		[self scrollPoint: scrollPoint];
 	}
+    
+    if ([theEvent deltaX] > 0.0)
+	{
+        [sessionController pageLeft: self];
+    } 
+	else if ([theEvent deltaX] < 0.0)
+	{
+        [sessionController pageRight: self];
+    }
+
 	
     [sessionController refreshLoupePanel];
 }
