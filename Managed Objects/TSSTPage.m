@@ -189,7 +189,7 @@ static NSSize monospaceCharacterSize;
 {
 	[thumbLock lock];
 	NSImage * managedImage = [self pageImage];
-	NSImage * thumbnail = nil;
+	NSData * thumbnailData = nil;
 	NSSize pixelSize = [managedImage size];
 	if(managedImage)
 	{
@@ -202,12 +202,12 @@ static NSSize monospaceCharacterSize;
 					   operation: NSCompositeSourceOver 
 						fraction: 1.0];
 		[temp unlockFocus];
-		thumbnail = [[temp TIFFRepresentation] retain];
+		thumbnailData = [[temp TIFFRepresentation] retain];
 		[temp release];
 	}
 	[thumbLock unlock];
 	
-	return [thumbnail autorelease];
+	return [thumbnailData autorelease];
 }
 
 
