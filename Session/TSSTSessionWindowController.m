@@ -990,17 +990,10 @@
 		NSSavePanel * savePanel = [NSSavePanel savePanel];
 		[savePanel setTitle: @"Extract Page"];
 		[savePanel setPrompt: @"Extract"];
-<<<<<<< HEAD
-        [savePanel setNameFieldStringValue: [selectedPage name]];
-		if(NSOKButton == [savePanel runModal])
-		{
-			[[selectedPage pageData] writeToURL: [savePanel URL] atomically: YES];
-=======
         [savePanel setNameFieldStringValue:[selectedPage name]];
 		if(NSOKButton == [savePanel runModal])
 		{
 			[[selectedPage pageData] writeToFile: [[savePanel URL] path] atomically: YES];
->>>>>>> 375c944c31b3851cb885d5d4ddd36131b196cb70
 		}
 	}
 }
