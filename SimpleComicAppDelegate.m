@@ -477,9 +477,9 @@ static NSArray * allAvailableStringEncodings(void)
 		NSLog(@"%@",[error localizedDescription]);
 	}    
 
-	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1706"])
+	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1708"])
 	{
-		if(![fileManager removeItemAtPath: [url path] error: &error])
+		if(![fileManager removeItemAtURL: url error: &error])
 		{
 			NSLog(@"%@",[error localizedDescription]);
 		}
@@ -492,7 +492,7 @@ static NSArray * allAvailableStringEncodings(void)
         [[NSApplication sharedApplication] presentError: error];
     }    
 	
-	[SimpleComicAppDelegate setMetadata: @"Version 1706" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
+	[SimpleComicAppDelegate setMetadata: @"Version 1708" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
 
     return persistentStoreCoordinator;
 }

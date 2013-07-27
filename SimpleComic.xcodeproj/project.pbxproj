@@ -53,7 +53,6 @@
 		2886932C0FED554E002C6BF7 /* thumbnails.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 288693190FED554E002C6BF7 /* thumbnails.tiff */; };
 		2886932D0FED554E002C6BF7 /* two_page.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886931A0FED554E002C6BF7 /* two_page.tiff */; };
 		2886932E0FED554E002C6BF7 /* win_scale.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 2886931B0FED554E002C6BF7 /* win_scale.tiff */; };
-		288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */ = {isa = PBXBuildFile; fileRef = 288C09C20DC809DF00EAFF46 /* BDAlias.m */; };
 		2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2895F9D80B67D224008683C6 /* TSSTPage.m */; };
 		28A2660A1285C34300ED6391 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A266081285C34300ED6391 /* Preferences.xib */; };
 		28A2660E1285C35700ED6391 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A2660C1285C35700ED6391 /* MainMenu.xib */; };
@@ -204,8 +203,6 @@
 		288693190FED554E002C6BF7 /* thumbnails.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = thumbnails.tiff; sourceTree = "<group>"; };
 		2886931A0FED554E002C6BF7 /* two_page.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = two_page.tiff; sourceTree = "<group>"; };
 		2886931B0FED554E002C6BF7 /* win_scale.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = win_scale.tiff; sourceTree = "<group>"; };
-		288C09C20DC809DF00EAFF46 /* BDAlias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDAlias.m; sourceTree = "<group>"; };
-		288C09C30DC809DF00EAFF46 /* BDAlias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDAlias.h; sourceTree = "<group>"; };
 		288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmark.h; path = "../Managed Objects/TSSTManagedBookmark.h"; sourceTree = "<group>"; };
 		288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmark.m; path = "../Managed Objects/TSSTManagedBookmark.m"; sourceTree = "<group>"; };
 		288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmarkGroup.h; path = "../Managed Objects/TSSTManagedBookmarkGroup.h"; sourceTree = "<group>"; };
@@ -364,8 +361,6 @@
 				283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */,
 				28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */,
 				28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */,
-				288C09C30DC809DF00EAFF46 /* BDAlias.h */,
-				288C09C20DC809DF00EAFF46 /* BDAlias.m */,
 				28F59A9A0B784892003530FB /* TSSTSortDescriptor.h */,
 				286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */,
 				280FB7A50CD577730053F375 /* TSSTCustomValueTransformers.h */,
@@ -739,7 +734,6 @@
 				286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */,
 				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
-				288C09C40DC809DF00EAFF46 /* BDAlias.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,

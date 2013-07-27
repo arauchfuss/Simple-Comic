@@ -12,7 +12,6 @@
 #import <XADMaster/XADArchive.h>
 #import <Quartz/Quartz.h>
 #import "TSSTImageUtilities.h"
-#import "BDAlias.h"
 #import "TSSTPage.h"
 
 @implementation TSSTManagedGroup
@@ -28,18 +27,10 @@
 
 - (void)awakeFromFetch
 {
-//	NSLog(@"wake");
 	[super awakeFromFetch];
     groupLock = [NSLock new];
     instance = nil;
-//	NSData * aliasData = [self valueForKey: @"pathData"];
-//	
-//    if (aliasData != nil)
-//    {
-//        BDAlias * savedAlias = [[BDAlias alloc] initWithData: aliasData];
-//		[self setValue: savedAlias forKey: @"alias"];
-//		[savedAlias release];
-//    }
+
 }
 
 
@@ -68,24 +59,34 @@
 
 - (void)setPath:(NSString *)newPath
 {
-	BDAlias * newAlias = [[BDAlias alloc] initWithPath: newPath];
-	[self setValue: [newAlias aliasData] forKey: @"pathData"];
-	[newAlias release];
+    NSURL * fileURL = [[NSURL alloc] initFileURLWithPath: newPath];
+    NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationMinimalBookmark
+                              includingResourceValuesForKeys: nil
+                                               relativeToURL: nil
+                                                       error: nil];
+	[self setValue: bookmarkData forKey: @"pathData"];
+	[fileURL release];
 }
 
 
 
 - (NSString *)path
 {
-	BDAlias * alias = [[BDAlias alloc] initWithData: [self valueForKey: @"pathData"]];
-	NSString * hardPath = [alias fullPath];
-	[alias release];
-	
-	if(!hardPath)
-	{
-		NSLog(@"Could not find image group");
+    NSURL * fileURL = [NSURL URLByResolvingBookmarkData: [self valueForKey: @"pathData"]
+                                                options: NSURLBookmarkResolutionWithoutUI
+                                          relativeToURL: nil
+                                    bookmarkDataIsStale: NO
+                                                  error: nil];
+    
+    
+	NSString * hardPath = nil;
+    if (fileURL) {
+        hardPath = [fileURL path];
+    }
+    else {
+        NSLog(@"Could not find image group");
 		[[self managedObjectContext] deleteObject: self];
-	}
+    }
 	
 	return hardPath;
 }

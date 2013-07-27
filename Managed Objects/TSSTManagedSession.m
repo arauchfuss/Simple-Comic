@@ -8,7 +8,6 @@
 
 #import "TSSTManagedSession.h"
 #import "TSSTManagedGroup.h"
-#import "BDAlias.h"
 
 @implementation TSSTManagedSession
 
@@ -19,23 +18,12 @@
 {
 	[super awakeFromFetch];
 	TSSTManagedGroup * group;
-	NSData * aliasData;
-	NSString * hardPath;
-	BDAlias * savedAlias;
-	for (group in [self valueForKey:@"groups"])
+	NSString * path;
+    /* By calling path for all children, groups with unresolved bookmarks
+     are deleted. */
+	for (group in [self valueForKey: @"groups"])
 	{
-		aliasData = [group valueForKey: @"pathData"];
-		if (aliasData != nil)
-		{
-			savedAlias = [[BDAlias alloc] initWithData: aliasData];
-			hardPath = [savedAlias fullPath];
-			[savedAlias release];
-			if(!hardPath)
-			{
-				[group setValue: nil forKey: @"session"];
-				[[self managedObjectContext] deleteObject: group];
-			}
-		}
+		path = [group path];
 	}
 }
 
