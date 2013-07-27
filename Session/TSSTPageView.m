@@ -343,7 +343,7 @@
 										   style, NSParagraphStyleAttributeName,
 										   nil];
 		[style release];
-		NSString * selectionText = [NSString stringWithString: @"Click to select page"];
+		NSString * selectionText = @"Click to select page";
 		if([sessionController pageSelectionCanCrop])
 		{
 			selectionText = [selectionText stringByAppendingString: @"\nDrag to crop"];
