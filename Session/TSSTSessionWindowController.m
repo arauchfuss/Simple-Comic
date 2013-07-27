@@ -194,6 +194,9 @@
 	[fullscreenProgressBar addTrackingArea: newArea];
 	[newArea release];
 	[jumpField setDelegate: self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:@"SCMouseDragNotification" object:nil];
+
     [self restoreSession];
 }
 
@@ -427,6 +430,20 @@
         [[infoWindow parentWindow] removeChildWindow: infoWindow];
         [infoWindow orderOut: self];
     }
+}
+
+
+
+/* Handles mouse drag notifications relayed from progressbar */
+- (void)handleMouseDragged:(NSNotification*)notification {
+    [infoWindow orderOut:self];
+}
+
+
+
+- (void)mouseUp:(NSEvent *)theEvent{
+    [self infoPanelSetupAtPoint: [theEvent locationInWindow]];
+    [infoWindow orderFront:self];
 }
 
 
@@ -973,9 +990,10 @@
 		NSSavePanel * savePanel = [NSSavePanel savePanel];
 		[savePanel setTitle: @"Extract Page"];
 		[savePanel setPrompt: @"Extract"];
-		if(NSOKButton == [savePanel runModalForDirectory: nil file: [selectedPage name]])
+        [savePanel setNameFieldStringValue:[selectedPage name]];
+		if(NSOKButton == [savePanel runModal])
 		{
-			[[selectedPage pageData] writeToFile: [savePanel filename] atomically: YES];
+			[[selectedPage pageData] writeToFile: [[savePanel URL] path] atomically: YES];
 		}
 	}
 }
