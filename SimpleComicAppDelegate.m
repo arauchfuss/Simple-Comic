@@ -715,13 +715,27 @@ static NSArray * allAvailableStringEncodings(void)
 	NSOpenPanel * addPagesModal = [NSOpenPanel openPanel];
 	[addPagesModal setAllowsMultipleSelection: YES];
     [addPagesModal setCanChooseDirectories: YES];
-	
+    NSMutableArray * filePaths;
+    NSArray * fileURLs;
+	NSURL * fileURL;
+    NSString * filePath;
+    
 	NSMutableArray * allAllowedFilesExtensions = [NSMutableArray arrayWithArray: [TSSTManagedArchive archiveExtensions]];
 	[allAllowedFilesExtensions addObjectsFromArray: [TSSTPage imageExtensions]];
+    [addPagesModal setAllowedFileTypes:allAllowedFilesExtensions];
+
     
-	if([addPagesModal runModalForTypes: allAllowedFilesExtensions] !=  NSCancelButton)
+	if([addPagesModal runModal] !=  NSCancelButton)
 	{
-		TSSTManagedSession * session = [self newSessionWithFiles: [addPagesModal filenames]];
+        filePaths = [NSMutableArray new];
+        fileURLs = [addPagesModal URLs];
+        
+        for (fileURL in fileURLs) {
+            filePath = [fileURL path];
+            [filePaths addObject:filePath];
+        }
+        
+		TSSTManagedSession * session = [self newSessionWithFiles: filePaths];
 		[self windowForSession: session];
 	}
 }
