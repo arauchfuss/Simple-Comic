@@ -28,7 +28,6 @@
 */
 
 
-#import <Carbon/Carbon.h>
 #import <XADMaster/XADArchive.h>
 #import "UKXattrMetadataStore.h"
 #import "SimpleComicAppDelegate.h"
@@ -1200,7 +1199,7 @@
         rectangleValue = [NSValue valueWithRect: [[self window] frame]];
         rectData = [NSArchiver archivedDataWithRootObject: rectangleValue];
         [session setValue: rectData forKey: @"position" ];
-        SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+        [NSApp setPresentationOptions: NSApplicationPresentationHideDock | NSApplicationPresentationAutoHideMenuBar];
 		windowRect = [[[self window] screen] frame];
 		windowRect.size.height += [(DTSessionWindow *)[self window] toolbarHeight];
 		[(DTSessionWindow *)[self window] setFullscreen: YES];
@@ -1211,7 +1210,7 @@
     }
     else
     {
-        SetSystemUIMode(kUIModeNormal, 0);
+        [NSApp setPresentationOptions: NSApplicationPresentationDefault];
 		[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
 		[bezelWindow orderOut: self];
 		[(DTSessionWindow *)[self window] setFullscreen: NO];
@@ -1630,7 +1629,7 @@ images are currently visible and then skips over them.
 	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
     [NSCursor unhide];
-    SetSystemUIMode(kUIModeNormal, 0);
+    [NSApp setPresentationOptions: NSApplicationPresentationDefault];
 	
 	[session removeObserver: self forKeyPath: TSSTFullscreen];
     [session removeObserver: self forKeyPath: TSSTPageOrder];
@@ -1655,7 +1654,7 @@ images are currently visible and then skips over them.
 {
     if([aNotification object] == [self window] && [[session valueForKey: TSSTFullscreen] boolValue])
     {
-        SetSystemUIMode(kUIModeAllHidden, kUIOptionAutoShowMenuBar);
+        [NSApp setPresentationOptions: NSApplicationPresentationHideDock | NSApplicationPresentationAutoHideMenuBar];
         [pageView setNeedsDisplay: YES];
 		if([[session valueForKey: @"loupe"] boolValue])
 		{
@@ -1672,7 +1671,7 @@ images are currently visible and then skips over them.
     }
     else if([aNotification object] == [self window])
     {
-        SetSystemUIMode(kUIModeNormal, 0);
+        [NSApp setPresentationOptions: NSApplicationPresentationDefault];
 		if([[session valueForKey: @"loupe"] boolValue])
 		{
 			[NSCursor hide];

@@ -29,7 +29,6 @@
 
 #import "SimpleComicAppDelegate.h"
 #import <XADMaster/XADArchive.h>
-#import <Carbon/Carbon.h>
 #import "TSSTSessionWindowController.h"
 #import "TSSTSortDescriptor.h"
 #import "TSSTPage.h"
