@@ -71,6 +71,7 @@
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A6D63DA717C2B8F2000272F1 /* TSSTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */; };
 		FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */; };
 /* End PBXBuildFile section */
 
@@ -296,6 +297,7 @@
 				FA9FB59508AAE3690085AA55 /* Preferences */,
 				28FA4DD50B8A6F3B00496668 /* Managed Objects */,
 				281C0DC40CEEA16D009A9696 /* Helpers */,
+				28770B670DBA8B1C00A78646 /* Fullscreen Controls */,
 				287C611C106F80A9001463C6 /* Unused */,
 			);
 			name = Classes;
@@ -369,21 +371,21 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		28770B670DBA8B1C00A78646 /* Segmented Controls */ = {
+		28770B670DBA8B1C00A78646 /* Fullscreen Controls */ = {
 			isa = PBXGroup;
 			children = (
-				28770B6A0DBA8B1C00A78646 /* TSSTSegmentedCell.h */,
-				28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */,
 				28770B6C0DBA8B1C00A78646 /* TSSTSegmentedControl.h */,
 				28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */,
 			);
-			name = "Segmented Controls";
-			path = "../Segmented Controls";
+			name = "Fullscreen Controls";
+			path = "Segmented Controls";
 			sourceTree = "<group>";
 		};
 		287C611C106F80A9001463C6 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				28770B6A0DBA8B1C00A78646 /* TSSTSegmentedCell.h */,
+				28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */,
 				28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */,
 				28FACB810CD01D93007B7918 /* SS_PrefsController.h */,
 				28FACB820CD01D93007B7918 /* SS_PrefsController.m */,
@@ -395,7 +397,6 @@
 				28FACBD40CD02635007B7918 /* AdvancedPrefController.m */,
 				285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */,
 				285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */,
-				28770B670DBA8B1C00A78646 /* Segmented Controls */,
 				28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */,
 				28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */,
 				28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */,
@@ -735,6 +736,7 @@
 				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
+				A6D63DA717C2B8F2000272F1 /* TSSTSegmentedControl.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
 				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,

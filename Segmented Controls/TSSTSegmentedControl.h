@@ -11,12 +11,7 @@
 
 @interface TSSTSegmentedControl : NSSegmentedControl
 {
-    int mouseDownSegment;
 }
 
-+ (float)cornerRadius;
-
-- (int)mouseDownSegment;
-- (int)segmentAtPoint:(NSPoint) point;
 
 @end
