@@ -45,7 +45,7 @@
 - (void)awakeFromNib
 {
 	/* Doing this so users can drag archives into the view. */
-    [self registerForDraggedTypes: [NSArray arrayWithObject: NSFilenamesPboardType]];
+    [self registerForDraggedTypes: @[NSFilenamesPboardType]];
 }
 
 
@@ -132,9 +132,9 @@
         frameCount = [[testImageRep valueForProperty: NSImageFrameCount] intValue];
         if(frameCount > 1)
         {
-            animationInfo = [NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt: 1], @"imageNumber",
-                firstPageImage, @"pageImage",
-                [testImageRep valueForProperty: NSImageLoopCount], @"loopCount",nil];
+            animationInfo = @{@"imageNumber": @1,
+                @"pageImage": firstPageImage,
+                @"loopCount": [testImageRep valueForProperty: NSImageLoopCount]};
             frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
             frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
             [NSTimer scheduledTimerWithTimeInterval: frameDuration
@@ -167,10 +167,10 @@
     if(currentFrame == 0 && loopCount > 1)
     {
         --loopCount;
-        [animationInfo setValue: [NSNumber numberWithInt: loopCount] forKey: @"loopCount"];
+        [animationInfo setValue: @(loopCount) forKey: @"loopCount"];
     }
     
-    [testImageRep setProperty: NSImageCurrentFrame withValue: [NSNumber numberWithInt: currentFrame]];
+    [testImageRep setProperty: NSImageCurrentFrame withValue: @(currentFrame)];
     if(loopCount != 1)
     {
         frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
@@ -337,11 +337,9 @@
 	{
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment: NSCenterTextAlignment];
-		NSDictionary * stringAttributes = [NSDictionary dictionaryWithObjectsAndKeys: 
-										   [NSFont fontWithName: @"Lucida Grande" size: 24], NSFontAttributeName, 
-										   [NSColor colorWithCalibratedWhite: 1 alpha: 1.0], NSForegroundColorAttributeName,
-										   style, NSParagraphStyleAttributeName,
-										   nil];
+		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande" size: 24], 
+										   NSForegroundColorAttributeName: [NSColor colorWithCalibratedWhite: 1 alpha: 1.0],
+										   NSParagraphStyleAttributeName: style};
 		[style release];
 		NSString * selectionText = @"Click to select page";
 		if([sessionController pageSelectionCanCrop])
@@ -760,7 +758,7 @@
 		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
 		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
-		[defaultsController setValue: [NSNumber numberWithInt: loupeDiameter] forKey: TSSTLoupeDiameter];
+		[defaultsController setValue: @(loupeDiameter) forKey: TSSTLoupeDiameter];
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
@@ -933,7 +931,7 @@
         [self scrollPoint: scrollPoint];
         [sessionController refreshLoupePanel];
         NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
-            [NSDate date], @"lastTime", [NSNumber numberWithBool: shiftKey], @"accelerate",
+            [NSDate date], @"lastTime", @(shiftKey), @"accelerate",
             nil, @"leftTurnStart", nil, @"rightTurnStart", nil];
         scrollTimer = [NSTimer scheduledTimerWithTimeInterval: 1/10
                                                        target: self 
@@ -1356,11 +1354,11 @@
 	BOOL isFullscreen = [[[sessionController session] valueForKey: TSSTFullscreen] boolValue];
 	if (([event deltaZ] > 5) && !isFullscreen)
 	{
-		[[sessionController session] setValue: [NSNumber numberWithBool: YES] forKey: TSSTFullscreen];
+		[[sessionController session] setValue: @YES forKey: TSSTFullscreen];
 	}
 	else if(([event deltaZ] < -5) && isFullscreen)
 	{
-		[[sessionController session] setValue: [NSNumber numberWithBool: NO] forKey: TSSTFullscreen];
+		[[sessionController session] setValue: @NO forKey: TSSTFullscreen];
 	}
 }
 

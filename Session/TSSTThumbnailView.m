@@ -118,7 +118,7 @@
 	for (; counter < ([[pageController content] count]); ++counter)
 	{
 		trackRect = NSInsetRect([self rectForIndex: counter], 2, 2);
-		rectIndex = [NSNumber numberWithInteger: counter];
+		rectIndex = @(counter);
 		tagIndex = [self addTrackingRect: trackRect 
 								   owner: self 
 								userData: rectIndex
@@ -222,7 +222,7 @@
 	hoverIndex = [(NSNumber *)[theEvent userData] integerValue];	
     if(limit == [[pageController content] count])
     {
-        [NSTimer scheduledTimerWithTimeInterval: 0.05 target: self selector: @selector(dwell:) userInfo: [NSNumber numberWithInteger: hoverIndex] repeats: NO];
+        [NSTimer scheduledTimerWithTimeInterval: 0.05 target: self selector: @selector(dwell:) userInfo: @(hoverIndex) repeats: NO];
     }
 }
 
@@ -254,12 +254,12 @@
 
 - (void)zoomThumbnailAtIndex:(NSInteger)index
 {
-    NSImage * thumb = [[[pageController arrangedObjects] objectAtIndex: index] valueForKey: @"pageImage"];
+    NSImage * thumb = [[pageController arrangedObjects][index] valueForKey: @"pageImage"];
 	[thumbnailView setImage: thumb];
 	[thumbnailView setNeedsDisplay: YES];
 
     NSSize imageSize = [thumb size];
-    thumbnailView.imageName = [[[pageController arrangedObjects] objectAtIndex: index] valueForKey: @"name"];
+    thumbnailView.imageName = [[pageController arrangedObjects][index] valueForKey: @"name"];
     NSRect indexRect = [self rectForIndex: index];
     NSRect visibleRect = [[[self window] screen] visibleFrame];
     NSPoint thumbPoint = NSMakePoint(NSMinX(indexRect) + NSWidth(indexRect) / 2,

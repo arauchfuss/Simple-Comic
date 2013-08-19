@@ -37,11 +37,9 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 		[stringEmboss setShadowColor: [NSColor colorWithDeviceWhite: 0.9 alpha: 1]];
 		[stringEmboss setShadowBlurRadius: 0];
 		[stringEmboss setShadowOffset: NSMakeSize(1, -1)];
-		self.numberStyle = [NSDictionary dictionaryWithObjectsAndKeys: 
-							 [NSFont fontWithName: @"Lucida Grande Bold" size: 10], NSFontAttributeName,
-							 [NSColor colorWithDeviceWhite: 0.2 alpha: 1], NSForegroundColorAttributeName,
-							 stringEmboss, NSShadowAttributeName,
-							 nil];
+		self.numberStyle = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande Bold" size: 10],
+							 NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.2 alpha: 1],
+							 NSShadowAttributeName: stringEmboss};
 		[stringEmboss release];
 		self.horizontalMargin = 35;
 		self.cornerRadius = 4.0;
@@ -60,7 +58,7 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	[self removeObserver: self forKeyPath: @"leftToRight"];
 	[self removeObserver: self forKeyPath: @"currentValue"];
 	[self removeObserver: self forKeyPath: @"maxValue"];
-	[self removeTrackingArea: [[self trackingAreas] objectAtIndex: 0]];
+	[self removeTrackingArea: [self trackingAreas][0]];
 	
 	[numberStyle release];
 	[barGradient release];
@@ -174,7 +172,7 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 		return;
 	}
 	
-	NSTrackingArea * oldArea = [[self trackingAreas] objectAtIndex: 0];
+	NSTrackingArea * oldArea = [self trackingAreas][0];
 	[oldArea retain];
 	[self removeTrackingArea: oldArea];
 	
