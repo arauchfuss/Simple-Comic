@@ -38,7 +38,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
-            <rect key="contentRect" x="0.0" y="145" width="460" height="529"/>
+            <rect key="contentRect" x="40" y="225" width="460" height="529"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="400" height="200"/>
             <view key="contentView" id="7">
@@ -72,7 +72,7 @@
                         </scroller>
                     </scrollView>
                     <customView id="607" customClass="DTPolishedProgressBar">
-                        <rect key="frame" x="0.0" y="-1" width="450" height="23"/>
+                        <rect key="frame" x="0.0" y="-1" width="460" height="23"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </customView>
                 </subviews>
@@ -133,8 +133,12 @@
                             <segmentedCell key="cell" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Right to Left Page Order" image="rl_order" width="22"/>
-                                    <segment toolTip="Left to Right Page Order" image="lr_order" width="22"/>
+                                    <segment toolTip="Right to Left Page Order" image="rl_order" width="22">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Left to Right Page Order" image="lr_order" width="22">
+                                        <nil key="label"/>
+                                    </segment>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -209,22 +213,6 @@
                             </buttonCell>
                             <connections>
                                 <binding destination="-2" name="value" keyPath="session.loupe" id="576"/>
-                            </connections>
-                        </button>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="DEBA288D-F304-4E79-B7FB-8F276128DFE2" label="Fullscreen" paletteLabel="Fullscreen" image="NSEnterFullScreenTemplate" id="645" customClass="DTToolbarItem">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="27" height="25"/>
-                        <size key="maxSize" width="27" height="25"/>
-                        <button key="view" toolTip="Fullscreen" verticalHuggingPriority="750" id="646">
-                            <rect key="frame" x="17" y="14" width="27" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" title="Fullscreen" bezelStyle="texturedSquare" image="NSEnterFullScreenTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="647">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="session.fullscreen" id="653"/>
                             </connections>
                         </button>
                     </toolbarItem>
@@ -453,7 +441,6 @@ Gw
     <resources>
         <image name="Loupe" width="15" height="16"/>
         <image name="NSAddTemplate" width="8" height="8"/>
-        <image name="NSEnterFullScreenTemplate" width="16" height="15"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="9"/>
         <image name="NSRemoveTemplate" width="8" height="8"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="9"/>
