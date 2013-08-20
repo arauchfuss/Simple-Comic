@@ -1060,17 +1060,16 @@
 
 - (void)resizeWindow
 {
-//    if([(DTSessionWindow *)[self window] isFullscreen] &&
-//       [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
-//    {
-//        NSRect allowedRect = [[[self window] screen] visibleFrame];
-//		NSRect frame = [[self window] frame];
-//		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect), 
-//								 NSMaxX(allowedRect) - NSMinX(frame), 
-//								 NSMaxY(frame) - NSMinY(allowedRect));
-//        NSRect zoomFrame = [self optimalPageViewRectForRect: allowedRect];
-//        [[self window] setFrame: zoomFrame display: YES animate: NO];
-//    }
+    if([[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
+    {
+        NSRect allowedRect = [[[self window] screen] visibleFrame];
+		NSRect frame = [[self window] frame];
+		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect), 
+								 NSMaxX(allowedRect) - NSMinX(frame), 
+								 NSMaxY(frame) - NSMinY(allowedRect));
+        NSRect zoomFrame = [self optimalPageViewRectForRect: allowedRect];
+        [[self window] setFrame: zoomFrame display: YES animate: NO];
+    }
 }
 
 
@@ -1254,6 +1253,10 @@ images are currently visible and then skips over them.
         [thumbnailPanel orderOut: self];
 		[exposeBezel orderOut: self];
 	}
+    else if([(DTSessionWindow *)[self window] isFullscreen])
+    {
+        [[self window] toggleFullScreen: self];
+    }
 	else if([[session valueForKey: @"loupe"] boolValue])
 	{
 		[session setValue: @NO forKey: @"loupe"];
@@ -1263,6 +1266,10 @@ images are currently visible and then skips over them.
 
 - (void)killAllOptionalUIElements
 {
+    if([(DTSessionWindow *)[self window] isFullscreen])
+    {
+        [[self window] toggleFullScreen: self];
+    }
     [session setValue: @NO forKey: @"loupe"];
     [self refreshLoupePanel];
 	[exposeBezel removeChildWindow: thumbnailPanel];
@@ -1519,24 +1526,6 @@ images are currently visible and then skips over them.
 }
 
 
-- (NSSize)windowWillResize:(NSWindow *)resizeWindow toSize:(NSSize)newSize
-{
-	if(resizeWindow != [self window])
-	{
-		return newSize;
-	}
-	
-	if([resizeWindow showsResizeIndicator])
-	{
-		return newSize;
-	}
-	else
-	{
-		return [resizeWindow frame].size;
-	}
-}
-
-
 - (void)windowDidResize:(NSNotification *)aNotification
 {
 	BOOL statusBar;
@@ -1732,10 +1721,6 @@ images are currently visible and then skips over them.
 	else if([[item label] isEqualToString: @"Loupe"])
 	{
 		[[item view] bind: @"value" toObject: self withKeyPath: @"session.loupe" options: nil];
-	}
-	else if([[item label] isEqualToString: @"Fullscreen"])
-	{
-		[[item view] bind: @"value" toObject: self withKeyPath: @"session.fullscreen" options: nil];
 	}
 }
 
