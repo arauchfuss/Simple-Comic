@@ -59,4 +59,11 @@
 }
 
 
+
+- (BOOL)isFullscreen
+{
+    return (([self styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask);
+}
+
+
 @end

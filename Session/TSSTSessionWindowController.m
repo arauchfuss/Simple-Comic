@@ -58,8 +58,6 @@
 {
     NSImage * segmentImage = [NSImage imageNamed: @"org_size"];
     [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"fullscreen"];
-    [segmentImage setTemplate: YES];
     segmentImage = [NSImage imageNamed: @"Loupe"];
     [segmentImage setTemplate: YES];
     segmentImage = [NSImage imageNamed: @"rotate_l"];
@@ -104,7 +102,6 @@
         BOOL cascade = [session valueForKey: @"position"] ? NO : YES;
         [self setShouldCascadeWindows: cascade];
 		/* Make sure that the session does not start out in fullscreen, nor with the loupe enabled. */
-		[session setValue: @NO forKey: TSSTFullscreen];
         [session setValue: @NO forKey: @"loupe"];
 		/* Images are sorted by group and then image name. */
 		TSSTSortDescriptor * fileNameSort = [[TSSTSortDescriptor alloc] initWithKey: @"imagePath" ascending: YES];
@@ -135,15 +132,7 @@
     [exposeBezel setFloatingPanel: YES];
 	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
-    [bezelWindow setAcceptsMouseMovedEvents: YES];
-    [bezelWindow setFloatingPanel: YES];
-	[bezelWindow setNextResponder: [self window]];
     [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
-	
-	[fullscreenProgressBar setHighlightColor: nil];
-	NSDictionary * fullscreenNumberStyle = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande" size: 10],
-											 NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.82 alpha: 1]};
-	[fullscreenProgressBar setNumberStyle: fullscreenNumberStyle];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
@@ -153,7 +142,6 @@
     [defaults addObserver: self forKeyPath: TSSTBackgroundColor options: 0 context: nil];
     [defaults addObserver: self forKeyPath: TSSTLoupeDiameter options: 0 context: nil];
 	[defaults addObserver: self forKeyPath: TSSTLoupePower options: 0 context: nil];
-    [session addObserver: self forKeyPath: TSSTFullscreen options: 0 context: nil];
     [session addObserver: self forKeyPath: TSSTPageOrder options: 0 context: nil];
     [session addObserver: self forKeyPath: TSSTPageScaleOptions options: 0 context: nil];
     [session addObserver: self forKeyPath: TSSTTwoPageSpread options: 0 context: nil];
@@ -163,7 +151,6 @@
     
 	[pageScrollView setPostsFrameChangedNotifications: YES];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(resizeView) name: NSViewFrameDidChangeNotification object: pageScrollView];
-	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(deactivate:) name: NSApplicationDidResignActiveNotification object: NSApp];
     [pageController addObserver: self forKeyPath: @"selectionIndex" options: 0 context: nil];
     [pageController addObserver: self forKeyPath: @"arrangedObjects.@count" options: 0 context: nil];
     
@@ -171,24 +158,13 @@
     [progressBar bind: @"currentValue" toObject: pageController withKeyPath: @"selectionIndex" options: nil];
     [progressBar bind: @"maxValue" toObject: pageController withKeyPath: @"arrangedObjects.@count" options: nil];
     [progressBar bind: @"leftToRight" toObject: session withKeyPath: TSSTPageOrder options: nil];
-	
-	[fullscreenProgressBar addObserver: self forKeyPath: @"currentValue" options: 0 context: nil];
-    [fullscreenProgressBar bind: @"currentValue" toObject: pageController withKeyPath: @"selectionIndex" options: nil];
-    [fullscreenProgressBar bind: @"maxValue" toObject: pageController withKeyPath: @"arrangedObjects.@count" options: nil];
-    [fullscreenProgressBar bind: @"leftToRight" toObject: session withKeyPath: TSSTPageOrder options: nil];
-    
+	   
     [pageView bind: TSSTViewRotation toObject: session withKeyPath: TSSTViewRotation options: nil];
 	NSTrackingArea * newArea = [[NSTrackingArea alloc] initWithRect: [progressBar progressRect]
 															options: NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingActiveInActiveApp 
 															  owner: self
 														   userInfo: @{@"purpose": @"normalProgress"}];
 	[progressBar addTrackingArea: newArea];
-	[newArea release];
-	newArea = [[NSTrackingArea alloc] initWithRect: [fullscreenProgressBar progressRect]
-										   options: NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInActiveApp 
-											 owner: self
-										  userInfo: @{@"purpose": @"fullScreenProgress"}];
-	[fullscreenProgressBar addTrackingArea: newArea];
 	[newArea release];
 	[jumpField setDelegate: self];
     
@@ -218,12 +194,7 @@
     [progressBar unbind: @"currentValue"];
     [progressBar unbind: @"maxValue"];
     [progressBar unbind: @"leftToRight"];
-	
-	[fullscreenProgressBar removeObserver: self forKeyPath: @"currentValue"];
-    [fullscreenProgressBar unbind: @"currentValue"];
-    [fullscreenProgressBar unbind: @"maxValue"];
-    [fullscreenProgressBar unbind: @"leftToRight"];
-        
+    
     [pageView setSessionController: nil];
 	[pageSortDescriptor release];
 	[pageNames release];
@@ -249,11 +220,7 @@
 	
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
-    if([keyPath isEqualToString: TSSTFullscreen])
-    {
-        [self fullscreen];
-    }
-    else if([keyPath isEqualToString: TSSTScrollersVisible])
+    if([keyPath isEqualToString: TSSTScrollersVisible])
     {
         [self scaleToWindow];
     }
@@ -262,10 +229,6 @@
 		if(object == progressBar)
 		{
 			[pageController setSelectionIndex: [progressBar currentValue]];
-		}
-		else if(object == fullscreenProgressBar)
-		{
-			[pageController setSelectionIndex: [fullscreenProgressBar currentValue]];
 		}
     }
     else if([keyPath isEqualToString: @"arrangedObjects.@count"])
@@ -347,56 +310,12 @@
 - (void)mouseMoved:(NSEvent *)theEvent
 {
 	NSRect progressRect;
-	NSPoint screenLocation = [[theEvent window] convertBaseToScreen: [theEvent locationInWindow]];
 	NSPoint windowLocation = [theEvent locationInWindow];
-	if([[session valueForKey: TSSTFullscreen] boolValue])
-	{
-		if(mouseMovedTimer)
-		{
-			[mouseMovedTimer invalidate];
-			mouseMovedTimer = nil;
-		}
-		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
-		
-		NSRect bezelFrame = [bezelWindow frame];
-		NSRect fullscreenFrame = [[[self window] screen] frame];
-		BOOL inBezel = NSMouseInRect(screenLocation, bezelFrame, NO);
-		fullscreenFrame.size.height = 4;
-		if(inBezel && [theEvent window] == bezelWindow)
-		{
-			progressRect = [fullscreenProgressBar convertRect: [fullscreenProgressBar progressRect] toView: nil];
-			if(NSMouseInRect(windowLocation, progressRect, [fullscreenProgressBar isFlipped]))
-			{
-				[self infoPanelSetupAtPoint: windowLocation];
-			}		
-		}
-		else if(NSMouseInRect(screenLocation, fullscreenFrame, NO) && [NSApp isActive])
-		{
-			[[self window] addChildWindow: bezelWindow ordered: NSWindowAbove];
-			[bezelWindow makeKeyWindow];
-			
-			windowLocation = [bezelWindow convertScreenToBase: screenLocation];
-			progressRect = [fullscreenProgressBar convertRect: [fullscreenProgressBar progressRect] toView: nil];
-			if(NSMouseInRect(windowLocation, progressRect, [fullscreenProgressBar isFlipped]))
-			{
-				[self infoPanelSetupAtPoint: windowLocation];
-				[bezelWindow addChildWindow: infoWindow ordered: NSWindowAbove];
-			}	
-		}
-		else
-		{
-			[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
-			[bezelWindow orderOut: self];
-		}
-	}
-	else
-	{
-		progressRect = [progressBar convertRect: [progressBar progressRect] toView: nil];
-		if(NSMouseInRect(windowLocation, progressRect, [progressBar isFlipped]))
-		{
-			[self infoPanelSetupAtPoint: windowLocation];
-		}
-	}
+    progressRect = [progressBar convertRect: [progressBar progressRect] toView: nil];
+    if(NSMouseInRect(windowLocation, progressRect, [progressBar isFlipped]))
+    {
+        [self infoPanelSetupAtPoint: windowLocation];
+    }
 	
     [self refreshLoupePanel];
 }
@@ -411,11 +330,6 @@
         [self infoPanelSetupAtPoint: [theEvent locationInWindow]];
 		[[self window] addChildWindow: infoWindow ordered: NSWindowAbove];
     }
-	else if([purpose isEqualToString: @"fullScreenProgress"])
-	{
-		[self infoPanelSetupAtPoint: [theEvent locationInWindow]];
-		[bezelWindow addChildWindow: infoWindow ordered: NSWindowAbove];
-	}
 }
 
 
@@ -435,14 +349,6 @@
 - (void)handleMouseDragged:(NSNotification*)notification {
     [infoWindow orderOut:self];
 }
-
-
-
-- (void)mouseUp:(NSEvent *)theEvent{
-    [self infoPanelSetupAtPoint: [theEvent locationInWindow]];
-    [infoWindow orderFront:self];
-}
-
 
 
 - (void)refreshLoupePanel
@@ -486,18 +392,10 @@
 	NSPoint cursorPoint;
 	int index;
 	DTPolishedProgressBar * bar;
-	if([[session valueForKey: TSSTFullscreen] boolValue])
-	{
-		bar = fullscreenProgressBar;
-		[[infoWindow contentView] setBordered: YES];
-		point.y = (NSMaxY([bar frame]) - 11);
-	}
-	else
-	{
-		bar = progressBar;
-		[[infoWindow contentView] setBordered: NO];
-		point.y = (NSMaxY([bar frame]) - 6);
-	}
+
+    bar = progressBar;
+    [[infoWindow contentView] setBordered: NO];
+    point.y = (NSMaxY([bar frame]) - 6);
 	
 	cursorPoint = [bar convertPoint: point fromView: nil];
 	index = [bar indexForPoint: cursorPoint];
@@ -535,14 +433,6 @@
 {
     BOOL pageOrder = [[session valueForKey: TSSTPageOrder] boolValue];
     [session setValue: [NSNumber numberWithBool: !pageOrder] forKey: TSSTPageOrder];
-}
-
-
-
-- (IBAction)changeFullscreen:(id)sender
-{
-    BOOL fullscreen = [[session valueForKey: TSSTFullscreen] boolValue];
-    [session setValue: [NSNumber numberWithBool: !fullscreen] forKey: TSSTFullscreen];
 }
 
 
@@ -1077,7 +967,7 @@
 {
 	mouseMovedTimer = nil;
 
-	if([[session valueForKey: TSSTFullscreen] boolValue])
+	if([(DTSessionWindow *)[self window] isFullscreen])
 	{
 		[NSCursor setHiddenUntilMouseMoves: YES];
 	}
@@ -1170,63 +1060,17 @@
 
 - (void)resizeWindow
 {
-    if(![[session valueForKey: TSSTFullscreen] boolValue] &&
-       [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
-    {
-        NSRect allowedRect = [[[self window] screen] visibleFrame];
-		NSRect frame = [[self window] frame];
-		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect), 
-								 NSMaxX(allowedRect) - NSMinX(frame), 
-								 NSMaxY(frame) - NSMinY(allowedRect));
-        NSRect zoomFrame = [self optimalPageViewRectForRect: allowedRect];
-        [[self window] setFrame: zoomFrame display: YES animate: NO];
-    }
-}
-
-
-- (void)fullscreen
-{
-    if(mouseMovedTimer)
-	{
-		[mouseMovedTimer invalidate];
-		mouseMovedTimer = nil;
-	}
-	NSValue * rectangleValue;
-	NSData * rectData;
-	NSRect windowRect;
-    if([[session valueForKey: TSSTFullscreen] boolValue])
-    {
-        rectangleValue = [NSValue valueWithRect: [[self window] frame]];
-        rectData = [NSArchiver archivedDataWithRootObject: rectangleValue];
-        [session setValue: rectData forKey: @"position" ];
-        [NSApp setPresentationOptions: NSApplicationPresentationHideDock | NSApplicationPresentationAutoHideMenuBar];
-		windowRect = [[[self window] screen] frame];
-		windowRect.size.height += [(DTSessionWindow *)[self window] toolbarHeight];
-		[(DTSessionWindow *)[self window] setFullscreen: YES];
-		[[self window] setFrame: windowRect display: NO animate: NO];
-		[[self window] setShowsResizeIndicator: NO];
-		[self adjustStatusBar];
-		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
-    }
-    else
-    {
-        [NSApp setPresentationOptions: NSApplicationPresentationDefault];
-		[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
-		[bezelWindow orderOut: self];
-		[(DTSessionWindow *)[self window] setFullscreen: NO];
-		rectData = [session valueForKey: @"position" ];
-		rectangleValue = [NSUnarchiver unarchiveObjectWithData: rectData];
-		windowRect = [rectangleValue rectValue];
-		[[self window] setShowsResizeIndicator: YES];
-		[[self window] setFrame: windowRect display: NO animate: NO];
-        [self adjustStatusBar];
-    }
-	
-	[[infoWindow parentWindow] removeChildWindow: infoWindow];
-	[infoWindow orderOut: self];
-	
-    [[loupeWindow parentWindow] removeChildWindow: loupeWindow];
-    [loupeWindow orderOut: self];
+//    if([(DTSessionWindow *)[self window] isFullscreen] &&
+//       [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
+//    {
+//        NSRect allowedRect = [[[self window] screen] visibleFrame];
+//		NSRect frame = [[self window] frame];
+//		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect), 
+//								 NSMaxX(allowedRect) - NSMinX(frame), 
+//								 NSMaxY(frame) - NSMinY(allowedRect));
+//        NSRect zoomFrame = [self optimalPageViewRectForRect: allowedRect];
+//        [[self window] setFrame: zoomFrame display: YES animate: NO];
+//    }
 }
 
 
@@ -1284,7 +1128,7 @@
 {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSRect scrollViewRect;
-    BOOL statusBar = [[defaults valueForKey: TSSTStatusbarVisible] boolValue] && ![[session valueForKey: TSSTFullscreen] boolValue];
+    BOOL statusBar = [[defaults valueForKey: TSSTStatusbarVisible] boolValue];
     if(statusBar)
     {
         scrollViewRect = [[[self window] contentView] frame];
@@ -1385,7 +1229,7 @@ images are currently visible and then skips over them.
 /*! This method is called in preparation for saving. */
 - (void)updateSessionObject
 {
-    if(![[session valueForKey: TSSTFullscreen] boolValue])
+    if(![(DTSessionWindow *)[self window] isFullscreen])
     {
         NSValue * postionValue = [NSValue valueWithRect: [[self window] frame]];
         NSData * posData = [NSArchiver archivedDataWithRootObject: postionValue];
@@ -1414,16 +1258,11 @@ images are currently visible and then skips over them.
 	{
 		[session setValue: @NO forKey: @"loupe"];
 	}
-	else if([[session valueForKey: TSSTFullscreen] boolValue])
-	{
-		[session setValue: @NO forKey: TSSTFullscreen];
-	}
 }
 
 
 - (void)killAllOptionalUIElements
 {
-    [session setValue: @NO forKey: TSSTFullscreen];
     [session setValue: @NO forKey: @"loupe"];
     [self refreshLoupePanel];
 	[exposeBezel removeChildWindow: thumbnailPanel];
@@ -1517,9 +1356,9 @@ images are currently visible and then skips over them.
 	
 	BOOL valid = YES;
     int state;
-    if([menuItem action] == @selector(changeFullscreen:))
+    if([menuItem action] == @selector(toggleFullScreen:))
     {
-        state = [[session valueForKey: TSSTFullscreen] boolValue] ? NSOnState : NSOffState;
+        state = [(DTSessionWindow *)[self window] isFullscreen] ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem action] == @selector(changeTwoPage:))
@@ -1631,7 +1470,6 @@ images are currently visible and then skips over them.
     [NSCursor unhide];
     [NSApp setPresentationOptions: NSApplicationPresentationDefault];
 	
-	[session removeObserver: self forKeyPath: TSSTFullscreen];
     [session removeObserver: self forKeyPath: TSSTPageOrder];
     [session removeObserver: self forKeyPath: TSSTPageScaleOptions];
     [session removeObserver: self forKeyPath: TSSTTwoPageSpread];
@@ -1652,24 +1490,7 @@ images are currently visible and then skips over them.
 
 - (void)windowDidBecomeKey:(NSNotification *)aNotification
 {
-    if([aNotification object] == [self window] && [[session valueForKey: TSSTFullscreen] boolValue])
-    {
-        [NSApp setPresentationOptions: NSApplicationPresentationHideDock | NSApplicationPresentationAutoHideMenuBar];
-        [pageView setNeedsDisplay: YES];
-		if([[session valueForKey: @"loupe"] boolValue])
-		{
-			[NSCursor hide];
-		}
-		
-		if(mouseMovedTimer)
-		{
-			[mouseMovedTimer invalidate];
-			mouseMovedTimer = nil;
-		}
-		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval: 2 target: self  selector: @selector(hideCursor) userInfo: nil repeats: NO];
-		[self refreshLoupePanel];
-    }
-    else if([aNotification object] == [self window])
+    if([aNotification object] == [self window])
     {
         [NSApp setPresentationOptions: NSApplicationPresentationDefault];
 		if([[session valueForKey: @"loupe"] boolValue])
@@ -1695,19 +1516,6 @@ images are currently visible and then skips over them.
 		[[infoWindow parentWindow] removeChildWindow: infoWindow];
 		[infoWindow orderOut: self];
 	}
-	
-	if([aNotification object] == bezelWindow)
-	{
-		[[infoWindow parentWindow] removeChildWindow: infoWindow];
-		[infoWindow orderOut: self];
-	}
-}
-
-
-- (void)deactivate:(NSNotification *)notification
-{
-	[[bezelWindow parentWindow] removeChildWindow: bezelWindow];
-	[bezelWindow orderOut: self];
 }
 
 
@@ -1734,22 +1542,10 @@ images are currently visible and then skips over them.
 	BOOL statusBar;
     if([aNotification object] == [self window])
     {
-		NSRect frame = [[self window] frame];
 		[[infoWindow parentWindow] removeChildWindow: infoWindow];
         [infoWindow orderOut: self];
 
-		if([[session valueForKey: TSSTFullscreen] boolValue])
-		{
-			statusBar = NO;
-			NSRect bezelRect = [bezelWindow frame];
-			bezelRect.origin.x = NSWidth(frame) / 2 - NSWidth(bezelRect) / 2 + NSMinX(frame);
-			bezelRect.origin.y = NSMinY(frame) - 1.5; 
-			[bezelWindow setFrameOrigin: bezelRect.origin];
-		}
-		else 
-		{
-			statusBar = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTStatusbarVisible] boolValue];
-		}
+        statusBar = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTStatusbarVisible] boolValue];
 
 		
         if(statusBar)
@@ -1942,6 +1738,23 @@ images are currently visible and then skips over them.
 		[[item view] bind: @"value" toObject: self withKeyPath: @"session.fullscreen" options: nil];
 	}
 }
+
+
+#pragma Fullscreen Delegate Methods
+
+- (NSApplicationPresentationOptions)window:(NSWindow *)window willUseFullScreenPresentationOptions:(NSApplicationPresentationOptions)proposedOptions
+{
+    if([[self window] isEqual: window])
+    {
+        return NSApplicationPresentationHideDock |
+        NSApplicationPresentationAutoHideToolbar |
+        NSApplicationPresentationAutoHideMenuBar |
+        NSApplicationPresentationFullScreen;
+    }
+    
+    return NSApplicationPresentationDefault;
+}
+
 
 
 @end

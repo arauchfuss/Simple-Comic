@@ -17,5 +17,6 @@
 @property (assign) BOOL fullscreen;
 
 - (float)toolbarHeight;
+- (BOOL)isFullscreen;
 
 @end

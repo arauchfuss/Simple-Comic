@@ -69,12 +69,6 @@ enum PageSelectionMode {
 	/* There is an outlet to this so that the visibility of the 
 		scrollers can be manually controlled. */
     IBOutlet NSScrollView  * pageScrollView;
-    /* When session goes into fullscreen mode the scrollview and its
-		pageview sub-view are moved into this window. */
-//    IBOutlet NSWindow * fullscreenWindow;
-    
-    /* Fullscreen control bezel. */
-    IBOutlet NSPanel      * bezelWindow;
     
 	/*	Allows the user to jump to a specific page via a small slide in modal dialog. */
 	IBOutlet NSPanel	   * jumpPanel;
@@ -82,7 +76,6 @@ enum PageSelectionMode {
 	
     /* Progress bar */
     IBOutlet DTPolishedProgressBar * progressBar;
-	IBOutlet DTPolishedProgressBar * fullscreenProgressBar;
 	
 	/* Page info window with caret. */
     IBOutlet TSSTInfoWindow     * infoWindow;
@@ -124,7 +117,6 @@ enum PageSelectionMode {
 
 // View Actions
 - (IBAction)changePageOrder:(id)sender;
-- (IBAction)changeFullscreen:(id)sender;
 /* Toggles between two page spread and single page */
 - (IBAction)changeTwoPage:(id)sender;
 /* Action that changes the view scaling between the three modes */
@@ -188,7 +180,6 @@ enum PageSelectionMode {
 - (void)scaleToWindow;
 - (void)adjustStatusBar;
 - (void)changeViewImages;
-- (void)fullscreen;
 
 - (void)nextPage;
 - (void)previousPage;
@@ -205,7 +196,6 @@ enum PageSelectionMode {
 - (TSSTManagedSession *)session;
 - (NSManagedObjectContext *)managedObjectContext;
 - (void)toolbarWillAddItem:(NSNotification *)notification;
-- (void)deactivate:(NSNotification *)notification;
 
 
 /*	Methods that kill page expose, the loupe, and fullscreen.
