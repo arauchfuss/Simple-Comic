@@ -30,6 +30,7 @@
 #import "TSSTImageUtilities.h"
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
+#import "DTSessionWindow.h"
 
 #define NOTURN 0
 #define LEFTTURN 1
@@ -1351,47 +1352,16 @@
 
 - (void)magnifyWithEvent:(NSEvent *)event
 {
-	BOOL isFullscreen = [[[sessionController session] valueForKey: TSSTFullscreen] boolValue];
-	if (([event deltaZ] > 5) && !isFullscreen)
+	BOOL isFullscreen = [(DTSessionWindow *)[self window] isFullscreen];
+	if (([event magnification] > .01) && !isFullscreen)
 	{
-		[[sessionController session] setValue: @YES forKey: TSSTFullscreen];
+		[[self window] toggleFullScreen: self];
 	}
-	else if(([event deltaZ] < -5) && isFullscreen)
+	else if(([event magnification] < -.01) && isFullscreen)
 	{
-		[[sessionController session] setValue: @NO forKey: TSSTFullscreen];
+		[[self window] toggleFullScreen: self];
 	}
 }
-
-//int scalingOption = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
-//float previousZoom = [[[sessionController session] valueForKey: TSSTZoomLevel] floatValue];
-//if(scalingOption != 0)
-//{
-//	previousZoom = NSWidth([self imageBounds]) / [self combinedImageSizeForZoom: 1].width;
-//}
-//
-//previousZoom += [event magnification]/2;
-//previousZoom = previousZoom < 0.1 ? 0.1 : previousZoom;
-//[[sessionController session] setValue: [NSNumber numberWithFloat: previousZoom] forKey: TSSTZoomLevel];
-//[[sessionController session] setValue: [NSNumber numberWithInt: 0] forKey: TSSTPageScaleOptions];
-//
-//[self resizeView];
-//[sessionController refreshLoupePanel];
-
-
-//- (void)touchesBeganWithEvent:(NSEvent *)event
-//{
-//	NSLog(@"start");
-//}
-//
-//
-//- (void)touchesEndedWithEvent:(NSEvent *)event
-//{
-//	NSLog(@"end");
-//	if ([event type] == NSEventTypeMagnify)
-//	{
-//		NSLog(@"end magnify");
-//	}
-//}
 
 
 - (BOOL)dragIsPossible
