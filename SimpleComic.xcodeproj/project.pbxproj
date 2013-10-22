@@ -577,6 +577,13 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		A6C528F418161AAA00D14EA7 /* Depreciated */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Depreciated;
+			sourceTree = "<group>";
+		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +596,7 @@
 		FAA1C3E808BAB158006F7EC4 /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				A6C528F418161AAA00D14EA7 /* Depreciated */,
 				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
 				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
@@ -835,7 +843,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "Simple Comic";
@@ -863,7 +871,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_CFLAGS = "-mdynamic-no-pic";
 				PRODUCT_NAME = "Simple Comic";
@@ -890,7 +898,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_LDFLAGS = (
 					"-lz",

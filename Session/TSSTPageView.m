@@ -763,11 +763,11 @@
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
-		int loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
+		float loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
 		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
 		loupePower = loupePower < 2 ? 2 : loupePower;
 		loupePower = loupePower > 6 ? 6 : loupePower;
-		[defaultsController setValue: [NSNumber numberWithFloat: loupePower] forKey: TSSTLoupePower];
+		[defaultsController setValue: @(loupePower) forKey: TSSTLoupePower];
 	}
 //	else if(scaling == 1)
 //	{
@@ -844,7 +844,7 @@
 	
     int modifier = [event modifierFlags];
     BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
-    NSNumber * charNumber = [NSNumber numberWithUnsignedInt: [[event charactersIgnoringModifiers] characterAtIndex: 0]];
+    NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSPoint scrollPoint = visible.origin;
     BOOL scrolling = NO;
@@ -1034,7 +1034,7 @@
 
 - (void)keyUp:(NSEvent *)event
 {
-    NSNumber * charNumber = [NSNumber numberWithUnsignedInt: [[event charactersIgnoringModifiers] characterAtIndex: 0]];
+    NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
     switch ([charNumber unsignedIntValue])
     {
         case NSUpArrowFunctionKey:
@@ -1188,8 +1188,8 @@
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
-	BOOL loupe = [[[sessionController session] valueForKey: @"loupe"] boolValue];
-	[[sessionController session] setValue: [NSNumber numberWithBool: !loupe] forKey: @"loupe"];
+	BOOL loupe = ![[[sessionController session] valueForKey: @"loupe"] boolValue];
+	[[sessionController session] setValue: @(loupe) forKey: @"loupe"];
 }
 
 

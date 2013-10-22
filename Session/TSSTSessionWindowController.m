@@ -422,17 +422,17 @@
 
 - (IBAction)changeTwoPage:(id)sender
 {
-    BOOL spread = [[session valueForKey: TSSTTwoPageSpread] boolValue];
+    BOOL spread = ![[session valueForKey: TSSTTwoPageSpread] boolValue];
 
-    [session setValue: [NSNumber numberWithBool: !spread] forKey: TSSTTwoPageSpread];
+    [session setValue: @(spread) forKey: TSSTTwoPageSpread];
 }
 
 
 
 - (IBAction)changePageOrder:(id)sender
 {
-    BOOL pageOrder = [[session valueForKey: TSSTPageOrder] boolValue];
-    [session setValue: [NSNumber numberWithBool: !pageOrder] forKey: TSSTPageOrder];
+    BOOL pageOrder = ![[session valueForKey: TSSTPageOrder] boolValue];
+    [session setValue: @(pageOrder) forKey: TSSTPageOrder];
 }
 
 
@@ -1727,7 +1727,7 @@ images are currently visible and then skips over them.
 
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window
 {
-    return [NSArray arrayWithObject: [self window]];
+    return @[[self window]];
 }
 
 

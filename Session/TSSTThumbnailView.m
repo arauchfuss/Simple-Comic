@@ -168,7 +168,7 @@
 
 - (void)keyDown:(NSEvent *)event
 {
-    NSNumber * charNumber = [NSNumber numberWithUnsignedInt: [[event charactersIgnoringModifiers] characterAtIndex: 0]];
+    NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
     switch ([charNumber unsignedIntValue])
     {
         case 27:

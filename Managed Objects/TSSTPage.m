@@ -153,8 +153,8 @@ static NSSize monospaceCharacterSize;
 	if(!NSEqualSizes(NSZeroSize, imageSize))
 	{
 		aspect = imageSize.width / imageSize.height;
-		[self setValue: [NSNumber numberWithShort: imageSize.width] forKey: @"width"];
-		[self setValue: [NSNumber numberWithShort: imageSize.height] forKey: @"height"];
+		[self setValue: @(imageSize.width) forKey: @"width"];
+		[self setValue: @(imageSize.height) forKey: @"height"];
 		[self setValue: @(aspect) forKey: @"aspectRatio"];
 	}	
 }
