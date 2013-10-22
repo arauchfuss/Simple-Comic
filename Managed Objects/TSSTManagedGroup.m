@@ -114,6 +114,12 @@
     return nil;
 }
 
+- (NSData *)dataForPageName:(NSString *)name
+{
+    
+    return nil;
+}
+
 
 - (NSManagedObject *)topLevelGroup
 {
@@ -304,6 +310,11 @@
     return [[imageData retain] autorelease];
 }
 
+- (NSData *)dataForPageName:(NSString *)name
+{
+    
+    return nil;
+}
 
 
 - (NSManagedObject *)topLevelGroup
@@ -487,6 +498,12 @@
 	[pageImage release];
 	
     return [imageData autorelease];
+}
+
+- (NSData *)dataForPageName:(NSString *)name
+{
+    
+    return nil;
 }
 
 

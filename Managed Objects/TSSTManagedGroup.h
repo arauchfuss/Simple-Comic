@@ -42,6 +42,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 - (NSString *)path;
 
 - (NSData *)dataForPageIndex:(NSInteger)index;
+- (NSData *)dataForPageName:(NSString *)name;
 - (NSManagedObject *)topLevelGroup;
 - (NSSet *)nestedImages;
 
