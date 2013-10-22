@@ -71,6 +71,11 @@
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A6C528FF18161E1300D14EA7 /* DTComicWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C528F618161E1300D14EA7 /* DTComicWindowController.m */; };
+		A6C5290018161E1300D14EA7 /* DTPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C528F818161E1300D14EA7 /* DTPageViewController.m */; };
+		A6C5290118161E1300D14EA7 /* DTPageArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C528FA18161E1300D14EA7 /* DTPageArrayController.m */; };
+		A6C5290218161E1300D14EA7 /* DTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C528FC18161E1300D14EA7 /* DTPageView.m */; };
+		A6C5290318161E1300D14EA7 /* DTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C528FE18161E1300D14EA7 /* DTImageView.m */; };
 		A6D63DA717C2B8F2000272F1 /* TSSTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */; };
 		FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */; };
 /* End PBXBuildFile section */
@@ -263,6 +268,16 @@
 		77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComicAppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleComicAppDelegate.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Simple Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Comic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6C528F518161E1300D14EA7 /* DTComicWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTComicWindowController.h; sourceTree = "<group>"; };
+		A6C528F618161E1300D14EA7 /* DTComicWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTComicWindowController.m; sourceTree = "<group>"; };
+		A6C528F718161E1300D14EA7 /* DTPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPageViewController.h; sourceTree = "<group>"; };
+		A6C528F818161E1300D14EA7 /* DTPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPageViewController.m; sourceTree = "<group>"; };
+		A6C528F918161E1300D14EA7 /* DTPageArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPageArrayController.h; sourceTree = "<group>"; };
+		A6C528FA18161E1300D14EA7 /* DTPageArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPageArrayController.m; sourceTree = "<group>"; };
+		A6C528FB18161E1300D14EA7 /* DTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPageView.h; sourceTree = "<group>"; };
+		A6C528FC18161E1300D14EA7 /* DTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPageView.m; sourceTree = "<group>"; };
+		A6C528FD18161E1300D14EA7 /* DTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTImageView.h; sourceTree = "<group>"; };
+		A6C528FE18161E1300D14EA7 /* DTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTImageView.m; sourceTree = "<group>"; };
 		FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPageView.m; path = Session/TSSTPageView.m; sourceTree = "<group>"; };
 		FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTCustomValueTransformers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -580,6 +595,10 @@
 		A6C528F418161AAA00D14EA7 /* Depreciated */ = {
 			isa = PBXGroup;
 			children = (
+				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
+				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
+				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
+				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 			);
 			name = Depreciated;
 			sourceTree = "<group>";
@@ -596,15 +615,21 @@
 		FAA1C3E808BAB158006F7EC4 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				A6C528F418161AAA00D14EA7 /* Depreciated */,
-				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
-				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
-				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
-				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
+				A6C528F518161E1300D14EA7 /* DTComicWindowController.h */,
+				A6C528F618161E1300D14EA7 /* DTComicWindowController.m */,
+				A6C528F718161E1300D14EA7 /* DTPageViewController.h */,
+				A6C528F818161E1300D14EA7 /* DTPageViewController.m */,
+				A6C528F918161E1300D14EA7 /* DTPageArrayController.h */,
+				A6C528FA18161E1300D14EA7 /* DTPageArrayController.m */,
+				A6C528FB18161E1300D14EA7 /* DTPageView.h */,
+				A6C528FC18161E1300D14EA7 /* DTPageView.m */,
+				A6C528FD18161E1300D14EA7 /* DTImageView.h */,
+				A6C528FE18161E1300D14EA7 /* DTImageView.m */,
 				284D3819101249BE00A37AB2 /* DTToolbarItems.h */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.m */,
 				28B34A711013779A006C551C /* DTSessionWindow.h */,
 				28B34A721013779B006C551C /* DTSessionWindow.m */,
+				A6C528F418161AAA00D14EA7 /* Depreciated */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -733,6 +758,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
+				A6C528FF18161E1300D14EA7 /* DTComicWindowController.m in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
 				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
@@ -746,13 +772,17 @@
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				A6D63DA717C2B8F2000272F1 /* TSSTSegmentedControl.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
+				A6C5290018161E1300D14EA7 /* DTPageViewController.m in Sources */,
+				A6C5290318161E1300D14EA7 /* DTImageView.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
 				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
+				A6C5290118161E1300D14EA7 /* DTPageArrayController.m in Sources */,
 				284741461071B4820033BD88 /* TSSTGradientView.m in Sources */,
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 				28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */,
 				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
 				28A266301285C73200ED6391 /* DTPreferencesController.m in Sources */,
+				A6C5290218161E1300D14EA7 /* DTPageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
