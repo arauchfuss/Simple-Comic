@@ -24,7 +24,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSApplication"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="6" userLabel="Main Window" customClass="DTSessionWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
@@ -216,14 +216,14 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="AB4BCD46-EE79-45CC-9A97-733E3740BA34" label="Thumbnails" paletteLabel="Thumbnails" image="thumbnails" id="577" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="AB4BCD46-EE79-45CC-9A97-733E3740BA34" label="Thumbnails" paletteLabel="Thumbnails" image="NSIconViewTemplate" id="577" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="22" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" title="Thumbnails" bezelStyle="texturedSquare" image="thumbnails" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
+                            <buttonCell key="cell" type="squareTextured" title="Thumbnails" bezelStyle="texturedSquare" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -248,14 +248,14 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="quicklook" id="693" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="NSQuickLookTemplate" id="693" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="12" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="quicklook" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
+                            <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -453,7 +453,9 @@ Gw
     <resources>
         <image name="Loupe" width="15" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="equal" width="11" height="12"/>
@@ -461,11 +463,9 @@ Gw
         <image name="hor_scale" width="14" height="12"/>
         <image name="lr_order" width="17" height="12"/>
         <image name="one_page" width="8" height="12"/>
-        <image name="quicklook" width="16" height="16"/>
         <image name="rl_order" width="17" height="12"/>
         <image name="rotate_l" width="10" height="12"/>
         <image name="rotate_r" width="10" height="12"/>
-        <image name="thumbnails" width="12" height="12"/>
         <image name="two_page" width="17" height="12"/>
         <image name="win_scale" width="14" height="12"/>
     </resources>
