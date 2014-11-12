@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Archive" representedClassName="TSSTManagedArchive" parentEntity="ImageGroup" syncable="YES">
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="solidDirectory" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Image" representedClassName="TSSTPage" syncable="YES">
+        <attribute name="aspectRatio" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="height" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="imagePath" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="text" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="thumbnailData" optional="YES" transient="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="width" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ImageGroup" inverseName="images" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
+        <relationship name="session" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="images" inverseEntity="Session" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="ImageGroup" representedClassName="TSSTManagedGroup" syncable="YES">
+        <attribute name="modified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="nested" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="nestedImages" optional="YES" transient="YES" syncable="YES"/>
+        <attribute name="pathData" attributeType="Binary" syncable="YES"/>
+        <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ImageGroup" inverseName="groups" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageGroup" inverseName="group" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="group" inverseEntity="Image" indexed="YES" syncable="YES"/>
+        <relationship name="session" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="groups" inverseEntity="Session" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="PDF" representedClassName="TSSTManagedPDF" parentEntity="ImageGroup" syncable="YES"/>
+    <entity name="Session" representedClassName="TSSTManagedSession" syncable="YES">
+        <attribute name="fullscreen" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="loupe" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="pageOrder" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="rotation" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="scaleOptions" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="scrollPosition" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="selection" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="twoPageSpread" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="zoomLevel" attributeType="Float" defaultValueString="1" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageGroup" inverseName="session" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Image" inverseName="session" inverseEntity="Image" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PDF" positionX="153" positionY="18" width="92" height="45"/>
+        <element name="Archive" positionX="342" positionY="15" width="90" height="75"/>
+        <element name="ImageGroup" positionX="241" positionY="117" width="92" height="180"/>
+        <element name="Session" positionX="414" positionY="117" width="90" height="225"/>
+        <element name="Image" positionX="72" positionY="162" width="92" height="178"/>
+    </elements>
+</model>
