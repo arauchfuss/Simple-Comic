@@ -11,7 +11,7 @@
 	XADRC4Engine *rc4;
 }
 
--(id)initWithHandle:(CSHandle *)handle key:(NSData *)keydata;
+-(instancetype)initWithHandle:(CSHandle *)handle key:(NSData *)keydata NS_DESIGNATED_INITIALIZER;
 -(void)dealloc;
 
 -(void)resetStream;
@@ -27,7 +27,7 @@
 
 +(XADRC4Engine *)engineWithKey:(NSData *)key;
 
--(id)initWithKey:(NSData *)key;
+-(instancetype)initWithKey:(NSData *)key NS_DESIGNATED_INITIALIZER;
 
 -(NSData *)encryptedData:(NSData *)data;
 

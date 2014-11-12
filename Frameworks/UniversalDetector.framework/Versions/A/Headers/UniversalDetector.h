@@ -1,27 +1,22 @@
 #import <Foundation/Foundation.h>
 
 @interface UniversalDetector:NSObject
-{
-	void *detector;
-	NSString *charset;
-	float confidence;
-}
 
 +(UniversalDetector *)detector;
++(NSArray *)possibleMIMECharsets;
 
--(id)init;
--(void)dealloc;
+-(instancetype)init NS_DESIGNATED_INITIALIZER;
 
 -(void)analyzeData:(NSData *)data;
 -(void)analyzeBytes:(const char *)data length:(int)len;
 -(void)reset;
 
--(BOOL)done;
--(NSString *)MIMECharset;
--(float)confidence;
+@property (readonly, getter=isDone) BOOL done;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSString *MIMECharset;
+@property (NS_NONATOMIC_IOSONLY, readonly) float confidence;
 
 #ifdef __APPLE__
--(NSStringEncoding)encoding;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSStringEncoding encoding;
 #endif
 
 @end

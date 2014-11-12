@@ -73,6 +73,13 @@ extern NSString *CSNotSupportedException;
 -(uint32_t)readUInt32LE;
 -(uint64_t)readUInt64LE;
 
+-(int16_t)readInt16InBigEndianOrder:(BOOL)isbigendian;
+-(int32_t)readInt32InBigEndianOrder:(BOOL)isbigendian;
+-(int64_t)readInt64InBigEndianOrder:(BOOL)isbigendian;
+-(uint16_t)readUInt16InBigEndianOrder:(BOOL)isbigendian;
+-(uint32_t)readUInt32InBigEndianOrder:(BOOL)isbigendian;
+-(uint64_t)readUInt64InBigEndianOrder:(BOOL)isbigendian;
+
 -(uint32_t)readID;
 
 -(uint32_t)readBits:(int)bits;

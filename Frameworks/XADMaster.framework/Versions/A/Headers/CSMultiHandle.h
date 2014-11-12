@@ -7,7 +7,7 @@ extern NSString *CSSizeOfSegmentUnknownException;
 @interface CSMultiHandle:CSHandle
 {
 	NSArray *handles;
-	int currhandle;
+	long currhandle;
 }
 
 +(CSMultiHandle *)multiHandleWithHandleArray:(NSArray *)handlearray;
@@ -32,6 +32,6 @@ extern NSString *CSSizeOfSegmentUnknownException;
 -(int)readAtMost:(int)num toBuffer:(void *)buffer;
 
 // Internal methods
--(void)_raiseSizeUnknownForSegment:(int)i;
+-(void)_raiseSizeUnknownForSegment:(long)i;
 
 @end

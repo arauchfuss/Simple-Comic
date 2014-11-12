@@ -25,6 +25,11 @@ void CSInputBufferFree(CSInputBuffer *self);
 
 void CSInputSetMemoryBuffer(CSInputBuffer *self,uint8_t *buffer,int length,off_t startoffs);
 
+static inline CSHandle *CSInputHandle(CSInputBuffer *self)
+{
+	return self->parent;
+}
+
 
 
 // Buffer and file positioning
