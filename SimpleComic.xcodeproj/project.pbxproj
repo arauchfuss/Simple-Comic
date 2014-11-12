@@ -142,12 +142,12 @@
 		281954E70C1201E5001F5E95 /* TSSTManagedGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedGroup.h; sourceTree = "<group>"; };
 		281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedGroup.m; sourceTree = "<group>"; };
 		28195B410C166DF5001F5E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; };
-		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
-		283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTGradientView.m; sourceTree = "<group>"; };
-		283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TSSTGradientView.h; sourceTree = "<group>"; };
-		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
-		283C4D7C0C43DF5300DB4FE9 /* TSSTBezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTBezelWindow.h; path = "Custom Windows/Bezel/TSSTBezelWindow.h"; sourceTree = "<group>"; };
+		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; };
+		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
+		283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTGradientView.m; sourceTree = "<group>"; };
+		283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTGradientView.h; sourceTree = "<group>"; };
+		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
+		283C4D7C0C43DF5300DB4FE9 /* TSSTBezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTBezelWindow.h; path = "Custom Windows/Bezel/TSSTBezelWindow.h"; sourceTree = "<group>"; };
 		284348050DA95C4300F602E2 /* UniversalDetector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniversalDetector.framework; path = Frameworks/UniversalDetector.framework; sourceTree = "<group>"; };
 		284348060DA95C4300F602E2 /* XADMaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XADMaster.framework; path = Frameworks/XADMaster.framework; sourceTree = "<group>"; };
 		284A53550DEA60E40003F9F4 /* TSSTBookmarkSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkSplitView.h; sourceTree = "<group>"; };
@@ -162,10 +162,10 @@
 		286AB6691159838C0087BA97 /* quicklook.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = quicklook.tiff; sourceTree = "<group>"; };
 		286AB6D7115C3CFA0087BA97 /* sc_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sc_icon.icns; sourceTree = "<group>"; };
 		286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSortDescriptor.m; sourceTree = "<group>"; };
-		286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTInfoWindow.m; path = "Progress Bar/TSSTInfoWindow.m"; sourceTree = "<group>"; };
-		286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTInfoWindow.h; path = "Progress Bar/TSSTInfoWindow.h"; sourceTree = "<group>"; };
-		286BA19C0C4D819400E9D06D /* TSSTImageView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTImageView.m; path = "Progress Bar/TSSTImageView.m"; sourceTree = "<group>"; };
-		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTImageView.h; path = "Progress Bar/TSSTImageView.h"; sourceTree = "<group>"; };
+		286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTInfoWindow.m; path = "Progress Bar/TSSTInfoWindow.m"; sourceTree = "<group>"; };
+		286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTInfoWindow.h; path = "Progress Bar/TSSTInfoWindow.h"; sourceTree = "<group>"; };
+		286BA19C0C4D819400E9D06D /* TSSTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTImageView.m; path = "Progress Bar/TSSTImageView.m"; sourceTree = "<group>"; };
+		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTImageView.h; path = "Progress Bar/TSSTImageView.h"; sourceTree = "<group>"; };
 		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTShortcutController.h; path = ../Preferences/TSSTShortcutController.h; sourceTree = "<group>"; };
 		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTShortcutController.m; path = ../Preferences/TSSTShortcutController.m; sourceTree = "<group>"; };
 		28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KeyboardPrefsPane-Info.plist"; path = "../KeyboardPrefsPane-Info.plist"; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		28A266151285C3A700ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
 		28A2662E1285C73200ED6391 /* DTPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPreferencesController.h; sourceTree = "<group>"; };
 		28A2662F1285C73200ED6391 /* DTPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPreferencesController.m; sourceTree = "<group>"; };
-		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTPageView.h; path = Session/TSSTPageView.h; sourceTree = "<group>"; };
+		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTPageView.h; path = Session/TSSTPageView.h; sourceTree = "<group>"; };
 		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "Custom Windows/DTSessionWindow.h"; sourceTree = "<group>"; };
 		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "Custom Windows/DTSessionWindow.m"; sourceTree = "<group>"; };
 		28BD08E50C9836E600BD7EAF /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
@@ -264,7 +264,7 @@
 		77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleComicAppDelegate.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Simple Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Comic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPageView.m; path = Session/TSSTPageView.m; sourceTree = "<group>"; };
-		FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTCustomValueTransformers.m; sourceTree = "<group>"; };
+		FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTCustomValueTransformers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

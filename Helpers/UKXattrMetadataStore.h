@@ -50,7 +50,7 @@
 +(NSMutableData*)	dataForKey: (NSString*)key atPath: (NSString*)path
 						traverseLink:(BOOL)travLnk;
 
-// Store objects: (Only can get/set plist-type objects for now)â
+// Store objects: (Only can get/set plist-type objects for now)â€š
 +(void)				setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path
 						traverseLink:(BOOL)travLnk;
 +(id)				objectForKey: (NSString*)key atPath: (NSString*)path
