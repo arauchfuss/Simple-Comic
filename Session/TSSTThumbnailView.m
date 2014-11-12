@@ -136,7 +136,7 @@
     NSImage * thumbnail;
     NSRect drawRect;
     NSInteger counter = 0;
-	NSPoint mousePoint = [[self window] convertScreenToBase: [NSEvent mouseLocation]];
+	NSPoint mousePoint = [[self window] convertRectFromScreen: (NSRect){[NSEvent mouseLocation], NSZeroSize}].origin;
 	mousePoint = [self convertPoint: mousePoint fromView: nil];
     while (counter < limit)
     {

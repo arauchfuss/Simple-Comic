@@ -448,7 +448,7 @@
         return;
     }
     
-    password = [[NSApp delegate] passwordForArchiveWithPath: [self valueForKey: @"path"]];
+    password = [(SimpleComicAppDelegate*)[NSApp delegate] passwordForArchiveWithPath: [self valueForKey: @"path"]];
     [archive setPassword: password];
     
     [self setValue: password forKey: @"password"];
@@ -513,7 +513,7 @@
     NSPDFImageRep * rep = [self instance];
     TSSTPage * imageDescription;
     NSMutableSet * pageSet = [NSMutableSet set];
-    int imageCount = [rep pageCount];
+    NSInteger imageCount = [rep pageCount];
     int pageNumber;
     for (pageNumber = 0; pageNumber < imageCount; ++pageNumber)
     {

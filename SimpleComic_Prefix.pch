@@ -2,6 +2,8 @@
 // Prefix header for all source files of the 'Simple Comic Viewer' target in the 'Simple Comic Viewer' project
 //
 
+#include <tgmath.h>
+
 #ifdef __OBJC__
     #import <Cocoa/Cocoa.h>
 #endif

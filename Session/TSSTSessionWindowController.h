@@ -161,10 +161,10 @@ enum PageSelectionMode {
 - (void)changeViewForSelection;
 
 /* Used by the jump to page method */
-- (void)closeSheet:(int)code;
+- (void)closeSheet:(NSInteger)code;
 
-- (NSImage *)imageForPageAtIndex:(int)index;
-- (NSString *)nameForPageAtIndex:(int)index;
+- (NSImage *)imageForPageAtIndex:(NSInteger)index;
+- (NSString *)nameForPageAtIndex:(NSInteger)index;
 
 - (void)restoreSession;
 - (void)prepareToEnd;

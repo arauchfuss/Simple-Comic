@@ -73,7 +73,7 @@ NSString * TSSTSessionEndNotification = @"sessionEnd";
 
 static NSArray * allAvailableStringEncodings(void)
 {
-    NSStringEncoding encodings[] = {
+    CFStringEncoding encodings[] = {
         kCFStringEncodingMacRoman,
         kCFStringEncodingISOLatin1,
         kCFStringEncodingASCII,
@@ -130,13 +130,13 @@ static NSArray * allAvailableStringEncodings(void)
         kCFStringEncodingWindowsVietnamese,
         kCFStringEncodingDOSPortuguese,
         kCFStringEncodingWindowsBalticRim,
-        NSNotFound
+        UINT_MAX
     };
     
     NSMutableArray * codeNumbers = [NSMutableArray array];
     int counter = 0;
     NSStringEncoding encoding;
-    while(encodings[counter] != NSNotFound)
+    while(encodings[counter] != UINT_MAX)
     {
         if(encodings[counter] != 101)
         {
@@ -307,7 +307,7 @@ static NSArray * allAvailableStringEncodings(void)
     if(![self saveContext])
     {
         // Error handling wasn't implemented. Fall back to displaying a "quit anyway" panel.
-        int alertReturn = NSRunAlertPanel(nil, @"Could not save changes while quitting. Quit anyway?" , @"Quit anyway", @"Cancel", nil);
+        NSInteger alertReturn = NSRunAlertPanel(nil, @"Could not save changes while quitting. Quit anyway?" , @"Quit anyway", @"Cancel", nil);
         if (alertReturn == NSAlertAlternateReturn)
         {
             reply = NSTerminateCancel;	
