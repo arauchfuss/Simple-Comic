@@ -103,7 +103,7 @@ NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)
 	[scaledImage drawInRect: scaledRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
     [scaledImage unlockFocus];
 	
-	return [scaledImage autorelease];
+	return scaledImage;
 }
 
 

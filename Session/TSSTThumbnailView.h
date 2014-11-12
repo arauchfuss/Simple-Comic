@@ -33,7 +33,7 @@
 - (void)removeTrackingRects;
 - (void)buildTrackingRects;
 - (void)processThumbs;
-@property (assign) id dataSource;
+@property (weak) id dataSource;
 - (void)dwell:(NSTimer *)timer;
 - (void)zoomThumbnailAtIndex:(NSInteger)index;
 

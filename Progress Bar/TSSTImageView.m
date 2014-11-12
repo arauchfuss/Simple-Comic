@@ -21,10 +21,9 @@ static NSDictionary * stringAttributes;
 {
     NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [style setLineBreakMode: NSLineBreakByTruncatingHead];
-    stringAttributes = [@{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande" size: 14],
+    stringAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande" size: 14],
                          NSForegroundColorAttributeName: [NSColor colorWithCalibratedWhite: 1 alpha: 1.0],
-                         NSParagraphStyleAttributeName: style} retain];
-    [style release];
+                         NSParagraphStyleAttributeName: style};
 }
 
 

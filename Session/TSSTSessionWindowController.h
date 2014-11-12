@@ -109,9 +109,9 @@ enum PageSelectionMode {
 	float savedZoom;
 }
 
-@property (retain) NSArray * pageSortDescriptor;
+@property (strong) NSArray * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
-@property (retain) NSString * pageNames;
+@property (strong) NSString * pageNames;
 
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession NS_DESIGNATED_INITIALIZER;
 

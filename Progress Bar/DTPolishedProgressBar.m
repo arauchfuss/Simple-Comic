@@ -21,18 +21,18 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
     self = [super initWithFrame:frame];
     if (self)
     {
-		self.shadowGradient = [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.3 alpha: 1], 0.0,
+		self.shadowGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.3 alpha: 1], 0.0,
 							   [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.5,
 							   [NSColor colorWithDeviceWhite: 0.2 alpha: 1], 0.5,
-							   [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil] autorelease];
+							   [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil];
 		self.highlightColor = [NSColor colorWithCalibratedWhite: 0.88 alpha: 1];
 		
-		self.emptyGradient = [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.0,
-							  [NSColor colorWithDeviceWhite: 0.45 alpha: 1], 1.0, nil] autorelease];
-		self.barGradient = [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.7 alpha: 1], 0.0,
+		self.emptyGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.0,
+							  [NSColor colorWithDeviceWhite: 0.45 alpha: 1], 1.0, nil];
+		self.barGradient = [[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.7 alpha: 1], 0.0,
 							[NSColor colorWithDeviceWhite: 0.75 alpha: 1], 0.5,
 							[NSColor colorWithDeviceWhite: 0.82 alpha: 1], 0.5,
-							[NSColor colorWithDeviceWhite: 0.92 alpha: 1], 1.0, nil] autorelease];
+							[NSColor colorWithDeviceWhite: 0.92 alpha: 1], 1.0, nil];
 		NSShadow * stringEmboss = [NSShadow new];
 		[stringEmboss setShadowColor: [NSColor colorWithDeviceWhite: 0.9 alpha: 1]];
 		[stringEmboss setShadowBlurRadius: 0];
@@ -40,7 +40,6 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 		self.numberStyle = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande Bold" size: 10],
 							 NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.2 alpha: 1],
 							 NSShadowAttributeName: stringEmboss};
-		[stringEmboss release];
 		self.horizontalMargin = 35;
 		self.cornerRadius = 4.0;
         self.leftToRight = YES;
@@ -60,12 +59,6 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	[self removeObserver: self forKeyPath: @"maxValue"];
 	[self removeTrackingArea: [self trackingAreas][0]];
 	
-	[numberStyle release];
-	[barGradient release];
-	[emptyGradient release];
-	[shadowGradient release];
-	[highlightColor release];
-	[super dealloc];
 }
 
 
@@ -173,16 +166,13 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	}
 	
 	NSTrackingArea * oldArea = [self trackingAreas][0];
-	[oldArea retain];
 	[self removeTrackingArea: oldArea];
 	
 	NSTrackingArea * newArea = [[NSTrackingArea alloc] initWithRect: progressRect 
 															options: [oldArea options]
 															  owner: [oldArea owner]
 														   userInfo: [oldArea userInfo]];
-	[oldArea release];
 	[self addTrackingArea: newArea];
-	[newArea release];
 }
 
 

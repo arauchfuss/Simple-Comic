@@ -18,7 +18,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 {
 	@autoreleasepool {
 	
-	NSString * archivePath = [(NSURL *)url path];
+	NSString * archivePath = [(__bridge NSURL *)url path];
 //	NSLog(@"base path %@",archivePath);
 	NSData * imageData = nil;
 	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
@@ -35,8 +35,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		{
 			cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
 		}
-		imageData = [[partialArchive searchResult] retain];
-		[partialArchive release];
+		imageData = [partialArchive searchResult];
 	}
 	else
     {
@@ -49,9 +48,8 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 			coverName = [fileList[0] valueForKey: @"rawName"];
 			coverIndex = [[fileList[0] valueForKey: @"index"] intValue];
 			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
-			imageData = [[archive contentsOfEntry: coverIndex] retain];
+			imageData = [archive contentsOfEntry: coverIndex];
 		}
-		[archive release];
 
     }
 
@@ -91,7 +89,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         CFRelease(currentImage);
         QLThumbnailRequestFlushContext(thumbnail, cgContext);
 		CGContextRelease(cgContext);
-		[imageData release];
 	}
 	
 	

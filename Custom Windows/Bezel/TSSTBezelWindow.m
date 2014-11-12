@@ -66,7 +66,6 @@
 									 [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil];
 	
 	[polishedGradient drawInRect: bounds angle: 270];
-	[polishedGradient release];
 }
 
 

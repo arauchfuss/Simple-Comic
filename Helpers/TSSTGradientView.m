@@ -18,7 +18,6 @@
     NSGradient * fillGradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithDeviceWhite:0.85 alpha:1.0]
                                                               endingColor: [NSColor colorWithDeviceWhite:0.95 alpha:1.0]];
     [fillGradient drawInRect: [self bounds] angle: 270];
-    [fillGradient release];
 }
 
 

@@ -49,8 +49,6 @@
 
 - (void)didTurnIntoFault
 {	
-    [groupLock release];
-    [instance release];
 	instance = nil;
 	groupLock = nil;
 }
@@ -70,7 +68,6 @@
         [NSApp presentError: urlError];
     }
 	[self setValue: bookmarkData forKey: @"pathData"];
-	[fileURL release];
 }
 
 
@@ -198,7 +195,7 @@
 		[allImages unionSet: [group valueForKey: @"nestedImages"]];
 	}
 	
-	return [allImages autorelease];
+	return allImages;
 }
 
 
@@ -213,7 +210,7 @@
 	static NSArray * extensions = nil;
 	if(!extensions)
 	{
-		extensions = [@[@"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh"] retain];
+		extensions = @[@"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh"];
 	}
 	
 	return extensions;
@@ -226,7 +223,7 @@
 
 	if(!extensions)
 	{
-		extensions = [@[@"cbr", @"cbz"] retain];
+		extensions = @[@"cbr", @"cbz"];
 	}
 	
 	return extensions;
@@ -307,7 +304,7 @@
 		}
 	}
 
-    return [[imageData retain] autorelease];
+    return imageData;
 }
 
 - (NSData *)dataForPageName:(NSString *)name
@@ -494,10 +491,9 @@
 		[page drawWithBox: kPDFDisplayBoxMediaBox];
 	[pageImage unlockFocus];
 	
-	NSData * imageData = [[pageImage TIFFRepresentation] retain];
-	[pageImage release];
+	NSData * imageData = [pageImage TIFFRepresentation];
 	
-    return [imageData autorelease];
+    return imageData;
 }
 
 - (NSData *)dataForPageName:(NSString *)name

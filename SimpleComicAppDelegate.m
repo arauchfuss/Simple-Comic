@@ -151,7 +151,7 @@ static NSArray * allAvailableStringEncodings(void)
         ++counter;
     }
     
-    return [[codeNumbers retain] autorelease];
+    return codeNumbers;
 }
 
 
@@ -170,7 +170,6 @@ static NSArray * allAvailableStringEncodings(void)
     NSMutableDictionary * metadata = [[coordinator metadataForPersistentStore: store] mutableCopy];
     [metadata setValue: value forKey: key];
     [coordinator setMetadata: metadata forPersistentStore: store];
-    [metadata release];
 }
 
 
@@ -203,7 +202,7 @@ static NSArray * allAvailableStringEncodings(void)
 	NSUserDefaults * defaults = [sharedDefaultsController defaults];
     [defaults registerDefaults: standardDefaults];
 	
-    id transformer = [[TSSTLastPathComponent new] autorelease];
+    id transformer = [TSSTLastPathComponent new];
 	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTLastPathComponent"];
 }
 
@@ -213,9 +212,6 @@ static NSArray * allAvailableStringEncodings(void)
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTUpdateSelection];
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTSessionRestore];
 
-    [sessions release];
-    [preferences release];
-    [super dealloc];
 }
 
 
@@ -283,7 +279,6 @@ static NSArray * allAvailableStringEncodings(void)
 			[self windowForSession: session];
 //		}
 		
-		[launchFiles release];
 		launchFiles = nil;
 	}
 }
@@ -355,7 +350,7 @@ static NSArray * allAvailableStringEncodings(void)
 	}
 	else
 	{
-		launchFiles = [filenames retain];
+		launchFiles = filenames;
 	}
 }
 
@@ -436,7 +431,7 @@ static NSArray * allAvailableStringEncodings(void)
         return managedObjectModel;
     }
 	
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles: nil] retain];    
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles: nil];    
     return managedObjectModel;
 }
 
@@ -539,7 +534,6 @@ static NSArray * allAvailableStringEncodings(void)
     
     NSError * error;
     NSManagedObjectContext * context = [self managedObjectContext];
-	[context retain];
 	[context lock];
     BOOL saved = NO;
     if (context != nil)
@@ -560,7 +554,6 @@ static NSArray * allAvailableStringEncodings(void)
     }
 	
 	[context unlock];
-	[context release];
     return saved;
 }
 
@@ -578,7 +571,6 @@ static NSArray * allAvailableStringEncodings(void)
     {
         TSSTSessionWindowController * comicWindow = [[TSSTSessionWindowController alloc] initWithSession: settings];
         [sessions addObject: comicWindow];
-        [comicWindow release];
         [comicWindow showWindow: self];
     }
 }
@@ -588,10 +580,9 @@ static NSArray * allAvailableStringEncodings(void)
 - (void)endSession:(NSNotification *)notification
 {
 	TSSTSessionWindowController * controller = [notification object];
-	TSSTManagedSession * sessionToRemove = [[controller session] retain];
+	TSSTManagedSession * sessionToRemove = [controller session];
 	[sessions removeObject: controller];
 	[[self managedObjectContext] deleteObject: sessionToRemove];
-	[sessionToRemove release];
 }
 
 
@@ -603,7 +594,6 @@ static NSArray * allAvailableStringEncodings(void)
 	[sessionRequest setEntity: [NSEntityDescription entityForName: @"Session" inManagedObjectContext: [self managedObjectContext]]];
 	NSError * fetchError;
 	NSArray * managedSessions = [[self managedObjectContext] executeFetchRequest: sessionRequest error: &fetchError];
-	[sessionRequest release];
 	for(session in managedSessions)
 	{
 		if([[session valueForKey: @"groups"] count] <= 0)
@@ -696,7 +686,6 @@ static NSArray * allAvailableStringEncodings(void)
 	}
 	
 	[session setValue: pageSet forKey: @"images"];
-	[pageSet release];
 //	[[self managedObjectContext] unlock];
 //	[[self managedObjectContext] release];
 }
@@ -808,7 +797,6 @@ static NSArray * allAvailableStringEncodings(void)
             encodingMenuItem = [[NSMenuItem alloc] initWithTitle: encodingName action: nil keyEquivalent: @""];
             [encodingMenuItem setRepresentedObject: encodingIdent];
             [encodingMenu addItem: encodingMenuItem];
-            [encodingMenuItem release];
         }
     }
     [encodingPopup bind: @"selectedIndex" toObject: self withKeyPath: @"encodingSelection" options: nil];
@@ -832,7 +820,6 @@ static NSArray * allAvailableStringEncodings(void)
 			testText = [[NSString alloc] initWithData: data encoding: stringEncoding];
 
 			[encodingMenuItem setEnabled: testText ? YES : NO];
-			[testText release];
         }
     }
 }
@@ -872,7 +859,6 @@ static NSArray * allAvailableStringEncodings(void)
 		NSNumber * encoding;
 		while(!testText)
 		{
-			[testText release];
 			encoding = encodingIdentifiers[counter];
 			if ([encoding class] != [NSNull class]) {
 				testText = [[NSString alloc] initWithData: data encoding: [encoding unsignedIntegerValue]];
@@ -897,7 +883,6 @@ static NSArray * allAvailableStringEncodings(void)
         [archive setNameEncoding: guess];
     }
     
-	[testText release];
     return guess;
 }
 
@@ -914,7 +899,6 @@ static NSArray * allAvailableStringEncodings(void)
     }
     
     [encodingTestField setStringValue: testText];
-	[testText release];
 }
 
 

@@ -130,7 +130,6 @@
         [[NSColor whiteColor] set];
         [circle fill];
         [circle addClip];
-        [loupeGradient release];
 		[super drawRect: rect];
 		[[NSColor colorWithCalibratedWhite: 0.6 alpha: 1] set];
         [circle setLineWidth: 3.0];

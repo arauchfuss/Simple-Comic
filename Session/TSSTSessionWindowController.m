@@ -98,7 +98,7 @@
 		pageSelectionInProgress = None;
 		mouseMovedTimer = nil;
 //		closing = NO;
-        session = [aSession retain];
+        session = aSession;
         BOOL cascade = [session valueForKey: @"position"] ? NO : YES;
         [self setShouldCascadeWindows: cascade];
 		/* Make sure that the session does not start out in fullscreen, nor with the loupe enabled. */
@@ -107,8 +107,6 @@
 		TSSTSortDescriptor * fileNameSort = [[TSSTSortDescriptor alloc] initWithKey: @"imagePath" ascending: YES];
 		TSSTSortDescriptor * archivePathSort = [[TSSTSortDescriptor alloc] initWithKey: @"group.path" ascending: YES];
 		self.pageSortDescriptor = @[archivePathSort, fileNameSort];
-		[fileNameSort release];
-		[archivePathSort release];
     }
 	
     return self;
@@ -165,7 +163,6 @@
 															  owner: self
 														   userInfo: @{@"purpose": @"normalProgress"}];
 	[progressBar addTrackingArea: newArea];
-	[newArea release];
 	[jumpField setDelegate: self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:@"SCMouseDragNotification" object:nil];
@@ -196,10 +193,6 @@
     [progressBar unbind: @"leftToRight"];
     
     [pageView setSessionController: nil];
-	[pageSortDescriptor release];
-	[pageNames release];
-    [session release];
-    [super dealloc];
 }
 
 
@@ -942,9 +935,6 @@
 				
 				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
 				
-				[thumbShadow release];
-				[iconImage release];
-				[shadowImage release];
 			}
 		}
 	}

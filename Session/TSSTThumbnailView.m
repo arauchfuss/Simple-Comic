@@ -11,7 +11,7 @@
 #import "TSSTImageUtilities.h"
 #import "TSSTImageView.h"
 #import "TSSTInfoWindow.h"
-
+#import "TSSTManagedSession.h"
 
 @implementation TSSTThumbnailView
 
@@ -38,17 +38,6 @@
         thumbLock = [NSLock new];
     }
     return self;
-}
-
-
-
-- (void) dealloc
-{
-    [thumbLock release];
-    thumbLock = nil;
-    [trackingRects release];
-    [trackingIndexes release];
-    [super dealloc];
 }
 
 
@@ -108,7 +97,7 @@
 		rectIndex = @(counter);
 		tagIndex = [self addTrackingRect: trackRect 
 								   owner: self 
-								userData: rectIndex
+								userData: (__bridge void *)(rectIndex)
 							assumeInside: NO];
 		[trackingRects addIndex: tagIndex];
 		[trackingIndexes addObject: rectIndex];
@@ -170,17 +159,16 @@
 
 - (void)processThumbs
 {
-    NSAutoreleasePool * pool = [NSAutoreleasePool new];
-    ++threadIdent;
+	@autoreleasepool {
+	++threadIdent;
     unsigned localIdent = threadIdent;
     [thumbLock lock];
     NSInteger pageCount = [[pageController content] count];
-	NSAutoreleasePool * localPool = [NSAutoreleasePool new];
     limit = 0;
     while(limit < (pageCount) && 
           localIdent == threadIdent && 
           [dataSource respondsToSelector: @selector(imageForPageAtIndex:)])
-    {
+    @autoreleasepool {
         [dataSource imageForPageAtIndex: limit];
 
         
@@ -191,15 +179,12 @@
 				[self setNeedsDisplay: YES];
 			}
 			
-			[localPool release];
-			localPool = [NSAutoreleasePool new];
         }
         ++limit;
     }
-	[localPool release];
     [thumbLock unlock];
-    [pool release];
-    [self setNeedsDisplay: YES];
+	}
+	[self setNeedsDisplay: YES];
 }
 
 

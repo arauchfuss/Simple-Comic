@@ -66,11 +66,11 @@
 @property (assign) float horizontalMargin;
 
 @property (assign) float cornerRadius;
-@property (retain) NSGradient * emptyGradient;
-@property (retain) NSGradient * barGradient;
-@property (retain) NSGradient * shadowGradient;
-@property (retain) NSColor * highlightColor;
-@property (retain) NSDictionary * numberStyle;
+@property (strong) NSGradient * emptyGradient;
+@property (strong) NSGradient * barGradient;
+@property (strong) NSGradient * shadowGradient;
+@property (strong) NSColor * highlightColor;
+@property (strong) NSDictionary * numberStyle;
 
 - (int)indexForPoint:(NSPoint)point;
 
