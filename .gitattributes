@@ -1,1 +1,1 @@
-*.pbxproj -crlf -diff -merge
+*.pbxproj text=lf -diff -merge
