@@ -903,8 +903,8 @@
 			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
 			{
 				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
-				XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
-				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
+				NSString * coverName = [(XADArchive *)[selectedGroup instance] nameOfEntry: coverIndex];
+				[UKXattrMetadataStore setString: coverName
 										 forKey: @"QCCoverName" 
 										 atPath: archivePath 
 								   traverseLink: NO];

@@ -313,8 +313,6 @@
 	<string>Help</string>
 	<key>CFBundleHelpBookName</key>
 	<string>Simple Comic Help</string>
-	<key>CFBundleIconFile</key>
-	<string>sc_icon</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.tsst.simplecomic</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -332,7 +330,7 @@
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.entertainment</string>
 	<key>NSAppleScriptEnabled</key>
-	<string>YES</string>
+	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 @class XADArchiveParser, XADString;
 
 @interface DTPartialArchiveParser : NSObject 

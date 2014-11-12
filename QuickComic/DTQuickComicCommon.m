@@ -26,8 +26,8 @@ NSMutableArray * fileListForArchive(XADArchive * archive)
     for ( ; index < count; ++index)
     {
         fileName = [archive nameOfEntry: index];
-		XADString * dataString = [archive rawNameOfEntry: index];
-		rawName = [dataString stringWithEncoding: NSNonLossyASCIIStringEncoding];
+		NSString * dataString = [archive nameOfEntry: index];
+		rawName = dataString;
         if([[NSImage imageFileTypes] containsObject: [fileName pathExtension]])
         {
             fileDescription = @{@"name": fileName,

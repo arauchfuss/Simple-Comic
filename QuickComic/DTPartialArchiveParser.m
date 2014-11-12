@@ -9,6 +9,10 @@
 #import "DTPartialArchiveParser.h"
 #include <XADMaster/XADArchive.h>
 
+@interface DTPartialArchiveParser () <XADArchiveParserDelegate>
+
+@end
+
 @implementation DTPartialArchiveParser
 
 - (instancetype) init
