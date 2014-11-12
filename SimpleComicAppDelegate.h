@@ -132,7 +132,7 @@ extern NSString * TSSTSessionEndNotification;
 
 /*  Creates a new Session object based on user prefs and then 
     passes the files array to addFiles:toSesion: */
-- (TSSTManagedSession *)newSessionWithFiles:(NSArray *)files;
+- (TSSTManagedSession *)newSessionWithFiles:(NSArray *)files NS_RETURNS_NOT_RETAINED;
 
 /*  This method is called every time an existing session needs
     to be made visible to a user. */

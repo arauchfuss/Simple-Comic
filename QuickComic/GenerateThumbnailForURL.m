@@ -16,7 +16,7 @@
    ----------------------------------------------------------------------------- */
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
-    NSAutoreleasePool * pool = [NSAutoreleasePool new];
+	@autoreleasepool {
 	
 	NSString * archivePath = [(NSURL *)url path];
 //	NSLog(@"base path %@",archivePath);
@@ -49,7 +49,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 			coverName = [fileList[0] valueForKey: @"rawName"];
 			coverIndex = [[fileList[0] valueForKey: @"index"] intValue];
 			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
-			imageData = [archive contentsOfEntry: coverIndex];
+			imageData = [[archive contentsOfEntry: coverIndex] retain];
 		}
 		[archive release];
 
@@ -90,13 +90,13 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 //		NSLog(@"release");
         CFRelease(currentImage);
         QLThumbnailRequestFlushContext(thumbnail, cgContext);
-        CFRelease(cgContext);
+		CGContextRelease(cgContext);
 		[imageData release];
 	}
 	
 	
-    [pool release];
-    return noErr;
+	}
+	return noErr;
 }
 
 

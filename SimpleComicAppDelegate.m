@@ -724,7 +724,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 	if([addPagesModal runModal] !=  NSCancelButton)
 	{
-        filePaths = [NSMutableArray new];
+        filePaths = [NSMutableArray array];
         fileURLs = [addPagesModal URLs];
         
         for (fileURL in fileURLs) {
