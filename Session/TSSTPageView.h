@@ -117,7 +117,7 @@ typedef struct {
 
 /*  If the view are is larger than the display area 
     then drag scrolling is available. */
-- (BOOL)dragIsPossible;
+@property (readonly) BOOL dragIsPossible;
 
 
 /*  This is used by the image loupe.  Grabs the portion of the pages
@@ -128,7 +128,7 @@ typedef struct {
 
 /*  This is the actual rectangle within which the pages are rendered.
     Handy to know for various reasons. */
-- (NSRect)imageBounds;
+@property (readonly) NSRect imageBounds;
 
 
 /* This method scrolls the views so that the proper 
@@ -148,8 +148,8 @@ typedef struct {
 	This is what enables the page rotation. */
 - (void)rotationTransformWithFrame:(NSRect)rect;
 
-- (BOOL)horizontalScrollIsPossible;
-- (BOOL)verticalScrollIsPossible;
+@property (readonly) BOOL horizontalScrollIsPossible;
+@property (readonly) BOOL verticalScrollIsPossible;
 
 // Timers
 - (void)startAnimationForImage:(NSImage *)image;
@@ -162,7 +162,7 @@ typedef struct {
 - (void)pageUp;
 - (void)pageDown;
 
-- (NSRect)imageCropRectangle;
+@property (readonly) NSRect imageCropRectangle;
 
 @end
 

@@ -46,8 +46,8 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		if([fileList count] > 0)
 		{
 			[fileList sortUsingDescriptors: fileSort()];
-			coverName = [[fileList objectAtIndex: 0] valueForKey: @"rawName"];
-			coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] intValue];
+			coverName = [fileList[0] valueForKey: @"rawName"];
+			coverIndex = [[fileList[0] valueForKey: @"index"] intValue];
 			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}

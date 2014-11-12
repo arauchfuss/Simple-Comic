@@ -16,7 +16,7 @@
 @synthesize progressRect, horizontalMargin, leftToRight, maxValue, currentValue, 
 cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, numberStyle;
 
-- (id)initWithFrame:(NSRect)frame
+- (instancetype)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)

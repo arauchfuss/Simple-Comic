@@ -50,7 +50,7 @@
 }
 
 
-- (id)initWithFrame:(NSRect)aRectangle;
+- (instancetype)initWithFrame:(NSRect)aRectangle;
 {
 	if((self = [super initWithFrame: aRectangle]))
 	{

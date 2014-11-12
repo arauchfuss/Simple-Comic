@@ -36,15 +36,14 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
     NSLock * groupLock;
 }
 
-- (id)instance;
+@property (readonly, strong) id instance;
 
-- (void)setPath:(NSString *)newPath;
-- (NSString *)path;
+@property (copy) NSString *path;
 
 - (NSData *)dataForPageIndex:(NSInteger)index;
 - (NSData *)dataForPageName:(NSString *)name;
-- (NSManagedObject *)topLevelGroup;
-- (NSSet *)nestedImages;
+@property (readonly, strong) NSManagedObject *topLevelGroup;
+@property (readonly, copy) NSSet *nestedImages;
 
 - (void)nestedFolderContents;
 
@@ -59,7 +58,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 + (NSArray *)quicklookExtensions;
 /*  Recurses through archives looking for archives and images */
 - (void)nestedArchiveContents;
-- (BOOL)quicklookCompatible;
+@property (readonly) BOOL quicklookCompatible;
 
 @end
 

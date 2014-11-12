@@ -45,7 +45,7 @@ NSPoint centerPointOfRect(NSRect rect);
 
 NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, float radius);
 
-CGImageRef CGImageRefNamed(NSString * name);
+CGImageRef CGImageRefNamed(NSString * name) CF_RETURNS_NOT_RETAINED;
 
 CGFloat RadiansToDegrees(CGFloat radians);
 

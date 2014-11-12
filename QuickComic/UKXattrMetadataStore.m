@@ -43,7 +43,7 @@
 	{
 		if( ((char*)[listBuffer mutableBytes])[x] == 0 )	// End of string.
 		{
-			NSString*	str = [NSString stringWithUTF8String: nameStart];
+			NSString*	str = @(nameStart);
 			nameStart = [listBuffer mutableBytes] +x +1;
 			[allKeys addObject: str];
 		}

@@ -14,7 +14,6 @@
 
 @interface TSSTThumbnailView : NSView
 {
-    id dataSource;
     IBOutlet NSArrayController * pageController;
 	
 	IBOutlet TSSTImageView * thumbnailView;
@@ -34,8 +33,7 @@
 - (void)removeTrackingRects;
 - (void)buildTrackingRects;
 - (void)processThumbs;
-- (void)setDataSource:(id)source;
-- (id)dataSource;
+@property (assign) id dataSource;
 - (void)dwell:(NSTimer *)timer;
 - (void)zoomThumbnailAtIndex:(NSInteger)index;
 

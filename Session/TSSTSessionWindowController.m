@@ -89,7 +89,7 @@
 /*!
  
 */
-- (id)initWithSession:(TSSTManagedSession *)aSession
+- (instancetype)initWithSession:(TSSTManagedSession *)aSession
 {
     self = [super init];
     if (self != nil)

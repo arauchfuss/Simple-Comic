@@ -113,7 +113,7 @@ enum PageSelectionMode {
 @property (assign) NSInteger pageTurn;
 @property (retain) NSString * pageNames;
 
-- (id)initWithSession:(TSSTManagedSession *)aSession;
+- (instancetype)initWithSession:(TSSTManagedSession *)aSession NS_DESIGNATED_INITIALIZER;
 
 // View Actions
 - (IBAction)changePageOrder:(id)sender;
@@ -184,17 +184,17 @@ enum PageSelectionMode {
 - (void)nextPage;
 - (void)previousPage;
 - (void)updateSessionObject;
-- (BOOL)currentPageIsText;
+@property (readonly) BOOL currentPageIsText;
 
 /* Bindings */
-- (BOOL)canTurnPreviousPage;
-- (BOOL)canTurnPageNext;
-- (BOOL)canTurnPageLeft;
-- (BOOL)canTurnPageRight;
+@property (readonly) BOOL canTurnPreviousPage;
+@property (readonly) BOOL canTurnPageNext;
+@property (readonly) BOOL canTurnPageLeft;
+@property (readonly) BOOL canTurnPageRight;
 
 
-- (TSSTManagedSession *)session;
-- (NSManagedObjectContext *)managedObjectContext;
+@property (readonly, strong) TSSTManagedSession *session;
+@property (readonly, strong) NSManagedObjectContext *managedObjectContext;
 - (void)toolbarWillAddItem:(NSNotification *)notification;
 
 

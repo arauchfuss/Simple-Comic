@@ -14,7 +14,7 @@
 }
 
 
-- (float)toolbarHeight;
-- (BOOL)isFullscreen;
+@property (readonly) float toolbarHeight;
+@property (getter=isFullscreen, readonly) BOOL fullscreen;
 
 @end

@@ -36,15 +36,15 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 + (NSArray *)imageExtensions;
 + (NSArray *)textExtensions;
-- (NSString *)name;
+@property (readonly, copy) NSString *name;
 //- (NSString *)deconflictionName;
    
-- (BOOL )shouldDisplayAlone;
+@property (readonly) BOOL shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
-- (NSImage *)thumbnail;
-- (NSData *)prepThumbnail;
-- (NSData *)pageData;
-- (NSImage *)textPage;
-- (NSImage *)pageImage;
+@property (readonly, copy) NSImage *thumbnail;
+@property (readonly, copy) NSData *prepThumbnail;
+@property (readonly, copy) NSData *pageData;
+@property (readonly, copy) NSImage *textPage;
+@property (readonly, copy) NSImage *pageImage;
 
 @end

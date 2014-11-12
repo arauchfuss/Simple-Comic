@@ -11,7 +11,7 @@
 
 @implementation DTPartialArchiveParser
 
-- (id) init
+- (instancetype) init
 {
 	self = [super init];
 	if (self != nil) {
@@ -20,7 +20,7 @@
 }
 
 
-- (id)initWithPath:(NSString *)archivePath searchString:(NSString *)search
+- (instancetype)initWithPath:(NSString *)archivePath searchString:(NSString *)search
 {
 	self=[self init];	
 	if(self)
@@ -61,13 +61,13 @@
 
 -(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict
 {	
-	NSNumber * resnum = [dict objectForKey: XADIsResourceForkKey];
+	NSNumber * resnum = dict[XADIsResourceForkKey];
 	BOOL isres = resnum&&[resnum boolValue];
 	foundData = nil;
 
 	if(!isres)
 	{
-		XADString * name = [dict objectForKey: XADFileNameKey];
+		XADString * name = dict[XADFileNameKey];
 		NSString * encodedName = [name stringWithEncoding: NSNonLossyASCIIStringEncoding];
 //		NSLog(@"Encoded Name: %@", encodedName);
 		if([searchString isEqualToString: encodedName])

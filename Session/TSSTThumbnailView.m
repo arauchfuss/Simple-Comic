@@ -15,6 +15,7 @@
 
 @implementation TSSTThumbnailView
 
+@synthesize dataSource;
 
 - (void)awakeFromNib
 {
@@ -25,7 +26,7 @@
 
 
 
-- (id)initWithFrame:(NSRect)frame
+- (instancetype)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
@@ -73,20 +74,6 @@
         thumbRect = NSMakeRect(NSMaxX(bounds) - horSide - horGridPos * horSide, NSMaxY(bounds) - side - vertGridPos * side, horSide, side);
     }
     return thumbRect;
-}
-
-
-
-- (void)setDataSource:(id)source
-{
-    dataSource = source;
-}
-
-
-
-- (id)dataSource
-{
-    return dataSource;
 }
 
 

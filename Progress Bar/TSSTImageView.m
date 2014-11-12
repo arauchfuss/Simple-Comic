@@ -15,7 +15,7 @@ static NSDictionary * stringAttributes;
 
 
 @synthesize imageName;
-
+@synthesize clears;
 
 + (void)initialize
 {
@@ -28,7 +28,7 @@ static NSDictionary * stringAttributes;
 }
 
 
-- (id) init
+- (instancetype) init
 {
     self = [super init];
     if (self != nil)
@@ -36,19 +36,6 @@ static NSDictionary * stringAttributes;
         clears = NO;
     }
     return self;
-}
-
-
-
-- (void)setClears:(BOOL)canClear
-{
-    clears = canClear;
-}
-
-
-- (BOOL)clears
-{
-    return clears;
 }
 
 

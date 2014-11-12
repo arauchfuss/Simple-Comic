@@ -41,7 +41,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 			NSDate * currentTime = nil;
             do
             {
-                index = [[[fileList objectAtIndex: counter] valueForKey: @"index"] intValue];
+                index = [[fileList[counter] valueForKey: @"index"] intValue];
                 pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
                 currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
                 canvasRect = CGRectMake(0, 0, CGImageGetWidth(currentImage), CGImageGetHeight(currentImage));

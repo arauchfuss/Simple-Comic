@@ -11,13 +11,11 @@
 
 @interface TSSTImageView : NSImageView
 {
-    BOOL clears;
     NSString * imageName;
 }
 
-@property (retain) NSString * imageName;
-- (void)setClears:(BOOL)yes;
-- (BOOL)clears;
+@property (copy) NSString * imageName;
+@property  BOOL clears;
 
 
 @end

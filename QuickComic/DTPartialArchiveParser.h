@@ -15,8 +15,8 @@
 	NSData * foundData;
 }
 
-- (id)initWithPath:(NSString *)archivePath searchString:(NSString *)search;
-- (NSData *)searchResult;
+- (instancetype)initWithPath:(NSString *)archivePath searchString:(NSString *)search;
+@property (readonly, copy) NSData *searchResult;
 
 -(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict;
 -(BOOL)archiveParsingShouldStop:(XADArchiveParser *)parser;
