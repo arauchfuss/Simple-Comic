@@ -307,22 +307,22 @@
 			</array>
 		</dict>
 		<dict>
-			<key>LSItemContentTypes</key>
+			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>com.apple.finder.smart-folder</string>
+				<string>savedSearch</string>
 			</array>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/xml</string>
 			</array>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>savedSearch</string>
-			</array>
 			<key>CFBundleTypeName</key>
 			<string>Smart Folder</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.apple.finder.smart-folder</string>
+			</array>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
