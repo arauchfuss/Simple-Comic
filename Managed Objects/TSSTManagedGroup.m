@@ -448,7 +448,7 @@
         return;
     }
     
-    password = [[NSApp delegate] passwordForArchiveWithPath: [self valueForKey: @"path"]];
+    password = [(SimpleComicAppDelegate *)[NSApp delegate] passwordForArchiveWithPath: [self valueForKey: @"path"]];
     [archive setPassword: password];
     
     [self setValue: password forKey: @"password"];

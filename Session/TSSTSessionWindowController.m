@@ -1298,7 +1298,7 @@ images are currently visible and then skips over them.
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-    return [[NSApp delegate] managedObjectContext];
+    return [(SimpleComicAppDelegate *)[NSApp delegate] managedObjectContext];
 }
 
 
