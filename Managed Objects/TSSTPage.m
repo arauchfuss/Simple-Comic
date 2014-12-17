@@ -236,9 +236,7 @@ static NSSize monospaceCharacterSize;
     }
     else
     {
-        [imageFromData setScalesWhenResized: YES];
-        [imageFromData setCacheMode: NSImageCacheNever];
-        
+        [imageFromData setCacheMode: NSImageCacheNever];        
         [imageFromData setSize: imageSize];
         [imageFromData setCacheMode: NSImageCacheDefault];
     }
