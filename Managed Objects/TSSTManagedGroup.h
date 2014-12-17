@@ -72,3 +72,11 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 @end
 
+@interface SSDManagedSmartFolder : TSSTManagedGroup
+{
+    
+}
+
+- (void) smartFolderContents;
+
+@end

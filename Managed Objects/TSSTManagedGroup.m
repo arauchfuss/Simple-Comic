@@ -127,6 +127,14 @@
 }
 
 
+/**
+ Goes through various files like pdfs, images, text files
+ from the path folder and it's subfolders and add these
+ to the Core Data for the managedObjectContext
+ with the info needed to deal with the files.
+ */
+
+
 - (void)nestedFolderContents
 {
 	NSString * folderPath = [self valueForKey: @"path"];
@@ -180,6 +188,7 @@
 				[nestedDescription setValue: fullPath forKey: @"imagePath"];
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
+            // TODO: add for smart folders
 			if(nestedDescription)
 			{
 				[nestedDescription setValue: self forKey: @"group"];
@@ -188,7 +197,11 @@
 	}
 }
 
-
+/**
+ Returns a set with all the images found in the key in union with the ones from other groups.
+ 
+ @return NSSet with all images found in context.
+*/
 - (NSSet *)nestedImages
 {
 	NSMutableSet * allImages = [[NSMutableSet alloc] initWithSet: [self valueForKey: @"images"]];
@@ -207,7 +220,9 @@
 
 @implementation TSSTManagedArchive
 
-
+/**
+ * @returns NSArray with archieve extions which the software supports.
+ */
 + (NSArray *)archiveExtensions
 {
 	static NSArray * extensions = nil;
@@ -219,7 +234,9 @@
 	return extensions;
 }
 
-
+/**
+ @return NSArray with file extensions for which software support QuickLook for.
+ */
 + (NSArray *)quicklookExtensions
 {
 	static NSArray * extensions = nil;
@@ -528,3 +545,90 @@
 
 @end
 
+@implementation SSDManagedSmartFolder{
+    
+}
+
+- (void) smartFolderContents
+{
+    TSSTPage *imageDescription;
+    NSMutableSet *pageSet = [NSMutableSet set];
+  
+    NSArray *filenames = nil;
+   
+    NSString *filepath = [self valueForKey:@"path"];
+    BOOL exist = [[NSFileManager new] fileExistsAtPath: filepath];
+    if(exist){
+        NSLog(@"Path exist");
+        
+        NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:filepath];
+        NSObject * result = [dic objectForKey:@"RawQuery"];
+        NSLog(@"%@",result.description);
+        
+        NSPipe *pipe = [NSPipe pipe];
+        NSFileHandle * file = pipe.fileHandleForReading;
+        
+        
+        NSTask *task = [NSTask new];
+        task.launchPath = @"/usr/bin/mdfind";
+        task.arguments = @[result.description];
+        task.standardOutput = pipe;
+        
+        [task launch];
+        
+        NSData *data = [file readDataToEndOfFile];
+        NSString *resultString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        filenames = [resultString componentsSeparatedByString:@"\n"];
+        NSLog(@"%lu", (unsigned long)[filenames count]);
+        NSLog(@"%@", resultString);
+       
+#ifndef NDEBUG
+        for(NSString *elem in filenames){
+            NSLog(@"%@", elem);
+        }
+#endif
+        
+        
+    }else{
+        NSLog(@"Failed path");
+        return;
+    }
+    
+
+#pragma TODO check if items are images.
+    int pageNumber = 0;
+    for(NSString *path in filenames){
+        if(!path || ![path isEqualToString: @""]){
+            imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
+            [imageDescription setValue: [NSString stringWithFormat: @"%@", path] forKey: @"imagePath"];
+            [imageDescription setValue: @(pageNumber) forKey: @"index"];
+            [pageSet addObject: imageDescription];
+            pageNumber++;
+        }
+    }
+	[self setValue: pageSet forKey: @"images"];
+    
+}
+
+- (NSData *)dataForPageIndex:(NSInteger)index
+{
+    NSSet * images = [self valueForKey:@"images"];
+    NSString *filepath = nil;
+    for(TSSTPage * page in images){
+        NSNumber *integer = [page valueForKey:@"index"];
+        if([integer isEqualToNumber:@(index)]){
+            filepath = [page valueForKey:@"imagePath"];
+            break;
+        }
+        
+    }
+   
+#pragma TODO add check to see if file exist?
+    if(!filepath){
+        return nil;
+    }
+    
+    NSData * data = [NSData dataWithContentsOfFile:  filepath];
+    return data;
+}
+@end
