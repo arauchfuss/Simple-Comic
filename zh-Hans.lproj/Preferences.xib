@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A2093" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1050" defaultVersion="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <deployment version="1050" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DTPreferencesController">
@@ -11,19 +11,19 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="42" userLabel="Shared Defaults"/>
         <window title="偏好设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="246" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="140" y="154" width="312" height="304"/>
+            <rect key="contentRect" x="140" y="154" width="312" height="363"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <view key="contentView" id="247">
-                <rect key="frame" x="0.0" y="0.0" width="312" height="304"/>
+                <rect key="frame" x="0.0" y="1" width="312" height="363"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="218">
-                        <rect key="frame" x="43" y="34" width="158" height="14"/>
+                        <rect key="frame" x="43" y="93" width="158" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="下次启动软件会打开上一次窗口" id="236">
                             <font key="font" size="11" name="STHeitiSC-Light"/>
@@ -32,7 +32,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="216">
-                        <rect key="frame" x="43" y="90" width="259" height="28"/>
+                        <rect key="frame" x="43" y="149" width="259" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="窗口自动调整到最大显示大小" id="235">
                             <font key="font" size="11" name="STHeitiSC-Light"/>
@@ -41,7 +41,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="213">
-                        <rect key="frame" x="43" y="174" width="222" height="14"/>
+                        <rect key="frame" x="43" y="207" width="222" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="&quot;最适合窗口&quot;模式的图片缩放会保持原始比例" id="234">
                             <font key="font" metaFont="smallSystem"/>
@@ -50,7 +50,7 @@
                         </textFieldCell>
                     </textField>
                     <button toolTip="Windows are dynamically resized to fit the page-view and screen" id="152">
-                        <rect key="frame" x="24" y="124" width="209" height="18"/>
+                        <rect key="frame" x="24" y="183" width="209" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="check" title="自动调整窗口大小" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="231">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -61,7 +61,7 @@
                         </connections>
                     </button>
                     <button toolTip="Save all open comics on exit" id="41">
-                        <rect key="frame" x="24" y="54" width="182" height="18"/>
+                        <rect key="frame" x="24" y="113" width="182" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="check" title="自动保存打开窗口" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="230">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -72,7 +72,7 @@
                         </connections>
                     </button>
                     <button toolTip="Pages are never automatically scaled past their actual resolution" id="36">
-                        <rect key="frame" x="24" y="194" width="265" height="18"/>
+                        <rect key="frame" x="24" y="253" width="265" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="check" title="原始比例缩放" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="229">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -83,7 +83,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" id="237">
-                        <rect key="frame" x="42" y="266" width="253" height="17"/>
+                        <rect key="frame" x="42" y="325" width="253" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="背景色" id="239">
                             <font key="font" size="12" name="STHeitiSC-Light"/>
@@ -92,7 +92,7 @@
                         </textFieldCell>
                     </textField>
                     <colorWell id="238">
-                        <rect key="frame" x="20" y="264" width="20" height="20"/>
+                        <rect key="frame" x="20" y="323" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="color" red="0.058130499000000002" green="0.055541898999999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -104,7 +104,7 @@
                         </connections>
                     </colorWell>
                     <textField verticalHuggingPriority="750" id="243">
-                        <rect key="frame" x="43" y="230" width="259" height="28"/>
+                        <rect key="frame" x="43" y="289" width="259" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="全屏模式下的背景颜色" id="244">
                             <font key="font" size="11" name="STHeitiSC-Light"/>
@@ -112,8 +112,29 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <textField verticalHuggingPriority="750" id="Fy0-Ev-V9f">
+                        <rect key="frame" x="43" y="28" width="251" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" title="Enabling will allow you to navigate back and forth by swiping." id="uMM-fZ-ZBg">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button id="Fsx-RV-Ifk">
+                        <rect key="frame" x="24" y="62" width="265" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Enable swipe" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="zlK-8w-NML">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="42" name="value" keyPath="values.enableSwipe" id="2kI-Cl-dZO"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="283" y="309.5"/>
         </window>
     </objects>
 </document>

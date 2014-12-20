@@ -62,6 +62,7 @@ NSString * TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString * TSSTLonelyFirstPage =   @"lonelyFirstPage";
 NSString * TSSTNestedArchives =	   @"nestedArchives";
 NSString * TSSTUpdateSelection =   @"updateSelection";
+NSString * SSDEnableSwipe = @"enableSwipe";
 
 NSString * TSSTSessionEndNotification = @"sessionEnd";
 
@@ -197,6 +198,7 @@ static NSArray * allAvailableStringEncodings(void)
     standardDefaults[TSSTLonelyFirstPage] = @YES;
 	standardDefaults[TSSTNestedArchives] = @YES;
 	standardDefaults[TSSTUpdateSelection] = @0;
+    standardDefaults[SSDEnableSwipe] = @NO;
 	
 	NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	[sharedDefaultsController setInitialValues: standardDefaults];

@@ -62,6 +62,7 @@ extern NSString * TSSTLonelyFirstPage;
 extern NSString * TSSTNestedArchives;
 extern NSString * TSSTUpdateSelection;
 extern NSString * TSSTSessionEndNotification;
+extern NSString * SSDEnableSwipe;
 
 
 /*!

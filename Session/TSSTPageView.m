@@ -826,7 +826,32 @@
 		NSPoint scrollPoint = NSMakePoint(NSMinX(visible) - ([theEvent deltaX] * 5), NSMinY(visible) + ([theEvent deltaY] * 5));
 		[self scrollPoint: scrollPoint];
 	}
-	
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if([[defaults valueForKey:SSDEnableSwipe] boolValue]){
+        float deltaX = [theEvent deltaX];
+        if (deltaX != 0.0)
+        {
+            [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
+                        dampenAmountThresholdMin:-1.0
+                                             max:1.0
+                                    usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+                                    }];
+        }
+
+
+        if (deltaX > 0.0)
+        {
+            [sessionController pageLeft: self];
+        }
+        else if (deltaX < 0.0)
+        {
+            [sessionController pageRight: self];
+        }
+    }
+    
     [sessionController refreshLoupePanel];
 }
 
