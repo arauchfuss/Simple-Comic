@@ -579,10 +579,11 @@
         NSData *data = [file readDataToEndOfFile];
         NSString *resultString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         filenames = [resultString componentsSeparatedByString:@"\n"];
+       
+#ifndef NDEBUG
         NSLog(@"%lu", (unsigned long)[filenames count]);
         NSLog(@"%@", resultString);
        
-#ifndef NDEBUG
         for(NSString *elem in filenames){
             NSLog(@"%@", elem);
         }

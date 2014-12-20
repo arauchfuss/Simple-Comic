@@ -49,7 +49,6 @@
 @synthesize pageTurn, pageNames, pageSortDescriptor;
 
 
-
 /*!
  Turns all of the toolbar images in to templates so that they look consistent with
  othe Apple generated icons.
@@ -88,6 +87,7 @@
 /*!
  
 */
+
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession
 {
     self = [super init];
