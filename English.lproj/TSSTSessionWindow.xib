@@ -218,10 +218,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="AB4BCD46-EE79-45CC-9A97-733E3740BA34" label="Thumbnails" paletteLabel="Thumbnails" image="NSIconViewTemplate" id="577" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="26" height="25"/>
-                        <size key="maxSize" width="26" height="25"/>
+                        <size key="minSize" width="27" height="25"/>
+                        <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
-                            <rect key="frame" x="21" y="14" width="26" height="25"/>
+                            <rect key="frame" x="22" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" title="Thumbnails" bezelStyle="texturedRounded" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -232,14 +232,14 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="Capture Page" paletteLabel="Capture Page" image="extract" id="688" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="Capture Page" paletteLabel="Capture Page" image="extractTemplate" id="688" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
-                            <rect key="frame" x="26" y="14" width="27" height="25"/>
+                            <rect key="frame" x="25" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="extract" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="extractTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -458,7 +458,7 @@ Gw
         <image name="NSRemoveTemplate" width="8" height="8"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="9"/>
         <image name="equalTemplate" width="9" height="6"/>
-        <image name="extract" width="17" height="12"/>
+        <image name="extractTemplate" width="17" height="13"/>
         <image name="horScaleTemplate" width="12" height="8"/>
         <image name="leftRightOrderTemplate" width="16" height="14"/>
         <image name="loupeTemplate" width="14" height="14"/>
