@@ -188,7 +188,7 @@
 				[nestedDescription setValue: fullPath forKey: @"imagePath"];
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
-            // TODO: add for smart folders
+#pragma TODO add for smart folders
 			if(nestedDescription)
 			{
 				[nestedDescription setValue: self forKey: @"group"];
@@ -580,36 +580,45 @@
         NSString *resultString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         filenames = [resultString componentsSeparatedByString:@"\n"];
        
-#ifndef NDEBUG
-        NSLog(@"%lu", (unsigned long)[filenames count]);
-        NSLog(@"%@", resultString);
-       
-        for(NSString *elem in filenames){
-            NSLog(@"%@", elem);
-        }
-#endif
-        
-        
     }else{
         NSLog(@"Failed path");
         return;
     }
     
 
-#pragma TODO check if items are images.
     int pageNumber = 0;
+    
     for(NSString *path in filenames){
-        if(!path || ![path isEqualToString: @""]){
-            imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-            [imageDescription setValue: [NSString stringWithFormat: @"%@", path] forKey: @"imagePath"];
-            [imageDescription setValue: @(pageNumber) forKey: @"index"];
-            [pageSet addObject: imageDescription];
-            pageNumber++;
+        if(path){
+            NSString * pathExtension = [[path pathExtension] lowercaseString];
+            NSLog(@"path: %@  -  extension: %@", path, pathExtension);
+            // Handles recognized image files
+            if([[TSSTPage imageExtensions] containsObject:pathExtension ]){
+                imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
+                [imageDescription setValue: [NSString stringWithFormat: @"%@", path] forKey: @"imagePath"];
+                [imageDescription setValue: @(pageNumber) forKey: @"index"];
+                [pageSet addObject: imageDescription];
+                pageNumber++;
+            }
+            else if([[TSSTManagedArchive archiveExtensions] containsObject: pathExtension]){
+#pragma TODO implement code for archives
+            }
+           
+#pragma TODO put pdf to the end of a session instead of at beginning.
+            else if([pathExtension isEqualToString: @"pdf"]){
+                NSManagedObject * nestedDescription;
+				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
+				[nestedDescription setValue: path forKey: @"path"];
+				[nestedDescription setValue: path forKey: @"name"];
+				[(TSSTManagedPDF *)nestedDescription pdfContents];
+                [nestedDescription setValue: self forKey: @"group"];
+            }
         }
     }
 	[self setValue: pageSet forKey: @"images"];
     
 }
+
 
 - (NSData *)dataForPageIndex:(NSInteger)index
 {
@@ -624,6 +633,7 @@
         
     }
    
+    
 #pragma TODO add check to see if file exist?
     if(!filepath){
         return nil;
@@ -632,4 +642,5 @@
     NSData * data = [NSData dataWithContentsOfFile:  filepath];
     return data;
 }
+
 @end
