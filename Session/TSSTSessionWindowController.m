@@ -48,42 +48,6 @@
 
 @synthesize pageTurn, pageNames, pageSortDescriptor;
 
-
-/*!
- Turns all of the toolbar images in to templates so that they look consistent with
- othe Apple generated icons.
- */
-+ (void)initialize
-{
-    NSImage * segmentImage = [NSImage imageNamed: @"org_size"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"Loupe"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"rotate_l"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"rotate_r"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"win_scale"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"hor_scale"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"one_page"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"two_page"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"rl_order"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"lr_order"];
-    [segmentImage setTemplate: YES];
-	segmentImage = [NSImage imageNamed: @"equal"];
-    [segmentImage setTemplate: YES];
-	segmentImage = [NSImage imageNamed: @"thumbnails"];
-    [segmentImage setTemplate: YES];
-	segmentImage = [NSImage imageNamed: @"extract"];
-    [segmentImage setTemplate: YES];
-}
-
-
 /*!
  
 */
