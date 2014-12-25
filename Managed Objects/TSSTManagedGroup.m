@@ -188,7 +188,7 @@
 				[nestedDescription setValue: fullPath forKey: @"imagePath"];
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
-#pragma TODO add for smart folders
+            
 			if(nestedDescription)
 			{
 				[nestedDescription setValue: self forKey: @"group"];
@@ -601,10 +601,14 @@
                 pageNumber++;
             }
             else if([[TSSTManagedArchive archiveExtensions] containsObject: pathExtension]){
-#pragma TODO implement code for archives
+                NSManagedObject * nestedDescription;
+				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
+				[nestedDescription setValue: path forKey: @"path"];
+				[nestedDescription setValue: path forKey: @"name"];
+				[(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
+                [nestedDescription setValue: self forKey: @"group"];
             }
            
-#pragma TODO put pdf to the end of a session instead of at beginning.
             else if([pathExtension isEqualToString: @"pdf"]){
                 NSManagedObject * nestedDescription;
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
