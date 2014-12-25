@@ -681,9 +681,6 @@ static NSArray * allAvailableStringEncodings(void)
 			}
             else if([fileExtension isEqualToString:@"savedsearch"])
             {
-#ifndef NDEBUG
-                NSLog(@"savedSearch!");
-#endif
                 
 				//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
                 fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];

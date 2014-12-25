@@ -1392,8 +1392,8 @@
 - (BOOL)dragIsPossible
 {
     return ([self horizontalScrollIsPossible] || 
-			[self verticalScrollIsPossible] && 
-			![sessionController pageSelectionInProgress]);
+			([self verticalScrollIsPossible] &&
+			![sessionController pageSelectionInProgress]));
 }
 
 
