@@ -72,18 +72,18 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="ADD2836D-8728-474F-9355-80FA8EA9972C" label="Turn Page" paletteLabel="Turn Page" id="553" customClass="DTPageTurnToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="25"/>
-                        <size key="maxSize" width="47" height="25"/>
+                        <size key="minSize" width="55" height="25"/>
+                        <size key="maxSize" width="55" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="554">
-                            <rect key="frame" x="7" y="14" width="47" height="25"/>
+                            <rect key="frame" x="3" y="14" width="55" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="555">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Left Page Turn" image="NSLeftFacingTriangleTemplate" width="22" tag="701">
+                                    <segment toolTip="Left Page Turn" image="NSLeftFacingTriangleTemplate" width="26" tag="701">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Right Page Turn" image="NSRightFacingTriangleTemplate" width="22" tag="702"/>
+                                    <segment toolTip="Right Page Turn" image="NSRightFacingTriangleTemplate" width="26" tag="702"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -93,7 +93,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" id="517" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="70" height="25"/>
+                        <size key="minSize" width="71" height="25"/>
                         <size key="maxSize" width="71" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
                             <rect key="frame" x="3" y="14" width="70" height="25"/>
@@ -119,7 +119,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" id="520" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="25"/>
+                        <size key="minSize" width="55" height="25"/>
                         <size key="maxSize" width="55" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
                             <rect key="frame" x="7" y="14" width="55" height="25"/>
@@ -142,7 +142,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" id="523" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="25"/>
+                        <size key="minSize" width="60" height="25"/>
                         <size key="maxSize" width="60" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="521">
                             <rect key="frame" x="6" y="14" width="60" height="25"/>
