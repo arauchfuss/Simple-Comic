@@ -101,13 +101,13 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Original Size" image="equal" width="22">
+                                    <segment toolTip="Original Size" image="equalTemplate" width="22">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Scale to Window" image="win_scale" width="22" tag="1">
+                                    <segment toolTip="Scale to Window" image="winScaleTemplate" width="22" tag="1">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Horizontal Scaling" image="hor_scale" width="22" tag="2">
+                                    <segment toolTip="Horizontal Scaling" image="horScaleTemplate" width="22" tag="2">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -127,10 +127,10 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Right to Left Page Order" image="rl_order" width="22">
+                                    <segment toolTip="Right to Left Page Order" image="rightLeftOrderTemplate" width="22">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Left to Right Page Order" image="lr_order" width="22">
+                                    <segment toolTip="Left to Right Page Order" image="leftRightOrderTemplate" width="22">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -150,8 +150,8 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="522">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Single Page Layout" image="one_page" width="22"/>
-                                    <segment toolTip="Two Page Layout" image="two_page" width="22"/>
+                                    <segment toolTip="Single Page Layout" image="onePageTemplate" width="22"/>
+                                    <segment toolTip="Two Page Layout" image="twoPageTemplate" width="22"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -169,8 +169,8 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="587">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Rotate Left" image="rotate_l" width="22" tag="901"/>
-                                    <segment toolTip="Rotate Right" image="rotate_r" width="22" tag="902"/>
+                                    <segment toolTip="Rotate Left" image="rotateLeftTemplate" width="22" tag="901"/>
+                                    <segment toolTip="Rotate Right" image="rotateRightTemplate" width="22" tag="902"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -190,7 +190,7 @@
                                 <segments>
                                     <segment toolTip="Zoom In" image="NSAddTemplate" width="22" tag="801"/>
                                     <segment toolTip="Zoom Out" image="NSRemoveTemplate" width="22" tag="802"/>
-                                    <segment toolTip="Zoom Reset" image="equal" width="22" tag="803">
+                                    <segment toolTip="Zoom Reset" image="equalTemplate" width="22" tag="803">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -200,14 +200,14 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="55B2F7CD-2E3A-405A-BF65-65B5A68E94BD" label="放大镜" paletteLabel="放大镜" image="Loupe" id="575" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="55B2F7CD-2E3A-405A-BF65-65B5A68E94BD" label="放大镜" paletteLabel="放大镜" image="loupeTemplate" id="575" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Magnifing Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="7" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="Loupe" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">
+                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="loupeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -232,14 +232,14 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="截图" paletteLabel="截图" image="extract" id="688" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="截图" paletteLabel="截图" image="extractTemplate" id="688" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
                             <rect key="frame" x="1" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="extract" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
+                            <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="extractTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -248,14 +248,14 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="设置图标" paletteLabel="设置图标" image="quicklook" id="693" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="设置图标" paletteLabel="设置图标" image="NSQuickLookTemplate" id="693" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="12" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="quicklook" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
+                            <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -451,22 +451,22 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="Loupe" width="15" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSIconViewTemplate" width="10" height="10"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
-        <image name="equal" width="11" height="12"/>
-        <image name="extract" width="17" height="12"/>
-        <image name="hor_scale" width="14" height="12"/>
-        <image name="lr_order" width="17" height="12"/>
-        <image name="one_page" width="8" height="12"/>
-        <image name="quicklook" width="16" height="16"/>
-        <image name="rl_order" width="17" height="12"/>
-        <image name="rotate_l" width="10" height="12"/>
-        <image name="rotate_r" width="10" height="12"/>
-        <image name="two_page" width="17" height="12"/>
-        <image name="win_scale" width="14" height="12"/>
+        <image name="equalTemplate" width="9" height="6"/>
+        <image name="extractTemplate" width="17" height="13"/>
+        <image name="horScaleTemplate" width="12" height="8"/>
+        <image name="leftRightOrderTemplate" width="16" height="14"/>
+        <image name="loupeTemplate" width="14" height="14"/>
+        <image name="onePageTemplate" width="12" height="14"/>
+        <image name="rightLeftOrderTemplate" width="16" height="14"/>
+        <image name="rotateLeftTemplate" width="16" height="13"/>
+        <image name="rotateRightTemplate" width="16" height="13"/>
+        <image name="twoPageTemplate" width="25" height="14"/>
+        <image name="winScaleTemplate" width="12" height="12"/>
     </resources>
 </document>
