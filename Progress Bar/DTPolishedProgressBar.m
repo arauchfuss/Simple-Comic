@@ -10,40 +10,35 @@
 #import "TSSTImageUtilities.h"
 
 
+@interface DTPolishedProgressBar ()
+
+@property (strong, nonatomic) NSColor *backgroundColor;
+@property (strong, nonatomic) NSColor *barBackgroundColor;
+@property (strong, nonatomic) NSColor *barProgressColor;
+@property (strong, nonatomic) NSColor *borderColor;
+
+@end
+
 @implementation DTPolishedProgressBar
 
-
-@synthesize progressRect, horizontalMargin, leftToRight, maxValue, currentValue, 
-cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, numberStyle;
+@synthesize progressRect, horizontalMargin, leftToRight, maxValue, currentValue, numberStyle;
 
 - (instancetype)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-		self.shadowGradient = [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.3 alpha: 1], 0.0,
-							   [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.5,
-							   [NSColor colorWithDeviceWhite: 0.2 alpha: 1], 0.5,
-							   [NSColor colorWithDeviceWhite: 0.1 alpha: 1], 1.0, nil] autorelease];
-		self.highlightColor = [NSColor colorWithCalibratedWhite: 0.88 alpha: 1];
-		
-		self.emptyGradient = [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.25 alpha: 1], 0.0,
-							  [NSColor colorWithDeviceWhite: 0.45 alpha: 1], 1.0, nil] autorelease];
-		self.barGradient = [[[NSGradient alloc] initWithColorsAndLocations: [NSColor colorWithDeviceWhite: 0.7 alpha: 1], 0.0,
-							[NSColor colorWithDeviceWhite: 0.75 alpha: 1], 0.5,
-							[NSColor colorWithDeviceWhite: 0.82 alpha: 1], 0.5,
-							[NSColor colorWithDeviceWhite: 0.92 alpha: 1], 1.0, nil] autorelease];
-		NSShadow * stringEmboss = [NSShadow new];
-		[stringEmboss setShadowColor: [NSColor colorWithDeviceWhite: 0.9 alpha: 1]];
-		[stringEmboss setShadowBlurRadius: 0];
-		[stringEmboss setShadowOffset: NSMakeSize(1, -1)];
-		self.numberStyle = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande Bold" size: 10],
-							 NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.2 alpha: 1],
-							 NSShadowAttributeName: stringEmboss};
-		[stringEmboss release];
-		self.horizontalMargin = 35;
-		self.cornerRadius = 4.0;
+        self.backgroundColor = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 0.55];
+        self.barBackgroundColor = [NSColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1];
+        self.barProgressColor = [NSColor colorWithDeviceRed:0.44 green:0.44 blue:0.44 alpha:1];
+        self.borderColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:.25];
+        
+		self.numberStyle = @{NSFontAttributeName: [NSFont fontWithName:@"Helvetica Neue" size:10],
+							 NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.2 alpha: 1]};
+        
+		self.horizontalMargin = 5;
         self.leftToRight = YES;
+        
         [self setFrameSize: frame.size];
 		[self addObserver: self forKeyPath: @"leftToRight" options: 0 context: nil];
 		[self addObserver: self forKeyPath: @"currentValue" options: 0 context: nil];
@@ -61,10 +56,12 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	[self removeTrackingArea: [self trackingAreas][0]];
 	
 	[numberStyle release];
-	[barGradient release];
-	[emptyGradient release];
-	[shadowGradient release];
-	[highlightColor release];
+    
+    [_backgroundColor release];
+    [_barBackgroundColor release];
+    [_barProgressColor release];
+    [_borderColor release];
+    
 	[super dealloc];
 }
 
@@ -81,68 +78,76 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
 	return NO;
 }
 
-
 /*
  Draws the progressbar.
  */
 - (void)drawRect:(NSRect)rect
 {
-	NSRect bounds = [self bounds];
-	
-	[NSBezierPath setDefaultLineWidth: 1.0];
-	NSRect barRect = bounds;
-	/* The 4 is half the height of the progress bar */
-	barRect.origin.y = NSHeight(bounds) / 2 - 4;
-	barRect.origin.x = NSMinX(bounds) + 0.5 + self.horizontalMargin;
-	barRect.size.height = 8;
-	barRect.size.width -= 2 * self.horizontalMargin;
-	NSBezierPath * highlight = roundedRectWithCornerRadius(barRect, self.cornerRadius);
-	barRect.origin.y+=0.5;
-	NSRect fillRect = NSInsetRect(barRect, 1, 1);
-	if(self.highlightColor)
-	{
-		[self.highlightColor set];
-		[highlight stroke];
-	}
-	
-	NSBezierPath * roundedMask = roundedRectWithCornerRadius(barRect, self.cornerRadius);
-	
-	[NSGraphicsContext saveGraphicsState];
-	
-	[shadowGradient drawInBezierPath: roundedMask angle: 90];
-	roundedMask = roundedRectWithCornerRadius(fillRect, self.cornerRadius - 1);
-	[roundedMask addClip];
+    NSString *totalString = [@(maxValue) stringValue];
+    NSString *progressString = [@(self.currentValue + 1) stringValue];
+    NSString *leftString, *rightString;
+    
+    NSRect bounds = [self bounds];
+    NSRect indicatorRect = NSMakeRect(0, NSHeight(bounds) - 9, 2, 9);
+    NSRect barRect = NSMakeRect(0, NSHeight(bounds) - 5, NSWidth(bounds), 5);
+    NSRect fillRect;
+    
+    NSSize leftSize, rightSize;
+    
+    // Draw background
+    [self.backgroundColor set];
+    NSRectFillUsingOperation(bounds, NSCompositeSourceOver);
 
-	[emptyGradient drawInRect: fillRect angle: 270];
+    // Draw bar background
+    [self.barBackgroundColor set];
+    fillRect = barRect;
+    NSRectFill(fillRect);
 
+    // Determine label positions and progress rect size+position
     if(leftToRight)
     {
-        fillRect.size.width = NSWidth(progressRect) * (currentValue + 1) / maxValue + 2 * self.cornerRadius;
+        fillRect.size.width = NSWidth(bounds) * (currentValue + 1) / maxValue;
+        indicatorRect.origin.x = round(NSWidth(fillRect)-2);
+        
+        leftString = progressString;
+        rightString = totalString;
     }
     else
     {
-		fillRect.size.width = NSWidth(progressRect) * (currentValue + 1) / maxValue + 2 * self.cornerRadius;
-		fillRect.origin.x = NSMinX(barRect) + (NSWidth(barRect) - NSWidth(fillRect) - 1);
+		fillRect.size.width = NSWidth(bounds) * (currentValue + 1) / maxValue;
+		fillRect.origin.x = round(NSWidth(bounds) - NSWidth(fillRect));
+        indicatorRect.origin.x = NSMinX(fillRect);
+        
+        leftString = totalString;
+        rightString = progressString;
     }
+    
+    leftSize = [leftString sizeWithAttributes: self.numberStyle];
+    rightSize = [leftString sizeWithAttributes: self.numberStyle];
 	
-	NSBezierPath * roundFill = roundedRectWithCornerRadius(fillRect, cornerRadius - 1);
-	
-	[self.barGradient drawInBezierPath: roundFill angle: 90];
-	
-	[NSGraphicsContext restoreGraphicsState];
+    // Draw progress
+    [self.barProgressColor set];
+    NSRectFill(fillRect);
+    
+    // Draw indicator
+    [[NSColor blackColor] set];
+    NSRectFill(indicatorRect);
 
-
-    NSRect rightStringRect = NSMakeRect(NSMaxX(progressRect) + self.cornerRadius, NSMinY(bounds), self.horizontalMargin, NSHeight(bounds));
-	NSRect leftStringRect = NSMakeRect(0, NSMinY(bounds), self.horizontalMargin, NSHeight(bounds));
-	NSString * totalString = [NSString stringWithFormat: @"%i", maxValue];
-    NSSize stringSize = [totalString sizeWithAttributes: self.numberStyle];
-    NSRect stringRect = rectWithSizeCenteredInRect(stringSize, self.leftToRight ? rightStringRect : leftStringRect);
-	[totalString drawInRect: stringRect withAttributes: self.numberStyle];
-
-	NSString * progressString = [NSString stringWithFormat: @"%i", self.currentValue + 1];
-    stringSize = [progressString sizeWithAttributes: self.numberStyle];
-    stringRect = rectWithSizeCenteredInRect(stringSize, self.leftToRight ? leftStringRect : rightStringRect);
-    [progressString drawInRect: stringRect withAttributes: self.numberStyle];
+    // Draw labels
+    NSRect leftStringRect = NSMakeRect(self.horizontalMargin, NSMinY(bounds), leftSize.width, 17);
+	[leftString drawInRect:leftStringRect withAttributes: self.numberStyle];
+    
+    NSRect rightStringRect = NSMakeRect(NSWidth(bounds) - self.horizontalMargin - rightSize.width, NSMinY(bounds), rightSize.width, 17);
+    [rightString drawInRect:rightStringRect withAttributes: self.numberStyle];
+    
+    // Draw borders
+    NSRect leftBorder = NSMakeRect(0, 0, 1, NSHeight(bounds));
+    NSRect rightBorder = NSMakeRect(NSWidth(bounds)-1, 0, 1, NSHeight(bounds));
+    
+    [self.borderColor set];
+    
+    NSRectFillUsingOperation(leftBorder, NSCompositeSourceOver);
+    NSRectFillUsingOperation(rightBorder, NSCompositeSourceOver);
 }
 
 
@@ -152,9 +157,7 @@ cornerRadius, emptyGradient, barGradient, shadowGradient, highlightColor, number
  */
 - (void)setFrameSize:(NSSize)size
 {
-    self.progressRect = NSMakeRect(self.cornerRadius + self.horizontalMargin,0, 
-								   size.width - 2 * ( self.cornerRadius + self.horizontalMargin),
-								   size.height);
+    self.progressRect = NSMakeRect(0, 0, size.width, size.height);
     [super setFrameSize: size];
 }
 
