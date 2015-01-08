@@ -40,12 +40,7 @@
 	BOOL leftToRight;	/* The direction of the porgress bar. */
 	NSRect progressRect; /* This is the section of the view. Users can mouse over and click here. */
 	float horizontalMargin; /* How much room is given for the text on either side. */
-	float cornerRadius;
-	
-	NSGradient * emptyGradient; /* This is the color of the unfilled bar. */
-	NSGradient * barGradient;	/* The color of the filled bar. */
-	NSGradient * shadowGradient; /* */
-	NSColor * highlightColor;	/* The highlight on the bottom lip of the bar. */
+
 	NSDictionary * numberStyle; /* The font attributes of the progress numbers. */
 }
 
@@ -65,11 +60,6 @@
 @property (assign) NSRect progressRect;
 @property (assign) float horizontalMargin;
 
-@property (assign) float cornerRadius;
-@property (retain) NSGradient * emptyGradient;
-@property (retain) NSGradient * barGradient;
-@property (retain) NSGradient * shadowGradient;
-@property (retain) NSColor * highlightColor;
 @property (retain) NSDictionary * numberStyle;
 
 - (int)indexForPoint:(NSPoint)point;
