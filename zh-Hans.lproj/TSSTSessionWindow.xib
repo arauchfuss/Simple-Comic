@@ -63,7 +63,7 @@
                         </scroller>
                     </scrollView>
                     <customView id="607" customClass="DTPolishedProgressBar">
-                        <rect key="frame" x="0.0" y="-1" width="460" height="23"/>
+                        <rect key="frame" x="12" y="-1" width="436" height="23"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </customView>
                 </subviews>
@@ -286,6 +286,7 @@
                 <outlet property="delegate" destination="-2" id="39"/>
                 <outlet property="initialFirstResponder" destination="235" id="649"/>
             </connections>
+            <point key="canvasLocation" x="681" y="137.5"/>
         </window>
         <arrayController mode="entity" entityName="Image" automaticallyPreparesContent="YES" clearsFilterPredicateOnInsertion="NO" id="12" userLabel="Page Controller">
             <declaredKeys>
