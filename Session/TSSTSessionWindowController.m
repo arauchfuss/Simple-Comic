@@ -275,9 +275,14 @@
 	NSRect progressRect;
 	NSPoint windowLocation = [theEvent locationInWindow];
     progressRect = [progressBar convertRect: [progressBar progressRect] toView: nil];
+    
+#pragma TODO find proper fix for making progressbar visible, and get rid of this temporary one
     if(NSMouseInRect(windowLocation, progressRect, [progressBar isFlipped]))
     {
+        [progressBar setHidden: NO];
         [self infoPanelSetupAtPoint: windowLocation];
+    }else{
+        [progressBar setHidden: YES];
     }
 	
     [self refreshLoupePanel];

@@ -26,6 +26,7 @@
 - (instancetype)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
+    NSLog(@"origin: %fx%f, size: %fx%f",frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
     if (self)
     {
         self.backgroundColor = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 0.55];
@@ -83,6 +84,7 @@
  */
 - (void)drawRect:(NSRect)rect
 {
+    NSLog(@"Drawn");
     NSString *totalString = [@(maxValue) stringValue];
     NSString *progressString = [@(self.currentValue + 1) stringValue];
     NSString *leftString, *rightString;
@@ -136,8 +138,9 @@
     // Draw labels
     NSRect leftStringRect = NSMakeRect(self.horizontalMargin, NSMinY(bounds), leftSize.width, 17);
 	[leftString drawInRect:leftStringRect withAttributes: self.numberStyle];
-    
-    NSRect rightStringRect = NSMakeRect(NSWidth(bounds) - self.horizontalMargin - rightSize.width, NSMinY(bounds), rightSize.width, 17);
+   
+#pragma TODO find the proper place to adjust the width and x origin for the right string.
+    NSRect rightStringRect = NSMakeRect(NSWidth(bounds) - self.horizontalMargin - rightSize.width -10, NSMinY(bounds), rightSize.width + 10, 17);
     [rightString drawInRect:rightStringRect withAttributes: self.numberStyle];
     
     // Draw borders
