@@ -24,10 +24,6 @@
 
 
 @interface TSSTInfoView : NSView
-{
-    float caretPosition;
-	BOOL bordered;
-}
 
 @property (assign) BOOL bordered;
 @property (nonatomic, assign) float caretPosition;

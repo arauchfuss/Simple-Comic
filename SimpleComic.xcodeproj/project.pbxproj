@@ -99,105 +99,105 @@
 		2803B2FE0D5E541800CD7906 /* TSSTManagedSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedSession.h; sourceTree = "<group>"; };
 		2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedSession.m; sourceTree = "<group>"; };
 		28073DE20FFC2F8B00D2602B /* QuickComic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickComic.xcodeproj; path = QuickComic/QuickComic.xcodeproj; sourceTree = "<group>"; };
-		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "../Custom Controls/TSSTCRTProgressBar.h"; sourceTree = "<group>"; };
-		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "../Custom Controls/TSSTCRTProgressBar.m"; sourceTree = "<group>"; };
+		280CFF100C48943B0099D111 /* TSSTCRTProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = TSSTCRTProgressBar.h; path = "Classes/Custom Controls/TSSTCRTProgressBar.h"; sourceTree = SOURCE_ROOT; };
+		280CFF110C48943B0099D111 /* TSSTCRTProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = TSSTCRTProgressBar.m; path = "Classes/Custom Controls/TSSTCRTProgressBar.m"; sourceTree = SOURCE_ROOT; };
 		280FB7A50CD577730053F375 /* TSSTCustomValueTransformers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTCustomValueTransformers.h; sourceTree = "<group>"; };
-		2813145A0C0A7D5200EC007B /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
-		2813145D0C0A7D7900EC007B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
-		281314820C0A7E4900EC007B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2813145A0C0A7D5200EC007B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		2813145D0C0A7D7900EC007B /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		281314820C0A7E4900EC007B /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		281954E70C1201E5001F5E95 /* TSSTManagedGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedGroup.h; sourceTree = "<group>"; };
 		281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedGroup.m; sourceTree = "<group>"; };
-		28195B410C166DF5001F5E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28195B410C166DF5001F5E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; };
 		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
 		283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTGradientView.m; sourceTree = "<group>"; };
 		283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTGradientView.h; sourceTree = "<group>"; };
-		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
-		283C4D7C0C43DF5300DB4FE9 /* TSSTBezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTBezelWindow.h; path = "Custom Windows/Bezel/TSSTBezelWindow.h"; sourceTree = "<group>"; };
+		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Classes/Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
+		283C4D7C0C43DF5300DB4FE9 /* TSSTBezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTBezelWindow.h; path = "Classes/Custom Windows/Bezel/TSSTBezelWindow.h"; sourceTree = "<group>"; };
 		284348050DA95C4300F602E2 /* UniversalDetector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniversalDetector.framework; path = Frameworks/UniversalDetector.framework; sourceTree = "<group>"; };
 		284348060DA95C4300F602E2 /* XADMaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XADMaster.framework; path = Frameworks/XADMaster.framework; sourceTree = "<group>"; };
 		284A53550DEA60E40003F9F4 /* TSSTBookmarkSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkSplitView.h; sourceTree = "<group>"; };
 		284A53560DEA60E40003F9F4 /* TSSTBookmarkSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkSplitView.m; sourceTree = "<group>"; };
-		284D3819101249BE00A37AB2 /* DTToolbarItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTToolbarItems.h; path = Session/DTToolbarItems.h; sourceTree = "<group>"; };
-		284D381A101249BE00A37AB2 /* DTToolbarItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTToolbarItems.m; path = Session/DTToolbarItems.m; sourceTree = "<group>"; };
-		2851C59F0FC8651C002927E0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTPagePreview.h; path = ../Preferences/TSSTPagePreview.h; sourceTree = "<group>"; };
-		285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPagePreview.m; path = ../Preferences/TSSTPagePreview.m; sourceTree = "<group>"; };
+		284D3819101249BE00A37AB2 /* DTToolbarItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTToolbarItems.h; sourceTree = "<group>"; };
+		284D381A101249BE00A37AB2 /* DTToolbarItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTToolbarItems.m; sourceTree = "<group>"; };
+		2851C59F0FC8651C002927E0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = ../dsa_pub.pem; sourceTree = "<group>"; };
+		285D15610DFB8D8D00F648F7 /* TSSTPagePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTPagePreview.h; path = Classes/Preferences/TSSTPagePreview.h; sourceTree = SOURCE_ROOT; };
+		285D15620DFB8D8D00F648F7 /* TSSTPagePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPagePreview.m; path = Classes/Preferences/TSSTPagePreview.m; sourceTree = SOURCE_ROOT; };
 		285FE32F0F945E2300CD8F96 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		286236010AADDB6200B83E77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSortDescriptor.m; sourceTree = "<group>"; };
-		286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTInfoWindow.m; path = "Progress Bar/TSSTInfoWindow.m"; sourceTree = "<group>"; };
-		286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTInfoWindow.h; path = "Progress Bar/TSSTInfoWindow.h"; sourceTree = "<group>"; };
-		286BA19C0C4D819400E9D06D /* TSSTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTImageView.m; path = "Progress Bar/TSSTImageView.m"; sourceTree = "<group>"; };
-		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTImageView.h; path = "Progress Bar/TSSTImageView.h"; sourceTree = "<group>"; };
-		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTShortcutController.h; path = ../Preferences/TSSTShortcutController.h; sourceTree = "<group>"; };
-		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTShortcutController.m; path = ../Preferences/TSSTShortcutController.m; sourceTree = "<group>"; };
-		28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KeyboardPrefsPane-Info.plist"; path = "../KeyboardPrefsPane-Info.plist"; sourceTree = "<group>"; };
-		28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardPrefController.h; path = ../Preferences/KeyboardPrefController.h; sourceTree = "<group>"; };
-		28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardPrefController.m; path = ../Preferences/KeyboardPrefController.m; sourceTree = "<group>"; };
-		287293DE0D4D9DFE00AA16C0 /* TSSTKeyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTKeyTableView.h; path = ../Preferences/TSSTKeyTableView.h; sourceTree = "<group>"; };
-		287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyTableView.m; path = ../Preferences/TSSTKeyTableView.m; sourceTree = "<group>"; };
-		28770B6A0DBA8B1C00A78646 /* TSSTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSegmentedCell.h; path = "Segmented Controls/TSSTSegmentedCell.h"; sourceTree = SOURCE_ROOT; };
-		28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedCell.m; path = "Segmented Controls/TSSTSegmentedCell.m"; sourceTree = SOURCE_ROOT; };
-		28770B6C0DBA8B1C00A78646 /* TSSTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSegmentedControl.h; path = "Segmented Controls/TSSTSegmentedControl.h"; sourceTree = SOURCE_ROOT; };
-		28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedControl.m; path = "Segmented Controls/TSSTSegmentedControl.m"; sourceTree = SOURCE_ROOT; };
-		28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTFullscreenProgressBar.h; path = "../Custom Controls/TSSTFullscreenProgressBar.h"; sourceTree = "<group>"; };
-		28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTFullscreenProgressBar.m; path = "../Custom Controls/TSSTFullscreenProgressBar.m"; sourceTree = "<group>"; };
+		286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTInfoWindow.m; sourceTree = "<group>"; };
+		286BA19B0C4D819400E9D06D /* TSSTInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTInfoWindow.h; sourceTree = "<group>"; };
+		286BA19C0C4D819400E9D06D /* TSSTImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageView.m; sourceTree = "<group>"; };
+		286BA19D0C4D819400E9D06D /* TSSTImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTImageView.h; sourceTree = "<group>"; };
+		28728DD40D4A9CA800AA16C0 /* TSSTShortcutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTShortcutController.h; path = Classes/Preferences/TSSTShortcutController.h; sourceTree = SOURCE_ROOT; };
+		28728DD50D4A9CA800AA16C0 /* TSSTShortcutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTShortcutController.m; path = Classes/Preferences/TSSTShortcutController.m; sourceTree = SOURCE_ROOT; };
+		28728E050D4A9F3600AA16C0 /* KeyboardPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KeyboardPrefsPane-Info.plist"; sourceTree = SOURCE_ROOT; };
+		28728E0E0D4AA39200AA16C0 /* KeyboardPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeyboardPrefController.h; path = Classes/Preferences/KeyboardPrefController.h; sourceTree = SOURCE_ROOT; };
+		28728E0F0D4AA39200AA16C0 /* KeyboardPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeyboardPrefController.m; path = Classes/Preferences/KeyboardPrefController.m; sourceTree = SOURCE_ROOT; };
+		287293DE0D4D9DFE00AA16C0 /* TSSTKeyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTKeyTableView.h; path = Classes/Preferences/TSSTKeyTableView.h; sourceTree = SOURCE_ROOT; };
+		287293DF0D4D9DFE00AA16C0 /* TSSTKeyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyTableView.m; path = Classes/Preferences/TSSTKeyTableView.m; sourceTree = SOURCE_ROOT; };
+		28770B6A0DBA8B1C00A78646 /* TSSTSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSegmentedCell.h; path = "Classes/Segmented Controls/TSSTSegmentedCell.h"; sourceTree = SOURCE_ROOT; };
+		28770B6B0DBA8B1C00A78646 /* TSSTSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSegmentedCell.m; path = "Classes/Segmented Controls/TSSTSegmentedCell.m"; sourceTree = SOURCE_ROOT; };
+		28770B6C0DBA8B1C00A78646 /* TSSTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTSegmentedControl.h; sourceTree = "<group>"; };
+		28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSegmentedControl.m; sourceTree = "<group>"; };
+		28770BF50DBAC74600A78646 /* TSSTFullscreenProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTFullscreenProgressBar.h; path = "Classes/Custom Controls/TSSTFullscreenProgressBar.h"; sourceTree = SOURCE_ROOT; };
+		28770BF60DBAC74600A78646 /* TSSTFullscreenProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTFullscreenProgressBar.m; path = "Classes/Custom Controls/TSSTFullscreenProgressBar.m"; sourceTree = SOURCE_ROOT; };
 		288693090FED554E002C6BF7 /* Keyboard.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Keyboard.icns; sourceTree = "<group>"; };
-		288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmark.h; path = "../Managed Objects/TSSTManagedBookmark.h"; sourceTree = "<group>"; };
-		288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmark.m; path = "../Managed Objects/TSSTManagedBookmark.m"; sourceTree = "<group>"; };
-		288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmarkGroup.h; path = "../Managed Objects/TSSTManagedBookmarkGroup.h"; sourceTree = "<group>"; };
-		288C0AF60DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmarkGroup.m; path = "../Managed Objects/TSSTManagedBookmarkGroup.m"; sourceTree = "<group>"; };
+		288C09C50DC80B7500EAFF46 /* TSSTManagedBookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmark.h; path = "Classes/Managed Objects/TSSTManagedBookmark.h"; sourceTree = SOURCE_ROOT; };
+		288C09C60DC80B7500EAFF46 /* TSSTManagedBookmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmark.m; path = "Classes/Managed Objects/TSSTManagedBookmark.m"; sourceTree = SOURCE_ROOT; };
+		288C0AF50DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTManagedBookmarkGroup.h; path = "Classes/Managed Objects/TSSTManagedBookmarkGroup.h"; sourceTree = SOURCE_ROOT; };
+		288C0AF60DCB8BDE00EAFF46 /* TSSTManagedBookmarkGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTManagedBookmarkGroup.m; path = "Classes/Managed Objects/TSSTManagedBookmarkGroup.m"; sourceTree = SOURCE_ROOT; };
 		288C0B1B0DCCD82200EAFF46 /* TSSTBookmarkTreeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkTreeController.h; sourceTree = "<group>"; };
 		288C0B1C0DCCD82200EAFF46 /* TSSTBookmarkTreeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkTreeController.m; sourceTree = "<group>"; };
 		288C0BD70DCD470200EAFF46 /* TSSTBookmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkWindowController.h; sourceTree = "<group>"; };
 		288C0BD80DCD470200EAFF46 /* TSSTBookmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkWindowController.m; sourceTree = "<group>"; };
 		2895F9D80B67D224008683C6 /* TSSTPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPage.m; sourceTree = "<group>"; };
-		28A266091285C34300ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Preferences.xib; sourceTree = "<group>"; };
-		28A2660D1285C35700ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		28A266151285C3A700ED6391 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
+		28A266091285C34300ED6391 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Preferences.xib; sourceTree = "<group>"; };
+		28A2660D1285C35700ED6391 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		28A266151285C3A700ED6391 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
 		28A2662E1285C73200ED6391 /* DTPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPreferencesController.h; sourceTree = "<group>"; };
 		28A2662F1285C73200ED6391 /* DTPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPreferencesController.m; sourceTree = "<group>"; };
-		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTPageView.h; path = Session/TSSTPageView.h; sourceTree = "<group>"; };
-		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "Custom Windows/DTSessionWindow.h"; sourceTree = "<group>"; };
-		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "Custom Windows/DTSessionWindow.m"; sourceTree = "<group>"; };
+		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPageView.h; sourceTree = "<group>"; };
+		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "Classes/Custom Windows/DTSessionWindow.h"; sourceTree = SOURCE_ROOT; };
+		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "Classes/Custom Windows/DTSessionWindow.m"; sourceTree = SOURCE_ROOT; };
 		28BD08E50C9836E600BD7EAF /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
-		28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+QuickLook.h"; sourceTree = "<group>"; };
-		28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+QuickLook.m"; sourceTree = "<group>"; };
+		28C1D55C0DF1FD72003392B4 /* NSImage+QuickLook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+QuickLook.h"; path = "Classes/Helpers/NSImage+QuickLook.h"; sourceTree = SOURCE_ROOT; };
+		28C1D55D0DF1FD72003392B4 /* NSImage+QuickLook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+QuickLook.m"; path = "Classes/Helpers/NSImage+QuickLook.m"; sourceTree = SOURCE_ROOT; };
 		28C1D55F0DF1FE37003392B4 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = /System/Library/Frameworks/QuickLook.framework; sourceTree = "<absolute>"; };
 		28C1D70E0DF21DA7003392B4 /* TSSTCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTCoverView.h; sourceTree = "<group>"; };
 		28C1D70F0DF21DA7003392B4 /* TSSTCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTCoverView.m; sourceTree = "<group>"; };
 		28C49D8A0DD53C05008E4857 /* TSSTBookmarkTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkTableView.h; sourceTree = "<group>"; };
 		28C49D8B0DD53C05008E4857 /* TSSTBookmarkTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkTableView.m; sourceTree = "<group>"; };
-		28E39CC910A5CD6900A027A3 /* DTPolishedProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTPolishedProgressBar.h; path = "Progress Bar/DTPolishedProgressBar.h"; sourceTree = "<group>"; };
-		28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTPolishedProgressBar.m; path = "Progress Bar/DTPolishedProgressBar.m"; sourceTree = "<group>"; };
-		28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+UTI_Category.h"; sourceTree = "<group>"; };
-		28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+UTI_Category.m"; sourceTree = "<group>"; };
+		28E39CC910A5CD6900A027A3 /* DTPolishedProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPolishedProgressBar.h; sourceTree = "<group>"; };
+		28E39CCA10A5CD6900A027A3 /* DTPolishedProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPolishedProgressBar.m; sourceTree = "<group>"; };
+		28EBCE960DE74B87009A7DC1 /* NSFileManager+UTI_Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+UTI_Category.h"; path = "Classes/Helpers/NSFileManager+UTI_Category.h"; sourceTree = SOURCE_ROOT; };
+		28EBCE970DE74B87009A7DC1 /* NSFileManager+UTI_Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+UTI_Category.m"; path = "Classes/Helpers/NSFileManager+UTI_Category.m"; sourceTree = SOURCE_ROOT; };
 		28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKXattrMetadataStore.h; sourceTree = "<group>"; };
 		28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UKXattrMetadataStore.m; sourceTree = "<group>"; };
 		28F59A9A0B784892003530FB /* TSSTSortDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTSortDescriptor.h; sourceTree = "<group>"; };
 		28F5A5F00B7E0F8B003530FB /* TSSTPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPage.h; sourceTree = "<group>"; };
-		28F6603C1067255600EC8A34 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = English.lproj/Help; sourceTree = "<group>"; };
-		28F998310A1FF52C0047BD97 /* TSSTKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTKeyWindow.h; path = "Custom Windows/Fullscreen/TSSTKeyWindow.h"; sourceTree = "<group>"; };
-		28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyWindow.m; path = "Custom Windows/Fullscreen/TSSTKeyWindow.m"; sourceTree = "<group>"; };
-		28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTSessionWindowController.h; path = Session/TSSTSessionWindowController.h; sourceTree = "<group>"; };
-		28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTSessionWindowController.m; path = Session/TSSTSessionWindowController.m; sourceTree = "<group>"; };
-		28FACB810CD01D93007B7918 /* SS_PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SS_PrefsController.h; path = ../Preferences/SS_PrefsController.h; sourceTree = "<group>"; };
-		28FACB820CD01D93007B7918 /* SS_PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = SS_PrefsController.m; path = ../Preferences/SS_PrefsController.m; sourceTree = "<group>"; };
-		28FACBD30CD02635007B7918 /* AdvancedPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AdvancedPrefController.h; path = ../Preferences/AdvancedPrefController.h; sourceTree = "<group>"; };
-		28FACBD40CD02635007B7918 /* AdvancedPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AdvancedPrefController.m; path = ../Preferences/AdvancedPrefController.m; sourceTree = "<group>"; };
-		28FACBD70CD02643007B7918 /* GeneralPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GeneralPrefController.h; path = ../Preferences/GeneralPrefController.h; sourceTree = "<group>"; };
-		28FACBD80CD02643007B7918 /* GeneralPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GeneralPrefController.m; path = ../Preferences/GeneralPrefController.m; sourceTree = "<group>"; };
-		28FACC7D0CD03BBB007B7918 /* AdvancedPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AdvancedPrefsPane-Info.plist"; path = "../AdvancedPrefsPane-Info.plist"; sourceTree = "<group>"; };
-		28FACCA90CD0CF3E007B7918 /* GeneralPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GeneralPrefsPane-Info.plist"; path = "../GeneralPrefsPane-Info.plist"; sourceTree = "<group>"; };
-		28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SS_PreferencePaneProtocol.h; path = ../Preferences/SS_PreferencePaneProtocol.h; sourceTree = "<group>"; };
+		28F6603C1067255600EC8A34 /* en */ = {isa = PBXFileReference; lastKnownFileType = folder; name = en; path = en.lproj/Help; sourceTree = "<group>"; };
+		28F998310A1FF52C0047BD97 /* TSSTKeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTKeyWindow.h; path = "Classes/Custom Windows/Fullscreen/TSSTKeyWindow.h"; sourceTree = "<group>"; };
+		28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyWindow.m; path = "Classes/Custom Windows/Fullscreen/TSSTKeyWindow.m"; sourceTree = "<group>"; };
+		28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTSessionWindowController.h; sourceTree = "<group>"; };
+		28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSessionWindowController.m; sourceTree = "<group>"; };
+		28FACB810CD01D93007B7918 /* SS_PrefsController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SS_PrefsController.h; path = Classes/Preferences/SS_PrefsController.h; sourceTree = SOURCE_ROOT; };
+		28FACB820CD01D93007B7918 /* SS_PrefsController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = SS_PrefsController.m; path = Classes/Preferences/SS_PrefsController.m; sourceTree = SOURCE_ROOT; };
+		28FACBD30CD02635007B7918 /* AdvancedPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = AdvancedPrefController.h; path = Classes/Preferences/AdvancedPrefController.h; sourceTree = SOURCE_ROOT; };
+		28FACBD40CD02635007B7918 /* AdvancedPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = AdvancedPrefController.m; path = Classes/Preferences/AdvancedPrefController.m; sourceTree = SOURCE_ROOT; };
+		28FACBD70CD02643007B7918 /* GeneralPrefController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = GeneralPrefController.h; path = Classes/Preferences/GeneralPrefController.h; sourceTree = SOURCE_ROOT; };
+		28FACBD80CD02643007B7918 /* GeneralPrefController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; name = GeneralPrefController.m; path = Classes/Preferences/GeneralPrefController.m; sourceTree = SOURCE_ROOT; };
+		28FACC7D0CD03BBB007B7918 /* AdvancedPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AdvancedPrefsPane-Info.plist"; sourceTree = SOURCE_ROOT; };
+		28FACCA90CD0CF3E007B7918 /* GeneralPrefsPane-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GeneralPrefsPane-Info.plist"; sourceTree = SOURCE_ROOT; };
+		28FAD7600CD3CF52007B7918 /* SS_PreferencePaneProtocol.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = SS_PreferencePaneProtocol.h; path = Classes/Preferences/SS_PreferencePaneProtocol.h; sourceTree = SOURCE_ROOT; };
 		28FAECCC0C7CA801001D7001 /* TSSTThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTThumbnailView.h; path = Session/TSSTThumbnailView.h; sourceTree = "<group>"; };
 		28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTThumbnailView.m; path = Session/TSSTThumbnailView.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* SimpleComic_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComic_Prefix.pch; sourceTree = "<group>"; };
-		5589952D1A13D4450058830B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Resources/Media.xcassets; sourceTree = "<group>"; };
+		5589952D1A13D4450058830B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		64777B8B1A4212E40064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.xib"; sourceTree = "<group>"; };
 		64777B8D1A4213150064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.xib"; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComicAppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleComicAppDelegate.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Simple Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Comic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPageView.m; path = Session/TSSTPageView.m; sourceTree = "<group>"; };
+		FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPageView.m; sourceTree = "<group>"; };
 		FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTCustomValueTransformers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -245,7 +245,7 @@
 				28770B670DBA8B1C00A78646 /* Fullscreen Controls */,
 				287C611C106F80A9001463C6 /* Unused */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
@@ -297,7 +297,7 @@
 				28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */,
 			);
 			name = Fullscreen;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
@@ -323,8 +323,8 @@
 				28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */,
 			);
 			name = "Fullscreen Controls";
-			path = "Segmented Controls";
-			sourceTree = "<group>";
+			path = "Classes/Segmented Controls";
+			sourceTree = SOURCE_ROOT;
 		};
 		287C611C106F80A9001463C6 /* Unused */ = {
 			isa = PBXGroup;
@@ -361,7 +361,7 @@
 			);
 			name = Unused;
 			path = Helpers;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		288693080FED554E002C6BF7 /* images */ = {
 			isa = PBXGroup;
@@ -390,8 +390,8 @@
 				28C1D70F0DF21DA7003392B4 /* TSSTCoverView.m */,
 			);
 			name = Bookmarks;
-			path = ../Bookmarks;
-			sourceTree = "<group>";
+			path = Classes/Bookmarks;
+			sourceTree = SOURCE_ROOT;
 		};
 		288C0C420DCDAB7200EAFF46 /* Thumbnail View */ = {
 			isa = PBXGroup;
@@ -400,7 +400,8 @@
 				28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */,
 			);
 			name = "Thumbnail View";
-			sourceTree = "<group>";
+			path = Classes;
+			sourceTree = SOURCE_ROOT;
 		};
 		289CD7620BF15CCC00B5AE01 /* Progress Bar */ = {
 			isa = PBXGroup;
@@ -412,7 +413,7 @@
 				286BA19D0C4D819400E9D06D /* TSSTImageView.h */,
 				286BA19C0C4D819400E9D06D /* TSSTImageView.m */,
 			);
-			name = "Progress Bar";
+			path = "Progress Bar";
 			sourceTree = "<group>";
 		};
 		28FA4DD50B8A6F3B00496668 /* Managed Objects */ = {
@@ -466,7 +467,7 @@
 				2813145C0C0A7D7900EC007B /* Localizable.strings */,
 				281314590C0A7D5200EC007B /* Credits.rtf */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -491,6 +492,7 @@
 			children = (
 			);
 			name = Depreciated;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
@@ -515,7 +517,7 @@
 				28B34A711013779A006C551C /* DTSessionWindow.h */,
 				28B34A721013779B006C551C /* DTSessionWindow.m */,
 			);
-			name = Session;
+			path = Session;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -655,7 +657,7 @@
 		281314590C0A7D5200EC007B /* Credits.rtf */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2813145A0C0A7D5200EC007B /* English */,
+				2813145A0C0A7D5200EC007B /* en */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -663,7 +665,7 @@
 		2813145C0C0A7D7900EC007B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2813145D0C0A7D7900EC007B /* English */,
+				2813145D0C0A7D7900EC007B /* en */,
 				64E3ED821A45B00300B9C97B /* zh-Hans */,
 			);
 			name = Localizable.strings;
@@ -672,7 +674,7 @@
 		281314810C0A7E4900EC007B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				281314820C0A7E4900EC007B /* English */,
+				281314820C0A7E4900EC007B /* en */,
 				64777B8B1A4212E40064A356 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
@@ -681,7 +683,7 @@
 		28A266081285C34300ED6391 /* Preferences.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28A266091285C34300ED6391 /* English */,
+				28A266091285C34300ED6391 /* en */,
 				64777B8E1A42131A0064A356 /* zh-Hans */,
 			);
 			name = Preferences.xib;
@@ -690,7 +692,7 @@
 		28A2660C1285C35700ED6391 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28A2660D1285C35700ED6391 /* English */,
+				28A2660D1285C35700ED6391 /* en */,
 				64777B8D1A4213150064A356 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
@@ -699,7 +701,7 @@
 		28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28A266151285C3A700ED6391 /* English */,
+				28A266151285C3A700ED6391 /* en */,
 				64777B8C1A4213100064A356 /* zh-Hans */,
 			);
 			name = TSSTSessionWindow.xib;
@@ -708,7 +710,7 @@
 		28F6603B1067255600EC8A34 /* Help */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28F6603C1067255600EC8A34 /* English */,
+				28F6603C1067255600EC8A34 /* en */,
 			);
 			name = Help;
 			sourceTree = "<group>";

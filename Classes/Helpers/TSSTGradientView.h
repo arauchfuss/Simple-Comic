@@ -10,8 +10,5 @@
 
 
 @interface TSSTGradientView : NSView
-{
-
-}
 
 @end
