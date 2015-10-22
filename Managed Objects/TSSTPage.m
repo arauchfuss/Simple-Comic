@@ -45,7 +45,7 @@ static NSSize monospaceCharacterSize;
 	static NSMutableArray * imageTypes = nil;
 	if(!imageTypes)
 	{
-		imageTypes = [NSMutableArray arrayWithArray: [NSImage imageFileTypes]];
+		imageTypes = [[NSMutableArray alloc] initWithArray: [NSImage imageFileTypes]];
 		[imageTypes removeObject: @"pdf"];
 		[imageTypes removeObject: @"eps"];
 	}

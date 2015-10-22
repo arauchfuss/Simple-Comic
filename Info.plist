@@ -314,7 +314,7 @@
 	<key>CFBundleHelpBookName</key>
 	<string>Simple Comic Help</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.tsst.simplecomic</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
