@@ -2,7 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "two_page.png",
+      "filename" : "extractTemplate.pdf"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "extract.png",
       "scale" : "1x"
     },
     {
@@ -17,8 +21,5 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
   }
 }

@@ -13,7 +13,7 @@
  This panel subclass is used by both the loupe and the speach bubble styled
  page preview.
  */
-@interface TSSTInfoWindow : NSPanel { }
+@interface TSSTInfoWindow : NSPanel
 
 - (void)caretAtPoint:(NSPoint)point size:(NSSize)size withLimitLeft:(float)left right:(float)right;
 - (void)centerAtPoint:(NSPoint)center;
@@ -35,9 +35,7 @@
 @end
 
 
-@interface TSSTCircularImageView : NSImageView {
-    
-}
+@interface TSSTCircularImageView : NSImageView
 
 @end
 

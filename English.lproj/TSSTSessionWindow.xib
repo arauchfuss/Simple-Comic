@@ -62,7 +62,7 @@
                             <animations/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="505">
-                            <rect key="frame" x="445" y="0.0" width="15" height="530"/>
+                            <rect key="frame" x="444" y="0.0" width="16" height="530"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
@@ -220,6 +220,7 @@
                         <button key="view" toolTip="Magnifing Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="7" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="loupeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">
                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -236,6 +237,7 @@
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="21" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="roundTextured" title="Thumbnails" bezelStyle="texturedRounded" image="NSIconViewTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -252,6 +254,7 @@
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
                             <rect key="frame" x="25" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="extractTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -268,6 +271,7 @@
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="12" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="roundTextured" title="Set Icon" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -336,6 +340,7 @@
                 </subviews>
                 <animations/>
             </view>
+            <point key="canvasLocation" x="211" y="290"/>
         </window>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="363" userLabel="Loupe panel" customClass="TSSTInfoWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -478,14 +483,14 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="8" height="8"/>
-        <image name="NSIconViewTemplate" width="11" height="10"/>
-        <image name="NSLeftFacingTriangleTemplate" width="9" height="9"/>
-        <image name="NSQuickLookTemplate" width="21" height="16"/>
-        <image name="NSRemoveTemplate" width="8" height="8"/>
-        <image name="NSRightFacingTriangleTemplate" width="9" height="9"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
+        <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="equalTemplate" width="9" height="6"/>
-        <image name="extractTemplate" width="17" height="13"/>
+        <image name="extractTemplate" width="17" height="12"/>
         <image name="horScaleTemplate" width="12" height="8"/>
         <image name="leftRightOrderTemplate" width="16" height="14"/>
         <image name="loupeTemplate" width="14" height="14"/>

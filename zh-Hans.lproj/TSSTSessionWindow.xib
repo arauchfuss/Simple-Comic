@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TSSTSessionWindowController">
@@ -46,27 +46,34 @@
                                 <customView id="235" customClass="TSSTPageView">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="65"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <animations/>
                                     <connections>
                                         <outlet property="sessionController" destination="-2" id="750"/>
                                     </connections>
                                 </customView>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
+                        <animations/>
                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="506">
                             <rect key="frame" x="0.0" y="514" width="460" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="505">
-                            <rect key="frame" x="445" y="0.0" width="15" height="530"/>
+                            <rect key="frame" x="444" y="0.0" width="16" height="530"/>
                             <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
                         </scroller>
                     </scrollView>
                     <customView id="607" customClass="DTPolishedProgressBar">
                         <rect key="frame" x="12" y="-1" width="436" height="23"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <animations/>
                     </customView>
                 </subviews>
+                <animations/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="1A96E21F-07EA-4D3B-B356-508A45D1FCBB" displayMode="iconAndLabel" sizeMode="regular" id="507">
                 <allowedToolbarItems>
@@ -77,6 +84,7 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="554">
                             <rect key="frame" x="0.0" y="14" width="47" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="555">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -98,6 +106,7 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
                             <rect key="frame" x="2" y="14" width="70" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -124,6 +133,7 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
                             <rect key="frame" x="2" y="14" width="47" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -147,6 +157,7 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="521">
                             <rect key="frame" x="2" y="14" width="47" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="522">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -166,6 +177,7 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="586">
                             <rect key="frame" x="0.0" y="14" width="47" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="587">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -185,6 +197,7 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="557">
                             <rect key="frame" x="0.0" y="14" width="70" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="558">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -207,6 +220,7 @@
                         <button key="view" toolTip="Magnifing Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="7" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="loupeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -223,6 +237,7 @@
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="7" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -239,6 +254,7 @@
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
                             <rect key="frame" x="1" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="squareTextured" bezelStyle="texturedSquare" image="extractTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -255,6 +271,7 @@
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="12" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
                             <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -317,9 +334,11 @@
                     <imageView id="359" customClass="TSSTImageView">
                         <rect key="frame" x="10" y="15" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="499"/>
                     </imageView>
                 </subviews>
+                <animations/>
             </view>
         </window>
         <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="363" userLabel="Loupe panel" customClass="TSSTInfoWindow">
@@ -335,9 +354,11 @@
                     <imageView id="366" customClass="TSSTCircularImageView">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="501"/>
                     </imageView>
                 </subviews>
+                <animations/>
             </view>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="373" userLabel="expose" customClass="TSSTKeyWindow">
@@ -353,6 +374,7 @@
                     <customView id="378" customClass="TSSTThumbnailView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <connections>
                             <outlet property="dataSource" destination="-2" id="379"/>
                             <outlet property="pageController" destination="12" id="381"/>
@@ -360,6 +382,7 @@
                         </connections>
                     </customView>
                 </subviews>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="376"/>
@@ -378,6 +401,7 @@
                     <textField verticalHuggingPriority="750" id="448">
                         <rect key="frame" x="50" y="10" width="41" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="503">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#1" negativeFormat="#1" generatesDecimalNumbers="YES" allowsFloats="NO" usesGroupingSeparator="NO" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="454">
                                 <integer key="roundingIncrement" value="1"/>
@@ -397,6 +421,7 @@
                     <textField verticalHuggingPriority="750" id="447">
                         <rect key="frame" x="7" y="13" width="35" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="页码:" id="502">
                             <font key="font" size="13" name="STHeitiSC-Light"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -406,6 +431,7 @@
                     <button verticalHuggingPriority="750" id="752">
                         <rect key="frame" x="99" y="8" width="56" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="roundTextured" title="跳转" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="753">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="STHeitiSC-Light"/>
@@ -420,6 +446,7 @@ DQ
                     <button verticalHuggingPriority="750" id="754">
                         <rect key="frame" x="171" y="8" width="40" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <animations/>
                         <buttonCell key="cell" type="roundTextured" title="取消" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="755">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" size="13" name="STHeitiSC-Light"/>
@@ -432,6 +459,7 @@ Gw
                         </connections>
                     </button>
                 </subviews>
+                <animations/>
             </view>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow">
@@ -446,8 +474,10 @@ Gw
                     <customView id="486" customClass="TSSTImageView">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                     </customView>
                 </subviews>
+                <animations/>
             </view>
         </window>
     </objects>
@@ -459,7 +489,7 @@ Gw
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="equalTemplate" width="9" height="6"/>
-        <image name="extractTemplate" width="17" height="13"/>
+        <image name="extractTemplate" width="17" height="12"/>
         <image name="horScaleTemplate" width="12" height="8"/>
         <image name="leftRightOrderTemplate" width="16" height="14"/>
         <image name="loupeTemplate" width="14" height="14"/>
