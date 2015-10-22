@@ -1,0 +1,42 @@
+
+/* Class = "NSButton"; ibShadowedToolTip = "Pages are never automatically scaled past their actual resolution"; ObjectID = "36"; */
+"36.ibShadowedToolTip" = "Pages are never automatically scaled past their actual resolution";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Save all open comics on exit"; ObjectID = "41"; */
+"41.ibShadowedToolTip" = "Save all open comics on exit";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Windows are dynamically resized to fit the page-view and screen"; ObjectID = "152"; */
+"152.ibShadowedToolTip" = "Windows are dynamically resized to fit the page-view and screen";
+
+/* Class = "NSButtonCell"; title = "Page scaling constrained by resolution"; ObjectID = "229"; */
+"229.title" = "Page scaling constrained by resolution";
+
+/* Class = "NSButtonCell"; title = "Auto-save open windows"; ObjectID = "230"; */
+"230.title" = "Auto-save open windows";
+
+/* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
+"231.title" = "Automatically resize windows";
+
+/* Class = "NSTextFieldCell"; title = "Images will not excede their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
+"234.title" = "Images will not excede their actual resolution in \"fit to window\" scaling modes.";
+
+/* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
+"235.title" = "Windows automatically resize to maximize viewing area.";
+
+/* Class = "NSTextFieldCell"; title = "Open windows are preserved between exit and relaunch."; ObjectID = "236"; */
+"236.title" = "Open windows are preserved between exit and relaunch.";
+
+/* Class = "NSTextFieldCell"; title = "Background color"; ObjectID = "239"; */
+"239.title" = "Background color";
+
+/* Class = "NSTextFieldCell"; title = "This color is displayed around pages in fullscreen mode."; ObjectID = "244"; */
+"244.title" = "This color is displayed around pages in fullscreen mode.";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "246"; */
+"246.title" = "Preferences";
+
+/* Class = "NSButtonCell"; title = "Enable swipe"; ObjectID = "uvV-P7-bwd"; */
+"uvV-P7-bwd.title" = "Enable swipe";
+
+/* Class = "NSTextFieldCell"; title = "Enabling will allow you to navigate back and forth by swiping."; ObjectID = "v7s-SA-lNq"; */
+"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";

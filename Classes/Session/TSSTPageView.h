@@ -43,7 +43,7 @@ typedef struct {
 	float down;
 } direction;
 
-@protocol DTPageSelection_Protocol
+@protocol DTPageSelection_Protocol <NSObject>
 
 - (BOOL)pageSelectionInProgress;
 - (BOOL)pageSelectionCanCrop;
@@ -53,7 +53,7 @@ typedef struct {
 
 @end
 
-@protocol DTPageLayout_Protocol
+@protocol DTPageLayout_Protocol <NSObject>
 
 - (NSInteger)pageScaling;
 - (BOOL)leftToRightOrder;
@@ -61,7 +61,7 @@ typedef struct {
 
 @end
 
-@protocol DTPageSource_Protocol
+@protocol DTPageSource_Protocol <NSObject>
 
 - (NSImage *)pageOne;
 - (NSImage *)pageTwo;
@@ -85,8 +85,6 @@ typedef struct {
 	
     NSInteger rotation;
 	
-    TSSTSessionWindowController * __weak sessionController;
-	
 	direction scrollwheel;
     
 	// This controls the drawing of the accepting drag-drop border highlighting 
@@ -100,7 +98,7 @@ typedef struct {
 }
 
 @property (nonatomic, assign) NSInteger rotation;
-@property (weak)IBOutlet TSSTSessionWindowController * sessionController;
+@property (weak) IBOutlet TSSTSessionWindowController * sessionController;
 
 
 /*  This is where it all begins sets the two pages.  
