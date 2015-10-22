@@ -113,7 +113,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 @property (assign) NSInteger pageTurn;
 @property (strong) NSString * pageNames;
 
-- (instancetype)initWithSession:(TSSTManagedSession *)aSession NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSession:(TSSTManagedSession *)aSession;
 
 // View Actions
 - (IBAction)changePageOrder:(id)sender;

@@ -62,6 +62,7 @@ NSString * TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString * TSSTLonelyFirstPage =   @"lonelyFirstPage";
 NSString * TSSTNestedArchives =	   @"nestedArchives";
 NSString * TSSTUpdateSelection =   @"updateSelection";
+NSString * SSDEnableSwipe = @"enableSwipe";
 
 NSString * TSSTSessionEndNotification = @"sessionEnd";
 
@@ -196,6 +197,7 @@ static NSArray * allAvailableStringEncodings(void)
     standardDefaults[TSSTLonelyFirstPage] = @YES;
 	standardDefaults[TSSTNestedArchives] = @YES;
 	standardDefaults[TSSTUpdateSelection] = @0;
+    standardDefaults[SSDEnableSwipe] = @NO;
 	
 	NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	[sharedDefaultsController setInitialValues: standardDefaults];
@@ -667,7 +669,16 @@ static NSArray * allAvailableStringEncodings(void)
 				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
 				[fileDescription setValue: path forKey: @"imagePath"];
 			}
-			
+            else if([fileExtension isEqualToString:@"savedsearch"])
+            {
+                
+				//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
+                fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
+				[fileDescription setValue: path forKey: @"path"];
+				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
+				[(SSDManagedSmartFolder*)fileDescription smartFolderContents];
+            }
+            
 			if([fileDescription class] == [TSSTManagedGroup class] || [fileDescription superclass] == [TSSTManagedGroup class])
 			{
 				[pageSet unionSet: [(TSSTManagedGroup *)fileDescription nestedImages]];
@@ -676,7 +687,8 @@ static NSArray * allAvailableStringEncodings(void)
 			else if ([fileDescription class] == [TSSTPage class])
 			{
 				[pageSet addObject: fileDescription];
-			}
+            }
+            
 			
 			if(fileDescription)
 			{
@@ -709,6 +721,8 @@ static NSArray * allAvailableStringEncodings(void)
     
 	NSMutableArray * allAllowedFilesExtensions = [NSMutableArray arrayWithArray: [TSSTManagedArchive archiveExtensions]];
 	[allAllowedFilesExtensions addObjectsFromArray: [TSSTPage imageExtensions]];
+#pragma TODO make a savedSearch constant?
+    [allAllowedFilesExtensions addObject: @"savedSearch"];
     [addPagesModal setAllowedFileTypes:allAllowedFilesExtensions];
 
 	if([addPagesModal runModal] !=  NSCancelButton)
