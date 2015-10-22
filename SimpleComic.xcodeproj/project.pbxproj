@@ -153,7 +153,6 @@
 		288C0BD70DCD470200EAFF46 /* TSSTBookmarkWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkWindowController.h; sourceTree = "<group>"; };
 		288C0BD80DCD470200EAFF46 /* TSSTBookmarkWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkWindowController.m; sourceTree = "<group>"; };
 		2895F9D80B67D224008683C6 /* TSSTPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPage.m; sourceTree = "<group>"; };
-		28A266151285C3A700ED6391 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
 		28A2662E1285C73200ED6391 /* DTPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPreferencesController.h; sourceTree = "<group>"; };
 		28A2662F1285C73200ED6391 /* DTPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPreferencesController.m; sourceTree = "<group>"; };
 		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPageView.h; sourceTree = "<group>"; };
@@ -202,8 +201,10 @@
 		55C373E31BD99E0A006385B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Preferences.xib; sourceTree = "<group>"; };
 		55C373E41BD99E15006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		55C373E51BD99E1C006385B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
+		55C373E61BD9A108006385B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
+		55C373E71BD9A113006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
+		55C373E81BD9A119006385B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		64777B8B1A4212E40064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.xib"; sourceTree = "<group>"; };
 		64E3ED821A45B00300B9C97B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Sessions_DataModel.xcdatamodel; sourceTree = "<group>"; };
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -707,8 +708,9 @@
 		28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				28A266151285C3A700ED6391 /* en */,
-				64777B8C1A4213100064A356 /* zh-Hans */,
+				55C373E61BD9A108006385B6 /* Base */,
+				55C373E71BD9A113006385B6 /* en */,
+				55C373E81BD9A119006385B6 /* zh-Hans */,
 			);
 			name = TSSTSessionWindow.xib;
 			sourceTree = "<group>";
