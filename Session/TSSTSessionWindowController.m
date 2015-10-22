@@ -50,6 +50,7 @@
 
 
 
+#if 0
 /*!
  Turns all of the toolbar images in to templates so that they look consistent with
  othe Apple generated icons.
@@ -83,7 +84,7 @@
 	segmentImage = [NSImage imageNamed: @"extract"];
     [segmentImage setTemplate: YES];
 }
-
+#endif
 
 
 /*!

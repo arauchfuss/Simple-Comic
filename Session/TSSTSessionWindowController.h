@@ -38,7 +38,7 @@
 @class TSSTImageView;
 @class TSSTManagedSession;
 
-enum PageSelectionMode {
+typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 	None,
 	Icon,
 	Delete,
@@ -105,7 +105,7 @@ enum PageSelectionMode {
 	
 	BOOL newSession;
 	
-	enum PageSelectionMode pageSelectionInProgress;
+	PageSelectionMode pageSelectionInProgress;
 	float savedZoom;
 }
 
