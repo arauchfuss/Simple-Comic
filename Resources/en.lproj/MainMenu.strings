@@ -54,7 +54,7 @@
 "256.title" = "File";
 
 /* Class = "NSMenuItem"; title = "Open..."; ObjectID = "259"; */
-"259.title" = "Open...";
+"259.title" = "Open…";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "336"; */
 "336.title" = "View";
@@ -174,7 +174,7 @@
 "1340.title" = "Show Toolbar";
 
 /* Class = "NSMenuItem"; title = "Customize Toolbar..."; ObjectID = "1342"; */
-"1342.title" = "Customize Toolbar...";
+"1342.title" = "Customize Toolbar…";
 
 /* Class = "NSTextFieldCell"; title = "Archive is Password Protected"; ObjectID = "1693"; */
 "1693.title" = "Archive is Password Protected";
