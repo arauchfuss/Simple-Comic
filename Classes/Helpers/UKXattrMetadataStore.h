@@ -31,31 +31,32 @@
 //	Class declaration:
 // -----------------------------------------------------------------------------
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UKXattrMetadataStore : NSObject
-{
-	
-}
 
 +(NSArray<NSString*>*)		allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk;
 
 // Store UTF8 strings:
 +(void)				setString: (NSString*)str forKey: (NSString*)key
 						atPath: (NSString*)path traverseLink:(BOOL)travLnk;
-+(id)				stringForKey: (NSString*)key atPath: (NSString*)path
++(nullable NSString*)stringForKey: (NSString*)key atPath: (NSString*)path
 						traverseLink:(BOOL)travLnk;
 
 // Store raw data:
 +(void)				setData: (NSData*)data forKey: (NSString*)key
 						atPath: (NSString*)path traverseLink:(BOOL)travLnk;
-+(NSMutableData*)	dataForKey: (NSString*)key atPath: (NSString*)path
++(nullable NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path
 						traverseLink:(BOOL)travLnk;
 
 // Store objects: (Only can get/set plist-type objects for now)‚
 +(void)				setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path
 						traverseLink:(BOOL)travLnk;
-+(id)				objectForKey: (NSString*)key atPath: (NSString*)path
-						traverseLink:(BOOL)travLnk;
++(nullable id)		objectForKey:(NSString*)key atPath:(NSString*)path
+						traverseLink:(BOOL)travLnk error:(NSError**)outError;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #endif /*MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4*/

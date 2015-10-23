@@ -39,10 +39,10 @@
 @class TSSTManagedSession;
 
 typedef NS_ENUM(NSInteger, PageSelectionMode)  {
-	None,
-	Icon,
-	Delete,
-	Extract
+	PageSelectionModeNone,
+	PageSelectionModeIcon,
+	PageSelectionModeDelete,
+	PageSelectionModeExtract
 };
 
 

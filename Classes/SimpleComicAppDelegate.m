@@ -178,26 +178,28 @@ static NSArray * allAvailableStringEncodings(void)
 /*  Sets up the user defaults and arrays of compatible file types. */
 + (void)initialize
 {
-    NSMutableDictionary* standardDefaults = [NSMutableDictionary dictionary];
-	standardDefaults[TSSTPageOrder] = @NO;
-	standardDefaults[TSSTPageZoomRate] = @0.1f;
-	standardDefaults[TSSTPageScaleOptions] = @1;
-    standardDefaults[TSSTThumbnailSize] = @100;
-    standardDefaults[TSSTTwoPageSpread] = @YES;
-    standardDefaults[TSSTIgnoreDonation] = @NO;
-    standardDefaults[TSSTConstrainScale] = @YES;
-    standardDefaults[TSSTScrollersVisible] = @YES;
-    standardDefaults[TSSTSessionRestore] = @YES;
-    standardDefaults[TSSTAutoPageTurn] = @YES;
-	standardDefaults[TSSTBackgroundColor] = [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]];
-    standardDefaults[TSSTWindowAutoResize] = @YES;
-    standardDefaults[TSSTLoupeDiameter] = @500;
-	standardDefaults[TSSTLoupePower] = @2.0f;
- 	standardDefaults[TSSTStatusbarVisible] = @YES;
-    standardDefaults[TSSTLonelyFirstPage] = @YES;
-	standardDefaults[TSSTNestedArchives] = @YES;
-	standardDefaults[TSSTUpdateSelection] = @0;
-    standardDefaults[SSDEnableSwipe] = @NO;
+	NSDictionary* standardDefaults =
+	@{
+	  TSSTPageOrder: @NO,
+	  TSSTPageZoomRate: @0.1f,
+	  TSSTPageScaleOptions: @1,
+	  TSSTThumbnailSize: @100,
+	  TSSTTwoPageSpread: @YES,
+	  TSSTIgnoreDonation: @NO,
+	  TSSTConstrainScale: @YES,
+	  TSSTScrollersVisible: @YES,
+	  TSSTSessionRestore: @YES,
+	  TSSTAutoPageTurn: @YES,
+	  TSSTBackgroundColor: [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]],
+	  TSSTWindowAutoResize: @YES,
+	  TSSTLoupeDiameter: @500,
+	  TSSTLoupePower: @2.0f,
+	  TSSTStatusbarVisible: @YES,
+	  TSSTLonelyFirstPage: @YES,
+	  TSSTNestedArchives: @YES,
+	  TSSTUpdateSelection: @0,
+	  SSDEnableSwipe: @NO,
+	};
 	
 	NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
 	[sharedDefaultsController setInitialValues: standardDefaults];

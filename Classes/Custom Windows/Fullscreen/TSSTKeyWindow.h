@@ -32,17 +32,12 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface TSSTKeyWindow : NSPanel { }
+@interface TSSTKeyWindow : NSPanel
+
 @end
 
 
 
 @interface TSSTTransparentView : NSView
-{
-
-}
-
 
 @end
-
-

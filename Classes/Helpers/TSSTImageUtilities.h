@@ -29,14 +29,16 @@
 
 #import <Cocoa/Cocoa.h>
 
-NSSize sizeScalaedToDimension(NSSize size, float dimension);
+NS_ASSUME_NONNULL_BEGIN
 
-NSSize sizeConstrainedByDimension(NSSize size, float dimension);
+NSSize sizeScalaedToDimension(NSSize size, CGFloat dimension);
+
+NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension);
 
 /// function that adjusts an NSSize by the amount designated
 /// in argument "scale"
 /// Return is an integer size.
-NSSize scaleSize(NSSize aSize, float scale);
+NSSize scaleSize(NSSize aSize, CGFloat scale);
 CGSize fitSizeInSize(CGSize constraint, CGSize size);
 
 NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect);
@@ -47,12 +49,12 @@ NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image);
 
 NSPoint centerPointOfRect(NSRect rect);
 
-NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, float radius);
+NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius);
 
-CGImageRef CGImageRefNamed(NSString * name) CF_RETURNS_RETAINED;
+CGImageRef __nullable CGImageRefNamed(NSString * name) CF_RETURNS_RETAINED;
 
 CGFloat RadiansToDegrees(CGFloat radians);
 
 CGFloat DegreesToRadians(CGFloat degrees);
 
-
+NS_ASSUME_NONNULL_END

@@ -33,7 +33,7 @@
 #import "TSSTImageUtilities.h"
 
 
-NSSize sizeConstrainedByDimension(NSSize size, float dimension)
+NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension)
 {
 //	if(size.width > dimension || size.height > dimension)
 //    {
@@ -50,16 +50,16 @@ NSSize sizeConstrainedByDimension(NSSize size, float dimension)
     return size;
 }
 
-NSSize scaleSize(NSSize aSize, float scale)
+NSSize scaleSize(NSSize aSize, CGFloat scale)
 {
     if(NSEqualSizes(aSize , NSZeroSize))
     {
         return NSZeroSize;
     }
     
-	NSSize outputSize;
-	outputSize.width = (aSize.width * scale);
-	outputSize.height = (aSize.height * scale);
+	NSSize outputSize = aSize;
+	outputSize.width *= scale;
+	outputSize.height *= scale;
 	return outputSize;
 }
 
@@ -136,7 +136,7 @@ NSPoint centerPointOfRect(NSRect rect)
 }
 
 
-NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, float radius)
+NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius)
 {
     NSBezierPath * path = [NSBezierPath bezierPath];
     radius = MIN(radius, 0.5f * MIN(NSWidth(aRect), NSHeight(aRect)));
@@ -159,7 +159,7 @@ CGImageRef CGImageRefNamed(NSString * name)
 	CGImageRef        imageRef = NULL;
     CGImageSourceRef  sourceRef;
 	
-    sourceRef = CGImageSourceCreateWithData((CFDataRef)imageData, NULL);
+    sourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)imageData, NULL);
     if(sourceRef)
 	{
         imageRef = CGImageSourceCreateImageAtIndex(sourceRef, 0, NULL);

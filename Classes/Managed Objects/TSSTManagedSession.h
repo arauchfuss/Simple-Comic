@@ -9,9 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface TSSTManagedSession : NSManagedObject {
-
-}
-
+@interface TSSTManagedSession : NSManagedObject
 
 @end

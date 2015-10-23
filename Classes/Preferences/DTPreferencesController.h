@@ -9,8 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DTPreferencesController : NSWindowController {
-
-}
+@interface DTPreferencesController : NSWindowController
 
 @end

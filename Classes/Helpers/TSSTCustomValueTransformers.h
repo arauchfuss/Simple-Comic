@@ -32,10 +32,6 @@
 
 
 @interface TSSTLastPathComponent: NSValueTransformer
-{
-
-}
-
 
 @end
 

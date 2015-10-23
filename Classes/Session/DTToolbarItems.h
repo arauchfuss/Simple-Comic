@@ -9,14 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface DTToolbarItem : NSToolbarItem
-{
-}
 
 @end
 
 
 @interface DTPageTurnToolbarItem : DTToolbarItem
-{
-}
 
 @end

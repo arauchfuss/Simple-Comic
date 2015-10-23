@@ -12,8 +12,6 @@
 static NSDictionary * stringAttributes;
 
 @implementation TSSTImageView
-
-
 @synthesize imageName;
 @synthesize clears;
 

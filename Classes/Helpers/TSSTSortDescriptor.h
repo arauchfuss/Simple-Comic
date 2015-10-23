@@ -30,11 +30,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 #import <Cocoa/Cocoa.h>
 
 
-@interface TSSTSortDescriptor : NSSortDescriptor 
-{
-
-}
-
+@interface TSSTSortDescriptor : NSSortDescriptor
 
 @end
 

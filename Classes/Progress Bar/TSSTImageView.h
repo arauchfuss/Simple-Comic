@@ -10,12 +10,8 @@
 
 
 @interface TSSTImageView : NSImageView
-{
-    NSString * imageName;
-}
 
 @property (copy) NSString * imageName;
-@property  BOOL clears;
-
+@property BOOL clears;
 
 @end

@@ -38,8 +38,7 @@
 							[listBuffer mutableBytes], [listBuffer length],
 							(travLnk ? 0 : XATTR_NOFOLLOW) );
 	char*	nameStart = [listBuffer mutableBytes];
-	int x;
-	for( x = 0; x < dataSize; x++ )
+	for(size_t x = 0; x < dataSize; x++ )
 	{
 		if( ((char*)[listBuffer mutableBytes])[x] == 0 )	// End of string.
 		{
@@ -118,17 +117,17 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(NSMutableData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
++(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	size_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
 										NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
 	if( dataSize == ULONG_MAX )
 		return nil;
-	NSMutableData*	data = [NSMutableData dataWithLength: dataSize];
+	NSMutableData*	data = [[NSMutableData alloc] initWithLength: dataSize];
 	getxattr( [path fileSystemRepresentation], [key UTF8String],
 				[data mutableBytes], [data length], 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
 	
-	return data;
+	return [data copy];
 }
 
 
@@ -143,7 +142,7 @@
 +(id)	objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSString*				errMsg = nil;
-	NSMutableData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
+	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
 	NSPropertyListFormat	outFormat = NSPropertyListXMLFormat_v1_0;
 	id obj = [NSPropertyListSerialization propertyListFromData: data
 					mutabilityOption: NSPropertyListImmutable
@@ -152,6 +151,20 @@
 	if( errMsg )
 	{
 		[NSException raise: @"UKXattrMetastoreCantUnserialize" format: @"%@", errMsg];
+	}
+	
+	return obj;
+}
+
++(nullable id) objectForKey: (NSString*)key atPath: (NSString*)path
+				  traverseLink:(BOOL)travLnk error: (NSError**)outError
+{
+	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
+	NSPropertyListFormat	outFormat = NSPropertyListXMLFormat_v1_0;
+
+	id obj = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&outFormat error:outError];
+	if (!obj) {
+		return nil;
 	}
 	
 	return obj;
@@ -166,9 +179,9 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(id)	stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
++(NSString*)	stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	NSMutableData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
+	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
 	
 	return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }

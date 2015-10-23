@@ -58,7 +58,7 @@
     if (self != nil)
     {
 		pageTurn = 0;
-		pageSelectionInProgress = None;
+		pageSelectionInProgress = PageSelectionModeNone;
 		mouseMovedTimer = nil;
 //		closing = NO;
         session = aSession;
@@ -316,7 +316,7 @@
     if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
 	   && loupe 
 	   && [[self window] isKeyWindow]
-	   && pageSelectionInProgress == None)
+	   && pageSelectionInProgress == PageSelectionModeNone)
     {
 		if(![loupeWindow isVisible])
 		{
@@ -695,7 +695,7 @@
 
 - (IBAction)removePages:(id)sender
 {
-	pageSelectionInProgress = Delete;
+	pageSelectionInProgress = PageSelectionModeDelete;
 	[self changeViewForSelection];
 }
 
@@ -705,7 +705,7 @@
 	archive. */
 - (IBAction)setArchiveIcon:(id)sender
 {
-	pageSelectionInProgress = Icon;
+	pageSelectionInProgress = PageSelectionModeIcon;
 	[self changeViewForSelection];
 }
 
@@ -713,14 +713,14 @@
 /*	Saves the selected page to a user specified location. */
 - (IBAction)extractPage:(id)sender
 {
-	pageSelectionInProgress = Extract;
+	pageSelectionInProgress = PageSelectionModeExtract;
 	[self changeViewForSelection];
 }
 
 
 - (BOOL)pageSelectionCanCrop
 {
-	return (pageSelectionInProgress == Icon);
+	return (pageSelectionInProgress == PageSelectionModeIcon);
 }
 
 
@@ -771,14 +771,14 @@
 
 - (BOOL)pageSelectionInProgress
 {
-	return (pageSelectionInProgress != None);
+	return (pageSelectionInProgress != PageSelectionModeNone);
 }
 
 
 - (void)cancelPageSelection
 {
 	[session setValue: @(savedZoom) forKey: TSSTZoomLevel];
-	pageSelectionInProgress = None;
+	pageSelectionInProgress = PageSelectionModeNone;
 	[self scaleToWindow];
 }
 
@@ -787,13 +787,13 @@
 {
 	switch (pageSelectionInProgress)
 	{
-		case Icon:
+		case PageSelectionModeIcon:
 			[self setIconWithSelection: selection andCropRect: cropRect];
 			break;
-		case Delete:
+		case PageSelectionModeDelete:
 			[self deletePageWithSelection: selection];
 			break;
-		case Extract:
+		case PageSelectionModeExtract:
 			[self extractPageWithSelection: selection];
 			break;
 		default:
@@ -801,7 +801,7 @@
 	}
 	
 	[session setValue: @(savedZoom) forKey: TSSTZoomLevel];
-	pageSelectionInProgress = None;
+	pageSelectionInProgress = PageSelectionModeNone;
 	[self scaleToWindow];
 }
 
@@ -1074,7 +1074,7 @@
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
 	
-	if(pageSelectionInProgress == None)
+	if(pageSelectionInProgress == PageSelectionModeNone)
 	{
 		[self resizeWindow];
 	}

@@ -75,7 +75,7 @@ extern NSString * SSDEnableSwipe;
     Archive password prompts during their loading
     Fallback archive encoding selection
 */
-@interface SimpleComicAppDelegate : NSObject
+@interface SimpleComicAppDelegate : NSObject <NSApplicationDelegate>
 {
 /*  When opening encrypted zip or rar archives this panel is
     made visible as a modal so the user can enter a password. */
