@@ -64,6 +64,23 @@ NSSize scaleSize(NSSize aSize, float scale)
 }
 
 
+CGSize fitSizeInSize(CGSize constraint, CGSize size)
+{
+	if(size.width < constraint.width || size.height < constraint.height)
+	{
+		if( constraint.height / constraint.width > size.width / size.width)
+		{
+			size = scaleSize(size, size.height / constraint.height);
+		}
+		else
+		{
+			size = scaleSize(size, size.width / constraint.width);
+		}
+	}
+	
+	return size;
+}
+
 
 NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
 {

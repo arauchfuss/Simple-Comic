@@ -36,7 +36,7 @@
 	
 }
 
-+(NSArray*)		allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk;
++(NSArray<NSString*>*)		allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk;
 
 // Store UTF8 strings:
 +(void)				setString: (NSString*)str forKey: (NSString*)key

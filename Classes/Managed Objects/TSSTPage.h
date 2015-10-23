@@ -34,8 +34,8 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
     NSLock * loaderLock;
 }
 
-+ (NSArray *)imageExtensions;
-+ (NSArray *)textExtensions;
++ (NSArray<NSString*> *)imageExtensions;
++ (NSArray<NSString*> *)textExtensions;
 @property (readonly, copy) NSString *name;
 //- (NSString *)deconflictionName;
    

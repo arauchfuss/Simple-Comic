@@ -33,7 +33,11 @@ NSSize sizeScalaedToDimension(NSSize size, float dimension);
 
 NSSize sizeConstrainedByDimension(NSSize size, float dimension);
 
+/// function that adjusts an NSSize by the amount designated
+/// in argument "scale"
+/// Return is an integer size.
 NSSize scaleSize(NSSize aSize, float scale);
+CGSize fitSizeInSize(CGSize constraint, CGSize size);
 
 NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect);
 

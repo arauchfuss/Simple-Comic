@@ -34,8 +34,8 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         CGContextRef cgContext = QLPreviewRequestCreatePDFContext(preview, NULL, NULL, NULL);
         if(cgContext)
         {
-            int counter = 0;
-            int count = [fileList count];
+            NSInteger counter = 0;
+            NSInteger count = [fileList count];
 //            count = count < 20 ? count : 20;
 				NSDate * pageRenderStartTime = [NSDate date];
 				NSDate * currentTime = nil;

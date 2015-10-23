@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 	float savedZoom;
 }
 
-@property (strong) NSArray * pageSortDescriptor;
+@property (strong) NSArray<NSSortDescriptor*> * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
 @property (strong) NSString * pageNames;
 

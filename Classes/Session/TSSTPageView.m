@@ -237,7 +237,7 @@
 	NSPasteboard * pboard = [sender draggingPasteboard];
 	if([[pboard types] containsObject: NSFilenamesPboardType])
 	{
-		NSArray * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
+		NSArray<NSString *> * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
         [sessionController updateSessionObject];
 		[(SimpleComicAppDelegate*)[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
 		return YES;

@@ -50,12 +50,9 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 @end
 
 @interface TSSTManagedArchive : TSSTManagedGroup
-{
 
-}
-
-+ (NSArray *)archiveExtensions;
-+ (NSArray *)quicklookExtensions;
++ (NSArray<NSString*> *)archiveExtensions;
++ (NSArray<NSString*> *)quicklookExtensions;
 /*  Recurses through archives looking for archives and images */
 - (void)nestedArchiveContents;
 @property (readonly) BOOL quicklookCompatible;
@@ -63,9 +60,6 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 @end
 
 @interface TSSTManagedPDF : TSSTManagedGroup
-{
-    
-}
 
 /*  Parses PDFs into something Simple Comic can use */
 - (void)pdfContents;
@@ -73,9 +67,6 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 @end
 
 @interface SSDManagedSmartFolder : TSSTManagedGroup
-{
-    
-}
 
 - (void) smartFolderContents;
 
