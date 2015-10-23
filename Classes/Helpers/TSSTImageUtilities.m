@@ -95,8 +95,8 @@ NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
             size = scaleSize(size, NSWidth(rect) / size.width);
         }
     }
-    float x = rect.origin.x + ((rect.size.width - size.width) / 2);
-    float y = rect.origin.y + ((rect.size.height - size.height) / 2);
+    CGFloat x = rect.origin.x + ((rect.size.width - size.width) / 2);
+    CGFloat y = rect.origin.y + ((rect.size.height - size.height) / 2);
     
     return NSMakeRect(x, y, size.width, size.height);
 }

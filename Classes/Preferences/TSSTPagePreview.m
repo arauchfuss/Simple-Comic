@@ -104,8 +104,8 @@
 {
 	CALayer * root = [preview layer];
 	CGRect frame = root.frame;
-	float height = CGRectGetHeight(frame);
-	float width = height * 0.79;
+	CGFloat height = CGRectGetHeight(frame);
+	CGFloat width = height * 0.79;
 	
 	BOOL spread = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTTwoPageSpread] boolValue];
 	BOOL order = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTPageOrder] boolValue];

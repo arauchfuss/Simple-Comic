@@ -74,8 +74,8 @@ static NSSize monospaceCharacterSize;
 	
 	NSTextTab * tabStop;
 	NSMutableArray * tabStops = [NSMutableArray array];
-	int tabSize;
-	float tabLocation;
+	NSInteger tabSize;
+	CGFloat tabLocation;
 	/* Loop through the tab stops */
 	for (tabSize = 8; tabSize < 120; tabSize+=8)
 	{
@@ -124,13 +124,13 @@ static NSSize monospaceCharacterSize;
 		return YES;
 	}
 	
-	float defaultAspect = 1;
-	float aspect = [[self valueForKey: @"aspectRatio"] floatValue];
+	CGFloat defaultAspect = 1;
+	CGFloat aspect = [[self valueForKey: @"aspectRatio"] doubleValue];
 	if(!aspect)
 	{
         NSData * imageData = [self pageData];
 		[self setOwnSizeInfoWithData: imageData];
-		aspect = [[self valueForKey: @"aspectRatio"] floatValue];
+		aspect = [[self valueForKey: @"aspectRatio"] doubleValue];
 	}
     
 	return aspect != 0 ? aspect > defaultAspect : YES;
@@ -139,7 +139,7 @@ static NSSize monospaceCharacterSize;
 
 - (void)setOwnSizeInfoWithData:(NSData *)imageData
 {
-	float aspect;
+	CGFloat aspect;
 	NSSize imageSize;
 	NSBitmapImageRep * pageRep = [NSBitmapImageRep imageRepWithData: imageData];
 	imageSize = NSMakeSize([pageRep pixelsWide], [pageRep pixelsHigh]);

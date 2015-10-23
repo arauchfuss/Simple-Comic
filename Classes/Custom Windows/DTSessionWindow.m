@@ -22,7 +22,7 @@
 	return self;
 }
 
-- (float)toolbarHeight
+- (CGFloat)toolbarHeight
 {
     return NSHeight([self frame]) - NSHeight([[self contentView] frame]);
 }

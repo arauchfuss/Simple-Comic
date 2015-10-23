@@ -11,7 +11,7 @@
 
 @interface DTSessionWindow : NSWindow
 
-@property (readonly) float toolbarHeight;
+@property (readonly) CGFloat toolbarHeight;
 @property (getter=isFullscreen, readonly) BOOL fullscreen;
 
 @end

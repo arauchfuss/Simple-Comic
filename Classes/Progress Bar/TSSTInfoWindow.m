@@ -25,11 +25,11 @@
 }
 
 
-- (void)caretAtPoint:(NSPoint)point size:(NSSize)size withLimitLeft:(float)left right:(float)right
+- (void)caretAtPoint:(NSPoint)point size:(NSSize)size withLimitLeft:(CGFloat)left right:(CGFloat)right
 {
-    float limitWidth = right - left;
-    float relativePosition = (point.x - left) / limitWidth;
-    float offset = size.width * relativePosition;
+    CGFloat limitWidth = right - left;
+    CGFloat relativePosition = (point.x - left) / limitWidth;
+    CGFloat offset = size.width * relativePosition;
 	NSRect frameRect = NSMakeRect( point.x - offset - 10, point.y, size.width + 20, size.height + 25);
 	
 	[[self contentView] setCaretPosition: offset + 10];
@@ -46,7 +46,7 @@
 }
 
 
-- (void)resizeToDiameter:(float)diameter
+- (void)resizeToDiameter:(CGFloat)diameter
 {
     NSRect frame = [self frame];
 	NSPoint center = NSMakePoint(NSMinX( frame ) + NSWidth(frame) / 2, NSMinY( frame ) + NSHeight(frame) / 2);
@@ -66,7 +66,7 @@
 @synthesize bordered, caretPosition;
 
 
-- (void)setCaretPosition:(float)position
+- (void)setCaretPosition:(CGFloat)position
 {
     caretPosition = position;
 	[self setNeedsDisplay: YES];

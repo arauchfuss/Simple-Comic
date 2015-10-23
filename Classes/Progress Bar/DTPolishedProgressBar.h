@@ -29,20 +29,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-/*
+/*!
 	Configurable progress bar.  Allows the setting of various style attributes.
 	Progress direction can be set.
 */
 @interface DTPolishedProgressBar : NSView
-{
-	int maxValue;		/* The maximum value of the progress bar. */
-	int currentValue;	/* The progress bar is filled to this level. */
-	BOOL leftToRight;	/* The direction of the porgress bar. */
-	NSRect progressRect; /* This is the section of the view. Users can mouse over and click here. */
-	float horizontalMargin; /* How much room is given for the text on either side. */
-
-	NSDictionary * numberStyle; /* The font attributes of the progress numbers. */
-}
 
 /*
  List of replacements for the highcontrast flag
@@ -53,15 +44,21 @@
  textStyle: Dictionary of string attributes.
  */
 
+//! The direction of the porgress bar.
 @property (assign) BOOL leftToRight;
-@property (assign) int maxValue;
-@property (assign) int currentValue;
+//! The maximum value of the progress bar.
+@property (assign) NSInteger maxValue;
+//! The progress bar is filled to this level.
+@property (assign) NSInteger currentValue;
 
+//! This is the section of the view. Users can mouse over and click here.
 @property (assign) NSRect progressRect;
-@property (assign) float horizontalMargin;
+//! How much room is given for the text on either side.
+@property (assign) CGFloat horizontalMargin;
 
+//! The font attributes of the progress numbers.
 @property (retain) NSDictionary * numberStyle;
 
-- (int)indexForPoint:(NSPoint)point;
+- (NSInteger)indexForPoint:(NSPoint)point;
 
 @end

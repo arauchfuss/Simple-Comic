@@ -39,7 +39,7 @@
 #define UNKTURN 3
 
 @implementation TSSTPageView
-
+@synthesize imageBounds;
 @synthesize rotation;
 @synthesize sessionController;
 
@@ -114,19 +114,20 @@
 /* Animated GIF method */
 - (void)startAnimationForImage:(NSImage *)image
 {
-    id testImageRep = [image bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
-    int frameCount;
-    float frameDuration;
+    NSImageRep *testImageRep = [image bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
+    NSInteger frameCount;
+    CGFloat frameDuration;
     NSDictionary * animationInfo;
-    if([testImageRep class] == [NSBitmapImageRep class])
+    if([testImageRep isKindOfClass:[NSBitmapImageRep class]])
     {
-        frameCount = [[testImageRep valueForProperty: NSImageFrameCount] intValue];
+		NSBitmapImageRep *testBMImageRep = (NSBitmapImageRep*)testImageRep;
+		frameCount = [[testBMImageRep valueForProperty: NSImageFrameCount] integerValue];
         if(frameCount > 1)
         {
             animationInfo = @{@"imageNumber": @1,
                 @"pageImage": firstPageImage,
-                @"loopCount": [testImageRep valueForProperty: NSImageLoopCount]};
-            frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
+                @"loopCount": [testBMImageRep valueForProperty: NSImageLoopCount]};
+            frameDuration = [[testBMImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
             frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
             [NSTimer scheduledTimerWithTimeInterval: frameDuration
                                              target: self 
@@ -142,7 +143,7 @@
 - (void)animateImage:(NSTimer *)timer
 {
     NSMutableDictionary * animationInfo = [NSMutableDictionary dictionaryWithDictionary: [timer userInfo]];
-    float frameDuration;
+    CGFloat frameDuration;
     NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] intValue] == 1 ? firstPageImage : secondPageImage;
     if([animationInfo valueForKey: @"pageImage"] != pageImage || sessionController == nil)
     {
@@ -396,9 +397,9 @@
         break;
     }
     
-	float power = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTLoupePower] floatValue];
-    float scale;
-    float remainder;
+	CGFloat power = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTLoupePower] floatValue];
+    CGFloat scale;
+    CGFloat remainder;
     NSRect firstFragment = NSZeroRect;
     NSRect secondFragment = NSZeroRect;
     NSSize zoomSize;
@@ -520,7 +521,7 @@
 
 
 
-- (NSSize)combinedImageSizeForZoom:(float)zoomScale
+- (NSSize)combinedImageSizeForZoom:(CGFloat)zoomScale
 {
 //    float zoomScale = (float)(10.0 + level) / 10.0;
 	NSSize firstSize = firstPageImage ? [firstPageImage size] : NSZeroSize;
@@ -547,28 +548,20 @@
 }
 
 
-
-- (NSRect)imageBounds
-{
-    return imageBounds;
-}
-
-
-
 - (void)resizeView
 {
 	firstPageRect = NSZeroRect;
 	secondPageRect = NSZeroRect;
     NSRect visibleRect = [[self enclosingScrollView] documentVisibleRect];
     NSRect frameRect = [self frame];
-    float xpercent = NSMidX(visibleRect) / frameRect.size.width;
-    float ypercent = NSMidY(visibleRect) / frameRect.size.height;
+    CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
+    CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
     NSSize imageSize = [self combinedImageSizeForZoom: [[[sessionController session] valueForKey: TSSTZoomLevel] floatValue]];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
     NSSize viewSize = NSZeroSize;
-    float scaleToFit;
-	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+    CGFloat scaleToFit;
+	NSInteger scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
     switch (scaling)
     {
@@ -645,8 +638,8 @@
 		firstPageRect.origin = imageRect.origin;
 	}
 	
-    float xOrigin = viewSize.width * xpercent;
-    float yOrigin = viewSize.height * ypercent;
+    CGFloat xOrigin = viewSize.width * xpercent;
+    CGFloat yOrigin = viewSize.height * ypercent;
     NSPoint recenter = NSMakePoint(xOrigin - visibleRect.size.width / 2, yOrigin - visibleRect.size.height / 2);
     [self scrollPoint: recenter];
     [self setNeedsDisplay: YES];
@@ -716,7 +709,7 @@
 	}
 	
 	pageRect.origin = NSMakePoint(selection.origin.x - pageRect.origin.x, selection.origin.y - pageRect.origin.y);
-	float scaling = originalSize.height / pageRect.size.height;
+	CGFloat scaling = originalSize.height / pageRect.size.height;
 	pageRect = NSMakeRect(pageRect.origin.x * scaling,
 						  pageRect.origin.y * scaling,
 						  selection.size.width * scaling, 
@@ -752,7 +745,7 @@
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
-		float loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
+		CGFloat loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
 		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
 		loupePower = loupePower < 2 ? 2 : loupePower;
 		loupePower = loupePower > 6 ? 6 : loupePower;
@@ -820,7 +813,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if([[defaults valueForKey:SSDEnableSwipe] boolValue]){
-        float deltaX = [theEvent deltaX];
+        CGFloat deltaX = [theEvent deltaX];
         if (deltaX != 0.0)
         {
             [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
@@ -862,7 +855,7 @@
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSPoint scrollPoint = visible.origin;
     BOOL scrolling = NO;
-    float delta = shiftKey ? 50 * 3 : 50;
+    CGFloat delta = shiftKey ? 50 * 3 : 50;
     
 	switch ([charNumber unsignedIntValue])
 	{

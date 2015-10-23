@@ -6,6 +6,8 @@
 //  Copyright 2007 Dancing Tortoise Software. All rights reserved.
 //
 
+#include <tgmath.h>
+
 #import "TSSTThumbnailView.h"
 #import "TSSTSessionWindowController.h"
 #import "TSSTImageUtilities.h"
@@ -45,11 +47,11 @@
 - (NSRect)rectForIndex:(NSInteger)index
 {
     NSRect bounds = [[[self window] screen] visibleFrame];
-    float ratio = (NSHeight(bounds)) / NSWidth(bounds);
-    NSInteger horCount = ceilf(sqrtf([[pageController content] count] / ratio));
-    NSInteger vertCount = ceilf((float)[[pageController content] count] / (float)horCount);
-    float side = NSHeight(bounds) / vertCount;
-    float horSide = NSWidth(bounds) / horCount;
+    CGFloat ratio = (NSHeight(bounds)) / NSWidth(bounds);
+    NSInteger horCount = ceil(sqrt([[pageController content] count] / ratio));
+    NSInteger vertCount = ceil((CGFloat)[[pageController content] count] / (CGFloat)horCount);
+    CGFloat side = NSHeight(bounds) / vertCount;
+    CGFloat horSide = NSWidth(bounds) / horCount;
     NSInteger horGridPos = index % horCount;
     NSInteger vertGridPos = (index / horCount) % vertCount;
     
@@ -236,8 +238,8 @@
     NSRect visibleRect = [[[self window] screen] visibleFrame];
     NSPoint thumbPoint = NSMakePoint(NSMinX(indexRect) + NSWidth(indexRect) / 2,
                                      NSMinY(indexRect) + NSHeight(indexRect) / 2);
-    float viewSize = 312;//[thumbnailView frame].size.width;
-    float aspect = imageSize.width / imageSize.height;
+    CGFloat viewSize = 312;//[thumbnailView frame].size.width;
+    CGFloat aspect = imageSize.width / imageSize.height;
     
     if(aspect <= 1)
     {

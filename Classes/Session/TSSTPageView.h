@@ -37,10 +37,10 @@
 @class TSSTSessionWindowController;
 
 typedef struct {
-	float left;
-	float right;
-	float up;
-	float down;
+	CGFloat left;
+	CGFloat right;
+	CGFloat up;
+	CGFloat down;
 } direction;
 
 @protocol DTPageSelection_Protocol <NSObject>
@@ -110,7 +110,7 @@ typedef struct {
 
 /*  Finds the size of the pages that are to be renedered.
     This includes minor scaling to equalize the height of facing pages. */
-- (NSSize)combinedImageSizeForZoom:(float)level;
+- (NSSize)combinedImageSizeForZoom:(CGFloat)level;
 
 
 /*  If the view are is larger than the display area 

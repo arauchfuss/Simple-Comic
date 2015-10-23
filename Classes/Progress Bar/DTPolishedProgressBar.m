@@ -212,9 +212,9 @@
  Translates a point within the view to an index between 0 and maxValue.
  Progress indicator direction affects the index.
  */
-- (int)indexForPoint:(NSPoint)point
+- (NSInteger)indexForPoint:(NSPoint)point
 {
-    int index;
+    NSInteger index;
     if(leftToRight)
     {
         index = (point.x - NSMinX(progressRect)) / NSWidth(progressRect) * maxValue;

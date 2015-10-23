@@ -106,7 +106,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 	BOOL newSession;
 	
 	PageSelectionMode pageSelectionInProgress;
-	float savedZoom;
+	CGFloat savedZoom;
 }
 
 @property (strong) NSArray<NSSortDescriptor*> * pageSortDescriptor;

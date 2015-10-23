@@ -494,8 +494,8 @@
     [groupLock unlock];
 	
 	NSRect bounds = [page boundsForBox: kPDFDisplayBoxMediaBox];
-	float dimension = 1400;
-	float scale = 1 > (NSHeight(bounds) / NSWidth(bounds)) ? dimension / NSWidth(bounds) :  dimension / NSHeight(bounds);
+	CGFloat dimension = 1400;
+	CGFloat scale = 1 > (NSHeight(bounds) / NSWidth(bounds)) ? dimension / NSWidth(bounds) :  dimension / NSHeight(bounds);
 	bounds.size = scaleSize(bounds.size, scale);
 	
 	NSImage * pageImage = [[NSImage alloc] initWithSize: bounds.size];

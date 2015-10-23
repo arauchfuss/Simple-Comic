@@ -346,7 +346,7 @@
 - (void)infoPanelSetupAtPoint:(NSPoint)point
 {
 	NSPoint cursorPoint;
-	int index;
+	NSInteger index;
 	DTPolishedProgressBar * bar;
 
     bar = progressBar;
@@ -553,7 +553,7 @@
 - (IBAction)zoomIn:(id)sender
 {
     int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
+    CGFloat previousZoom = [[session valueForKey: TSSTZoomLevel] doubleValue];
     if(scalingOption != 0)
     {
         previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
@@ -572,7 +572,7 @@
 - (IBAction)zoomOut:(id)sender
 {
     int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
+    CGFloat previousZoom = [[session valueForKey: TSSTZoomLevel] doubleValue];
     if(scalingOption != 0)
     {
         previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
@@ -736,7 +736,7 @@
 	NSSize scrollerBounds = [[pageView enclosingScrollView] bounds].size;
 	scrollerBounds.height -= 20;
 	scrollerBounds.width -= 20;
-	float factor;
+	CGFloat factor;
 	if(imageSize.width / imageSize.height > scrollerBounds.width / scrollerBounds.height)
 	{
 		factor = scrollerBounds.width / imageSize.width;
@@ -1529,12 +1529,12 @@ images are currently visible and then skips over them.
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
 	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
-	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
+	CGFloat vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
 	{
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
 	}
-	float horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
+	CGFloat horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
 	NSSize minSize = [[self window] minSize];
 	NSRect correctedFrame = boundingRect;
 	correctedFrame.size.width = NSWidth(correctedFrame) < minSize.width ? minSize.width : NSWidth(correctedFrame);
@@ -1544,7 +1544,7 @@ images are currently visible and then skips over them.
 	NSSize newSize;
 	if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
 	{
-		float scale;
+		CGFloat scale;
 		if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
 		{
 			scale = 1;
