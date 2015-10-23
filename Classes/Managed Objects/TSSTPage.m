@@ -113,6 +113,8 @@ static NSSize monospaceCharacterSize;
 
 - (void)didTurnIntoFault
 {
+	loaderLock = nil;
+	thumbLock = nil;
 }
 
 
