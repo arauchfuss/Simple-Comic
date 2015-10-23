@@ -1,0 +1,3 @@
+[submodule "Vendor/UniversalDetector"]
+	path = Vendor/UniversalDetector
+	url = https://github.com/MaddTheSane/UniversalDetector.git

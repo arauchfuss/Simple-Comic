@@ -13,9 +13,7 @@
 		281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */; };
 		281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */; };
 		283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
-		284348130DA95C4A00F602E2 /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		284348140DA95C4A00F602E2 /* XADMaster.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		284348CD0DA95C5300F602E2 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; };
 		284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		284741461071B4820033BD88 /* TSSTGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */; };
 		284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 284D381A101249BE00A37AB2 /* DTToolbarItems.m */; };
@@ -52,17 +50,56 @@
 		55C3742D1BD9E6AF006385B6 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C3741B1BD9E6AF006385B6 /* main.c */; };
 		55C374351BD9E6C4006385B6 /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		55C374361BD9E6E5006385B6 /* QuickComic.qlgenerator in Copy Quicklook plugin */ = {isa = PBXBuildFile; fileRef = 55C374051BD9E67D006385B6 /* QuickComic.qlgenerator */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		55C374371BD9E778006385B6 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348050DA95C4300F602E2 /* UniversalDetector.framework */; };
 		55C374381BD9E778006385B6 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		55C374391BD9E7C7006385B6 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
 		55C3743A1BD9E85A006385B6 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
 		55C3744B1BD9E8BB006385B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C374401BD9E8BB006385B6 /* InfoPlist.strings */; };
+		55C374601BD9EFF1006385B6 /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A6D63DA717C2B8F2000272F1 /* TSSTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 28770B6D0DBA8B1C00A78646 /* TSSTSegmentedControl.m */; };
 		FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		55C374561BD9EAA1006385B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = UniversalDetector;
+		};
+		55C374581BD9EAA1006385B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1B0DDCAB0A2D0AD10009B697;
+			remoteInfo = DetectorTest;
+		};
+		55C3745A1BD9EFE2006385B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55C374041BD9E67D006385B6;
+			remoteInfo = QuickComic;
+		};
+		55C3745C1BD9EFE2006385B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = UniversalDetector;
+		};
+		55C3745E1BD9EFE7006385B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = UniversalDetector;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		28073E0A0FFC305400D2602B /* Copy Quicklook plugin */ = {
@@ -82,7 +119,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				284348130DA95C4A00F602E2 /* UniversalDetector.framework in Copy Frameworks */,
+				55C374601BD9EFF1006385B6 /* UniversalDetector.framework in Copy Frameworks */,
 				284348140DA95C4A00F602E2 /* XADMaster.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -109,7 +146,6 @@
 		283C4D690C43DE8D00DB4FE9 /* TSSTGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTGradientView.h; sourceTree = "<group>"; };
 		283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTBezelWindow.m; path = "Classes/Custom Windows/Bezel/TSSTBezelWindow.m"; sourceTree = "<group>"; };
 		283C4D7C0C43DF5300DB4FE9 /* TSSTBezelWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TSSTBezelWindow.h; path = "Classes/Custom Windows/Bezel/TSSTBezelWindow.h"; sourceTree = "<group>"; };
-		284348050DA95C4300F602E2 /* UniversalDetector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniversalDetector.framework; path = Frameworks/UniversalDetector.framework; sourceTree = "<group>"; };
 		284348060DA95C4300F602E2 /* XADMaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XADMaster.framework; path = Frameworks/XADMaster.framework; sourceTree = "<group>"; };
 		284A53550DEA60E40003F9F4 /* TSSTBookmarkSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTBookmarkSplitView.h; sourceTree = "<group>"; };
 		284A53560DEA60E40003F9F4 /* TSSTBookmarkSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTBookmarkSplitView.m; sourceTree = "<group>"; };
@@ -220,6 +256,7 @@
 		55C3741B1BD9E6AF006385B6 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		55C374411BD9E8BB006385B6 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55C374461BD9E8BB006385B6 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = Vendor/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
 		64777B8B1A4212E40064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		64E3ED821A45B00300B9C97B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Sessions_DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -236,8 +273,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */,
 				55C374381BD9E778006385B6 /* XADMaster.framework in Frameworks */,
-				55C374371BD9E778006385B6 /* UniversalDetector.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +282,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				284348CD0DA95C5300F602E2 /* UniversalDetector.framework in Frameworks */,
 				284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */,
@@ -291,7 +327,6 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				284348050DA95C4300F602E2 /* UniversalDetector.framework */,
 				284348060DA95C4300F602E2 /* XADMaster.framework */,
 				77C82804067257F0000B614F /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
@@ -453,6 +488,7 @@
 		29B97314FDCFA39411CA2CEA /* MetaComic */ = {
 			isa = PBXGroup;
 			children = (
+				55C374501BD9EA8B006385B6 /* Third-party */,
 				7756732906782D8800D1FEB8 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				55C373FF1BD9E61E006385B6 /* QuickComic */,
@@ -514,6 +550,23 @@
 				55C374401BD9E8BB006385B6 /* InfoPlist.strings */,
 			);
 			path = QuickComic;
+			sourceTree = "<group>";
+		};
+		55C374501BD9EA8B006385B6 /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+				55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */,
+			);
+			name = "Third-party";
+			sourceTree = "<group>";
+		};
+		55C374521BD9EAA1006385B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55C374571BD9EAA1006385B6 /* UniversalDetector.framework */,
+				55C374591BD9EAA1006385B6 /* DetectorTest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7756732906782D8800D1FEB8 /* Models */ = {
@@ -584,6 +637,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55C3745F1BD9EFE7006385B6 /* PBXTargetDependency */,
 			);
 			name = QuickComic;
 			productName = QuickComic2;
@@ -603,6 +657,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */,
+				55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";
@@ -642,6 +698,12 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MetaComic */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 55C374521BD9EAA1006385B6 /* Products */;
+					ProjectRef = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Simple Comic */,
@@ -649,6 +711,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		55C374571BD9EAA1006385B6 /* UniversalDetector.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UniversalDetector.framework;
+			remoteRef = 55C374561BD9EAA1006385B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55C374591BD9EAA1006385B6 /* DetectorTest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DetectorTest;
+			remoteRef = 55C374581BD9EAA1006385B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		55C374031BD9E67D006385B6 /* Resources */ = {
@@ -724,6 +803,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55C374041BD9E67D006385B6 /* QuickComic */;
+			targetProxy = 55C3745A1BD9EFE2006385B6 /* PBXContainerItemProxy */;
+		};
+		55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UniversalDetector;
+			targetProxy = 55C3745C1BD9EFE2006385B6 /* PBXContainerItemProxy */;
+		};
+		55C3745F1BD9EFE7006385B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UniversalDetector;
+			targetProxy = 55C3745E1BD9EFE7006385B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		281314590C0A7D5200EC007B /* Credits.rtf */ = {
@@ -897,7 +994,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
@@ -929,7 +1026,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				OTHER_CFLAGS = "-mdynamic-no-pic";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
