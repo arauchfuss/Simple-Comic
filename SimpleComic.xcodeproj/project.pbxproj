@@ -14,6 +14,7 @@
 		281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */; };
 		281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D7B0C43DF5300DB4FE9 /* TSSTBezelWindow.m */; };
 		283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
+		284348130DA95C4A00F602E2 /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		284348140DA95C4A00F602E2 /* XADMaster.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		284741461071B4820033BD88 /* TSSTGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D680C43DE8D00DB4FE9 /* TSSTGradientView.m */; };
@@ -54,7 +55,6 @@
 		55C374391BD9E7C7006385B6 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
 		55C3743A1BD9E85A006385B6 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
 		55C3744B1BD9E8BB006385B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C374401BD9E8BB006385B6 /* InfoPlist.strings */; };
-		55C374601BD9EFF1006385B6 /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -119,7 +119,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				55C374601BD9EFF1006385B6 /* UniversalDetector.framework in Copy Frameworks */,
+				284348130DA95C4A00F602E2 /* UniversalDetector.framework in Copy Frameworks */,
 				284348140DA95C4A00F602E2 /* XADMaster.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
