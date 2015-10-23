@@ -208,7 +208,7 @@
 "1712.title" = "キャンセル";
 
 /* Class = "NSMenuItem"; title = "Set Page as Icon"; ObjectID = "1851"; */
-"1851.title" = "Set Page as Icon";
+//"1851.title" = "Set Page as Icon";
 
 /* Class = "NSMenuItem"; title = "Open Recent"; ObjectID = "1857"; */
 "1857.title" = "最近使った項目を開";

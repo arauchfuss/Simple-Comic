@@ -1,3 +1,4 @@
+//TODO: Commented-out entries are entries that have not been translated
 
 /* Class = "NSMenuItem"; title = "前置全部窗口"; ObjectID = "5"; */
 "5.title" = "前置全部窗口";
@@ -87,16 +88,16 @@
 "864.title" = " 前往";
 
 /* Class = "NSMenuItem"; title = "Page Right"; ObjectID = "866"; */
-"866.title" = "Page Right";
+//"866.title" = "Page Right";
 
 /* Class = "NSMenuItem"; title = "Page Left"; ObjectID = "867"; */
-"867.title" = "Page Left";
+//"867.title" = "Page Left";
 
 /* Class = "NSMenuItem"; title = "Shift One Page Right"; ObjectID = "868"; */
-"868.title" = "Shift One Page Right";
+//"868.title" = "Shift One Page Right";
 
 /* Class = "NSMenuItem"; title = "Shift One Page Left"; ObjectID = "869"; */
-"869.title" = "Shift One Page Left";
+//"869.title" = "Shift One Page Left";
 
 /* Class = "NSMenuItem"; title = "关闭窗口"; ObjectID = "960"; */
 "960.title" = "关闭窗口";
@@ -144,10 +145,10 @@
 "1105.title" = "右旋";
 
 /* Class = "NSMenuItem"; title = "Skip Right"; ObjectID = "1157"; */
-"1157.title" = "Skip Right";
+//"1157.title" = "Skip Right";
 
 /* Class = "NSMenuItem"; title = "Skip Left"; ObjectID = "1158"; */
-"1158.title" = "Skip Left";
+//"1158.title" = "Skip Left";
 
 /* Class = "NSMenuItem"; title = "帮助"; ObjectID = "1206"; */
 "1206.title" = "帮助";

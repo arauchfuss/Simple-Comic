@@ -1,3 +1,4 @@
+//TODO: Commented-out entries are entries that have not been translated
 
 /* Class = "NSButton"; ibShadowedToolTip = "Pages are never automatically scaled past their actual resolution"; ObjectID = "36"; */
 "36.ibShadowedToolTip" = "Pages are never automatically scaled past their actual resolution";
@@ -36,7 +37,7 @@
 "246.title" = "偏好设置";
 
 /* Class = "NSButtonCell"; title = "Enable swipe"; ObjectID = "uvV-P7-bwd"; */
-"uvV-P7-bwd.title" = "Enable swipe";
+//"uvV-P7-bwd.title" = "Enable swipe";
 
 /* Class = "NSTextFieldCell"; title = "Enabling will allow you to navigate back and forth by swiping."; ObjectID = "v7s-SA-lNq"; */
-"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";
+//"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";

@@ -79,7 +79,7 @@
 "558.ibShadowedToolTips[1]" = "Zoom arrière";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[2] = "Zoom Reset"; ObjectID = "558"; */
-//"558.ibShadowedToolTips[2]" = "Zoom Reset";
+"558.ibShadowedToolTips[2]" = "Réinitialiser le zoom";
 
 /* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "559"; */
 "559.label" = "Zoom";
@@ -127,16 +127,16 @@
 //"689.ibShadowedToolTip" = "Capture Page";
 
 /* Class = "NSToolbarItem"; label = "Set Icon"; ObjectID = "693"; */
-"693.label" = "Set Icon";
+//"693.label" = "Set Icon";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Set Icon"; ObjectID = "693"; */
-"693.paletteLabel" = "Set Icon";
+//"693.paletteLabel" = "Set Icon";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
-"694.ibShadowedToolTip" = "Set Icon";
+//"694.ibShadowedToolTip" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
-"753.title" = "Jump";
+//"753.title" = "Jump";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
 "755.title" = "Annuler";
