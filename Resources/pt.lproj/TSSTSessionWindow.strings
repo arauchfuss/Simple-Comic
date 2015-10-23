@@ -22,10 +22,10 @@
 "503.title" = "9999";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
-"516.ibShadowedToolTips[0]" = "Originalgröße";
+"516.ibShadowedToolTips[0]" = "Tamanho Original";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[1] = "Scale to Window"; ObjectID = "516"; */
-"516.ibShadowedToolTips[1]" = "An Fenster anpassen";
+"516.ibShadowedToolTips[1]" = "Ajustar à Janela";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[2] = "Horizontal Scaling"; ObjectID = "516"; */
 //"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
@@ -37,22 +37,22 @@
 //"517.paletteLabel" = "Page Scaling";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[0] = "Right to Left Page Order"; ObjectID = "519"; */
-"519.ibShadowedToolTips[0]" = "Seitenfolge von rechts nach links";
+"519.ibShadowedToolTips[0]" = "Estilo Mangá";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[1] = "Left to Right Page Order"; ObjectID = "519"; */
-"519.ibShadowedToolTips[1]" = "Seitenfolge von links nach rechts";
+"519.ibShadowedToolTips[1]" = "Estilo HQ";
 
 /* Class = "NSToolbarItem"; label = "Page Order"; ObjectID = "520"; */
-"520.label" = "Page Order";
+//"520.label" = "Page Order";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Order"; ObjectID = "520"; */
-"520.paletteLabel" = "Page Order";
+//"520.paletteLabel" = "Page Order";
 
 /* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[0] = "Single Page Layout"; ObjectID = "522"; */
-"522.ibShadowedToolTips[0]" = "Einseitige Anordnung";
+"522.ibShadowedToolTips[0]" = "Uma Página Por Tela";
 
 /* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[1] = "Two Page Layout"; ObjectID = "522"; */
-"522.ibShadowedToolTips[1]" = "Zweiseitige Anordnung";
+"522.ibShadowedToolTips[1]" = "Duas Páginas Por Tela";
 
 /* Class = "NSToolbarItem"; label = "Page Layout"; ObjectID = "523"; */
 //"523.label" = "Page Layout";
@@ -73,28 +73,28 @@
 //"555.ibShadowedToolTips[1]" = "Right Page Turn";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "558"; */
-"558.ibShadowedToolTips[0]" = "Einzoomen";
+"558.ibShadowedToolTips[0]" = "Ampliar";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "558"; */
-"558.ibShadowedToolTips[1]" = "Auszommen";
+"558.ibShadowedToolTips[1]" = "Reduzir";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[2] = "Zoom Reset"; ObjectID = "558"; */
-"558.ibShadowedToolTips[2]" = "Zoom zurücksetzen";
+"558.ibShadowedToolTips[2]" = "Resetar Zoom";
 
 /* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "559"; */
-"559.label" = "Zoom";
+//"559.label" = "Zoom";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "559"; */
-"559.paletteLabel" = "Zoom";
+//"559.paletteLabel" = "Zoom";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Magnifing Glass"; ObjectID = "573"; */
 //"573.ibShadowedToolTip" = "Magnifing Glass";
 
 /* Class = "NSToolbarItem"; label = "Loupe"; ObjectID = "575"; */
-"575.label" = "Lupe";
+"575.label" = "Lente"; //FIXME: fuzzy, based on "Lente de Aumento" = "Image Loupe"
 
 /* Class = "NSToolbarItem"; paletteLabel = "Loupe"; ObjectID = "575"; */
-"575.paletteLabel" = "Lupe";
+"575.paletteLabel" = "Lente"; //FIXME: fuzzy, based on "Lente de Aumento" = "Image Loupe"
 
 /* Class = "NSToolbarItem"; label = "Thumbnails"; ObjectID = "577"; */
 //"577.label" = "Thumbnails";
@@ -112,10 +112,10 @@
 //"585.paletteLabel" = "Rotate Pages";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
-"587.ibShadowedToolTips[0]" = "Nach links drehen";
+"587.ibShadowedToolTips[0]" = "Girar à Esquerda";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[1] = "Rotate Right"; ObjectID = "587"; */
-"587.ibShadowedToolTips[1]" = "Nach rechts drehen";
+"587.ibShadowedToolTips[1]" = "Girar à Direita";
 
 /* Class = "NSToolbarItem"; label = "Capture Page"; ObjectID = "688"; */
 //"688.label" = "Capture Page";
@@ -139,4 +139,4 @@
 //"753.title" = "Jump";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
-"755.title" = "Abbrechen";
+"755.title" = "Cancelar";
