@@ -204,6 +204,11 @@
 		55C373E61BD9A108006385B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
 		55C373E71BD9A113006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
 		55C373E81BD9A119006385B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
+		55C373EA1BD9AEF4006385B6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		55C373EB1BD9AEFD006385B6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		55C373ED1BD9AFD3006385B6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Preferences.strings; sourceTree = "<group>"; };
+		55C373EF1BD9AFD9006385B6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		55C373F11BD9AFDE006385B6 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
 		64777B8B1A4212E40064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		64E3ED821A45B00300B9C97B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Sessions_DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -572,6 +577,7 @@
 				"zh-Hans",
 				Base,
 				en,
+				fr,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MetaComic */;
 			projectDirPath = "";
@@ -672,6 +678,7 @@
 			children = (
 				2813145D0C0A7D7900EC007B /* en */,
 				64E3ED821A45B00300B9C97B /* zh-Hans */,
+				55C373EB1BD9AEFD006385B6 /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -681,6 +688,7 @@
 			children = (
 				281314820C0A7E4900EC007B /* en */,
 				64777B8B1A4212E40064A356 /* zh-Hans */,
+				55C373EA1BD9AEF4006385B6 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -691,6 +699,7 @@
 				55C373E31BD99E0A006385B6 /* Base */,
 				55C373E41BD99E15006385B6 /* en */,
 				55C373E51BD99E1C006385B6 /* zh-Hans */,
+				55C373ED1BD9AFD3006385B6 /* fr */,
 			);
 			name = Preferences.xib;
 			sourceTree = "<group>";
@@ -701,6 +710,7 @@
 				55C373DF1BD99DBB006385B6 /* Base */,
 				55C373E01BD99DD1006385B6 /* zh-Hans */,
 				55C373E21BD99DD9006385B6 /* en */,
+				55C373EF1BD9AFD9006385B6 /* fr */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -711,6 +721,7 @@
 				55C373E61BD9A108006385B6 /* Base */,
 				55C373E71BD9A113006385B6 /* en */,
 				55C373E81BD9A119006385B6 /* zh-Hans */,
+				55C373F11BD9AFDE006385B6 /* fr */,
 			);
 			name = TSSTSessionWindow.xib;
 			sourceTree = "<group>";

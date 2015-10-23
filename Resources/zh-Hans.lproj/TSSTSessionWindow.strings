@@ -1,4 +1,6 @@
 
+//TODO: Commented-out entries are entries that have not been translated
+
 /* Class = "NSWindow"; title = "窗口"; ObjectID = "6"; */
 "6.title" = "窗口";
 
@@ -21,13 +23,13 @@
 "503.title" = "9999";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
-"516.ibShadowedToolTips[0]" = "Original Size";
+"516.ibShadowedToolTips[0]" = "原始大小";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[1] = "Scale to Window"; ObjectID = "516"; */
-"516.ibShadowedToolTips[1]" = "Scale to Window";
+//"516.ibShadowedToolTips[1]" = "Scale to Window";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[2] = "Horizontal Scaling"; ObjectID = "516"; */
-"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
+//"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
 
 /* Class = "NSToolbarItem"; label = "页面缩放模式"; ObjectID = "517"; */
 "517.label" = "页面缩放模式";
@@ -36,10 +38,10 @@
 "517.paletteLabel" = "页面缩放模式";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[0] = "Right to Left Page Order"; ObjectID = "519"; */
-"519.ibShadowedToolTips[0]" = "Right to Left Page Order";
+"519.ibShadowedToolTips[0]" = "从右到左的页面顺序";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[1] = "Left to Right Page Order"; ObjectID = "519"; */
-"519.ibShadowedToolTips[1]" = "Left to Right Page Order";
+"519.ibShadowedToolTips[1]" = "从左到右的页面顺序";
 
 /* Class = "NSToolbarItem"; label = "阅读顺序"; ObjectID = "520"; */
 "520.label" = "阅读顺序";
@@ -48,10 +50,10 @@
 "520.paletteLabel" = "阅读顺序";
 
 /* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[0] = "Single Page Layout"; ObjectID = "522"; */
-"522.ibShadowedToolTips[0]" = "Single Page Layout";
+"522.ibShadowedToolTips[0]" = "单页面布局";
 
 /* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[1] = "Two Page Layout"; ObjectID = "522"; */
-"522.ibShadowedToolTips[1]" = "Two Page Layout";
+"522.ibShadowedToolTips[1]" = "双页面布局";
 
 /* Class = "NSToolbarItem"; label = "页面布局"; ObjectID = "523"; */
 "523.label" = "页面布局";
@@ -66,19 +68,19 @@
 "553.paletteLabel" = "切页";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[0] = "Left Page Turn"; ObjectID = "555"; */
-"555.ibShadowedToolTips[0]" = "Left Page Turn";
+//"555.ibShadowedToolTips[0]" = "Left Page Turn";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[1] = "Right Page Turn"; ObjectID = "555"; */
-"555.ibShadowedToolTips[1]" = "Right Page Turn";
+//"555.ibShadowedToolTips[1]" = "Right Page Turn";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "558"; */
-"558.ibShadowedToolTips[0]" = "Zoom In";
+//"558.ibShadowedToolTips[0]" = "Zoom In";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "558"; */
-"558.ibShadowedToolTips[1]" = "Zoom Out";
+//"558.ibShadowedToolTips[1]" = "Zoom Out";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[2] = "Zoom Reset"; ObjectID = "558"; */
-"558.ibShadowedToolTips[2]" = "Zoom Reset";
+//"558.ibShadowedToolTips[2]" = "Zoom Reset";
 
 /* Class = "NSToolbarItem"; label = "缩放"; ObjectID = "559"; */
 "559.label" = "缩放";
@@ -87,7 +89,7 @@
 "559.paletteLabel" = "缩放";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Magnifing Glass"; ObjectID = "573"; */
-"573.ibShadowedToolTip" = "Magnifing Glass";
+//"573.ibShadowedToolTip" = "Magnifing Glass";
 
 /* Class = "NSToolbarItem"; label = "放大镜"; ObjectID = "575"; */
 "575.label" = "放大镜";
@@ -102,7 +104,7 @@
 "577.paletteLabel" = "缩略图";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Thumbnail View"; ObjectID = "578"; */
-"578.ibShadowedToolTip" = "Thumbnail View";
+//"578.ibShadowedToolTip" = "Thumbnail View";
 
 /* Class = "NSToolbarItem"; label = "Rotate"; ObjectID = "585"; */
 "585.label" = "Rotate";
@@ -111,10 +113,10 @@
 "585.paletteLabel" = "旋转";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
-"587.ibShadowedToolTips[0]" = "Rotate Left";
+//"587.ibShadowedToolTips[0]" = "Rotate Left";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[1] = "Rotate Right"; ObjectID = "587"; */
-"587.ibShadowedToolTips[1]" = "Rotate Right";
+//"587.ibShadowedToolTips[1]" = "Rotate Right";
 
 /* Class = "NSToolbarItem"; label = "截图"; ObjectID = "688"; */
 "688.label" = "截图";
@@ -123,7 +125,7 @@
 "688.paletteLabel" = "截图";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Capture Page"; ObjectID = "689"; */
-"689.ibShadowedToolTip" = "Capture Page";
+//"689.ibShadowedToolTip" = "Capture Page";
 
 /* Class = "NSToolbarItem"; label = "设置图标"; ObjectID = "693"; */
 "693.label" = "设置图标";
@@ -132,10 +134,10 @@
 "693.paletteLabel" = "设置图标";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
-"694.ibShadowedToolTip" = "Set Icon";
+//"694.ibShadowedToolTip" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "Set Icon"; ObjectID = "695"; */
-"695.title" = "Set Icon";
+//"695.title" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "跳转"; ObjectID = "753"; */
 "753.title" = "跳转";

@@ -1,0 +1,149 @@
+
+//TODO: Commented-out entries are entries that have not been translated
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "6"; */
+"6.title" = "Window";
+
+/* Class = "NSWindow"; title = "InfoPane"; ObjectID = "350"; */
+"350.title" = "InfoPane";
+
+/* Class = "NSWindow"; title = "Panel"; ObjectID = "363"; */
+"363.title" = "Panel";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "373"; */
+"373.title" = "Window";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "483"; */
+"483.title" = "Window";
+
+/* Class = "NSTextFieldCell"; title = "Page:"; ObjectID = "502"; */
+"502.title" = "Page:";
+
+/* Class = "NSTextFieldCell"; title = "9999"; ObjectID = "503"; */
+"503.title" = "9999";
+
+/* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
+"516.ibShadowedToolTips[0]" = "Taille réelle";
+
+/* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[1] = "Scale to Window"; ObjectID = "516"; */
+"516.ibShadowedToolTips[1]" = "Adapter à la fenêtre";
+
+/* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[2] = "Horizontal Scaling"; ObjectID = "516"; */
+//"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
+
+/* Class = "NSToolbarItem"; label = "Page Scaling"; ObjectID = "517"; */
+//"517.label" = "Page Scaling";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Page Scaling"; ObjectID = "517"; */
+//"517.paletteLabel" = "Page Scaling";
+
+/* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[0] = "Right to Left Page Order"; ObjectID = "519"; */
+"519.ibShadowedToolTips[0]" = "Disposer les pages de droite à gauche";
+
+/* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[1] = "Left to Right Page Order"; ObjectID = "519"; */
+"519.ibShadowedToolTips[1]" = "Disposer les pages de gauche à droite";
+
+/* Class = "NSToolbarItem"; label = "Page Order"; ObjectID = "520"; */
+"520.label" = "Disposer les pages"; //FIXME: fuzzy
+
+/* Class = "NSToolbarItem"; paletteLabel = "Page Order"; ObjectID = "520"; */
+"520.paletteLabel" = "Disposer les pages"; //FIXME: fuzzy
+
+/* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[0] = "Single Page Layout"; ObjectID = "522"; */
+"522.ibShadowedToolTips[0]" = "Pages uniques";
+
+/* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[1] = "Two Page Layout"; ObjectID = "522"; */
+"522.ibShadowedToolTips[1]" = "Pages opposées";
+
+/* Class = "NSToolbarItem"; label = "Page Layout"; ObjectID = "523"; */
+//"523.label" = "Page Layout";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Page Layout"; ObjectID = "523"; */
+//"523.paletteLabel" = "Page Layout";
+
+/* Class = "NSToolbarItem"; label = "Turn Page"; ObjectID = "553"; */
+//"553.label" = "Turn Page";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Turn Page"; ObjectID = "553"; */
+//"553.paletteLabel" = "Turn Page";
+
+/* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[0] = "Left Page Turn"; ObjectID = "555"; */
+"555.ibShadowedToolTips[0]" = "Left Page Turn";
+
+/* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[1] = "Right Page Turn"; ObjectID = "555"; */
+"555.ibShadowedToolTips[1]" = "Right Page Turn";
+
+/* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "558"; */
+"558.ibShadowedToolTips[0]" = "Zoom avant";
+
+/* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "558"; */
+"558.ibShadowedToolTips[1]" = "Zoom arrière";
+
+/* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[2] = "Zoom Reset"; ObjectID = "558"; */
+//"558.ibShadowedToolTips[2]" = "Zoom Reset";
+
+/* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "559"; */
+"559.label" = "Zoom";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "559"; */
+"559.paletteLabel" = "Zoom";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Magnifing Glass"; ObjectID = "573"; */
+//"573.ibShadowedToolTip" = "Magnifing Glass";
+
+/* Class = "NSToolbarItem"; label = "Loupe"; ObjectID = "575"; */
+"575.label" = "Loupe";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Loupe"; ObjectID = "575"; */
+"575.paletteLabel" = "Loupe";
+
+/* Class = "NSToolbarItem"; label = "Thumbnails"; ObjectID = "577"; */
+"577.label" = "Vignettes"; //FIXME: fuzzy translation
+
+/* Class = "NSToolbarItem"; paletteLabel = "Thumbnails"; ObjectID = "577"; */
+"577.paletteLabel" = "Vignettes"; //FIXME: fuzzy translation
+
+/* Class = "NSButton"; ibShadowedToolTip = "Thumbnail View"; ObjectID = "578"; */
+"578.ibShadowedToolTip" = "Présentation de vignette"; //FIXME: fuzzy translation
+
+/* Class = "NSButtonCell"; title = "Thumbnails"; ObjectID = "579"; */
+"579.title" = "Vignettes"; //FIXME: fuzzy translation
+
+/* Class = "NSToolbarItem"; label = "Rotate"; ObjectID = "585"; */
+//"585.label" = "Rotate";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Rotate Pages"; ObjectID = "585"; */
+//"585.paletteLabel" = "Rotate Pages";
+
+/* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
+"587.ibShadowedToolTips[0]" = "Rotation de la page dans le sens trigonométrique";
+
+/* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[1] = "Rotate Right"; ObjectID = "587"; */
+"587.ibShadowedToolTips[1]" = "Rotation de la page dans le sens des aiguilles d'une montre";
+
+/* Class = "NSToolbarItem"; label = "Capture Page"; ObjectID = "688"; */
+//"688.label" = "Capture Page";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Capture Page"; ObjectID = "688"; */
+//"688.paletteLabel" = "Capture Page";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Capture Page"; ObjectID = "689"; */
+//"689.ibShadowedToolTip" = "Capture Page";
+
+/* Class = "NSToolbarItem"; label = "Set Icon"; ObjectID = "693"; */
+"693.label" = "Set Icon";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Set Icon"; ObjectID = "693"; */
+"693.paletteLabel" = "Set Icon";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
+"694.ibShadowedToolTip" = "Set Icon";
+
+/* Class = "NSButtonCell"; title = "Set Icon"; ObjectID = "695"; */
+"695.title" = "Set Icon";
+
+/* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
+"753.title" = "Jump";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
+"755.title" = "Annuler";
