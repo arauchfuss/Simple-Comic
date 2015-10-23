@@ -136,9 +136,6 @@
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
 //"694.ibShadowedToolTip" = "Set Icon";
 
-/* Class = "NSButtonCell"; title = "Set Icon"; ObjectID = "695"; */
-//"695.title" = "Set Icon";
-
 /* Class = "NSButtonCell"; title = "跳转"; ObjectID = "753"; */
 "753.title" = "跳转";
 

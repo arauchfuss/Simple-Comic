@@ -1,0 +1,24 @@
+/* Pages are scaled to fit window width */
+"Horizontal Fit" = "Waagerecht anpassen";
+
+/* Left to right page order menu item text */
+"Left To Right" = "Von links nach rechts";
+
+/* No comment provided by engineer. */
+"Left to Right Page Order" = "Seitenfolge von links nach rechts";
+
+/* Pages are not scaled */
+"Original Size" = "Originalgröße";
+
+/* Right to left page order menu item text */
+"Right To Left" = "Von rechts nach links";
+
+/* No comment provided by engineer. */
+"Right to Left Page Order" = "Seitenfolge von rechts nach links";
+
+/* Only a single page is displayed at a time */
+"Single Page Layout" = "Einseitige Anordnung";
+
+/* Two pages are displayed side by side */
+"Two Page Layout" = "Zweiseitige Anordnung";
+

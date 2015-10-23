@@ -104,9 +104,6 @@
 /* Class = "NSButton"; ibShadowedToolTip = "Thumbnail View"; ObjectID = "578"; */
 "578.ibShadowedToolTip" = "Thumbnail View";
 
-/* Class = "NSButtonCell"; title = "Thumbnails"; ObjectID = "579"; */
-"579.title" = "Thumbnails";
-
 /* Class = "NSToolbarItem"; label = "Rotate"; ObjectID = "585"; */
 "585.label" = "Rotate";
 
@@ -136,9 +133,6 @@
 
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
 "694.ibShadowedToolTip" = "Set Icon";
-
-/* Class = "NSButtonCell"; title = "Set Icon"; ObjectID = "695"; */
-"695.title" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
 "753.title" = "Jump";
