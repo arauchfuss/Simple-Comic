@@ -127,7 +127,7 @@
             animationInfo = @{@"imageNumber": @1,
                 @"pageImage": firstPageImage,
                 @"loopCount": [testBMImageRep valueForProperty: NSImageLoopCount]};
-            frameDuration = [[testBMImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
+            frameDuration = [[testBMImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
             frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
             [NSTimer scheduledTimerWithTimeInterval: frameDuration
                                              target: self 
@@ -165,7 +165,7 @@
     [testImageRep setProperty: NSImageCurrentFrame withValue: @(currentFrame)];
     if(loopCount != 1)
     {
-        frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] floatValue];
+        frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
         frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
         [NSTimer scheduledTimerWithTimeInterval: frameDuration
                                          target: self selector: @selector(animateImage:) 
@@ -397,7 +397,7 @@
         break;
     }
     
-	CGFloat power = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTLoupePower] floatValue];
+	CGFloat power = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTLoupePower] doubleValue];
     CGFloat scale;
     CGFloat remainder;
     NSRect firstFragment = NSZeroRect;
@@ -556,7 +556,7 @@
     NSRect frameRect = [self frame];
     CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
     CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
-    NSSize imageSize = [self combinedImageSizeForZoom: [[[sessionController session] valueForKey: TSSTZoomLevel] floatValue]];
+    NSSize imageSize = [self combinedImageSizeForZoom: [[[sessionController session] valueForKey: TSSTZoomLevel] doubleValue]];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
     NSSize viewSize = NSZeroSize;
@@ -745,7 +745,7 @@
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
-		CGFloat loupePower = [[defaultsController valueForKey: TSSTLoupePower] floatValue];
+		CGFloat loupePower = [[defaultsController valueForKey: TSSTLoupePower] doubleValue];
 		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
 		loupePower = loupePower < 2 ? 2 : loupePower;
 		loupePower = loupePower > 6 ? 6 : loupePower;

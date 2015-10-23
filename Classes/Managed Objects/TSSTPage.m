@@ -222,7 +222,7 @@ static NSSize monospaceCharacterSize;
         imageFromData = [[NSImage alloc] initWithData: imageData];
     }
 	
-    NSSize imageSize =  NSMakeSize([[self valueForKey: @"width"] floatValue], [[self valueForKey: @"height"] floatValue]);
+    NSSize imageSize =  NSMakeSize([[self valueForKey: @"width"] doubleValue], [[self valueForKey: @"height"] doubleValue]);
     
     if(!imageFromData || NSEqualSizes(NSZeroSize, imageSize))
     {

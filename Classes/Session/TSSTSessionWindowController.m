@@ -728,7 +728,7 @@
 	gutter around the images for cropping. */
 - (void)changeViewForSelection
 {
-	savedZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
+	savedZoom = [[session valueForKey: TSSTZoomLevel] doubleValue];
 	[pageScrollView setHasVerticalScroller: NO];
     [pageScrollView setHasHorizontalScroller: NO];
 	[self refreshLoupePanel];
@@ -876,7 +876,7 @@
 			{
 				NSRect drawRect = NSMakeRect(0, 0, 496, 496);
 				NSImage * iconImage = [[NSImage alloc] initWithSize: drawRect.size];
-				cropRect.size = NSEqualSizes(cropRect.size, NSZeroSize) ? NSMakeSize([[selectedPage valueForKey: @"width"] floatValue], [[selectedPage valueForKey: @"height"] floatValue]) : cropRect.size;
+				cropRect.size = NSEqualSizes(cropRect.size, NSZeroSize) ? NSMakeSize([[selectedPage valueForKey: @"width"] doubleValue], [[selectedPage valueForKey: @"height"] doubleValue]) : cropRect.size;
 				drawRect = rectWithSizeCenteredInRect( cropRect.size, drawRect);
 				
 				[iconImage lockFocus];
@@ -1528,7 +1528,7 @@ images are currently visible and then skips over them.
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
-	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
+	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] doubleValue]];
 	CGFloat vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
 	{
