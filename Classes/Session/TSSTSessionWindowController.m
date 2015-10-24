@@ -40,8 +40,9 @@
 #import "TSSTInfoWindow.h"
 #import "TSSTThumbnailView.h"
 #import "TSSTManagedSession.h"
-#import "DTPolishedProgressBar.h"
 #import "DTSessionWindow.h"
+
+#import "Simple_Comic-Swift.h"
 
 
 @implementation TSSTSessionWindowController

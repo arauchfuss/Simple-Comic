@@ -62,12 +62,12 @@
                             <animations/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="505">
-                            <rect key="frame" x="444" y="0.0" width="16" height="530"/>
+                            <rect key="frame" x="445" y="0.0" width="15" height="530"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
                     </scrollView>
-                    <customView id="607" customClass="DTPolishedProgressBar">
+                    <customView id="607" customClass="DTPolishedProgressBar" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="12" y="-1" width="436" height="23"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <animations/>
