@@ -812,28 +812,29 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if([[defaults valueForKey:SSDEnableSwipe] boolValue]){
+    if ([defaults boolForKey:SSDEnableSwipe]) {
         CGFloat deltaX = [theEvent deltaX];
+		//CGFloat deltaY = [theEvent deltaY];
+		//CGFloat deltaZ = [theEvent deltaZ];
         if (deltaX != 0.0)
         {
             [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
                         dampenAmountThresholdMin:-1.0
                                              max:1.0
                                     usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+										//NSLog(@"gesture amount: %f, phase %04lx, is complete: %@", gestureAmount, (unsigned long)phase, isComplete ? @"YES" : @"NO");
                                     }];
-        }
-
-
-        if (deltaX > 0.0)
-        {
-            [sessionController pageLeft: self];
-        }
-        else if (deltaX < 0.0)
-        {
-            [sessionController pageRight: self];
+			if (deltaX > 0.0)
+			{
+				[sessionController pageLeft: self];
+			}
+			else if (deltaX < 0.0)
+			{
+				[sessionController pageRight: self];
+			}
         }
     }
-    
+	
     [sessionController refreshLoupePanel];
 }
 

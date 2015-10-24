@@ -348,9 +348,8 @@
 {
 	NSPoint cursorPoint;
 	NSInteger index;
-	DTPolishedProgressBar * bar;
+	DTPolishedProgressBar * bar = progressBar;
 
-    bar = progressBar;
     [[infoWindow contentView] setBordered: NO];
     point.y = (NSMaxY([bar frame]) - 6);
 	
