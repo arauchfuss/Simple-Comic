@@ -7,7 +7,6 @@
 //
 
 #import "TSSTSegmentedControl.h"
-#import "TSSTSegmentedCell.h"
 #import "TSSTImageUtilities.h"
 
 @implementation TSSTSegmentedControl
