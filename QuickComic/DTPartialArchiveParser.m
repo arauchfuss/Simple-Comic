@@ -14,6 +14,7 @@
 @end
 
 @implementation DTPartialArchiveParser
+@synthesize searchResult = foundData;
 
 - (instancetype) init
 {
@@ -46,15 +47,6 @@
 	return self;
 }
 
-
-
-
-- (NSData *)searchResult
-{
-	return foundData;
-}
-
-
 #pragma mark XADArchiveParser Delegates
 
 -(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict
@@ -67,13 +59,13 @@
 	{
 		XADString * name = dict[XADFileNameKey];
 		NSString * encodedName = [name stringWithEncoding: NSNonLossyASCIIStringEncoding];
-//		NSLog(@"Encoded Name: %@", encodedName);
+		// NSLog(@"Encoded Name: %@", encodedName);
 		if([searchString isEqualToString: encodedName])
 		{
 			CSHandle * handle = [parser handleForEntryWithDictionary: dict wantChecksum:YES];
 			if(!handle) [XADException raiseDecrunchException];
 			foundData = [handle remainingFileContents];
-//			NSLog(@"found %@", encodedName);
+			// NSLog(@"found %@", encodedName);
 			if([handle hasChecksum]&&![handle isChecksumCorrect])
 			{
 				[XADException raiseChecksumException];

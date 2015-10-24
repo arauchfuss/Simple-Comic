@@ -16,11 +16,11 @@ static NSArray * fileNameSort = nil;
 
 NSMutableArray * fileListForArchive(XADArchive * archive)
 {
-	NSMutableArray * fileDescriptions = [NSMutableArray array];
+	NSMutableArray * fileDescriptions = [[NSMutableArray alloc] init];
 	
     NSDictionary * fileDescription;
-    int count = [archive numberOfEntries];
-    int index = 0;
+    NSInteger count = [archive numberOfEntries];
+    NSInteger index = 0;
     NSString * fileName;
 	NSString * rawName;
     for ( ; index < count; ++index)
@@ -31,8 +31,8 @@ NSMutableArray * fileListForArchive(XADArchive * archive)
         if([[NSImage imageFileTypes] containsObject: [fileName pathExtension]])
         {
             fileDescription = @{@"name": fileName,
-                               @"index": @(index),
-							   @"rawName": rawName};
+								@"index": @(index),
+								@"rawName": rawName};
             [fileDescriptions addObject: fileDescription];
         }
     }
@@ -40,12 +40,12 @@ NSMutableArray * fileListForArchive(XADArchive * archive)
 }
 
 
-NSArray * fileSort(void)
+NSArray<NSSortDescriptor*> * fileSort(void)
 {
     if(!fileNameSort)
     {
         TSSTSortDescriptor * sort = [[TSSTSortDescriptor alloc] initWithKey: @"name" ascending: YES];
-        fileNameSort = [[NSArray alloc] initWithObjects: sort, nil];
+        fileNameSort = @[sort];
     }
     
     return fileNameSort;

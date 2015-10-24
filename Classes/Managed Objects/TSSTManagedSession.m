@@ -18,12 +18,11 @@
 {
 	[super awakeFromFetch];
 	TSSTManagedGroup * group;
-	NSString * path;
     /* By calling path for all children, groups with unresolved bookmarks
      are deleted. */
 	for (group in [self valueForKey: @"groups"])
 	{
-		path = [group path];
+		[group path];
 	}
 }
 

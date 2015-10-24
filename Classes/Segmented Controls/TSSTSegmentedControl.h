@@ -10,8 +10,5 @@
 
 
 @interface TSSTSegmentedControl : NSSegmentedControl
-{
-}
-
 
 @end

@@ -18,6 +18,7 @@
 - (void)drawRect:(NSRect)rect
 {
     [NSGraphicsContext saveGraphicsState];
+	{
         NSRect actualDimensions = NSMakeRect(NSMinX(rect),
                                              NSMinY(rect) + 3,
                                              NSWidth(rect),
@@ -26,6 +27,7 @@
         [controlOutline setClip];
         [[NSColor grayColor] set];
         NSRectFill(rect);
+	}
 	[NSGraphicsContext restoreGraphicsState];
 
     [super drawRect: rect];

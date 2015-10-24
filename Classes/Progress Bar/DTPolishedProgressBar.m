@@ -6,6 +6,8 @@
 //  Copyright 2009 Dancing Tortoise Software. All rights reserved.
 //
 
+#include <tgmath.h>
+
 #import "DTPolishedProgressBar.h"
 #import "TSSTImageUtilities.h"
 
@@ -33,7 +35,7 @@
         self.barProgressColor = [NSColor colorWithDeviceRed:0.44 green:0.44 blue:0.44 alpha:1];
         self.borderColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:.25];
         
-		self.numberStyle = @{NSFontAttributeName: [NSFont fontWithName:@"Helvetica Neue" size:10],
+		self.numberStyle = @{NSFontAttributeName: [NSFont systemFontOfSize:10],
 							 NSForegroundColorAttributeName: [NSColor colorWithDeviceWhite: 0.2 alpha: 1]};
         
 		self.horizontalMargin = 5;
@@ -115,7 +117,9 @@
     }
     
     leftSize = [leftString sizeWithAttributes: self.numberStyle];
-    rightSize = [leftString sizeWithAttributes: self.numberStyle];
+	leftSize.width = ceil(leftSize.width);
+    rightSize = [rightString sizeWithAttributes: self.numberStyle];
+	rightSize.width = ceil(rightSize.width);
 	
     // Draw progress
     [self.barProgressColor set];
