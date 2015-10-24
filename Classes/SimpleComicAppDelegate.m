@@ -38,32 +38,32 @@
 #import "DTPreferencesController.h"
 
 
-NSString * TSSTPageOrder =         @"pageOrder";
-NSString * TSSTPageZoomRate =      @"pageZoomRate";
-NSString * TSSTFullscreen =        @"fullscreen";
-NSString * TSSTSavedSelection =    @"savedSelection";
-NSString * TSSTThumbnailSize =     @"thumbnailSize";
-NSString * TSSTTwoPageSpread =     @"twoPageSpread";
-NSString * TSSTPageScaleOptions =  @"scaleOptions";
-NSString * TSSTIgnoreDonation =    @"ignoreDonation";
-NSString * TSSTScrollPosition =    @"scrollPosition";
-NSString * TSSTConstrainScale =    @"constrainScale";
-NSString * TSSTZoomLevel =         @"zoomLevel";
-NSString * TSSTViewRotation =      @"rotation";
-NSString * TSSTBackgroundColor =   @"pageBackgroundColor";
-NSString * TSSTSessionRestore =    @"sessionRestore";
-NSString * TSSTScrollersVisible =  @"scrollersVisible";
-NSString * TSSTAutoPageTurn =      @"autoPageTurn";
-NSString * TSSTWindowAutoResize =  @"windowAutoResize";
-NSString * TSSTLoupeDiameter =     @"loupeDiameter";
-NSString * TSSTLoupePower =		   @"loupePower";
-NSString * TSSTStatusbarVisible =  @"statusBarVisisble";
-NSString * TSSTLonelyFirstPage =   @"lonelyFirstPage";
-NSString * TSSTNestedArchives =	   @"nestedArchives";
-NSString * TSSTUpdateSelection =   @"updateSelection";
-NSString * SSDEnableSwipe = @"enableSwipe";
+NSString *const TSSTPageOrder =         @"pageOrder";
+NSString *const TSSTPageZoomRate =      @"pageZoomRate";
+NSString *const TSSTFullscreen =        @"fullscreen";
+NSString *const TSSTSavedSelection =    @"savedSelection";
+NSString *const TSSTThumbnailSize =     @"thumbnailSize";
+NSString *const TSSTTwoPageSpread =     @"twoPageSpread";
+NSString *const TSSTPageScaleOptions =  @"scaleOptions";
+NSString *const TSSTIgnoreDonation =    @"ignoreDonation";
+NSString *const TSSTScrollPosition =    @"scrollPosition";
+NSString *const TSSTConstrainScale =    @"constrainScale";
+NSString *const TSSTZoomLevel =         @"zoomLevel";
+NSString *const TSSTViewRotation =      @"rotation";
+NSString *const TSSTBackgroundColor =   @"pageBackgroundColor";
+NSString *const TSSTSessionRestore =    @"sessionRestore";
+NSString *const TSSTScrollersVisible =  @"scrollersVisible";
+NSString *const TSSTAutoPageTurn =      @"autoPageTurn";
+NSString *const TSSTWindowAutoResize =  @"windowAutoResize";
+NSString *const TSSTLoupeDiameter =     @"loupeDiameter";
+NSString *const TSSTLoupePower =		   @"loupePower";
+NSString *const TSSTStatusbarVisible =  @"statusBarVisisble";
+NSString *const TSSTLonelyFirstPage =   @"lonelyFirstPage";
+NSString *const TSSTNestedArchives =	   @"nestedArchives";
+NSString *const TSSTUpdateSelection =   @"updateSelection";
+NSString *const SSDEnableSwipe = @"enableSwipe";
 
-NSString * TSSTSessionEndNotification = @"sessionEnd";
+NSString *const TSSTSessionEndNotification = @"sessionEnd";
 
 
 #pragma mark -
