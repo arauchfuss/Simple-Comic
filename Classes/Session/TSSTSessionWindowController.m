@@ -1242,11 +1242,7 @@ images are currently visible and then skips over them.
 #pragma mark -
 #pragma mark Binding Methods
 
-
-- (TSSTManagedSession *)session
-{
-    return session;
-}
+@synthesize session;
 
 
 - (NSManagedObjectContext *)managedObjectContext

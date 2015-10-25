@@ -10,6 +10,7 @@
 
 @class TSSTInfoWindow;
 @class TSSTImageView;
+@class TSSTSessionWindowController;
 
 
 @interface TSSTThumbnailView : NSView
@@ -33,7 +34,7 @@
 - (void)removeTrackingRects;
 - (void)buildTrackingRects;
 - (void)processThumbs;
-@property (weak) id dataSource;
+@property (weak) TSSTSessionWindowController *dataSource;
 - (void)dwell:(NSTimer *)timer;
 - (void)zoomThumbnailAtIndex:(NSInteger)index;
 
