@@ -11,7 +11,7 @@
 
 @interface TSSTImageView : NSImageView
 
-@property (copy) NSString * imageName;
+@property (copy, nullable) NSString * imageName;
 @property BOOL clears;
 
 @end

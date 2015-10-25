@@ -98,9 +98,9 @@ textStyle: Dictionary of string attributes.
 	func indexForPoint(point: NSPoint) -> Int {
 		var index: Int
 		if leftToRight {
-			index = Int((point.x - NSMinX(progressRect)) / NSWidth(progressRect) * CGFloat(maxValue))
+			index = Int((point.x - progressRect.minX) / progressRect.width * CGFloat(maxValue))
 		} else {
-			index = Int((NSMaxX(progressRect) - point.x) / NSWidth(progressRect) * CGFloat(maxValue))
+			index = Int((progressRect.maxX - point.x) / progressRect.width * CGFloat(maxValue))
 		}
 		index = index >= maxValue ? maxValue - 1 : index;
 		return index;
@@ -117,9 +117,6 @@ textStyle: Dictionary of string attributes.
 		var indicatorRect = NSMakeRect(0, bounds2.height - 9, 2, 9)
 		let barRect = NSMakeRect(0, bounds2.height - 5, bounds2.width, 5)
 		
-		var leftSize: NSSize
-		var rightSize: NSSize
-		
 		// Draw background
 		backgroundColor.set()
 		NSRectFillUsingOperation(bounds2, .CompositeSourceOver)
@@ -131,24 +128,22 @@ textStyle: Dictionary of string attributes.
 		
 		// Determine label positions and progress rect size+position
 		if leftToRight {
-			fillRect.size.width = NSWidth(bounds2) * CGFloat(currentValue + 1) / CGFloat(maxValue)
-			indicatorRect.origin.x = round(NSWidth(fillRect)-2);
+			fillRect.size.width = bounds2.width * CGFloat(currentValue + 1) / CGFloat(maxValue)
+			indicatorRect.origin.x = round(fillRect.width - 2);
 			
 			leftString = progressString;
 			rightString = totalString;
 		} else {
-			fillRect.size.width = NSWidth(bounds2) * CGFloat(currentValue + 1) / CGFloat(maxValue)
-			fillRect.origin.x = round(NSWidth(bounds2) - NSWidth(fillRect));
-			indicatorRect.origin.x = NSMinX(fillRect);
+			fillRect.size.width = bounds2.width * CGFloat(currentValue + 1) / CGFloat(maxValue)
+			fillRect.origin.x = round(bounds2.width - fillRect.width);
+			indicatorRect.origin.x = fillRect.minX
 			
 			leftString = totalString;
 			rightString = progressString;
 		}
 		
-		leftSize = leftString.sizeWithAttributes(numberStyle)
-		leftSize.width = ceil(leftSize.width)
-		rightSize = rightString.sizeWithAttributes(numberStyle)
-		rightSize.width = ceil(rightSize.width)
+		let leftSize = leftString.sizeWithAttributes(numberStyle)
+		let rightSize = rightString.sizeWithAttributes(numberStyle)
 		
 		// Draw progress
 		barProgressColor.set()
@@ -159,15 +154,15 @@ textStyle: Dictionary of string attributes.
 		NSRectFill(indicatorRect);
 
 		// Draw labels
-		let leftStringRect = NSMakeRect(horizontalMargin, NSMinY(bounds2), leftSize.width, 17);
+		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17);
 		leftString.drawInRect(leftStringRect, withAttributes: numberStyle)
 		
-		let rightStringRect = NSMakeRect(NSWidth(bounds2) - self.horizontalMargin - rightSize.width, NSMinY(bounds2), rightSize.width, 17);
+		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17);
 		rightString.drawInRect(rightStringRect, withAttributes: numberStyle)
 
 		// Draw borders
-		let leftBorder = NSMakeRect(0, 0, 1, NSHeight(bounds2));
-		let rightBorder = NSMakeRect(NSWidth(bounds2)-1, 0, 1, NSHeight(bounds2));
+		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height);
+		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height);
 
 		borderColor.set()
 		
