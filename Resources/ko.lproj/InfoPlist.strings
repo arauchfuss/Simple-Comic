@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "Simple Comic";
+NSHumanReadableCopyright = "© Dancing Tortoise Software, 2010";
+

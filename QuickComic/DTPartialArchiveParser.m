@@ -14,6 +14,7 @@
 @end
 
 @implementation DTPartialArchiveParser
+@synthesize searchResult = foundData;
 
 - (instancetype) init
 {
@@ -29,7 +30,7 @@
 	self=[self init];	
 	if(self)
 	{
-		searchString = [search retain];
+		searchString = search;
 		XADArchiveParser * parser = [XADArchiveParser archiveParserForPath: archivePath];
 		if(parser)
 		{
@@ -46,21 +47,6 @@
 	return self;
 }
 
-
-- (void) dealloc
-{
-	[searchString release];
-	[foundData release];
-	[super dealloc];
-}
-
-
-- (NSData *)searchResult
-{
-	return foundData;
-}
-
-
 #pragma mark XADArchiveParser Delegates
 
 -(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict
@@ -73,13 +59,13 @@
 	{
 		XADString * name = dict[XADFileNameKey];
 		NSString * encodedName = [name stringWithEncoding: NSNonLossyASCIIStringEncoding];
-//		NSLog(@"Encoded Name: %@", encodedName);
+		// NSLog(@"Encoded Name: %@", encodedName);
 		if([searchString isEqualToString: encodedName])
 		{
 			CSHandle * handle = [parser handleForEntryWithDictionary: dict wantChecksum:YES];
 			if(!handle) [XADException raiseDecrunchException];
-			foundData = [[handle remainingFileContents] retain];
-//			NSLog(@"found %@", encodedName);
+			foundData = [handle remainingFileContents];
+			// NSLog(@"found %@", encodedName);
 			if([handle hasChecksum]&&![handle isChecksumCorrect])
 			{
 				[XADException raiseChecksumException];

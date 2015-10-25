@@ -1,0 +1,244 @@
+//TODO: Commented-out entries are entries that have not been translated
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; */
+"5.title" = "Tout ramener au premier plan";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
+"19.title" = "Fenêtre";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; */
+"23.title" = "Réduire/agrandir";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
+"24.title" = "Fenêtre";
+
+/* Class = "NSMenu"; title = "MainMenu"; ObjectID = "29"; */
+"29.title" = "MainMenu";
+
+/* Class = "NSMenuItem"; title = "Simple Comic"; ObjectID = "56"; */
+"56.title" = "Simple Comic";
+
+/* Class = "NSMenu"; title = "Simple Comic"; ObjectID = "57"; */
+"57.title" = "Simple Comic";
+
+/* Class = "NSMenuItem"; title = "About Simple Comic"; ObjectID = "58"; */
+"58.title" = "À propos de Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
+"129.title" = "Préférences…";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
+"130.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
+"131.title" = "Services";
+
+/* Class = "NSMenuItem"; title = "Hide Simple Comic"; ObjectID = "134"; */
+"134.title" = "Masquer Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Quit Simple Comic"; ObjectID = "136"; */
+"136.title" = "Quitter Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
+"145.title" = "Masquer les autres applications";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
+"150.title" = "Tout afficher";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "197"; */
+"197.title" = "Zoom";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "255"; */
+"255.title" = "Fichier";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "256"; */
+"256.title" = "Fichier";
+
+/* Class = "NSMenuItem"; title = "Open..."; ObjectID = "259"; */
+"259.title" = "Ouvrir…";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "336"; */
+"336.title" = "Présentation";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "337"; */
+"337.title" = "Présentation";
+
+/* Class = "NSMenuItem"; title = "Full Screen"; ObjectID = "338"; */
+"338.title" = "Plein écran";
+
+/* Class = "NSMenuItem"; title = "Change Order"; ObjectID = "385"; */
+"385.title" = "Modifier l'ordre";
+
+/* Class = "NSWindow"; title = "Password"; ObjectID = "468"; */
+"468.title" = "Mot de passe";
+
+/* Class = "NSMenuItem"; title = "Thumbnail Exposé"; ObjectID = "670"; */
+"670.title" = "Exposé de vignettes";
+
+/* Class = "NSMenuItem"; title = "Zoom Out"; ObjectID = "671"; */
+"671.title" = "Zoom arrière";
+
+/* Class = "NSMenuItem"; title = "Reset Zoom"; ObjectID = "672"; */
+"672.title" = "Réinitialiser le zoom";
+
+/* Class = "NSMenuItem"; title = "Go"; ObjectID = "863"; */
+"863.title" = "Aller";
+
+/* Class = "NSMenu"; title = "Go"; ObjectID = "864"; */
+"864.title" = "Aller";
+
+/* Class = "NSMenuItem"; title = "Page Right"; ObjectID = "866"; */
+"866.title" = "Page de droite";
+
+/* Class = "NSMenuItem"; title = "Page Left"; ObjectID = "867"; */
+"867.title" = "Page de gauche";
+
+/* Class = "NSMenuItem"; title = "Shift One Page Right"; ObjectID = "868"; */
+"868.title" = "Se rendre à la page de droite";
+
+/* Class = "NSMenuItem"; title = "Shift One Page Left"; ObjectID = "869"; */
+"869.title" = "Se rendre à la page de gauche";
+
+/* Class = "NSMenuItem"; title = "Close Window"; ObjectID = "960"; */
+"960.title" = "Fermer";
+
+/* Class = "NSMenuItem"; title = "Two Page Spread"; ObjectID = "977"; */
+"977.title" = "Pages opposées";
+
+/* Class = "NSMenuItem"; title = "Image Scaling"; ObjectID = "984"; */
+"984.title" = "Ajuster la taille";
+
+/* Class = "NSMenu"; title = "Image Scaling"; ObjectID = "985"; */
+"985.title" = "Ajuster la taille";
+
+/* Class = "NSMenuItem"; title = "Scale To Width"; ObjectID = "986"; */
+"986.title" = "Ajuster en largeur";
+
+/* Class = "NSMenuItem"; title = "Original Size"; ObjectID = "987"; */
+"987.title" = "Taille réelle";
+
+/* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
+"988.title" = "Adapter à la fenêtre";
+
+/* Class = "NSMenuItem"; title = "Remove Page"; ObjectID = "992"; */
+"992.title" = "Retirer la page";
+
+/* Class = "NSMenuItem"; title = "First Page"; ObjectID = "1065"; */
+"1065.title" = "Première page";
+
+/* Class = "NSMenuItem"; title = "Last Page"; ObjectID = "1067"; */
+"1067.title" = "Dernière page";
+
+/* Class = "NSWindow"; title = "Encoding"; ObjectID = "1080"; */
+"1080.title" = "Encodage";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "1083"; */
+"1083.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Item1"; ObjectID = "1086"; */
+"1086.title" = "Item1";
+
+/* Class = "NSMenuItem"; title = "Rotate Left"; ObjectID = "1104"; */
+"1104.title" = "Rotation de la page dans le sens trigonométrique";
+
+/* Class = "NSMenuItem"; title = "Rotate Right"; ObjectID = "1105"; */
+"1105.title" = "Rotation de la page dans le sens des aiguilles d'une montre";
+
+/* Class = "NSMenuItem"; title = "Skip Right"; ObjectID = "1157"; */
+"1157.title" = "Avancer de 10 pages vers la droite";
+
+/* Class = "NSMenuItem"; title = "Skip Left"; ObjectID = "1158"; */
+"1158.title" = "Avancer de 10 pages vers la gauche";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "1206"; */
+"1206.title" = "Aide";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "1207"; */
+"1207.title" = "Aide";
+
+/* Class = "NSMenuItem"; title = "Simple Comic Help"; ObjectID = "1208"; */
+"1208.title" = "Aide Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Zoom In"; ObjectID = "1210"; */
+"1210.title" = "Zoom avant";
+
+/* Class = "NSMenuItem"; title = "Image Loupe"; ObjectID = "1216"; */
+"1216.title" = "Loupe";
+
+/* Class = "NSMenuItem"; title = "Jump to Page"; ObjectID = "1243"; */
+"1243.title" = "Jump to Page"; //TODO: localize!
+
+/* Class = "NSMenuItem"; title = "Status Bar"; ObjectID = "1338"; */
+"1338.title" = "Status Bar";
+
+/* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "1340"; */
+"1340.title" = "Show Toolbar"; //TODO: localize
+
+/* Class = "NSMenuItem"; title = "Customize Toolbar..."; ObjectID = "1342"; */
+"1342.title" = "Customize Toolbar..."; //TODO: localize
+
+/* Class = "NSTextFieldCell"; title = "Archive is Password Protected"; ObjectID = "1693"; */
+"1693.title" = "Archive protégée par un mot de passe";
+
+/* Class = "NSTextFieldCell"; title = "Password:"; ObjectID = "1694"; */
+"1694.title" = "Mot de passe:";
+
+/* Class = "NSTextFieldCell"; title = "Archive will not open without a password"; ObjectID = "1695"; */
+"1695.title" = "Cette archive ne s'ouvrira pas sans le mot de passe requis";
+
+/* Class = "NSButtonCell"; title = "Open"; ObjectID = "1696"; */
+"1696.title" = "Ouvrir";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1697"; */
+"1697.title" = "Annuler";
+
+/* Class = "NSButtonCell"; title = "Select"; ObjectID = "1708"; */
+"1708.title" = "Sélectionner";
+
+/* Class = "NSTextFieldCell"; title = "Sample filename:"; ObjectID = "1709"; */
+"1709.title" = "Exemple de nom de fichier:";
+
+/* Class = "NSTextFieldCell"; title = "Encoding:"; ObjectID = "1710"; */
+"1710.title" = "Encodage:";
+
+/* Class = "NSTextFieldCell"; title = "filename"; ObjectID = "1711"; */
+"1711.title" = "filename";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1712"; */
+"1712.title" = "Annuler";
+
+/* Class = "NSMenuItem"; title = "Set Page as Icon"; ObjectID = "1851"; */
+"1851.title" = "Set Page as Icon";
+
+/* Class = "NSMenuItem"; title = "Open Recent"; ObjectID = "1857"; */
+"1857.title" = "Ouvrir un document récent";
+
+/* Class = "NSMenu"; title = "Open Recent"; ObjectID = "1858"; */
+"1858.title" = "Ouvrir un document récent";
+
+/* Class = "NSMenuItem"; title = "Clear Menu"; ObjectID = "1859"; */
+"1859.title" = "Effacer le menu";
+
+/* Class = "NSMenuItem"; title = "No Rotation"; ObjectID = "1860"; */
+"1860.title" = "No Rotation";
+
+/* Class = "NSMenuItem"; title = "Capture Page"; ObjectID = "1866"; */
+"1866.title" = "Capture Page";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
+"1869.title" = "Edit";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "1870"; */
+"1870.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "1874"; */
+"1874.title" = "Cut";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "1875"; */
+"1875.title" = "Copy";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "1876"; */
+"1876.title" = "Paste";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "1879"; */
+"1879.title" = "Select All";

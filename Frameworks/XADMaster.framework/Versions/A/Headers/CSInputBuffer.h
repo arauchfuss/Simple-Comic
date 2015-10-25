@@ -3,7 +3,7 @@
 
 typedef struct CSInputBuffer
 {
-	CSHandle *parent;
+	CFTypeRef parent;
 	off_t startoffs;
 	BOOL eof;
 
@@ -27,7 +27,7 @@ void CSInputSetMemoryBuffer(CSInputBuffer *self,uint8_t *buffer,int length,off_t
 
 static inline CSHandle *CSInputHandle(CSInputBuffer *self)
 {
-	return self->parent;
+	return (__bridge CSHandle *)(self->parent);
 }
 
 
@@ -56,7 +56,7 @@ void _CSInputFillBuffer(CSInputBuffer *self);
 
 static inline void _CSInputBufferRaiseEOF(CSInputBuffer *self)
 {
-	[self->parent _raiseEOF];
+	[(__bridge CSHandle*)(self->parent) _raiseEOF];
 }
 
 static inline int _CSInputBytesLeftInBuffer(CSInputBuffer *self)
