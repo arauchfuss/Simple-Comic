@@ -65,8 +65,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="505">
-                            <rect key="frame" x="445" y="0.0" width="15" height="505"/>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="505">
+                            <rect key="frame" x="444" y="0.0" width="16" height="505"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <animations/>
                         </scroller>
@@ -401,7 +401,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="378" customClass="TSSTThumbnailView">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="378" customClass="TSSTThumbnailView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                         <animations/>
                         <connections>

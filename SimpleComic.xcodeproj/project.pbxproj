@@ -40,9 +40,9 @@
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
 		28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */; };
-		28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */; };
 		5589952E1A13D4450058830B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5589952D1A13D4450058830B /* Media.xcassets */; };
 		5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */; };
+		559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */; };
 		55C374251BD9E6AF006385B6 /* DTPartialArchiveParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C374111BD9E6AF006385B6 /* DTPartialArchiveParser.h */; };
 		55C374261BD9E6AF006385B6 /* DTPartialArchiveParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C374121BD9E6AF006385B6 /* DTPartialArchiveParser.m */; };
 		55C374271BD9E6AF006385B6 /* DTQuickComicCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C374131BD9E6AF006385B6 /* DTQuickComicCommon.h */; };
@@ -185,8 +185,6 @@
 		28F998320A1FF52C0047BD97 /* TSSTKeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTKeyWindow.m; path = "Custom Windows/Fullscreen/TSSTKeyWindow.m"; sourceTree = "<group>"; };
 		28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTSessionWindowController.h; sourceTree = "<group>"; };
 		28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSessionWindowController.m; sourceTree = "<group>"; };
-		28FAECCC0C7CA801001D7001 /* TSSTThumbnailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTThumbnailView.h; sourceTree = "<group>"; };
-		28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTThumbnailView.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -221,6 +219,7 @@
 		5598943A1BDA07E000FCA002 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5599515C1BDC0A3F0086661A /* Simple Comic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Comic-Bridging-Header.h"; sourceTree = "<group>"; };
 		5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPolishedProgressBar.swift; sourceTree = "<group>"; };
+		559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTThumbnailView.swift; sourceTree = "<group>"; };
 		55C373E21BD99DD9006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		55C373E41BD99E15006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		55C373E71BD9A113006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
@@ -370,8 +369,7 @@
 		288C0C420DCDAB7200EAFF46 /* Thumbnail View */ = {
 			isa = PBXGroup;
 			children = (
-				28FAECCC0C7CA801001D7001 /* TSSTThumbnailView.h */,
-				28FAECCD0C7CA801001D7001 /* TSSTThumbnailView.m */,
+				559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */,
 			);
 			name = "Thumbnail View";
 			path = Session;
@@ -500,14 +498,6 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		A6C528F418161AAA00D14EA7 /* Depreciated */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Depreciated;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -520,7 +510,6 @@
 		FAA1C3E808BAB158006F7EC4 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				A6C528F418161AAA00D14EA7 /* Depreciated */,
 				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
 				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
@@ -717,7 +706,6 @@
 				283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */,
 				286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */,
 				286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */,
-				28FAECCF0C7CA801001D7001 /* TSSTThumbnailView.m in Sources */,
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				A6D63DA717C2B8F2000272F1 /* TSSTSegmentedControl.m in Sources */,
@@ -728,6 +716,7 @@
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
 				28A266301285C73200ED6391 /* DTPreferencesController.m in Sources */,
+				559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

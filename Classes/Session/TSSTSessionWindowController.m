@@ -38,7 +38,6 @@
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTInfoWindow.h"
-#import "TSSTThumbnailView.h"
 #import "TSSTManagedSession.h"
 #import "DTSessionWindow.h"
 
