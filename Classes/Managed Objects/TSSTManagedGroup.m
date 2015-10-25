@@ -126,7 +126,7 @@
 
 /**
  Goes through various files like pdfs, images, text files
- from the path folder and it's subfolders and add these
+ from the path folder and it's subfolders and add these
  to the Core Data for the managedObjectContext
  with the info needed to deal with the files.
  */
@@ -448,9 +448,9 @@
 }
 
 
-/** Delegates **/
+/* Delegates */
 
-/*  Called when Simple Comic encounters a password protected
+/**  Called when Simple Comic encounters a password protected
  archive.  Brings a password dialog forward. */
 -(void)archiveNeedsPassword:(XADArchive *)archive
 {

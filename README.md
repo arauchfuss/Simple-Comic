@@ -1,0 +1,10 @@
+#Simple Comic
+Simple Comic is a streamlined comic viewer for OS-X.
+
+The basic feature drive is to reduce the number of interactions required to browse a comic.
+
+Quick Comic is a bundled quicklook preview and thumbnail generation plugin for cbr and cbz files.
+
+#### Development
+
+Run `git submodule sync` inside the repo folder to get the submodule needed to build the project.
