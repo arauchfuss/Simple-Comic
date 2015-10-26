@@ -331,7 +331,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="359" customClass="TSSTImageView">
+                    <imageView id="359" customClass="TSSTImageView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="10" y="15" width="64" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <animations/>
@@ -472,7 +472,7 @@ Gw
                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView id="486" customClass="TSSTImageView">
+                    <customView id="486" customClass="TSSTImageView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
