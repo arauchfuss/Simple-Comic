@@ -119,6 +119,7 @@
 /*  Sets up all of the observers and bindings. */
 - (void)awakeFromNib
 {
+	[super awakeFromNib];
     /* This needs to be set as the window subclass that the expose window
         uses has mouse events turned off by default */
     [exposeBezel setIgnoresMouseEvents: NO];

@@ -70,7 +70,7 @@ textStyle: Dictionary of string attributes.
 	}
 	/// The maximum value of the progress bar.
 	@IBInspectable
-	var maxValue: Int = 0 {
+	dynamic var maxValue: Int = 0 {
 		didSet {
 			needsDisplay = true
 		}

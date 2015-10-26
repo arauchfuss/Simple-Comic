@@ -69,6 +69,7 @@
 
 - (void)awakeFromNib
 {
+	[super awakeFromNib];
 	/* Doing this so users can drag archives into the view. */
     [self registerForDraggedTypes: @[NSFilenamesPboardType]];
 }
