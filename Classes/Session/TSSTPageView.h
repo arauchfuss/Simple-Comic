@@ -34,6 +34,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
+
+NS_ASSUME_NONNULL_BEGIN
+
 @class TSSTSessionWindowController;
 
 typedef struct {
@@ -63,39 +66,14 @@ typedef struct {
 
 @protocol DTPageSource_Protocol <NSObject>
 
-- (NSImage *)pageOne;
-- (NSImage *)pageTwo;
+- (nullable NSImage *)pageOne;
+- (nullable NSImage *)pageTwo;
 
 @end
 
 
 
-
 @interface TSSTPageView : NSView
-{
-    NSRect imageBounds;
-	NSRect firstPageRect;
-	NSRect secondPageRect;
-	NSImage	* firstPageImage;
-	NSImage	* secondPageImage;
-    
-    int scrollKeys;			// Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
-    NSTimer * scrollTimer;	// Timer that fires in between each keydown event to smooth out the scrolling.
-	NSDate * interfaceDelay;
-	
-    NSInteger rotation;
-	
-	direction scrollwheel;
-    
-	// This controls the drawing of the accepting drag-drop border highlighting 
-    BOOL acceptingDrag;
-	
-	/*	While page selection is in progress this method has a value of 1 or 2.
-		The selection number coresponds to a highlighted page. */
-	int pageSelection;
-	/* This is the rect describing the users page selection. */
-	NSRect cropRect;
-}
 
 @property (nonatomic, assign) NSInteger rotation;
 @property (weak) IBOutlet TSSTSessionWindowController * sessionController;
@@ -105,7 +83,7 @@ typedef struct {
     Starts any animations
     Calls resize view
     Calls correctViewPoint */
-- (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second;
+- (void)setFirstPage:(nullable NSImage *)first secondPageImage:(nullable NSImage *)second;
 
 
 /*  Finds the size of the pages that are to be renedered.
@@ -164,3 +142,4 @@ typedef struct {
 
 @end
 
+NS_ASSUME_NONNULL_END

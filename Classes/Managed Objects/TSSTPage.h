@@ -28,6 +28,8 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 #import <Cocoa/Cocoa.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface TSSTPage : NSManagedObject 
 {
     NSLock * thumbLock;
@@ -42,9 +44,11 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 @property (readonly) BOOL shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
 @property (readonly, copy) NSImage *thumbnail;
-@property (readonly, copy) NSData *prepThumbnail;
+@property (readonly, copy, nullable) NSData *prepThumbnail;
 @property (readonly, copy) NSData *pageData;
 @property (readonly, copy) NSImage *textPage;
 @property (readonly, copy) NSImage *pageImage;
 
 @end
+
+NS_ASSUME_NONNULL_END

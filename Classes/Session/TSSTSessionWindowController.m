@@ -45,8 +45,40 @@
 
 
 @implementation TSSTSessionWindowController
+{
+	/* The session object used to maintain settings */
+	TSSTManagedSession * session;
+	
+	/* This var is bound to the session window name */
+	NSString * pageNames;
+	NSInteger pageTurn;
+	
+	/* Exactly what it sounds like */
+	NSArray * pageSortDescriptor;
+	
+	/* Manages the cursor hiding while in fullscreen */
+	NSTimer * mouseMovedTimer;
+	
+	BOOL newSession;
+	
+	PageSelectionMode pageSelectionInProgress;
+	CGFloat savedZoom;
+}
 
 @synthesize pageTurn, pageNames, pageSortDescriptor;
+@synthesize pageController;
+@synthesize pageView;
+@synthesize pageScrollView;
+@synthesize jumpPanel;
+@synthesize jumpField;
+@synthesize progressBar;
+@synthesize infoWindow;
+@synthesize infoPicture;
+@synthesize loupeWindow;
+@synthesize zoomView;
+@synthesize exposeBezel;
+@synthesize exposeView;
+@synthesize thumbnailPanel;
 
 /*!
  

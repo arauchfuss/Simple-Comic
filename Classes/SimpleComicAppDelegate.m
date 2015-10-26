@@ -66,14 +66,13 @@ NSString *const SSDEnableSwipe = @"enableSwipe";
 NSString *const TSSTSessionEndNotification = @"sessionEnd";
 
 
-#pragma mark -
-#pragma mark String Encoding Functions
+#pragma mark - String Encoding Functions
 
 
 
 static NSArray * allAvailableStringEncodings(void)
 {
-    CFStringEncoding encodings[] = {
+    static const CFStringEncoding encodings[] = {
         kCFStringEncodingMacRoman,
         kCFStringEncodingISOLatin1,
         kCFStringEncodingASCII,
@@ -157,9 +156,41 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 @implementation SimpleComicAppDelegate
+{
+	/*  This panel appears when the text encoding auto-detection fails */
+	NSData					   * encodingTestData;
+	NSInteger					 encodingSelection;
+	
+	/*  Core Data stuff. */
+	NSManagedObjectModel		 * managedObjectModel;
+	NSManagedObjectContext		 * managedObjectContext;
+	NSPersistentStoreCoordinator * persistentStoreCoordinator;
+	
+	/* Auto-save timer */
+	NSTimer * autoSave;
+	
+	/*  Window controller for preferences. */
+	DTPreferencesController      * preferences;
+	
+	/*  This is the array that maintains all of the session window managers. */
+	NSMutableArray * sessions;
+	
+	/*	Vars to delay the loading of files from an app launch until the core data store
+	 has finished initializing */
+	BOOL      launchInProgress;
+	BOOL	  optionHeldAtlaunch;
+	NSArray	* launchFiles;
+}
 
 
 @synthesize encodingSelection;
+@synthesize passwordPanel;
+@synthesize passwordField;
+@synthesize encodingPanel;
+@synthesize encodingTestField;
+@synthesize encodingPopup;
+@synthesize donationPanel;
+@synthesize launchPanel;
 
 
 /*  Convenience method for adding metadata to the core data store.
@@ -218,8 +249,7 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
-#pragma mark -
-#pragma mark Application Delegate Methods
+#pragma mark - Application Delegate Methods
 
 
 /*	Stores any files that were opened on launch till applicationDidFinishLaunching:
@@ -422,8 +452,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 
-#pragma mark -
-#pragma mark Core Data
+#pragma mark - Core Data
 
 
 
@@ -519,7 +548,6 @@ static NSArray * allAvailableStringEncodings(void)
 	as a string.  */
 - (NSString *)applicationSupportFolder
 {
-	
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
     NSString * basePath = ([paths count] > 0) ? paths[0] : NSTemporaryDirectory();
     return [basePath stringByAppendingPathComponent: @"Simple Comic"];
@@ -612,7 +640,7 @@ static NSArray * allAvailableStringEncodings(void)
 }
 
 
-- (TSSTManagedSession *)newSessionWithFiles:(NSArray *)files
+- (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files
 {
     TSSTManagedSession * sessionDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Session" inManagedObjectContext: [self managedObjectContext]];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -628,7 +656,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 
-- (void)addFiles:(NSArray *)paths toSession:(TSSTManagedSession *)session
+- (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session
 {	
 //	[[self managedObjectContext] retain];
 //	[[self managedObjectContext] lock];
@@ -658,7 +686,7 @@ static NSArray * allAvailableStringEncodings(void)
 				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
 				[(TSSTManagedArchive *)fileDescription nestedArchiveContents];
 			}
-			else if([fileExtension isEqualToString: @"pdf"])
+			else if([fileExtension compare:@"pdf" options:NSCaseInsensitiveSearch] == NSOrderedSame)
 			{
 				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
 				[fileDescription setValue: path forKey: @"path"];
@@ -670,8 +698,8 @@ static NSArray * allAvailableStringEncodings(void)
 				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
 				[fileDescription setValue: path forKey: @"imagePath"];
 			}
-            else if([fileExtension isEqualToString:@"savedsearch"])
-            {
+			else if([fileExtension compare:@"savedsearch" options:NSCaseInsensitiveSearch] == NSOrderedSame)
+			{
                 
 				//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
                 fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
@@ -680,12 +708,12 @@ static NSArray * allAvailableStringEncodings(void)
 				[(SSDManagedSmartFolder*)fileDescription smartFolderContents];
             }
             
-			if([fileDescription class] == [TSSTManagedGroup class] || [fileDescription superclass] == [TSSTManagedGroup class])
+			if([fileDescription isKindOfClass:[TSSTManagedGroup class]])
 			{
 				[pageSet unionSet: [(TSSTManagedGroup *)fileDescription nestedImages]];
 				[fileDescription setValue: session forKey: @"session"];
 			}
-			else if ([fileDescription class] == [TSSTPage class])
+			else if ([fileDescription isKindOfClass:[TSSTPage class]])
 			{
 				[pageSet addObject: fileDescription];
             }
@@ -771,8 +799,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 
 
-#pragma mark -
-#pragma mark Archive Encoding Handling
+#pragma mark - Archive Encoding Handling
 
 
 

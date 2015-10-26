@@ -40,7 +40,7 @@ class TSSTThumbnailView: NSView {
 		let horGridPos = index % horCount
 		let vertGridPos = (index / horCount) % vertCount
 		let thumbRect: NSRect
-		if dataSource!.session?.valueForKey("pageOrder")?.boolValue ?? false {
+		if dataSource!.session.valueForKey("pageOrder")?.boolValue ?? false {
 			thumbRect = NSMakeRect(CGFloat(horGridPos) * horSide, NSMaxY(bounds) - side - CGFloat(vertGridPos) * side, horSide, side)
 		}
 		else {

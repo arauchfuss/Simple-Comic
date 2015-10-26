@@ -14,12 +14,14 @@
 @end
 
 @implementation DTPartialArchiveParser
+{
+	NSString * searchString;
+}
 @synthesize searchResult = foundData;
 
 - (instancetype) init
 {
-	self = [super init];
-	if (self != nil) {
+	if (self = [super init]) {
 	}
 	return self;
 }

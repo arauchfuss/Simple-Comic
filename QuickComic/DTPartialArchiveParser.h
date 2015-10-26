@@ -10,16 +10,16 @@
 
 @class XADArchiveParser, XADString;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface DTPartialArchiveParser : NSObject 
-{
-	NSString * searchString;
-	NSData * foundData;
-}
 
 - (instancetype)initWithPath:(NSString *)archivePath searchString:(NSString *)search;
-@property (readonly, copy) NSData *searchResult;
+@property (readonly, copy, nullable) NSData *searchResult;
 
 -(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict;
 -(BOOL)archiveParsingShouldStop:(XADArchiveParser *)parser;
 
 @end
+
+NS_ASSUME_NONNULL_END

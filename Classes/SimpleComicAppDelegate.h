@@ -29,6 +29,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @class SS_PrefsController;
 @class TSSTSessionWindowController;
@@ -76,44 +77,19 @@ extern NSString *const SSDEnableSwipe;
     Fallback archive encoding selection
 */
 @interface SimpleComicAppDelegate : NSObject <NSApplicationDelegate>
-{
 /*  When opening encrypted zip or rar archives this panel is
-    made visible as a modal so the user can enter a password. */
-    IBOutlet NSPanel           * passwordPanel;
-    IBOutlet NSSecureTextField * passwordField;
-    
+ made visible as a modal so the user can enter a password. */
+@property (weak) IBOutlet NSPanel           * passwordPanel;
+@property (weak) IBOutlet NSSecureTextField * passwordField;
+
 /*  This panel appears when the text encoding auto-detection fails */
-    IBOutlet NSPanel           * encodingPanel;
-    IBOutlet NSTextField       * encodingTestField;
-    NSData					   * encodingTestData;
-    NSInteger					 encodingSelection;
-    IBOutlet NSPopUpButton     * encodingPopup;
+@property (weak) IBOutlet NSPanel           * encodingPanel;
+@property (weak) IBOutlet NSTextField       * encodingTestField;
+@property (weak) IBOutlet NSPopUpButton     * encodingPopup;
 
-    IBOutlet NSPanel * donationPanel;
-	
-	IBOutlet NSPanel * launchPanel;
-	
-/*  Core Data stuff. */
-    NSManagedObjectModel		 * managedObjectModel;
-    NSManagedObjectContext		 * managedObjectContext;
-	NSPersistentStoreCoordinator * persistentStoreCoordinator;
-	
-/* Auto-save timer */
-	NSTimer * autoSave;
+@property (weak) IBOutlet NSPanel * donationPanel;
 
-/*  Window controller for preferences. */
-    DTPreferencesController      * preferences;
-    
-/*  This is the array that maintains all of the session window managers. */
-    NSMutableArray * sessions;
-    
-/*	Vars to delay the loading of files from an app launch until the core data store
-	has finished initializing */
-    BOOL      launchInProgress;
-	BOOL	  optionHeldAtlaunch;
-	NSArray	* launchFiles;
-	
-}
+@property (weak) IBOutlet NSPanel * launchPanel;
 
 
 /* Bound to the encoding list drop down. */
@@ -125,7 +101,7 @@ extern NSString *const SSDEnableSwipe;
 
 /*  Core Data methods, slightly altered boilerplate. */
 @property (readonly, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (readonly, copy) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong) NSManagedObjectContext *managedObjectContext;
 @property (readonly, copy) NSString *applicationSupportFolder;
 @property (readonly) BOOL saveContext;
@@ -133,7 +109,7 @@ extern NSString *const SSDEnableSwipe;
 
 /*  Creates a new Session object based on user prefs and then 
     passes the files array to addFiles:toSesion: */
-- (TSSTManagedSession *)newSessionWithFiles:(NSArray *)files NS_RETURNS_NOT_RETAINED;
+- (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files NS_RETURNS_NOT_RETAINED;
 
 /*  This method is called every time an existing session needs
     to be made visible to a user. */
@@ -149,11 +125,11 @@ extern NSString *const SSDEnableSwipe;
     
 /*  This method adds any file passed to it to a session.  This includes recursive
 	parsing of archives and folders. */
-- (void)addFiles:(NSArray *)paths toSession:(TSSTManagedSession *)session;
+- (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session;
 
 /*  Called when Simple Comic encounters a password protected
     archive.  Brings a password dialog forward. */
-- (NSString*)passwordForArchiveWithPath:(NSString*)filename;
+- (nullable NSString*)passwordForArchiveWithPath:(NSString*)filename;
 
 
 - (void)generateEncodingMenu;
@@ -163,20 +139,22 @@ extern NSString *const SSDEnableSwipe;
 - (void)updateEncodingMenuTestedAgainst:(NSData *)data;
 /*  Modal that displays all available string encodings
     and allows the user to pick one. */
-- (IBAction)testEncoding:(id)sender;
-- (IBAction)testEncodingMenu:(id)sender;
+- (IBAction)testEncoding:(nullable id)sender;
+- (IBAction)testEncodingMenu:(nullable id)sender;
 
 /*  Launches the preferences window manager. */
-- (IBAction)openPreferences:(id)sender;
+- (IBAction)openPreferences:(nullable id)sender;
 
 /*  Starts an NSOpenPanel with auxiliary view */
-- (IBAction)addPages:(id)sender;
+- (IBAction)addPages:(nullable id)sender;
 /*  These are called by modals that want to end */
-- (IBAction)modalOK:(id)sender;
-- (IBAction)modalCancel:(id)sender;
+- (IBAction)modalOK:(nullable id)sender;
+- (IBAction)modalCancel:(nullable id)sender;
 
 /* Takes user to the Simple Comic paypal page. */
-- (IBAction)endLaunchPanel:(id)sender;
-- (IBAction)actionStub:(id)sender;
+- (IBAction)endLaunchPanel:(nullable id)sender;
+- (IBAction)actionStub:(nullable id)sender;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -29,6 +29,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 #import <Cocoa/Cocoa.h>
 
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface TSSTManagedGroup : NSManagedObject
 {
@@ -71,3 +72,5 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 - (void) smartFolderContents;
 
 @end
+
+NS_ASSUME_NONNULL_END

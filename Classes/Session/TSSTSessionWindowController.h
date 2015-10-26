@@ -38,6 +38,8 @@
 @class TSSTImageView;
 @class TSSTManagedSession;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 	PageSelectionModeNone,
 	PageSelectionModeIcon,
@@ -60,100 +62,81 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 			when the user scrubs the progress bar.
 */
 @interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelection_Protocol>
-{
-    /* Controller for all of the page entities related to the session object */
-    IBOutlet NSArrayController * pageController;
-    
-    /* Where the pages are composited.  Handles all of the drawing logic */
-    IBOutlet TSSTPageView  * pageView;
-	/* There is an outlet to this so that the visibility of the 
-		scrollers can be manually controlled. */
-    IBOutlet NSScrollView  * pageScrollView;
-    
-	/*	Allows the user to jump to a specific page via a small slide in modal dialog. */
-	IBOutlet NSPanel	   * jumpPanel;
-	IBOutlet NSTextField   * jumpField;
-	
-    /* Progress bar */
-    IBOutlet DTPolishedProgressBar * progressBar;
-	
-	/* Page info window with caret. */
-    IBOutlet TSSTInfoWindow     * infoWindow;
-    IBOutlet NSImageView        * infoPicture;
 
-    /* Localized image zoom loupe elements */
-    IBOutlet TSSTInfoWindow * loupeWindow;
-    IBOutlet NSImageView    * zoomView;
-	
-	/* Panel and view for the page expose method */
-    IBOutlet NSPanel * exposeBezel;
-    IBOutlet NSView * exposeView;
-	IBOutlet TSSTInfoWindow * thumbnailPanel;
-	
-	/* The session object used to maintain settings */
-    TSSTManagedSession * session;
-    
-    /* This var is bound to the session window name */
-    NSString * pageNames;
-    NSInteger pageTurn;
-	
-	/* Exactly what it sounds like */
-	NSArray * pageSortDescriptor;
-	
-	/* Manages the cursor hiding while in fullscreen */
-	NSTimer * mouseMovedTimer;
-	
-	BOOL newSession;
-	
-	PageSelectionMode pageSelectionInProgress;
-	CGFloat savedZoom;
-}
+/*! Controller for all of the page entities related to the session object */
+@property (weak) IBOutlet NSArrayController * pageController;
 
-@property (strong) NSArray<NSSortDescriptor*> * pageSortDescriptor;
+/*! Where the pages are composited.  Handles all of the drawing logic */
+@property (weak) IBOutlet TSSTPageView  * pageView;
+/*! There is an outlet to this so that the visibility of the
+ scrollers can be manually controlled. */
+@property (weak) IBOutlet NSScrollView  * pageScrollView;
+
+/*	Allows the user to jump to a specific page via a small slide in modal dialog. */
+@property (weak) IBOutlet NSPanel	   * jumpPanel;
+@property (weak) IBOutlet NSTextField   * jumpField;
+
+/*! Progress bar */
+@property (weak) IBOutlet DTPolishedProgressBar * progressBar;
+
+/* Page info window with caret. */
+@property (weak) IBOutlet TSSTInfoWindow     * infoWindow;
+@property (weak) IBOutlet NSImageView        * infoPicture;
+
+/* Localized image zoom loupe elements */
+@property (weak) IBOutlet TSSTInfoWindow * loupeWindow;
+@property (weak) IBOutlet NSImageView    * zoomView;
+
+/* Panel and view for the page expose method */
+@property (weak) IBOutlet NSPanel * exposeBezel;
+@property (weak) IBOutlet NSView * exposeView;
+@property (weak) IBOutlet TSSTInfoWindow * thumbnailPanel;
+
+@property (copy) NSArray<NSSortDescriptor*> * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
 @property (strong) NSString * pageNames;
 
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession;
 
 // View Actions
-- (IBAction)changePageOrder:(id)sender;
-/* Toggles between two page spread and single page */
-- (IBAction)changeTwoPage:(id)sender;
-/* Action that changes the view scaling between the three modes */
-- (IBAction)changeScaling:(id)sender;
+- (IBAction)changePageOrder:(nullable id)sender;
+/*! Toggles between two page spread and single page */
+- (IBAction)changeTwoPage:(nullable id)sender;
+/*! Action that changes the view scaling between the three modes */
+- (IBAction)changeScaling:(nullable id)sender;
 
-- (IBAction)zoom:(id)sender;
-- (IBAction)zoomIn:(id)sender;
-- (IBAction)zoomOut:(id)sender;
-- (IBAction)zoomReset:(id)sender;
+- (IBAction)zoom:(nullable id)sender;
+- (IBAction)zoomIn:(nullable id)sender;
+- (IBAction)zoomOut:(nullable id)sender;
+- (IBAction)zoomReset:(nullable id)sender;
 
-- (IBAction)rotate:(id)sender;
-- (IBAction)rotateRight:(id)sender;
-- (IBAction)rotateLeft:(id)sender;
-- (IBAction)noRotation:(id)sender;
+- (IBAction)rotate:(nullable id)sender;
+- (IBAction)rotateRight:(nullable id)sender;
+- (IBAction)rotateLeft:(nullable id)sender;
+- (IBAction)noRotation:(nullable id)sender;
 
-- (IBAction)toggleLoupe:(id)sender;
+- (IBAction)toggleLoupe:(nullable id)sender;
 
 // Selection Actions
-- (IBAction)turnPage:(id)sender;
-- (IBAction)pageRight:(id)sender;
-- (IBAction)pageLeft:(id)sender;
-- (IBAction)shiftPageRight:(id)sender;
-- (IBAction)shiftPageLeft:(id)sender;
-- (IBAction)skipRight:(id)sender;
-- (IBAction)skipLeft:(id)sender;
-- (IBAction)firstPage:(id)sender;
-- (IBAction)lastPage:(id)sender;
+- (IBAction)turnPage:(nullable id)sender;
+- (IBAction)pageRight:(nullable id)sender;
+- (IBAction)pageLeft:(nullable id)sender;
+- (IBAction)shiftPageRight:(nullable id)sender;
+- (IBAction)shiftPageLeft:(nullable id)sender;
+- (IBAction)skipRight:(nullable id)sender;
+- (IBAction)skipLeft:(nullable id)sender;
+- (IBAction)firstPage:(nullable id)sender;
+- (IBAction)lastPage:(nullable id)sender;
 
-- (IBAction)launchJumpPanel:(id)sender;
-- (IBAction)cancelJumpPanel:(id)sender;
-- (IBAction)goToPage:(id)sender;
+- (IBAction)launchJumpPanel:(nullable id)sender;
+- (IBAction)cancelJumpPanel:(nullable id)sender;
+- (IBAction)goToPage:(nullable id)sender;
 
-- (IBAction)removePages:(id)sender;
-- (IBAction)setArchiveIcon:(id)sender;
-- (IBAction)extractPage:(id)sender;
+- (IBAction)removePages:(nullable id)sender;
+- (IBAction)setArchiveIcon:(nullable id)sender;
+- (IBAction)extractPage:(nullable id)sender;
 
-- (IBAction)togglePageExpose:(id)sender;
+- (IBAction)togglePageExpose:(nullable id)sender;
 
 - (void)setIconWithSelection:(NSInteger)selection andCropRect:(NSRect)cropRect;
 - (void)deletePageWithSelection:(NSInteger)selection;
@@ -193,6 +176,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 @property (readonly) BOOL canTurnPageRight;
 
 
+//! The session object used to maintain settings
 @property (readonly, strong) TSSTManagedSession *session;
 @property (readonly, strong) NSManagedObjectContext *managedObjectContext;
 - (void)toolbarWillAddItem:(NSNotification *)notification;
@@ -207,3 +191,4 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 
 @end
 
+NS_ASSUME_NONNULL_END
