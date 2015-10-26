@@ -99,7 +99,7 @@ typedef struct {
 /*  This is used by the image loupe.  Grabs the portion of the pages
     displayed that fall within "rect." The origin of the argument
     is centered instead of at the bottom left. */
--(NSImage *)imageInRect:(NSRect)rect;
+-(nullable NSImage *)imageInRect:(NSRect)rect;
 
 
 /*  This is the actual rectangle within which the pages are rendered.

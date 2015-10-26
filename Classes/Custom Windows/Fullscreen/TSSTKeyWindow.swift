@@ -1,4 +1,4 @@
-/*	
+/*     
 	Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
@@ -12,7 +12,7 @@
  
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
+
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
 	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
 	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
@@ -23,69 +23,37 @@
 	OTHER DEALINGS IN THE SOFTWARE.
 	
 	Simple Comic
-	TSSTKeyWindow.m
+	TSSTKeyWindow.swift
 */
+//
+//  TSSTKeyWindow.swift
+//  SimpleComic
+//
+//  Created by C.W. Betts on 10/26/15.
+//  Copyright 2015 Dancing Tortoise Software. All rights reserved.
+//
 
+import Cocoa
 
-
-#import "TSSTKeyWindow.h"
-#import "TSSTSessionWindowController.h"
-
-
-
-@implementation TSSTKeyWindow
-
-
-
-- (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
-{
-    self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask backing: bufferingType defer: flag];
-    
-    if(self)
-    {
-        [self setOpaque: NO];
-    }
-    return self;
+class TSSTKeyWindow : NSPanel {
+	override init(contentRect rect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
+		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, `defer`: flag)
+		opaque = false
+	}
+	
+	required init?(coder: NSCoder) {
+	    fatalError("init(coder:) has not been implemented")
+	}
+	
+	override var canBecomeKeyWindow: Bool {
+		return true
+	}
+	
+	override func performClose(sender: AnyObject?) {
+		delegate?.windowShouldClose?(self)
+	}
+	
+	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+		return menuItem.action == "performClose:" ? true : false
+	}
 }
-
-
-
-- (BOOL)canBecomeKeyWindow
-{
-	return YES;
-}
-
-
-
-- (void)performClose:(id)sender
-{
-    [[self delegate] windowShouldClose: self];
-}
-
-
-
-- (BOOL)validateMenuItem:(NSMenuItem *)anItem
-{
-    return ([anItem action] == @selector(performClose:)) ? YES : NO;
-}
-
-
-
-@end
-
-
-
-@implementation TSSTTransparentView
-
-
-- (void)drawRect:(NSRect)rect
-{
-    [[NSColor colorWithCalibratedWhite: 0 alpha: 0.7] set];
-    NSRectFill(rect);
-}
-
-
-
-@end
-
-

@@ -1,4 +1,4 @@
-/*	
+/*     
 	Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
@@ -12,7 +12,7 @@
  
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
+
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
 	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
 	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
@@ -23,21 +23,21 @@
 	OTHER DEALINGS IN THE SOFTWARE.
 	
 	Simple Comic
-	TSSTKeyWindow.h
- 
-	This is subclassed so that a window inited w/ NSBorderlessWindowMask
-	can still become key.  Which is needed when Simple Comic goes full-screen.
- */
+	TSSTTransparentView.swift
+*/
+//
+//  TSSTTransparentView.swift
+//  SimpleComic
+//
+//  Created by C.W. Betts on 10/26/15.
+//  Copyright © 2015 Dancing Tortoise Software. All rights reserved.
+//
 
-#import <Cocoa/Cocoa.h>
+import Cocoa
 
-
-@interface TSSTKeyWindow : NSPanel
-
-@end
-
-
-
-@interface TSSTTransparentView : NSView
-
-@end
+class TSSTTransparentView : NSView {
+	override func drawRect(rect: NSRect) {
+		NSColor(calibratedWhite: 0, alpha: 0.7).set()
+		NSRectFill(rect);
+	}
+}
