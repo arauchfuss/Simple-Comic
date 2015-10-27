@@ -383,7 +383,7 @@
 				[nestedDescription setValue: fileName forKey: @"imagePath"];
 				[nestedDescription setValue: @(counter) forKey: @"index"];
             }
-            else if([[[NSUserDefaults standardUserDefaults] valueForKey: TSSTNestedArchives] boolValue] && [[TSSTManagedArchive archiveExtensions] containsObject: extension])
+            else if([[NSUserDefaults standardUserDefaults] boolForKey: TSSTNestedArchives] && [[TSSTManagedArchive archiveExtensions] containsObject: extension])
             {
                 fileData = [imageArchive contentsOfEntry: counter];
                 nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];

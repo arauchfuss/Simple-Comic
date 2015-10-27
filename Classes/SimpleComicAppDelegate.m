@@ -274,7 +274,7 @@ static NSArray * allAvailableStringEncodings(void)
 	[self generateEncodingMenu];
 	
 	/* Starts the auto save timer */
-	if([[userDefaults valueForKey: TSSTSessionRestore] boolValue])
+	if([userDefaults boolForKey: TSSTSessionRestore])
 	{
 		autoSave = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self selector: @selector(saveContext) userInfo: nil repeats: YES];
 	}
@@ -321,7 +321,7 @@ static NSArray * allAvailableStringEncodings(void)
 {	
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 	
-	if(![[userDefaults valueForKey: TSSTSessionRestore] boolValue])
+	if(![userDefaults boolForKey: TSSTSessionRestore])
 	{
 		/* Goes through and deletes all active sessions if the user has auto save turned off */
 		for(TSSTSessionWindowController * sessionWindow in sessions)
@@ -364,7 +364,7 @@ static NSArray * allAvailableStringEncodings(void)
 	{
 		[autoSave invalidate];
 		autoSave = nil;
-		if([[userDefaults valueForKey: TSSTSessionRestore] boolValue])
+		if([userDefaults boolForKey: TSSTSessionRestore])
 		{
 			autoSave = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self selector: @selector(saveContext) userInfo: nil repeats: YES];
 		}

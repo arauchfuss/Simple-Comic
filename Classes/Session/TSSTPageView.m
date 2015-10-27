@@ -419,7 +419,7 @@
         break;
     }
     
-	CGFloat power = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTLoupePower] doubleValue];
+	CGFloat power = [[NSUserDefaults standardUserDefaults] doubleForKey: TSSTLoupePower];
     CGFloat scale;
     CGFloat remainder;
     NSRect firstFragment = NSZeroRect;
@@ -604,7 +604,7 @@
             scaleToFit = NSWidth(visibleRect) / imageSize.width;
         }
         
-        if([[defaults valueForKey: TSSTConstrainScale] boolValue])
+        if([defaults boolForKey: TSSTConstrainScale])
         {
             scaleToFit = scaleToFit > 1 ? 1 : scaleToFit;
         }
@@ -619,7 +619,7 @@
     viewSize = NSMakeSize(roundf(viewSize.width), roundf(viewSize.height));
     [self setFrameSize: viewSize];
 
-    if(![[defaults valueForKey: TSSTConstrainScale] boolValue] && 
+    if(![defaults boolForKey: TSSTConstrainScale] &&
 	[[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue] != 0 )
     {
         if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
@@ -752,26 +752,26 @@
 		return;
 	}
 	
-	int modifier = [theEvent modifierFlags];
+	NSEventModifierFlags modifier = [theEvent modifierFlags];
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
 //	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
 //	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 		
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
-		NSInteger loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] integerValue];
+		NSInteger loupeDiameter = [defaultsController integerForKey: TSSTLoupeDiameter];
 		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
 		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
-		[defaultsController setValue: @(loupeDiameter) forKey: TSSTLoupeDiameter];
+		[defaultsController setInteger: loupeDiameter forKey: TSSTLoupeDiameter];
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
-		CGFloat loupePower = [[defaultsController valueForKey: TSSTLoupePower] doubleValue];
+		CGFloat loupePower = [defaultsController doubleForKey: TSSTLoupePower];
 		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
 		loupePower = loupePower < 2 ? 2 : loupePower;
 		loupePower = loupePower > 6 ? 6 : loupePower;
-		[defaultsController setValue: @(loupePower) forKey: TSSTLoupePower];
+		[defaultsController setDouble: loupePower forKey: TSSTLoupePower];
 	}
 //	else if(scaling == 1)
 //	{
@@ -832,9 +832,7 @@
 	}
     
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    if ([defaults boolForKey:SSDEnableSwipe]) {
+    if ([defaultsController boolForKey:SSDEnableSwipe]) {
         CGFloat deltaX = [theEvent deltaX];
 		CGFloat deltaY = [theEvent deltaY];
 		//CGFloat deltaZ = [theEvent deltaZ];
@@ -1110,7 +1108,7 @@
         return;
     }
     
-    BOOL pageTurnAllowed = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTAutoPageTurn] boolValue];
+    BOOL pageTurnAllowed = [[NSUserDefaults standardUserDefaults] boolForKey: TSSTAutoPageTurn];
     NSTimeInterval delay = 0.2;
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSDate * currentDate = [NSDate date];

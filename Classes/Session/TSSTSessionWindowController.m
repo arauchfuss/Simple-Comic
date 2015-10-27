@@ -1002,7 +1002,7 @@
 	NSString * representationPath;
 	
     BOOL currentAllowed = ![pageOne shouldDisplayAlone] && 
-        !(index == 0 && [[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
+        !(index == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
     
     if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && pageTwo && ![pageTwo shouldDisplayAlone])
     {
@@ -1042,7 +1042,7 @@
         allowedRect = [[[self window] screen] frame];
         [[self window] setFrame: allowedRect display: YES animate: NO];
     }
-    else if([[[NSUserDefaults standardUserDefaults] valueForKey: TSSTWindowAutoResize] boolValue])
+    else if([[NSUserDefaults standardUserDefaults] boolForKey: TSSTWindowAutoResize])
     {
         allowedRect = [[[self window] screen] visibleFrame];
 		frame = [[self window] frame];
@@ -1061,7 +1061,7 @@
     BOOL hasHor = NO;
 	int scaling = [[session valueForKey: TSSTPageScaleOptions] intValue];
 	
-	if(pageSelectionInProgress || ![[[NSUserDefaults standardUserDefaults] valueForKey: TSSTScrollersVisible] boolValue])
+	if(pageSelectionInProgress || ![[NSUserDefaults standardUserDefaults] boolForKey: TSSTScrollersVisible])
 	{
 		scaling = 1;
 	}
@@ -1109,7 +1109,7 @@
 {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSRect scrollViewRect;
-    BOOL statusBar = [[defaults valueForKey: TSSTStatusbarVisible] boolValue];
+    BOOL statusBar = [defaults boolForKey: TSSTStatusbarVisible];
     if(statusBar)
     {
         scrollViewRect = [[[self window] contentView] frame];
@@ -1150,7 +1150,7 @@
     
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	BOOL current = ![[pageController arrangedObjects][selectionIndex] shouldDisplayAlone] &&
-        !(selectionIndex == 0 &&[[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);
+        !(selectionIndex == 0 &&[defaults boolForKey: TSSTLonelyFirstPage]);
 	BOOL next = ![[pageController arrangedObjects][(selectionIndex + 1)] shouldDisplayAlone];
 	
 	if((!current || !next) && ((selectionIndex + 1) < numberOfImages))
@@ -1183,7 +1183,7 @@
 
         BOOL previousPage = ![[pageController arrangedObjects][(selectionIndex - 1)] shouldDisplayAlone];
 		BOOL pageBeforeLast = ![[pageController arrangedObjects][(selectionIndex - 2)] shouldDisplayAlone] && 
-            !((selectionIndex - 2) == 0 && [[defaults valueForKey: TSSTLonelyFirstPage] boolValue]);	
+            !((selectionIndex - 2) == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
         
         if(!previousPage || !pageBeforeLast)
 		{
@@ -1505,7 +1505,7 @@
 		[[infoWindow parentWindow] removeChildWindow: infoWindow];
         [infoWindow orderOut: self];
 
-        statusBar = [[[NSUserDefaults standardUserDefaults] valueForKey: TSSTStatusbarVisible] boolValue];
+        statusBar = [[NSUserDefaults standardUserDefaults] boolForKey: TSSTStatusbarVisible];
 
 		
         if(statusBar)
