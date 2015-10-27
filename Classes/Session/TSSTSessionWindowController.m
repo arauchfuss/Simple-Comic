@@ -92,7 +92,7 @@
 		pageTurn = 0;
 		pageSelectionInProgress = PageSelectionModeNone;
 		mouseMovedTimer = nil;
-//		closing = NO;
+		//closing = NO;
         session = aSession;
         BOOL cascade = [session valueForKey: @"position"] ? NO : YES;
         [self setShouldCascadeWindows: cascade];
@@ -272,8 +272,7 @@
 
 
 
-#pragma mark -
-#pragma mark Progress Bar
+#pragma mark - Progress Bar
 
 
 
@@ -291,8 +290,7 @@
 
 
 
-#pragma mark -
-#pragma mark Event handling
+#pragma mark - Event handling
 
 
 
@@ -403,8 +401,7 @@
 
 
 
-#pragma mark -
-#pragma mark Actions
+#pragma mark - Actions
 
 
 
@@ -944,8 +941,7 @@
 }
 
 
-#pragma mark -
-#pragma mark Convenience Methods
+#pragma mark - Convenience Methods
 
 
 - (void)hideCursor
@@ -959,10 +955,6 @@
 }
 
 
-/*  When a session is launched this method is called.  It checks to see if the 
-    session was a saved session or one that is brand new.  If it was a saved 
-    session then all of the saved session information is passed to the window
-    and view. */
 - (void)restoreSession
 {
     [self changeViewImages];
@@ -999,9 +991,6 @@
 }
 
 
-/*  This method figures out which pages should be displayed in the view.  
-    To do so it looks at which page is currently selected as well as its aspect ratio
-    and that of the next image */
 - (void)changeViewImages
 {
     NSUInteger count = [[pageController arrangedObjects] count];
@@ -1144,9 +1133,6 @@
 }
 
 
-/*! Selects the next non visible page.  Logic looks figures out which 
-images are currently visible and then skips over them.
-*/
 - (void)nextPage
 {
     if(![[session valueForKey: TSSTTwoPageSpread] boolValue])
@@ -1182,9 +1168,6 @@ images are currently visible and then skips over them.
 }
 
 
-/*! Selects the previous non visible page.  Logic looks figures out which 
-images are currently visible and then skips over them.
-*/
 - (void)previousPage
 {
     if(![[session valueForKey: TSSTTwoPageSpread] boolValue])
@@ -1218,7 +1201,6 @@ images are currently visible and then skips over them.
 }
 
 
-/*! This method is called in preparation for saving. */
 - (void)updateSessionObject
 {
     if(![(DTSessionWindow *)[self window] isFullscreen])

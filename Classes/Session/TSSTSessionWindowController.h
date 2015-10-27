@@ -60,7 +60,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 		- Handles the layout of the info window 
 			when the user scrubs the progress bar.
 */
-@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelection_Protocol>
+@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelection_Protocol, NSWindowDelegate>
 
 /*! Controller for all of the page entities related to the session object */
 @property (weak) IBOutlet NSArrayController * pageController;
@@ -148,7 +148,12 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 - (NSImage *)imageForPageAtIndex:(NSInteger)index;
 - (NSString *)nameForPageAtIndex:(NSInteger)index;
 
+/*!  When a session is launched this method is called.  It checks to see if the
+ session was a saved session or one that is brand new.  If it was a saved
+ session then all of the saved session information is passed to the window
+ and view. */
 - (void)restoreSession;
+
 - (void)prepareToEnd;
 
 
@@ -161,11 +166,25 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 - (void)resizeView;
 - (void)scaleToWindow;
 - (void)adjustStatusBar;
+
+/*!  This method figures out which pages should be displayed in the view.
+ To do so it looks at which page is currently selected as well as its aspect ratio
+ and that of the next image */
 - (void)changeViewImages;
 
+/*! Selects the next non visible page.  Logic looks figures out which
+ images are currently visible and then skips over them.
+ */
 - (void)nextPage;
+
+/*! Selects the previous non visible page.  Logic looks figures out which
+ images are currently visible and then skips over them.
+ */
 - (void)previousPage;
+
+/*! This method is called in preparation for saving. */
 - (void)updateSessionObject;
+
 @property (readonly) BOOL currentPageIsText;
 
 /* Bindings */

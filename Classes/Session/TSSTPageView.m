@@ -39,7 +39,6 @@
 #define UNKTURN 3
 
 @implementation TSSTPageView {
-	NSRect imageBounds;
 	NSRect firstPageRect;
 	NSRect secondPageRect;
 	NSImage	* firstPageImage;
@@ -48,8 +47,6 @@
 	int scrollKeys;			// Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
 	NSTimer * scrollTimer;	// Timer that fires in between each keydown event to smooth out the scrolling.
 	NSDate * interfaceDelay;
-	
-	NSInteger rotation;
 	
 	direction scrollwheel;
 	
@@ -91,6 +88,7 @@
         scrollTimer = nil;
         acceptingDrag = NO;
 		pageSelection = -1;
+		self.acceptsTouchEvents = YES;
 	}
 	return self;
 }
@@ -838,9 +836,12 @@
     
     if ([defaults boolForKey:SSDEnableSwipe]) {
         CGFloat deltaX = [theEvent deltaX];
-		//CGFloat deltaY = [theEvent deltaY];
+		CGFloat deltaY = [theEvent deltaY];
 		//CGFloat deltaZ = [theEvent deltaZ];
-        if (deltaX != 0.0)
+		
+		CGFloat ratio = deltaX / deltaY;
+		if isnan(ratio) {ratio = deltaX;}
+        if (deltaX != 0.0 && fabs(ratio) >= 1.0)
         {
             [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
                         dampenAmountThresholdMin:-1.0
@@ -848,6 +849,7 @@
                                     usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
 										//NSLog(@"gesture amount: %f, phase %04lx, is complete: %@", gestureAmount, (unsigned long)phase, isComplete ? @"YES" : @"NO");
                                     }];
+			
 			if (deltaX > 0.0)
 			{
 				[sessionController pageLeft: self];
@@ -1346,7 +1348,7 @@
     }
 }
 
-
+//NOTE: This is for the THREE-finger swipe, not two finger
 - (void)swipeWithEvent:(NSEvent *)event
 {
     if ([event deltaX] > 0.0)
