@@ -126,7 +126,7 @@
     [exposeBezel setFloatingPanel: YES];
 	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
-    [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
+    [pageController setSelectionIndex: [[session valueForKey: @"selection"] integerValue]];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
@@ -253,7 +253,7 @@
     }
 	else if([keyPath isEqualToString: TSSTLoupeDiameter])
     {
-		int loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] intValue];
+		NSInteger loupeDiameter = [defaults integerForKey: TSSTLoupeDiameter];
 		[loupeWindow resizeToDiameter: loupeDiameter];
 	}
 	else if([keyPath isEqualToString: @"loupe"])
@@ -714,7 +714,7 @@
 {
     if([jumpField integerValue] != NSNotFound)
     {
-        int index = [jumpField intValue] < 1 ? 0 : [jumpField intValue] - 1;
+        NSInteger index = [jumpField integerValue] < 1 ? 0 : [jumpField integerValue] - 1;
         [pageController setSelectionIndex: index];
     }
 	
@@ -887,7 +887,7 @@
 			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
 			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
 			{
-				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
+				NSInteger coverIndex = [[selectedPage valueForKey: @"index"] integerValue];
 				NSString * coverName = [(XADArchive *)[selectedGroup instance] nameOfEntry: coverIndex];
 				[UKXattrMetadataStore setString: coverName
 										 forKey: @"QCCoverName" 
@@ -961,7 +961,7 @@
     [self scaleToWindow];
 	[self adjustStatusBar];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    int loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] intValue];
+    NSInteger loupeDiameter = [defaults integerForKey: TSSTLoupeDiameter];
     [loupeWindow setFrame:NSMakeRect(0,0, loupeDiameter, loupeDiameter) display: NO];
     NSColor * color = [NSUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	[pageScrollView setBackgroundColor: color];
@@ -1425,7 +1425,7 @@
 
 - (BOOL)control:(NSTextField *)control didFailToFormatString:(NSString *)string errorDescription:(NSString *)error
 {
-	int pageNumber = [string intValue];
+	NSInteger pageNumber = [string integerValue];
 	if(pageNumber > [[pageController arrangedObjects] count])
 	{
 		[jumpField setIntegerValue: [[pageController arrangedObjects] count]];

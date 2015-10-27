@@ -164,18 +164,18 @@
 
 - (void)animateImage:(NSTimer *)timer
 {
-    NSMutableDictionary * animationInfo = [NSMutableDictionary dictionaryWithDictionary: [timer userInfo]];
+    NSMutableDictionary * animationInfo = [[NSMutableDictionary alloc] initWithDictionary: [timer userInfo]];
     CGFloat frameDuration;
-    NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] intValue] == 1 ? firstPageImage : secondPageImage;
+    NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] integerValue] == 1 ? firstPageImage : secondPageImage;
     if([animationInfo valueForKey: @"pageImage"] != pageImage || sessionController == nil)
     {
         return;
     }
     
     NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];;
-    int loopCount = [[animationInfo valueForKey: @"loopCount"] intValue];
-    int frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] intValue] - 1);
-    int currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] intValue];
+    NSInteger loopCount = [[animationInfo valueForKey: @"loopCount"] integerValue];
+    NSInteger frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] integerValue] - 1);
+    NSInteger currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] integerValue];
     
     currentFrame = currentFrame < frameCount ? ++currentFrame : 0;
     if(currentFrame == 0 && loopCount > 1)
@@ -620,7 +620,7 @@
     [self setFrameSize: viewSize];
 
     if(![[defaults valueForKey: TSSTConstrainScale] boolValue] && 
-	[[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue] != 0 )
+	[[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue] != 0 )
     {
         if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
         {
@@ -759,7 +759,7 @@
 		
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
-		int loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] intValue];
+		NSInteger loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] integerValue];
 		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
 		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
@@ -878,13 +878,13 @@
 	
     int modifier = [event modifierFlags];
     BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
-    NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
+    unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSPoint scrollPoint = visible.origin;
     BOOL scrolling = NO;
     CGFloat delta = shiftKey ? 50 * 3 : 50;
     
-	switch ([charNumber unsignedIntValue])
+	switch (charNumber)
 	{
 		case NSUpArrowFunctionKey:
 			if(![self verticalScrollIsPossible])
@@ -1067,8 +1067,8 @@
 
 - (void)keyUp:(NSEvent *)event
 {
-    NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
-    switch ([charNumber unsignedIntValue])
+    unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
+    switch (charNumber)
     {
         case NSUpArrowFunctionKey:
             scrollKeys &= 14;

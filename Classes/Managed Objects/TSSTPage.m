@@ -245,7 +245,7 @@ static NSSize monospaceCharacterSize;
 	NSData * textData;
 	if([self valueForKey: @"index"])
 	{
-		textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] intValue]];
+		textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] integerValue]];
 	}
 	else
 	{
@@ -299,7 +299,7 @@ static NSSize monospaceCharacterSize;
 	TSSTManagedGroup * group = [self valueForKey: @"group"];
 	if([self valueForKey: @"index"])
     {
-		int entryIndex = [[self valueForKey: @"index"] intValue];
+		NSInteger entryIndex = [[self valueForKey: @"index"] integerValue];
 		imageData = [group dataForPageIndex: entryIndex];
 	}
     else if([self valueForKey: @"imagePath"])
