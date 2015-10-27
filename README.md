@@ -5,6 +5,12 @@ The basic feature drive is to reduce the number of interactions required to brow
 
 Quick Comic is a bundled quicklook preview and thumbnail generation plugin for cbr and cbz files.
 
-#### Development
+#### Build
 
-Run `git submodule sync` inside the repo folder to get the submodule needed to build the project.
+For this to build you need to get the submodules. For that you need to run the following commands.
+
+```
+git submodule init
+git submodule sync
+git submodule update
+```
