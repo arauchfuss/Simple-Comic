@@ -16,9 +16,9 @@
    ----------------------------------------------------------------------------- */
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
-    NSAutoreleasePool * pool = [NSAutoreleasePool new];
+	@autoreleasepool {
 	
-	NSString * archivePath = [(NSURL *)url path];
+	NSString * archivePath = [(__bridge NSURL *)url path];
 //	NSLog(@"base path %@",archivePath);
 	NSData * imageData = nil;
 	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
@@ -35,8 +35,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		{
 			cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
 		}
-		imageData = [[partialArchive searchResult] retain];
-		[partialArchive release];
+		imageData = [partialArchive searchResult];
 	}
 	else
     {
@@ -46,12 +45,11 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		if([fileList count] > 0)
 		{
 			[fileList sortUsingDescriptors: fileSort()];
-			coverName = [[fileList objectAtIndex: 0] valueForKey: @"rawName"];
-			coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] intValue];
+			coverName = [fileList[0] valueForKey: @"rawName"];
+			coverIndex = [[fileList[0] valueForKey: @"index"] intValue];
 			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}
-		[archive release];
 
     }
 
@@ -90,13 +88,12 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 //		NSLog(@"release");
         CFRelease(currentImage);
         QLThumbnailRequestFlushContext(thumbnail, cgContext);
-        CFRelease(cgContext);
-		[imageData release];
+		CGContextRelease(cgContext);
 	}
 	
 	
-    [pool release];
-    return noErr;
+	}
+	return noErr;
 }
 
 

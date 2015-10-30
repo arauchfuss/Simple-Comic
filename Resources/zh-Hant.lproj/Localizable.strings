@@ -1,0 +1,24 @@
+/* Pages are scaled to fit window width */
+"Horizontal Fit" = "符合水平";
+
+/* Left to right page order menu item text */
+"Left To Right" = "由左到右";
+
+/* No comment provided by engineer. */
+"Left to Right Page Order" = "由左到右";
+
+/* Pages are not scaled */
+"Original Size" = "原來大小";
+
+/* Right to left page order menu item text */
+"Right To Left" = "由右到左";
+
+/* No comment provided by engineer. */
+"Right to Left Page Order" = "由右到左";
+
+/* Only a single page is displayed at a time */
+"Single Page Layout" = "單頁配置";
+
+/* Two pages are displayed side by side */
+"Two Page Layout" = "雙頁延伸";
+

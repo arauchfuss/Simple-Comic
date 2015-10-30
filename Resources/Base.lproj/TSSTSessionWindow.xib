@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TSSTSessionWindowController">
+            <connections>
+                <outlet property="exposeBezel" destination="373" id="375"/>
+                <outlet property="exposeView" destination="378" id="380"/>
+                <outlet property="infoPicture" destination="359" id="360"/>
+                <outlet property="infoWindow" destination="350" id="357"/>
+                <outlet property="jumpField" destination="448" id="461"/>
+                <outlet property="jumpPanel" destination="445" id="451"/>
+                <outlet property="loupeWindow" destination="363" id="368"/>
+                <outlet property="pageController" destination="12" id="42"/>
+                <outlet property="pageScrollView" destination="236" id="239"/>
+                <outlet property="pageView" destination="235" id="238"/>
+                <outlet property="progressBar" destination="607" id="608"/>
+                <outlet property="thumbnailPanel" destination="483" id="589"/>
+                <outlet property="window" destination="6" id="40"/>
+                <outlet property="zoomView" destination="366" id="367"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="6" userLabel="Main Window" customClass="DTSessionWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="40" y="225" width="460" height="529"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="400" height="200"/>
+            <view key="contentView" id="7">
+                <rect key="frame" x="0.0" y="0.0" width="460" height="529"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="236">
+                        <rect key="frame" x="0.0" y="24" width="460" height="505"/>
+                        <clipView key="contentView" autoresizesSubviews="NO" copiesOnScroll="NO" id="KlA-W9-AWW">
+                            <rect key="frame" x="0.0" y="0.0" width="460" height="505"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="235" customClass="TSSTPageView">
+                                    <rect key="frame" x="0.0" y="0.0" width="460" height="505"/>
+                                    <animations/>
+                                    <connections>
+                                        <outlet property="sessionController" destination="-2" id="750"/>
+                                    </connections>
+                                </customView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="235" firstAttribute="leading" secondItem="KlA-W9-AWW" secondAttribute="leading" id="0X9-Vw-CgL"/>
+                                <constraint firstAttribute="bottom" secondItem="235" secondAttribute="bottom" id="LDP-xs-bu1"/>
+                                <constraint firstItem="235" firstAttribute="top" secondItem="KlA-W9-AWW" secondAttribute="top" id="eEm-hZ-diH"/>
+                                <constraint firstAttribute="trailing" secondItem="235" secondAttribute="trailing" id="gYp-w5-x5X"/>
+                            </constraints>
+                            <animations/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <animations/>
+                        <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="506">
+                            <rect key="frame" x="0.0" y="489" width="460" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="505">
+                            <rect key="frame" x="445" y="0.0" width="15" height="505"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <animations/>
+                        </scroller>
+                    </scrollView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="607" customClass="DTPolishedProgressBar" customModule="Simple_Comic" customModuleProvider="target">
+                        <rect key="frame" x="12" y="0.0" width="436" height="23"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="fdI-gA-vkv"/>
+                        </constraints>
+                        <animations/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="236" secondAttribute="trailing" id="HbZ-Lb-ONT"/>
+                    <constraint firstItem="607" firstAttribute="top" secondItem="236" secondAttribute="bottom" constant="1" id="TqZ-GS-5xF"/>
+                    <constraint firstAttribute="trailing" secondItem="607" secondAttribute="trailing" constant="12" id="VOb-4e-8t4"/>
+                    <constraint firstItem="607" firstAttribute="leading" secondItem="7" secondAttribute="leading" constant="12" id="eO2-C9-eXb"/>
+                    <constraint firstItem="236" firstAttribute="leading" secondItem="7" secondAttribute="leading" id="h2f-5t-1Gs"/>
+                    <constraint firstAttribute="bottom" secondItem="607" secondAttribute="bottom" id="tnl-RM-ZC9"/>
+                    <constraint firstItem="236" firstAttribute="top" secondItem="7" secondAttribute="top" id="x0J-qK-pfX"/>
+                </constraints>
+                <animations/>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="1A96E21F-07EA-4D3B-B356-508A45D1FCBB" displayMode="iconOnly" sizeMode="regular" id="507">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="ADD2836D-8728-474F-9355-80FA8EA9972C" label="Turn Page" paletteLabel="Turn Page" id="553" customClass="DTPageTurnToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="55" height="25"/>
+                        <size key="maxSize" width="55" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="554">
+                            <rect key="frame" x="3" y="14" width="55" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="555">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Left Page Turn" image="NSLeftFacingTriangleTemplate" width="26" tag="701">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Right Page Turn" image="NSRightFacingTriangleTemplate" width="26" tag="702"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="turnPage:" target="-2" id="698"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" id="517" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="70" height="25"/>
+                        <size key="maxSize" width="71" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="515">
+                            <rect key="frame" x="3" y="14" width="70" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Original Size" image="equalTemplate" width="22">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Scale to Window" image="winScaleTemplate" width="22" tag="1">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Horizontal Scaling" image="horScaleTemplate" width="22" tag="2">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <binding destination="-2" name="selectedIndex" keyPath="session.scaleOptions" id="530"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" id="520" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="55" height="25"/>
+                        <size key="maxSize" width="55" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="518">
+                            <rect key="frame" x="6" y="14" width="55" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Right to Left Page Order" image="rightLeftOrderTemplate" width="26">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Left to Right Page Order" image="leftRightOrderTemplate" width="26">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <binding destination="-2" name="selectedIndex" keyPath="session.pageOrder" id="531"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" id="523" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="60" height="25"/>
+                        <size key="maxSize" width="60" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="521">
+                            <rect key="frame" x="6" y="14" width="60" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="522">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Single Page Layout" image="onePageTemplate" width="22"/>
+                                    <segment toolTip="Two Page Layout" image="twoPageTemplate" imageScaling="none" width="35"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <binding destination="-2" name="selectedIndex" keyPath="session.twoPageSpread" id="533"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="2FEB6E2E-5C3E-4725-B4B7-D5204BC8F2A8" label="Rotate" paletteLabel="Rotate Pages" id="585" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="47" height="25"/>
+                        <size key="maxSize" width="47" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="586">
+                            <rect key="frame" x="15" y="14" width="47" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="587">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Rotate Left" image="rotateLeftTemplate" width="22" tag="901"/>
+                                    <segment toolTip="Rotate Right" image="rotateRightTemplate" width="22" tag="902"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="rotate:" target="-2" id="588"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C8491130-5672-4D81-9D91-76BB3F03D233" label="Zoom" paletteLabel="Zoom" id="559" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="70" height="25"/>
+                        <size key="maxSize" width="70" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="557">
+                            <rect key="frame" x="0.0" y="14" width="70" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="558">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Zoom In" image="NSAddTemplate" width="22" tag="801"/>
+                                    <segment toolTip="Zoom Out" image="NSRemoveTemplate" width="22" tag="802"/>
+                                    <segment toolTip="Zoom Reset" image="equalTemplate" width="22" tag="803">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="zoom:" target="-2" id="560"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="55B2F7CD-2E3A-405A-BF65-65B5A68E94BD" label="Loupe" paletteLabel="Loupe" image="loupeTemplate" id="575" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="27" height="25"/>
+                        <size key="maxSize" width="27" height="25"/>
+                        <button key="view" toolTip="Magnifing Glass" verticalHuggingPriority="750" id="573">
+                            <rect key="frame" x="7" y="14" width="27" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="loupeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">
+                                <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="session.loupe" id="576"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="AB4BCD46-EE79-45CC-9A97-733E3740BA34" label="Thumbnails" paletteLabel="Thumbnails" image="NSIconViewTemplate" id="577" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="27" height="25"/>
+                        <size key="maxSize" width="27" height="25"/>
+                        <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
+                            <rect key="frame" x="21" y="14" width="27" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="togglePageExpose:" target="-2" id="580"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="Capture Page" paletteLabel="Capture Page" image="extractTemplate" id="688" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="27" height="25"/>
+                        <size key="maxSize" width="27" height="25"/>
+                        <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
+                            <rect key="frame" x="26" y="14" width="27" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="extractTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="extractPage:" target="-2" id="692"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="NSQuickLookTemplate" id="693" customClass="DTToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="27" height="25"/>
+                        <size key="maxSize" width="27" height="25"/>
+                        <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
+                            <rect key="frame" x="12" y="14" width="27" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <animations/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="setArchiveIcon:" target="-2" id="696"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="582"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="583"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="581"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="584"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="553"/>
+                    <toolbarItem reference="520"/>
+                    <toolbarItem reference="523"/>
+                    <toolbarItem reference="517"/>
+                    <toolbarItem reference="583"/>
+                    <toolbarItem reference="577"/>
+                </defaultToolbarItems>
+                <connections>
+                    <outlet property="delegate" destination="-2" id="552"/>
+                </connections>
+            </toolbar>
+            <connections>
+                <binding destination="-2" name="title" keyPath="pageNames" id="272"/>
+                <outlet property="delegate" destination="-2" id="39"/>
+                <outlet property="initialFirstResponder" destination="235" id="649"/>
+            </connections>
+            <point key="canvasLocation" x="681" y="137.5"/>
+        </window>
+        <arrayController mode="entity" entityName="Image" automaticallyPreparesContent="YES" clearsFilterPredicateOnInsertion="NO" id="12" userLabel="Page Controller">
+            <declaredKeys>
+                <string>name</string>
+                <string>archive.path</string>
+                <string>thumbnail</string>
+                <string>@count</string>
+                <string>session.scaleOptions</string>
+                <string>group.path</string>
+                <string>group</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="86"/>
+                <binding destination="-2" name="sortDescriptors" keyPath="pageSortDescriptor" id="158"/>
+                <binding destination="-2" name="contentSet" keyPath="session.images" id="644"/>
+            </connections>
+        </arrayController>
+        <window title="InfoPane" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="350" userLabel="Scrub Panel" customClass="TSSTInfoWindow">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="222" y="490" width="104" height="104"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="200" height="24"/>
+            <view key="contentView" id="351" customClass="TSSTInfoView">
+                <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="359" customClass="TSSTImageView">
+                        <rect key="frame" x="10" y="15" width="64" height="64"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="P73-eb-yYK"/>
+                            <constraint firstAttribute="height" constant="64" id="fUQ-qF-7tO"/>
+                        </constraints>
+                        <animations/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="499"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="359" firstAttribute="leading" secondItem="351" secondAttribute="leading" constant="10" id="2Qi-Ev-RXz"/>
+                    <constraint firstItem="359" firstAttribute="top" secondItem="351" secondAttribute="top" constant="25" id="Ucj-bE-5SI"/>
+                    <constraint firstAttribute="bottom" secondItem="359" secondAttribute="bottom" constant="15" id="drv-Su-5Td"/>
+                    <constraint firstAttribute="trailing" secondItem="359" secondAttribute="trailing" constant="30" id="jfc-Pq-LGg"/>
+                </constraints>
+                <animations/>
+            </view>
+            <point key="canvasLocation" x="211" y="290"/>
+        </window>
+        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="363" userLabel="Loupe panel" customClass="TSSTInfoWindow">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="932" y="284" width="200" height="200"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="175" height="107"/>
+            <view key="contentView" id="364">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="366" customClass="TSSTCircularImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <animations/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="501"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="366" firstAttribute="top" secondItem="364" secondAttribute="top" id="4Pf-KX-PqU"/>
+                    <constraint firstAttribute="trailing" secondItem="366" secondAttribute="trailing" id="CNq-xd-5c0"/>
+                    <constraint firstItem="366" firstAttribute="leading" secondItem="364" secondAttribute="leading" id="Gcr-iM-KQr"/>
+                    <constraint firstAttribute="bottom" secondItem="366" secondAttribute="bottom" id="OFD-At-9Ld"/>
+                </constraints>
+                <animations/>
+            </view>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="373" userLabel="expose" customClass="TSSTKeyWindow">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="545" y="211" width="480" height="360"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="213" height="107"/>
+            <view key="contentView" id="374" customClass="TSSTTransparentView">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="378" customClass="TSSTThumbnailView">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
+                        <animations/>
+                        <connections>
+                            <outlet property="dataSource" destination="-2" id="379"/>
+                            <outlet property="pageController" destination="12" id="381"/>
+                            <outlet property="thumbnailView" destination="486" id="489"/>
+                        </connections>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="378" firstAttribute="leading" secondItem="374" secondAttribute="leading" id="GNw-6U-TUB"/>
+                    <constraint firstItem="378" firstAttribute="top" secondItem="374" secondAttribute="top" id="eqf-pa-XLT"/>
+                    <constraint firstAttribute="bottom" secondItem="378" secondAttribute="bottom" id="k4U-HQ-DxQ"/>
+                    <constraint firstAttribute="trailing" secondItem="378" secondAttribute="trailing" id="lJj-dG-0Sr"/>
+                </constraints>
+                <animations/>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="376"/>
+            </connections>
+        </window>
+        <userDefaultsController id="403" userLabel="Shared Defaults"/>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="445" userLabel="Jump" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="468" width="229" height="42"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <view key="contentView" id="446">
+                <rect key="frame" x="0.0" y="0.0" width="229" height="42"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="448">
+                        <rect key="frame" x="52" y="10" width="39" height="22"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="503">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#1" negativeFormat="#1" generatesDecimalNumbers="YES" allowsFloats="NO" usesGroupingSeparator="NO" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="454">
+                                <integer key="roundingIncrement" value="1"/>
+                                <nil key="negativeInfinitySymbol"/>
+                                <nil key="positiveInfinitySymbol"/>
+                                <real key="maximum" value="9999"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="goToPage:" target="-2" id="462"/>
+                            <binding destination="12" name="maxValue" keyPath="arrangedObjects.@count" id="458"/>
+                        </connections>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="447">
+                        <rect key="frame" x="7" y="13" width="39" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page:" id="502">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="752">
+                        <rect key="frame" x="99" y="8" width="56" height="25"/>
+                        <animations/>
+                        <buttonCell key="cell" type="roundTextured" title="Jump" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="753">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="goToPage:" target="-2" id="757"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="754">
+                        <rect key="frame" x="163" y="8" width="56" height="25"/>
+                        <animations/>
+                        <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="755">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelJumpPanel:" target="-2" id="756"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="752" firstAttribute="leading" secondItem="448" secondAttribute="trailing" constant="8" symbolic="YES" id="7Fe-hC-5Gg"/>
+                    <constraint firstItem="448" firstAttribute="leading" secondItem="447" secondAttribute="trailing" constant="8" symbolic="YES" id="Svw-S5-rBY"/>
+                    <constraint firstItem="752" firstAttribute="baseline" secondItem="447" secondAttribute="baseline" id="TC6-KJ-Isq"/>
+                    <constraint firstItem="754" firstAttribute="leading" secondItem="752" secondAttribute="trailing" constant="8" symbolic="YES" id="a0K-mr-wvq"/>
+                    <constraint firstItem="754" firstAttribute="top" secondItem="446" secondAttribute="top" constant="10" id="eO8-FU-XZb"/>
+                    <constraint firstItem="448" firstAttribute="baseline" secondItem="447" secondAttribute="baseline" id="f71-sC-Epc"/>
+                    <constraint firstItem="754" firstAttribute="width" secondItem="752" secondAttribute="width" id="hRz-7R-f9W"/>
+                    <constraint firstAttribute="bottom" secondItem="754" secondAttribute="bottom" constant="10" id="nPi-xw-EAh"/>
+                    <constraint firstItem="447" firstAttribute="leading" secondItem="446" secondAttribute="leading" constant="9" id="oTv-Ru-iod"/>
+                    <constraint firstAttribute="trailing" secondItem="754" secondAttribute="trailing" constant="10" id="yMC-wO-OtT"/>
+                    <constraint firstItem="754" firstAttribute="baseline" secondItem="447" secondAttribute="baseline" id="z1s-zN-bGd"/>
+                </constraints>
+                <animations/>
+            </view>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="160" width="350" height="350"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <view key="contentView" id="484">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="486" customClass="TSSTImageView">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                        <animations/>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="486" secondAttribute="trailing" id="0Wk-IJ-nxh"/>
+                    <constraint firstItem="486" firstAttribute="top" secondItem="484" secondAttribute="top" id="T7f-fB-5ty"/>
+                    <constraint firstAttribute="bottom" secondItem="486" secondAttribute="bottom" id="h8p-Tg-fJB"/>
+                    <constraint firstItem="486" firstAttribute="leading" secondItem="484" secondAttribute="leading" id="zyP-kQ-341"/>
+                </constraints>
+                <animations/>
+            </view>
+        </window>
+    </objects>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSIconViewTemplate" width="10" height="10"/>
+        <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
+        <image name="equalTemplate" width="9" height="6"/>
+        <image name="extractTemplate" width="17" height="12"/>
+        <image name="horScaleTemplate" width="12" height="8"/>
+        <image name="leftRightOrderTemplate" width="16" height="14"/>
+        <image name="loupeTemplate" width="14" height="14"/>
+        <image name="onePageTemplate" width="12" height="14"/>
+        <image name="rightLeftOrderTemplate" width="16" height="14"/>
+        <image name="rotateLeftTemplate" width="16" height="13"/>
+        <image name="rotateRightTemplate" width="16" height="13"/>
+        <image name="twoPageTemplate" width="25" height="14"/>
+        <image name="winScaleTemplate" width="12" height="12"/>
+    </resources>
+</document>

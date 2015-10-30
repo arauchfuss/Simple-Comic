@@ -16,37 +16,36 @@ static NSArray * fileNameSort = nil;
 
 NSMutableArray * fileListForArchive(XADArchive * archive)
 {
-	NSMutableArray * fileDescriptions = [NSMutableArray array];
+	NSMutableArray * fileDescriptions = [[NSMutableArray alloc] init];
 	
     NSDictionary * fileDescription;
-    int count = [archive numberOfEntries];
-    int index = 0;
+    NSInteger count = [archive numberOfEntries];
+    NSInteger index = 0;
     NSString * fileName;
 	NSString * rawName;
     for ( ; index < count; ++index)
     {
         fileName = [archive nameOfEntry: index];
-		XADString * dataString = [archive rawNameOfEntry: index];
-		rawName = [dataString stringWithEncoding: NSNonLossyASCIIStringEncoding];
+		NSString * dataString = [archive nameOfEntry: index];
+		rawName = dataString;
         if([[NSImage imageFileTypes] containsObject: [fileName pathExtension]])
         {
-            fileDescription = [NSDictionary dictionaryWithObjectsAndKeys: fileName, @"name",
-                               [NSNumber numberWithInt: index], @"index",
-							   rawName, @"rawName", nil];
+            fileDescription = @{@"name": fileName,
+								@"index": @(index),
+								@"rawName": rawName};
             [fileDescriptions addObject: fileDescription];
         }
     }
-    return [[fileDescriptions retain] autorelease];
+    return fileDescriptions;
 }
 
 
-NSArray * fileSort(void)
+NSArray<NSSortDescriptor*> * fileSort(void)
 {
     if(!fileNameSort)
     {
         TSSTSortDescriptor * sort = [[TSSTSortDescriptor alloc] initWithKey: @"name" ascending: YES];
-        fileNameSort = [[NSArray alloc] initWithObjects: sort, nil];
-        [sort release];
+        fileNameSort = @[sort];
     }
     
     return fileNameSort;
