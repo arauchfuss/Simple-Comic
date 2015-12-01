@@ -42,12 +42,13 @@ static NSSize monospaceCharacterSize;
 
 + (NSArray *)imageExtensions
 {
-	static NSMutableArray * imageTypes = nil;
+	static NSArray * imageTypes = nil;
 	if(!imageTypes)
 	{
-		imageTypes = [[NSMutableArray alloc] initWithArray: [NSImage imageFileTypes]];
-		[imageTypes removeObject: @"pdf"];
-		[imageTypes removeObject: @"eps"];
+		NSMutableArray *aimageTypes = [[NSMutableArray alloc] initWithArray: [NSImage imageFileTypes]];
+		[aimageTypes removeObject: @"pdf"];
+		[aimageTypes removeObject: @"eps"];
+		imageTypes = [[NSArray alloc] initWithArray:aimageTypes];
 	}
 	
 	return imageTypes;

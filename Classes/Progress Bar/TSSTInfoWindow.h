@@ -21,15 +21,7 @@
 
 @end
 
-
-
-@interface TSSTInfoView : NSView
-
-@property (assign) BOOL bordered;
-@property (nonatomic, assign) CGFloat caretPosition;
-
-@end
-
+@class TSSTInfoView;
 
 @interface TSSTCircularImageView : NSImageView
 

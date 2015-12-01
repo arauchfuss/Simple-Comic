@@ -8,7 +8,7 @@
 
 #import "TSSTInfoWindow.h"
 #import "TSSTImageUtilities.h"
-
+#import "Simple_Comic-Swift.h"
 
 @implementation TSSTInfoWindow
 
@@ -54,50 +54,6 @@
 	[self setFrame: NSMakeRect(center.x - diameter / 2,  center.y - diameter / 2, diameter, diameter) 
 		   display: YES 
 		   animate: NO];
-}
-
-
-@end
-
-
-
-@implementation TSSTInfoView
-
-@synthesize bordered, caretPosition;
-
-
-- (void)setCaretPosition:(CGFloat)position
-{
-    caretPosition = position;
-	[self setNeedsDisplay: YES];
-}
-
-
-- (void)drawRect:(NSRect)aRect
-{
-    NSRect bounds = [self bounds];
-    [[NSColor clearColor] set];
-    NSRectFill(bounds);
-    
-    NSBezierPath * outline = [NSBezierPath bezierPath];
-    [outline moveToPoint: NSMakePoint(caretPosition + 5, 5)];
-    [outline lineToPoint: NSMakePoint(caretPosition, 0)];
-    [outline lineToPoint: NSMakePoint(caretPosition - 5, 5)];
-    [outline appendBezierPathWithArcFromPoint: NSMakePoint(0 , 5) 
-                                      toPoint: NSMakePoint(0 , NSMidY(bounds)) 
-                                       radius: 5];
-    [outline appendBezierPathWithArcFromPoint: NSMakePoint(0 , NSMaxY(bounds)) 
-                                      toPoint: NSMakePoint(NSMidX(bounds), NSMaxY(bounds)) 
-                                       radius: 5];
-    [outline appendBezierPathWithArcFromPoint: NSMakePoint(NSMaxX(bounds), NSMaxY(bounds)) 
-                                      toPoint: NSMakePoint(NSMaxX(bounds), NSMidY(bounds)) 
-                                       radius: 5];
-    [outline appendBezierPathWithArcFromPoint: NSMakePoint(NSMaxX(bounds), 5) 
-                                      toPoint: NSMakePoint(caretPosition + 5, 5)
-                                       radius: 5];
-    [outline closePath];
-    [[NSColor colorWithCalibratedWhite: 1 alpha: 1] set];
-    [outline fill];
 }
 
 
