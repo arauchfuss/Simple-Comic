@@ -279,6 +279,8 @@
 		55C3743A1BD9E85A006385B6 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
 		55C3744B1BD9E8BB006385B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C374401BD9E8BB006385B6 /* InfoPlist.strings */; };
 		55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; };
+		55E02FED1C1E44D700C6F28E /* XADPMArc1Handle.h in Headers */ = {isa = PBXBuildFile; fileRef = 55E02FEB1C1E44D700C6F28E /* XADPMArc1Handle.h */; };
+		55E02FEE1C1E44D700C6F28E /* XADPMArc1Handle.m in Sources */ = {isa = PBXBuildFile; fileRef = 55E02FEC1C1E44D700C6F28E /* XADPMArc1Handle.m */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -704,6 +706,8 @@
 		55C374411BD9E8BB006385B6 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55C374461BD9E8BB006385B6 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = Vendor/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
+		55E02FEB1C1E44D700C6F28E /* XADPMArc1Handle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XADPMArc1Handle.h; sourceTree = "<group>"; };
+		55E02FEC1C1E44D700C6F28E /* XADPMArc1Handle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XADPMArc1Handle.m; sourceTree = "<group>"; };
 		64777B8B1A4212E40064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		64777B8D1A4213150064A356 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -1011,6 +1015,8 @@
 		559EF1A01BDD384600FAAA0A /* LHA */ = {
 			isa = PBXGroup;
 			children = (
+				55E02FEB1C1E44D700C6F28E /* XADPMArc1Handle.h */,
+				55E02FEC1C1E44D700C6F28E /* XADPMArc1Handle.m */,
 				559EF1A11BDD384600FAAA0A /* XADLArcHandles.h */,
 				559EF1A21BDD384600FAAA0A /* XADLArcHandles.m */,
 				559EF1A31BDD384600FAAA0A /* XADLZHDynamicHandle.h */,
@@ -1499,6 +1505,7 @@
 				559EF3211BDD384600FAAA0A /* wavpack_local.h in Headers */,
 				559EF3D51BDD384600FAAA0A /* XADResourceFork.h in Headers */,
 				559EF32B1BDD384600FAAA0A /* JPEG.h in Headers */,
+				55E02FED1C1E44D700C6F28E /* XADPMArc1Handle.h in Headers */,
 				559EF30E1BDD384600FAAA0A /* XADRARAESHandle.h in Headers */,
 				559EF3D71BDD384600FAAA0A /* XADString.h in Headers */,
 				559EF3BD1BDD384600FAAA0A /* XADCRCHandle.h in Headers */,
@@ -1707,6 +1714,7 @@
 				559EF31F1BDD384600FAAA0A /* unpack.c in Sources */,
 				559EF2FC1BDD384600FAAA0A /* RARBug.c in Sources */,
 				559EF2F71BDD384600FAAA0A /* XADPPMdHandles.m in Sources */,
+				55E02FEE1C1E44D700C6F28E /* XADPMArc1Handle.m in Sources */,
 				559EF31B1BDD384600FAAA0A /* XADCompressHandle.m in Sources */,
 				559EF3CE1BDD384600FAAA0A /* XADException.m in Sources */,
 				559EF3CC1BDD384600FAAA0A /* XADArchiveParserDescriptions.m in Sources */,
@@ -2024,7 +2032,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.XADMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = de.dstoecker.xadmaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2052,7 +2060,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.maddthesane.XADMaster;
+				PRODUCT_BUNDLE_IDENTIFIER = de.dstoecker.xadmaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2248,6 +2256,7 @@
 				559EF1901BDD380400FAAA0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55C3740E1BD9E67D006385B6 /* Build configuration list for PBXNativeTarget "QuickComic" */ = {
 			isa = XCConfigurationList;

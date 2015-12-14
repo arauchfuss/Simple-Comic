@@ -357,7 +357,7 @@
     TSSTManagedGroup * nestedDescription;
     NSString * extension, * archivePath = nil;
 	NSString * fileName = nil;
-	int counter, archivedFilesCount = [imageArchive numberOfEntries];
+	NSInteger counter, archivedFilesCount = [imageArchive numberOfEntries];
 	NSError * error;
 	if([imageArchive isSolid])
 	{
