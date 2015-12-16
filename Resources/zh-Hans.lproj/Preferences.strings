@@ -1,14 +1,5 @@
 //TODO: Commented-out entries are entries that have not been translated
 
-/* Class = "NSButton"; ibShadowedToolTip = "Pages are never automatically scaled past their actual resolution"; ObjectID = "36"; */
-"36.ibShadowedToolTip" = "Pages are never automatically scaled past their actual resolution";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Save all open comics on exit"; ObjectID = "41"; */
-"41.ibShadowedToolTip" = "Save all open comics on exit";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Windows are dynamically resized to fit the page-view and screen"; ObjectID = "152"; */
-"152.ibShadowedToolTip" = "Windows are dynamically resized to fit the page-view and screen";
-
 /* Class = "NSButtonCell"; title = "原始比例缩放"; ObjectID = "229"; */
 "229.title" = "原始比例缩放";
 
