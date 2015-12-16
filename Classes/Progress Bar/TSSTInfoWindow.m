@@ -72,24 +72,11 @@
     NSRectFill(bounds);
     if([self image])
     {
-        NSGradient * loupeGradient = [[NSGradient alloc] initWithStartingColor: [NSColor colorWithCalibratedWhite: 0.3 alpha: 1] 
-                                                                   endingColor: [NSColor colorWithCalibratedWhite: 0.6 alpha: 1]];
-        
-        NSPoint centerPoint = centerPointOfRect( rect );
-        [loupeGradient drawFromCenter: centerPoint radius: NSWidth(rect) / 2 - 10 toCenter: centerPoint radius: NSWidth(rect) / 2 - 1 options: 0];
-        
-		NSBezierPath * circle = [NSBezierPath bezierPathWithOvalInRect: NSInsetRect(bounds,1,1)];
-        [[NSColor colorWithCalibratedWhite: 0.2 alpha: 2] set];
-        [circle setLineWidth: 2.0];
-        [circle stroke];
-        circle = [NSBezierPath bezierPathWithOvalInRect: NSInsetRect(bounds,10,10)];
+		NSBezierPath * circle = [NSBezierPath bezierPathWithOvalInRect: NSInsetRect(bounds,5,5)];
         [[NSColor whiteColor] set];
         [circle fill];
         [circle addClip];
 		[super drawRect: rect];
-		[[NSColor colorWithCalibratedWhite: 0.6 alpha: 1] set];
-        [circle setLineWidth: 3.0];
-        [circle stroke];
     }
 }
 
