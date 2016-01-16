@@ -28,6 +28,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 #import <Cocoa/Cocoa.h>
 
+@class TSSTPage;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,10 +42,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy) NSString *path;
 
-- (NSData *)dataForPageIndex:(NSInteger)index;
-- (NSData *)dataForPageName:(NSString *)name;
-@property (readonly, strong) NSManagedObject *topLevelGroup;
-@property (readonly, copy) NSSet *nestedImages;
+- (nullable NSData *)dataForPageIndex:(NSInteger)index;
+- (nullable NSData *)dataForPageName:(NSString *)name;
+@property (readonly, strong, nullable) NSManagedObject *topLevelGroup;
+@property (readonly, copy) NSSet<TSSTPage*> *nestedImages;
 
 - (void)nestedFolderContents;
 

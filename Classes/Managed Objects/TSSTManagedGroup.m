@@ -354,10 +354,8 @@
     NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSData * fileData;
 	int collision = 0;
-    TSSTManagedGroup * nestedDescription;
-    NSString * extension, * archivePath = nil;
-	NSString * fileName = nil;
-	int counter, archivedFilesCount = [imageArchive numberOfEntries];
+    NSString * archivePath = nil;
+	NSInteger counter, archivedFilesCount = [imageArchive numberOfEntries];
 	NSError * error;
 	if([imageArchive isSolid])
 	{
@@ -371,12 +369,12 @@
     
     for (counter = 0; counter < archivedFilesCount; ++counter)
     {
-        fileName = [imageArchive nameOfEntry: counter];
-        nestedDescription = nil;
+        NSString *fileName = [imageArchive nameOfEntry: counter];
+        TSSTManagedGroup *nestedDescription = nil;
 		
         if(!([fileName isEqualToString: @""] || [[[fileName lastPathComponent] substringToIndex: 1] isEqualToString: @"."]))
         {
-            extension = [[fileName pathExtension] lowercaseString];
+            NSString *extension = [[fileName pathExtension] lowercaseString];
             if([[TSSTPage imageExtensions] containsObject: extension])
             {
                 nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
@@ -584,8 +582,8 @@
 
     int pageNumber = 0;
     
-    for(NSString *path in filenames){
-        if(path){
+    for(NSString *path in filenames) {
+        if (path) {
             NSString * pathExtension = [[path pathExtension] lowercaseString];
             NSLog(@"path: %@  -  extension: %@", path, pathExtension);
             // Handles recognized image files

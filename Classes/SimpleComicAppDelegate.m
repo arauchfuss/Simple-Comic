@@ -661,15 +661,14 @@ static NSArray * allAvailableStringEncodings(void)
 //	[[self managedObjectContext] retain];
 //	[[self managedObjectContext] lock];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
-	NSString * path, * fileExtension;
-	BOOL isDirectory, exists;
+	BOOL isDirectory;
     NSManagedObject * fileDescription;
 	NSMutableSet * pageSet = [[NSMutableSet alloc] initWithSet: [session valueForKey: @"images"]];
-	for (path in paths)
+	for (NSString *path in paths)
 	{
 		fileDescription = nil;
-		fileExtension = [[path pathExtension] lowercaseString];
-		exists = [fileManager fileExistsAtPath: path isDirectory: &isDirectory];
+		NSString *fileExtension = [[path pathExtension] lowercaseString];
+		BOOL exists = [fileManager fileExistsAtPath: path isDirectory: &isDirectory];
 		if(exists && ![[[path lastPathComponent] substringToIndex: 1] isEqualToString: @"."])
 		{
 			if(isDirectory)
@@ -743,12 +742,8 @@ static NSArray * allAvailableStringEncodings(void)
 	NSOpenPanel * addPagesModal = [NSOpenPanel openPanel];
 	[addPagesModal setAllowsMultipleSelection: YES];
     [addPagesModal setCanChooseDirectories: YES];
-    NSMutableArray * filePaths;
-    NSArray * fileURLs;
-	NSURL * fileURL;
-    NSString * filePath;
-    
-	NSMutableArray * allAllowedFilesExtensions = [NSMutableArray arrayWithArray: [TSSTManagedArchive archiveExtensions]];
+	
+	NSMutableArray * allAllowedFilesExtensions = [[TSSTManagedArchive archiveExtensions] mutableCopy];
 	[allAllowedFilesExtensions addObjectsFromArray: [TSSTPage imageExtensions]];
 #pragma TODO make a savedSearch constant?
     [allAllowedFilesExtensions addObject: @"savedSearch"];
@@ -756,10 +751,11 @@ static NSArray * allAvailableStringEncodings(void)
 
 	if([addPagesModal runModal] !=  NSCancelButton)
 	{
-        filePaths = [NSMutableArray array];
-        fileURLs = [addPagesModal URLs];
-        
-        for (fileURL in fileURLs) {
+		NSArray<NSURL*> *fileURLs = [addPagesModal URLs];
+        NSMutableArray<NSString*> *filePaths = [[NSMutableArray alloc] initWithCapacity:fileURLs.count];
+		NSString * filePath;
+
+        for (NSURL *fileURL in fileURLs) {
             filePath = [fileURL path];
             [filePaths addObject:filePath];
         }
