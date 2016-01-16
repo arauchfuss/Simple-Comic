@@ -225,7 +225,7 @@
 	static NSArray * extensions = nil;
 	if(!extensions)
 	{
-		extensions = @[@"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh"];
+		extensions = @[@"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh", @"cbt", @"tar"];
 	}
 	
 	return extensions;
@@ -240,7 +240,7 @@
 
 	if(!extensions)
 	{
-		extensions = @[@"cbr", @"cbz"];
+		extensions = @[@"cbr", @"cbz", @"cbt"];
 	}
 	
 	return extensions;

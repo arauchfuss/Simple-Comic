@@ -235,6 +235,27 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>cbt</string>
+				<string>CBT</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>cbt</string>
+			<key>CFBundleTypeName</key>
+			<string>Comic Tar</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.dancingtortoise.simplecomic.cbt</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>jpeg</string>
 				<string>jpg</string>
 			</array>
@@ -357,6 +378,26 @@
 	<string>http://www.dancingtortoise.com/simplecomic/simplecomic.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.tar-archive</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Comic Book Tar Archive</string>
+			<key>UTTypeIdentifier</key>
+			<string>com.dancingtortoise.simplecomic.cbt</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cbt</string>
+				</array>
+			</dict>
+		</dict>
+	</array>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
