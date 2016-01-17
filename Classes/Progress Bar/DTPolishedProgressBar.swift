@@ -61,7 +61,7 @@ shadow:  This is the gradient that give the illusion of depth.
 textStyle: Dictionary of string attributes.
 */
 
-	/// The direction of the porgress bar.
+	/// The direction of the progress bar.
 	@IBInspectable
 	dynamic var leftToRight: Bool = true {
 		didSet {

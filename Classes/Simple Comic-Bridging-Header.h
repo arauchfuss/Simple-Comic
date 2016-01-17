@@ -4,5 +4,4 @@
 
 #import "TSSTImageUtilities.h"
 #import "TSSTSessionWindowController.h"
-#import "TSSTInfoWindow.h"
 #import "TSSTManagedSession.h"

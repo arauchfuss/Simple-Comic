@@ -11,7 +11,7 @@ import Cocoa
 private let stringAttributes: [String: AnyObject] = {
 	let style = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
 	style.lineBreakMode = .ByTruncatingHead
-	return [NSFontAttributeName: NSFont(name: "Lucida Grande", size: 14)!,
+	return [NSFontAttributeName: NSFont.labelFontOfSize(14),
 		NSForegroundColorAttributeName: NSColor(calibratedWhite: 1, alpha: 1),
 		NSParagraphStyleAttributeName: style]
 }()

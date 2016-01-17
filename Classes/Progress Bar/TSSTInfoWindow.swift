@@ -2,43 +2,51 @@
 //  TSSTInfoWindow.swift
 //  SimpleComic
 //
-//  Created by C.W. Betts on 12/1/15.
-//  Copyright © 2015 Dancing Tortoise Software. All rights reserved.
+//  Created by C.W. Betts on 1/17/16.
+//  Copyright © 2016 Dancing Tortoise Software. All rights reserved.
 //
 
-import AppKit
+import Cocoa
 
-final class TSSTInfoView : NSView {
-	var bordered: Bool = false
-	var caretPosition: CGFloat = 0 {
-		didSet {
-			needsDisplay = true
-		}
+/// This panel subclass is used by both the loupe and the speach bubble styled
+/// page preview.
+class TSSTInfoWindow: NSPanel {
+	override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
+		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, `defer`: flag)
+		opaque = false
+		ignoresMouseEvents = true
+
 	}
 
-	override func drawRect(dirtyRect: NSRect) {
-		let bounds = self.bounds
-		NSColor.clearColor().set()
-		NSRectFill(bounds)
-		
-		let outline = NSBezierPath()
-		outline.moveToPoint(NSPoint(x: caretPosition + 5, y: 5))
-		outline.lineToPoint(NSPoint(x: caretPosition, y: 0))
-		outline.lineToPoint(NSPoint(x: caretPosition - 5, y: 5))
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: 0, y: 5),
-			toPoint: NSPoint(x: 0, y: bounds.midY),
-			radius: 5)
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: 0, y: bounds.maxY),
-			toPoint: NSPoint(x: bounds.midX, y: bounds.maxY),
-			radius: 5)
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: bounds.maxX, y: bounds.maxY),
-			toPoint: NSPoint(x: bounds.maxX, y: bounds.midY),
-			radius: 5)
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: bounds.maxX, y: 5),
-			toPoint: NSPoint(x: caretPosition + 5, y: 5),
-			radius: 5)
-		outline.closePath()
-		NSColor(calibratedWhite: 1, alpha: 1).set()
-		outline.fill()
+	required init?(coder: NSCoder) {
+		super.init(coder: coder)
+		styleMask = NSBorderlessWindowMask
+		opaque = false
+		ignoresMouseEvents = true
+	}
+	
+	
+	func caretAtPoint(point: NSPoint, size: NSSize, withLimitLeft left: CGFloat, right: CGFloat) {
+		let limitWidth = right - left
+		let relativePosition = (point.x - left) / limitWidth
+		let offset = size.width * relativePosition
+		let frameRect = NSMakeRect( point.x - offset - 10, point.y, size.width + 20, size.height + 25)
+		(contentView as? TSSTInfoView)?.caretPosition = offset + 10
+		setFrame(frameRect, display: true, animate: false)
+		invalidateShadow()
+	}
+	
+	func centerAtPoint(center: NSPoint) {
+		let frame = self.frame
+		setFrameOrigin(NSPoint(x: center.x - frame.width / 2, y: center.y - frame.height / 2))
+		invalidateShadow()
+	}
+	
+	func resizeToDiameter(diameter: CGFloat) {
+		let frame = self.frame
+		let center = NSPoint(x: frame.minX + frame.width / 2, y: frame.minY + frame.height / 2)
+		setFrame(NSRect(x: center.x - diameter / 2, y: center.y - diameter / 2, width: diameter, height: diameter),
+			display: true,
+			animate: false)
 	}
 }

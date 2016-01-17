@@ -304,7 +304,7 @@
                 <binding destination="-2" name="contentSet" keyPath="session.images" id="644"/>
             </connections>
         </arrayController>
-        <window title="InfoPane" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="350" userLabel="Scrub Panel" customClass="TSSTInfoWindow">
+        <window title="InfoPane" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="350" userLabel="Scrub Panel" customClass="TSSTInfoWindow" customModule="Simple_Comic" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="222" y="490" width="104" height="104"/>
@@ -323,7 +323,7 @@
             </view>
             <point key="canvasLocation" x="-12" y="100"/>
         </window>
-        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="363" userLabel="Loupe panel" customClass="TSSTInfoWindow">
+        <window title="Panel" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="363" userLabel="Loupe panel" customClass="TSSTInfoWindow" customModule="Simple_Comic" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="932" y="284" width="200" height="200"/>
@@ -333,7 +333,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="366" customClass="TSSTCircularImageView">
+                    <imageView id="366" customClass="TSSTCircularImageView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="501"/>
@@ -435,7 +435,7 @@ Gw
                 </subviews>
             </view>
         </window>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow" customModule="Simple_Comic" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="160" width="350" height="350"/>
