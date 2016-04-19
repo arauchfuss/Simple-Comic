@@ -628,5 +628,7 @@
 			</dict>
 		</dict>
 	</array>
+	<key>NSHumanReadableCopyright</key>
+	<string>© Dancing Tortoise Software, 2010</string>
 </dict>
 </plist>

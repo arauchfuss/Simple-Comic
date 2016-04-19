@@ -73,5 +73,7 @@
 	<true/>
 	<key>QLThumbnailMinimumSize</key>
 	<real>17</real>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright (c) 2007 Dancing Tortoise Software.</string>
 </dict>
 </plist>
