@@ -99,7 +99,7 @@
                                     <action selector="extractPage:" target="-1" id="1867"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Remove Page" id="992">
+                            <menuItem title="Hide Page" id="992">
                                 <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>

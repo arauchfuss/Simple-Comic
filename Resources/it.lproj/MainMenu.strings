@@ -120,8 +120,8 @@
 /* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
 "988.title" = "Adatta alla finestra";
 
-/* Class = "NSMenuItem"; title = "Remove Page"; ObjectID = "992"; */
-"992.title" = "Rimuovi pagina";
+/* Class = "NSMenuItem"; title = "Hide Page"; ObjectID = "992"; */
+"992.title" = "Nascondi pagina";
 
 /* Class = "NSMenuItem"; title = "First Page"; ObjectID = "1065"; */
 "1065.title" = "Prima pagina";

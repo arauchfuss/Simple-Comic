@@ -120,8 +120,8 @@
 /* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
 "988.title" = "ウインドウに合わせる";
 
-/* Class = "NSMenuItem"; title = "Remove Page"; ObjectID = "992"; */
-"992.title" = "選択ページを削除";
+/* Class = "NSMenuItem"; title = "Hide Page"; ObjectID = "992"; */
+"992.title" = "選択ページを削除"; //TODO
 
 /* Class = "NSMenuItem"; title = "First Page"; ObjectID = "1065"; */
 "1065.title" = "最初のページ";
