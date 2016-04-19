@@ -364,6 +364,7 @@
 		77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComicAppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleComicAppDelegate.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Simple Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Comic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F1A8E1B1C2180CD005D88FF /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Preferences.strings; sourceTree = "<group>"; };
 		FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTPageView.m; sourceTree = "<group>"; };
 		FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTCustomValueTransformers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1042,6 +1043,7 @@
 				28A266091285C34300ED6391 /* Base */,
 				55C373E41BD99E15006385B6 /* en */,
 				64777B8E1A42131A0064A356 /* zh-Hans */,
+				8F1A8E1B1C2180CD005D88FF /* de */,
 			);
 			name = Preferences.xib;
 			sourceTree = "<group>";
