@@ -863,8 +863,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		TSSTPage * selectedPage = [pageController arrangedObjects][index];
 		
 		NSSavePanel * savePanel = [NSSavePanel savePanel];
-		[savePanel setTitle: @"Extract Page"];
-		[savePanel setPrompt: @"Extract"];
+		[savePanel setTitle: NSLocalizedString(@"Extract Page", @"")];
+		[savePanel setPrompt: NSLocalizedString(@"Extract", @"")];
         [savePanel setNameFieldStringValue:[selectedPage name]];
 		if(NSFileHandlingPanelOKButton == [savePanel runModal])
 		{

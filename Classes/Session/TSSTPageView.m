@@ -352,13 +352,13 @@
 	{
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment: NSCenterTextAlignment];
-		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande" size: 24], 
+		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
 										   NSForegroundColorAttributeName: [NSColor colorWithCalibratedWhite: 1 alpha: 1.0],
 										   NSParagraphStyleAttributeName: style};
-		NSString * selectionText = @"Click to select page";
+		NSString * selectionText = NSLocalizedString(@"Click to select page", @"");
 		if([sessionController pageSelectionCanCrop])
 		{
-			selectionText = [selectionText stringByAppendingString: @"\nDrag to crop"];
+			selectionText = [selectionText stringByAppendingString: NSLocalizedString(@"\nDrag to crop", @"")];
 		}
 		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
 		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
