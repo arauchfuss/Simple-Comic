@@ -11,12 +11,6 @@
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
 "24.title" = "Fenster";
 
-/* Class = "NSMenuItem"; title = "Simple Comic"; ObjectID = "56"; */
-"56.title" = "Simple Comic";
-
-/* Class = "NSMenu"; title = "Simple Comic"; ObjectID = "57"; */
-"57.title" = "Simple Comic";
-
 /* Class = "NSMenuItem"; title = "About Simple Comic"; ObjectID = "58"; */
 "58.title" = "Über Simple Comic";
 
@@ -50,7 +44,7 @@
 /* Class = "NSMenu"; title = "File"; ObjectID = "256"; */
 "256.title" = "Ablage";
 
-/* Class = "NSMenuItem"; title = "Open..."; ObjectID = "259"; */
+/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "259"; */
 "259.title" = "Öffnen …";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "336"; */
@@ -164,7 +158,7 @@
 /* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "1340"; */
 "1340.title" = "Symbolleiste einblenden";
 
-/* Class = "NSMenuItem"; title = "Customize Toolbar..."; ObjectID = "1342"; */
+/* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "1342"; */
 "1342.title" = "Symbolleiste anpassen …";
 
 /* Class = "NSTextFieldCell"; title = "Archive is Password Protected"; ObjectID = "1693"; */

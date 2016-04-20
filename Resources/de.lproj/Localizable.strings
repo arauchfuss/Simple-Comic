@@ -11,3 +11,11 @@
 "Extract Page" = "Seite extrahieren";
 
 "Extract" = "Extrahieren";
+
+"Quit without saving session?" = "Quit without saving session?";
+
+"Could not save changes while quitting. Quit anyway?" = "Änderungen konnten nicht gesichert werden. Trotzdem beenden?";
+
+"Quit anyway" = "Beenden";
+
+"Cancel" = "Abbrechen";

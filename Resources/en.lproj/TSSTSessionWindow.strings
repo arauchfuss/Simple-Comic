@@ -1,24 +1,6 @@
 
-/* Class = "NSWindow"; title = "Window"; ObjectID = "6"; */
-"6.title" = "Window";
-
-/* Class = "NSWindow"; title = "InfoPane"; ObjectID = "350"; */
-"350.title" = "InfoPane";
-
-/* Class = "NSWindow"; title = "Panel"; ObjectID = "363"; */
-"363.title" = "Panel";
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "373"; */
-"373.title" = "Window";
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "483"; */
-"483.title" = "Window";
-
 /* Class = "NSTextFieldCell"; title = "Page:"; ObjectID = "502"; */
 "502.title" = "Page:";
-
-/* Class = "NSTextFieldCell"; title = "9999"; ObjectID = "503"; */
-"503.title" = "9999";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
 "516.ibShadowedToolTips[0]" = "Original Size";

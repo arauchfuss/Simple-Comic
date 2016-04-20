@@ -11,15 +11,6 @@
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
 "24.title" = "Window";
 
-/* Class = "NSMenu"; title = "MainMenu"; ObjectID = "29"; */
-"29.title" = "MainMenu";
-
-/* Class = "NSMenuItem"; title = "Simple Comic"; ObjectID = "56"; */
-"56.title" = "Simple Comic";
-
-/* Class = "NSMenu"; title = "Simple Comic"; ObjectID = "57"; */
-"57.title" = "Simple Comic";
-
 /* Class = "NSMenuItem"; title = "About Simple Comic"; ObjectID = "58"; */
 "58.title" = "About Simple Comic";
 
@@ -53,7 +44,7 @@
 /* Class = "NSMenu"; title = "File"; ObjectID = "256"; */
 "256.title" = "File";
 
-/* Class = "NSMenuItem"; title = "Open..."; ObjectID = "259"; */
+/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "259"; */
 "259.title" = "Open…";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "336"; */
@@ -131,12 +122,6 @@
 /* Class = "NSWindow"; title = "Encoding"; ObjectID = "1080"; */
 "1080.title" = "Encoding";
 
-/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "1083"; */
-"1083.title" = "OtherViews";
-
-/* Class = "NSMenuItem"; title = "Item1"; ObjectID = "1086"; */
-"1086.title" = "Item1";
-
 /* Class = "NSMenuItem"; title = "Rotate Left"; ObjectID = "1104"; */
 "1104.title" = "Rotate Left";
 
@@ -173,7 +158,7 @@
 /* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "1340"; */
 "1340.title" = "Show Toolbar";
 
-/* Class = "NSMenuItem"; title = "Customize Toolbar..."; ObjectID = "1342"; */
+/* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "1342"; */
 "1342.title" = "Customize Toolbar…";
 
 /* Class = "NSTextFieldCell"; title = "Archive is Password Protected"; ObjectID = "1693"; */
@@ -199,9 +184,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Encoding:"; ObjectID = "1710"; */
 "1710.title" = "Encoding:";
-
-/* Class = "NSTextFieldCell"; title = "filename"; ObjectID = "1711"; */
-"1711.title" = "filename";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1712"; */
 "1712.title" = "Cancel";

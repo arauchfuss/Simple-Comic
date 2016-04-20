@@ -29,3 +29,11 @@
 "Extract Page" = "Extract Page";
 
 "Extract" = "Extract";
+
+"Quit without saving session?" = "Quit without saving session?";
+
+"Could not save changes while quitting. Quit anyway?" = "Could not save changes while quitting. Quit anyway?";
+
+"Quit anyway" = "Quit anyway";
+
+"Cancel" = "Cancel";

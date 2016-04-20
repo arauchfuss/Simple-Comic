@@ -1,25 +1,6 @@
-//TODO: Commented-out entries are entries that have not been translated
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "6"; */
-"6.title" = "Window";
-
-/* Class = "NSWindow"; title = "InfoPane"; ObjectID = "350"; */
-"350.title" = "InfoPane";
-
-/* Class = "NSWindow"; title = "Panel"; ObjectID = "363"; */
-"363.title" = "Panel";
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "373"; */
-"373.title" = "Window";
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "483"; */
-"483.title" = "Window";
 
 /* Class = "NSTextFieldCell"; title = "Page:"; ObjectID = "502"; */
 "502.title" = "Page:";
-
-/* Class = "NSTextFieldCell"; title = "9999"; ObjectID = "503"; */
-"503.title" = "9999";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
 "516.ibShadowedToolTips[0]" = "Taille réelle";
@@ -28,13 +9,13 @@
 "516.ibShadowedToolTips[1]" = "Adapter à la fenêtre";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[2] = "Horizontal Scaling"; ObjectID = "516"; */
-//"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
+"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
 
 /* Class = "NSToolbarItem"; label = "Page Scaling"; ObjectID = "517"; */
-//"517.label" = "Page Scaling";
+"517.label" = "Page Scaling";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Scaling"; ObjectID = "517"; */
-//"517.paletteLabel" = "Page Scaling";
+"517.paletteLabel" = "Page Scaling";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[0] = "Right to Left Page Order"; ObjectID = "519"; */
 "519.ibShadowedToolTips[0]" = "Disposer les pages de droite à gauche";
@@ -55,16 +36,16 @@
 "522.ibShadowedToolTips[1]" = "Pages opposées";
 
 /* Class = "NSToolbarItem"; label = "Page Layout"; ObjectID = "523"; */
-//"523.label" = "Page Layout";
+"523.label" = "Page Layout";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Layout"; ObjectID = "523"; */
-//"523.paletteLabel" = "Page Layout";
+"523.paletteLabel" = "Page Layout";
 
 /* Class = "NSToolbarItem"; label = "Turn Page"; ObjectID = "553"; */
-//"553.label" = "Turn Page";
+"553.label" = "Turn Page";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Turn Page"; ObjectID = "553"; */
-//"553.paletteLabel" = "Turn Page";
+"553.paletteLabel" = "Turn Page";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[0] = "Left Page Turn"; ObjectID = "555"; */
 "555.ibShadowedToolTips[0]" = "Left Page Turn";
@@ -88,7 +69,7 @@
 "559.paletteLabel" = "Zoom";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Magnifing Glass"; ObjectID = "573"; */
-//"573.ibShadowedToolTip" = "Magnifing Glass";
+"573.ibShadowedToolTip" = "Magnifing Glass";
 
 /* Class = "NSToolbarItem"; label = "Loupe"; ObjectID = "575"; */
 "575.label" = "Loupe";
@@ -106,10 +87,10 @@
 "578.ibShadowedToolTip" = "Présentation de vignette"; //FIXME: fuzzy translation
 
 /* Class = "NSToolbarItem"; label = "Rotate"; ObjectID = "585"; */
-//"585.label" = "Rotate";
+"585.label" = "Rotate";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Rotate Pages"; ObjectID = "585"; */
-//"585.paletteLabel" = "Rotate Pages";
+"585.paletteLabel" = "Rotate Pages";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
 "587.ibShadowedToolTips[0]" = "Rotation de la page dans le sens trigonométrique";
@@ -118,25 +99,25 @@
 "587.ibShadowedToolTips[1]" = "Rotation de la page dans le sens des aiguilles d'une montre";
 
 /* Class = "NSToolbarItem"; label = "Capture Page"; ObjectID = "688"; */
-//"688.label" = "Capture Page";
+"688.label" = "Capture Page";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Capture Page"; ObjectID = "688"; */
-//"688.paletteLabel" = "Capture Page";
+"688.paletteLabel" = "Capture Page";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Capture Page"; ObjectID = "689"; */
-//"689.ibShadowedToolTip" = "Capture Page";
+"689.ibShadowedToolTip" = "Capture Page";
 
 /* Class = "NSToolbarItem"; label = "Set Icon"; ObjectID = "693"; */
-//"693.label" = "Set Icon";
+"693.label" = "Set Icon";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Set Icon"; ObjectID = "693"; */
-//"693.paletteLabel" = "Set Icon";
+"693.paletteLabel" = "Set Icon";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
-//"694.ibShadowedToolTip" = "Set Icon";
+"694.ibShadowedToolTip" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
-//"753.title" = "Jump";
+"753.title" = "Jump";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
 "755.title" = "Annuler";

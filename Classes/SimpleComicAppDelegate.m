@@ -340,10 +340,10 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     {
         // Error handling wasn't implemented. Fall back to displaying a "quit anyway" panel.
 		NSAlert *alert = [NSAlert new];
-		alert.messageText = @"Quit without saving session?";
-		alert.informativeText = @"Could not save changes while quitting. Quit anyway?";
-		[alert addButtonWithTitle:@"Quit anyway"];
-		[alert addButtonWithTitle:@"Cancel"];
+		alert.messageText = NSLocalizedString(@"Quit without saving session?", @"");
+		alert.informativeText = NSLocalizedString(@"Could not save changes while quitting. Quit anyway?", @"");
+		[alert addButtonWithTitle:NSLocalizedString(@"Quit anyway", @"")];
+		[alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
 		NSInteger alertReturn = [alert runModal];
         if (alertReturn == NSAlertSecondButtonReturn)
         {
