@@ -149,8 +149,8 @@
 /* Class = "NSMenuItem"; title = "Image Loupe"; ObjectID = "1216"; */
 "1216.title" = "Lupe";
 
-/* Class = "NSMenuItem"; title = "Jump to Page"; ObjectID = "1243"; */
-"1243.title" = "Zu Seite springen";
+/* Class = "NSMenuItem"; title = "Jump to Page…"; ObjectID = "1243"; */
+"1243.title" = "Gehe zu Seite …";
 
 /* Class = "NSMenuItem"; title = "Status Bar"; ObjectID = "1338"; */
 "1338.title" = "Statusleiste einblenden";
@@ -203,8 +203,8 @@
 /* Class = "NSMenuItem"; title = "No Rotation"; ObjectID = "1860"; */
 "1860.title" = "Keine Drehung";
 
-/* Class = "NSMenuItem"; title = "Capture Page"; ObjectID = "1866"; */
-"1866.title" = "Seite sichern";
+/* Class = "NSMenuItem"; title = "Capture Page…"; ObjectID = "1866"; */
+"1866.title" = "Seite sichern …";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
 "1869.title" = "Bearbeiten";

@@ -149,8 +149,8 @@
 /* Class = "NSMenuItem"; title = "Image Loupe"; ObjectID = "1216"; */
 "1216.title" = "图片放大镜";
 
-/* Class = "NSMenuItem"; title = "Jump to Page"; ObjectID = "1243"; */
-"1243.title" = "跳转到页码";
+/* Class = "NSMenuItem"; title = "Jump to Page…"; ObjectID = "1243"; */
+"1243.title" = "跳转到页码…";
 
 /* Class = "NSMenuItem"; title = "Status Bar"; ObjectID = "1338"; */
 "1338.title" = "状态栏";
@@ -203,8 +203,8 @@
 /* Class = "NSMenuItem"; title = "No Rotation"; ObjectID = "1860"; */
 "1860.title" = "不旋转";
 
-/* Class = "NSMenuItem"; title = "Capture Page"; ObjectID = "1866"; */
-"1866.title" = "截屏";
+/* Class = "NSMenuItem"; title = "Capture Page…"; ObjectID = "1866"; */
+"1866.title" = "截屏…";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
 "1869.title" = "编辑";

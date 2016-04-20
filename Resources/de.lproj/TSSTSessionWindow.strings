@@ -117,7 +117,7 @@
 "694.ibShadowedToolTip" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
-"753.title" = "Springen";
+"753.title" = "Los";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
-"755.title" = "Abbrechen";
+"755.title" = "Abbr."; //Abbrechen

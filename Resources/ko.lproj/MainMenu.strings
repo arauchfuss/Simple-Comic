@@ -149,8 +149,8 @@
 /* Class = "NSMenuItem"; title = "Image Loupe"; ObjectID = "1216"; */
 "1216.title" = "이미지 확대경";
 
-/* Class = "NSMenuItem"; title = "Jump to Page"; ObjectID = "1243"; */
-"1243.title" = "Jump to Page";
+/* Class = "NSMenuItem"; title = "Jump to Page…"; ObjectID = "1243"; */
+"1243.title" = "Jump to Page…";
 
 /* Class = "NSMenuItem"; title = "Status Bar"; ObjectID = "1338"; */
 "1338.title" = "Status Bar";
@@ -203,8 +203,8 @@
 /* Class = "NSMenuItem"; title = "No Rotation"; ObjectID = "1860"; */
 "1860.title" = "No Rotation";
 
-/* Class = "NSMenuItem"; title = "Capture Page"; ObjectID = "1866"; */
-"1866.title" = "Capture Page";
+/* Class = "NSMenuItem"; title = "Capture Page…"; ObjectID = "1866"; */
+"1866.title" = "Capture Page…";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
 "1869.title" = "Edit";
