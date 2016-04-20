@@ -322,10 +322,12 @@
 	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
 		NSRect selection;
-		if (pageSelection ==0) {
+		if (pageSelection ==0)
+        {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 		}
-		else{
+		else
+        {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 		}
 
@@ -681,14 +683,16 @@
 		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
 	}
 	
-	if (selection == 1) {
+	if (selection == 1)
+    {
 		return firstPageSide;
 	}
 	else if (selection == 2)
 	{
 		return secondPageSide;
 	}
-	else {
+	else
+    {
 		return NSZeroRect;
 	}
 }
@@ -702,10 +706,12 @@
 	}
 	
 	NSRect selection;
-	if (pageSelection == 0) {
+	if (pageSelection == 0)
+    {
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 	}
-	else {
+	else
+    {
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 	}
 	
@@ -797,7 +803,8 @@
 	}
     
     
-    if ([defaultsController boolForKey:SSDEnableSwipe] && theEvent.type == NSEventTypeSwipe) {
+    if ([defaultsController boolForKey:SSDEnableSwipe] && theEvent.type == NSEventTypeSwipe)
+    {
         CGFloat deltaX = [theEvent deltaX];
 		CGFloat deltaY = [theEvent deltaY];
 		//CGFloat deltaZ = [theEvent deltaZ];
@@ -1190,7 +1197,8 @@
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-	if ([sessionController pageSelectionInProgress]) {
+	if ([sessionController pageSelectionInProgress])
+    {
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		cropRect.origin = cursor;
 	}

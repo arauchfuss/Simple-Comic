@@ -51,7 +51,6 @@ NSString *const TSSTSavedSelection =    @"savedSelection";
 NSString *const TSSTThumbnailSize =     @"thumbnailSize";
 NSString *const TSSTTwoPageSpread =     @"twoPageSpread";
 NSString *const TSSTPageScaleOptions =  @"scaleOptions";
-NSString *const TSSTIgnoreDonation =    @"ignoreDonation";
 NSString *const TSSTScrollPosition =    @"scrollPosition";
 NSString *const TSSTConstrainScale =    @"constrainScale";
 NSString *const TSSTZoomLevel =         @"zoomLevel";
@@ -191,8 +190,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 @synthesize encodingPanel;
 @synthesize encodingTestField;
 @synthesize encodingPopup;
-@synthesize donationPanel;
-@synthesize launchPanel;
 
 
 /** Convenience method for adding metadata to the core data store.
@@ -219,7 +216,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTPageScaleOptions: @1,
 		  TSSTThumbnailSize: @100,
 		  TSSTTwoPageSpread: @YES,
-		  TSSTIgnoreDonation: @NO,
 		  TSSTConstrainScale: @YES,
 		  TSSTScrollersVisible: @YES,
 		  TSSTSessionRestore: @YES,
@@ -286,7 +282,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     sessions = [NSMutableArray new];
 	[self sessionRelaunch];
 	launchInProgress = NO;
-
+	
 	if (launchFiles) {
 		TSSTManagedSession * session;
 //		if (optionHeldAtlaunch)
@@ -302,12 +298,12 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //				else {
 //					[looseImages addObject: path];
 //				}
-//				
+//
 //				if ([looseImages count]> 0) {
 //					session = [self newSessionWithFiles: looseImages];
 //					[self windowForSession: session];
 //				}
-//				
+//
 //			}
 //		}
 //		else
@@ -322,7 +318,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
-{	
+{
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
 	
 	if(![userDefaults boolForKey: TSSTSessionRestore])
@@ -335,6 +331,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	}
 	
     NSApplicationTerminateReply reply = NSTerminateNow;
+
 	/* TODO: some day I really need to add the fallback error handling */
     if(![self saveContext])
     {
@@ -347,7 +344,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		NSInteger alertReturn = [alert runModal];
         if (alertReturn == NSAlertSecondButtonReturn)
         {
-            reply = NSTerminateCancel;	
+            reply = NSTerminateCancel;
         }
     }
 	
@@ -363,12 +360,12 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 /** Used to watch and react to pref changes */
 - (void)observeValueForKeyPath:(NSString *)keyPath
-					  ofObject:(id)object 
-						change:(NSDictionary *)change 
+					  ofObject:(id)object
+						change:(NSDictionary *)change
 					   context:(void *)context
 {
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-
+	
 	if([keyPath isEqualToString: TSSTSessionRestore])
 	{
 		[autoSave invalidate];
@@ -383,7 +380,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
-{	
+{
 	if(!launchInProgress)
 	{
 		TSSTManagedSession * session;
@@ -399,7 +396,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 //- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
-//{	
+//{
 //	if(!launchInProgress)
 //	{
 //		TSSTManagedSession * session;
@@ -408,7 +405,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //		return YES;
 //
 //	}
-//	
+//
 //	return NO;
 //
 ////	else
@@ -419,7 +416,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 //- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
-//{	
+//{
 //	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
 //	if(!launchInProgress)
 //	{
@@ -438,12 +435,12 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //				{
 //					[looseImages addObject: path];
 //				}
-//				
+//
 //				if ([looseImages count]> 0) {
 //					session = [self newSessionWithFiles: looseImages];
 //					[self windowForSession: session];
 //				}
-//				
+//
 //			}
 //		}
 //		else
@@ -471,7 +468,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
         return managedObjectModel;
     }
 	
-    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles: nil];    
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles: nil];
     return managedObjectModel;
 }
 
@@ -481,7 +478,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	store for the application to it.  (The folder for the store is created, 
 	if necessary.) */
 - (NSPersistentStoreCoordinator *) persistentStoreCoordinator
-{	
+{
     if (persistentStoreCoordinator != nil)
 	{
         return persistentStoreCoordinator;
@@ -489,7 +486,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	
     NSURL * url;
     NSError * error = nil;
-    
+	
 	NSFileManager * fileManager = [NSFileManager defaultManager];
     NSString * applicationSupportFolder = [self applicationSupportFolder];
     if (![fileManager fileExistsAtPath: applicationSupportFolder isDirectory: NULL] )
@@ -508,8 +505,8 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	if(error)
 	{
 		NSLog(@"%@",[error localizedDescription]);
-	}    
-
+	}
+	
 	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1708"])
 	{
 		if(![fileManager removeItemAtURL: url error: &error])
@@ -523,10 +520,10 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     if (![persistentStoreCoordinator addPersistentStoreWithType: NSSQLiteStoreType configuration: nil URL: url options: storeOptions error: &error])
 	{
         [[NSApplication sharedApplication] presentError: error];
-    }    
+    }
 	
 	[SimpleComicAppDelegate setMetadata: @"Version 1708" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
-
+	
     return persistentStoreCoordinator;
 }
 
@@ -544,15 +541,15 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
         managedObjectContext = [[NSManagedObjectContext alloc] init];
         [managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
-    
+	
     return managedObjectContext;
-} 
+}
 
 
 
 /**  Method creates an application support directory for Simpl Comic if one
     is does not already exist.
-    @return The absolute path to Simple Comic's application support directory 
+    @return The absolute path to Simple Comic's application support directory
 	as a string.  */
 - (NSString *)applicationSupportFolder
 {
@@ -621,7 +618,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		}
 		else
 		{
-			
 			[self windowForSession: session];
 		}
 	}
@@ -637,13 +633,13 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	sessionDescription.twoPageSpread = [defaults valueForKey: TSSTTwoPageSpread];
 	
     [self addFiles: files toSession: sessionDescription];
-
+	
 	return sessionDescription;
 }
 
 
 - (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session
-{	
+{
 //	[[self managedObjectContext] retain];
 //	[[self managedObjectContext] lock];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
@@ -685,14 +681,13 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 			}
 			else if([fileExtension compare:@"savedsearch" options:NSCaseInsensitiveSearch] == NSOrderedSame)
 			{
-                
 				//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
                 fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
 				[fileDescription setValue: path forKey: @"path"];
 				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
 				[(ManagedSmartFolder*)fileDescription smartFolderContents];
             }
-            
+			
 			if([fileDescription isKindOfClass:[TSSTManagedGroup class]])
 			{
 				[pageSet unionSet: [(TSSTManagedGroup *)fileDescription nestedImages]];
@@ -702,7 +697,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 			{
 				[pageSet addObject: fileDescription];
             }
-            
+			
 			
 			if(fileDescription)
 			{
@@ -726,24 +721,25 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	NSOpenPanel * addPagesModal = [NSOpenPanel openPanel];
 	[addPagesModal setAllowsMultipleSelection: YES];
     [addPagesModal setCanChooseDirectories: YES];
-	
+
 	NSMutableArray * allAllowedFilesExtensions = [[TSSTManagedArchive archiveExtensions] mutableCopy];
 	[allAllowedFilesExtensions addObjectsFromArray: [TSSTPage imageExtensions]];
 #pragma TODO make a savedSearch constant?
     [allAllowedFilesExtensions addObject: @"savedSearch"];
     [addPagesModal setAllowedFileTypes:allAllowedFilesExtensions];
-
+	
 	if([addPagesModal runModal] !=  NSModalResponseCancel)
 	{
 		NSArray<NSURL*> *fileURLs = [addPagesModal URLs];
         NSMutableArray<NSString*> *filePaths = [[NSMutableArray alloc] initWithCapacity:fileURLs.count];
 		NSString * filePath;
-
-        for (NSURL *fileURL in fileURLs) {
+		
+        for (NSURL *fileURL in fileURLs)
+        {
             filePath = [fileURL path];
             [filePaths addObject:filePath];
         }
-        
+		
 		TSSTManagedSession * session = [self newSessionWithFiles: filePaths];
 		[self windowForSession: session];
 	}
@@ -827,9 +823,9 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     return password;
 }
 
--(NSStringEncoding)archive:(XADArchive *)archive 
-		   encodingForData:(NSData *)data 
-					 guess:(NSStringEncoding)guess 
+-(NSStringEncoding)archive:(XADArchive *)archive
+		   encodingForData:(NSData *)data
+					 guess:(NSStringEncoding)guess
 				confidence:(float)confidence
 {
     NSString * testText = [[NSString alloc] initWithData: data encoding: guess];
@@ -844,16 +840,17 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		NSNumber * encoding;
 		while (!testText) {
 			encoding = encodingIdentifiers[counter];
-			if ([encoding class] != [NSNull class]) {
+			if ([encoding class] != [NSNull class])
+            {
 				testText = [[NSString alloc] initWithData: data encoding: [encoding unsignedIntegerValue]];
 			}
 			index = counter++;
 		}
-
+		
         if (index != NSNotFound) {
             self.encodingSelection = index;
         }
-        
+		
         encodingTestData = data;
 		
         [self testEncoding: self];
@@ -865,7 +862,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
         [encodingPanel close];
         [archive setNameEncoding: guess];
     }
-    
+	
     return guess;
 }
 
@@ -873,23 +870,15 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 {
     NSMenuItem * encodingMenuItem = [[encodingPopup menu] itemAtIndex: encodingSelection];
 	NSString * testText = [[NSString alloc] initWithData: encodingTestData encoding: [[encodingMenuItem representedObject] unsignedIntegerValue]];
-    
+	
     if(!testText)
     {
         testText = @"invalid Selection";
     }
-    
+	
     [encodingTestField setStringValue: testText];
 }
 
-- (IBAction)actionStub:(id)sender
-{
-    
-}
 
-- (IBAction)endLaunchPanel:(id)sender
-{
-	[launchPanel close];
-}
 
 @end

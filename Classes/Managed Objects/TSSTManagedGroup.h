@@ -43,7 +43,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy) NSString *path;
 
 - (nullable NSData *)dataForPageIndex:(NSInteger)index;
-- (nullable NSData *)dataForPageName:(NSString *)name;
 @property (readonly, strong, nullable) NSManagedObject *topLevelGroup;
 @property (readonly, copy) NSSet<TSSTPage*> *nestedImages;
 

@@ -329,7 +329,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 
 /* Handles mouse drag notifications relayed from progressbar */
-- (void)handleMouseDragged:(NSNotification*)notification {
+- (void)handleMouseDragged:(NSNotification*)notification
+{
     [infoWindow orderOut:self];
 }
 
@@ -1319,7 +1320,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		BOOL displayCurrentAlone = [arrangedPages[selectionIndex] shouldDisplayAlone];
 		BOOL displayNextAlone = [arrangedPages[selectionIndex + 1] shouldDisplayAlone];
 
-		if (!displayCurrentAlone && !displayNextAlone) {
+		if (!displayCurrentAlone && !displayNextAlone)
+        {
 			return NO;
 		}
 	}

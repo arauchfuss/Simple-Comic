@@ -45,7 +45,6 @@ extern NSString *const TSSTSavedSelection;
 extern NSString *const TSSTThumbnailSize;
 extern NSString *const TSSTTwoPageSpread;
 extern NSString *const TSSTPageScaleOptions;
-extern NSString *const TSSTIgnoreDonation;
 extern NSString *const TSSTScrollPosition;
 extern NSString *const TSSTConstrainScale;
 extern NSString *const TSSTZoomLevel;
@@ -85,10 +84,6 @@ extern NSString *const SSDEnableSwipe;
 @property (weak) IBOutlet NSPanel           * encodingPanel;
 @property (weak) IBOutlet NSTextField       * encodingTestField;
 @property (weak) IBOutlet NSPopUpButton     * encodingPopup;
-
-@property (weak) IBOutlet NSPanel * donationPanel;
-
-@property (weak) IBOutlet NSPanel * launchPanel;
 
 
 /* Bound to the encoding list drop down. */
@@ -149,10 +144,6 @@ extern NSString *const SSDEnableSwipe;
 /*  These are called by modals that want to end */
 - (IBAction)modalOK:(nullable id)sender;
 - (IBAction)modalCancel:(nullable id)sender;
-
-/* Takes user to the Simple Comic paypal page. */
-- (IBAction)endLaunchPanel:(nullable id)sender;
-- (IBAction)actionStub:(nullable id)sender;
 
 @end
 
