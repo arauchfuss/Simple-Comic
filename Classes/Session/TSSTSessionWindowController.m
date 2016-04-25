@@ -1639,45 +1639,4 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     [self resizeWindow];
 }
 
-- (void)window:(NSWindow *)window startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration
-{
-//    NSRect startingFrame = [window frame];
-    [self invalidateRestorableState];
-	
-    NSRect screenFrame = [[[self window] screen] visibleFrame];
-	
-    NSRect proposedFrame = screenFrame;
-	
-	
-    // The center frame for each window is used during the 1st half of the fullscreen animation and is
-    // the window at its original size but moved to the center of its eventual full screen frame.
-//    NSRect centerWindowFrame = rectWithSizeCenteredInRect(startingFrame.size, screenFrame);
-	
-    // Our animation will be broken into two stages.
-    // First, we'll move the window to the center of the primary screen and then we'll enlarge
-    // it its full screen size.
-    //
-    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-        
-        [context setDuration:duration/4];
-        [[window animator] setFrame:proposedFrame display:YES];
-        
-    } completionHandler:^{
-        
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            
-            [context setDuration:duration/4];
-            [[window animator] setFrame:proposedFrame display:YES];
-            
-        } completionHandler:^{
-            
-        }];
-    }];
-}
-
-- (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window
-{
-    return @[[self window]];
-}
-
 @end
