@@ -284,11 +284,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="582"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="583"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="581"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarCustomizeToolbarItem" id="584"/>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="553"/>
+                    <toolbarItem reference="582"/>
                     <toolbarItem reference="520"/>
                     <toolbarItem reference="523"/>
                     <toolbarItem reference="517"/>
