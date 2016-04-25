@@ -1,32 +1,21 @@
-/*	
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
 	Created by Alexander Rauchfuss
- 
-	Permission is hereby granted, free of charge, to any person 
+
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
- 
+
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
- 
-    TSSTSessionWindowController.m
 
+	TSSTSessionWindowController.m
 */
-
 
 #import <XADMaster/XADArchive.h>
 #import "UKXattrMetadataStore.h"
@@ -104,12 +93,10 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (NSString *)windowNibName
 {
     return @"TSSTSessionWindow";
 }
-
 
 
 /*  Sets up all of the observers and bindings. */
@@ -123,9 +110,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
     [pageController setSelectionIndex: [session.selection integerValue]];
-
+	
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    
+	
     [defaults addObserver: self forKeyPath: TSSTConstrainScale options: 0 context: nil];
     [defaults addObserver: self forKeyPath: TSSTStatusbarVisible options: 0 context: nil];
     [defaults addObserver: self forKeyPath: TSSTScrollersVisible options: 0 context: nil];
@@ -138,27 +125,27 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[session addObserver: self forKeyPath: @"loupe" options: 0 context: nil];
 	
     [session bind: @"selection" toObject: pageController withKeyPath: @"selectionIndex" options: nil];
-    
+	
 	[pageScrollView setPostsFrameChangedNotifications: YES];
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(resizeView) name: NSViewFrameDidChangeNotification object: pageScrollView];
     [pageController addObserver: self forKeyPath: @"selectionIndex" options: 0 context: nil];
     [pageController addObserver: self forKeyPath: @"arrangedObjects.@count" options: 0 context: nil];
-    
+	
     [progressBar addObserver: self forKeyPath: @"currentValue" options: 0 context: nil];
     [progressBar bind: @"currentValue" toObject: pageController withKeyPath: @"selectionIndex" options: nil];
     [progressBar bind: @"maxValue" toObject: pageController withKeyPath: @"arrangedObjects.@count" options: nil];
     [progressBar bind: @"leftToRight" toObject: session withKeyPath: TSSTPageOrder options: nil];
-	   
+	
     [pageView bind: TSSTViewRotation toObject: session withKeyPath: TSSTViewRotation options: nil];
 	NSTrackingArea * newArea = [[NSTrackingArea alloc] initWithRect: [progressBar progressRect]
-															options: NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingActiveInActiveApp 
+															options: NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingActiveInActiveApp
 															  owner: self
 														   userInfo: @{@"purpose": @"normalProgress"}];
 	[progressBar addTrackingArea: newArea];
 	[jumpField setDelegate: self];
-    
+	
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:TSSTMouseDragNotification object:nil];
-
+	
     [self restoreSession];
 }
 
@@ -178,22 +165,22 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     [pageController removeObserver: self forKeyPath: @"selectionIndex"];
     [pageController removeObserver: self forKeyPath: @"arrangedObjects.@count"];
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-    
+	
     [progressBar removeObserver: self forKeyPath: @"currentValue"];
     [progressBar unbind: @"currentValue"];
     [progressBar unbind: @"maxValue"];
     [progressBar unbind: @"leftToRight"];
-    
+	
     [pageView setSessionController: nil];
 }
 
 
 
-/*  Observes changes to the page controller.  Changes are reflected by the 
+/*  Observes changes to the page controller.  Changes are reflected by the
     page view.  */
 - (void)observeValueForKeyPath:(NSString *)keyPath
-					  ofObject:(id)object 
-						change:(NSDictionary *)change 
+					  ofObject:(id)object
+						change:(NSDictionary *)change
 					   context:(void *)context
 {
     if([[pageController arrangedObjects] count] <= 0)
@@ -204,7 +191,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     }
 	
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-
+	
     if([keyPath isEqualToString: TSSTScrollersVisible])
     {
         [self scaleToWindow];
@@ -260,7 +247,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	{
 		[self refreshLoupePanel];
 	}
-	else 
+	else
 	{
         [self changeViewImages];
     }
@@ -378,13 +365,13 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	NSPoint cursorPoint;
 	NSInteger index;
 	DTPolishedProgressBar * bar = progressBar;
-
+	
     [[infoWindow contentView] setBordered: NO];
     point.y = (NSMaxY([bar frame]) - 6);
 	
 	cursorPoint = [bar convertPoint: point fromView: nil];
 	index = [bar indexForPoint: cursorPoint];
-
+	
     NSImage * thumb = [self imageForPageAtIndex: index];
     NSSize thumbSize = sizeConstrainedByDimension([thumb size], 128);
 	
@@ -410,10 +397,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (IBAction)changeTwoPage:(id)sender
 {
     BOOL spread = ![session.twoPageSpread boolValue];
-
 	session.twoPageSpread = @(spread);
 }
-
 
 
 - (IBAction)changePageOrder:(id)sender
@@ -421,7 +406,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     BOOL pageOrder = ![session.pageOrder boolValue];
 	session.pageOrder = @(pageOrder);
 }
-
 
 
 - (IBAction)changeScaling:(id)sender
@@ -523,7 +507,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         index = ([pageController selectionIndex] - 10);
         index = index > 0 ? index : 0;
     }
-    
+	
     [pageController setSelectionIndex: index];
 }
 
@@ -580,7 +564,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (IBAction)zoomIn:(id)sender
 {
     int scalingOption = [session.scaleOptions intValue];
@@ -599,7 +582,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (IBAction)zoomOut:(id)sender
 {
     int scalingOption = [session.scaleOptions intValue];
@@ -608,7 +590,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     {
         previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
     }
-    
+	
 	previousZoom -= 0.1;
 	previousZoom = previousZoom < 0.1 ? 0.1 : previousZoom;
     session.zoomLevel = @(previousZoom);
@@ -775,7 +757,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		factor = scrollerBounds.width / imageSize.width;
 	}
 	else
-	{		
+	{
 		factor = scrollerBounds.height / imageSize.height;
 	}
 	
@@ -791,7 +773,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	TSSTPage * selectedPage = [pageController arrangedObjects][index];
 	TSSTManagedGroup * selectedGroup = selectedPage.group;
 	/* Makes sure that the group is both an archive and not nested */
-	if([selectedGroup class] == [TSSTManagedArchive class] && 
+	if([selectedGroup class] == [TSSTManagedArchive class] &&
 	   selectedGroup == [selectedGroup topLevelGroup] &&
 	   ![selectedPage.text boolValue])
 	{
@@ -884,7 +866,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		TSSTPage * selectedPage = [pageController arrangedObjects][index];
 		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
 		/* Makes sure that the group is both an archive and not nested */
-		if([selectedGroup class] == [TSSTManagedArchive class] && 
+		if([selectedGroup class] == [TSSTManagedArchive class] &&
 		   selectedGroup == [selectedGroup topLevelGroup] &&
 		   ![selectedPage.text boolValue])
 		{
@@ -895,16 +877,16 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				NSString * coverName = [(XADArchive *)[selectedGroup instance] nameOfEntry: coverIndex];
 				[UKXattrMetadataStore setString: coverName
 										 forKey: @"QCCoverName"
-										 atPath: archivePath 
+										 atPath: archivePath
 								   traverseLink: NO
 										  error: nil];
 				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
-										 forKey: @"QCCoverRect" 
-										 atPath: archivePath 
+										 forKey: @"QCCoverRect"
+										 atPath: archivePath
 								   traverseLink: NO
 										  error: nil];
 				
-				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
+				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch"
 										 arguments: @[archivePath]];
 			}
 			else
@@ -924,7 +906,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				NSShadow * thumbShadow = [NSShadow new];
 				[thumbShadow setShadowOffset: NSMakeSize(0.0, -8.0)];
 				[thumbShadow setShadowBlurRadius: 25.0];
-				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];				
+				[thumbShadow setShadowColor: [NSColor colorWithCalibratedWhite: 0.2 alpha: 1.0]];
 				
 				[shadowImage lockFocus];
 				[thumbShadow set];
@@ -932,7 +914,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				[shadowImage unlockFocus];
 				
 				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];
-				
 			}
 		}
 	}
@@ -953,7 +934,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (void)hideCursor
 {
 	mouseMovedTimer = nil;
-
+	
 	if([(DTSessionWindow *)[self window] isFullscreen])
 	{
 		[NSCursor setHiddenUntilMouseMoves: YES];
@@ -1007,9 +988,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSString * representationPath;
 	
-    BOOL currentAllowed = ![pageOne shouldDisplayAlone] && 
+    BOOL currentAllowed = ![pageOne shouldDisplayAlone] &&
         !(index == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
-    
+	
     if(currentAllowed && [session.twoPageSpread boolValue] && pageTwo && ![pageTwo shouldDisplayAlone])
     {
         if([session.pageOrder boolValue])
@@ -1028,10 +1009,10 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
 	representationPath = pageOne.group ? [pageOne valueForKeyPath: @"group.topLevelGroup.path"] : pageOne.imagePath;
 	[[self window] setRepresentedFilename: representationPath];
-
+	
     self.pageNames = titleString;
     [pageView setFirstPage: pageOne.pageImage secondPageImage: pageTwo.pageImage];
-    
+	
     [self scaleToWindow];
 	[pageView correctViewPoint];
     [self refreshLoupePanel];
@@ -1052,8 +1033,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     {
         allowedRect = [[[self window] screen] visibleFrame];
 		frame = [[self window] frame];
-		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect), 
-								 NSMaxX(allowedRect) - NSMinX(frame), 
+		allowedRect = NSMakeRect(frame.origin.x, NSMinY(allowedRect),
+								 NSMaxX(allowedRect) - NSMinX(frame),
 								 NSMaxY(frame) - NSMinY(allowedRect));
         zoomFrame = [self optimalPageViewRectForRect: allowedRect];
         [[self window] setFrame: zoomFrame display: YES animate: NO];
@@ -1093,11 +1074,11 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 			hasVert = YES;
 		}
 		break;
-	default:	
+	default:
         session.zoomLevel = @1.0;
 		break;
 	}
-    
+	
     [pageScrollView setHasVerticalScroller: hasVert];
     [pageScrollView setHasHorizontalScroller: hasHor];
 	
@@ -1119,7 +1100,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     if(statusBar)
     {
         scrollViewRect = [[[self window] contentView] frame];
-        scrollViewRect = NSMakeRect(NSMinX(scrollViewRect), 
+        scrollViewRect = NSMakeRect(NSMinX(scrollViewRect),
                                     NSMinY(scrollViewRect) + 23,
                                     NSWidth(scrollViewRect),
                                     NSHeight(scrollViewRect) - 23);
@@ -1146,14 +1127,14 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         [pageController selectNext: self];
         return;
     }
-    
+	
     NSUInteger numberOfImages = [[pageController arrangedObjects] count];
 	NSUInteger selectionIndex = [pageController selectionIndex];
 	if((selectionIndex + 1) >= numberOfImages)
 	{
 		return;
 	}
-    
+	
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	BOOL current = ![[pageController arrangedObjects][selectionIndex] shouldDisplayAlone] &&
         !(selectionIndex == 0 &&[defaults boolForKey: TSSTLonelyFirstPage]);
@@ -1181,14 +1162,14 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         [pageController selectPrevious: self];
         return;
     }
-    
+	
 	NSInteger selectionIndex = [pageController selectionIndex];
 	if((selectionIndex - 2) >= 0)
 	{
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-
+        
         BOOL previousPage = ![[pageController arrangedObjects][(selectionIndex - 1)] shouldDisplayAlone];
-		BOOL pageBeforeLast = ![[pageController arrangedObjects][(selectionIndex - 2)] shouldDisplayAlone] && 
+		BOOL pageBeforeLast = ![[pageController arrangedObjects][(selectionIndex - 2)] shouldDisplayAlone] &&
             !((selectionIndex - 2) == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
         
         if(!previousPage || !pageBeforeLast)
@@ -1326,7 +1307,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		}
 	}
 	
-	return YES;	
+	return YES;
 }
 
 
@@ -1469,7 +1450,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
 	[self prepareToEnd];
 	[[NSNotificationCenter defaultCenter] postNotificationName: TSSTSessionEndNotification object: self];
-
+	
     return YES;
 }
 
@@ -1512,9 +1493,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     {
 		[[infoWindow parentWindow] removeChildWindow: infoWindow];
         [infoWindow orderOut: self];
-
+		
         statusBar = [[NSUserDefaults standardUserDefaults] boolForKey: TSSTStatusbarVisible];
-
 		
         if(statusBar)
         {
@@ -1533,7 +1513,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
 }
 
-/*	This method deals with window resizing.  It is called every time the user clicks 
+/*	This method deals with window resizing.  It is called every time the user clicks
 	the nice little plus button in the upper left of the window. */
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)sender defaultFrame:(NSRect)defaultFrame
 {
@@ -1640,7 +1620,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         NSApplicationPresentationAutoHideMenuBar |
         NSApplicationPresentationFullScreen;
     }
-    
+	
     return NSApplicationPresentationDefault;
 }
 
@@ -1663,16 +1643,16 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
 //    NSRect startingFrame = [window frame];
     [self invalidateRestorableState];
-    
+	
     NSRect screenFrame = [[[self window] screen] visibleFrame];
-    
+	
     NSRect proposedFrame = screenFrame;
-    
-    
+	
+	
     // The center frame for each window is used during the 1st half of the fullscreen animation and is
     // the window at its original size but moved to the center of its eventual full screen frame.
 //    NSRect centerWindowFrame = rectWithSizeCenteredInRect(startingFrame.size, screenFrame);
-    
+	
     // Our animation will be broken into two stages.
     // First, we'll move the window to the center of the primary screen and then we'll enlarge
     // it its full screen size.

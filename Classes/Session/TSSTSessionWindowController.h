@@ -1,28 +1,19 @@
-/*	
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
 	Created by Alexander Rauchfuss
- 
-	Permission is hereby granted, free of charge, to any person 
+
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
- 
+
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
- 
+
     TSSTSessionWindowController.h
 */
 
@@ -50,8 +41,8 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 
 
 /*!	This class deals with an unholy crapload of functionality
-	- First and most importantly it controls the navigation 
-		within a given session's pages.  This includes figuring 
+	- First and most importantly it controls the navigation
+		within a given session's pages.  This includes figuring
 		out whether or not two pages should be layed out side by side.
 	- It handles almost all actions that affect its given session.
 		Event handling is mainly taken care of by the page view class.
@@ -59,7 +50,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 		windowed to fullscreen mode.
 	- Mouse moved events are handled here. Which results in the following
 		- Handles the movement and positioning of the page loupe.
-		- Handles the layout of the info window 
+		- Handles the layout of the info window
 			when the user scrubs the progress bar.
 */
 @interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelection_Protocol, NSWindowDelegate>

@@ -16,10 +16,10 @@ private let stringAttributes: [String: Any] = {
 		NSParagraphStyleAttributeName: style.copy()]
 }()
 
-class TSSTImageView : NSImageView {
+class TSSTImageView: NSImageView {
 	var imageName: String?
 	var clears: Bool = false
-
+	
 	override func draw(_ dirtyRect: NSRect) {
 		if clears {
 			NSColor.clear.set()

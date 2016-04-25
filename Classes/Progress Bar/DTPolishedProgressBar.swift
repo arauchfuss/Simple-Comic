@@ -1,28 +1,19 @@
-/*	
+/*
  Copyright (c) 2006-2009 Dancing Tortoise Software
  Created by Alexander Rauchfuss
- 
- Permission is hereby granted, free of charge, to any person 
+
+ Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
- files (the "Software"), to deal in the Software without 
- restriction, including without limitation the rights to use, 
- copy, modify, merge, publish, distribute, sublicense, and/or 
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or
  sell copies of the Software, and to permit persons to whom the
- Software is furnished to do so, subject to the following 
+ Software is furnished to do so, subject to the following
  conditions:
- 
+
  The above copyright notice and this permission notice shall be
  included in all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
- OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
- NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
- WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
- FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
- OTHER DEALINGS IN THE SOFTWARE.
- 
+
  DTPolishedProgressBar.swift
 */
 //
@@ -40,13 +31,13 @@ private let borderColor = NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
 Configurable progress bar.  Allows the setting of various style attributes.
 Progress direction can be set.
 */
-class DTPolishedProgressBar : NSView {
-	
+class DTPolishedProgressBar: NSView {
+
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		setFrameSize(frameRect.size)
 	}
-
+	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		setFrameSize(frame.size)
@@ -82,7 +73,7 @@ textStyle: Dictionary of string attributes.
 			needsDisplay = true
 		}
 	}
-
+	
 	/// This is the section of the view. Users can mouse over and click here.
 	fileprivate(set) var progressRect = NSRect()
 	
@@ -148,22 +139,22 @@ textStyle: Dictionary of string attributes.
 		// Draw progress
 		barProgressColor.set()
 		NSRectFill(fillRect);
-
+		
 		// Draw indicator
 		NSColor.black.set()
 		NSRectFill(indicatorRect);
-
+		
 		// Draw labels
 		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17);
 		leftString.draw(in: leftStringRect, withAttributes: numberStyle)
 		
 		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17);
 		rightString.draw(in: rightStringRect, withAttributes: numberStyle)
-
+		
 		// Draw borders
 		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height);
 		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height);
-
+		
 		borderColor.set()
 		
 		NSRectFillUsingOperation(leftBorder, .sourceOver);
@@ -194,7 +185,7 @@ textStyle: Dictionary of string attributes.
 		let newArea = NSTrackingArea(rect: progressRect, options: oldArea.options, owner: oldArea.owner, userInfo: oldArea.userInfo)
 		addTrackingArea(newArea)
 	}
-
+	
 	override var mouseDownCanMoveWindow: Bool {
 		return false
 	}

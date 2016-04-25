@@ -5,8 +5,6 @@
 //  Created by Alexander Rauchfuss on 6/2/07.
 //  Copyright 2007 Dancing Tortoise Software. All rights reserved.
 
-
-
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedGroup+CoreDataProperties.h"
 #import "SimpleComicAppDelegate.h"
@@ -70,7 +68,6 @@
     }
     self.pathData = bookmarkData;
 }
-
 
 
 - (NSString *)path

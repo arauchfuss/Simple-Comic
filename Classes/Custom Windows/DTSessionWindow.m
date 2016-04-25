@@ -12,7 +12,6 @@
 
 @implementation DTSessionWindow
 
-
 - (instancetype) init
 {
 	self = [super init];
@@ -28,11 +27,9 @@
 }
 
 
-
 - (BOOL)isFullscreen
 {
     return (([self styleMask] & NSFullScreenWindowMask) == NSFullScreenWindowMask);
 }
-
 
 @end

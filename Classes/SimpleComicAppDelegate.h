@@ -1,31 +1,21 @@
-/*	
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
 
-	Permission is hereby granted, free of charge, to any person 
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
 
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
-	
 	Simple Comic
 	SimpleComicAppDelegate.h
 */
-
 
 #import <Cocoa/Cocoa.h>
 
@@ -63,11 +53,10 @@ extern NSString *const TSSTUpdateSelection;
 extern NSString *const TSSTSessionEndNotification;
 extern NSString *const SSDEnableSwipe;
 
-
 /*!
     This class is the application delegate.
     It handles the following:
- 
+
     The Core Data store
     File loading
     Session auto-save
@@ -101,7 +90,7 @@ extern NSString *const SSDEnableSwipe;
 @property (readonly) BOOL saveContext;
 
 
-/*  Creates a new Session object based on user prefs and then 
+/*  Creates a new Session object based on user prefs and then
     passes the files array to addFiles:toSesion: */
 - (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files NS_RETURNS_NOT_RETAINED;
 
@@ -116,7 +105,7 @@ extern NSString *const SSDEnableSwipe;
 /*  This method is called at launch, it iterates through all of the saved
     sessions calling windowForSession: for each in turn. */
 - (void)sessionRelaunch;
-    
+
 /*  This method adds any file passed to it to a session.  This includes recursive
 	parsing of archives and folders. */
 - (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session;

@@ -1,38 +1,26 @@
-/*	
+/*
 Copyright (c) 2006-2009 Dancing Tortoise Software
- 
-	Permission is hereby granted, free of charge, to any person 
+
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
- 
+
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
- 
-    TSSTPage.m
+
+  TSSTPage.m
  */
-
-
 
 #import "TSSTPage.h"
 #import "SimpleComicAppDelegate.h"
 #import "TSSTImageUtilities.h"
 #import "TSSTManagedGroup.h"
 #import <XADMaster/XADArchive.h>
-
 
 static NSDictionary * TSSTInfoPageAttributes = nil;
 static NSSize monospaceCharacterSize;
@@ -48,7 +36,7 @@ static NSSize monospaceCharacterSize;
 		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like %@)" argumentArray:@[@"com.adobe.encapsulated-postscript"]]];
 		imageTypes = [aimageTypes copy];
 	}
-
+	
 	return imageTypes;
 }
 
@@ -72,7 +60,7 @@ static NSSize monospaceCharacterSize;
 + (NSArray *)textExtensions
 {
 	static NSArray * textTypes = nil;
-
+	
 	if(!textTypes)
 	{
 		textTypes = @[@"txt", @"nfo", @"info"];
@@ -104,7 +92,6 @@ static NSSize monospaceCharacterSize;
 	
 	TSSTInfoPageAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Monaco" size: 14],
 							  NSParagraphStyleAttributeName: style};
-	
 }
 
 - (void)awakeFromInsert
@@ -142,7 +129,7 @@ static NSSize monospaceCharacterSize;
 		[self setOwnSizeInfoWithData: imageData];
 		aspect = [self.aspectRatio doubleValue];
 	}
-    
+	
 	return aspect != 0 ? aspect > defaultAspect : YES;
 }
 
@@ -152,7 +139,7 @@ static NSSize monospaceCharacterSize;
 	NSSize imageSize;
 	NSBitmapImageRep * pageRep = [NSBitmapImageRep imageRepWithData: imageData];
 	imageSize = NSMakeSize([pageRep pixelsWide], [pageRep pixelsHigh]);
-
+	
 	if(!NSEqualSizes(NSZeroSize, imageSize))
 	{
 		aspect = imageSize.width / imageSize.height;
@@ -193,13 +180,13 @@ static NSSize monospaceCharacterSize;
 	NSSize pixelSize = [managedImage size];
 	if(managedImage)
 	{
-		pixelSize = sizeConstrainedByDimension(pixelSize, 256);	
+		pixelSize = sizeConstrainedByDimension(pixelSize, 256);
 		NSImage * temp = [[NSImage alloc] initWithSize: pixelSize];
 		[temp lockFocus];
 		[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-		[managedImage drawInRect: NSMakeRect(0, 0, pixelSize.width, pixelSize.height) 
-						fromRect: NSZeroRect 
-					   operation: NSCompositeSourceOver 
+		[managedImage drawInRect: NSMakeRect(0, 0, pixelSize.width, pixelSize.height)
+						fromRect: NSZeroRect
+					   operation: NSCompositeSourceOver
 						fraction: 1.0];
 		[temp unlockFocus];
 		thumbnailData = [temp TIFFRepresentation];
@@ -279,14 +266,13 @@ static NSSize monospaceCharacterSize;
 		}
 		
 		pageRect.size.height += (NSHeight(lineRect) - 19);
-
 	}
 	pageRect.size.width += 10;
 	pageRect.size.height += 10;
 	pageRect.size.height = NSHeight(pageRect) < 500 ? 500 : NSHeight(pageRect);
 	
 	NSImage * textImage = [[NSImage alloc] initWithSize: pageRect.size];
-
+	
 	[textImage lockFocus];
 	[[NSColor whiteColor] set];
 	NSRectFill(pageRect);
@@ -300,7 +286,7 @@ static NSSize monospaceCharacterSize;
 {
     NSData * imageData = nil;
     TSSTManagedGroup * group = self.group;
-    if (self.index)
+    if(self.index)
     {
 		NSInteger entryIndex = [self.index integerValue];
 		imageData = [group dataForPageIndex: entryIndex];

@@ -1,30 +1,21 @@
-/*	
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
- 
-	Permission is hereby granted, free of charge, to any person 
+
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
- 
+
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
-	
+
 	Simple Comic
 	TSSTPageView.h
- 
+
 	Composites one or two images to the screen, making sure that they
 	are horizontally alligned.
 	None of the logic involving the aspect ratios of the images is
@@ -79,7 +70,7 @@ typedef struct {
 @property (weak) IBOutlet TSSTSessionWindowController * sessionController;
 
 
-/*  This is where it all begins sets the two pages.  
+/*  This is where it all begins sets the two pages.
     Starts any animations
     Calls resize view
     Calls correctViewPoint */
@@ -91,7 +82,7 @@ typedef struct {
 - (NSSize)combinedImageSizeForZoom:(CGFloat)level;
 
 
-/*  If the view are is larger than the display area 
+/*  If the view are is larger than the display area
     then drag scrolling is available. */
 @property (readonly) BOOL dragIsPossible;
 
@@ -107,13 +98,13 @@ typedef struct {
 @property (readonly) NSRect imageBounds;
 
 
-/* This method scrolls the views so that the proper 
-    corner is displayed if the pages rendered are 
+/* This method scrolls the views so that the proper
+    corner is displayed if the pages rendered are
     larger than the display area. */
 - (void)correctViewPoint;
 
 
-/*  Resizes the view based on the current scaling method and the 
+/*  Resizes the view based on the current scaling method and the
     selected images. */
 - (void)resizeView;
 
