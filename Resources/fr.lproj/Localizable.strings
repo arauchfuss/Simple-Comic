@@ -2,7 +2,7 @@
 "Horizontal Fit" = "Ajuster la largeur";
 
 /* Left to right page order menu item text */
-"Left To Right" = "De gauche à droite";
+"Left to Right" = "De gauche à droite";
 
 /* No comment provided by engineer. */
 "Left to Right Page Order" = "Disposer les pages de gauche à droite";
@@ -11,7 +11,7 @@
 "Original Size" = "Taille réelle";
 
 /* Right to left page order menu item text */
-"Right To Left" = "De droite à gauche";
+"Right to Left" = "De droite à gauche";
 
 /* No comment provided by engineer. */
 "Right to Left Page Order" = "Disposer les pages de droite à gauche";

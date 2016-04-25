@@ -101,13 +101,13 @@
 /* Class = "NSMenu"; title = "Image Scaling"; ObjectID = "985"; */
 "985.title" = "Ajuster la taille";
 
-/* Class = "NSMenuItem"; title = "Scale To Width"; ObjectID = "986"; */
+/* Class = "NSMenuItem"; title = "Scale to Width"; ObjectID = "986"; */
 "986.title" = "Ajuster en largeur";
 
 /* Class = "NSMenuItem"; title = "Original Size"; ObjectID = "987"; */
 "987.title" = "Taille réelle";
 
-/* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
+/* Class = "NSMenuItem"; title = "Scale to Window"; ObjectID = "988"; */
 "988.title" = "Adapter à la fenêtre";
 
 /* Class = "NSMenuItem"; title = "Hide Page"; ObjectID = "992"; */

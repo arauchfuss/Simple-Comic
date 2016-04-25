@@ -2,7 +2,7 @@
 "Horizontal Fit" = "横向自适应";
 
 /* Left to right page order menu item text */
-"Left To Right" = "从左到右阅读";
+"Left to Right" = "从左到右阅读";
 
 /* No comment provided by engineer. */
 "Left to Right Page Order" = "从左到右顺序";
@@ -11,7 +11,7 @@
 "Original Size" = "原始大小";
 
 /* Right to left page order menu item text */
-"Right To Left" = "从右到左阅读";
+"Right to Left" = "从右到左阅读";
 
 /* No comment provided by engineer. */
 "Right to Left Page Order" = "从右到左顺序";

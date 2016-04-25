@@ -176,12 +176,12 @@ CA
                                                 <action selector="changeScaling:" target="-1" id="989"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Scale To Window" tag="401" keyEquivalent="2" id="988">
+                                        <menuItem title="Scale to Window" tag="401" keyEquivalent="2" id="988">
                                             <connections>
                                                 <action selector="changeScaling:" target="-1" id="990"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Scale To Width" tag="402" keyEquivalent="3" id="986">
+                                        <menuItem title="Scale to Width" tag="402" keyEquivalent="3" id="986">
                                             <connections>
                                                 <action selector="changeScaling:" target="-1" id="991"/>
                                             </connections>

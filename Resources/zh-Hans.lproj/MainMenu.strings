@@ -101,13 +101,13 @@
 /* Class = "NSMenu"; title = "Image Scaling"; ObjectID = "985"; */
 "985.title" = "图片缩放";
 
-/* Class = "NSMenuItem"; title = "Scale To Width"; ObjectID = "986"; */
+/* Class = "NSMenuItem"; title = "Scale to Width"; ObjectID = "986"; */
 "986.title" = "缩放到宽度";
 
 /* Class = "NSMenuItem"; title = "Original Size"; ObjectID = "987"; */
 "987.title" = "原始大小";
 
-/* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
+/* Class = "NSMenuItem"; title = "Scale to Window"; ObjectID = "988"; */
 "988.title" = "缩放到窗口大小";
 
 /* Class = "NSMenuItem"; title = "Hide Page"; ObjectID = "992"; */

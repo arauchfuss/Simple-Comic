@@ -101,13 +101,13 @@
 /* Class = "NSMenu"; title = "Image Scaling"; ObjectID = "985"; */
 "985.title" = "이미지 사이즈";
 
-/* Class = "NSMenuItem"; title = "Scale To Width"; ObjectID = "986"; */
+/* Class = "NSMenuItem"; title = "Scale to Width"; ObjectID = "986"; */
 "986.title" = "수평에 맞춤";
 
 /* Class = "NSMenuItem"; title = "Original Size"; ObjectID = "987"; */
 "987.title" = "실제 사이즈";
 
-/* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
+/* Class = "NSMenuItem"; title = "Scale to Window"; ObjectID = "988"; */
 "988.title" = "윈도우에 맞춤";
 
 /* Class = "NSMenuItem"; title = "Hide Page"; ObjectID = "992"; */

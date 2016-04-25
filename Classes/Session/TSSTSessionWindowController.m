@@ -1356,11 +1356,11 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     {
         if([session.pageOrder boolValue])
         {
-            [menuItem setTitle: NSLocalizedString(@"Right To Left", @"Right to left page order menu item text")];
+            [menuItem setTitle: NSLocalizedString(@"Right to Left", @"Right to left page order menu item text")];
         }
         else
         {
-            [menuItem setTitle: NSLocalizedString(@"Left To Right", @"Left to right page order menu item text")];
+            [menuItem setTitle: NSLocalizedString(@"Left to Right", @"Left to right page order menu item text")];
         }
     }
 	else if([menuItem action] == @selector(pageRight:))
