@@ -28,7 +28,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>rar</string>
-				<string>RAR</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>rar</string>
@@ -53,7 +52,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>zip</string>
-				<string>ZIP</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>zip</string>
@@ -78,7 +76,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>pdf</string>
-				<string>PDF</string>
 			</array>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
@@ -105,7 +102,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>7z</string>
-				<string>7Z</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>7z</string>
@@ -131,8 +127,6 @@
 			<array>
 				<string>lha</string>
 				<string>lzh</string>
-				<string>LHA</string>
-				<string>LZH</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>lzh</string>
@@ -162,7 +156,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>cbz</string>
-				<string>CBZ</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbz</string>
@@ -188,7 +181,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>cb7</string>
-				<string>CB7</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cb7</string>
@@ -211,7 +203,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>cbr</string>
-				<string>CBR</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbr</string>
@@ -237,7 +228,6 @@
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>cbt</string>
-				<string>CBT</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbt</string>
@@ -391,6 +381,8 @@
 	<string>public.app-category.entertainment</string>
 	<key>NSAppleScriptEnabled</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© Dancing Tortoise Software, 2010</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
@@ -408,6 +400,8 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>Comic Book Tar Archive</string>
+			<key>UTTypeIconFile</key>
+			<string>cbt</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.dancingtortoise.simplecomic.cbt</string>
 			<key>UTTypeTagSpecification</key>
@@ -501,7 +495,7 @@
 			<key>UTTypeDescription</key>
 			<string>Comic Book 7-Zip Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>7z</string>
+			<string>cb7</string>
 			<key>UTTypeIdentifier</key>
 			<string>cx.c3.cb7-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -525,7 +519,7 @@
 			<key>UTTypeDescription</key>
 			<string>LHA Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>lzh</string>
+			<string>lha</string>
 			<key>UTTypeIdentifier</key>
 			<string>public.archive.lha</string>
 			<key>UTTypeTagSpecification</key>
@@ -628,7 +622,5 @@
 			</dict>
 		</dict>
 	</array>
-	<key>NSHumanReadableCopyright</key>
-	<string>© Dancing Tortoise Software, 2010</string>
 </dict>
 </plist>
