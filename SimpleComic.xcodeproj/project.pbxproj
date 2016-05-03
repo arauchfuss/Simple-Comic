@@ -36,9 +36,7 @@
 		5500A65D1D7772CD00321300 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
 		5500A65F1D7772D400321300 /* XADMaster.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6571D77716000321300 /* XADMaster.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5526278D1BDEBF29005AAF63 /* TSSTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526278C1BDEBF29005AAF63 /* TSSTImageView.swift */; };
-		5526278F1BDEE9BC005AAF63 /* TSSTBezelWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526278E1BDEE9BC005AAF63 /* TSSTBezelWindow.swift */; };
 		552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */; };
-		552627931BDEEF6B005AAF63 /* TSSTBezelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627921BDEEF6B005AAF63 /* TSSTBezelView.swift */; };
 		552627951BDEEF85005AAF63 /* TSSTTransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */; };
 		552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */; };
 		552F38BD1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */; };
@@ -316,9 +314,7 @@
 		5518C6CD1BDAE10A00D50302 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
 		5518C6CF1BDAE10C00D50302 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		5526278C1BDEBF29005AAF63 /* TSSTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTImageView.swift; sourceTree = "<group>"; };
-		5526278E1BDEE9BC005AAF63 /* TSSTBezelWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTBezelWindow.swift; sourceTree = "<group>"; };
 		552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTKeyWindow.swift; sourceTree = "<group>"; };
-		552627921BDEEF6B005AAF63 /* TSSTBezelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTBezelView.swift; sourceTree = "<group>"; };
 		552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTTransparentView.swift; sourceTree = "<group>"; };
 		552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDManagedSmartFolder.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoView.swift; sourceTree = "<group>"; };
@@ -407,7 +403,6 @@
 				FAA1C3E808BAB158006F7EC4 /* Session */,
 				288C0C420DCDAB7200EAFF46 /* Thumbnail View */,
 				289CD7620BF15CCC00B5AE01 /* Progress Bar */,
-				28195CFA0C179DBD001F5E95 /* Fullscreen */,
 				FA9FB59508AAE3690085AA55 /* Preferences */,
 				28FA4DD50B8A6F3B00496668 /* Managed Objects */,
 				281C0DC40CEEA16D009A9696 /* Helpers */,
@@ -434,17 +429,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		28195CFA0C179DBD001F5E95 /* Fullscreen */ = {
-			isa = PBXGroup;
-			children = (
-				552627961BDEEFA3005AAF63 /* Bezel */,
-				552627971BDEEFD4005AAF63 /* Fullscreen */,
-			);
-			name = Fullscreen;
-			path = "Custom Windows";
-			sourceTree = "<group>";
-			usesTabs = 1;
-		};
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,10 +447,11 @@
 		288C0C420DCDAB7200EAFF46 /* Thumbnail View */ = {
 			isa = PBXGroup;
 			children = (
+				552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */,
+				552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */,
 				559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */,
 			);
-			name = "Thumbnail View";
-			path = Session;
+			path = "Thumbnail View";
 			sourceTree = "<group>";
 			usesTabs = 1;
 		};
@@ -581,24 +566,6 @@
 				5500A6511D77712F00321300 /* lsar.exe */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		552627961BDEEFA3005AAF63 /* Bezel */ = {
-			isa = PBXGroup;
-			children = (
-				552627921BDEEF6B005AAF63 /* TSSTBezelView.swift */,
-				5526278E1BDEE9BC005AAF63 /* TSSTBezelWindow.swift */,
-			);
-			path = Bezel;
-			sourceTree = "<group>";
-		};
-		552627971BDEEFD4005AAF63 /* Fullscreen */ = {
-			isa = PBXGroup;
-			children = (
-				552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */,
-				552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */,
-			);
-			path = Fullscreen;
 			sourceTree = "<group>";
 		};
 		55C373FF1BD9E61E006385B6 /* QuickComic */ = {
@@ -961,7 +928,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */,
-				552627931BDEEF6B005AAF63 /* TSSTBezelView.swift in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */,
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
@@ -981,7 +947,6 @@
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
-				5526278F1BDEE9BC005AAF63 /* TSSTBezelWindow.swift in Sources */,
 				55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */,
 				55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */,
 				5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */,
