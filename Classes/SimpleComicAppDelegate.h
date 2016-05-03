@@ -32,7 +32,6 @@ extern NSString *const TSSTPageOrder;
 extern NSString *const TSSTPageZoomRate;
 extern NSString *const TSSTFullscreen;
 extern NSString *const TSSTSavedSelection;
-extern NSString *const TSSTThumbnailSize;
 extern NSString *const TSSTTwoPageSpread;
 extern NSString *const TSSTPageScaleOptions;
 extern NSString *const TSSTScrollPosition;

@@ -38,7 +38,6 @@ NSString *const TSSTPageOrder =         @"pageOrder";
 NSString *const TSSTPageZoomRate =      @"pageZoomRate";
 NSString *const TSSTFullscreen =        @"fullscreen";
 NSString *const TSSTSavedSelection =    @"savedSelection";
-NSString *const TSSTThumbnailSize =     @"thumbnailSize";
 NSString *const TSSTTwoPageSpread =     @"twoPageSpread";
 NSString *const TSSTPageScaleOptions =  @"scaleOptions";
 NSString *const TSSTScrollPosition =    @"scrollPosition";
@@ -51,12 +50,12 @@ NSString *const TSSTScrollersVisible =  @"scrollersVisible";
 NSString *const TSSTAutoPageTurn =      @"autoPageTurn";
 NSString *const TSSTWindowAutoResize =  @"windowAutoResize";
 NSString *const TSSTLoupeDiameter =     @"loupeDiameter";
-NSString *const TSSTLoupePower =		   @"loupePower";
+NSString *const TSSTLoupePower =        @"loupePower";
 NSString *const TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString *const TSSTLonelyFirstPage =   @"lonelyFirstPage";
-NSString *const TSSTNestedArchives =	   @"nestedArchives";
+NSString *const TSSTNestedArchives =    @"nestedArchives";
 NSString *const TSSTUpdateSelection =   @"updateSelection";
-NSString *const SSDEnableSwipe = @"enableSwipe";
+NSString *const SSDEnableSwipe =        @"enableSwipe";
 
 NSString *const TSSTSessionEndNotification = @"sessionEnd";
 
@@ -202,7 +201,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTPageOrder: @NO,
 		  TSSTPageZoomRate: @0.1f,
 		  TSSTPageScaleOptions: @1,
-		  TSSTThumbnailSize: @100,
 		  TSSTTwoPageSpread: @YES,
 		  TSSTConstrainScale: @YES,
 		  TSSTScrollersVisible: @YES,
@@ -234,7 +232,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 {
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTUpdateSelection];
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTSessionRestore];
-
 }
 
 
@@ -535,8 +532,8 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 
-/**  Method creates an application support directory for Simpl Comic if one
-    is does not already exist.
+/**  Method creates an application support directory for Simple Comic if one
+    does not already exist.
     @return The absolute path to Simple Comic's application support directory
 	as a string.  */
 - (NSString *)applicationSupportFolder
@@ -733,7 +730,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	}
 }
 
-/*  Kills the password and encoding modals if the OK button was  clicked. */
+/*  Kills the password and encoding modals if the OK button was clicked. */
 - (IBAction)modalOK:(id)sender
 {
     [NSApp stopModalWithCode: NSModalResponseOK];

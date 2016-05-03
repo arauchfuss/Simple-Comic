@@ -28,7 +28,7 @@ private let barProgressColor = NSColor(deviceRed: 0.44, green: 0.44, blue: 0.44,
 private let borderColor = NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
 
 /**
-Configurable progress bar.  Allows the setting of various style attributes.
+Configurable progress bar. Allows the setting of various style attributes.
 Progress direction can be set.
 */
 class DTPolishedProgressBar: NSView {
@@ -47,8 +47,8 @@ class DTPolishedProgressBar: NSView {
 List of replacements for the highcontrast flag
 Highlight: NSColor if nil then layout is slightly shifted.
 barFill: This is the gradient of the empty portion of the progress bar
-progressFill: This is the gradient of the filled portion of the pr ituogress bar.
-shadow:  This is the gradient that give the illusion of depth.
+progressFill: This is the gradient of the filled portion of the progress bar.
+shadow: This is the gradient that give the illusion of depth.
 textStyle: Dictionary of string attributes.
 */
 

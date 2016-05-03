@@ -3,7 +3,7 @@
 //  QuickComic
 //
 //  Created by Alexander Rauchfuss on 7/12/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Dancing Tortoise Software. All rights reserved.
 //
 
 #import "DTPartialArchiveParser.h"
@@ -37,7 +37,7 @@
 		if(parser)
 		{
 			[parser setDelegate: self];
-			
+
 			@try { [parser parse]; }
 			@catch(NSException * exception)
 			{

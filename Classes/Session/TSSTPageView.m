@@ -343,7 +343,7 @@
 		}
 		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
 		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
-		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 10);
+		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 6);
 		[bezel fill];
 		[selectionText drawInRect: bezelRect withAttributes: stringAttributes];
 	}
