@@ -72,7 +72,7 @@ static NSSize monospaceCharacterSize;
 + (void)initialize
 {
 	/* Figure out the size of a single monospace character to set the tab stops */
-	NSDictionary * fontAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Monaco" size: 14]};
+	NSDictionary * fontAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Menlo" size: 14]};
 	monospaceCharacterSize = [@"A" boundingRectWithSize: NSZeroSize options: 0 attributes: fontAttributes].size;
 	
 	NSTextTab * tabStop;
@@ -90,7 +90,7 @@ static NSSize monospaceCharacterSize;
 	NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 	[style setTabStops: tabStops];
 	
-	TSSTInfoPageAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Monaco" size: 14],
+	TSSTInfoPageAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Menlo" size: 14],
 							  NSParagraphStyleAttributeName: style};
 }
 
