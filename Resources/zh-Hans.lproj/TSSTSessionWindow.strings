@@ -87,9 +87,9 @@
 "578.ibShadowedToolTip" = "Thumbnail View";
 
 /* Class = "NSToolbarItem"; label = "Rotate"; ObjectID = "585"; */
-"585.label" = "Rotate";
+"585.label" = "旋转";
 
-/* Class = "NSToolbarItem"; paletteLabel = "Rotate Pages"; ObjectID = "585"; */
+/* Class = "NSToolbarItem"; paletteLabel = "Rotate"; ObjectID = "585"; */
 "585.paletteLabel" = "旋转";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
@@ -121,3 +121,15 @@
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
 "755.title" = "取消";
+
+/* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "fTI-g2-r3b"; */
+"fTI-g2-r3b.label" = "缩放";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "fTI-g2-r3b"; */
+"fTI-g2-r3b.paletteLabel" = "缩放";
+
+/* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "lV3-24-KZL"; */
+"lV3-24-KZL.ibShadowedToolTips[0]" = "Zoom In";
+
+/* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "lV3-24-KZL"; */
+"lV3-24-KZL.ibShadowedToolTips[1]" = "Zoom Out";
