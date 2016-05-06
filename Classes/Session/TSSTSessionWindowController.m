@@ -886,8 +886,11 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 								   traverseLink: NO
 										  error: nil];
 				
-				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch"
-										 arguments: @[archivePath]];
+                if(![[NSUserDefaults standardUserDefaults] boolForKey: TSSTPreserveModDate])
+                {
+                [NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch"
+                                         arguments: @[archivePath]];
+                }
 			}
 			else
 			{
