@@ -77,7 +77,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		pageTurn = 0;
 		pageSelectionInProgress = PageSelectionModeNone;
 		mouseMovedTimer = nil;
-		//closing = NO;
         session = aSession;
         BOOL cascade = session.position ? NO : YES;
         [self setShouldCascadeWindows: cascade];
@@ -160,7 +159,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (void)dealloc
 {
 	[(TSSTThumbnailView *)exposeView setDataSource: nil];
@@ -183,7 +181,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
     [pageView setSessionController: nil];
 }
-
 
 
 /*  Observes changes to the page controller.  Changes are reflected by the
@@ -264,9 +261,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 #pragma mark - Progress Bar
-
 
 
 - (NSImage *)imageForPageAtIndex:(NSInteger)index
@@ -275,16 +270,13 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (NSString *)nameForPageAtIndex:(NSInteger)index
 {
     return [[pageController arrangedObjects][index] valueForKey: @"name"];
 }
 
 
-
 #pragma mark - Event handling
-
 
 
 - (void)mouseMoved:(NSEvent *)theEvent
@@ -301,7 +293,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (void)mouseEntered:(NSEvent *)theEvent
 {
 	NSString * purpose = [(NSDictionary *)[theEvent userData] valueForKey: @"purpose"];
@@ -313,7 +304,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (void)mouseExited:(NSEvent *)theEvent
 {
     if([theEvent trackingArea])
@@ -322,7 +312,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         [infoWindow orderOut: self];
     }
 }
-
 
 
 /* Handles mouse drag notifications relayed from progressbar */
@@ -369,7 +358,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (void)infoPanelSetupAtPoint:(NSPoint)point
 {
 	NSPoint cursorPoint;
@@ -399,9 +387,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 #pragma mark - Actions
-
 
 
 - (IBAction)changeTwoPage:(id)sender
@@ -456,7 +442,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 /*! Method flips the page to the left calling nextPage or previousPage
     depending on the prefered page ordering.
 */
@@ -475,7 +460,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (IBAction)shiftPageRight:(id)sender
 {
     if([session.pageOrder boolValue])
@@ -489,7 +473,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (IBAction)shiftPageLeft:(id)sender
 {
     if([session.pageOrder boolValue])
@@ -501,7 +484,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         [pageController selectNext: sender];
     }
 }
-
 
 
 - (IBAction)skipRight:(id)sender
@@ -522,7 +504,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (IBAction)skipLeft:(id)sender
 {
     NSUInteger index;
@@ -540,19 +521,16 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-
 - (IBAction)firstPage:(id)sender
 {
     [pageController setSelectionIndex: 0];
 }
 
 
-
 - (IBAction)lastPage:(id)sender
 {
     [pageController setSelectionIndex: [[pageController content] count] - 1];
 }
-
 
 
 /* Zoom method for the zoom segmented control. Each segment has its own tag. */
@@ -573,7 +551,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     }
 }
 
-
 - (IBAction)zoomIn:(id)sender
 {
     int scalingOption = [session.scaleOptions intValue];
@@ -590,7 +567,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     [pageView resizeView];
     [self refreshLoupePanel];
 }
-
 
 - (IBAction)zoomOut:(id)sender
 {
@@ -609,7 +585,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     [pageView resizeView];
     [self refreshLoupePanel];
 }
-
 
 - (IBAction)zoomReset:(id)sender
 {
@@ -633,7 +608,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     }
 }
 
-
 - (IBAction)rotateRight:(id)sender
 {
     int currentRotation = session.rotation.intValue;
@@ -643,7 +617,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     [self refreshLoupePanel];
 }
 
-
 - (IBAction)rotateLeft:(id)sender
 {
     int currentRotation = session.rotation.intValue;
@@ -652,7 +625,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     [self resizeWindow];
     [self refreshLoupePanel];
 }
-
 
 - (IBAction)noRotation:(id)sender
 {
@@ -699,12 +671,10 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}];
 }
 
-
 - (IBAction)cancelJumpPanel:(id)sender
 {
 	[self.window endSheet: jumpPanel returnCode: 0];
 }
-
 
 - (IBAction)goToPage:(id)sender
 {

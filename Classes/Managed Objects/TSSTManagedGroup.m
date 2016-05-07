@@ -4,6 +4,7 @@
 //
 //  Created by Alexander Rauchfuss on 6/2/07.
 //  Copyright 2007 Dancing Tortoise Software. All rights reserved.
+//
 
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedGroup+CoreDataProperties.h"
@@ -424,7 +425,7 @@
 
 /**  Called when Simple Comic encounters a password protected
  archive.  Brings a password dialog forward. */
--(void)archiveNeedsPassword:(XADArchive *)archive
+- (void)archiveNeedsPassword:(XADArchive *)archive
 {
     NSString * password = self.password;
     

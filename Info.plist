@@ -379,8 +379,6 @@
 	<string>253</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.entertainment</string>
-	<key>NSAppleScriptEnabled</key>
-	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2010 Dancing Tortoise Software.</string>
 	<key>NSMainNibFile</key>

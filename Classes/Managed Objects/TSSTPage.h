@@ -14,7 +14,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 	included in all copies or substantial portions of the Software.
 
   TSSTPage.h
- */
+*/
 
 #import <Cocoa/Cocoa.h>
 
@@ -34,8 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (class, readonly, copy) NSArray<NSString*> *textExtensions;
 #endif
 @property (readonly, copy) NSString *name;
-//- (NSString *)deconflictionName;
-
 @property (readonly) BOOL shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
 @property (readonly, copy) NSImage *thumbnail;

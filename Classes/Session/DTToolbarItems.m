@@ -12,7 +12,7 @@
 
 @implementation DTToolbarItem
 
--(void)validate
+- (void)validate
 {
 	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
 	[(NSControl *)[self view] setEnabled: ![toolbarDelegate pageSelectionInProgress]];
@@ -23,7 +23,7 @@
 
 @implementation DTPageTurnToolbarItem
 
--(void)validate
+- (void)validate
 {
 	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
 

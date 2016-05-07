@@ -93,8 +93,8 @@ textStyle: Dictionary of string attributes.
 		} else {
 			index = Int((progressRect.maxX - point.x) / progressRect.width * CGFloat(maxValue))
 		}
-		index = index >= maxValue ? maxValue - 1 : index;
-		return index;
+		index = index >= maxValue ? maxValue - 1 : index
+		return index
 	}
 
 	/// Draws the progressbar.
@@ -120,17 +120,17 @@ textStyle: Dictionary of string attributes.
 		// Determine label positions and progress rect size+position
 		if leftToRight {
 			fillRect.size.width = bounds2.width * CGFloat(currentValue + 1) / CGFloat(maxValue)
-			indicatorRect.origin.x = round(fillRect.width - 2);
+			indicatorRect.origin.x = round(fillRect.width - 2)
 			
-			leftString = progressString;
-			rightString = totalString;
+			leftString = progressString
+			rightString = totalString
 		} else {
 			fillRect.size.width = bounds2.width * CGFloat(currentValue + 1) / CGFloat(maxValue)
-			fillRect.origin.x = round(bounds2.width - fillRect.width);
+			fillRect.origin.x = round(bounds2.width - fillRect.width)
 			indicatorRect.origin.x = fillRect.minX
 			
-			leftString = totalString;
-			rightString = progressString;
+			leftString = totalString
+			rightString = progressString
 		}
 		
 		let leftSize = leftString.size(withAttributes: numberStyle)
@@ -138,27 +138,27 @@ textStyle: Dictionary of string attributes.
 		
 		// Draw progress
 		barProgressColor.set()
-		NSRectFill(fillRect);
+		NSRectFill(fillRect)
 		
 		// Draw indicator
 		NSColor.black.set()
-		NSRectFill(indicatorRect);
+		NSRectFill(indicatorRect)
 		
 		// Draw labels
-		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17);
+		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17)
 		leftString.draw(in: leftStringRect, withAttributes: numberStyle)
 		
-		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17);
+		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17)
 		rightString.draw(in: rightStringRect, withAttributes: numberStyle)
 		
 		// Draw borders
-		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height);
-		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height);
+		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height)
+		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height)
 		
 		borderColor.set()
 		
-		NSRectFillUsingOperation(leftBorder, .sourceOver);
-		NSRectFillUsingOperation(rightBorder, .sourceOver);
+		NSRectFillUsingOperation(leftBorder, .sourceOver)
+		NSRectFillUsingOperation(rightBorder, .sourceOver)
 	}
 	
 	/// This method has been over-ridden to change the progressRect porperty every time the

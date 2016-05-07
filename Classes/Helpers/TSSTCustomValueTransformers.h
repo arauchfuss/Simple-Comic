@@ -25,7 +25,3 @@
 //@interface TSSTHumanReadableIndex: NSValueTransformer
 //
 //@end
-
-//@interface TSSTFormattedKeyEquivalent: NSValueTransformer
-//
-//@end

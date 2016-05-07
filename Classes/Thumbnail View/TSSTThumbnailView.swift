@@ -162,16 +162,16 @@ class TSSTThumbnailView: NSView {
 		}
 		
 		if thumbPoint.y + imageSize.height / 2 > visibleRect.maxY {
-			thumbPoint.y = visibleRect.maxY - imageSize.height / 2;
+			thumbPoint.y = visibleRect.maxY - imageSize.height / 2
 		}
 		else if thumbPoint.y - imageSize.height / 2 < visibleRect.minY {
-			thumbPoint.y = visibleRect.minY + imageSize.height / 2;
+			thumbPoint.y = visibleRect.minY + imageSize.height / 2
 		}
 		
 		if thumbPoint.x + imageSize.width / 2 > visibleRect.maxX {
-			thumbPoint.x = visibleRect.maxX - imageSize.width / 2;
+			thumbPoint.x = visibleRect.maxX - imageSize.width / 2
 		} else if thumbPoint.x - imageSize.width / 2 < visibleRect.minX {
-			thumbPoint.x = visibleRect.minX + imageSize.width / 2;
+			thumbPoint.x = visibleRect.minX + imageSize.width / 2
 		}
 		
 		thumbPoint.x -= imageSize.width / 2

@@ -492,7 +492,6 @@
 			isa = PBXGroup;
 			children = (
 				55C374501BD9EA8B006385B6 /* Third-party */,
-				7756732906782D8800D1FEB8 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				55C373FF1BD9E61E006385B6 /* QuickComic */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -520,11 +519,12 @@
 				28A266081285C34300ED6391 /* Preferences.xib */,
 				28A2660C1285C35700ED6391 /* MainMenu.xib */,
 				28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */,
+				2813145C0C0A7D7900EC007B /* Localizable.strings */,
 				28F6603B1067255600EC8A34 /* Help */,
 				2851C59F0FC8651C002927E0 /* dsa_pub.pem */,
 				28195B410C166DF5001F5E95 /* Info.plist */,
-				2813145C0C0A7D7900EC007B /* Localizable.strings */,
 				281314590C0A7D5200EC007B /* Credits.rtf */,
+				287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */,
 				8F0D3FC31CCDC28E005D3B49 /* Simple Comic.entitlements */,
 				8F54DD521CCA336B001403DA /* container-migration.plist */,
 			);
@@ -601,14 +601,6 @@
 				559951621BDC0A400086661A /* UniversalDetectorTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7756732906782D8800D1FEB8 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
@@ -1305,7 +1297,8 @@
 				770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */,
 			);
 			currentVersion = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */;
-			path = Sessions_DataModel.xcdatamodeld;
+			name = Sessions_DataModel.xcdatamodeld;
+			path = ../Sessions_DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

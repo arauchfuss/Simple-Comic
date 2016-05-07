@@ -119,10 +119,8 @@
 }
 
 
-
 #pragma mark -
 #pragma mark Animations
-
 
 
 /* Animated GIF method */
@@ -361,7 +359,7 @@
 
 
 /* This method is used to generate the composite loupe image. */
--(NSImage *)imageInRect:(NSRect)rect
+- (NSImage *)imageInRect:(NSRect)rect
 {
     if(![firstPageImage isValid])
     {
@@ -514,7 +512,6 @@
     [clipView scrollToPoint: correctOrigin];
     [scrollView reflectScrolledClipView: clipView];
 }
-
 
 
 - (NSSize)combinedImageSizeForZoom:(CGFloat)zoomScale
@@ -722,7 +719,6 @@
 #pragma mark Event handling
 
 
-
 - (void)scrollWheel:(NSEvent *)theEvent
 {
 	if ([sessionController pageSelectionInProgress])
@@ -786,8 +782,6 @@
     {
         CGFloat deltaX = [theEvent deltaX];
 		CGFloat deltaY = [theEvent deltaY];
-		//CGFloat deltaZ = [theEvent deltaZ];
-		
 		CGFloat ratio = deltaX / deltaY;
 		if isnan(ratio) {ratio = deltaX;}
         if (deltaX != 0.0 && fabs(ratio) >= 1.0)
@@ -1160,13 +1154,11 @@
 }
 
 
-
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
 	BOOL loupe = !sessionController.session.loupe.boolValue;
     sessionController.session.loupe = @(loupe);
 }
-
 
 
 - (void)mouseDown:(NSEvent *)theEvent

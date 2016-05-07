@@ -257,7 +257,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 }
 
 
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
@@ -367,7 +366,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 }
 
 
-
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
 	if(!launchInProgress)
@@ -381,7 +379,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		launchFiles = filenames;
 	}
 }
-
 
 
 //- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
@@ -446,9 +443,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //}
 
 
-
 #pragma mark - Core Data
-
 
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -533,7 +528,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	
     return managedObjectContext;
 }
-
 
 
 /**  Method creates an application support directory for Simple Comic if one
@@ -687,7 +681,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 				[pageSet addObject: fileDescription];
             }
 			
-			
 			if(fileDescription)
 			{
 				[[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL: [NSURL fileURLWithPath: path]];
@@ -812,7 +805,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     return password;
 }
 
--(NSStringEncoding)archive:(XADArchive *)archive
+- (NSStringEncoding)archive:(XADArchive *)archive
 		   encodingForData:(NSData *)data
 					 guess:(NSStringEncoding)guess
 				confidence:(float)confidence

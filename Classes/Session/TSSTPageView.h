@@ -15,13 +15,13 @@
 
 	Simple Comic
 	TSSTPageView.h
-
+*/
+/*
 	Composites one or two images to the screen, making sure that they
 	are horizontally alligned.
 	None of the logic involving the aspect ratios of the images is
 	in this class.
 */
-
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
@@ -90,7 +90,7 @@ typedef struct {
 /*  This is used by the image loupe.  Grabs the portion of the pages
     displayed that fall within "rect." The origin of the argument
     is centered instead of at the bottom left. */
--(nullable NSImage *)imageInRect:(NSRect)rect;
+- (nullable NSImage *)imageInRect:(NSRect)rect;
 
 
 /*  This is the actual rectangle within which the pages are rendered.

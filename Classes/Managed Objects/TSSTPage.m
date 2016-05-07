@@ -14,7 +14,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 	included in all copies or substantial portions of the Software.
 
   TSSTPage.m
- */
+*/
 
 #import "TSSTPage.h"
 #import "SimpleComicAppDelegate.h"

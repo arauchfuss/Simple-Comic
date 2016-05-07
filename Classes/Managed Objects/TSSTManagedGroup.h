@@ -13,7 +13,7 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
 
- TSSTManagedGroup.h
+  TSSTManagedGroup.h
 */
 
 #import <Cocoa/Cocoa.h>
