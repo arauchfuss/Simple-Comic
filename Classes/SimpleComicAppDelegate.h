@@ -52,6 +52,7 @@ extern NSString *const TSSTUpdateSelection;
 extern NSString *const TSSTSessionEndNotification;
 extern NSString *const SSDEnableSwipe;
 extern NSString *const TSSTPreserveModDate;
+extern NSString *const TSSTUnifiedTitlebar;
 
 /*!
     This class is the application delegate.

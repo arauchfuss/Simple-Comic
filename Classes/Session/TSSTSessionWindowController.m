@@ -99,6 +99,16 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
+- (void)windowDidLoad
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey: TSSTUnifiedTitlebar] && NSAppKitVersionNumber >= NSAppKitVersionNumber10_10)
+    {
+        [super windowDidLoad];
+        self.window.titleVisibility = NSWindowTitleHidden;
+    }
+}
+
+
 /*  Sets up all of the observers and bindings. */
 - (void)awakeFromNib
 {

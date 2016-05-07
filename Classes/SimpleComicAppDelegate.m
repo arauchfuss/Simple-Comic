@@ -57,6 +57,7 @@ NSString *const TSSTNestedArchives =    @"nestedArchives";
 NSString *const TSSTUpdateSelection =   @"updateSelection";
 NSString *const SSDEnableSwipe =        @"enableSwipe";
 NSString *const TSSTPreserveModDate =   @"preserveModDate";
+NSString *const TSSTUnifiedTitlebar =   @"unifiedTitlebar";
 
 NSString *const TSSTSessionEndNotification = @"sessionEnd";
 
@@ -217,6 +218,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTUpdateSelection: @0,
 		  SSDEnableSwipe: @NO,
 		  TSSTPreserveModDate: @NO,
+		  TSSTUnifiedTitlebar: @NO,
 		  };
 		
 		NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
