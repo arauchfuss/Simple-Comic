@@ -1048,7 +1048,6 @@
         return;
     }
 	
-    BOOL pageTurnAllowed = [[NSUserDefaults standardUserDefaults] boolForKey: TSSTAutoPageTurn];
     NSTimeInterval delay = 0.2;
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSDate * currentDate = [NSDate date];
@@ -1064,7 +1063,7 @@
     if(scrollKeys & 1)
     {
         scrollPoint.y += delta;
-        if(NSMaxY(visible) >= NSMaxY([self frame]) && pageTurnAllowed)
+        if(NSMaxY(visible) >= NSMaxY([self frame]))
         {
             turn = turnDirection ? LEFTTURN : RIGHTTURN;
         }
@@ -1073,7 +1072,7 @@
     if (scrollKeys & 2)
     {
         scrollPoint.y -= delta;
-        if(scrollPoint.y <= 0 && pageTurnAllowed)
+        if(scrollPoint.y <= 0)
         {
             turn = turnDirection ? RIGHTTURN : LEFTTURN;
         }
@@ -1082,7 +1081,7 @@
     if (scrollKeys & 4)
     {
         scrollPoint.x -= delta;
-        if(scrollPoint.x <= 0 && pageTurnAllowed)
+        if(scrollPoint.x <= 0)
         {
             turn = LEFTTURN;
         }
@@ -1091,7 +1090,7 @@
     if (scrollKeys & 8)
     {
         scrollPoint.x += delta;
-        if(NSMaxX(visible) >= NSMaxX([self frame]) && pageTurnAllowed)
+        if(NSMaxX(visible) >= NSMaxX([self frame]))
         {
             turn = RIGHTTURN;
         }

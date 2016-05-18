@@ -29,30 +29,25 @@ NS_ASSUME_NONNULL_BEGIN
 @class DTPreferencesController;
 
 extern NSString *const TSSTPageOrder;
-extern NSString *const TSSTPageZoomRate;
-extern NSString *const TSSTFullscreen;
-extern NSString *const TSSTSavedSelection;
-extern NSString *const TSSTTwoPageSpread;
 extern NSString *const TSSTPageScaleOptions;
-extern NSString *const TSSTScrollPosition;
-extern NSString *const TSSTConstrainScale;
-extern NSString *const TSSTZoomLevel;
-extern NSString *const TSSTViewRotation;
+extern NSString *const TSSTTwoPageSpread;
+extern NSString *const TSSTStatusbarVisible;
 extern NSString *const TSSTBackgroundColor;
-extern NSString *const TSSTSessionRestore;
-extern NSString *const TSSTScrollersVisible;
-extern NSString *const TSSTAutoPageTurn;
+extern NSString *const TSSTConstrainScale;
 extern NSString *const TSSTWindowAutoResize;
+extern NSString *const TSSTSessionRestore;
+extern NSString *const TSSTEnableSwipe;
 extern NSString *const TSSTLoupeDiameter;
 extern NSString *const TSSTLoupePower;
-extern NSString *const TSSTStatusbarVisible;
 extern NSString *const TSSTLonelyFirstPage;
-extern NSString *const TSSTNestedArchives;
-extern NSString *const TSSTUpdateSelection;
-extern NSString *const TSSTSessionEndNotification;
-extern NSString *const TSSTEnableSwipe;
+extern NSString *const TSSTScrollersVisible;
 extern NSString *const TSSTPreserveModDate;
 extern NSString *const TSSTUnifiedTitlebar;
+
+extern NSString *const TSSTScrollPosition;
+extern NSString *const TSSTZoomLevel;
+extern NSString *const TSSTViewRotation;
+extern NSString *const TSSTSessionEndNotification;
 
 /*!
     This class is the application delegate.

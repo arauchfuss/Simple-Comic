@@ -35,30 +35,25 @@
 @end
 
 NSString *const TSSTPageOrder =         @"pageOrder";
-NSString *const TSSTPageZoomRate =      @"pageZoomRate";
-NSString *const TSSTFullscreen =        @"fullscreen";
-NSString *const TSSTSavedSelection =    @"savedSelection";
-NSString *const TSSTTwoPageSpread =     @"twoPageSpread";
 NSString *const TSSTPageScaleOptions =  @"scaleOptions";
-NSString *const TSSTScrollPosition =    @"scrollPosition";
-NSString *const TSSTConstrainScale =    @"constrainScale";
-NSString *const TSSTZoomLevel =         @"zoomLevel";
-NSString *const TSSTViewRotation =      @"rotation";
+NSString *const TSSTTwoPageSpread =     @"twoPageSpread";
+NSString *const TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString *const TSSTBackgroundColor =   @"pageBackgroundColor";
-NSString *const TSSTSessionRestore =    @"sessionRestore";
-NSString *const TSSTScrollersVisible =  @"scrollersVisible";
-NSString *const TSSTAutoPageTurn =      @"autoPageTurn";
+NSString *const TSSTConstrainScale =    @"constrainScale";
 NSString *const TSSTWindowAutoResize =  @"windowAutoResize";
+NSString *const TSSTSessionRestore =    @"sessionRestore";
+NSString *const TSSTEnableSwipe =       @"enableSwipe";
 NSString *const TSSTLoupeDiameter =     @"loupeDiameter";
 NSString *const TSSTLoupePower =        @"loupePower";
-NSString *const TSSTStatusbarVisible =  @"statusBarVisisble";
+
 NSString *const TSSTLonelyFirstPage =   @"lonelyFirstPage";
-NSString *const TSSTNestedArchives =    @"nestedArchives";
-NSString *const TSSTUpdateSelection =   @"updateSelection";
-NSString *const TSSTEnableSwipe =       @"enableSwipe";
+NSString *const TSSTScrollersVisible =  @"scrollersVisible";
 NSString *const TSSTPreserveModDate =   @"preserveModDate";
 NSString *const TSSTUnifiedTitlebar =   @"unifiedTitlebar";
 
+NSString *const TSSTScrollPosition =    @"scrollPosition";
+NSString *const TSSTZoomLevel =         @"zoomLevel";
+NSString *const TSSTViewRotation =      @"rotation";
 NSString *const TSSTSessionEndNotification = @"sessionEnd";
 
 #pragma mark - String Encoding Functions
@@ -234,7 +229,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 - (void) dealloc
 {
-	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTUpdateSelection];
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTSessionRestore];
 }
 
@@ -252,7 +246,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	preferences = nil;
 	optionHeldAtlaunch = NO;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSession:) name: TSSTSessionEndNotification object: nil];
-	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTUpdateSelection options: 0 context: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTSessionRestore options: 0 context: nil];
 }
 
