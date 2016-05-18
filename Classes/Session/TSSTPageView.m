@@ -778,7 +778,7 @@
 	}
     
     
-    if ([defaultsController boolForKey:SSDEnableSwipe] && theEvent.type == NSEventTypeSwipe)
+    if ([defaultsController boolForKey:TSSTEnableSwipe] && theEvent.type == NSEventTypeSwipe)
     {
         CGFloat deltaX = [theEvent deltaX];
 		CGFloat deltaY = [theEvent deltaY];

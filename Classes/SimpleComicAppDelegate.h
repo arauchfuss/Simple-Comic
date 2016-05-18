@@ -50,7 +50,7 @@ extern NSString *const TSSTLonelyFirstPage;
 extern NSString *const TSSTNestedArchives;
 extern NSString *const TSSTUpdateSelection;
 extern NSString *const TSSTSessionEndNotification;
-extern NSString *const SSDEnableSwipe;
+extern NSString *const TSSTEnableSwipe;
 extern NSString *const TSSTPreserveModDate;
 extern NSString *const TSSTUnifiedTitlebar;
 

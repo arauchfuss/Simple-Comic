@@ -84,7 +84,7 @@ textStyle: Dictionary of string attributes.
 	fileprivate var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFont(ofSize: 10),
 	NSForegroundColorAttributeName: NSColor(deviceWhite: 0.2, alpha: 1)]
 
-	/// Translates a point within the view to an index between `0` and `maxValue`.<br>
+	/// Translates a point within the view to an index between `0` and `maxValue`.
 	/// Progress indicator direction affects the index.
 	@objc(indexForPoint:) func index(for point: NSPoint) -> Int {
 		var index: Int

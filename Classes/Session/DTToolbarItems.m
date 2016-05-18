@@ -25,13 +25,12 @@
 
 - (void)validate
 {
-	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
-
     if (NSAppKitVersionNumber >= NSAppKitVersionNumber10_10)
     {
         [(NSSegmentedControl *)[self view] setSegmentStyle: NSSegmentStyleSeparated];
     }
     
+	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
 	[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageLeft] forSegment: 0];
 	[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageRight] forSegment: 1];
 	[super validate];

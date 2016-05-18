@@ -55,7 +55,7 @@ NSString *const TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString *const TSSTLonelyFirstPage =   @"lonelyFirstPage";
 NSString *const TSSTNestedArchives =    @"nestedArchives";
 NSString *const TSSTUpdateSelection =   @"updateSelection";
-NSString *const SSDEnableSwipe =        @"enableSwipe";
+NSString *const TSSTEnableSwipe =       @"enableSwipe";
 NSString *const TSSTPreserveModDate =   @"preserveModDate";
 NSString *const TSSTUnifiedTitlebar =   @"unifiedTitlebar";
 
@@ -216,7 +216,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTLonelyFirstPage: @YES,
 		  TSSTNestedArchives: @YES,
 		  TSSTUpdateSelection: @0,
-		  SSDEnableSwipe: @NO,
+		  TSSTEnableSwipe: @NO,
 		  TSSTPreserveModDate: @NO,
 		  TSSTUnifiedTitlebar: @NO,
 		  };
