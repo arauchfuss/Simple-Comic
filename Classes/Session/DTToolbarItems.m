@@ -21,7 +21,7 @@
 @end
 
 
-@implementation DTPageTurnToolbarItem
+@implementation DTSeparatedToolbarItem
 
 - (void)validate
 {
@@ -29,7 +29,15 @@
     {
         [(NSSegmentedControl *)[self view] setSegmentStyle: NSSegmentStyleSeparated];
     }
-    
+}
+
+@end
+
+
+@implementation DTPageTurnToolbarItem
+
+- (void)validate
+{
 	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
 	[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageLeft] forSegment: 0];
 	[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageRight] forSegment: 1];

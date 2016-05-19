@@ -13,6 +13,11 @@
 @end
 
 
-@interface DTPageTurnToolbarItem : DTToolbarItem
+@interface DTSeparatedToolbarItem : DTToolbarItem
+
+@end
+
+
+@interface DTPageTurnToolbarItem : DTSeparatedToolbarItem
 
 @end

@@ -173,10 +173,10 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="2FEB6E2E-5C3E-4725-B4B7-D5204BC8F2A8" label="Rotate" paletteLabel="Rotate" id="585" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="2FEB6E2E-5C3E-4725-B4B7-D5204BC8F2A8" label="Rotate" paletteLabel="Rotate" id="585" customClass="DTSeparatedToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="65" height="25"/>
-                        <size key="maxSize" width="65" height="25"/>
+                        <size key="minSize" width="69" height="25"/>
+                        <size key="maxSize" width="69" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="586">
                             <rect key="frame" x="0.0" y="14" width="65" height="25"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="587">
@@ -212,10 +212,10 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A580F497-94D7-4752-971B-01FBBAD86DEF" label="Zoom" paletteLabel="Zoom" id="fTI-g2-r3b" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="A580F497-94D7-4752-971B-01FBBAD86DEF" label="Zoom" paletteLabel="Zoom" id="fTI-g2-r3b" customClass="DTSeparatedToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="65" height="25"/>
-                        <size key="maxSize" width="65" height="25"/>
+                        <size key="minSize" width="69" height="25"/>
+                        <size key="maxSize" width="69" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="cCY-vp-GHz">
                             <rect key="frame" x="0.0" y="14" width="65" height="25"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="lV3-24-KZL">
