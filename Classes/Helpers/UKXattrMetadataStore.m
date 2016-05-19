@@ -28,11 +28,11 @@
 +(NSArray*)		allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSMutableArray*	allKeys = [NSMutableArray array];
-	size_t dataSize = listxattr( [path fileSystemRepresentation],
+	ssize_t dataSize = listxattr( [path fileSystemRepresentation],
 								NULL, ULONG_MAX,
 								(travLnk ? 0 : XATTR_NOFOLLOW) );
-	if( dataSize == ULONG_MAX )
-		return allKeys;	// Empty list.
+	if( dataSize == -1 )
+		return nil;	// Empty list.
 	NSMutableData*	listBuffer = [NSMutableData dataWithLength: dataSize];
 	dataSize = listxattr( [path fileSystemRepresentation],
 							[listBuffer mutableBytes], [listBuffer length],
@@ -48,7 +48,7 @@
 		}
 	}
 	
-	return allKeys;
+	return [allKeys copy];
 }
 
 
@@ -66,7 +66,19 @@
 				0, (travLnk ? 0 : XATTR_NOFOLLOW) );
 }
 
-
++(BOOL) setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
+{
+	int iErr = setxattr([path fileSystemRepresentation], [key UTF8String],
+				[data bytes], [data length],
+				0, (travLnk ? 0 : XATTR_NOFOLLOW) );
+	if (iErr == -1) {
+		if (error) {
+			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:nil];
+		}
+		return NO;
+	}
+	return YES;
+}
 // -----------------------------------------------------------------------------
 //	setObject:forKey:atPath:traverseLink:
 //		Set the xattr with name key to an XML property list representation of
@@ -90,6 +102,20 @@
 		[[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk];
 }
 
++(BOOL)	setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
+{
+	// Serialize our objects into a property list XML string:
+	NSData *plistData = [NSPropertyListSerialization dataWithPropertyList:obj format:NSPropertyListXMLFormat_v1_0 options:0 error:error];
+
+	if( !plistData )
+	{
+		//NSPropertyListSerialization should have filled out the error.
+		return NO;
+	}
+	else
+		return [[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk error: error];
+}
+
 
 // -----------------------------------------------------------------------------
 //	setString:forKey:atPath:traverseLink:
@@ -109,6 +135,22 @@
 	[[self class] setData: data forKey: key atPath: path traverseLink: travLnk];
 }
 
++(BOOL)	setString: (NSString*)str forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)outError
+{
+	NSData *data = [str dataUsingEncoding: NSUTF8StringEncoding];
+	
+	if (!data) {
+		if (outError) {
+			*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileWriteInapplicableStringEncodingError userInfo:
+						 @{NSLocalizedDescriptionKey: @"Couldn't convert string to UTF8 for xattr storage.",
+						   NSStringEncodingErrorKey: @(NSUTF8StringEncoding)}];
+		}
+		return NO;
+		//[NSException raise: NSCharacterConversionException format: @"Couldn't convert string to UTF8 for xattr storage."];
+	}
+	
+	return [[self class] setData: data forKey: key atPath: path traverseLink: travLnk error: outError];
+}
 
 // -----------------------------------------------------------------------------
 //	dataForKey:atPath:traverseLink:
@@ -119,13 +161,37 @@
 
 +(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	size_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
+	ssize_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
 										NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
-	if( dataSize == ULONG_MAX )
+	if( dataSize == -1 )
 		return nil;
 	NSMutableData*	data = [[NSMutableData alloc] initWithLength: dataSize];
 	getxattr( [path fileSystemRepresentation], [key UTF8String],
 				[data mutableBytes], [data length], 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
+	
+	return [data copy];
+}
+
++(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
+{
+	ssize_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
+									NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
+	if( dataSize == -1 ) {
+		if (error) {
+			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:nil];
+		}
+		return nil;
+	}
+	NSMutableData*	data = [[NSMutableData alloc] initWithLength: dataSize];
+	dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
+				[data mutableBytes], [data length], 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
+	
+	if (dataSize == -1) {
+		if (error) {
+			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:nil];
+		}
+		return nil;
+	}
 	
 	return [data copy];
 }
@@ -159,7 +225,11 @@
 +(nullable id) objectForKey: (NSString*)key atPath: (NSString*)path
 				  traverseLink:(BOOL)travLnk error: (NSError**)outError
 {
-	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
+	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: outError];
+	if (!data) {
+		//The dataForKey:... method should have filled out the error variable.
+		return nil;
+	}
 	NSPropertyListFormat	outFormat = NSPropertyListXMLFormat_v1_0;
 
 	id obj = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&outFormat error:outError];
@@ -184,6 +254,26 @@
 	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
 	
 	return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+}
+
++(NSString*)	stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
+{
+	NSData *data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: error];
+	
+	if (!data) {
+		//The dataForKey:... method should have filled out the error variable.
+		return nil;
+	}
+	
+	NSString *toRet = [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
+	
+	if (!toRet) {
+		if (error) {
+			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInapplicableStringEncodingError userInfo:@{NSStringEncodingErrorKey: @(NSUTF8StringEncoding)}];
+		}
+	}
+	
+	return toRet;
 }
 
 
