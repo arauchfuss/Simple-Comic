@@ -78,12 +78,12 @@ class TSSTThumbnailView: NSView {
 	
 	func processThumbs() {
 		autoreleasepool() {
-			++threadIdent
+			threadIdent += 1
 			let localIdent = threadIdent
 			thumbLock.lock()
 			let pageCount: Int = pageController!.content!.count
 			limit = 0
-			while limit < (pageCount) && localIdent == threadIdent && dataSource!.respondsToSelector("imageForPageAtIndex:") {
+			while limit < (pageCount) && localIdent == threadIdent && dataSource!.respondsToSelector(#selector(TSSTSessionWindowController.imageForPageAtIndex(_:))) {
 				autoreleasepool() {
 					dataSource!.imageForPageAtIndex(limit)
 					if (limit % 5) == 0 {
@@ -91,7 +91,7 @@ class TSSTThumbnailView: NSView {
 							needsDisplay = true
 						}
 					}
-					++limit
+					limit += 1
 				}
 			}
 			thumbLock.unlock()
@@ -112,14 +112,14 @@ class TSSTThumbnailView: NSView {
 				hoverIndex = counter
 				zoomThumbnailAtIndex(hoverIndex!)
 			}
-			++counter
+			counter += 1
 		}
 	}
 	
 	override func mouseEntered(theEvent: NSEvent) {
 		hoverIndex = unsafeBitCast(theEvent.userData, NSNumber.self).integerValue
 		if limit == pageController.content?.count {
-			NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "dwell:", userInfo: (hoverIndex! as NSNumber), repeats: false)
+			NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(TSSTThumbnailView.dwell(_:)), userInfo: (hoverIndex! as NSNumber), repeats: false)
 		}
 	}
 	

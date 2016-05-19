@@ -12,7 +12,7 @@ import Cocoa
 /// page preview.
 class TSSTInfoWindow: NSPanel {
 	override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
-		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, `defer`: flag)
+		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
 		opaque = false
 		ignoresMouseEvents = true
 

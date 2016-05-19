@@ -1,4 +1,4 @@
-/*     
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
  
 	Permission is hereby granted, free of charge, to any person 
@@ -37,7 +37,7 @@ import Cocoa
 
 class TSSTKeyWindow : NSPanel {
 	override init(contentRect rect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
-		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, `defer`: flag)
+		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
 		opaque = false
 	}
 	
@@ -54,6 +54,6 @@ class TSSTKeyWindow : NSPanel {
 	}
 	
 	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
-		return menuItem.action == "performClose:" ? true : false
+		return menuItem.action == #selector(TSSTKeyWindow.performClose(_:)) ? true : false
 	}
 }

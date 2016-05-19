@@ -10,7 +10,7 @@ import Cocoa
 
 class TSSTBezelWindow : NSPanel {
 	override init(contentRect rect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
-		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, `defer`: flag)
+		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
 	}
 
 	required init?(coder: NSCoder) {
@@ -26,6 +26,6 @@ class TSSTBezelWindow : NSPanel {
 	}
 	
 	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
-		return menuItem.action == "performClose:" ? true : false
+		return menuItem.action == #selector(TSSTBezelWindow.performClose(_:)) ? true : false
 	}
 }

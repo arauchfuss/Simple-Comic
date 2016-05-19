@@ -84,13 +84,13 @@ textStyle: Dictionary of string attributes.
 	}
 
 	/// This is the section of the view. Users can mouse over and click here.
-	var progressRect = NSRect()
+	private(set) var progressRect = NSRect()
 	
 	/// How much room is given for the text on either side.
-	var horizontalMargin: CGFloat = 5
+	private var horizontalMargin: CGFloat = 5
 
 	/// The font attributes of the progress numbers.
-	var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFontOfSize(10),
+	private var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFontOfSize(10),
 	NSForegroundColorAttributeName: NSColor(deviceWhite: 0.2, alpha: 1)]
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.<br>
