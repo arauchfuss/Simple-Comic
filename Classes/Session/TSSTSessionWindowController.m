@@ -891,11 +891,13 @@
 				[UKXattrMetadataStore setString: coverName
 										 forKey: @"QCCoverName" 
 										 atPath: archivePath 
-								   traverseLink: NO];
+								   traverseLink: NO
+										  error: nil];
 				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
 										 forKey: @"QCCoverRect" 
 										 atPath: archivePath 
-								   traverseLink: NO];
+								   traverseLink: NO
+										  error: nil];
 				
 				[NSTask launchedTaskWithLaunchPath: @"/usr/bin/touch" 
 										 arguments: @[archivePath]];

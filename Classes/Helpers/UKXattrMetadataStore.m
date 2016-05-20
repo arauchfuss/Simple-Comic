@@ -73,7 +73,7 @@
 				0, (travLnk ? 0 : XATTR_NOFOLLOW) );
 	if (iErr == -1) {
 		if (error) {
-			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:nil];
+			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:@{NSFilePathErrorKey: path}];
 		}
 		return NO;
 	}
@@ -143,10 +143,10 @@
 		if (outError) {
 			*outError = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileWriteInapplicableStringEncodingError userInfo:
 						 @{NSLocalizedDescriptionKey: @"Couldn't convert string to UTF8 for xattr storage.",
-						   NSStringEncodingErrorKey: @(NSUTF8StringEncoding)}];
+						   NSStringEncodingErrorKey: @(NSUTF8StringEncoding),
+						   NSFilePathErrorKey: path}];
 		}
 		return NO;
-		//[NSException raise: NSCharacterConversionException format: @"Couldn't convert string to UTF8 for xattr storage."];
 	}
 	
 	return [[self class] setData: data forKey: key atPath: path traverseLink: travLnk error: outError];
@@ -178,7 +178,7 @@
 									NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
 	if( dataSize == -1 ) {
 		if (error) {
-			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:nil];
+			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:@{NSFilePathErrorKey: path}];
 		}
 		return nil;
 	}
@@ -188,7 +188,7 @@
 	
 	if (dataSize == -1) {
 		if (error) {
-			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:nil];
+			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:@{NSFilePathErrorKey: path}];
 		}
 		return nil;
 	}
@@ -223,9 +223,9 @@
 }
 
 +(nullable id) objectForKey: (NSString*)key atPath: (NSString*)path
-				  traverseLink:(BOOL)travLnk error: (NSError**)outError
+			   traverseLink: (BOOL)travLnk error: (NSError**)outError
 {
-	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: outError];
+	NSData *data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: outError];
 	if (!data) {
 		//The dataForKey:... method should have filled out the error variable.
 		return nil;
@@ -269,7 +269,11 @@
 	
 	if (!toRet) {
 		if (error) {
-			*error = [NSError errorWithDomain:NSCocoaErrorDomain code:NSFileReadInapplicableStringEncodingError userInfo:@{NSStringEncodingErrorKey: @(NSUTF8StringEncoding)}];
+			*error = [NSError errorWithDomain: NSCocoaErrorDomain
+										 code: NSFileReadInapplicableStringEncodingError
+									 userInfo:
+					  @{NSStringEncodingErrorKey: @(NSUTF8StringEncoding),
+						NSFilePathErrorKey: path}];
 		}
 	}
 	

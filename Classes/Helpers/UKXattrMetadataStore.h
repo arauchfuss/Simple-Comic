@@ -64,9 +64,10 @@ NS_ASSUME_NONNULL_BEGIN
  *				If <code>YES</code>, follows symlinks.
  *	@discussion	Set the xattr with name key to an XML property list representation of
  *				the specified object (or object graph).
+ *	@deprecated	This method throws an Obj-C exception. No other error information is provided, not even if it was successful.
  */
 +(void) setString:(NSString*)str forKey:(NSString*)key
-		   atPath:(NSString*)path traverseLink:(BOOL)travLnk NS_SWIFT_UNAVAILABLE("Use 'setString(_:forKey:atPath:traverseLink:) throws' instead");
+		   atPath:(NSString*)path traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'setString(_:forKey:atPath:traverseLink:) throws' instead");
 
 /*!
  *	@method		setString:forKey:atPath:traverseLink:error:
@@ -99,9 +100,10 @@ NS_ASSUME_NONNULL_BEGIN
  *				If <code>YES</code>, follows symlinks.
  *	@return		an \c NSString on succes, or \c nil on failure.
  *	@discussion	Get the xattr with name \c key as a UTF8 string.
+ *	@deprecated	This method has no error handling.
  */
 +(nullable NSString*) stringForKey:(NSString*)key atPath:(NSString*)path
-					  traverseLink:(BOOL)travLnk NS_SWIFT_UNAVAILABLE("Use 'stringForKey(_:atPath:traverseLink:) throws' instead");
+					  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'stringForKey(_:atPath:traverseLink:) throws' instead");
 
 /*!
  *	@method		stringForKey:atPath:traverseLink:error:
@@ -116,10 +118,11 @@ NS_ASSUME_NONNULL_BEGIN
  *				If the method does not complete successfully, upon return
  *				contains an \c NSError object that describes the problem.
  *	@return		an \c NSString on succes, or \c nil on failure.
- *	@discussion	Get the xattr with name \c key as a UTF8 string
+ *	@discussion	Get the xattr with name \c key as a UTF-8 string.
  */
 +(nullable NSString*) stringForKey:(NSString*)key atPath:(NSString*)path
 					  traverseLink:(BOOL)travLnk error:(NSError**)error;
+
 #pragma mark Store raw data:
 /*!
  *	@method		setData:forKey:atPath:traverseLink:
@@ -134,9 +137,10 @@ NS_ASSUME_NONNULL_BEGIN
  *				If <code>YES</code>, follows symlinks.
  *	@discussion	Set the xattr with name key to an XML property list representation of
  *				the specified object (or object graph).
+ *	@deprecated	This method has no way of indicating success or failure.
  */
 +(void) setData:(NSData*)data forKey:(NSString*)key
-		 atPath:(NSString*)path traverseLink:(BOOL)travLnk NS_SWIFT_UNAVAILABLE("Use 'setData(_:forKey:atPath:traverseLink:) throws' instead");
+		 atPath:(NSString*)path traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'setData(_:forKey:atPath:traverseLink:) throws' instead");
 /*!
  *	@method		setData:forKey:atPath:traverseLink:error:
  *	@brief		Set the xattr with name \c key to the raw data in <code>data</code>.
@@ -168,9 +172,10 @@ NS_ASSUME_NONNULL_BEGIN
  *				If <code>YES</code>, follows symlinks.
  *	@return		an \c NSData containing the contents of \c key on succes, or \c nil on failure
  *	@discussion	Get the xattr with name \c key as a UTF8 string
+ *	@deprecated	This method throws an Obj-C exception. No other error information is provoded on failure.
  */
 +(nullable NSData*)	dataForKey: (NSString*)key atPath:(NSString*)path
-				  traverseLink:(BOOL)travLnk NS_SWIFT_UNAVAILABLE("Use 'dataForKey(_:atPath:traverseLink:) throws' instead");
+				  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'dataForKey(_:atPath:traverseLink:) throws' instead");
 /*!
  *	@method		dataForKey:atPath:traverseLink:error:
  *	@brief		Get the xattr with name \c key as raw data.
@@ -202,9 +207,11 @@ NS_ASSUME_NONNULL_BEGIN
  *				If <code>YES</code>, follows symlinks.
  *	@discussion	Set the xattr with name key to an XML property list representation of
  *				the specified object (or object graph).
+ *	@deprecated	This method throws an Obj-C exception. No other error information is provided,
+ *				not even if it was successful.
  */
 +(void) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
-	 traverseLink:(BOOL)travLnk  NS_SWIFT_UNAVAILABLE("Use 'setObject(_:forKey:atPath:traverseLink:) throws' instead");
+	 traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'setObject(_:forKey:atPath:traverseLink:) throws' instead");
 
 /*!
  *	@method		setObject:forKey:atPath:traverseLink:error:

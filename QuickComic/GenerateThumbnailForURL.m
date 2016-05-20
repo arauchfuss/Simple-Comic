@@ -21,9 +21,9 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	NSString * archivePath = [(__bridge NSURL *)url path];
 //	NSLog(@"base path %@",archivePath);
 	NSData * imageData = nil;
-	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
+	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO error: nil] ?: @"";
 //	NSLog(@"page name %@",coverName);
-	NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO];
+	NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO error: nil] ?: @"";
 //	NSLog(@"rect %@",coverRectString);
 	CGRect cropRect = CGRectZero;
 	NSInteger coverIndex;
@@ -45,9 +45,9 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		if([fileList count] > 0)
 		{
 			[fileList sortUsingDescriptors: fileSort()];
-			coverName = [fileList[0] valueForKey: @"rawName"];
-			coverIndex = [[fileList[0] valueForKey: @"index"] integerValue];
-			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
+			coverName = [fileList.firstObject valueForKey: @"rawName"];
+			coverIndex = [[fileList.firstObject valueForKey: @"index"] integerValue];
+			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO error: nil];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}
 
