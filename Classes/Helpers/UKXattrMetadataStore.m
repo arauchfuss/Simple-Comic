@@ -132,7 +132,7 @@
 	if( !data )
 		[NSException raise: NSCharacterConversionException format: @"Couldn't convert string to UTF8 for xattr storage."];
 	
-	[[self class] setData: data forKey: key atPath: path traverseLink: travLnk];
+	[[self class] setData: data forKey: key atPath: path traverseLink: travLnk error: nil];
 }
 
 +(BOOL)	setString: (NSString*)str forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)outError
@@ -161,15 +161,7 @@
 
 +(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	ssize_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
-										NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
-	if( dataSize == -1 )
-		return nil;
-	NSMutableData*	data = [[NSMutableData alloc] initWithLength: dataSize];
-	getxattr( [path fileSystemRepresentation], [key UTF8String],
-				[data mutableBytes], [data length], 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
-	
-	return [data copy];
+	return [self dataForKey:key atPath:path traverseLink:travLnk error:NULL];
 }
 
 +(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
@@ -207,8 +199,13 @@
 
 +(id)	objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	NSString*				errMsg = nil;
-	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
+	NSString*	errMsg = nil;
+	NSError		*err = nil;
+	NSData*		data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: &err];
+	if (!data && err) {
+		[NSException raise:@"UKXattrMetastoreCantUnserialize" format: @"%@", err];
+		return nil;
+	}
 	NSPropertyListFormat	outFormat = NSPropertyListXMLFormat_v1_0;
 	id obj = [NSPropertyListSerialization propertyListFromData: data
 					mutabilityOption: NSPropertyListImmutable
@@ -251,7 +248,10 @@
 
 +(NSString*)	stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	NSData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
+	NSData *data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: nil];
+	if (!data) {
+		return nil;
+	}
 	
 	return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }
