@@ -314,6 +314,13 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = UniversalDetector;
 		};
+		55A6C3221CEF50BA0049D381 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 559EF1841BDD380400FAAA0A;
+			remoteInfo = XADMaster;
+		};
 		55C374561BD9EAA1006385B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
@@ -684,6 +691,7 @@
 		559EF3E11BDD390000FAAA0A /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
 		559EF3E51BDD40CF00FAAA0A /* XADPlatformMacOSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XADPlatformMacOSX.m; sourceTree = "<group>"; };
 		559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTThumbnailView.swift; sourceTree = "<group>"; };
+		55A6C3241CEF51F90049D381 /* QuickComic.exp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.exports; path = QuickComic.exp; sourceTree = "<group>"; };
 		55C373E21BD99DD9006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		55C373E41BD99E15006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Preferences.strings; sourceTree = "<group>"; };
 		55C373E71BD9A113006385B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
@@ -703,7 +711,7 @@
 		55C374181BD9E6AF006385B6 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		55C374191BD9E6AF006385B6 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		55C3741A1BD9E6AF006385B6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55C3741B1BD9E6AF006385B6 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		55C3741B1BD9E6AF006385B6 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; usesTabs = 0; };
 		55C374411BD9E8BB006385B6 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55C374461BD9E8BB006385B6 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = Vendor/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
@@ -1364,6 +1372,7 @@
 				55C3741B1BD9E6AF006385B6 /* main.c */,
 				55C3741A1BD9E6AF006385B6 /* Info.plist */,
 				55C374401BD9E8BB006385B6 /* InfoPlist.strings */,
+				55A6C3241CEF51F90049D381 /* QuickComic.exp */,
 			);
 			path = QuickComic;
 			sourceTree = "<group>";
@@ -1583,6 +1592,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55A6C3231CEF50BA0049D381 /* PBXTargetDependency */,
 				55C3745F1BD9EFE7006385B6 /* PBXTargetDependency */,
 			);
 			name = QuickComic;
@@ -1903,6 +1913,11 @@
 			name = UniversalDetector;
 			targetProxy = 559EF3DC1BDD386B00FAAA0A /* PBXContainerItemProxy */;
 		};
+		55A6C3231CEF50BA0049D381 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 559EF1841BDD380400FAAA0A /* XADMaster */;
+			targetProxy = 55A6C3221CEF50BA0049D381 /* PBXContainerItemProxy */;
+		};
 		55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55C374041BD9E67D006385B6 /* QuickComic */;
@@ -2100,6 +2115,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
@@ -2127,6 +2143,8 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",

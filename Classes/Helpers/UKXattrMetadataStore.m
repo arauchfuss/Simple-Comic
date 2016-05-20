@@ -61,9 +61,7 @@
 
 +(void)				setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	setxattr( [path fileSystemRepresentation], [key UTF8String],
-				[data bytes], [data length],
-				0, (travLnk ? 0 : XATTR_NOFOLLOW) );
+	[self setData:data forKey:key atPath:path traverseLink:travLnk error:NULL];
 }
 
 +(BOOL) setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
@@ -99,7 +97,7 @@
 		[NSException raise: @"UKXattrMetastoreCantSerialize" format: @"%@", errMsg];
 	}
 	else
-		[[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk];
+		[[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk error: NULL];
 }
 
 +(BOOL)	setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
