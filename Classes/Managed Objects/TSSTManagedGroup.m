@@ -477,7 +477,7 @@
 {
     if (!instance)
     {
-        instance = [[PDFDocument alloc] initWithData: [NSData dataWithContentsOfFile: [self valueForKey: @"path"]]];
+        instance = [[PDFDocument alloc] initWithURL: [NSURL fileURLWithPath: [self valueForKey: @"path"]]];
     }
 	
     return instance;
