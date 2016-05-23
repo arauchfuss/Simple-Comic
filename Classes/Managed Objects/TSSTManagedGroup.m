@@ -539,9 +539,7 @@
 
 @end
 
-@implementation SSDManagedSmartFolder{
-    
-}
+@implementation SSDManagedSmartFolder
 
 - (void) smartFolderContents
 {

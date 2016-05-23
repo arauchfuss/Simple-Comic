@@ -39,6 +39,7 @@
 		552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */; };
 		552627931BDEEF6B005AAF63 /* TSSTBezelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627921BDEEF6B005AAF63 /* TSSTBezelView.swift */; };
 		552627951BDEEF85005AAF63 /* TSSTTransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */; };
+		552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */; };
 		5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */; };
 		5589952E1A13D4450058830B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5589952D1A13D4450058830B /* Media.xcassets */; };
 		5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */; };
@@ -1878,6 +1879,7 @@
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */,
 				552627951BDEEF85005AAF63 /* TSSTTransparentView.swift in Sources */,
+				552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
 				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
