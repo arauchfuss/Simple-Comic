@@ -36,6 +36,7 @@
 #import "TSSTManagedSession.h"
 #import "TSSTCustomValueTransformers.h"
 #import "DTPreferencesController.h"
+#import "Simple_Comic-Swift.h"
 
 
 NSString *const TSSTPageOrder =         @"pageOrder";

@@ -46,8 +46,10 @@ static NSSize monospaceCharacterSize;
 	if(!imageTypes)
 	{
 		NSMutableArray *aimageTypes = [[NSMutableArray alloc] initWithArray: [NSImage imageFileTypes]];
-		[aimageTypes removeObject: @"pdf"];
-		[aimageTypes removeObject: @"eps"];
+		//Get rid of OSTypes/File Types
+		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like %@)" argumentArray:@[@"'????'"]]];
+		// Remove PDF and eps files
+		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like[c] %@)" argumentArray:@[@"pdf", @"eps"]]];
 		imageTypes = [[NSArray alloc] initWithArray:aimageTypes];
 	}
 	
