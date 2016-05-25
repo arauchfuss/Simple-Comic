@@ -63,11 +63,12 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				query.predicate = predicateToRun
 				query.searchScopes = (rawQuery["SearchScopes"] as? [AnyObject]) ?? []
 				query.delegate = self
+				//Move it to a seperate thread so it actually works.
 				query.operationQueue = NSOperationQueue()
 				query.startQuery()
 				
 				if dispatch_semaphore_wait(metadataSemaphore, dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))) != 0 {
-					NSLog("%@: %p We ran out of time!", self.className, unsafeAddressOf(self))
+					NSLog("%@: %p We ran out of time! Using NSTask using mdfind.", self.className, unsafeAddressOf(self))
 					useTask()
 				} else {
 					query.stopQuery()
@@ -142,7 +143,7 @@ extension ManagedSmartFolder: NSMetadataQueryDelegate {
 		return result.valueForAttribute(kMDItemPath as String) ?? NSNull()
 	}
 	
-	func queryNote(note: NSNotification) {
+	@objc private func queryNote(note: NSNotification) {
 		if note.name == NSMetadataQueryDidFinishGatheringNotification {
 			dispatch_semaphore_signal(metadataSemaphore)
 		}
