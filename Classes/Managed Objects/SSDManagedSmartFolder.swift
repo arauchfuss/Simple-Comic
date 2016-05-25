@@ -10,13 +10,12 @@ import Cocoa
 
 @objc(SSDManagedSmartFolder)
 class ManagedSmartFolder: TSSTManagedGroup {
+	private var metadataSemaphore = dispatch_semaphore_create(0)
 	
 	func smartFolderContents() {
 		let fm = NSFileManager()
 		var pageSet = Set<TSSTPage>()
 		var fileNames = [String]()
-		
-		//TODO: replace NSTask with actual metadata calls.
 		
 		guard let filePath = valueForKey("path") as? NSString as? String where fm.fileExistsAtPath(filePath) else {
 			NSLog("Failed path");
@@ -28,22 +27,56 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			}
 			print(result.description)
 			
-			let pipe = NSPipe()
-			let file = pipe.fileHandleForReading
-			
-			let task = NSTask()
-			
-			task.launchPath = "/usr/bin/mdfind";
-			task.arguments = [result.description];
-			task.standardOutput = pipe;
-			
-			task.launch()
-			
-			let data = file.readDataToEndOfFile()
-			guard let resultString = String(data: data, encoding: NSUTF8StringEncoding) else {
-				return
+			func useTask() {
+				let pipe = NSPipe()
+				let file = pipe.fileHandleForReading
+				
+				let task = NSTask()
+				
+				task.launchPath = "/usr/bin/mdfind";
+				task.arguments = [result.description];
+				task.standardOutput = pipe;
+				
+				task.launch()
+				
+				let data = file.readDataToEndOfFile()
+				guard let resultString = String(data: data, encoding: NSUTF8StringEncoding) else {
+					return
+				}
+				fileNames = resultString.componentsSeparatedByString("\n")
 			}
-			fileNames = resultString.componentsSeparatedByString("\n")
+			
+			if let rawQuery = dic.objectForKey("RawQueryDict") as? NSDictionary as? [String: AnyObject],
+				mdStr = result as? String,
+				mdPred = NSPredicate(fromMetadataQueryString: mdStr) {
+				
+				let query = NSMetadataQuery()
+				let nf = NSNotificationCenter.defaultCenter()
+				nf.addObserver(self, selector: #selector(ManagedSmartFolder.queryNote(_:)), name: nil, object: query)
+				defer {
+					nf.removeObserver(self, name: nil, object: query)
+				}
+
+				let emailExclusionPredicate = NSPredicate(format:"(kMDItemContentType != 'com.apple.mail.emlx') && (kMDItemContentType != 'public.vcard')");
+				let predicateToRun: NSPredicate = NSCompoundPredicate(andPredicateWithSubpredicates:[mdPred, emailExclusionPredicate]);
+
+				query.predicate = predicateToRun
+				query.searchScopes = (rawQuery["SearchScopes"] as? [AnyObject]) ?? []
+				query.delegate = self
+				query.operationQueue = NSOperationQueue()
+				query.startQuery()
+				
+				if dispatch_semaphore_wait(metadataSemaphore, dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))) != 0 {
+					NSLog("%@: %p We ran out of time!", self.className, unsafeAddressOf(self))
+					useTask()
+				} else {
+					query.stopQuery()
+					fileNames = query.results as? [NSString] as? [String] ?? []
+				}
+				
+			} else {
+				useTask()
+			}
 		}
 		
 		var pageNumber = 0
@@ -101,5 +134,17 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		}
 		
 		return NSData(contentsOfFile: filePath)
+	}
+}
+
+extension ManagedSmartFolder: NSMetadataQueryDelegate {
+	func metadataQuery(query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> AnyObject {
+		return result.valueForAttribute(kMDItemPath as String) ?? NSNull()
+	}
+	
+	func queryNote(note: NSNotification) {
+		if note.name == NSMetadataQueryDidFinishGatheringNotification {
+			dispatch_semaphore_signal(metadataSemaphore)
+		}
 	}
 }
