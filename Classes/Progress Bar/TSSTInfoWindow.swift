@@ -11,22 +11,14 @@ import Cocoa
 /// This panel subclass is used by both the loupe and the speach bubble styled
 /// page preview.
 class TSSTInfoWindow: NSPanel {
-	override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
+	override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
 		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
-		opaque = false
+		isOpaque = false
 		ignoresMouseEvents = true
 
-	}
-
-	required init?(coder: NSCoder) {
-		super.init(coder: coder)
-		styleMask = NSBorderlessWindowMask
-		opaque = false
-		ignoresMouseEvents = true
-	}
+	}	
 	
-	
-	func caretAtPoint(point: NSPoint, size: NSSize, withLimitLeft left: CGFloat, right: CGFloat) {
+	func caretAtPoint(_ point: NSPoint, size: NSSize, withLimitLeft left: CGFloat, right: CGFloat) {
 		let limitWidth = right - left
 		let relativePosition = (point.x - left) / limitWidth
 		let offset = size.width * relativePosition
@@ -36,13 +28,13 @@ class TSSTInfoWindow: NSPanel {
 		invalidateShadow()
 	}
 	
-	func centerAtPoint(center: NSPoint) {
+	func centerAtPoint(_ center: NSPoint) {
 		let frame = self.frame
 		setFrameOrigin(NSPoint(x: center.x - frame.width / 2, y: center.y - frame.height / 2))
 		invalidateShadow()
 	}
 	
-	func resizeToDiameter(diameter: CGFloat) {
+	func resizeToDiameter(_ diameter: CGFloat) {
 		let frame = self.frame
 		let center = NSPoint(x: frame.minX + frame.width / 2, y: frame.minY + frame.height / 2)
 		setFrame(NSRect(x: center.x - diameter / 2, y: center.y - diameter / 2, width: diameter, height: diameter),

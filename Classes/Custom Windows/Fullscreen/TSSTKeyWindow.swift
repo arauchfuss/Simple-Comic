@@ -36,24 +36,20 @@
 import Cocoa
 
 class TSSTKeyWindow : NSPanel {
-	override init(contentRect rect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
+	override init(contentRect rect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
 		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
-		opaque = false
+		isOpaque = false
 	}
 	
-	required init?(coder: NSCoder) {
-	    fatalError("init(coder:) has not been implemented")
-	}
-	
-	override var canBecomeKeyWindow: Bool {
+	override var canBecomeKey: Bool {
 		return true
 	}
 	
-	override func performClose(sender: AnyObject?) {
+	override func performClose(_ sender: Any?) {
 		delegate?.windowShouldClose?(self)
 	}
 	
-	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+	func validate(_ menuItem: NSMenuItem) -> Bool {
 		return menuItem.action == #selector(TSSTKeyWindow.performClose(_:)) ? true : false
 	}
 }

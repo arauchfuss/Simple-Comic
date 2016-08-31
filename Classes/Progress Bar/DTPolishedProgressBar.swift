@@ -84,18 +84,18 @@ textStyle: Dictionary of string attributes.
 	}
 
 	/// This is the section of the view. Users can mouse over and click here.
-	private(set) var progressRect = NSRect()
+	fileprivate(set) var progressRect = NSRect()
 	
 	/// How much room is given for the text on either side.
-	private var horizontalMargin: CGFloat = 5
+	fileprivate var horizontalMargin: CGFloat = 5
 
 	/// The font attributes of the progress numbers.
-	private var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFontOfSize(10),
+	fileprivate var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFont(ofSize: 10),
 	NSForegroundColorAttributeName: NSColor(deviceWhite: 0.2, alpha: 1)]
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.<br>
 	/// Progress indicator direction affects the index.
-	func indexForPoint(point: NSPoint) -> Int {
+	func indexForPoint(_ point: NSPoint) -> Int {
 		var index: Int
 		if leftToRight {
 			index = Int((point.x - progressRect.minX) / progressRect.width * CGFloat(maxValue))
@@ -107,7 +107,7 @@ textStyle: Dictionary of string attributes.
 	}
 
 	/// Draws the progressbar.
-	override func drawRect(dirtyRect: NSRect) {
+	override func draw(_ dirtyRect: NSRect) {
 		let totalString = String(maxValue)
 		let progressString = String(currentValue + 1)
 		let leftString: String
@@ -119,7 +119,7 @@ textStyle: Dictionary of string attributes.
 		
 		// Draw background
 		backgroundColor.set()
-		NSRectFillUsingOperation(bounds2, .CompositeSourceOver)
+		NSRectFillUsingOperation(bounds2, .sourceOver)
 		
 		// Draw bar background
 		barBackgroundColor.set()
@@ -142,23 +142,23 @@ textStyle: Dictionary of string attributes.
 			rightString = progressString;
 		}
 		
-		let leftSize = leftString.sizeWithAttributes(numberStyle)
-		let rightSize = rightString.sizeWithAttributes(numberStyle)
+		let leftSize = leftString.size(withAttributes: numberStyle)
+		let rightSize = rightString.size(withAttributes: numberStyle)
 		
 		// Draw progress
 		barProgressColor.set()
 		NSRectFill(fillRect);
 
 		// Draw indicator
-		NSColor.blackColor().set()
+		NSColor.black.set()
 		NSRectFill(indicatorRect);
 
 		// Draw labels
 		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17);
-		leftString.drawInRect(leftStringRect, withAttributes: numberStyle)
+		leftString.draw(in: leftStringRect, withAttributes: numberStyle)
 		
 		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17);
-		rightString.drawInRect(rightStringRect, withAttributes: numberStyle)
+		rightString.draw(in: rightStringRect, withAttributes: numberStyle)
 
 		// Draw borders
 		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height);
@@ -166,13 +166,13 @@ textStyle: Dictionary of string attributes.
 
 		borderColor.set()
 		
-		NSRectFillUsingOperation(leftBorder, .CompositeSourceOver);
-		NSRectFillUsingOperation(rightBorder, .CompositeSourceOver);
+		NSRectFillUsingOperation(leftBorder, .sourceOver);
+		NSRectFillUsingOperation(rightBorder, .sourceOver);
 	}
 	
 	/// This method has been over-ridden to change the progressRect porperty every time the
 	/// progress view is re-sized.
-	override func setFrameSize(size: NSSize) {
+	override func setFrameSize(_ size: NSSize) {
 		progressRect = NSRect(origin: .zero, size: size)
 		super.setFrameSize(size)
 	}
@@ -200,21 +200,21 @@ textStyle: Dictionary of string attributes.
 	}
 	
 	/// Changes the currentValue based on where the user clicks.
-	override func mouseDown(theEvent: NSEvent) {
-		let cursorPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
-		if NSMouseInRect(cursorPoint, progressRect, flipped) {
+	override func mouseDown(with theEvent: NSEvent) {
+		let cursorPoint = convert(theEvent.locationInWindow, from: nil)
+		if NSMouseInRect(cursorPoint, progressRect, isFlipped) {
 			self.currentValue = indexForPoint(cursorPoint)
 		}
 	}
 	
 	/// Kind of surprised that the mouseDown event method would not refresh.
 	/// Not enough code to be worth abstracting.
-	override func mouseDragged(theEvent: NSEvent) {
-		let cursorPoint = convertPoint(theEvent.locationInWindow, fromView: nil)
-		if NSMouseInRect(cursorPoint, progressRect, flipped) {
+	override func mouseDragged(with theEvent: NSEvent) {
+		let cursorPoint = convert(theEvent.locationInWindow, from: nil)
+		if NSMouseInRect(cursorPoint, progressRect, isFlipped) {
 			self.currentValue = indexForPoint(cursorPoint)
 			
-			NSNotificationCenter.defaultCenter().postNotificationName("SCMouseDragNotification", object: self)
+			NotificationCenter.default.post(name: Notification.Name(rawValue: "SCMouseDragNotification"), object: self)
 		}
 	}
 	

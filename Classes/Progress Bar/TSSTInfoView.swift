@@ -16,28 +16,28 @@ final class TSSTInfoView : NSView {
 		}
 	}
 
-	override func drawRect(dirtyRect: NSRect) {
+	override func draw(_ dirtyRect: NSRect) {
 		let bounds = self.bounds
-		NSColor.clearColor().set()
+		NSColor.clear.set()
 		NSRectFill(bounds)
 		
 		let outline = NSBezierPath()
-		outline.moveToPoint(NSPoint(x: caretPosition + 5, y: 5))
-		outline.lineToPoint(NSPoint(x: caretPosition, y: 0))
-		outline.lineToPoint(NSPoint(x: caretPosition - 5, y: 5))
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: 0, y: 5),
-			toPoint: NSPoint(x: 0, y: bounds.midY),
+		outline.move(to: NSPoint(x: caretPosition + 5, y: 5))
+		outline.line(to: NSPoint(x: caretPosition, y: 0))
+		outline.line(to: NSPoint(x: caretPosition - 5, y: 5))
+		outline.appendArc(from: NSPoint(x: 0, y: 5),
+			to: NSPoint(x: 0, y: bounds.midY),
 			radius: 5)
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: 0, y: bounds.maxY),
-			toPoint: NSPoint(x: bounds.midX, y: bounds.maxY),
+		outline.appendArc(from: NSPoint(x: 0, y: bounds.maxY),
+			to: NSPoint(x: bounds.midX, y: bounds.maxY),
 			radius: 5)
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: bounds.maxX, y: bounds.maxY),
-			toPoint: NSPoint(x: bounds.maxX, y: bounds.midY),
+		outline.appendArc(from: NSPoint(x: bounds.maxX, y: bounds.maxY),
+			to: NSPoint(x: bounds.maxX, y: bounds.midY),
 			radius: 5)
-		outline.appendBezierPathWithArcFromPoint(NSPoint(x: bounds.maxX, y: 5),
-			toPoint: NSPoint(x: caretPosition + 5, y: 5),
+		outline.appendArc(from: NSPoint(x: bounds.maxX, y: 5),
+			to: NSPoint(x: caretPosition + 5, y: 5),
 			radius: 5)
-		outline.closePath()
+		outline.close()
 		NSColor(calibratedWhite: 1, alpha: 1).set()
 		outline.fill()
 	}

@@ -10,28 +10,28 @@ import Cocoa
 
 @objc(SSDManagedSmartFolder)
 class ManagedSmartFolder: TSSTManagedGroup {
-	private var metadataSemaphore = dispatch_semaphore_create(0)
+	fileprivate var metadataSemaphore = DispatchSemaphore(value: 0)
 	
 	func smartFolderContents() {
-		let fm = NSFileManager()
+		let fm = FileManager()
 		var pageSet = Set<TSSTPage>()
 		var fileNames = [String]()
 		
-		guard let filePath = valueForKey("path") as? NSString as? String where fm.fileExistsAtPath(filePath) else {
+		guard let filePath = value(forKey: "path") as? NSString as? String , fm.fileExists(atPath: filePath) else {
 			NSLog("Failed path");
 			return;
 		}
 		do {
-			guard let dic = NSDictionary(contentsOfFile: filePath), result = dic.objectForKey("RawQuery") as? NSObject else {
+			guard let dic = NSDictionary(contentsOfFile: filePath), let result = dic.object(forKey: "RawQuery") as? NSObject else {
 				return;
 			}
 			print(result.description)
 			
 			func useTask() {
-				let pipe = NSPipe()
+				let pipe = Pipe()
 				let file = pipe.fileHandleForReading
 				
-				let task = NSTask()
+				let task = Process()
 				
 				task.launchPath = "/usr/bin/mdfind";
 				task.arguments = [result.description];
@@ -40,18 +40,18 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				task.launch()
 				
 				let data = file.readDataToEndOfFile()
-				guard let resultString = String(data: data, encoding: NSUTF8StringEncoding) else {
+				guard let resultString = String(data: data, encoding: String.Encoding.utf8) else {
 					return
 				}
-				fileNames = resultString.componentsSeparatedByString("\n")
+				fileNames = resultString.components(separatedBy: "\n")
 			}
 			
-			if let rawQuery = dic.objectForKey("RawQueryDict") as? NSDictionary as? [String: AnyObject],
-				mdStr = result as? String,
-				mdPred = NSPredicate(fromMetadataQueryString: mdStr) {
+			if let rawQuery = dic.object(forKey: "RawQueryDict") as? NSDictionary as? [String: AnyObject],
+				let mdStr = result as? String,
+				let mdPred = NSPredicate(fromMetadataQueryString: mdStr) {
 				
 				let query = NSMetadataQuery()
-				let nf = NSNotificationCenter.defaultCenter()
+				let nf = NotificationCenter.default
 				nf.addObserver(self, selector: #selector(ManagedSmartFolder.queryNote(_:)), name: nil, object: query)
 				defer {
 					nf.removeObserver(self, name: nil, object: query)
@@ -64,14 +64,16 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				query.searchScopes = (rawQuery["SearchScopes"] as? [AnyObject]) ?? []
 				query.delegate = self
 				//Move it to a seperate thread so it actually works.
-				query.operationQueue = NSOperationQueue()
-				query.startQuery()
+				query.operationQueue = OperationQueue()
+				query.start()
 				
-				if dispatch_semaphore_wait(metadataSemaphore, dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))) != 0 {
-					NSLog("%@: %p We ran out of time! Using NSTask using mdfind.", self.className, unsafeAddressOf(self))
+				if metadataSemaphore.wait(timeout: DispatchTime.now() + DispatchTimeInterval.seconds(4)) == .timedOut {
+					let classPtr = Unmanaged.passUnretained(self).toOpaque()
+					let objWhutPtr = classPtr.assumingMemoryBound(to: Void.self)
+					NSLog(String(format:"%@: %p We ran out of time! Using NSTask using mdfind.", self.className, objWhutPtr))
 					useTask()
 				} else {
-					query.stopQuery()
+					query.stop()
 					fileNames = query.results as? [NSString] as? [String] ?? []
 				}
 				
@@ -83,26 +85,26 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		var pageNumber = 0
 		
 		for path in fileNames {
-			let pathExtension = (path as NSString).pathExtension.lowercaseString
+			let pathExtension = (path as NSString).pathExtension.lowercased()
 			NSLog("path: %@  -  extension: %@", path, pathExtension);
 			// Handles recognized image files
 			if TSSTPage.imageExtensions().contains(pathExtension) {
 				var imageDescription: TSSTPage
 
-				imageDescription = NSEntityDescription.insertNewObjectForEntityForName("Image", inManagedObjectContext: managedObjectContext!) as! TSSTPage
+				imageDescription = NSEntityDescription.insertNewObject(forEntityName: "Image", into: managedObjectContext!) as! TSSTPage
 				imageDescription.setValue("\(path)", forKey: "imagePath")
 				imageDescription.setValue(pageNumber, forKey: "index")
 				pageSet.insert(imageDescription)
 				pageNumber += 1;
 			} else if TSSTManagedArchive.archiveExtensions().contains(pathExtension){
 				//NSManagedObject * nestedDescription;
-				let nestedDescription = NSEntityDescription.insertNewObjectForEntityForName("Archive", inManagedObjectContext: managedObjectContext!) as! TSSTManagedArchive
+				let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "Archive", into: managedObjectContext!) as! TSSTManagedArchive
 				nestedDescription.setValue(path, forKey: "path")
 				nestedDescription.setValue(path, forKey: "name")
 				nestedDescription.nestedArchiveContents()
 				nestedDescription.setValue(self, forKey: "group")
 			} else if pathExtension == "pdf" {
-				let nestedDescription = NSEntityDescription.insertNewObjectForEntityForName("PDF", inManagedObjectContext: managedObjectContext!) as! TSSTManagedPDF
+				let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "PDF", into: managedObjectContext!) as! TSSTManagedPDF
 				nestedDescription.setValue(path, forKey: "path")
 				nestedDescription.setValue(path, forKey: "name")
 				nestedDescription.pdfContents()
@@ -113,18 +115,18 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		setValue(pageSet, forKey: "images")
 	}
 	
-	override func dataForPageIndex(index: Int) -> NSData? {
-		guard let images = self.valueForKey("images") as? NSSet as? Set<TSSTPage> else {
+	override func data(forPageIndex index: Int) -> Data? {
+		guard let images = self.value(forKey: "images") as? NSSet as? Set<TSSTPage> else {
 			return nil
 		}
 		var filepath: String? = nil;
 		
 		for page in images {
-			guard let integer = page.valueForKey("index") as? NSNumber else {
+			guard let integer = page.value(forKey: "index") as? NSNumber else {
 				continue
 			}
-			if integer == index {
-				filepath = page.valueForKey("imagePath") as? NSString as? String
+			if integer.intValue == index {
+				filepath = page.value(forKey: "imagePath") as? NSString as? String
 			}
 		}
 		
@@ -134,18 +136,18 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			return nil
 		}
 		
-		return NSData(contentsOfFile: filePath)
+		return (try? Data(contentsOf: URL(fileURLWithPath: filePath)))
 	}
 }
 
 extension ManagedSmartFolder: NSMetadataQueryDelegate {
-	func metadataQuery(query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> AnyObject {
-		return result.valueForAttribute(kMDItemPath as String) ?? NSNull()
+	func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any {
+		return result.value(forAttribute: kMDItemPath as String) ?? NSNull()
 	}
 	
-	@objc private func queryNote(note: NSNotification) {
-		if note.name == NSMetadataQueryDidFinishGatheringNotification {
-			dispatch_semaphore_signal(metadataSemaphore)
+	@objc fileprivate func queryNote(_ note: Notification) {
+		if note.name == NSNotification.Name.NSMetadataQueryDidFinishGathering {
+			metadataSemaphore.signal()
 		}
 	}
 }
