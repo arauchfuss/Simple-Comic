@@ -46,10 +46,10 @@ class TSSTKeyWindow : NSPanel {
 	}
 	
 	override func performClose(_ sender: Any?) {
-		delegate?.windowShouldClose?(self)
+		_ = delegate?.windowShouldClose?(self)
 	}
 	
-	func validate(_ menuItem: NSMenuItem) -> Bool {
+	override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
 		return menuItem.action == #selector(TSSTKeyWindow.performClose(_:)) ? true : false
 	}
 }

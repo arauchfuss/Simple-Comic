@@ -6,7 +6,7 @@
 //  Copyright © 2015 Dancing Tortoise Software. All rights reserved.
 //
 
-import AppKit
+import Cocoa
 
 final class TSSTInfoView : NSView {
 	var bordered: Bool = false

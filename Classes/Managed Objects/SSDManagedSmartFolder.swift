@@ -68,8 +68,8 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				query.start()
 				
 				if metadataSemaphore.wait(timeout: DispatchTime.now() + DispatchTimeInterval.seconds(4)) == .timedOut {
-					let classPtr = Unmanaged.passUnretained(self).toOpaque()
-					let objWhutPtr = classPtr.assumingMemoryBound(to: Void.self)
+					let objPtr = Unmanaged.passUnretained(self).toOpaque()
+					let objWhutPtr = objPtr.assumingMemoryBound(to: Void.self)
 					NSLog(String(format:"%@: %p We ran out of time! Using NSTask using mdfind.", self.className, objWhutPtr))
 					useTask()
 				} else {

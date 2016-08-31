@@ -21,7 +21,7 @@ class TSSTBezelWindow : NSPanel {
 		_ = delegate?.windowShouldClose?(self)
 	}
 	
-	func validate(_ menuItem: NSMenuItem) -> Bool {
+	override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
 		return menuItem.action == #selector(TSSTBezelWindow.performClose(_:)) ? true : false
 	}
 }

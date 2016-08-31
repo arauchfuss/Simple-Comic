@@ -30,7 +30,7 @@ class TSSTThumbnailView: NSView {
 		thumbnailView.clears = true
 	}
 	
-	func rectForIndex(_ index: Int) -> NSRect {
+	@objc(rectForIndex:) func rect(for index: Int) -> NSRect {
 		let bounds = window!.screen!.visibleFrame
 		let ratio = bounds.height / bounds.width
 		let horCount = Int(ceil(sqrt(CGFloat((pageController!.content! as AnyObject).count) / ratio)))
@@ -66,7 +66,7 @@ class TSSTThumbnailView: NSView {
 		var trackRect: NSRect
 		var rectIndex: NSNumber
 		for counter in 0 ..< (pageController!.content! as AnyObject).count {
-			trackRect = rectForIndex(counter).insetBy(dx: 2, dy: 2)
+			trackRect = rect(for: counter).insetBy(dx: 2, dy: 2)
 			rectIndex = NSNumber(value: counter)
 			let tagIndex = addTrackingRect(trackRect, owner: self, userData: Unmanaged.passUnretained(rectIndex).toOpaque(), assumeInside: false)
 			trackingRects.insert(tagIndex)
@@ -104,12 +104,12 @@ class TSSTThumbnailView: NSView {
 		mousePoint = convert(mousePoint, from: nil)
 		while counter < limit {
 			let thumbnail = dataSource!.imageForPage(at: counter)
-			var drawRect = self.rectForIndex(counter)
+			var drawRect = self.rect(for: counter)
 			drawRect = rectWithSizeCenteredInRect(thumbnail.size, NSInsetRect(drawRect, 2, 2))
 			thumbnail.draw(in: drawRect, from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
 			if NSMouseInRect(mousePoint, drawRect, false) {
 				hoverIndex = counter
-				zoomThumbnailAtIndex(hoverIndex!)
+				zoomThumbnail(at: hoverIndex!)
 			}
 			counter += 1
 		}
@@ -133,11 +133,11 @@ class TSSTThumbnailView: NSView {
 	
 	func dwell(_ timer: Timer) {
 		if let userInfo = timer.userInfo as? NSNumber, let hoverIndex = hoverIndex , userInfo.intValue == hoverIndex {
-			zoomThumbnailAtIndex(hoverIndex)
+			zoomThumbnail(at: hoverIndex)
 		}
 	}
 
-	func zoomThumbnailAtIndex(_ index: Int) {
+	@objc(zoomThumbnailAtIndex:) func zoomThumbnail(at index: Int) {
 		guard let arrangedObject = (pageController.arrangedObjects as? NSArray)?[index] as? NSObject, let thumb = arrangedObject.value(forKey: "pageImage") as? NSImage else {
 			assert(false, "could not get image at index \(index)")
 			return
@@ -147,7 +147,7 @@ class TSSTThumbnailView: NSView {
 		
 		var imageSize = thumb.size
 		thumbnailView.imageName = arrangedObject.value(forKey: "pageImage") as? String
-		let indexRect = rectForIndex(index)
+		let indexRect = rect(for: index)
 		let visibleRect = window!.screen!.visibleFrame
 		var thumbPoint = NSPoint(x: indexRect.minX + indexRect.width / 2, y: indexRect.minY + indexRect.height / 2)
 		let viewSize: CGFloat = 312 //[thumbnailView frame].size.width;

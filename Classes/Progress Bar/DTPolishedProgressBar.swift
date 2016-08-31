@@ -95,7 +95,7 @@ textStyle: Dictionary of string attributes.
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.<br>
 	/// Progress indicator direction affects the index.
-	func indexForPoint(_ point: NSPoint) -> Int {
+	@objc(indexForPoint:) func index(for point: NSPoint) -> Int {
 		var index: Int
 		if leftToRight {
 			index = Int((point.x - progressRect.minX) / progressRect.width * CGFloat(maxValue))
@@ -203,7 +203,7 @@ textStyle: Dictionary of string attributes.
 	override func mouseDown(with theEvent: NSEvent) {
 		let cursorPoint = convert(theEvent.locationInWindow, from: nil)
 		if NSMouseInRect(cursorPoint, progressRect, isFlipped) {
-			self.currentValue = indexForPoint(cursorPoint)
+			self.currentValue = index(for: cursorPoint)
 		}
 	}
 	
@@ -212,7 +212,7 @@ textStyle: Dictionary of string attributes.
 	override func mouseDragged(with theEvent: NSEvent) {
 		let cursorPoint = convert(theEvent.locationInWindow, from: nil)
 		if NSMouseInRect(cursorPoint, progressRect, isFlipped) {
-			self.currentValue = indexForPoint(cursorPoint)
+			self.currentValue = index(for: cursorPoint)
 			
 			NotificationCenter.default.post(name: Notification.Name(rawValue: "SCMouseDragNotification"), object: self)
 		}
