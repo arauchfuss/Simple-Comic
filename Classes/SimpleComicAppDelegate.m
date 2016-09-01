@@ -174,7 +174,7 @@ static NSArray * allAvailableStringEncodings(void)
 	DTPreferencesController      * preferences;
 	
 	/*  This is the array that maintains all of the session window managers. */
-	NSMutableArray * sessions;
+	NSMutableArray<TSSTSessionWindowController*> * sessions;
 	
 	/*	Vars to delay the loading of files from an app launch until the core data store
 	 has finished initializing */
