@@ -8,7 +8,6 @@
 
 import Cocoa
 
-@objc(SSDManagedSmartFolder)
 class ManagedSmartFolder: TSSTManagedGroup {
 	private var metadataSemaphore = dispatch_semaphore_create(0)
 	
@@ -25,7 +24,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			guard let dic = NSDictionary(contentsOfFile: filePath), result = dic.objectForKey("RawQuery") as? NSObject else {
 				return;
 			}
-			print(result.description)
+			//print(result.description)
 			
 			func useTask() {
 				let pipe = NSPipe()
@@ -87,7 +86,6 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		for path in fileNames {
 			let pathExtension = (path as NSString).pathExtension.lowercaseString
-			NSLog("path: %@  -  extension: %@", path, pathExtension);
 			// Handles recognized image files
 			if TSSTPage.imageExtensions().contains(pathExtension) {
 				var imageDescription: TSSTPage

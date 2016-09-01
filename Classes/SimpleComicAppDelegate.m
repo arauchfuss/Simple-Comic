@@ -705,7 +705,7 @@ static NSArray * allAvailableStringEncodings(void)
                 fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
 				[fileDescription setValue: path forKey: @"path"];
 				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
-				[(SSDManagedSmartFolder*)fileDescription smartFolderContents];
+				[(ManagedSmartFolder*)fileDescription smartFolderContents];
             }
             
 			if([fileDescription isKindOfClass:[TSSTManagedGroup class]])
