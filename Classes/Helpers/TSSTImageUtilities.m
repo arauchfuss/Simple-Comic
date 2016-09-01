@@ -103,12 +103,7 @@ NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
 
 NSRect rectFromNegativeRect(NSRect rect)
 {
-	CGFloat possibleXOrigin = rect.origin.x + rect.size.width;
-	CGFloat possibleYOrigin = rect.origin.y + rect.size.height;
-	
-	return NSMakeRect(possibleXOrigin < rect.origin.x ? possibleXOrigin : rect.origin.x,
-					  possibleYOrigin < rect.origin.y ? possibleYOrigin : rect.origin.y,
-					  fabs(rect.size.width), fabs(rect.size.height));
+	return CGRectStandardize(rect);
 }
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)

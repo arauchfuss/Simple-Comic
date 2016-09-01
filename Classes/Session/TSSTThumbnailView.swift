@@ -190,7 +190,7 @@ class TSSTThumbnailView: NSView {
 			return
 		}
 		
-		let nsChar = (chars as NSString).character(at: 0)
+		let nsChar = chars.utf16.first!
 		if nsChar == 27 {
 			(window!.windowController! as! TSSTSessionWindowController).killTopOptionalUIElement()
 		}
