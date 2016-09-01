@@ -45,18 +45,18 @@
 
 @implementation TSSTSessionWindowController
 {
-	/* The session object used to maintain settings */
+	/** The session object used to maintain settings */
 	TSSTManagedSession * session;
 	
-	/* This var is bound to the session window name */
-	NSString * pageNames;
+	/** This var is bound to the session window name */
+	NSString *pageNames;
 	NSInteger pageTurn;
 	
-	/* Exactly what it sounds like */
-	NSArray * pageSortDescriptor;
+	/** Exactly what it sounds like */
+	NSArray<TSSTSortDescriptor*> *pageSortDescriptor;
 	
-	/* Manages the cursor hiding while in fullscreen */
-	NSTimer * mouseMovedTimer;
+	/** Manages the cursor hiding while in fullscreen */
+	NSTimer *mouseMovedTimer;
 	
 	BOOL newSession;
 	
@@ -78,10 +78,6 @@
 @synthesize exposeBezel;
 @synthesize exposeView;
 @synthesize thumbnailPanel;
-
-/*!
- 
-*/
 
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession
 {

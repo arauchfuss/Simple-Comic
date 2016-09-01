@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 };
 
 
-/*	This class deals with an unholy crapload of functionality
+/*!	This class deals with an unholy crapload of functionality
 	- First and most importantly it controls the navigation 
 		within a given session's pages.  This includes figuring 
 		out whether or not two pages should be layed out side by side.
