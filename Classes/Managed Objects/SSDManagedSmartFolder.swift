@@ -69,10 +69,13 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				
 				if dispatch_semaphore_wait(metadataSemaphore, dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC * 4))) != 0 {
 					NSLog("%@: %p We ran out of time! Using NSTask using mdfind.", self.className, unsafeAddressOf(self))
+					query.stopQuery()
 					useTask()
 				} else {
 					query.stopQuery()
-					fileNames = query.results as? [NSString] as? [String] ?? []
+					fileNames = query.results.filter({ (anObj) -> Bool in
+						return anObj is NSString
+					}) as! [NSString] as! [String]
 				}
 				
 			} else {
@@ -94,7 +97,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				imageDescription.setValue(pageNumber, forKey: "index")
 				pageSet.insert(imageDescription)
 				pageNumber += 1;
-			} else if TSSTManagedArchive.archiveExtensions().contains(pathExtension){
+			} else if TSSTManagedArchive.archiveExtensions().contains(pathExtension) {
 				//NSManagedObject * nestedDescription;
 				let nestedDescription = NSEntityDescription.insertNewObjectForEntityForName("Archive", inManagedObjectContext: managedObjectContext!) as! TSSTManagedArchive
 				nestedDescription.setValue(path, forKey: "path")
@@ -140,7 +143,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 
 extension ManagedSmartFolder: NSMetadataQueryDelegate {
 	func metadataQuery(query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> AnyObject {
-		return result.valueForAttribute(kMDItemPath as String) ?? NSNull()
+		return result.valueForAttribute(kMDItemPath as String) as? NSString ?? NSNull()
 	}
 	
 	@objc private func queryNote(note: NSNotification) {

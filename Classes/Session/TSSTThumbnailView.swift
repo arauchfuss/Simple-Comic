@@ -41,10 +41,10 @@ class TSSTThumbnailView: NSView {
 		let vertGridPos = (index / horCount) % vertCount
 		let thumbRect: NSRect
 		if dataSource!.session.valueForKey("pageOrder")?.boolValue ?? false {
-			thumbRect = NSMakeRect(CGFloat(horGridPos) * horSide, NSMaxY(bounds) - side - CGFloat(vertGridPos) * side, horSide, side)
+			thumbRect = NSMakeRect(CGFloat(horGridPos) * horSide, bounds.maxY - side - CGFloat(vertGridPos) * side, horSide, side)
 		}
 		else {
-			thumbRect = NSMakeRect(NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, NSMaxY(bounds) - side - CGFloat(vertGridPos) * side, horSide, side)
+			thumbRect = NSMakeRect(NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, bounds.maxY - side - CGFloat(vertGridPos) * side, horSide, side)
 		}
 		return thumbRect
 	}
@@ -52,10 +52,8 @@ class TSSTThumbnailView: NSView {
 	func removeTrackingRects() {
 		thumbnailView.image = nil
 		hoverIndex = nil
-		var tagIndex: Int = trackingRects.lastIndex
-		while tagIndex != NSNotFound {
+		for tagIndex in trackingRects.reverse() {
 			self.removeTrackingRect(tagIndex)
-			tagIndex = trackingRects.indexLessThanIndex(tagIndex)
 		}
 		trackingRects.removeAllIndexes()
 		trackingIndexes.removeAll()
@@ -83,7 +81,7 @@ class TSSTThumbnailView: NSView {
 			thumbLock.lock()
 			let pageCount: Int = pageController!.content!.count
 			limit = 0
-			while limit < (pageCount) && localIdent == threadIdent && dataSource!.respondsToSelector(#selector(TSSTSessionWindowController.imageForPageAtIndex(_:))) {
+			while limit < (pageCount) && localIdent == threadIdent && dataSource?.respondsToSelector(#selector(TSSTSessionWindowController.imageForPageAtIndex(_:))) ?? false {
 				autoreleasepool() {
 					dataSource!.imageForPageAtIndex(limit)
 					if (limit % 5) == 0 {
