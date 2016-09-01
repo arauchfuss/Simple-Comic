@@ -8,8 +8,8 @@
 
 import Cocoa
 
-/// This panel subclass is used by both the loupe and the speach bubble styled
-/// page preview.
+/// This panel subclass is used by both the loupe,
+/// and the speech bubble styled page preview.
 class TSSTInfoWindow: NSPanel {
 	override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
 		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
