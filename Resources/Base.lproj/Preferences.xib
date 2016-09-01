@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DTPreferencesController">
@@ -17,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="140" y="154" width="320" height="357"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="247">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="357"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -37,7 +37,7 @@
                             </binding>
                         </connections>
                     </colorWell>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="237" userLabel="Headline 1">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="237" userLabel="Headline 1">
                         <rect key="frame" x="39" y="321" width="104" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Background color" id="239">
                             <font key="font" metaFont="cellTitle"/>
@@ -45,7 +45,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="243" userLabel="Description 1">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="243" userLabel="Description 1">
                         <rect key="frame" x="39" y="288" width="263" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This color is displayed around pages in fullscreen mode." id="244">
                             <font key="font" metaFont="smallSystem"/>
@@ -63,7 +63,7 @@
                             <binding destination="42" name="value" keyPath="values.constrainScale" id="45"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="213" userLabel="Description 2">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="213" userLabel="Description 2">
                         <rect key="frame" x="39" y="221" width="263" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Images will not excede their actual resolution in &quot;fit to window&quot; scaling modes." id="234">
                             <font key="font" metaFont="smallSystem"/>
@@ -81,7 +81,7 @@
                             <binding destination="42" name="value" keyPath="values.windowAutoResize" id="154"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="216" userLabel="Description 3">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="216" userLabel="Description 3">
                         <rect key="frame" x="39" y="154" width="263" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Windows automatically resize to maximize viewing area." id="235">
                             <font key="font" metaFont="smallSystem"/>
@@ -99,7 +99,7 @@
                             <binding destination="42" name="value" keyPath="values.sessionRestore" id="43"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="218" userLabel="Description 4">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="218" userLabel="Description 4">
                         <rect key="frame" x="39" y="87" width="263" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Open windows are preserved between exit and relaunch." id="236">
                             <font key="font" metaFont="smallSystem"/>
@@ -117,7 +117,7 @@
                             <binding destination="42" name="value" keyPath="values.enableSwipe" id="Tiw-vL-dNt"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NU9-EN-59o" userLabel="Description 5">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU9-EN-59o" userLabel="Description 5">
                         <rect key="frame" x="39" y="20" width="263" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" title="Enabling will allow you to navigate back and forth by swiping." id="v7s-SA-lNq">
                             <font key="font" metaFont="smallSystem"/>
@@ -148,6 +148,7 @@
                     <constraint firstItem="Uh8-1X-qIh" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="Wze-GH-cJ0"/>
                     <constraint firstItem="152" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="247" secondAttribute="trailing" constant="-20" id="aLw-Z3-Qy9"/>
                     <constraint firstItem="238" firstAttribute="centerY" secondItem="237" secondAttribute="centerY" id="cX7-DQ-z3L"/>
+                    <constraint firstAttribute="bottom" secondItem="NU9-EN-59o" secondAttribute="bottom" constant="20" symbolic="YES" id="cne-Nl-UPR"/>
                     <constraint firstItem="41" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="dAb-Zz-Tja"/>
                     <constraint firstItem="237" firstAttribute="top" secondItem="247" secondAttribute="top" constant="20" symbolic="YES" id="fSs-MM-C78"/>
                     <constraint firstItem="NU9-EN-59o" firstAttribute="leading" secondItem="243" secondAttribute="leading" id="fZv-fm-Cog"/>
