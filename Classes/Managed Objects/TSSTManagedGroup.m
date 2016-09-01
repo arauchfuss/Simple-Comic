@@ -14,6 +14,10 @@
 #import "TSSTImageUtilities.h"
 #import "TSSTPage.h"
 
+@interface TSSTManagedArchive () <XADArchiveDelegate>
+
+@end
+
 @implementation TSSTManagedGroup
 
 
@@ -415,11 +419,11 @@
             {
                 nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
                 archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
-                int collision = 0;
+                NSInteger collision = 0;
                 while([fileManager fileExistsAtPath: archivePath])
                 {
                     ++collision;
-                    fileName = [NSString stringWithFormat: @"%i-%@", collision, fileName];
+                    fileName = [NSString stringWithFormat: @"%li-%@", (long)collision, fileName];
                     archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
                 }
 				fileData = [imageArchive contentsOfEntry: counter];
