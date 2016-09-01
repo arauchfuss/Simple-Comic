@@ -8,7 +8,6 @@
 
 import Cocoa
 
-@objc(SSDManagedSmartFolder)
 class ManagedSmartFolder: TSSTManagedGroup {
 	fileprivate var metadataSemaphore = DispatchSemaphore(value: 0)
 	
@@ -25,7 +24,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			guard let dic = NSDictionary(contentsOfFile: filePath), let result = dic.object(forKey: "RawQuery") as? NSObject else {
 				return;
 			}
-			print(result.description)
+			//print(result.description)
 			
 			func useTask() {
 				let pipe = Pipe()
@@ -74,7 +73,9 @@ class ManagedSmartFolder: TSSTManagedGroup {
 					useTask()
 				} else {
 					query.stop()
-					fileNames = query.results as? [NSString] as? [String] ?? []
+					fileNames = query.results.filter({ (anObj) -> Bool in
+						return anObj is NSString
+					}) as? [NSString] as? [String] ?? []
 				}
 				
 			} else {
@@ -86,7 +87,6 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		for path in fileNames {
 			let pathExtension = (path as NSString).pathExtension.lowercased()
-			NSLog("path: %@  -  extension: %@", path, pathExtension);
 			// Handles recognized image files
 			if TSSTPage.imageExtensions().contains(pathExtension) {
 				var imageDescription: TSSTPage
@@ -96,7 +96,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				imageDescription.setValue(pageNumber, forKey: "index")
 				pageSet.insert(imageDescription)
 				pageNumber += 1;
-			} else if TSSTManagedArchive.archiveExtensions().contains(pathExtension){
+			} else if TSSTManagedArchive.archiveExtensions().contains(pathExtension) {
 				//NSManagedObject * nestedDescription;
 				let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "Archive", into: managedObjectContext!) as! TSSTManagedArchive
 				nestedDescription.setValue(path, forKey: "path")
@@ -142,7 +142,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 
 extension ManagedSmartFolder: NSMetadataQueryDelegate {
 	func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any {
-		return result.value(forAttribute: kMDItemPath as String) ?? NSNull()
+		return result.value(forAttribute: kMDItemPath as String) as? NSString ?? NSNull()
 	}
 	
 	@objc fileprivate func queryNote(_ note: Notification) {

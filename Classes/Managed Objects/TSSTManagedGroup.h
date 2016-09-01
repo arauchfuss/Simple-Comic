@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray<NSString*> *)archiveExtensions;
 + (NSArray<NSString*> *)quicklookExtensions;
-/*  Recurses through archives looking for archives and images */
+/**  Recurses through archives looking for archives and images */
 - (void)nestedArchiveContents;
 @property (readonly) BOOL quicklookCompatible;
 
@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSSTManagedPDF : TSSTManagedGroup
 
-/*  Parses PDFs into something Simple Comic can use */
+/**  Parses PDFs into something Simple Comic can use */
 - (void)pdfContents;
 
 @end

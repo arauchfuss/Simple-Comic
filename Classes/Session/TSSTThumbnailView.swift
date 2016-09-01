@@ -40,11 +40,11 @@ class TSSTThumbnailView: NSView {
 		let horGridPos = index % horCount
 		let vertGridPos = (index / horCount) % vertCount
 		let thumbRect: NSRect
-		if (dataSource!.session.value(forKey: "pageOrder")! as AnyObject).boolValue ?? false {
-			thumbRect = NSMakeRect(CGFloat(horGridPos) * horSide, NSMaxY(bounds) - side - CGFloat(vertGridPos) * side, horSide, side)
+		if (dataSource!.session.value(forKey: "pageOrder") as AnyObject?)?.boolValue ?? false {
+			thumbRect = NSMakeRect(CGFloat(horGridPos) * horSide, bounds.maxY - side - CGFloat(vertGridPos) * side, horSide, side)
 		}
 		else {
-			thumbRect = NSMakeRect(NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, NSMaxY(bounds) - side - CGFloat(vertGridPos) * side, horSide, side)
+			thumbRect = NSMakeRect(NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, bounds.maxY - side - CGFloat(vertGridPos) * side, horSide, side)
 		}
 		return thumbRect
 	}
@@ -82,7 +82,7 @@ class TSSTThumbnailView: NSView {
 			thumbLock.lock()
 			let pageCount: Int = (pageController!.content! as AnyObject).count
 			limit = 0
-			while limit < (pageCount) && localIdent == threadIdent && dataSource!.responds(to: #selector(TSSTSessionWindowController.imageForPage(at:))) {
+			while limit < (pageCount) && localIdent == threadIdent && dataSource?.responds(to: #selector(TSSTSessionWindowController.imageForPage(at:))) ?? false {
 				autoreleasepool() {
 					dataSource!.imageForPage(at: limit)
 					if (limit % 5) == 0 {

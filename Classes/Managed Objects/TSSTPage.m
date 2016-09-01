@@ -45,11 +45,16 @@ static NSSize monospaceCharacterSize;
 	static NSArray * imageTypes = nil;
 	if(!imageTypes)
 	{
-		NSMutableArray *aimageTypes = [[NSMutableArray alloc] initWithArray: [NSImage imageFileTypes]];
+		NSMutableArray *aimageTypes = [[NSImage imageFileTypes] mutableCopy];
 		//Get rid of OSTypes/File Types
 		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like %@)" argumentArray:@[@"'????'"]]];
 		// Remove PDF and eps files
-		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like[c] %@)" argumentArray:@[@"pdf", @"eps"]]];
+		NSMutableArray *predArr = [[NSMutableArray alloc] initWithCapacity:3];
+		for (NSString *ext in @[@"pdf", @"eps", @"ps"]) {
+			[predArr addObject:[NSPredicate predicateWithFormat:@"!(SELF like[c] %@)" argumentArray:@[ext]]];
+		}
+		NSPredicate *combPred = [NSCompoundPredicate andPredicateWithSubpredicates:predArr];
+		[aimageTypes filterUsingPredicate:combPred];
 		imageTypes = [[NSArray alloc] initWithArray:aimageTypes];
 	}
 	
@@ -236,7 +241,7 @@ static NSSize monospaceCharacterSize;
         [imageFromData setCacheMode: NSImageCacheNever];
         
         [imageFromData setSize: imageSize];
-        [imageFromData setCacheMode: NSImageCacheDefault];
+        [imageFromData setCacheMode: NSImageCacheBySize];
     }
 	
     return imageFromData;

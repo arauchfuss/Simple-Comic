@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
     <entity name="Archive" representedClassName="TSSTManagedArchive" parentEntity="ImageGroup" syncable="YES">
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="solidDirectory" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,13 +41,13 @@
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageGroup" inverseName="session" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Image" inverseName="session" inverseEntity="Image" indexed="YES" syncable="YES"/>
     </entity>
-    <entity name="SmartFolder" representedClassName="SSDManagedSmartFolder" parentEntity="ImageGroup" syncable="YES"/>
+    <entity name="SmartFolder" representedClassName=".ManagedSmartFolder" parentEntity="ImageGroup" syncable="YES"/>
     <elements>
         <element name="Archive" positionX="342" positionY="15" width="90" height="73"/>
         <element name="Image" positionX="72" positionY="162" width="92" height="178"/>
         <element name="ImageGroup" positionX="241" positionY="117" width="92" height="180"/>
-        <element name="PDF" positionX="153" positionY="18" width="92" height="43"/>
+        <element name="PDF" positionX="153" positionY="18" width="92" height="45"/>
         <element name="Session" positionX="414" positionY="117" width="90" height="225"/>
-        <element name="SmartFolder" positionX="234" positionY="-117" width="153" height="43"/>
+        <element name="SmartFolder" positionX="234" positionY="-117" width="153" height="45"/>
     </elements>
 </model>
