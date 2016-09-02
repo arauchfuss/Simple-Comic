@@ -39,6 +39,10 @@
 #import "Simple_Comic-Swift.h"
 
 
+@interface SimpleComicAppDelegate () <XADArchiveDelegate>
+
+@end
+
 NSString *const TSSTPageOrder =         @"pageOrder";
 NSString *const TSSTPageZoomRate =      @"pageZoomRate";
 NSString *const TSSTFullscreen =        @"fullscreen";
@@ -71,9 +75,9 @@ NSString *const TSSTSessionEndNotification = @"sessionEnd";
 
 
 
-static NSArray * allAvailableStringEncodings(void)
+static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 {
-    static const CFStringEncoding encodings[] = {
+	const CFStringEncoding encodings[] = {
         kCFStringEncodingMacRoman,
         kCFStringEncodingISOLatin1,
         kCFStringEncodingASCII,
@@ -133,17 +137,13 @@ static NSArray * allAvailableStringEncodings(void)
         UINT_MAX
     };
     
-    NSMutableArray * codeNumbers = [NSMutableArray array];
-    int counter = 0;
+    NSMutableArray * codeNumbers = [NSMutableArray arrayWithCapacity:sizeof(encodings) / sizeof(encodings[0]) - 1]; //We don't store the UINT_MAX value in the NSArray
+    size_t counter = 0;
     NSStringEncoding encoding;
-    while(encodings[counter] != UINT_MAX)
-    {
-        if(encodings[counter] != 101)
-        {
+    while (encodings[counter] != UINT_MAX) {
+        if (encodings[counter] != 101) {
             encoding = CFStringConvertEncodingToNSStringEncoding(encodings[counter]);
-        }
-        else
-        {
+        } else {
             encoding = 101;
         }
 		
@@ -180,7 +180,7 @@ static NSArray * allAvailableStringEncodings(void)
 	 has finished initializing */
 	BOOL      launchInProgress;
 	BOOL	  optionHeldAtlaunch;
-	NSArray	* launchFiles;
+	NSArray<NSString*>	*launchFiles;
 }
 
 
@@ -209,36 +209,39 @@ static NSArray * allAvailableStringEncodings(void)
 /*  Sets up the user defaults and arrays of compatible file types. */
 + (void)initialize
 {
-	NSDictionary* standardDefaults =
-	@{
-	  TSSTPageOrder: @NO,
-	  TSSTPageZoomRate: @0.1f,
-	  TSSTPageScaleOptions: @1,
-	  TSSTThumbnailSize: @100,
-	  TSSTTwoPageSpread: @YES,
-	  TSSTIgnoreDonation: @NO,
-	  TSSTConstrainScale: @YES,
-	  TSSTScrollersVisible: @YES,
-	  TSSTSessionRestore: @YES,
-	  TSSTAutoPageTurn: @YES,
-	  TSSTBackgroundColor: [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]],
-	  TSSTWindowAutoResize: @YES,
-	  TSSTLoupeDiameter: @500,
-	  TSSTLoupePower: @2.0f,
-	  TSSTStatusbarVisible: @YES,
-	  TSSTLonelyFirstPage: @YES,
-	  TSSTNestedArchives: @YES,
-	  TSSTUpdateSelection: @0,
-	  SSDEnableSwipe: @NO,
-	};
-	
-	NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
-	[sharedDefaultsController setInitialValues: standardDefaults];
-	NSUserDefaults * defaults = [sharedDefaultsController defaults];
-    [defaults registerDefaults: standardDefaults];
-	
-    id transformer = [TSSTLastPathComponent new];
-	[NSValueTransformer setValueTransformer: transformer forName: @"TSSTLastPathComponent"];
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		NSDictionary* standardDefaults =
+		@{
+		  TSSTPageOrder: @NO,
+		  TSSTPageZoomRate: @0.1f,
+		  TSSTPageScaleOptions: @1,
+		  TSSTThumbnailSize: @100,
+		  TSSTTwoPageSpread: @YES,
+		  TSSTIgnoreDonation: @NO,
+		  TSSTConstrainScale: @YES,
+		  TSSTScrollersVisible: @YES,
+		  TSSTSessionRestore: @YES,
+		  TSSTAutoPageTurn: @YES,
+		  TSSTBackgroundColor: [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]],
+		  TSSTWindowAutoResize: @YES,
+		  TSSTLoupeDiameter: @500,
+		  TSSTLoupePower: @2.0f,
+		  TSSTStatusbarVisible: @YES,
+		  TSSTLonelyFirstPage: @YES,
+		  TSSTNestedArchives: @YES,
+		  TSSTUpdateSelection: @0,
+		  SSDEnableSwipe: @NO,
+		  };
+		
+		NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];
+		[sharedDefaultsController setInitialValues: standardDefaults];
+		NSUserDefaults * defaults = [sharedDefaultsController defaults];
+		[defaults registerDefaults: standardDefaults];
+		
+		id transformer = [TSSTLastPathComponent new];
+		[NSValueTransformer setValueTransformer: transformer forName: @"TSSTLastPathComponent"];
+	});
 }
 
 
@@ -283,8 +286,7 @@ static NSArray * allAvailableStringEncodings(void)
 	[self sessionRelaunch];
 	launchInProgress = NO;
 
-	if(launchFiles)
-	{
+	if (launchFiles) {
 		TSSTManagedSession * session;
 //		if (optionHeldAtlaunch)
 //		{
@@ -810,30 +812,20 @@ static NSArray * allAvailableStringEncodings(void)
 - (void)generateEncodingMenu
 {
 	NSMenu * encodingMenu = [encodingPopup menu];
-	NSMenuItem * encodingMenuItem;
     NSArray * allEncodings = allAvailableStringEncodings();
-    NSNumber * encodingIdent;
-    NSStringEncoding stringEncoding;
-    NSString * encodingName;
 	self.encodingSelection = 0;
 	[encodingMenu setAutoenablesItems: NO];
-	for(encodingMenuItem in [encodingMenu itemArray])
-	{
+	for (NSMenuItem * encodingMenuItem in [encodingMenu itemArray]) {
 		[encodingMenu removeItem: encodingMenuItem];
 	}
 	
-    for(encodingIdent in allEncodings)
-    {
-		stringEncoding = [encodingIdent unsignedIntegerValue];
-        encodingName = [NSString localizedNameOfStringEncoding: stringEncoding];
-        if(stringEncoding == 101)
-        {
-            encodingMenuItem = [NSMenuItem separatorItem];
-            [encodingMenu addItem: encodingMenuItem];
-        }
-        else if(encodingName && ![encodingName isEqualToString: @""])
-        {
-            encodingMenuItem = [[NSMenuItem alloc] initWithTitle: encodingName action: nil keyEquivalent: @""];
+    for (NSNumber *encodingIdent in allEncodings) {
+		NSStringEncoding stringEncoding = [encodingIdent unsignedIntegerValue];
+        NSString * encodingName = [NSString localizedNameOfStringEncoding: stringEncoding];
+        if (stringEncoding == 101) {
+            [encodingMenu addItem: [NSMenuItem separatorItem]];
+        } else if (encodingName && ![encodingName isEqualToString: @""]) {
+            NSMenuItem * encodingMenuItem = [[NSMenuItem alloc] initWithTitle: encodingName action: nil keyEquivalent: @""];
             [encodingMenuItem setRepresentedObject: encodingIdent];
             [encodingMenu addItem: encodingMenuItem];
         }
@@ -845,18 +837,11 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (void)updateEncodingMenuTestedAgainst:(NSData *)data
 {
-    
-    NSStringEncoding stringEncoding;
-    NSMenuItem * encodingMenuItem;
-    NSString * testText;
-    
-    for(encodingMenuItem in [[encodingPopup menu] itemArray])
-    {
-        stringEncoding = [[encodingMenuItem representedObject] unsignedIntegerValue];
+    for (NSMenuItem * encodingMenuItem in [[encodingPopup menu] itemArray]) {
+        NSStringEncoding stringEncoding = [[encodingMenuItem representedObject] unsignedIntegerValue];
         [encodingMenuItem setEnabled: NO];
-        if(![encodingMenuItem isSeparatorItem])
-        {
-			testText = [[NSString alloc] initWithData: data encoding: stringEncoding];
+        if (![encodingMenuItem isSeparatorItem]) {
+			NSString * testText = [[NSString alloc] initWithData: data encoding: stringEncoding];
 
 			[encodingMenuItem setEnabled: testText ? YES : NO];
         }
@@ -869,8 +854,7 @@ static NSArray * allAvailableStringEncodings(void)
 {
     NSString* password = nil;
 	[passwordField setStringValue: @""];
-    if([NSApp runModalForWindow: passwordPanel] != NSCancelButton)
-    {
+    if ([NSApp runModalForWindow: passwordPanel] != NSCancelButton) {
         password = [passwordField stringValue];
     }
 	
@@ -886,8 +870,7 @@ static NSArray * allAvailableStringEncodings(void)
 				confidence:(float)confidence
 {
     NSString * testText = [[NSString alloc] initWithData: data encoding: guess];
-    if(confidence < 0.8 || !testText)
-    {
+    if (confidence < 0.8 || !testText) {
 		NSMenu * encodingMenu = [encodingPopup menu];
         [self updateEncodingMenuTestedAgainst: data];
         NSArray * encodingIdentifiers = [[encodingMenu itemArray] valueForKey: @"representedObject"];
@@ -896,8 +879,7 @@ static NSArray * allAvailableStringEncodings(void)
 		NSUInteger counter = 0;
 //		NSStringEncoding encoding;
 		NSNumber * encoding;
-		while(!testText)
-		{
+		while (!testText) {
 			encoding = encodingIdentifiers[counter];
 			if ([encoding class] != [NSNull class]) {
 				testText = [[NSString alloc] initWithData: data encoding: [encoding unsignedIntegerValue]];
@@ -905,8 +887,7 @@ static NSArray * allAvailableStringEncodings(void)
 			index = counter++;
 		}
 
-        if(index != NSNotFound)
-        {
+        if (index != NSNotFound) {
             self.encodingSelection = index;
         }
         
@@ -914,8 +895,7 @@ static NSArray * allAvailableStringEncodings(void)
 		
         [self testEncoding: self];
 		guess = NSNotFound;
-        if([NSApp runModalForWindow: encodingPanel] != NSCancelButton)
-        {
+        if ([NSApp runModalForWindow: encodingPanel] != NSCancelButton) {
             guess = [[[encodingMenu itemAtIndex: encodingSelection] representedObject] unsignedIntegerValue];
         }
         [encodingPanel close];
