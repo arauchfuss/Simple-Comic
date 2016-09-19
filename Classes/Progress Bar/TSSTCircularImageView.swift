@@ -10,18 +10,17 @@ import Cocoa
 
 class TSSTCircularImageView: NSImageView {
 
-	override func drawRect(dirtyRect: NSRect) {
+	override func draw(_ dirtyRect: NSRect) {
 		let bounds = self.bounds
-		NSColor.clearColor().set()
+		NSColor.clear.set()
 		NSRectFill(bounds)
 		if let _ = image {
 			// Choose j-rg's flat magnifying glass over old one. Ported from j-rg's objective-c version.
-			let circle = NSBezierPath(ovalInRect: NSInsetRect(bounds, 5, 5))
-			NSColor.whiteColor().set()
+			let circle = NSBezierPath(ovalIn: NSInsetRect(bounds, 5, 5))
+			NSColor.white.set()
 			circle.fill()
 			circle.addClip()
-			super.drawRect(dirtyRect)
-
+			super.draw(dirtyRect)
 		}
 	}
 }

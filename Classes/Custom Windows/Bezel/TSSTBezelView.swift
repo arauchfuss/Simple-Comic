@@ -9,8 +9,8 @@
 import Cocoa
 
 class TSSTBezelView : NSView {
-	override func drawRect(aRect: NSRect) {
-		NSColor.clearColor().set()
+	override func draw(_ aRect: NSRect) {
+		NSColor.clear.set()
 		NSRectFill(aRect)
 		
 		let polishedGradient = NSGradient(colorsAndLocations: (NSColor(deviceWhite: 0.3, alpha: 1), 0),
@@ -18,6 +18,6 @@ class TSSTBezelView : NSView {
 			(NSColor(deviceWhite: 0.2, alpha: 1), 0.5),
 			(NSColor(deviceWhite: 1, alpha: 1), 1))
 		
-		polishedGradient?.drawInRect(bounds, angle: 270)
+		polishedGradient?.draw(in: bounds, angle: 270)
 	}
 }

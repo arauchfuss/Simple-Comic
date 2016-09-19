@@ -9,23 +9,19 @@
 import Cocoa
 
 class TSSTBezelWindow : NSPanel {
-	override init(contentRect rect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, `defer` flag: Bool) {
+	override init(contentRect rect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
 		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
 	}
 
-	required init?(coder: NSCoder) {
-	    fatalError("init(coder:) has not been implemented")
-	}
-	
-	override var canBecomeKeyWindow: Bool {
+	override var canBecomeKey: Bool {
 		return true
 	}
 	
-	override func performClose(sender: AnyObject?) {
-		delegate?.windowShouldClose?(self)
+	override func performClose(_ sender: Any?) {
+		_ = delegate?.windowShouldClose?(self)
 	}
 	
-	override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+	override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
 		return menuItem.action == #selector(TSSTBezelWindow.performClose(_:)) ? true : false
 	}
 }
