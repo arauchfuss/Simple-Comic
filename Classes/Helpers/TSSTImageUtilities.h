@@ -47,7 +47,7 @@ NSRect rectFromNegativeRect(NSRect rect);
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image);
 
-NSPoint centerPointOfRect(NSRect rect);
+NSPoint centerPointOfRect(NSRect rect) NS_SWIFT_NAME(centerPoint(of:));
 
 NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius);
 

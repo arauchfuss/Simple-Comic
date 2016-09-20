@@ -45,7 +45,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				fileNames = resultString.components(separatedBy: "\n")
 			}
 			
-			if let rawQuery = dic.object(forKey: "RawQueryDict") as? NSDictionary as? [String: AnyObject],
+			if let rawQuery = dic.object(forKey: "RawQueryDict") as? NSDictionary as? [String: Any],
 				let mdStr = result as? String,
 				let mdPred = NSPredicate(fromMetadataQueryString: mdStr) {
 				
@@ -56,17 +56,18 @@ class ManagedSmartFolder: TSSTManagedGroup {
 					nf.removeObserver(self, name: nil, object: query)
 				}
 
-				let emailExclusionPredicate = NSPredicate(format:"(kMDItemContentType != 'com.apple.mail.emlx') && (kMDItemContentType != 'public.vcard')");
+				let emailExclusionPredicate = NSPredicate(format:"(kMDItemContentType != 'com.apple.mail.emlx') && (kMDItemContentType != '\(kUTTypeVCard as String)')");
 				let predicateToRun: NSPredicate = NSCompoundPredicate(andPredicateWithSubpredicates:[mdPred, emailExclusionPredicate]);
 
 				query.predicate = predicateToRun
-				query.searchScopes = (rawQuery["SearchScopes"] as? [AnyObject]) ?? []
+				query.searchScopes = (rawQuery["SearchScopes"] as? [Any]) ?? []
 				query.delegate = self
 				//Move it to a seperate thread so it actually works.
 				query.operationQueue = OperationQueue()
 				query.start()
 				
 				if metadataSemaphore.wait(timeout: DispatchTime.now() + DispatchTimeInterval.seconds(4)) == .timedOut {
+					query.stop()
 					let objPtr = Unmanaged.passUnretained(self).toOpaque()
 					let objWhutPtr = objPtr.assumingMemoryBound(to: Void.self)
 					NSLog(String(format:"%@: %p We ran out of time! Using NSTask using mdfind.", self.className, objWhutPtr))
@@ -74,10 +75,9 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				} else {
 					query.stop()
 					fileNames = query.results.filter({ (anObj) -> Bool in
-						return anObj is NSString
-					}) as? [NSString] as? [String] ?? []
+						return anObj is String
+					}) as? [String] ?? []
 				}
-				
 			} else {
 				useTask()
 			}
@@ -88,15 +88,15 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		for path in fileNames {
 			let pathExtension = (path as NSString).pathExtension.lowercased()
 			// Handles recognized image files
-			if TSSTPage.imageExtensions().contains(pathExtension) {
+			if TSSTPage.imageExtensions.contains(pathExtension) {
 				var imageDescription: TSSTPage
 
 				imageDescription = NSEntityDescription.insertNewObject(forEntityName: "Image", into: managedObjectContext!) as! TSSTPage
-				imageDescription.setValue("\(path)", forKey: "imagePath")
+				imageDescription.setValue(path, forKey: "imagePath")
 				imageDescription.setValue(pageNumber, forKey: "index")
 				pageSet.insert(imageDescription)
 				pageNumber += 1;
-			} else if TSSTManagedArchive.archiveExtensions().contains(pathExtension) {
+			} else if TSSTManagedArchive.archiveExtensions.contains(pathExtension) {
 				//NSManagedObject * nestedDescription;
 				let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "Archive", into: managedObjectContext!) as! TSSTManagedArchive
 				nestedDescription.setValue(path, forKey: "path")
@@ -142,7 +142,10 @@ class ManagedSmartFolder: TSSTManagedGroup {
 
 extension ManagedSmartFolder: NSMetadataQueryDelegate {
 	func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any {
-		return result.value(forAttribute: kMDItemPath as String) as? NSString ?? NSNull()
+		guard let aResult = result.value(forAttribute: kMDItemPath as String) as? NSString else {
+			return NSNull()
+		}
+		return aResult
 	}
 	
 	@objc fileprivate func queryNote(_ note: Notification) {

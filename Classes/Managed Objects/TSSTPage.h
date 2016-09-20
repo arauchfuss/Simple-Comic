@@ -38,13 +38,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray<NSString*> *)imageExtensions;
 + (NSArray<NSString*> *)textExtensions;
+#if __has_feature(objc_class_property)
+@property (class, readonly, copy) NSArray<NSString*> *imageTypes;
+@property (class, readonly, copy) NSArray<NSString*> *imageExtensions;
+@property (class, readonly, copy) NSArray<NSString*> *textExtensions;
+#endif
 @property (readonly, copy) NSString *name;
 //- (NSString *)deconflictionName;
    
 @property (readonly) BOOL shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
 @property (readonly, copy) NSImage *thumbnail;
-@property (readonly, copy, nullable) NSData *prepThumbnail;
+- (nullable NSData *)prepThumbnail;
 @property (readonly, copy) NSData *pageData;
 @property (readonly, copy) NSImage *textPage;
 @property (readonly, copy) NSImage *pageImage;

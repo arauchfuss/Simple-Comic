@@ -40,22 +40,31 @@ static NSSize monospaceCharacterSize;
 
 @implementation TSSTPage
 
++ (NSArray<NSString*>*)imageTypes
+{
+	static NSArray * imageTypes = nil;
+	if(!imageTypes) {
+		NSMutableArray<NSString*> *aimageTypes = [[NSImage imageTypes] mutableCopy];
+		[aimageTypes removeObject:(NSString*)kUTTypePDF];
+		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like %@)" argumentArray:@[@"com.adobe.encapsulated-postscript"]]];
+		imageTypes = [aimageTypes copy];
+	}
+
+	return imageTypes;
+}
+
 + (NSArray *)imageExtensions
 {
 	static NSArray * imageTypes = nil;
 	if(!imageTypes)
 	{
-		NSMutableArray *aimageTypes = [[NSImage imageFileTypes] mutableCopy];
-		//Get rid of OSTypes/File Types
-		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like %@)" argumentArray:@[@"'????'"]]];
-		// Remove PDF and eps files
-		NSMutableArray *predArr = [[NSMutableArray alloc] initWithCapacity:3];
-		for (NSString *ext in @[@"pdf", @"eps", @"ps"]) {
-			[predArr addObject:[NSPredicate predicateWithFormat:@"!(SELF like[c] %@)" argumentArray:@[ext]]];
+		NSMutableSet *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.imageTypes.count * 2];
+		for (NSString *uti in self.imageTypes) {
+			NSArray *fileExts =
+			CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
+			[aimageTypes addObjectsFromArray:fileExts];
 		}
-		NSPredicate *combPred = [NSCompoundPredicate andPredicateWithSubpredicates:predArr];
-		[aimageTypes filterUsingPredicate:combPred];
-		imageTypes = [[NSArray alloc] initWithArray:aimageTypes];
+		imageTypes = [aimageTypes allObjects];
 	}
 	
 	return imageTypes;
