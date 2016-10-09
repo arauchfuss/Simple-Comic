@@ -25,7 +25,7 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(NSArray*)		allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk
++(NSArray*) allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSMutableArray*	allKeys = [NSMutableArray array];
 	ssize_t dataSize = listxattr( [path fileSystemRepresentation],
@@ -59,7 +59,7 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(void)				setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
++(void) setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	[self setData:data forKey:key atPath:path traverseLink:travLnk error:NULL];
 }
@@ -157,12 +157,12 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
++(NSData*) dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	return [self dataForKey:key atPath:path traverseLink:travLnk error:NULL];
 }
 
-+(NSData*)	dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
++(NSData*) dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
 	ssize_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
 									NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
@@ -195,7 +195,7 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(id)	objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
++(id) objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSString*	errMsg = nil;
 	NSError		*err = nil;
@@ -244,7 +244,7 @@
 //		If travLnk == YES, it follows symlinks.
 // -----------------------------------------------------------------------------
 
-+(NSString*)	stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
++(NSString*) stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSData *data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: nil];
 	if (!data) {
@@ -254,7 +254,7 @@
 	return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }
 
-+(NSString*)	stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
++(NSString*) stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
 	NSData *data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: error];
 	
