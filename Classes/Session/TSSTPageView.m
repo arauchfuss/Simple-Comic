@@ -26,6 +26,7 @@
 	TSSTPageView.m
 */
 
+#include <tgmath.h>
 #import "TSSTPageView.h"
 #import "TSSTImageUtilities.h"
 #import "SimpleComicAppDelegate.h"
@@ -616,7 +617,7 @@
         break;
     }
     
-    viewSize = NSMakeSize(roundf(viewSize.width), roundf(viewSize.height));
+    viewSize = NSMakeSize(round(viewSize.width), round(viewSize.height));
     [self setFrameSize: viewSize];
 
     if(![defaults boolForKey: TSSTConstrainScale] &&
@@ -874,7 +875,7 @@
 		return;
 	}
 	
-    int modifier = [event modifierFlags];
+    NSEventModifierFlags modifier = [event modifierFlags];
     BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
     unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
@@ -1349,11 +1350,11 @@
 //NOTE: This is for the THREE-finger swipe, not two finger
 - (void)swipeWithEvent:(NSEvent *)event
 {
-    if ([event deltaX] > 0.0)
+    if ([event deltaX] == 1)
 	{
         [sessionController pageLeft: self];
     } 
-	else if ([event deltaX] < 0.0)
+	else if ([event deltaX] == -1)
 	{
         [sessionController pageRight: self];
     }
@@ -1392,6 +1393,10 @@
 	}
 }
 
+- (void)smartMagnifyWithEvent:(NSEvent *)event
+{
+	//Cycle through the page scaling options
+}
 
 - (BOOL)dragIsPossible
 {
@@ -1405,7 +1410,7 @@
 {
     NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    return (visible.width < roundf(total.width));
+    return (visible.width < round(total.width));
 }
 
 
@@ -1413,7 +1418,7 @@
 {
 	NSSize total = imageBounds.size;
     NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    return (visible.height < roundf(total.height));
+    return (visible.height < round(total.height));
 }
 
 
