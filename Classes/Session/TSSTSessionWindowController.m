@@ -695,13 +695,15 @@
 - (IBAction)launchJumpPanel:(id)sender
 {
 	[jumpField setIntegerValue: [pageController selectionIndex] + 1];
-	[NSApp beginSheet: jumpPanel modalForWindow: [self window] modalDelegate: self didEndSelector: @selector(closeSheet:) contextInfo: NULL];
+	[self.window beginSheet:jumpPanel completionHandler:^(NSModalResponse returnCode) {
+		[self closeSheet:returnCode];
+	}];
 }
 
 
 - (IBAction)cancelJumpPanel:(id)sender
 {
-	[NSApp endSheet: jumpPanel returnCode: 0];
+	[self.window endSheet: jumpPanel returnCode: 0];
 }
 
 
@@ -713,7 +715,7 @@
         [pageController setSelectionIndex: index];
     }
 	
-	[NSApp endSheet: jumpPanel returnCode: 1];
+	[self.window endSheet: jumpPanel returnCode: 1];
 }
 
 
@@ -858,7 +860,7 @@
 		[savePanel setTitle: @"Extract Page"];
 		[savePanel setPrompt: @"Extract"];
         [savePanel setNameFieldStringValue:[selectedPage name]];
-		if(NSOKButton == [savePanel runModal])
+		if(NSFileHandlingPanelOKButton == [savePanel runModal])
 		{
 			[[selectedPage pageData] writeToFile: [[savePanel URL] path] atomically: YES];
 		}

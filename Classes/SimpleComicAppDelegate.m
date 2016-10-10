@@ -338,8 +338,13 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     if(![self saveContext])
     {
         // Error handling wasn't implemented. Fall back to displaying a "quit anyway" panel.
-        NSInteger alertReturn = NSRunAlertPanel(nil, @"Could not save changes while quitting. Quit anyway?" , @"Quit anyway", @"Cancel", nil);
-        if (alertReturn == NSAlertAlternateReturn)
+		NSAlert *alert = [NSAlert new];
+		alert.messageText = @"Quit";
+		alert.informativeText = @"Could not save changes while quitting. Quit anyway?";
+		[alert addButtonWithTitle:@"Quit anyway"];
+		[alert addButtonWithTitle:@"Cancel"];
+		NSInteger alertReturn = [alert runModal];
+        if (alertReturn == NSAlertSecondButtonReturn)
         {
             reply = NSTerminateCancel;	
         }
@@ -752,7 +757,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     [allAllowedFilesExtensions addObject: @"savedSearch"];
     [addPagesModal setAllowedFileTypes:allAllowedFilesExtensions];
 
-	if([addPagesModal runModal] !=  NSCancelButton)
+	if([addPagesModal runModal] !=  NSModalResponseCancel)
 	{
 		NSArray<NSURL*> *fileURLs = [addPagesModal URLs];
         NSMutableArray<NSString*> *filePaths = [[NSMutableArray alloc] initWithCapacity:fileURLs.count];
@@ -773,7 +778,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 /*  Kills the password and encoding modals if the OK button was  clicked. */
 - (IBAction)modalOK:(id)sender
 {
-    [NSApp stopModalWithCode: NSOKButton]; 
+    [NSApp stopModalWithCode: NSModalResponseOK];
 }
 
 
@@ -781,7 +786,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 /*  Kills the password and encoding modals if the Cancel button was clicked. */
 - (IBAction)modalCancel:(id)sender
 {
-    [NSApp stopModalWithCode: NSCancelButton]; 
+    [NSApp stopModalWithCode: NSModalResponseCancel];
 }
 
 
@@ -854,7 +859,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 {
     NSString* password = nil;
 	[passwordField setStringValue: @""];
-    if ([NSApp runModalForWindow: passwordPanel] != NSCancelButton) {
+    if ([NSApp runModalForWindow: passwordPanel] != NSModalResponseCancel) {
         password = [passwordField stringValue];
     }
 	
@@ -895,7 +900,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		
         [self testEncoding: self];
 		guess = NSNotFound;
-        if ([NSApp runModalForWindow: encodingPanel] != NSCancelButton) {
+        if ([NSApp runModalForWindow: encodingPanel] != NSModalResponseCancel) {
             guess = [[[encodingMenu itemAtIndex: encodingSelection] representedObject] unsignedIntegerValue];
         }
         [encodingPanel close];

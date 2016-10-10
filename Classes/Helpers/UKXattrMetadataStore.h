@@ -174,7 +174,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@discussion	Get the xattr with name \c key as a UTF8 string
  *	@deprecated	This method throws an Obj-C exception. No other error information is provoded on failure.
  */
-+(nullable NSData*)	dataForKey: (NSString*)key atPath:(NSString*)path
++(nullable NSData*) dataForKey:(NSString*)key atPath:(NSString*)path
 				  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'dataForKey(_:atPath:traverseLink:) throws' instead");
 /*!
  *	@method		dataForKey:atPath:traverseLink:error:
@@ -191,7 +191,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@return		an \c NSData containing the contents of \c key on succes, or \c nil on failure
  *	@discussion	Get the xattr with name \c key as a UTF8 string
  */
-+(nullable NSData*)	dataForKey:(NSString*)key atPath:(NSString*)path
++(nullable NSData*) dataForKey:(NSString*)key atPath:(NSString*)path
 				  traverseLink:(BOOL)travLnk error:(NSError**)error;
 
 #pragma mark Store objects: (Only can get/set plist-type objects for now)‚
@@ -230,7 +230,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@discussion	Set the xattr with name key to an XML property list representation of
  *				the specified object (or object graph).
  */
-+(BOOL)	setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
++(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
 	 traverseLink:(BOOL)travLnk error:(NSError**)error;
 
 /*!
