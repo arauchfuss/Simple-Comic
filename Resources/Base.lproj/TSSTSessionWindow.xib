@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
@@ -29,43 +29,61 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="40" y="225" width="460" height="529"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <value key="minSize" type="size" width="400" height="200"/>
             <view key="contentView" id="7">
                 <rect key="frame" x="0.0" y="0.0" width="460" height="529"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="236">
-                        <rect key="frame" x="0.0" y="23" width="460" height="530"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="236">
+                        <rect key="frame" x="0.0" y="23" width="460" height="506"/>
                         <clipView key="contentView" autoresizesSubviews="NO" copiesOnScroll="NO" id="KlA-W9-AWW">
-                            <rect key="frame" x="0.0" y="0.0" width="460" height="530"/>
+                            <rect key="frame" x="0.0" y="0.0" width="460" height="506"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <customView id="235" customClass="TSSTPageView">
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="235" customClass="TSSTPageView">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="65"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="65" placeholder="YES" id="BTM-uO-8YT"/>
+                                        <constraint firstAttribute="width" constant="135" placeholder="YES" id="DHD-8P-VUc"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="sessionController" destination="-2" id="750"/>
                                     </connections>
                                 </customView>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="235" firstAttribute="leading" secondItem="KlA-W9-AWW" secondAttribute="leading" id="CEp-bk-dRR"/>
+                                <constraint firstAttribute="bottom" secondItem="235" secondAttribute="bottom" id="s4b-PN-yEG"/>
+                            </constraints>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
                         <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="506">
-                            <rect key="frame" x="0.0" y="514" width="460" height="16"/>
+                            <rect key="frame" x="0.0" y="490" width="460" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="505">
-                            <rect key="frame" x="444" y="0.0" width="16" height="530"/>
+                            <rect key="frame" x="444" y="0.0" width="16" height="506"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <customView id="607" customClass="DTPolishedProgressBar" customModule="Simple_Comic" customModuleProvider="target">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="607" customClass="DTPolishedProgressBar" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="12" y="-1" width="436" height="23"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="23" id="3cZ-PQ-goe"/>
+                        </constraints>
                     </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="607" secondAttribute="bottom" constant="-1" id="1eT-5q-1At"/>
+                    <constraint firstItem="607" firstAttribute="leading" secondItem="7" secondAttribute="leading" constant="12" id="Cbb-ui-60Z"/>
+                    <constraint firstAttribute="bottom" secondItem="607" secondAttribute="bottom" constant="-1" id="KTi-PI-gyf"/>
+                    <constraint firstItem="236" firstAttribute="leading" secondItem="7" secondAttribute="leading" id="TcW-oG-0wp"/>
+                    <constraint firstItem="236" firstAttribute="centerX" secondItem="607" secondAttribute="centerX" id="cY8-5u-obv"/>
+                    <constraint firstItem="607" firstAttribute="top" secondItem="236" secondAttribute="bottom" constant="1" id="pzR-Ku-VUC"/>
+                    <constraint firstItem="236" firstAttribute="top" secondItem="7" secondAttribute="top" id="rKH-gc-7Bo"/>
+                    <constraint firstAttribute="trailing" secondItem="236" secondAttribute="trailing" id="rnt-uU-bky"/>
+                </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="1A96E21F-07EA-4D3B-B356-508A45D1FCBB" displayMode="iconOnly" sizeMode="regular" id="507">
                 <allowedToolbarItems>
@@ -219,7 +237,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="19"/>
                         <size key="maxSize" width="29" height="27"/>
-                        <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" misplaced="YES" id="578">
+                        <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="21" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
@@ -307,18 +325,25 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="222" y="490" width="200" height="200"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <value key="minSize" type="size" width="200" height="24"/>
             <view key="contentView" id="351" customClass="TSSTInfoView" customModule="Simple_Comic" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="359" customClass="TSSTImageView" customModule="Simple_Comic" customModuleProvider="target">
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="359" customClass="TSSTImageView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="10" y="15" width="64" height="64"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="64" id="0wN-id-fx2"/>
+                            <constraint firstAttribute="height" constant="64" id="X6o-1E-n3G"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="499"/>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="359" secondAttribute="bottom" constant="15" id="Sfn-4d-z7H"/>
+                    <constraint firstItem="359" firstAttribute="leading" secondItem="351" secondAttribute="leading" constant="10" id="fUu-PA-h8a"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="-12" y="100"/>
         </window>
@@ -326,33 +351,37 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="932" y="284" width="200" height="200"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <value key="minSize" type="size" width="175" height="107"/>
             <view key="contentView" id="364">
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="366" customClass="TSSTCircularImageView" customModule="Simple_Comic" customModuleProvider="target">
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="366" customClass="TSSTCircularImageView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="501"/>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="366" secondAttribute="trailing" id="A69-z8-rNk"/>
+                    <constraint firstAttribute="bottom" secondItem="366" secondAttribute="bottom" id="Exf-SN-Icu"/>
+                    <constraint firstItem="366" firstAttribute="top" secondItem="364" secondAttribute="top" id="PrD-lO-r9I"/>
+                    <constraint firstItem="366" firstAttribute="leading" secondItem="364" secondAttribute="leading" id="bNf-s8-0da"/>
+                </constraints>
             </view>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="373" userLabel="expose" customClass="TSSTKeyWindow" customModule="Simple_Comic" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="545" y="211" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="374" customClass="TSSTTransparentView" customModule="Simple_Comic" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView id="378" customClass="TSSTThumbnailView" customModule="Simple_Comic" customModuleProvider="target">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="378" customClass="TSSTThumbnailView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <connections>
                             <outlet property="dataSource" destination="-2" id="379"/>
                             <outlet property="pageController" destination="12" id="381"/>
@@ -360,6 +389,12 @@
                         </connections>
                     </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="378" secondAttribute="trailing" id="5Ff-FA-WyO"/>
+                    <constraint firstItem="378" firstAttribute="leading" secondItem="374" secondAttribute="leading" id="G4n-yN-mYA"/>
+                    <constraint firstAttribute="bottom" secondItem="378" secondAttribute="bottom" id="Pbk-Nt-fQJ"/>
+                    <constraint firstItem="378" firstAttribute="top" secondItem="374" secondAttribute="top" id="c1I-h4-0xV"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="376"/>
@@ -369,15 +404,17 @@
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="445" userLabel="Jump" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="468" width="229" height="42"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="contentRect" x="196" y="468" width="252" height="42"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="446">
-                <rect key="frame" x="0.0" y="0.0" width="229" height="42"/>
+                <rect key="frame" x="0.0" y="0.0" width="252" height="42"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="448">
-                        <rect key="frame" x="50" y="10" width="41" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="448">
+                        <rect key="frame" x="63" y="10" width="41" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="JaI-oV-G1J"/>
+                        </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="503">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#1" negativeFormat="#1" generatesDecimalNumbers="YES" allowsFloats="NO" usesGroupingSeparator="NO" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="454">
                                 <integer key="roundingIncrement" value="1"/>
@@ -394,9 +431,8 @@
                             <binding destination="12" name="maxValue" keyPath="arrangedObjects.@count" id="458"/>
                         </connections>
                     </textField>
-                    <button verticalHuggingPriority="750" id="752">
-                        <rect key="frame" x="99" y="8" width="56" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="752">
+                        <rect key="frame" x="112" y="8" width="56" height="25"/>
                         <buttonCell key="cell" type="roundTextured" title="Jump" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="753">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -408,9 +444,8 @@ DQ
                             <action selector="goToPage:" target="-2" id="757"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" id="754">
-                        <rect key="frame" x="163" y="8" width="56" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="754">
+                        <rect key="frame" x="176" y="8" width="56" height="25"/>
                         <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="755">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -422,9 +457,8 @@ Gw
                             <action selector="cancelJumpPanel:" target="-2" id="756"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="447">
-                        <rect key="frame" x="6" y="13" width="38" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="447">
+                        <rect key="frame" x="18" y="13" width="39" height="17"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page:" id="502">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -432,22 +466,41 @@ Gw
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="754" firstAttribute="leading" secondItem="752" secondAttribute="trailing" constant="8" symbolic="YES" id="2sC-no-a1Z"/>
+                    <constraint firstItem="754" firstAttribute="top" secondItem="446" secondAttribute="top" constant="10" id="8hx-OU-Otd"/>
+                    <constraint firstAttribute="bottom" secondItem="754" secondAttribute="bottom" constant="10" id="9cJ-t3-4ug"/>
+                    <constraint firstItem="448" firstAttribute="leading" secondItem="447" secondAttribute="trailing" constant="8" symbolic="YES" id="Bvy-o3-Qur"/>
+                    <constraint firstItem="448" firstAttribute="baseline" secondItem="752" secondAttribute="baseline" id="GJp-5D-VfY"/>
+                    <constraint firstItem="447" firstAttribute="leading" secondItem="446" secondAttribute="leading" constant="20" symbolic="YES" id="GpR-Dt-hDU"/>
+                    <constraint firstItem="447" firstAttribute="baseline" secondItem="448" secondAttribute="baseline" id="NMH-MK-6BD"/>
+                    <constraint firstItem="752" firstAttribute="leading" secondItem="448" secondAttribute="trailing" constant="8" symbolic="YES" id="Oer-g9-yWa"/>
+                    <constraint firstItem="752" firstAttribute="baseline" secondItem="754" secondAttribute="baseline" id="Vkt-b5-Vek"/>
+                    <constraint firstAttribute="trailing" secondItem="754" secondAttribute="trailing" constant="20" symbolic="YES" id="l88-NN-3Fs"/>
+                    <constraint firstItem="754" firstAttribute="width" secondItem="752" secondAttribute="width" id="qfp-Ex-odB"/>
+                </constraints>
             </view>
+            <point key="canvasLocation" x="110" y="161"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow" customModule="Simple_Comic" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="160" width="350" height="350"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
             <view key="contentView" id="484">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView id="486" customClass="TSSTImageView" customModule="Simple_Comic" customModuleProvider="target">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="486" customClass="TSSTImageView" customModule="Simple_Comic" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="486" secondAttribute="trailing" id="Bmk-Dc-rYi"/>
+                    <constraint firstItem="486" firstAttribute="top" secondItem="484" secondAttribute="top" id="RWO-A5-c2T"/>
+                    <constraint firstAttribute="bottom" secondItem="486" secondAttribute="bottom" id="YTU-bQ-RZa"/>
+                    <constraint firstItem="486" firstAttribute="leading" secondItem="484" secondAttribute="leading" id="cYE-0b-KSl"/>
+                </constraints>
             </view>
         </window>
     </objects>
