@@ -13,7 +13,7 @@ private let stringAttributes: [String: Any] = {
 	style.lineBreakMode = .byTruncatingHead
 	return [NSFontAttributeName: NSFont.labelFont(ofSize: 14),
 		NSForegroundColorAttributeName: NSColor(calibratedWhite: 1, alpha: 1),
-		NSParagraphStyleAttributeName: style]
+		NSParagraphStyleAttributeName: style.copy()]
 }()
 
 class TSSTImageView : NSImageView {
@@ -32,7 +32,6 @@ class TSSTImageView : NSImageView {
 		image?.draw(in: imageRect, from: .zero, operation: .sourceOver, fraction: 1)
 		if let imageName = imageName {
 			imageRect = imageRect.insetBy(dx: 10, dy: 10)
-			//imageRect.insetInPlace(dx: 10, dy: 10)
 			var stringRect = imageName.boundingRect(with: imageRect.size, options: [], attributes: stringAttributes)
 			stringRect = rectWithSizeCenteredInRect(stringRect.size, imageRect);
 			NSColor(calibratedWhite: 0, alpha: 0.8).set()
