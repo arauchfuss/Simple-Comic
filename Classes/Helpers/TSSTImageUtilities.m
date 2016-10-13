@@ -39,14 +39,14 @@ NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension)
 //    {
         if( 1 > size.height / size.width)
         {
-			size = scaleSize(size, dimension / size.width);
+            size = scaleSize(size, dimension / size.width);
         }
         else
         {
-			size = scaleSize(size, dimension / size.height);
+            size = scaleSize(size, dimension / size.height);
         }
 //    }
-	
+    
     return size;
 }
 
@@ -57,12 +57,11 @@ NSSize scaleSize(NSSize aSize, CGFloat scale)
         return NSZeroSize;
     }
     
-	NSSize outputSize = aSize;
-	outputSize.width *= scale;
-	outputSize.height *= scale;
-	return outputSize;
+    NSSize outputSize = aSize;
+    outputSize.width *= scale;
+    outputSize.height *= scale;
+    return outputSize;
 }
-
 
 CGSize fitSizeInSize(CGSize constraint, CGSize size)
 {
@@ -80,7 +79,6 @@ CGSize fitSizeInSize(CGSize constraint, CGSize size)
 	
 	return size;
 }
-
 
 NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
 {
@@ -103,24 +101,26 @@ NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
 
 NSRect rectFromNegativeRect(NSRect rect)
 {
-	return CGRectStandardize(rect);
+#if NSGEOMETRY_TYPES_SAME_AS_CGGEOMETRY_TYPES
+    return CGRectStandardize(rect);
+#else
+    return NSRectFromCGRect(CGRectStandardize(NSRectToCGRect(rect)));
+#endif
 }
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)
 {
-	NSRect scaledRect = rectWithSizeCenteredInRect([image size] , NSMakeRect(0, 0, size.width, size.height));
-	
-	NSImage * scaledImage = [[NSImage alloc] initWithSize: size];
-	
-	[scaledImage lockFocus];
+    NSRect scaledRect = rectWithSizeCenteredInRect([image size] , NSMakeRect(0, 0, size.width, size.height));
+    
+    NSImage * scaledImage = [[NSImage alloc] initWithSize: size];
+    
+    [scaledImage lockFocus];
     [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-	[scaledImage drawInRect: scaledRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
+    [scaledImage drawInRect: scaledRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
     [scaledImage unlockFocus];
-	
-	return scaledImage;
+    
+    return scaledImage;
 }
-
-
 
 NSPoint centerPointOfRect(NSRect rect)
 {
@@ -130,40 +130,34 @@ NSPoint centerPointOfRect(NSRect rect)
     return point;
 }
 
-
 NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius)
 {
-	return [NSBezierPath bezierPathWithRoundedRect: aRect xRadius: radius yRadius: radius];
+    return [NSBezierPath bezierPathWithRoundedRect: aRect xRadius: radius yRadius: radius];
 }
-
 
 CGImageRef CGImageRefNamed(NSString * name)
 {
-	NSData * imageData = [[NSImage imageNamed: name] TIFFRepresentation];
-	
-	CGImageRef        imageRef = NULL;
+    NSData * imageData = [[NSImage imageNamed: name] TIFFRepresentation];
+    
+    CGImageRef        imageRef = NULL;
     CGImageSourceRef  sourceRef;
-	
+    
     sourceRef = CGImageSourceCreateWithData((__bridge CFDataRef)imageData, NULL);
     if(sourceRef)
-	{
+    {
         imageRef = CGImageSourceCreateImageAtIndex(sourceRef, 0, NULL);
         CFRelease(sourceRef);
     }
-	
+    
     return imageRef;
 }
 
-
 CGFloat DegreesToRadians(CGFloat degrees) 
 {
-	return degrees * M_PI / 180;
+    return degrees * M_PI / 180;
 }
 
 CGFloat RadiansToDegrees(CGFloat radians) 
 {
-	return radians * 180 / M_PI;
+    return radians * 180 / M_PI;
 }
-
-
-

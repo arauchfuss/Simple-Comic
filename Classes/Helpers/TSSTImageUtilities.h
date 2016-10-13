@@ -31,25 +31,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSSize sizeScalaedToDimension(NSSize size, CGFloat dimension);
+NSSize sizeScalaedToDimension(NSSize size, CGFloat dimension) NS_SWIFT_NAME(scaleSize(_:dimension:));
 
-NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension);
+NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension) NS_SWIFT_NAME(constrainSize(_:dimension:));
 
-/// function that adjusts an NSSize by the amount designated
-/// in argument "scale"
+/// function that adjusts an \c NSSize by the amount designated
+/// in argument \c scale
 /// Return is an integer size.
-NSSize scaleSize(NSSize aSize, CGFloat scale);
-CGSize fitSizeInSize(CGSize constraint, CGSize size);
+NSSize scaleSize(NSSize aSize, CGFloat scale) NS_SWIFT_NAME(scaleSize(_:scale:));
+CGSize fitSizeInSize(CGSize constraint, CGSize size) NS_SWIFT_NAME(fitSize(_:in:));
 
-NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect);
+NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect) NS_SWIFT_NAME(rectCentered(withSize:in:));
 
 NSRect rectFromNegativeRect(NSRect rect);
 
-NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image);
+NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image) NS_SWIFT_NAME(scaleImage(to:fromImage:));
 
 NSPoint centerPointOfRect(NSRect rect) NS_SWIFT_NAME(centerPoint(of:));
 
-NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius);
+NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius) NS_SWIFT_NAME(roundedRect(_:cornerRadius:));
 
 CGImageRef __nullable CGImageRefNamed(NSString * name) CF_RETURNS_RETAINED;
 

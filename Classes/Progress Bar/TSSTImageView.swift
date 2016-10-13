@@ -26,16 +26,16 @@ class TSSTImageView : NSImageView {
 			NSRectFill(bounds)
 		}
 		
-		var imageRect = rectWithSizeCenteredInRect(image?.size ?? .zero, bounds)
+		var imageRect = rectCentered(withSize: image?.size ?? .zero, in: bounds)
 		//[NSGraphicsContext saveGraphicsState];
 		//[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
 		image?.draw(in: imageRect, from: .zero, operation: .sourceOver, fraction: 1)
 		if let imageName = imageName {
 			imageRect = imageRect.insetBy(dx: 10, dy: 10)
 			var stringRect = imageName.boundingRect(with: imageRect.size, options: [], attributes: stringAttributes)
-			stringRect = rectWithSizeCenteredInRect(stringRect.size, imageRect);
+			stringRect = rectCentered(withSize: stringRect.size, in: imageRect);
 			NSColor(calibratedWhite: 0, alpha: 0.8).set()
-			roundedRectWithCornerRadius(stringRect.insetBy(dx: -5, dy: -5), 10).fill()
+			roundedRect(stringRect.insetBy(dx: -5, dy: -5), cornerRadius: 10).fill()
 			imageName.draw(in: stringRect, withAttributes: stringAttributes)
 		}
 		
