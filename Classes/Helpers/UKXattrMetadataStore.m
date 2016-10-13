@@ -27,7 +27,7 @@
 
 +(NSArray*) allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	NSMutableArray*	allKeys = [NSMutableArray array];
+	NSMutableArray<NSString*>*	allKeys = [NSMutableArray array];
 	ssize_t dataSize = listxattr( [path fileSystemRepresentation],
 								NULL, ULONG_MAX,
 								(travLnk ? 0 : XATTR_NOFOLLOW) );
@@ -37,6 +37,13 @@
 	dataSize = listxattr( [path fileSystemRepresentation],
 							[listBuffer mutableBytes], [listBuffer length],
 							(travLnk ? 0 : XATTR_NOFOLLOW) );
+#if 1
+	NSString *allStrKeys = [[NSString alloc] initWithData:listBuffer encoding:NSUTF8StringEncoding];
+	[allKeys setArray:[allStrKeys componentsSeparatedByString:@"\0"]];
+	if (/*allKeys.count > 0 && */ allKeys.lastObject.length == 0) {
+		[allKeys removeLastObject];
+	}
+#else
 	char*	nameStart = [listBuffer mutableBytes];
 	for(size_t x = 0; x < dataSize; x++ )
 	{
@@ -47,6 +54,7 @@
 			[allKeys addObject: str];
 		}
 	}
+#endif
 	
 	return [allKeys copy];
 }
@@ -97,7 +105,7 @@
 		[NSException raise: @"UKXattrMetastoreCantSerialize" format: @"%@", errMsg];
 	}
 	else
-		[[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk error: NULL];
+		[self setData: plistData forKey: key atPath: path traverseLink: travLnk error: NULL];
 }
 
 +(BOOL)	setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
@@ -111,7 +119,7 @@
 		return NO;
 	}
 	else
-		return [[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk error: error];
+		return [self setData: plistData forKey: key atPath: path traverseLink: travLnk error: error];
 }
 
 
@@ -147,7 +155,7 @@
 		return NO;
 	}
 	
-	return [[self class] setData: data forKey: key atPath: path traverseLink: travLnk error: outError];
+	return [self setData: data forKey: key atPath: path traverseLink: travLnk error: outError];
 }
 
 // -----------------------------------------------------------------------------
@@ -197,21 +205,10 @@
 
 +(id) objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	NSString*	errMsg = nil;
 	NSError		*err = nil;
-	NSData*		data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: &err];
-	if (!data && err) {
+	id obj = [self objectForKey:key atPath:path traverseLink:travLnk error:&err];
+	if (!obj) {
 		[NSException raise:@"UKXattrMetastoreCantUnserialize" format: @"%@", err];
-		return nil;
-	}
-	NSPropertyListFormat	outFormat = NSPropertyListXMLFormat_v1_0;
-	id obj = [NSPropertyListSerialization propertyListFromData: data
-					mutabilityOption: NSPropertyListImmutable
-					format: &outFormat
-					errorDescription: &errMsg];
-	if( errMsg )
-	{
-		[NSException raise: @"UKXattrMetastoreCantUnserialize" format: @"%@", errMsg];
 	}
 	
 	return obj;
@@ -229,6 +226,7 @@
 
 	id obj = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:&outFormat error:outError];
 	if (!obj) {
+		//The propertyListWithData:... method should have filled out the error variable.
 		return nil;
 	}
 	
