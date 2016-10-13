@@ -12,3 +12,5 @@
 @interface TSSTManagedSession : NSManagedObject
 
 @end
+
+#import "TSSTManagedSession+CoreDataProperties.h"

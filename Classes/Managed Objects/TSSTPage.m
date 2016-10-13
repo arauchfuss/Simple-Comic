@@ -82,7 +82,6 @@ static NSSize monospaceCharacterSize;
 	return textTypes;
 }
 
-
 + (void)initialize
 {
 	/* Figure out the size of a single monospace character to set the tab stops */
@@ -109,15 +108,12 @@ static NSSize monospaceCharacterSize;
 	
 }
 
-
 - (void)awakeFromInsert
 {
     [super awakeFromInsert];
     thumbLock = [NSLock new];
     loaderLock = [NSLock new];
 }
-
-
 
 - (void)awakeFromFetch
 {
@@ -126,35 +122,30 @@ static NSSize monospaceCharacterSize;
     loaderLock = [NSLock new];
 }
 
-
-
 - (void)didTurnIntoFault
 {
 	loaderLock = nil;
 	thumbLock = nil;
 }
 
-
-
 - (BOOL)shouldDisplayAlone
 {   
-	if([[self valueForKey: @"text"] boolValue])
+	if([self.text boolValue])
 	{
 		return YES;
 	}
 	
 	CGFloat defaultAspect = 1;
-	CGFloat aspect = [[self valueForKey: @"aspectRatio"] doubleValue];
+	CGFloat aspect = [self.aspectRatio doubleValue];
 	if(!aspect)
 	{
         NSData * imageData = [self pageData];
 		[self setOwnSizeInfoWithData: imageData];
-		aspect = [[self valueForKey: @"aspectRatio"] doubleValue];
+		aspect = [self.aspectRatio doubleValue];
 	}
     
 	return aspect != 0 ? aspect > defaultAspect : YES;
 }
-
 
 - (void)setOwnSizeInfoWithData:(NSData *)imageData
 {
@@ -166,27 +157,25 @@ static NSSize monospaceCharacterSize;
 	if(!NSEqualSizes(NSZeroSize, imageSize))
 	{
 		aspect = imageSize.width / imageSize.height;
-		[self setValue: @(imageSize.width) forKey: @"width"];
-		[self setValue: @(imageSize.height) forKey: @"height"];
-		[self setValue: @(aspect) forKey: @"aspectRatio"];
-	}	
+		self.width = @(imageSize.width);
+		self.height = @(imageSize.height);
+		self.aspectRatio = @(aspect);
+	}
 }
-
 
 - (NSString *)name
 {
-    return [[self valueForKey: @"imagePath"] lastPathComponent];
+    return [self.imagePath lastPathComponent];
 }
-
 
 - (NSImage *)thumbnail
 {
 	NSImage * thumbnail = nil;
-	NSData * thumbnailData = [self valueForKey: @"thumbnailData"];
+	NSData * thumbnailData = self.thumbnailData;
 	if(!thumbnailData)
 	{
 		thumbnailData = [self prepThumbnail];
-		[self setValue: thumbnailData forKey: @"thumbnailData"];
+		self.thumbnailData = thumbnailData;
 		thumbnail = [[NSImage alloc] initWithData: thumbnailData];
 	}
 	else
@@ -196,7 +185,6 @@ static NSSize monospaceCharacterSize;
 	
     return thumbnail;
 }
-
 
 - (NSData *)prepThumbnail
 {
@@ -222,10 +210,9 @@ static NSSize monospaceCharacterSize;
 	return thumbnailData;
 }
 
-
 - (NSImage *)pageImage
 {
-	if([[self valueForKey: @"text"] boolValue])
+	if([self.text boolValue])
 	{
 		return [self textPage];
 	}
@@ -239,7 +226,7 @@ static NSSize monospaceCharacterSize;
         imageFromData = [[NSImage alloc] initWithData: imageData];
     }
 	
-    NSSize imageSize =  NSMakeSize([[self valueForKey: @"width"] doubleValue], [[self valueForKey: @"height"] doubleValue]);
+    NSSize imageSize =  NSMakeSize([self.width doubleValue], [self.height doubleValue]);
     
     if(!imageFromData || NSEqualSizes(NSZeroSize, imageSize))
     {
@@ -256,22 +243,21 @@ static NSSize monospaceCharacterSize;
     return imageFromData;
 }
 
-
 - (NSImage *)textPage
 {
 	NSData * textData;
-	if([self valueForKey: @"index"])
+	if(self.index)
 	{
-		textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] integerValue]];
+		textData = [self.group dataForPageIndex: [self.index integerValue]];
 	}
 	else
 	{
-		textData = [NSData dataWithContentsOfFile: [self valueForKey: @"imagePath"]];
+		textData = [NSData dataWithContentsOfFile: self.imagePath];
 	}
 	
 	UniversalDetector * encodingDetector = [UniversalDetector detector];
 	[encodingDetector analyzeData: textData];
-	NSString * text = [[NSString alloc] initWithData: textData encoding: [encodingDetector encoding]];
+	NSString * text = [[NSString alloc] initWithData: textData encoding: encodingDetector.encoding];
 //	int lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;
@@ -309,24 +295,21 @@ static NSSize monospaceCharacterSize;
 	return textImage;
 }
 
-
 - (NSData *)pageData
 {
-	NSData * imageData = nil;
-	TSSTManagedGroup * group = [self valueForKey: @"group"];
-	if([self valueForKey: @"index"])
+    NSData * imageData = nil;
+    TSSTManagedGroup * group = self.group;
+    if (self.index)
     {
-		NSInteger entryIndex = [[self valueForKey: @"index"] integerValue];
+		NSInteger entryIndex = [self.index integerValue];
 		imageData = [group dataForPageIndex: entryIndex];
-	}
-    else if([self valueForKey: @"imagePath"])
+    }
+    else if([self imagePath])
     {
-        imageData = [NSData dataWithContentsOfFile: [self valueForKey: @"imagePath"]];
+        imageData = [NSData dataWithContentsOfFile: self.imagePath];
     }
     
-	return imageData;
+    return imageData;
 }
 
-
 @end
-

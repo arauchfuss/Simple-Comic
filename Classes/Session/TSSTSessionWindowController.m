@@ -402,17 +402,17 @@
 
 - (IBAction)changeTwoPage:(id)sender
 {
-    BOOL spread = ![[session valueForKey: TSSTTwoPageSpread] boolValue];
+    BOOL spread = ![session.twoPageSpread boolValue];
 
-    [session setValue: @(spread) forKey: TSSTTwoPageSpread];
+	session.twoPageSpread = @(spread);
 }
 
 
 
 - (IBAction)changePageOrder:(id)sender
 {
-    BOOL pageOrder = ![[session valueForKey: TSSTPageOrder] boolValue];
-    [session setValue: @(pageOrder) forKey: TSSTPageOrder];
+    BOOL pageOrder = ![session.pageOrder boolValue];
+	session.pageOrder = @(pageOrder);
 }
 
 
@@ -420,7 +420,7 @@
 - (IBAction)changeScaling:(id)sender
 {
     int scaleType = [sender tag] % 400;
-    [session setValue: @(scaleType) forKey: TSSTPageScaleOptions];
+	session.scaleOptions = @(scaleType);
 }
 
 
@@ -444,7 +444,7 @@
 - (IBAction)pageRight:(id)sender
 {
     [self setPageTurn: 2];
-    if([[session valueForKey: TSSTPageOrder] boolValue])
+    if([session.pageOrder boolValue])
     {
         [self nextPage];
     }
@@ -463,7 +463,7 @@
 {
     [self setPageTurn: 1];
 	
-    if([[session valueForKey: TSSTPageOrder] boolValue])
+    if([session.pageOrder boolValue])
     {
         [self previousPage];
     }
@@ -477,7 +477,7 @@
 
 - (IBAction)shiftPageRight:(id)sender
 {
-    if([[session valueForKey: TSSTPageOrder] boolValue])
+    if([session.pageOrder boolValue])
     {
         [pageController selectNext: sender];
     }
@@ -491,7 +491,7 @@
 
 - (IBAction)shiftPageLeft:(id)sender
 {
-    if([[session valueForKey: TSSTPageOrder] boolValue])
+    if([session.pageOrder boolValue])
     {
         [pageController selectPrevious: sender];
     }
@@ -506,7 +506,7 @@
 - (IBAction)skipRight:(id)sender
 {
     NSUInteger index;
-    if([[session valueForKey: TSSTPageOrder] boolValue])
+    if([session.pageOrder boolValue])
     {
         index = ([pageController selectionIndex] + 10);
         index = index < [[pageController content] count] ? index : [[pageController content] count] - 1;
@@ -525,7 +525,7 @@
 - (IBAction)skipLeft:(id)sender
 {
     NSUInteger index;
-    if(![[session valueForKey: TSSTPageOrder] boolValue])
+    if(![session.pageOrder boolValue])
     {
         index = ([pageController selectionIndex] + 10);
         index = index < [[pageController content] count] ? index : [[pageController content] count] - 1;
@@ -1005,7 +1005,7 @@
     
     if(currentAllowed && [[session valueForKey: TSSTTwoPageSpread] boolValue] && pageTwo && ![pageTwo shouldDisplayAlone])
     {
-        if([[session valueForKey: TSSTPageOrder] boolValue])
+        if([session.pageOrder boolValue])
         {
             titleString = [NSString stringWithFormat:@"%@ %@", titleString, [pageTwo valueForKey: @"name"]];
         }
@@ -1521,7 +1521,6 @@
 	}
 }
 
-
 /*	This method deals with window resizing.  It is called every time the user clicks 
 	the nice little plus button in the upper left of the window. */
 - (NSRect)windowWillUseStandardFrame:(NSWindow *)sender defaultFrame:(NSRect)defaultFrame
@@ -1533,7 +1532,6 @@
 	
     return defaultFrame;
 }
-
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
@@ -1589,11 +1587,10 @@
     [pageView resizeView];
 }
 
-
 - (BOOL)currentPageIsText
 {
 	TSSTPage * page = [pageController selectedObjects][0];
-	return [[page valueForKey: @"text"] boolValue];
+	return [page.text boolValue];
 }
 
 
@@ -1686,14 +1683,9 @@
     }];
 }
 
-
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window
 {
     return @[[self window]];
 }
 
-
-
-
 @end
-

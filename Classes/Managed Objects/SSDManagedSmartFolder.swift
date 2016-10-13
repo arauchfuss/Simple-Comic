@@ -16,7 +16,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		var pageSet = Set<TSSTPage>()
 		var fileNames = [String]()
 		
-		guard let filePath = value(forKey: "path") as? NSString as? String , fm.fileExists(atPath: filePath) else {
+		guard let filePath = value(forKey: "path") as? NSString as? String, fm.fileExists(atPath: filePath) else {
 			NSLog("Failed path");
 			return;
 		}
@@ -92,41 +92,41 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				var imageDescription: TSSTPage
 
 				imageDescription = NSEntityDescription.insertNewObject(forEntityName: "Image", into: managedObjectContext!) as! TSSTPage
-				imageDescription.setValue(path, forKey: "imagePath")
-				imageDescription.setValue(pageNumber, forKey: "index")
+				imageDescription.imagePath = path
+				imageDescription.index = pageNumber as NSNumber
 				pageSet.insert(imageDescription)
 				pageNumber += 1;
 			} else if TSSTManagedArchive.archiveExtensions.contains(pathExtension) {
 				//NSManagedObject * nestedDescription;
 				let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "Archive", into: managedObjectContext!) as! TSSTManagedArchive
-				nestedDescription.setValue(path, forKey: "path")
-				nestedDescription.setValue(path, forKey: "name")
+				nestedDescription.name = path
+				nestedDescription.path = path
 				nestedDescription.nestedArchiveContents()
-				nestedDescription.setValue(self, forKey: "group")
+				nestedDescription.group = self
 			} else if pathExtension == "pdf" {
 				let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "PDF", into: managedObjectContext!) as! TSSTManagedPDF
-				nestedDescription.setValue(path, forKey: "path")
-				nestedDescription.setValue(path, forKey: "name")
+				nestedDescription.name = path
+				nestedDescription.path = path
 				nestedDescription.pdfContents()
-				nestedDescription.setValue(self, forKey: "group")
+				nestedDescription.group = self
 			}
 		}
 		
-		setValue(pageSet, forKey: "images")
+		self.images = pageSet
 	}
 	
 	override func data(forPageIndex index: Int) -> Data? {
-		guard let images = self.value(forKey: "images") as? NSSet as? Set<TSSTPage> else {
+		guard let images = self.images else {
 			return nil
 		}
 		var filepath: String? = nil;
 		
 		for page in images {
-			guard let integer = page.value(forKey: "index") as? NSNumber else {
+			guard let integer = page.index else {
 				continue
 			}
 			if integer.intValue == index {
-				filepath = page.value(forKey: "imagePath") as? NSString as? String
+				filepath = page.imagePath
 			}
 		}
 		
@@ -154,3 +154,11 @@ extension ManagedSmartFolder: NSMetadataQueryDelegate {
 		}
 	}
 }
+
+extension ManagedSmartFolder {
+	
+	@nonobjc public class func fetchRequest() -> NSFetchRequest<ManagedSmartFolder> {
+		return NSFetchRequest<ManagedSmartFolder>(entityName: "SmartFolder");
+	}
+}
+

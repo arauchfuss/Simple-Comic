@@ -8,11 +8,13 @@
 
 
 #import "TSSTManagedGroup.h"
+#import "TSSTManagedGroup+CoreDataProperties.h"
 #import "SimpleComicAppDelegate.h"
 #import <XADMaster/XADArchive.h>
 #import <Quartz/Quartz.h>
 #import "TSSTImageUtilities.h"
 #import "TSSTPage.h"
+#import "TSSTPage+CoreDataProperties.h"
 
 @interface TSSTManagedArchive () <XADArchiveDelegate>
 
@@ -254,15 +256,15 @@
 - (void)willTurnIntoFault
 {
 	NSError * error;
-	if([[self valueForKey: @"nested"] boolValue])
+	if([self.nested boolValue])
 	{
-		if(![[NSFileManager defaultManager] removeItemAtPath: [self valueForKey: @"path"] error: &error])
+		if(![[NSFileManager defaultManager] removeItemAtPath: self.path error: &error])
 		{
 			NSLog(@"%@",[error localizedDescription]);
 		}
 	}
 	
-	NSString * solid  = [self valueForKey: @"solidDirectory"];
+	NSString * solid  = self.solidDirectory;
 	if(solid)
 	{
 		if(![[NSFileManager defaultManager] removeItemAtPath: solid error: &error])
@@ -299,7 +301,7 @@
 
 - (NSData *)dataForPageIndex:(NSInteger)index
 {
-	NSString * solidDirectory = [self valueForKey: @"solidDirectory"];
+	NSString * solidDirectory = self.solidDirectory;
 	NSData * imageData;
 	if(!solidDirectory)
 	{
@@ -368,7 +370,7 @@
 			archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: archivePath];
 			++collision;
 		} while (![fileManager createDirectoryAtPath: archivePath withIntermediateDirectories: YES attributes: nil error: &error]);
-		[self setValue: archivePath forKey: @"solidDirectory"];
+		self.solidDirectory = archivePath;
 	}
     
     for (counter = 0; counter < archivedFilesCount; ++counter)
@@ -389,8 +391,8 @@
             {
                 fileData = [imageArchive contentsOfEntry: counter];
                 nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
-                [nestedDescription setValue: fileName forKey: @"name"];
-                [nestedDescription setValue: @YES forKey: @"nested"];
+				nestedDescription.name = fileName;
+				nestedDescription.nested = @YES;
 				
                 collision = 0;
                 do {
@@ -405,7 +407,7 @@
                                                                 error: NULL];
                 [[NSFileManager defaultManager] createFileAtPath: archivePath contents: fileData attributes: nil];
 
-                [nestedDescription setValue: archivePath forKey: @"path"];
+				nestedDescription.path = archivePath;
                 [(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
             }
 			else if([[TSSTPage textExtensions] containsObject: extension])
@@ -429,8 +431,8 @@
 				fileData = [imageArchive contentsOfEntry: counter];
 				[fileData writeToFile: archivePath atomically: YES];
 
-                [nestedDescription setValue: archivePath forKey: @"path"];
-                [nestedDescription setValue: @YES forKey: @"nested"];
+				nestedDescription.path = archivePath;
+				nestedDescription.nested = @YES;
 				[(TSSTManagedPDF *)nestedDescription pdfContents];
             }
 			
@@ -533,8 +535,8 @@
     for (pageNumber = 0; pageNumber < imageCount; ++pageNumber)
     {
         imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-        [imageDescription setValue: [NSString stringWithFormat: @"%i", pageNumber + 1] forKey: @"imagePath"];
-        [imageDescription setValue: @(pageNumber) forKey: @"index"];
+		imageDescription.imagePath = [NSString stringWithFormat: @"%i", pageNumber + 1];
+		imageDescription.index = @(pageNumber);
         [pageSet addObject: imageDescription];
     }
 	[self setValue: pageSet forKey: @"images"];
