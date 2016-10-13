@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DTPreferencesController">
@@ -16,14 +15,14 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="246" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="140" y="154" width="320" height="357"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="contentRect" x="140" y="154" width="320" height="358"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="247">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="357"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="358"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="238">
-                        <rect key="frame" x="19" y="320" width="18" height="18"/>
+                        <rect key="frame" x="16" y="321" width="18" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Dat-hK-1jn"/>
                             <constraint firstAttribute="width" constant="18" id="lRM-zG-f2N"/>
@@ -38,15 +37,15 @@
                         </connections>
                     </colorWell>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="237" userLabel="Headline 1">
-                        <rect key="frame" x="39" y="321" width="104" height="16"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Background color" id="239">
-                            <font key="font" metaFont="cellTitle"/>
+                        <rect key="frame" x="36" y="321" width="111" height="17"/>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Background color" id="239">
+                            <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="243" userLabel="Description 1">
-                        <rect key="frame" x="39" y="288" width="263" height="28"/>
+                        <rect key="frame" x="36" y="288" width="266" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This color is displayed around pages in fullscreen mode." id="244">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -54,7 +53,7 @@
                         </textFieldCell>
                     </textField>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="36" userLabel="Headline 2">
-                        <rect key="frame" x="21" y="252" width="256" height="18"/>
+                        <rect key="frame" x="18" y="252" width="256" height="18"/>
                         <buttonCell key="cell" type="check" title="Page scaling constrained by resolution" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="229">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -64,7 +63,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="213" userLabel="Description 2">
-                        <rect key="frame" x="39" y="221" width="263" height="28"/>
+                        <rect key="frame" x="36" y="221" width="266" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Images will not excede their actual resolution in &quot;fit to window&quot; scaling modes." id="234">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -72,7 +71,7 @@
                         </textFieldCell>
                     </textField>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="152" userLabel="Headline 3">
-                        <rect key="frame" x="21" y="185" width="200" height="18"/>
+                        <rect key="frame" x="18" y="185" width="200" height="18"/>
                         <buttonCell key="cell" type="check" title="Automatically resize windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="231">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -82,7 +81,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="216" userLabel="Description 3">
-                        <rect key="frame" x="39" y="154" width="263" height="28"/>
+                        <rect key="frame" x="36" y="154" width="266" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Windows automatically resize to maximize viewing area." id="235">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -90,7 +89,7 @@
                         </textFieldCell>
                     </textField>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="41" userLabel="Headline 4">
-                        <rect key="frame" x="21" y="118" width="174" height="18"/>
+                        <rect key="frame" x="18" y="118" width="174" height="18"/>
                         <buttonCell key="cell" type="check" title="Auto-save open windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="230">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -100,7 +99,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="218" userLabel="Description 4">
-                        <rect key="frame" x="39" y="87" width="263" height="28"/>
+                        <rect key="frame" x="36" y="87" width="266" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Open windows are preserved between exit and relaunch." id="236">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -108,7 +107,7 @@
                         </textFieldCell>
                     </textField>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Uh8-1X-qIh" userLabel="Headline 5">
-                        <rect key="frame" x="21" y="51" width="102" height="18"/>
+                        <rect key="frame" x="18" y="51" width="102" height="18"/>
                         <buttonCell key="cell" type="check" title="Enable swipe" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="uvV-P7-bwd">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -118,7 +117,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NU9-EN-59o" userLabel="Description 5">
-                        <rect key="frame" x="39" y="20" width="263" height="28"/>
+                        <rect key="frame" x="36" y="20" width="266" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" title="Enabling will allow you to navigate back and forth by swiping." id="v7s-SA-lNq">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -130,11 +129,10 @@
                     <constraint firstItem="216" firstAttribute="trailing" secondItem="243" secondAttribute="trailing" id="31G-b9-0TS"/>
                     <constraint firstItem="243" firstAttribute="trailing" secondItem="247" secondAttribute="trailing" constant="-20" id="4TQ-rc-XlG"/>
                     <constraint firstItem="216" firstAttribute="top" secondItem="152" secondAttribute="bottom" constant="5" id="6bE-Bl-Wdl"/>
-                    <constraint firstItem="36" firstAttribute="leading" secondItem="247" secondAttribute="leading" constant="23" id="7ne-s4-hu4"/>
+                    <constraint firstItem="36" firstAttribute="leading" secondItem="247" secondAttribute="leading" constant="20" symbolic="YES" id="7ne-s4-hu4"/>
                     <constraint firstItem="213" firstAttribute="top" secondItem="36" secondAttribute="bottom" constant="5" id="8gj-5A-bt3"/>
                     <constraint firstItem="243" firstAttribute="leading" secondItem="237" secondAttribute="leading" id="A0X-c2-i2z"/>
                     <constraint firstItem="218" firstAttribute="top" secondItem="41" secondAttribute="bottom" constant="5" id="AOF-u4-1b8"/>
-                    <constraint firstItem="Uh8-1X-qIh" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="247" secondAttribute="trailing" constant="-20" id="B2V-U5-iUF"/>
                     <constraint firstItem="216" firstAttribute="leading" secondItem="243" secondAttribute="leading" id="De6-Bg-wxp"/>
                     <constraint firstItem="213" firstAttribute="trailing" secondItem="243" secondAttribute="trailing" id="MBt-YZ-W8w"/>
                     <constraint firstItem="NU9-EN-59o" firstAttribute="top" secondItem="Uh8-1X-qIh" secondAttribute="bottom" constant="5" id="MZM-jC-hf3"/>
@@ -142,11 +140,7 @@
                     <constraint firstItem="152" firstAttribute="top" secondItem="213" secondAttribute="bottom" constant="20" id="OiJ-RN-o00"/>
                     <constraint firstItem="218" firstAttribute="leading" secondItem="243" secondAttribute="leading" id="Q5g-Om-rxx"/>
                     <constraint firstItem="41" firstAttribute="top" secondItem="216" secondAttribute="bottom" constant="20" id="Rwf-v3-DFq"/>
-                    <constraint firstItem="36" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="247" secondAttribute="trailing" constant="-20" id="U7q-Yy-FqC"/>
-                    <constraint firstItem="237" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="247" secondAttribute="trailing" constant="-20" id="UU7-1T-o5U"/>
-                    <constraint firstItem="41" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="247" secondAttribute="trailing" constant="-20" id="VNu-OE-mxQ"/>
                     <constraint firstItem="Uh8-1X-qIh" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="Wze-GH-cJ0"/>
-                    <constraint firstItem="152" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="247" secondAttribute="trailing" constant="-20" id="aLw-Z3-Qy9"/>
                     <constraint firstItem="238" firstAttribute="centerY" secondItem="237" secondAttribute="centerY" id="cX7-DQ-z3L"/>
                     <constraint firstAttribute="bottom" secondItem="NU9-EN-59o" secondAttribute="bottom" constant="20" symbolic="YES" id="cne-Nl-UPR"/>
                     <constraint firstItem="41" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="dAb-Zz-Tja"/>

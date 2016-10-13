@@ -18,22 +18,26 @@ class TSSTInfoWindow: NSPanel {
 
 	}	
 	
-	func caretAtPoint(_ point: NSPoint, size: NSSize, withLimitLeft left: CGFloat, right: CGFloat) {
+	@objc(caretAtPoint:size:withLimitLeft:right:)
+	func caret(at point: NSPoint, size: NSSize, limitLeft left: CGFloat, limitRight right: CGFloat) {
 		let limitWidth = right - left
 		let relativePosition = (point.x - left) / limitWidth
 		let offset = size.width * relativePosition
-		let frameRect = NSMakeRect( point.x - offset - 10, point.y, size.width + 20, size.height + 25)
+		let frameRect = NSRect(x: point.x - offset - 10, y: point.y, width: size.width + 20, height: size.height + 25)
 		(contentView as? TSSTInfoView)?.caretPosition = offset + 10
 		setFrame(frameRect, display: true, animate: false)
 		invalidateShadow()
 	}
 	
+	@objc(centerAtPoint:)
 	func centerAtPoint(_ center: NSPoint) {
 		let frame = self.frame
-		setFrameOrigin(NSPoint(x: center.x - frame.width / 2, y: center.y - frame.height / 2))
+		let fo = NSPoint(x: center.x - frame.width / 2, y: center.y - frame.height / 2)
+		setFrameOrigin(fo)
 		invalidateShadow()
 	}
 	
+	@objc(resizeToDiameter:)
 	func resizeToDiameter(_ diameter: CGFloat) {
 		let frame = self.frame
 		let center = NSPoint(x: frame.minX + frame.width / 2, y: frame.minY + frame.height / 2)
