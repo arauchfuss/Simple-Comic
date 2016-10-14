@@ -214,7 +214,7 @@ textStyle: Dictionary of string attributes.
 		if NSMouseInRect(cursorPoint, progressRect, isFlipped) {
 			self.currentValue = index(for: cursorPoint)
 			
-			NotificationCenter.default.post(name: Notification.Name(rawValue: "SCMouseDragNotification"), object: self)
+			NotificationCenter.default.post(name: .TSSTMouseDrag, object: self)
 		}
 	}
 	

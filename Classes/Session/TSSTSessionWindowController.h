@@ -39,6 +39,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString * const TSSTMouseDragNotification;
+
 typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 	PageSelectionModeNone,
 	PageSelectionModeIcon,

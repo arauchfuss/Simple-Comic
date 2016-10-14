@@ -16,7 +16,7 @@ class TSSTCircularImageView: NSImageView {
 		NSRectFill(bounds)
 		if let _ = image {
 			// Choose j-rg's flat magnifying glass over old one. Ported from j-rg's objective-c version.
-			let circle = NSBezierPath(ovalIn: NSInsetRect(bounds, 5, 5))
+			let circle = NSBezierPath(ovalIn: bounds.insetBy(dx: 5, dy: 5))
 			NSColor.white.set()
 			circle.fill()
 			circle.addClip()

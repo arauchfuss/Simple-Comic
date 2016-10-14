@@ -42,6 +42,7 @@
 
 #import "Simple_Comic-Swift.h"
 
+NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 @implementation TSSTSessionWindowController
 {
@@ -156,7 +157,7 @@
 	[progressBar addTrackingArea: newArea];
 	[jumpField setDelegate: self];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:@"SCMouseDragNotification" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:TSSTMouseDragNotification object:nil];
 
     [self restoreSession];
 }
