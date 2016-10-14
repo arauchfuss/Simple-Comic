@@ -122,10 +122,10 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		var filepath: String? = nil;
 		
 		for page in images {
-			guard let integer = page.index else {
+			guard let integer = page.index?.intValue else {
 				continue
 			}
-			if integer.intValue == index {
+			if integer == index {
 				filepath = page.imagePath
 			}
 		}

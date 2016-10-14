@@ -338,7 +338,7 @@
 		552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTKeyWindow.swift; sourceTree = "<group>"; };
 		552627921BDEEF6B005AAF63 /* TSSTBezelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTBezelView.swift; sourceTree = "<group>"; };
 		552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTTransparentView.swift; sourceTree = "<group>"; };
-		552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDManagedSmartFolder.swift; sourceTree = "<group>"; };
+		552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDManagedSmartFolder.swift; sourceTree = "<group>"; usesTabs = 1; };
 		5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoView.swift; sourceTree = "<group>"; };
 		5589952D1A13D4450058830B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		559894371BDA07DB00FCA002 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -468,6 +468,7 @@
 			name = Fullscreen;
 			path = "Custom Windows";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		281C0DC40CEEA16D009A9696 /* Helpers */ = {
 			isa = PBXGroup;
@@ -512,6 +513,7 @@
 			name = "Thumbnail View";
 			path = Session;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		289CD7620BF15CCC00B5AE01 /* Progress Bar */ = {
 			isa = PBXGroup;
@@ -524,6 +526,7 @@
 			);
 			path = "Progress Bar";
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		28FA4DD50B8A6F3B00496668 /* Managed Objects */ = {
 			isa = PBXGroup;
@@ -559,6 +562,7 @@
 			);
 			name = MetaComic;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
