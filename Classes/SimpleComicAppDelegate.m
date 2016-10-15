@@ -334,7 +334,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		}
 	}
 	
-    int reply = NSTerminateNow;
+    NSApplicationTerminateReply reply = NSTerminateNow;
 	/* TODO: some day I really need to add the fallback error handling */
     if(![self saveContext])
     {
@@ -550,7 +550,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 
-/*  Method creates an application support directory for Simpl Comic if one
+/**  Method creates an application support directory for Simpl Comic if one
     is does not already exist.
     @return The absolute path to Simple Comic's application support directory 
 	as a string.  */
@@ -600,7 +600,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 - (void)windowForSession:(TSSTManagedSession *)settings
 {
 	NSArray * existingSessions = [sessions valueForKey: @"session"];
-    if([[settings valueForKey: @"images"] count] > 0 && ![existingSessions containsObject: settings])
+    if([settings.images count] > 0 && ![existingSessions containsObject: settings])
     {
         TSSTSessionWindowController * comicWindow = [[TSSTSessionWindowController alloc] initWithSession: settings];
         [sessions addObject: comicWindow];
