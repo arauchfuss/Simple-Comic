@@ -37,6 +37,7 @@
 #import "TSSTCustomValueTransformers.h"
 #import "DTPreferencesController.h"
 #import "Simple_Comic-Swift.h"
+#import "TSSTManagedSession+CoreDataProperties.h"
 
 
 @interface SimpleComicAppDelegate () <XADArchiveDelegate>
@@ -657,8 +658,8 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //	[[self managedObjectContext] lock];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	BOOL isDirectory;
-    NSManagedObject * fileDescription;
-	NSMutableSet * pageSet = [[NSMutableSet alloc] initWithSet: [session valueForKey: @"images"]];
+    TSSTPage * fileDescription;
+	NSMutableSet<TSSTPage *> * pageSet = [session.images mutableCopy];
 	for (NSString *path in paths)
 	{
 		fileDescription = nil;

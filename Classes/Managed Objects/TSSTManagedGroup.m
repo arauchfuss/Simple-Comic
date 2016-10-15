@@ -39,9 +39,9 @@
 - (void)willTurnIntoFault
 {
 	NSError * error = nil;
-	if([[self valueForKey: @"nested"] boolValue])
+	if([self.nested boolValue])
 	{
-		if(![[NSFileManager defaultManager] removeItemAtPath: [self valueForKey: @"path"] error: &error])
+		if(![[NSFileManager defaultManager] removeItemAtPath: self.path error: &error])
 		{
 			NSLog(@"%@",[error localizedDescription]);
 		}
@@ -126,7 +126,7 @@
  */
 - (void)nestedFolderContents
 {
-	NSString * folderPath = [self valueForKey: @"path"];
+	NSString * folderPath = self.path;
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSManagedObject * nestedDescription;
 	NSError * error = nil;
@@ -193,11 +193,11 @@
 */
 - (NSSet *)nestedImages
 {
-	NSMutableSet * allImages = [[NSMutableSet alloc] initWithSet: [self valueForKey: @"images"]];
-	NSSet * groups = [self valueForKey: @"groups"];
-	for(NSManagedObject * group in groups)
+	NSMutableSet * allImages = [self.images mutableCopy];
+	NSSet * groups = self.groups;
+	for(TSSTManagedGroup * group in groups)
 	{
-		[allImages unionSet: [group valueForKey: @"nestedImages"]];
+		[allImages unionSet: group.nestedImages];
 	}
 	
 	return allImages;
@@ -414,7 +414,7 @@
 			
 			if(nestedDescription)
 			{
-				[nestedDescription setValue: self forKey: @"group"];
+                nestedDescription.group = self;
 			}
         }
     }

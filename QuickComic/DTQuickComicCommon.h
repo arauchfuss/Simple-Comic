@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-NSMutableArray<NSDictionary*> * fileListForArchive(XADArchive * archive);
+NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * archive);
 
 NSArray<NSSortDescriptor*> * fileSort(void);
 

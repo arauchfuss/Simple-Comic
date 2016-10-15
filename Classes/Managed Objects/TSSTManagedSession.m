@@ -17,10 +17,10 @@
 - (void)awakeFromFetch
 {
 	[super awakeFromFetch];
-	TSSTManagedGroup * group;
     /* By calling path for all children, groups with unresolved bookmarks
-     are deleted. */
-	for (group in [self valueForKey: @"groups"])
+     are deleted. 
+     Using copy to make sure changes to groups won't cause Cocoa to complain about mutated iterators. */
+	for (TSSTManagedGroup *group in [self.groups copy])
 	{
 		[group path];
 	}

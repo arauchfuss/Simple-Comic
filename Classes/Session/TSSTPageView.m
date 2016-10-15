@@ -427,7 +427,7 @@
     NSRect secondFragment = NSZeroRect;
     NSSize zoomSize;
 
-    if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue] || ![secondPageImage isValid])
+    if([sessionController.session.pageOrder boolValue] || ![secondPageImage isValid])
     {
         scale = NSHeight(imageRect) / [firstPageImage size].height;
         zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
@@ -579,12 +579,12 @@
     NSRect frameRect = [self frame];
     CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
     CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
-    NSSize imageSize = [self combinedImageSizeForZoom: [[[sessionController session] valueForKey: TSSTZoomLevel] doubleValue]];
+    NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel.doubleValue];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 
     NSSize viewSize = NSZeroSize;
     CGFloat scaleToFit;
-	NSInteger scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue];
+	NSInteger scaling = sessionController.session.scaleOptions.integerValue;
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
     switch (scaling)
     {
@@ -621,7 +621,7 @@
     [self setFrameSize: viewSize];
 
     if(![defaults boolForKey: TSSTConstrainScale] &&
-	[[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue] != 0 )
+	sessionController.session.scaleOptions.integerValue != 0 )
     {
         if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
         {
@@ -645,7 +645,7 @@
 	if([secondPageImage isValid])
 	{
 		secondPageRect.size = scaleSize([secondPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
-		if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
+		if([sessionController.session.pageOrder boolValue])
 		{
 			firstPageRect.origin = imageRect.origin;
 			secondPageRect.origin = NSMakePoint(NSMaxX(firstPageRect), NSMinY(imageRect));
@@ -678,7 +678,7 @@
 		firstPageSide = bounds;
 		secondPageSide = NSZeroRect;
 	}
-	else if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
+	else if([sessionController.session.pageOrder boolValue])
 	{
 		firstPageSide = NSMakeRect(0, 0, NSMaxX(firstPageRect), NSHeight(bounds));
 		secondPageSide = NSMakeRect(NSMinX(secondPageRect), 0, NSWidth(bounds) - NSMinX(secondPageRect), NSHeight(bounds));
@@ -984,7 +984,7 @@
 
 	if(NSMaxY([self bounds]) <= NSMaxY(visible))
 	{
-		if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
+		if([sessionController.session.pageOrder boolValue])
 		{
 			if(NSMinX(visible) > 0)
 			{
@@ -1028,7 +1028,7 @@
 	
 	if(scrollPoint.y <= 0)
 	{
-		if([[[sessionController session] valueForKey: TSSTPageOrder] boolValue])
+		if([sessionController.session.pageOrder boolValue])
 		{
 			if(NSMaxX(visible) < NSWidth([self bounds]))
 			{
@@ -1120,7 +1120,7 @@
     int delta = 1000 * difference * multiplier;
     int turn = NOTURN;
     NSString * directionString = nil;
-    BOOL turnDirection = [[[sessionController session] valueForKey: TSSTPageOrder] boolValue];
+    BOOL turnDirection = [sessionController.session.pageOrder boolValue];
     BOOL finishTurn = NO;
     if(scrollKeys & 1)
     {
@@ -1218,8 +1218,8 @@
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
-	BOOL loupe = ![[[sessionController session] valueForKey: @"loupe"] boolValue];
-	[[sessionController session] setValue: @(loupe) forKey: @"loupe"];
+	BOOL loupe = !sessionController.session.loupe.boolValue;
+    sessionController.session.loupe = @(loupe);
 }
 
 
