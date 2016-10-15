@@ -38,3 +38,12 @@
 @dynamic solidDirectory;
 
 @end
+
+
+@implementation TSSTManagedPDF (CoreDataProperties)
+
++ (NSFetchRequest<TSSTManagedPDF *> *)fetchRequest {
+    return [[NSFetchRequest alloc] initWithEntityName:@"PDF"];
+}
+
+@end

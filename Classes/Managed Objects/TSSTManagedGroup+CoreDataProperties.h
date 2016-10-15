@@ -53,4 +53,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+@interface TSSTManagedPDF (CoreDataProperties)
+
++ (NSFetchRequest<TSSTManagedPDF *> *)fetchRequest;
+
+@end
+
 NS_ASSUME_NONNULL_END
