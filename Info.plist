@@ -150,6 +150,7 @@
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
+				<string>public.archive.lha</string>
 				<string>cx.c3.lha-archive</string>
 			</array>
 			<key>LSTypeIsPackage</key>
@@ -344,10 +345,12 @@
 			<array>
 				<string>com.apple.finder.smart-folder</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>Help</string>
 	<key>CFBundleHelpBookName</key>
@@ -357,7 +360,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>${PRODUCT_NAME}</string>
+	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -431,7 +434,7 @@
 			<key>UTTypeDescription</key>
 			<string>Comic Book Zip Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_cbz</string>
+			<string>cbz</string>
 			<key>UTTypeIdentifier</key>
 			<string>cx.c3.cbz-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -443,7 +446,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>cbz</string>
-					<string>CBZ</string>
 				</array>
 			</dict>
 		</dict>
@@ -457,7 +459,7 @@
 			<key>UTTypeDescription</key>
 			<string>Comic Book Rar Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_cbr</string>
+			<string>cbr</string>
 			<key>UTTypeIdentifier</key>
 			<string>cx.c3.cbr-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -469,7 +471,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>cbr</string>
-					<string>CBR</string>
 				</array>
 			</dict>
 		</dict>
@@ -482,7 +483,7 @@
 			<key>UTTypeDescription</key>
 			<string>Comic Book 7-Zip Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_7z</string>
+			<string>7z</string>
 			<key>UTTypeIdentifier</key>
 			<string>cx.c3.cb7-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -494,7 +495,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>cb7</string>
-					<string>CB7</string>
 				</array>
 			</dict>
 		</dict>
@@ -507,17 +507,19 @@
 			<key>UTTypeDescription</key>
 			<string>LHA Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_lha</string>
+			<string>lzh</string>
 			<key>UTTypeIdentifier</key>
-			<string>cx.c3.lha-archive</string>
+			<string>public.archive.lha</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>LHA </string>
+				</array>
 				<key>public.filename-extension</key>
 				<array>
 					<string>lha</string>
-					<string>LHA</string>
 					<string>lzh</string>
-					<string>LZH</string>
 				</array>
 				<key>public.mime-type</key>
 				<array>
@@ -538,7 +540,7 @@
 			<key>UTTypeDescription</key>
 			<string>7z Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_7z</string>
+			<string>7z</string>
 			<key>UTTypeIdentifier</key>
 			<string>org.7-zip.7-zip-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -546,7 +548,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>7z</string>
-					<string>7Z</string>
 				</array>
 				<key>public.mime-type</key>
 				<array>
@@ -564,7 +565,7 @@
 			<key>UTTypeDescription</key>
 			<string>7z Comic Archive Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_7z</string>
+			<string>7z</string>
 			<key>UTTypeIdentifier</key>
 			<string>org.7-zip.7-zip-comic-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -576,7 +577,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>cb7</string>
-					<string>CB7</string>
 				</array>
 				<key>public.mime-type</key>
 				<array>
@@ -593,7 +593,7 @@
 			<key>UTTypeDescription</key>
 			<string>RAR Archive</string>
 			<key>UTTypeIconFile</key>
-			<string>sc_rar</string>
+			<string>rar</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.rarlab.rar-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -601,7 +601,6 @@
 				<key>public.filename-extension</key>
 				<array>
 					<string>rar</string>
-					<string>RAR</string>
 				</array>
 				<key>public.mime-type</key>
 				<array>
