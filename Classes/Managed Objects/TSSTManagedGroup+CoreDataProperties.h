@@ -20,7 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSDate *modified;
 @property (nullable, nonatomic, copy) NSString *name;
 @property (nullable, nonatomic, copy) NSNumber *nested;
-@property (nullable, nonatomic, retain) NSObject *nestedImages;
 @property (nullable, nonatomic, retain) NSData *pathData;
 @property (nullable, nonatomic, retain) TSSTManagedGroup *group;
 @property (nullable, nonatomic, retain) NSSet<TSSTManagedGroup *> *groups;

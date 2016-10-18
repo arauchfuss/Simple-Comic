@@ -19,7 +19,6 @@
 @dynamic modified;
 @dynamic name;
 @dynamic nested;
-@dynamic nestedImages;
 @dynamic pathData;
 @dynamic group;
 @dynamic groups;

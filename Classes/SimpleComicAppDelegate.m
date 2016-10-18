@@ -168,13 +168,13 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	NSManagedObjectContext		 * managedObjectContext;
 	NSPersistentStoreCoordinator * persistentStoreCoordinator;
 	
-	/* Auto-save timer */
+	/** Auto-save timer */
 	NSTimer * autoSave;
 	
-	/*  Window controller for preferences. */
+	/**  Window controller for preferences. */
 	DTPreferencesController      * preferences;
 	
-	/*  This is the array that maintains all of the session window managers. */
+	/**  This is the array that maintains all of the session window managers. */
 	NSMutableArray<TSSTSessionWindowController*> * sessions;
 	
 	/*	Vars to delay the loading of files from an app launch until the core data store
@@ -195,7 +195,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 @synthesize launchPanel;
 
 
-/*  Convenience method for adding metadata to the core data store.
+/** Convenience method for adding metadata to the core data store.
     Used by Simple Comic to keep track of store versioning. */
 + (void)setMetadata:(NSString *)value forKey:(NSString *)key onStoreWithURL:(NSURL *)url managedBy:(NSPersistentStoreCoordinator *)coordinator
 {
@@ -207,7 +207,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 
 
-/*  Sets up the user defaults and arrays of compatible file types. */
+/**  Sets up the user defaults and arrays of compatible file types. */
 + (void)initialize
 {
 	static dispatch_once_t onceToken;
@@ -257,7 +257,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 #pragma mark - Application Delegate Methods
 
 
-/*	Stores any files that were opened on launch till applicationDidFinishLaunching:
+/**	Stores any files that were opened on launch till applicationDidFinishLaunching:
 	is called. */
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
@@ -361,7 +361,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 }
 
 
-/* Used to watch and react to pref changes */
+/** Used to watch and react to pref changes */
 - (void)observeValueForKeyPath:(NSString *)keyPath
 					  ofObject:(id)object 
 						change:(NSDictionary *)change 
@@ -476,7 +476,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 }
 
 
-/*	Returns the persistent store coordinator for the application.  This 
+/**	Returns the persistent store coordinator for the application.  This
 	implementation will create and return a coordinator, having added the 
 	store for the application to it.  (The folder for the store is created, 
 	if necessary.) */
@@ -659,7 +659,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	BOOL isDirectory;
     TSSTPage * fileDescription;
-	NSMutableSet<TSSTPage *> * pageSet = [session.images mutableCopy];
+    NSMutableSet<TSSTPage *> * pageSet = [[NSMutableSet alloc] initWithSet: session.images];
 	for (NSString *path in paths)
 	{
 		fileDescription = nil;
