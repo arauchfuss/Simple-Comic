@@ -721,7 +721,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		}
 	}
 	
-	[session setValue: pageSet forKey: @"images"];
+    session.images = pageSet;
 //	[[self managedObjectContext] unlock];
 //	[[self managedObjectContext] release];
 }
