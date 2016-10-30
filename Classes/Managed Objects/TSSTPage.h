@@ -50,9 +50,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
 @property (readonly, copy) NSImage *thumbnail;
 - (nullable NSData *)prepThumbnail;
-@property (readonly, copy) NSData *pageData;
+@property (readonly, copy, nullable) NSData *pageData;
 @property (readonly, copy) NSImage *textPage;
-@property (readonly, copy) NSImage *pageImage;
+@property (readonly, copy, nullable) NSImage *pageImage;
 
 @end
 

@@ -128,7 +128,7 @@ typedef struct {
 @property (readonly) BOOL verticalScrollIsPossible;
 
 // Timers
-- (void)startAnimationForImage:(NSImage *)image;
+- (void)startAnimationForImage:(nullable NSImage *)image;
 - (void)animateImage:(NSTimer *)timer;
 
 /*	My rather crappy smooth scrolling timer.
