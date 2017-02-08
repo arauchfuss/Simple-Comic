@@ -1,5 +1,10 @@
 #import <Foundation/Foundation.h>
+
+#ifdef _WIN32
+#import "regex.h"
+#else
 #import <regex.h>
+#endif
 
 @interface XADRegex:NSObject
 {

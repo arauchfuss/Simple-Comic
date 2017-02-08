@@ -3,36 +3,42 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>10J869</string>
+	<string>16B2657</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>XADMaster</string>
 	<key>CFBundleIdentifier</key>
-	<string>de.dstoecker.xadmaster</string>
+	<string>co.timoliver.XADMaster</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>XADMaster</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleSupportedPlatforms</key>
+	<array>
+		<string>MacOSX</string>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>2.7 (libxad 13.0, modified)</string>
+	<string>1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>4A2002a</string>
+	<string>8C1002</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>10J869</string>
+	<string>16C58</string>
 	<key>DTSDKName</key>
-	<string></string>
+	<string>macosx10.12</string>
 	<key>DTXcode</key>
-	<string>0402</string>
+	<string>0821</string>
 	<key>DTXcodeBuild</key>
-	<string>4A2002a</string>
+	<string>8C1002</string>
 </dict>
 </plist>

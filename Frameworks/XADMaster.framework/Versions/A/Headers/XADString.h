@@ -51,6 +51,7 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 
 @protocol XADString <NSObject>
 
+-(BOOL)canDecodeWithEncodingName:(NSString *)encoding;
 -(NSString *)string;
 -(NSString *)stringWithEncodingName:(NSString *)encoding;
 -(NSData *)data;
@@ -62,6 +63,7 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 -(XADStringSource *)source;
 
 #ifdef __APPLE__
+-(BOOL)canDecodeWithEncoding:(NSStringEncoding)encoding;
 -(NSString *)stringWithEncoding:(NSStringEncoding)encoding;
 -(NSStringEncoding)encoding;
 #endif
@@ -70,20 +72,27 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 
 
 
-@interface XADString:NSObject <XADString>
+@interface XADString:NSObject <XADString,NSCopying>
 {
 	NSData *data;
 	NSString *string;
 	XADStringSource *source;
 }
 
-+(XADString *)XADStringWithString:(NSString *)knownstring;
++(XADString *)XADStringWithString:(NSString *)string;
++(XADString *)analyzedXADStringWithData:(NSData *)bytedata source:(XADStringSource *)stringsource;
++(XADString *)decodedXADStringWithData:(NSData *)bytedata encodingName:(NSString *)encoding;
+
++(NSString *)escapedStringForData:(NSData *)data encodingName:(NSString *)encoding;
++(NSString *)escapedStringForBytes:(const void *)bytes length:(size_t)length encodingName:(NSString *)encoding;
++(NSString *)escapedASCIIStringForBytes:(const void *)bytes length:(size_t)length;
++(NSData *)escapedASCIIDataForString:(NSString *)string;
 
 -(id)initWithData:(NSData *)bytedata source:(XADStringSource *)stringsource;
--(id)initWithData:(NSData *)bytedata encodingName:(NSString *)encoding;
 -(id)initWithString:(NSString *)knownstring;
 -(void)dealloc;
 
+-(BOOL)canDecodeWithEncodingName:(NSString *)encoding;
 -(NSString *)string;
 -(NSString *)stringWithEncodingName:(NSString *)encoding;
 -(NSData *)data;
@@ -104,6 +113,7 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 -(id)copyWithZone:(NSZone *)zone;
 
 #ifdef __APPLE__
+-(BOOL)canDecodeWithEncoding:(NSStringEncoding)encoding;
 -(NSString *)stringWithEncoding:(NSStringEncoding)encoding;
 -(NSStringEncoding)encoding;
 #endif
@@ -112,9 +122,17 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 
 @interface XADString (PlatformSpecific)
 
++(BOOL)canDecodeData:(NSData *)data encodingName:(NSString *)encoding;
++(BOOL)canDecodeBytes:(const void *)bytes length:(size_t)length encodingName:(NSString *)encoding;
 +(NSString *)stringForData:(NSData *)data encodingName:(NSString *)encoding;
++(NSString *)stringForBytes:(const void *)bytes length:(size_t)length encodingName:(NSString *)encoding;
 +(NSData *)dataForString:(NSString *)string encodingName:(NSString *)encoding;
 +(NSArray *)availableEncodingNames;
+
+#ifdef __APPLE__
++(NSString *)encodingNameForEncoding:(NSStringEncoding)encoding;
++(NSStringEncoding)encodingForEncodingName:(NSString *)encoding;
+#endif
 
 @end
 
@@ -125,7 +143,7 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 {
 	UniversalDetector *detector;
 	NSString *fixedencodingname;
-	BOOL mac;
+	BOOL mac,hasanalyzeddata;
 
 	#ifdef __APPLE__
 	NSStringEncoding fixedencoding;
@@ -135,8 +153,9 @@ extern NSString *XADMacOSCroatianStringEncodingName;
 -(id)init;
 -(void)dealloc;
 
--(BOOL)analyzeDataAndCheckForASCII:(NSData *)data;
+-(void)analyzeData:(NSData *)data;
 
+-(BOOL)hasAnalyzedData;
 -(NSString *)encodingName;
 -(float)confidence;
 -(UniversalDetector *)detector;

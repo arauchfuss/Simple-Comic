@@ -1,5 +1,6 @@
 #import "CSHandle.h"
 #import "CSSubHandle.h"
+#import "CSStreamHandle.h"
 
 @interface CSHandle (Checksums)
 
@@ -9,6 +10,13 @@
 @end
 
 @interface CSSubHandle (Checksums)
+
+-(BOOL)hasChecksum;
+-(BOOL)isChecksumCorrect;
+
+@end
+
+@interface CSStreamHandle (Checksums)
 
 -(BOOL)hasChecksum;
 -(BOOL)isChecksumCorrect;
