@@ -15,12 +15,6 @@
 -(id)initWithHandle:(CSHandle *)handle length:(off_t)length bufferSize:(int)buffersize;
 -(id)initAsCopyOf:(CSBlockStreamHandle *)other;
 
-// Public methods
--(uint8_t *)blockPointer;
--(int)blockLength;
--(off_t)blockStartOffset;
--(void)skipToNextBlock;
-
 // Implemented by this class
 -(void)seekToFileOffset:(off_t)offs;
 -(void)resetStream;
