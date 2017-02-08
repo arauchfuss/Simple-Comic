@@ -1598,10 +1598,19 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
     if([[self window] isEqual: window])
     {
-        return NSApplicationPresentationHideDock |
-        NSApplicationPresentationAutoHideToolbar |
-        NSApplicationPresentationAutoHideMenuBar |
-        NSApplicationPresentationFullScreen;
+        if (![[NSUserDefaults standardUserDefaults] boolForKey: TSSTFullscreenToolbar])
+        {
+            return NSApplicationPresentationAutoHideDock |
+            NSApplicationPresentationAutoHideMenuBar |
+            NSApplicationPresentationAutoHideToolbar |
+            NSApplicationPresentationFullScreen;
+        }
+        else
+        {
+            return NSApplicationPresentationAutoHideDock |
+            NSApplicationPresentationAutoHideMenuBar |
+            NSApplicationPresentationFullScreen;
+        }
     }
 	
     return NSApplicationPresentationDefault;

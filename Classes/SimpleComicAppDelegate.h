@@ -43,6 +43,7 @@ extern NSString *const TSSTLonelyFirstPage;
 extern NSString *const TSSTScrollersVisible;
 extern NSString *const TSSTPreserveModDate;
 extern NSString *const TSSTUnifiedTitlebar;
+extern NSString *const TSSTFullscreenToolbar;
 
 extern NSString *const TSSTScrollPosition;
 extern NSString *const TSSTZoomLevel;

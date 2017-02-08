@@ -50,6 +50,7 @@ NSString *const TSSTLonelyFirstPage =   @"lonelyFirstPage";
 NSString *const TSSTScrollersVisible =  @"scrollersVisible";
 NSString *const TSSTPreserveModDate =   @"preserveModDate";
 NSString *const TSSTUnifiedTitlebar =   @"unifiedTitlebar";
+NSString *const TSSTFullscreenToolbar =   @"fullscreenToolbar";
 
 NSString *const TSSTScrollPosition =    @"scrollPosition";
 NSString *const TSSTZoomLevel =         @"zoomLevel";
@@ -195,25 +196,22 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	dispatch_once(&onceToken, ^{
 		NSDictionary* standardDefaults =
 		@{
-		  TSSTPageOrder: @NO,
-		  TSSTPageZoomRate: @0.1f,
+		  TSSTPageOrder: @YES,
 		  TSSTPageScaleOptions: @1,
 		  TSSTTwoPageSpread: @YES,
-		  TSSTConstrainScale: @YES,
 		  TSSTScrollersVisible: @YES,
-		  TSSTSessionRestore: @YES,
-		  TSSTAutoPageTurn: @YES,
 		  TSSTBackgroundColor: [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]],
+		  TSSTConstrainScale: @YES,
 		  TSSTWindowAutoResize: @YES,
+		  TSSTSessionRestore: @YES,
+		  TSSTEnableSwipe: @NO,
 		  TSSTLoupeDiameter: @500,
 		  TSSTLoupePower: @2.0f,
-		  TSSTStatusbarVisible: @YES,
 		  TSSTLonelyFirstPage: @YES,
-		  TSSTNestedArchives: @YES,
-		  TSSTUpdateSelection: @0,
-		  TSSTEnableSwipe: @NO,
+		  TSSTScrollersVisible: @YES,
 		  TSSTPreserveModDate: @NO,
 		  TSSTUnifiedTitlebar: @NO,
+		  TSSTFullscreenToolbar: @NO,
 		  };
 		
 		NSUserDefaultsController * sharedDefaultsController = [NSUserDefaultsController sharedUserDefaultsController];

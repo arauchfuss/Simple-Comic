@@ -730,20 +730,20 @@
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
 	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
-		
+	
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
 		NSInteger loupeDiameter = [defaultsController integerForKey: TSSTLoupeDiameter];
-		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
-		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
+		loupeDiameter += [theEvent deltaY] > 0 ? -25 : 25;
+		loupeDiameter = loupeDiameter < 200 ? 200 : loupeDiameter;
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
 		[defaultsController setInteger: loupeDiameter forKey: TSSTLoupeDiameter];
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
 		CGFloat loupePower = [defaultsController doubleForKey: TSSTLoupePower];
-		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
-		loupePower = loupePower < 2 ? 2 : loupePower;
+		loupePower += [theEvent deltaY] > 0 ? -0.5 : 0.5;
+		loupePower = loupePower < 1.5 ? 1.5 : loupePower;
 		loupePower = loupePower > 6 ? 6 : loupePower;
 		[defaultsController setDouble: loupePower forKey: TSSTLoupePower];
 	}

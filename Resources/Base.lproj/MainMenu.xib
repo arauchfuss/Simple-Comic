@@ -145,6 +145,12 @@ CA
                                     <binding destination="1021" name="value" keyPath="values.statusBarVisisble" id="1339"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Always Show Toolbar in Full Screen" id="hhx-Yd-WrR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="1021" name="value" keyPath="values.fullscreenToolbar" id="Mg1-jl-K0Q"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Show Toolbar" keyEquivalent="\" id="1340">
                                 <connections>
                                     <action selector="toggleToolbarShown:" target="-1" id="1341"/>
