@@ -21,19 +21,6 @@
 @end
 
 
-@implementation DTSeparatedToolbarItem
-
-- (void)validate
-{
-    if (NSAppKitVersionNumber >= NSAppKitVersionNumber10_10)
-    {
-        [(NSSegmentedControl *)[self view] setSegmentStyle: NSSegmentStyleSeparated];
-    }
-}
-
-@end
-
-
 @implementation DTPageTurnToolbarItem
 
 - (void)validate
