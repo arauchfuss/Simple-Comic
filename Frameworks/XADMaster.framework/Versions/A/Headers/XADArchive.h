@@ -98,6 +98,7 @@ extern NSString *XADFinderFlags;
 -(NSDictionary *)combinedParserDictionaryForEntry:(int)n;
 
 -(NSString *)nameOfEntry:(int)n;
+-(XADPath *)rawNameOfEntry:(int)n;
 -(BOOL)entryHasSize:(int)n;
 -(off_t)uncompressedSizeOfEntry:(int)n;
 -(off_t)compressedSizeOfEntry:(int)n;
