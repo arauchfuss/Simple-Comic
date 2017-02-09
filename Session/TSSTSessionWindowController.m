@@ -356,7 +356,7 @@
     BOOL loupe = [[session valueForKey: @"loupe"] boolValue];
     NSPoint mouse = [NSEvent mouseLocation];
     
-    NSRect point = NSMakeRect(mouse.x, mouse.y, 6.0f, 6.0f);
+    NSRect point = NSMakeRect(mouse.x, mouse.y, 0, 0);
     NSPoint localPoint = [pageView convertPoint: [[self window] convertRectFromScreen: point].origin fromView: nil];
     NSPoint scrollPoint = [pageScrollView convertPoint: [[self window] convertRectFromScreen: point].origin fromView: nil];
     if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped])
@@ -408,9 +408,9 @@
     [infoPicture setFrameSize: thumbSize];
     [infoPicture setImage: thumb];
 
-    NSRect area = NSMakeRect(point.x, point.y, 6.0f, 6.0f);
-    cursorPoint = [[bar window] convertRectFromScreen: area].origin;
-
+    NSRect area = NSMakeRect(point.x, point.y, 0, 0);
+    cursorPoint = [[self window] convertRectToScreen: area].origin;
+    NSLog(@"%@", NSStringFromPoint(cursorPoint));
 	
     [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height)
 			   withLimitLeft: NSMinX([[bar window] frame]) 
@@ -1552,7 +1552,7 @@ images are currently visible and then skips over them.
         if(statusBar)
         {
             NSPoint mouse = [NSEvent mouseLocation];
-            NSRect point = NSMakeRect(mouse.x, mouse.y, 6.0f, 6.0f);
+            NSRect point = NSMakeRect(mouse.x, mouse.y, 0, 0);
             NSPoint mouseLocation = [[self window] convertRectFromScreen: point].origin;
 
             NSRect progressRect = [[[self window] contentView] convertRect: [progressBar progressRect] fromView: progressBar];
