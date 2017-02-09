@@ -97,7 +97,7 @@
                         <size key="minSize" width="70" height="25"/>
                         <size key="maxSize" width="70" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
-                            <rect key="frame" x="2" y="14" width="70" height="25"/>
+                            <rect key="frame" x="3" y="14" width="70" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
                                 <font key="font" metaFont="system"/>
@@ -120,18 +120,18 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" id="520" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="25"/>
-                        <size key="maxSize" width="47" height="25"/>
+                        <size key="minSize" width="27" height="25"/>
+                        <size key="maxSize" width="75" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
-                            <rect key="frame" x="10" y="14" width="47" height="25"/>
+                            <rect key="frame" x="4" y="14" width="59" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Right to Left Page Order" image="rl_order" width="22">
+                                    <segment toolTip="Right to Left Page Order" image="Right To Left" width="28">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Left to Right Page Order" image="lr_order" width="22">
+                                    <segment toolTip="Left to Right Page Order" image="Left To Right" width="28">
                                         <nil key="label"/>
                                     </segment>
                                 </segments>
@@ -143,8 +143,8 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" id="523" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="25"/>
-                        <size key="maxSize" width="47" height="25"/>
+                        <size key="minSize" width="44" height="25"/>
+                        <size key="maxSize" width="77" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="521">
                             <rect key="frame" x="13" y="14" width="47" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -222,7 +222,7 @@
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
-                            <rect key="frame" x="22" y="14" width="27" height="25"/>
+                            <rect key="frame" x="21" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="squareTextured" title="Thumbnails" bezelStyle="texturedSquare" image="thumbnails" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -393,8 +393,8 @@
                             <binding destination="12" name="maxValue" keyPath="arrangedObjects.@count" id="458"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="447">
-                        <rect key="frame" x="7" y="13" width="38" height="17"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="447">
+                        <rect key="frame" x="7" y="10" width="39" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page:" id="502">
                             <font key="font" metaFont="system"/>
@@ -432,6 +432,7 @@ Gw
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="138.5" y="161"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -451,18 +452,18 @@ Gw
         </window>
     </objects>
     <resources>
+        <image name="Left To Right" width="38" height="38"/>
         <image name="Loupe" width="15" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
+        <image name="Right To Left" width="38" height="38"/>
         <image name="equal" width="11" height="12"/>
         <image name="extract" width="17" height="12"/>
         <image name="hor_scale" width="14" height="12"/>
-        <image name="lr_order" width="17" height="12"/>
         <image name="one_page" width="8" height="12"/>
         <image name="quicklook" width="16" height="16"/>
-        <image name="rl_order" width="17" height="12"/>
         <image name="rotate_l" width="10" height="12"/>
         <image name="rotate_r" width="10" height="12"/>
         <image name="thumbnails" width="12" height="12"/>

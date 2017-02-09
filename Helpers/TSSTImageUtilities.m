@@ -89,7 +89,7 @@ NSRect rectFromNegativeRect(NSRect rect)
 	
 	return NSMakeRect(possibleXOrigin < rect.origin.x ? possibleXOrigin : rect.origin.x,
 					  possibleYOrigin < rect.origin.y ? possibleYOrigin : rect.origin.y,
-					  fabsf(rect.size.width), fabsf(rect.size.height));
+					  fabs(rect.size.width), fabs(rect.size.height));
 }
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)
