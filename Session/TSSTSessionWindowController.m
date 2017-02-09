@@ -355,9 +355,11 @@
 {
     BOOL loupe = [[session valueForKey: @"loupe"] boolValue];
     NSPoint mouse = [NSEvent mouseLocation];
-    NSPoint localPoint = [pageView convertPoint: [[self window] convertScreenToBase: mouse] fromView: nil];
-	NSPoint scrollPoint = [pageScrollView convertPoint: [[self window] convertScreenToBase: mouse] fromView: nil];
-    if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
+    
+    NSRect point = NSMakeRect(mouse.x, mouse.y, 6.0f, 6.0f);
+    NSPoint localPoint = [pageView convertPoint: [[self window] convertRectFromScreen: point].origin fromView: nil];
+    NSPoint scrollPoint = [pageScrollView convertPoint: [[self window] convertRectFromScreen: point].origin fromView: nil];
+    if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped])
 	   && loupe 
 	   && [[self window] isKeyWindow]
 	   && pageSelectionInProgress == None)
@@ -405,10 +407,12 @@
 	
     [infoPicture setFrameSize: thumbSize];
     [infoPicture setImage: thumb];
+
+    NSRect area = NSMakeRect(point.x, point.y, 6.0f, 6.0f);
+    cursorPoint = [[bar window] convertRectFromScreen: area].origin;
+
 	
-    cursorPoint = [[bar window] convertBaseToScreen: point];
-	
-    [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height) 
+    [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height)
 			   withLimitLeft: NSMinX([[bar window] frame]) 
 					   right: NSMaxX([[bar window] frame])];
 }
@@ -1547,7 +1551,10 @@ images are currently visible and then skips over them.
 		
         if(statusBar)
         {
-			NSPoint mouseLocation = [[self window] convertScreenToBase: [NSEvent mouseLocation]];
+            NSPoint mouse = [NSEvent mouseLocation];
+            NSRect point = NSMakeRect(mouse.x, mouse.y, 6.0f, 6.0f);
+            NSPoint mouseLocation = [[self window] convertRectFromScreen: point].origin;
+
             NSRect progressRect = [[[self window] contentView] convertRect: [progressBar progressRect] fromView: progressBar];
 			BOOL cursorInside = NSMouseInRect(mouseLocation, progressRect, [[[self window] contentView] isFlipped]);
 			if(cursorInside && ![pageView inLiveResize])
