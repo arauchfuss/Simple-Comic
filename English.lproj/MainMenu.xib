@@ -351,6 +351,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="314"/>
             </connections>
+            <point key="canvasLocation" x="149" y="77"/>
         </menu>
         <customObject id="205" userLabel="Application Delegate" customClass="SimpleComicAppDelegate">
             <connections>
@@ -368,7 +369,7 @@ DQ
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="778"/>
             <value key="minSize" type="size" width="213" height="90"/>
             <view key="contentView" id="469">
-                <rect key="frame" x="1" y="1" width="289" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="289" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" id="470" customClass="NSSecureTextField">
@@ -497,13 +498,11 @@ DQ
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="1101">
-                        <rect key="frame" x="131" y="60" width="198" height="14"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="1101">
+                        <rect key="frame" x="133" y="60" width="196" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="1711">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="filename" id="1711">
                             <font key="font" metaFont="smallSystem"/>
-                            <string key="title">filename
-</string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>

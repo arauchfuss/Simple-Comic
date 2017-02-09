@@ -235,9 +235,7 @@ static NSSize monospaceCharacterSize;
     }
     else
     {
-        [imageFromData setScalesWhenResized: YES];
         [imageFromData setCacheMode: NSImageCacheNever];
-        
         [imageFromData setSize: imageSize];
         [imageFromData setCacheMode: NSImageCacheDefault];
     }
@@ -258,11 +256,11 @@ static NSSize monospaceCharacterSize;
 		textData = [NSData dataWithContentsOfFile: [self valueForKey: @"imagePath"]];
 	}
 	
+    BOOL lossyConversion = NO;
     NSStringEncoding stringEncoding = [NSString stringEncodingForData: textData
                                                       encodingOptions: nil
                                                       convertedString: nil
-                                                  usedLossyConversion: YES];
-    
+                                                  usedLossyConversion: &lossyConversion];
 	NSString * text = [[NSString alloc] initWithData: textData encoding: stringEncoding];
 //	int lineCount = 0;
 	NSRect lineRect;

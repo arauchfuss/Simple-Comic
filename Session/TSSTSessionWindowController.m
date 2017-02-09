@@ -878,7 +878,7 @@
 		[savePanel setTitle: @"Extract Page"];
 		[savePanel setPrompt: @"Extract"];
         [savePanel setNameFieldStringValue:[selectedPage name]];
-		if(NSOKButton == [savePanel runModal])
+		if(NSModalResponseOK == [savePanel runModal])
 		{
 			[[selectedPage pageData] writeToFile: [[savePanel URL] path] atomically: YES];
 		}
@@ -1298,7 +1298,7 @@ images are currently visible and then skips over them.
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-    return [[NSApp delegate] managedObjectContext];
+    return [(SimpleComicAppDelegate *)[NSApp delegate] managedObjectContext];
 }
 
 

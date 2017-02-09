@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" autoresizesSubviews="NO" copiesOnScroll="NO" id="KlA-W9-AWW">
                             <rect key="frame" x="0.0" y="0.0" width="460" height="530"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <customView id="235" customClass="TSSTPageView">
                                     <rect key="frame" x="0.0" y="0.0" width="135" height="65"/>
@@ -393,8 +393,8 @@
                             <binding destination="12" name="maxValue" keyPath="arrangedObjects.@count" id="458"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="447">
-                        <rect key="frame" x="7" y="13" width="38" height="17"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="447">
+                        <rect key="frame" x="6" y="10" width="39" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page:" id="502">
                             <font key="font" metaFont="system"/>
@@ -432,6 +432,7 @@ Gw
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="139.5" y="161"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow">
             <windowStyleMask key="styleMask" titled="YES"/>

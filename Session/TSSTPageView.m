@@ -249,7 +249,7 @@
 	{
 		NSArray * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
         [sessionController updateSessionObject];
-		[[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
+		[(SimpleComicAppDelegate *)[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
 		return YES;
 	}
 	
