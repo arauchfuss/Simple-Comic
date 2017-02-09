@@ -410,7 +410,6 @@
 
     NSRect area = NSMakeRect(point.x, point.y, 0, 0);
     cursorPoint = [[self window] convertRectToScreen: area].origin;
-    NSLog(@"%@", NSStringFromPoint(cursorPoint));
 	
     [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height)
 			   withLimitLeft: NSMinX([[bar window] frame]) 
