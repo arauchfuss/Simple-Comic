@@ -878,7 +878,7 @@
 		[savePanel setTitle: @"Extract Page"];
 		[savePanel setPrompt: @"Extract"];
         [savePanel setNameFieldStringValue:[selectedPage name]];
-		if(NSOKButton == [savePanel runModal])
+		if(NSModalResponseOK == [savePanel runModal])
 		{
 			[[selectedPage pageData] writeToFile: [[savePanel URL] path] atomically: YES];
 		}
@@ -903,7 +903,7 @@
 			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
 			{
 				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
-				XADString * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
+				XADPath * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
 				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
 										 forKey: @"QCCoverName" 
 										 atPath: archivePath 
@@ -1298,7 +1298,7 @@ images are currently visible and then skips over them.
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-    return [[NSApp delegate] managedObjectContext];
+    return [(SimpleComicAppDelegate *)[NSApp delegate] managedObjectContext];
 }
 
 
