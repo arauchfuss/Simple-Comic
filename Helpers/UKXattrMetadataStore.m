@@ -78,15 +78,17 @@
 
 +(void)	setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
+    
 	// Serialize our objects into a property list XML string:
-	NSString*	errMsg = nil;
-	NSData*		plistData = [NSPropertyListSerialization dataFromPropertyList: obj
-								format: NSPropertyListXMLFormat_v1_0
-								errorDescription: &errMsg];
-	if( errMsg )
+	NSError*	error = nil;
+    NSData*		plistData = [NSPropertyListSerialization dataWithPropertyList: obj
+                                                                    format: NSPropertyListXMLFormat_v1_0
+                                                                   options: 0
+                                                                     error: &error];
+	if( plistData )
 	{
-		[errMsg autorelease];
-		[NSException raise: @"UKXattrMetastoreCantSerialize" format: @"%@", errMsg];
+        NSLog(@"%@", [error localizedDescription]);
+        plistData = nil;
 	}
 	else
 		[[self class] setData: plistData forKey: key atPath: path traverseLink: travLnk];
@@ -143,17 +145,18 @@
 
 +(id)	objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
-	NSString*				errMsg = nil;
+	NSError*				error = nil;
 	NSMutableData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
 	NSPropertyListFormat	outFormat = NSPropertyListXMLFormat_v1_0;
-	id obj = [NSPropertyListSerialization propertyListFromData: data
-					mutabilityOption: NSPropertyListImmutable
-					format: &outFormat
-					errorDescription: &errMsg];
-	if( errMsg )
+    id obj = [NSPropertyListSerialization propertyListWithData: data
+                                                       options: NSPropertyListImmutable
+                                                        format: &outFormat
+                                                         error: &error];
+
+	if( !obj )
 	{
-		[errMsg autorelease];
-		[NSException raise: @"UKXattrMetastoreCantUnserialize" format: @"%@", errMsg];
+		NSLog(@"%@", [error localizedDescription]);
+        obj = nil;
 	}
 	
 	return obj;
