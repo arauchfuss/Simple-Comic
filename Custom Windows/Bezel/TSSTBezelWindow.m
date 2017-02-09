@@ -17,9 +17,13 @@
 
 
 
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
+- (id)initWithContentRect:(NSRect)contentRect
+                styleMask:(NSWindowStyleMask)style
+                  backing:(NSBackingStoreType)bufferingType
+                    defer:(BOOL)flag
+                   screen:(NSScreen *)screen
 {
-    self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask backing: bufferingType defer: flag];
+    self = [super initWithContentRect: contentRect styleMask: NSWindowStyleMaskBorderless backing: bufferingType defer: flag];
     if(self)
     {
 		
