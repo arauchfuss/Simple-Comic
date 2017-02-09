@@ -16,7 +16,6 @@
 @implementation TSSTBezelWindow
 
 
-
 - (id)initWithContentRect:(NSRect)contentRect
                 styleMask:(NSWindowStyleMask)aStyle
                   backing:(NSBackingStoreType)bufferingType

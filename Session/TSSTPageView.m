@@ -827,25 +827,25 @@
 		[self scrollPoint: scrollPoint];
 	}
 
-    float deltaX = [theEvent deltaX];
-    if (deltaX != 0.0)
-    {
-        [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
-                    dampenAmountThresholdMin:-1.0
-                                         max:1.0
-                                usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
-                                }];
-    }
-
-
-    if (deltaX > 0.0)
-    {
-        [sessionController pageLeft: self];
-    }
-    else if (deltaX < 0.0)
-    {
-        [sessionController pageRight: self];
-    }
+//    float deltaX = [theEvent deltaX];
+//    if (deltaX != 0.0)
+//    {
+//        [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
+//                    dampenAmountThresholdMin:-1.0
+//                                         max:1.0
+//                                usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+//                                }];
+//    }
+//
+//
+//    if (deltaX > 0.0)
+//    {
+//        [sessionController pageLeft: self];
+//    }
+//    else if (deltaX < 0.0)
+//    {
+//        [sessionController pageRight: self];
+//    }
 
     [sessionController refreshLoupePanel];
 }
