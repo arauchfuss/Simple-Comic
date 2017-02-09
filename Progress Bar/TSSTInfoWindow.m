@@ -14,12 +14,11 @@
 
 
 - (id)initWithContentRect:(NSRect)contentRect
-                styleMask:(NSWindowStyleMask)style
+                styleMask:(NSWindowStyleMask)aStyle
                   backing:(NSBackingStoreType)bufferingType
                     defer:(BOOL)flag
-                   screen:(NSScreen *)screen
 {
-    self = [super initWithContentRect: contentRect styleMask: NSWindowStyleMaskBorderless backing: bufferingType defer: flag];
+    self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask backing: bufferingType defer: flag];
     if(self)
     {
         [self setOpaque: NO];
