@@ -37,7 +37,10 @@
 
 
 
-- (id)initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)aStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)flag
+- (id)initWithContentRect:(NSRect)contentRect
+                styleMask:(NSWindowStyleMask)aStyle
+                  backing:(NSBackingStoreType)bufferingType
+                    defer:(BOOL)flag
 {
     self = [super initWithContentRect: contentRect styleMask: NSBorderlessWindowMask backing: bufferingType defer: flag];
     

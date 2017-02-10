@@ -719,13 +719,13 @@
 - (IBAction)launchJumpPanel:(id)sender
 {
 	[jumpField setIntValue: [pageController selectionIndex] + 1];
-	[NSApp beginSheet: jumpPanel modalForWindow: [self window] modalDelegate: self didEndSelector: @selector(closeSheet:) contextInfo: NULL];
+    [self.window beginSheet: jumpPanel completionHandler:^(NSModalResponse returnCode) { }];
 }
 
 
 - (IBAction)cancelJumpPanel:(id)sender
 {
-	[NSApp endSheet: jumpPanel returnCode: 0];
+	[self.window endSheet: jumpPanel returnCode: NSModalResponseAbort];
 }
 
 
@@ -737,7 +737,7 @@
         [pageController setSelectionIndex: index];
     }
 	
-	[NSApp endSheet: jumpPanel returnCode: 1];
+	[self.window endSheet: jumpPanel returnCode: NSModalResponseContinue];
 }
 
 
@@ -956,11 +956,6 @@
 	[session setValue: @(savedZoom) forKey: TSSTZoomLevel];
 }
 
-
-- (void)closeSheet:(int)code
-{
-	[jumpPanel close];
-}
 
 
 #pragma mark -
