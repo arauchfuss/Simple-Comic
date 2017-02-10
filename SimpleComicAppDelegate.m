@@ -540,31 +540,19 @@ static NSArray * allAvailableStringEncodings(void)
         [controller updateSessionObject];
     }
     
-    NSError * error;
-    NSManagedObjectContext * context = [self managedObjectContext];
-	[context retain];
-	[context lock];
-    BOOL saved = NO;
-    if (context != nil)
-	{
-        if ([context commitEditing])
-		{
-            if (![context save: &error])
-			{
-				// This default error handling implementation should be changed to make sure the error presented includes application specific error recovery. 
-				// For now, simply display 2 panels.
-				[[NSApplication sharedApplication] presentError: error];
-            }
-            else 
-            {
-                saved = YES;
-            }
-        }
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    if (![context commitEditing]) {
+        NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
     }
-	
-	[context unlock];
-	[context release];
-    return saved;
+    
+    NSError *error = nil;
+    if (context.hasChanges && ![context save:&error]) {
+        [[NSApplication sharedApplication] presentError:error];
+        return NO;
+    }
+    
+    return YES;
 }
 
 
