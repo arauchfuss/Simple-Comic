@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -145,14 +144,14 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="44" height="25"/>
                         <size key="maxSize" width="77" height="25"/>
-                        <segmentedControl key="view" verticalHuggingPriority="750" id="521">
-                            <rect key="frame" x="13" y="14" width="47" height="25"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" id="521">
+                            <rect key="frame" x="7" y="14" width="59" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="522">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Single Page Layout" image="one_page" width="22"/>
-                                    <segment toolTip="Two Page Layout" image="two_page" width="22"/>
+                                    <segment toolTip="Single Page Layout" image="Single Page" width="28"/>
+                                    <segment toolTip="Two Page Layout" image="Two Page" width="28"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -287,6 +286,7 @@
                 <outlet property="delegate" destination="-2" id="39"/>
                 <outlet property="initialFirstResponder" destination="235" id="649"/>
             </connections>
+            <point key="canvasLocation" x="317" y="84"/>
         </window>
         <arrayController mode="entity" entityName="Image" automaticallyPreparesContent="YES" clearsFilterPredicateOnInsertion="NO" id="12" userLabel="Page Controller">
             <declaredKeys>
@@ -432,7 +432,7 @@ Gw
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="138.5" y="161"/>
+            <point key="canvasLocation" x="579" y="-347"/>
         </window>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="483" userLabel="Thumbnail" customClass="TSSTInfoWindow">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -459,15 +459,15 @@ Gw
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="Right To Left" width="38" height="38"/>
+        <image name="Single Page" width="38" height="38"/>
+        <image name="Two Page" width="38" height="38"/>
         <image name="equal" width="11" height="12"/>
         <image name="extract" width="17" height="12"/>
         <image name="hor_scale" width="14" height="12"/>
-        <image name="one_page" width="8" height="12"/>
         <image name="quicklook" width="16" height="16"/>
         <image name="rotate_l" width="10" height="12"/>
         <image name="rotate_r" width="10" height="12"/>
         <image name="thumbnails" width="12" height="12"/>
-        <image name="two_page" width="17" height="12"/>
         <image name="win_scale" width="14" height="12"/>
     </resources>
 </document>
