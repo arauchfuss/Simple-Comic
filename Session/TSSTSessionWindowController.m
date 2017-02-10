@@ -169,6 +169,7 @@
 	[jumpField setDelegate: self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleMouseDragged:) name:@"SCMouseDragNotification" object:nil];
+    
 
     [self restoreSession];
 }

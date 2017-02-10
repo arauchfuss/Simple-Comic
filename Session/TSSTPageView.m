@@ -366,14 +366,6 @@
 
 
 
-- (void)viewDidEndLiveResize
-{
-    [self setNeedsDisplay: YES];
-    [super viewDidEndLiveResize];
-}
-
-
-
 /* This method is used to generate the composite loupe image. */
 -(NSImage *)imageInRect:(NSRect)rect
 {
@@ -1325,21 +1317,27 @@
 
 - (void)magnifyWithEvent:(NSEvent *)event
 {
-	BOOL isFullscreen = [(DTSessionWindow *)[self window] isFullscreen];
-	if (([event magnification] > .01) && !isFullscreen)
-	{
-		[[self window] toggleFullScreen: self];
-	}
-	else if(([event magnification] < -.01) && isFullscreen)
-	{
-		[[self window] toggleFullScreen: self];
-	}
+    TSSTManagedSession * session = [sessionController session];
+    int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+    float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
+    if(scalingOption != 0)
+    {
+        previousZoom = NSWidth([self imageBounds]) / [self combinedImageSizeForZoom: 1].width;
+    }
+    
+    previousZoom += ([event magnification] * 2);
+    previousZoom = previousZoom < 5 ? previousZoom : 5;
+    previousZoom = previousZoom > .25 ? previousZoom : .25;
+    [session setValue: @(previousZoom) forKey: TSSTZoomLevel];
+    [session setValue: @0 forKey: TSSTPageScaleOptions];
+    
+    [self resizeView];
 }
 
 
 - (BOOL)dragIsPossible
 {
-    return ([self horizontalScrollIsPossible] || 
+    return ([self horizontalScrollIsPossible] ||
 			[self verticalScrollIsPossible] && 
 			![sessionController pageSelectionInProgress]);
 }

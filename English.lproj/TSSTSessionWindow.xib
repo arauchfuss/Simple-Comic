@@ -72,7 +72,7 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="ADD2836D-8728-474F-9355-80FA8EA9972C" label="Turn Page" paletteLabel="Turn Page" id="553" customClass="DTPageTurnToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="20"/>
+                        <size key="minSize" width="47" height="25"/>
                         <size key="maxSize" width="47" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="554">
                             <rect key="frame" x="7" y="14" width="47" height="25"/>
@@ -93,7 +93,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" id="517" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="70" height="20"/>
+                        <size key="minSize" width="70" height="25"/>
                         <size key="maxSize" width="70" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
                             <rect key="frame" x="3" y="14" width="70" height="25"/>
@@ -119,7 +119,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" id="520" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="59" height="20"/>
+                        <size key="minSize" width="59" height="25"/>
                         <size key="maxSize" width="59" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
                             <rect key="frame" x="4" y="14" width="59" height="25"/>
@@ -142,7 +142,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" id="523" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="59" height="20"/>
+                        <size key="minSize" width="59" height="25"/>
                         <size key="maxSize" width="59" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" misplaced="YES" id="521">
                             <rect key="frame" x="7" y="14" width="59" height="25"/>
@@ -161,7 +161,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2FEB6E2E-5C3E-4725-B4B7-D5204BC8F2A8" label="Rotate" paletteLabel="Rotate Pages" id="585" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="47" height="20"/>
+                        <size key="minSize" width="47" height="25"/>
                         <size key="maxSize" width="47" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="586">
                             <rect key="frame" x="15" y="14" width="47" height="25"/>
@@ -180,7 +180,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C8491130-5672-4D81-9D91-76BB3F03D233" label="Zoom" paletteLabel="Zoom" id="559" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="70" height="20"/>
+                        <size key="minSize" width="70" height="25"/>
                         <size key="maxSize" width="70" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="557">
                             <rect key="frame" x="0.0" y="14" width="70" height="25"/>
@@ -202,7 +202,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="55B2F7CD-2E3A-405A-BF65-65B5A68E94BD" label="Loupe" paletteLabel="Loupe" image="Loupe" id="575" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="27" height="20"/>
+                        <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Magnifing Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="7" y="14" width="27" height="25"/>
@@ -218,7 +218,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="AB4BCD46-EE79-45CC-9A97-733E3740BA34" label="Thumbnails" paletteLabel="Thumbnails" image="thumbnails" id="577" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="27" height="20"/>
+                        <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="21" y="14" width="27" height="25"/>
@@ -234,7 +234,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="Capture Page" paletteLabel="Capture Page" image="extract" id="688" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="27" height="20"/>
+                        <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
                             <rect key="frame" x="26" y="14" width="27" height="25"/>
@@ -250,7 +250,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="quicklook" id="693" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="27" height="20"/>
+                        <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="12" y="14" width="27" height="25"/>
@@ -286,7 +286,7 @@
                 <outlet property="delegate" destination="-2" id="39"/>
                 <outlet property="initialFirstResponder" destination="235" id="649"/>
             </connections>
-            <point key="canvasLocation" x="317" y="84"/>
+            <point key="canvasLocation" x="442" y="78"/>
         </window>
         <arrayController mode="entity" entityName="Image" automaticallyPreparesContent="YES" clearsFilterPredicateOnInsertion="NO" id="12" userLabel="Page Controller">
             <declaredKeys>
