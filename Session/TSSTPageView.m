@@ -750,8 +750,8 @@
 	
 	int modifier = [theEvent modifierFlags];
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
-//	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
-//	scaling = [sessionController currentPageIsText] ? 2 : scaling;
+	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 		
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
@@ -769,57 +769,29 @@
 		loupePower = loupePower > 6 ? 6 : loupePower;
 		[defaultsController setValue: @(loupePower) forKey: TSSTLoupePower];
 	}
-//	else if(scaling == 1)
-//	{
-//		if([theEvent deltaX] > 0)
-//		{
-//			scrollwheel.left += [theEvent deltaX];
-//			scrollwheel.right = 0;
-//			scrollwheel.up = 0;
-//			scrollwheel.down = 0;
-//		}
-//		else if([theEvent deltaX] < 0)
-//		{
-//			scrollwheel.right += [theEvent deltaX];
-//			scrollwheel.left = 0;
-//			scrollwheel.up = 0;
-//			scrollwheel.down = 0;
-//		}
-//		else if([theEvent deltaY] > 0)
-//		{
-//			scrollwheel.up += [theEvent deltaY];
-//			scrollwheel.left = 0;
-//			scrollwheel.right = 0;
-//			scrollwheel.down = 0;
-//		}
-//		else if([theEvent deltaY] < 0)
-//		{
-//			scrollwheel.down += [theEvent deltaY];
-//			scrollwheel.left = 0;
-//			scrollwheel.right = 0;
-//			scrollwheel.up = 0;
-//		}
-//				
-//		if(scrollwheel.left > 0.1)
-//		{
-//			[sessionController pageLeft: self];
-//			scrollwheel.left = 0;
-//		}
-//		else if(scrollwheel.right < -0.1)
-//		{
-//			[sessionController pageRight: self];
-//			scrollwheel.right = 0;
-//		}
-//		else if(scrollwheel.up > 0.1)
-//		{
-//			[sessionController previousPage];
-//		}
-//		else if(scrollwheel.down < -0.1)
-//		{
-//			[sessionController nextPage];
-//		}
-//
-//	}
+	else if(scaling == 1)
+	{
+        float deltaX = [theEvent deltaX];
+        if (deltaX != 0.0)
+        {
+            [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
+                        dampenAmountThresholdMin:-1.0
+                                             max:1.0
+                                    usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+                                    }];
+        }
+        
+        
+        if (deltaX > 0.0)
+        {
+            [sessionController pageLeft: self];
+        }
+        else if (deltaX < 0.0)
+        {
+            [sessionController pageRight: self];
+        }
+
+	}
 	else
 	{
 		NSRect visible = [[self enclosingScrollView] documentVisibleRect];
@@ -827,25 +799,6 @@
 		[self scrollPoint: scrollPoint];
 	}
 
-//    float deltaX = [theEvent deltaX];
-//    if (deltaX != 0.0)
-//    {
-//        [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
-//                    dampenAmountThresholdMin:-1.0
-//                                         max:1.0
-//                                usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
-//                                }];
-//    }
-//
-//
-//    if (deltaX > 0.0)
-//    {
-//        [sessionController pageLeft: self];
-//    }
-//    else if (deltaX < 0.0)
-//    {
-//        [sessionController pageRight: self];
-//    }
 
     [sessionController refreshLoupePanel];
 }
