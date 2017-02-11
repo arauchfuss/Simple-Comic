@@ -44,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
  *				The file to get xattr names from.
  *	@param		travLnk
  *				If <code>YES</code>, follows symlinks.
- *	@return		An \c NSArray of <code>NSString</code>s, or \c nil failure.
+ *	@return		An \c NSArray of <code>NSString</code>s, or \c nil on failure.
  *	@discussion	Return an NSArray of NSStrings containing all xattr names currently set
  *				for the file at the specified path.
  */
@@ -103,7 +103,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@deprecated	This method has no error handling.
  */
 +(nullable NSString*) stringForKey:(NSString*)key atPath:(NSString*)path
-					  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'stringForKey(_:atPath:traverseLink:) throws' instead");
+					  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'string(forKey:atPath:traverseLink:) throws' instead");
 
 /*!
  *	@method		stringForKey:atPath:traverseLink:error:
@@ -175,7 +175,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@deprecated	This method throws an Obj-C exception. No other error information is provoded on failure.
  */
 +(nullable NSData*) dataForKey:(NSString*)key atPath:(NSString*)path
-				  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'dataForKey(_:atPath:traverseLink:) throws' instead");
+				  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'data(forKey:atPath:traverseLink:) throws' instead");
 /*!
  *	@method		dataForKey:atPath:traverseLink:error:
  *	@brief		Get the xattr with name \c key as raw data.
