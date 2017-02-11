@@ -28,7 +28,6 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 
 #import "TSSTPage.h"
-#import <UniversalDetector/UniversalDetector.h>
 #import "SimpleComicAppDelegate.h"
 #import "TSSTImageUtilities.h"
 #import "TSSTManagedGroup.h"
@@ -235,7 +234,6 @@ static NSSize monospaceCharacterSize;
     else
     {
         [imageFromData setCacheMode: NSImageCacheNever];
-        
         [imageFromData setSize: imageSize];
         [imageFromData setCacheMode: NSImageCacheBySize];
     }
@@ -255,9 +253,12 @@ static NSSize monospaceCharacterSize;
 		textData = [NSData dataWithContentsOfFile: self.imagePath];
 	}
 	
-	UniversalDetector * encodingDetector = [UniversalDetector detector];
-	[encodingDetector analyzeData: textData];
-	NSString * text = [[NSString alloc] initWithData: textData encoding: encodingDetector.encoding];
+    BOOL lossyConversion = NO;
+    NSStringEncoding stringEncoding = [NSString stringEncodingForData: textData
+                                                      encodingOptions: nil
+                                                      convertedString: nil
+                                                  usedLossyConversion: &lossyConversion];
+	NSString * text = [[NSString alloc] initWithData: textData encoding: stringEncoding];
 //	int lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;

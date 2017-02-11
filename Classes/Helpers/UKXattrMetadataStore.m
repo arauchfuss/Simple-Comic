@@ -28,11 +28,11 @@
 +(NSArray*) allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSMutableArray<NSString*>*	allKeys = [NSMutableArray array];
-	ssize_t dataSize = listxattr( [path fileSystemRepresentation],
+	size_t dataSize = listxattr( [path fileSystemRepresentation],
 								NULL, ULONG_MAX,
 								(travLnk ? 0 : XATTR_NOFOLLOW) );
-	if( dataSize == -1 )
-		return nil;	// Empty list.
+	if( dataSize == ULONG_MAX )
+		return allKeys;	// Empty list.
 	NSMutableData*	listBuffer = [NSMutableData dataWithLength: dataSize];
 	dataSize = listxattr( [path fileSystemRepresentation],
 							[listBuffer mutableBytes], [listBuffer length],
@@ -172,9 +172,9 @@
 
 +(NSData*) dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
-	ssize_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
+	size_t		dataSize = getxattr( [path fileSystemRepresentation], [key UTF8String],
 									NULL, ULONG_MAX, 0, (travLnk ? 0 : XATTR_NOFOLLOW) );
-	if( dataSize == -1 ) {
+	if( dataSize == ULONG_MAX ) {
 		if (error) {
 			*error = [NSError errorWithDomain:NSPOSIXErrorDomain code:errno userInfo:@{NSFilePathErrorKey: path}];
 		}

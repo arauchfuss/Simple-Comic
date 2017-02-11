@@ -104,7 +104,12 @@ NSRect rectFromNegativeRect(NSRect rect)
 #if NSGEOMETRY_TYPES_SAME_AS_CGGEOMETRY_TYPES
     return CGRectStandardize(rect);
 #else
-    return NSRectFromCGRect(CGRectStandardize(NSRectToCGRect(rect)));
+	CGFloat possibleXOrigin = rect.origin.x + rect.size.width;
+	CGFloat possibleYOrigin = rect.origin.y + rect.size.height;
+	
+	return NSMakeRect(possibleXOrigin < rect.origin.x ? possibleXOrigin : rect.origin.x,
+					  possibleYOrigin < rect.origin.y ? possibleYOrigin : rect.origin.y,
+					  fabs(rect.size.width), fabs(rect.size.height));
 #endif
 }
 

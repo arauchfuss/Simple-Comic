@@ -100,7 +100,9 @@ class TSSTThumbnailView: NSView {
 	
 	override func draw(_ rect: NSRect) {
 		var counter: Int = 0
-		var mousePoint: NSPoint = window!.convertFromScreen(NSRect(origin: NSEvent.mouseLocation(), size: .zero)).origin
+		let mouse = NSEvent.mouseLocation()
+		let point = NSMakeRect(mouse.x, mouse.y, 6.0, 6.0)
+		var mousePoint: NSPoint = window!.convertFromScreen(point).origin
 		mousePoint = convert(mousePoint, from: nil)
 		while counter < limit {
 			let thumbnail = dataSource!.imageForPage(at: counter)

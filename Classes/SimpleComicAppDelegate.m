@@ -340,7 +340,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     {
         // Error handling wasn't implemented. Fall back to displaying a "quit anyway" panel.
 		NSAlert *alert = [NSAlert new];
-		alert.messageText = @"Quit";
+		alert.messageText = @"Quit without saving session?";
 		alert.informativeText = @"Could not save changes while quitting. Quit anyway?";
 		[alert addButtonWithTitle:@"Quit anyway"];
 		[alert addButtonWithTitle:@"Cancel"];
@@ -569,29 +569,19 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
         [controller updateSessionObject];
     }
     
-    NSError * error;
-    NSManagedObjectContext * context = [self managedObjectContext];
-	[context lock];
-    BOOL saved = NO;
-    if (context != nil)
-	{
-        if ([context commitEditing])
-		{
-            if (![context save: &error])
-			{
-				// This default error handling implementation should be changed to make sure the error presented includes application specific error recovery. 
-				// For now, simply display 2 panels.
-				[[NSApplication sharedApplication] presentError: error];
-            }
-            else 
-            {
-                saved = YES;
-            }
-        }
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    if (![context commitEditing]) {
+        NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
     }
-	
-	[context unlock];
-    return saved;
+    
+    NSError *error = nil;
+    if (context.hasChanges && ![context save:&error]) {
+        [[NSApplication sharedApplication] presentError:error];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark -
@@ -828,7 +818,8 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 {
     NSString* password = nil;
 	[passwordField setStringValue: @""];
-    if ([NSApp runModalForWindow: passwordPanel] != NSModalResponseCancel) {
+    if([NSApp runModalForWindow: passwordPanel] != NSModalResponseCancel)
+    {
         password = [passwordField stringValue];
     }
 	
@@ -867,7 +858,8 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		
         [self testEncoding: self];
 		guess = NSNotFound;
-        if ([NSApp runModalForWindow: encodingPanel] != NSModalResponseCancel) {
+        if([NSApp runModalForWindow: encodingPanel] != NSModalResponseCancel)
+        {
             guess = [[[encodingMenu itemAtIndex: encodingSelection] representedObject] unsignedIntegerValue];
         }
         [encodingPanel close];

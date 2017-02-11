@@ -338,10 +338,12 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
     BOOL loupe = [session.loupe boolValue];
     NSPoint mouse = [NSEvent mouseLocation];
-	NSPoint localPoint = [pageView convertPoint: [[self window] convertRectFromScreen: (NSRect){.origin = mouse, .size = NSZeroSize}].origin fromView: nil];
-	NSPoint scrollPoint = [pageScrollView convertPoint: [[self window] convertRectFromScreen: (NSRect){.origin = mouse, .size = NSZeroSize}].origin fromView: nil];
-    if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped]) 
-	   && loupe 
+    
+    NSRect point = NSMakeRect(mouse.x, mouse.y, 0, 0);
+    NSPoint localPoint = [pageView convertPoint: [[self window] convertRectFromScreen: point].origin fromView: nil];
+    NSPoint scrollPoint = [pageScrollView convertPoint: [[self window] convertRectFromScreen: point].origin fromView: nil];
+    if(NSMouseInRect(scrollPoint, [pageScrollView bounds], [pageScrollView isFlipped])
+	   && loupe
 	   && [[self window] isKeyWindow]
 	   && pageSelectionInProgress == PageSelectionModeNone)
     {
@@ -387,11 +389,14 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
     [infoPicture setFrameSize: thumbSize];
     [infoPicture setImage: thumb];
+
+    NSRect area = NSMakeRect(point.x, point.y, 0, 0);
+    cursorPoint = [[self window] convertRectToScreen: area].origin;
 	
 	cursorPoint = [[bar window] convertRectToScreen: (NSRect){point, NSZeroSize}].origin;
 	
-    [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height) 
-			   withLimitLeft: NSMinX([[bar window] frame]) 
+    [infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height)
+			   withLimitLeft: NSMinX([[bar window] frame])
 					   right: NSMaxX([[bar window] frame])];
 }
 
@@ -888,7 +893,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				NSInteger coverIndex = [selectedPage.index integerValue];
 				NSString * coverName = [(XADArchive *)[selectedGroup instance] nameOfEntry: coverIndex];
 				[UKXattrMetadataStore setString: coverName
-										 forKey: @"QCCoverName" 
+										 forKey: @"QCCoverName"
 										 atPath: archivePath 
 								   traverseLink: NO
 										  error: nil];
@@ -1262,7 +1267,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-    return [(SimpleComicAppDelegate*)[NSApp delegate] managedObjectContext];
+    return [(SimpleComicAppDelegate *)[NSApp delegate] managedObjectContext];
 }
 
 
@@ -1511,7 +1516,10 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		
         if(statusBar)
         {
-			NSPoint mouseLocation = [[self window] convertRectFromScreen: (NSRect){[NSEvent mouseLocation], NSZeroSize}].origin;
+            NSPoint mouse = [NSEvent mouseLocation];
+            NSRect point = NSMakeRect(mouse.x, mouse.y, 0, 0);
+            NSPoint mouseLocation = [[self window] convertRectFromScreen: point].origin;
+
             NSRect progressRect = [[[self window] contentView] convertRect: [progressBar progressRect] fromView: progressBar];
 			BOOL cursorInside = NSMouseInRect(mouseLocation, progressRect, [[[self window] contentView] isFlipped]);
 			if(cursorInside && ![pageView inLiveResize])

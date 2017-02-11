@@ -209,7 +209,7 @@ CA
                                     <action selector="toggleLoupe:" target="-1" id="1220"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Zoom In" tag="305" keyEquivalent="+" id="1210">
+                            <menuItem title="Zoom In" tag="305" keyEquivalent="=" id="1210">
                                 <connections>
                                     <action selector="zoomIn:" target="-1" id="1211"/>
                                 </connections>
@@ -349,6 +349,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="314"/>
             </connections>
+            <point key="canvasLocation" x="149" y="77"/>
         </menu>
         <customObject id="205" userLabel="Application Delegate" customClass="SimpleComicAppDelegate">
             <connections>
@@ -456,7 +457,7 @@ Gw
             <rect key="contentRect" x="323" y="210" width="346" height="122"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="213" height="90"/>
-            <view key="contentView" id="1081" customClass="TSSTGradientView">
+            <view key="contentView" id="1081">
                 <rect key="frame" x="0.0" y="0.0" width="346" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
