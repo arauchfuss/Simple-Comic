@@ -285,7 +285,7 @@
 		28A266151285C3A700ED6391 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TSSTSessionWindow.xib; sourceTree = "<group>"; };
 		28A2662E1285C73200ED6391 /* DTPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPreferencesController.h; sourceTree = "<group>"; };
 		28A2662F1285C73200ED6391 /* DTPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPreferencesController.m; sourceTree = "<group>"; };
-		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TSSTPageView.h; sourceTree = "<group>"; };
+		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPageView.h; sourceTree = "<group>"; };
 		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "../Custom Windows/DTSessionWindow.h"; sourceTree = "<group>"; };
 		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "../Custom Windows/DTSessionWindow.m"; sourceTree = "<group>"; };
 		28BD08E50C9836E600BD7EAF /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -325,7 +325,6 @@
 		5518C6CB1BDAE10000D50302 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
 		5518C6CD1BDAE10A00D50302 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/TSSTSessionWindow.strings; sourceTree = "<group>"; };
 		5518C6CF1BDAE10C00D50302 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
-		551F49E81CF5341100F8A6B4 /* PrivateMDDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateMDDefines.h; sourceTree = "<group>"; };
 		5526278C1BDEBF29005AAF63 /* TSSTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTImageView.swift; sourceTree = "<group>"; };
 		5526278E1BDEE9BC005AAF63 /* TSSTBezelWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTBezelWindow.swift; sourceTree = "<group>"; };
 		552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTKeyWindow.swift; sourceTree = "<group>"; };
@@ -541,7 +540,6 @@
 			children = (
 				32CA4F630368D1EE00C91783 /* SimpleComic_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
-				551F49E81CF5341100F8A6B4 /* PrivateMDDefines.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";

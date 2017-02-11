@@ -31,7 +31,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class SS_PrefsController;
 @class TSSTSessionWindowController;
 @class TSSTManagedArchive;
 @class TSSTManagedGroup;
