@@ -41,7 +41,7 @@
 #import "TSSTThumbnailView.h"
 #import "TSSTManagedSession.h"
 #import "DTPolishedProgressBar.h"
-#import "DTSessionWindow.h"
+#import "DTWindowCategory.h"
 
 
 @implementation TSSTSessionWindowController
@@ -966,7 +966,7 @@
 {
 	mouseMovedTimer = nil;
 
-	if([(DTSessionWindow *)[self window] isFullscreen])
+	if([[self window] isFullscreen])
 	{
 		[NSCursor setHiddenUntilMouseMoves: YES];
 	}
@@ -1062,7 +1062,7 @@
     NSRect allowedRect;
     NSRect zoomFrame;
     NSRect frame;
-    if([(DTSessionWindow *)[self window] isFullscreen])
+    if([[self window] isFullscreen])
     {
         allowedRect = [[[self window] screen] frame];
         [[self window] setFrame: allowedRect display: YES animate: NO];
@@ -1235,7 +1235,7 @@ images are currently visible and then skips over them.
 /*! This method is called in preparation for saving. */
 - (void)updateSessionObject
 {
-    if(![(DTSessionWindow *)[self window] isFullscreen])
+    if(![[self window] isFullscreen])
     {
         NSValue * postionValue = [NSValue valueWithRect: [[self window] frame]];
         NSData * posData = [NSArchiver archivedDataWithRootObject: postionValue];
@@ -1260,7 +1260,7 @@ images are currently visible and then skips over them.
         [thumbnailPanel orderOut: self];
 		[exposeBezel orderOut: self];
 	}
-    else if([(DTSessionWindow *)[self window] isFullscreen])
+    else if([[self window] isFullscreen])
     {
         [[self window] toggleFullScreen: self];
     }
@@ -1273,7 +1273,7 @@ images are currently visible and then skips over them.
 
 - (void)killAllOptionalUIElements
 {
-    if([(DTSessionWindow *)[self window] isFullscreen])
+    if([[self window] isFullscreen])
     {
         [[self window] toggleFullScreen: self];
     }
@@ -1372,7 +1372,7 @@ images are currently visible and then skips over them.
     int state;
     if([menuItem action] == @selector(toggleFullScreen:))
     {
-        state = [(DTSessionWindow *)[self window] isFullscreen] ? NSOnState : NSOffState;
+        state = [[self window] isFullscreen] ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem action] == @selector(changeTwoPage:))
@@ -1578,7 +1578,7 @@ images are currently visible and then skips over them.
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
 	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [[session valueForKey: TSSTZoomLevel] floatValue]];
-	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
+	float vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
 	{
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);

@@ -30,7 +30,6 @@
 #import "TSSTImageUtilities.h"
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
-#import "DTSessionWindow.h"
 
 #define NOTURN 0
 #define LEFTTURN 1

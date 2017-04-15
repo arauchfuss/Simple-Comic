@@ -1,32 +1,19 @@
 //
-//  DTSessionWindow.m
+//  DTWindowCategory.m
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 7/19/09.
 //  Copyright 2009 Dancing Tortoise Software. All rights reserved.
 //
 
-#import "DTSessionWindow.h"
-#import "TSSTSessionWindowController.h"
-#import "SimpleComicAppDelegate.h"
+#import "DTWindowCategory.h"
 
-@implementation DTSessionWindow
-
-
-- (id) init
-{
-	self = [super init];
-	if (self != nil)
-	{
-	}
-	return self;
-}
+@implementation NSWindow (DTWindowExtension)
 
 - (float)toolbarHeight
 {
     return NSHeight([self frame]) - NSHeight([[self contentView] frame]);
 }
-
 
 
 - (BOOL)isFullscreen

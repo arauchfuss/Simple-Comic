@@ -1,5 +1,5 @@
 //
-//  DTSessionWindow.h
+//  DTWindowCategory.h
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 7/19/09.
@@ -9,9 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface DTSessionWindow : NSWindow
-{
-}
+@interface NSWindow (DTWindowExtension)
 
 
 - (float)toolbarHeight;
