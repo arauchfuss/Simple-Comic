@@ -64,6 +64,10 @@
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B71CC0B81EA2C984004D9E0E /* DTSessionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = B71CC0B61EA2C984004D9E0E /* DTSessionWindow.m */; };
+		B71CC0B91EA2C984004D9E0E /* DTSessionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = B71CC0B71EA2C984004D9E0E /* DTSessionWindow.xib */; };
+		B7284C721EA2CFD600F3A2D4 /* DTConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B7284C711EA2CFD600F3A2D4 /* DTConstants.m */; };
+		B755E2EA1EA327FD00542534 /* DTPageArrayController.m in Sources */ = {isa = PBXBuildFile; fileRef = B755E2E91EA327FD00542534 /* DTPageArrayController.m */; };
 		B75D0BBC1E4C1AD900BEAAAF /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B75D0BBB1E4C1AD900BEAAAF /* images.xcassets */; };
 		FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */; };
 /* End PBXBuildFile section */
@@ -202,6 +206,13 @@
 		77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComicAppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleComicAppDelegate.m; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Simple Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Comic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B71CC0B51EA2C984004D9E0E /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = Session/DTSessionWindow.h; sourceTree = "<group>"; };
+		B71CC0B61EA2C984004D9E0E /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = Session/DTSessionWindow.m; sourceTree = "<group>"; };
+		B71CC0B71EA2C984004D9E0E /* DTSessionWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DTSessionWindow.xib; path = Session/DTSessionWindow.xib; sourceTree = "<group>"; };
+		B7284C701EA2CFD600F3A2D4 /* DTConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTConstants.h; sourceTree = "<group>"; };
+		B7284C711EA2CFD600F3A2D4 /* DTConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTConstants.m; sourceTree = "<group>"; };
+		B755E2E81EA327FD00542534 /* DTPageArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTPageArrayController.h; path = Session/DTPageArrayController.h; sourceTree = "<group>"; };
+		B755E2E91EA327FD00542534 /* DTPageArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTPageArrayController.m; path = Session/DTPageArrayController.m; sourceTree = "<group>"; };
 		B75D0BBB1E4C1AD900BEAAAF /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TSSTPageView.m; path = Session/TSSTPageView.m; sourceTree = "<group>"; };
 		FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TSSTCustomValueTransformers.m; sourceTree = "<group>"; };
@@ -229,6 +240,8 @@
 			children = (
 				77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */,
 				77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */,
+				B7284C701EA2CFD600F3A2D4 /* DTConstants.h */,
+				B7284C711EA2CFD600F3A2D4 /* DTConstants.m */,
 				FAA1C3E808BAB158006F7EC4 /* Session */,
 				288C0C420DCDAB7200EAFF46 /* Thumbnail View */,
 				289CD7620BF15CCC00B5AE01 /* Progress Bar */,
@@ -449,12 +462,17 @@
 		FAA1C3E808BAB158006F7EC4 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
-				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
+				B755E2E81EA327FD00542534 /* DTPageArrayController.h */,
+				B755E2E91EA327FD00542534 /* DTPageArrayController.m */,
+				B71CC0B51EA2C984004D9E0E /* DTSessionWindow.h */,
+				B71CC0B61EA2C984004D9E0E /* DTSessionWindow.m */,
+				B71CC0B71EA2C984004D9E0E /* DTSessionWindow.xib */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D3819101249BE00A37AB2 /* DTToolbarItems.h */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.m */,
+				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
+				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
 				28B34A711013779A006C551C /* DTWindowCategory.h */,
 				28B34A721013779B006C551C /* DTWindowCategory.m */,
 			);
@@ -557,6 +575,7 @@
 				288693250FED554E002C6BF7 /* one_page.tiff in Resources */,
 				288693260FED554E002C6BF7 /* org_size.tiff in Resources */,
 				288693290FED554E002C6BF7 /* rl_order.tiff in Resources */,
+				B71CC0B91EA2C984004D9E0E /* DTSessionWindow.xib in Resources */,
 				2886932A0FED554E002C6BF7 /* rotate_l.tiff in Resources */,
 				2886932B0FED554E002C6BF7 /* rotate_r.tiff in Resources */,
 				2886932C0FED554E002C6BF7 /* thumbnails.tiff in Resources */,
@@ -581,10 +600,13 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
+				B755E2EA1EA327FD00542534 /* DTPageArrayController.m in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
+				B7284C721EA2CFD600F3A2D4 /* DTConstants.m in Sources */,
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
 				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
+				B71CC0B81EA2C984004D9E0E /* DTSessionWindow.m in Sources */,
 				281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */,
 				286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */,
 				283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */,
