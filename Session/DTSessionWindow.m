@@ -103,6 +103,13 @@
     firstPage = [CALayer new];
     secondPage = [CALayer new];
     
+    NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                       [NSNull null], @"position",
+                                       [NSNull null], @"contents",
+                                       [NSNull null], @"bounds",
+                                       nil];
+    firstPage.actions = newActions;
+    [newActions release];
     firstPage.shadowRadius = 5.0;
     firstPage.shadowOffset = CGSizeMake(5, -5);
     firstPage.shadowOpacity = .3;
