@@ -36,6 +36,7 @@
 - (IBAction)shiftPageRight:(id)sender;
 - (IBAction)shiftPageLeft:(id)sender;
 - (IBAction)skipRight:(id)sender;
+- (IBAction)skipLeft:(id)sender;
 
 - (BOOL)canSelectLeft;
 - (BOOL)canSelectRight;

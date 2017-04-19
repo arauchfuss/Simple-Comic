@@ -17,15 +17,12 @@
 		283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
 		284348140DA95C4A00F602E2 /* XADMaster.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
 		284348CE0DA95C5300F602E2 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284348060DA95C4300F602E2 /* XADMaster.framework */; };
-		284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 284D381A101249BE00A37AB2 /* DTToolbarItems.m */; };
 		2851C5A00FC8651C002927E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2851C59F0FC8651C002927E0 /* dsa_pub.pem */; };
-		285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */; };
 		285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285FE32F0F945E2300CD8F96 /* Carbon.framework */; };
 		286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286236010AADDB6200B83E77 /* QuartzCore.framework */; };
 		286AB66A1159838C0087BA97 /* quicklook.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 286AB6691159838C0087BA97 /* quicklook.tiff */; };
 		286AB6D8115C3CFA0087BA97 /* sc_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 286AB6D7115C3CFA0087BA97 /* sc_icon.icns */; };
 		286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
-		286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */; };
 		286BA19E0C4D819400E9D06D /* TSSTInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19A0C4D819400E9D06D /* TSSTInfoWindow.m */; };
 		286BA1A00C4D819400E9D06D /* TSSTImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286BA19C0C4D819400E9D06D /* TSSTImageView.m */; };
 		287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* Sessions_DataModel.xcdatamodel */; };
@@ -462,11 +459,11 @@
 		FAA1C3E808BAB158006F7EC4 /* Session */ = {
 			isa = PBXGroup;
 			children = (
-				B755E2E81EA327FD00542534 /* DTPageArrayController.h */,
-				B755E2E91EA327FD00542534 /* DTPageArrayController.m */,
 				B71CC0B51EA2C984004D9E0E /* DTSessionWindow.h */,
 				B71CC0B61EA2C984004D9E0E /* DTSessionWindow.m */,
 				B71CC0B71EA2C984004D9E0E /* DTSessionWindow.xib */,
+				B755E2E81EA327FD00542534 /* DTPageArrayController.h */,
+				B755E2E91EA327FD00542534 /* DTPageArrayController.m */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D3819101249BE00A37AB2 /* DTToolbarItems.h */,
@@ -604,8 +601,6 @@
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
 				B7284C721EA2CFD600F3A2D4 /* DTConstants.m in Sources */,
-				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
-				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
 				B71CC0B81EA2C984004D9E0E /* DTSessionWindow.m in Sources */,
 				281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */,
 				286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */,
@@ -616,7 +611,6 @@
 				281C0D700CEE6FBA009A9696 /* TSSTBezelWindow.m in Sources */,
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
-				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
 				28B34A731013779B006C551C /* DTWindowCategory.m in Sources */,
 				28FA89161094DA53005D6F0C /* TSSTKeyWindow.m in Sources */,
 				28E39CCB10A5CD6900A027A3 /* DTPolishedProgressBar.m in Sources */,
