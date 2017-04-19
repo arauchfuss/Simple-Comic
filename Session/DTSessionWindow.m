@@ -28,11 +28,11 @@
     self = [super init];
     if (self != nil) {
         _session = newSession;
+        self.pageTurn = 0;
+        self.shouldCascadeWindows = YES;
     }
-    
     return self;
 }
-
 
 
 - (void)dealloc {
@@ -62,7 +62,6 @@
     [super windowDidLoad];
     self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.titlebarAppearsTransparent = YES;
-    self.window.titleVisibility = NSWindowTitleHidden;
     
     pageController.pageOrder = LeftRight;
     pageController.pageLayout = SinglePage;
@@ -78,7 +77,6 @@
     [pageController addObserver: self forKeyPath: @"selectionIndex" options: 0 context: nil];
     [self.session addObserver: self forKeyPath: TSSTTwoPageSpread options: 0 context: nil];
     [self.session addObserver: self forKeyPath: TSSTPageOrder options: 0 context: nil];
-
 
     [pageController bind: @"pageOrder"
                 toObject: self.session
@@ -104,32 +102,6 @@
 - (NSManagedObjectContext *)managedObjectContext
 {
     return [(SimpleComicAppDelegate *)[NSApp delegate] managedObjectContext];
-}
-
-
-- (void)setupPageLayers {
-    [pageView setWantsLayer: YES];
-    CALayer * rootLayer = pageView.layer;
-    rootLayer.delegate = self;
-    rootLayer.backgroundColor = [[NSColor whiteColor] CGColor];
-    firstPage = [CALayer new];
-    secondPage = [CALayer new];
-    
-    NSMutableDictionary *newActions = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                       [NSNull null], @"position",
-                                       [NSNull null], @"contents",
-                                       [NSNull null], @"bounds",
-                                       nil];
-    firstPage.actions = newActions;
-    secondPage.actions = newActions;
-    [newActions release];
-    
-    firstPage.shadowRadius = 5.0;
-    firstPage.shadowOffset = CGSizeMake(5, -5);
-    firstPage.shadowOpacity = .3;
-    secondPage.shadowRadius = 5.0;
-    secondPage.shadowOffset = CGSizeMake(5, -5);
-    secondPage.shadowOpacity = .3;
 }
 
 
@@ -165,10 +137,38 @@
 }
 
 
+#pragma mark -
+#pragma mark Core Animation
+
+
+- (void)setupPageLayers {
+    [pageView setWantsLayer: YES];
+    CALayer * rootLayer = pageView.layer;
+    rootLayer.delegate = self;
+    rootLayer.backgroundColor = [[NSColor whiteColor] CGColor];
+    firstPage = [CALayer new];
+    firstPage.delegate = self;
+    secondPage = [CALayer new];
+    secondPage.delegate = self;
+
+    firstPage.shadowRadius = 5.0;
+    firstPage.shadowOffset = CGSizeMake(5, -5);
+    firstPage.shadowOpacity = .3;
+    secondPage.shadowRadius = 5.0;
+    secondPage.shadowOffset = CGSizeMake(5, -5);
+    secondPage.shadowOpacity = .3;
+}
+
+
 - (void)updatePages {
     TSSTPage * firstPageObject = pageController.firstPage;
     TSSTPage * secondPageObject = pageController.secondPage;
     if(nil != firstPageObject) {
+        // Updating the window title based on the first image.
+        self.window.title = [firstPageObject valueForKey: @"name"];
+        NSString * representationPath = [firstPageObject valueForKey: @"group"] ? [firstPageObject valueForKeyPath: @"group.topLevelGroup.path"] : [firstPageObject valueForKeyPath: @"imagePath"];
+        [[self window] setRepresentedFilename: representationPath];
+        
         firstPage.contents = firstPageObject.pageImage;
         firstPageSize = CGSizeMake([[firstPageObject valueForKey: @"width"] floatValue],
                                [[firstPageObject valueForKey: @"height"] floatValue]);
@@ -190,12 +190,10 @@
     }else {
         [secondPage removeFromSuperlayer];
         secondPageSize = CGSizeZero;
-
     }
     
     [self layoutSublayersOfLayer: pageView.layer];
 
-    
 }
 
 
@@ -211,11 +209,14 @@
         } else {
             scale = insetSize.height / imageSize.height;
         }
-        
-        scaleSize(imageSize, scale);
+        imageSize = scaleSize(imageSize, scale);
 
-        firstPage.bounds = CGRectMake(0, 0, firstPageSize.width * scale, firstPageSize.height * scale);
-        secondPage.bounds = CGRectMake(0, 0, secondPageSize.width * scale, secondPageSize.height * scale);
+        firstPage.bounds = CGRectMake(0, 0,
+                                      firstPageSize.width * imageSize.height / firstPageSize.height,
+                                      imageSize.height);
+        secondPage.bounds = CGRectMake(0, 0,
+                                       secondPageSize.width * imageSize.height / secondPageSize.height,
+                                       imageSize.height);
         
         if([[self.session valueForKey: TSSTPageOrder] boolValue]) {
             firstPage.position = CGPointMake(pageView.bounds.size.width / 2 + firstPage.bounds.size.width/2 + 5,
@@ -238,9 +239,14 @@
     }
 }
 
+
+- (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event {
+    return (id)[NSNull null];
+}
+
+
 #pragma mark -
 #pragma mark Event Handlers
-
 
 
 - (void)keyDown:(NSEvent *)event
@@ -405,6 +411,34 @@
     
     return valid;
 }
+
+/*	This method deals with window resizing.  It is called every time the user clicks
+	the nice little plus button in the upper left of the window. */
+- (NSRect)windowWillUseStandardFrame:(NSWindow *)sender defaultFrame:(NSRect)defaultFrame {
+    if(sender == [self window]) {
+        defaultFrame = [self optimalPageViewRectForRect: defaultFrame];
+    }
+    
+    return defaultFrame;
+}
+
+
+- (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect {
+    NSSize maxImageSize = combinedImageSize(firstPageSize, secondPageSize);
+    float yFixed = NSMaxY(self.window.frame);
+    float xFixed = NSMinX(self.window.frame);
+    NSSize maxSize = NSMakeSize(NSMaxX(boundingRect) - xFixed, yFixed);
+    NSSize minSize = self.window.minSize;
+    NSSize optimal = sizeConstraindedBySize(maxImageSize, maxSize);
+    optimal.width = optimal.width > minSize.width ? optimal.width : minSize.width;
+    optimal.height = optimal.height > minSize.height ? optimal.height : minSize.height;
+
+    NSRect windowFrame = NSMakeRect(xFixed, optimal.height - yFixed, optimal.width, optimal.height);
+    
+    return windowFrame;
+}
+
+
 
 
 @end
