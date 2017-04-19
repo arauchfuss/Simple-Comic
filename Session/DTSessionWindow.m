@@ -154,9 +154,11 @@
         pageView.layer.backgroundColor = [color CGColor];
     }
     else if([keyPath isEqualToString: TSSTTwoPageSpread]) {
-        [self layoutSublayersOfLayer: pageView.layer];
+        [defaults setValue: [self.session valueForKey: TSSTTwoPageSpread] forKey: TSSTTwoPageSpread];
+        [self updatePages];
     }
     else if([keyPath isEqualToString: TSSTPageOrder]) {
+        [defaults setValue: [self.session valueForKey: TSSTPageOrder] forKey: TSSTPageOrder];
         [self layoutSublayersOfLayer: pageView.layer];
     }
     
