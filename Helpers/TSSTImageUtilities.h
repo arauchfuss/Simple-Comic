@@ -29,6 +29,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+NSSize combinedImageSize(NSSize firstSize, NSSize secondSize);
+
 NSSize sizeScalaedToDimension(NSSize size, float dimension);
 
 NSSize sizeConstrainedByDimension(NSSize size, float dimension);

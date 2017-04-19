@@ -31,6 +31,24 @@
 #import "TSSTImageUtilities.h"
 
 
+NSSize combinedImageSize(NSSize firstSize, NSSize secondSize) {
+    
+    if(firstSize.height > secondSize.height)
+    {
+        secondSize = scaleSize(secondSize , firstSize.height / secondSize.height);
+    }
+    else if(firstSize.height < secondSize.height)
+    {
+        firstSize = scaleSize(firstSize , secondSize.height / firstSize.height);
+    }
+    
+    firstSize.width += secondSize.width;
+    
+    return firstSize;
+}
+
+
+
 NSSize sizeConstrainedByDimension(NSSize size, float dimension)
 {
 //	if(size.width > dimension || size.height > dimension)

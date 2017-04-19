@@ -39,7 +39,10 @@
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObserver: self forKeyPath: TSSTBackgroundColor];
     [pageController removeObserver: self forKeyPath: @"selectionIndex"];
+    [self.session removeObserver: self forKeyPath: TSSTPageOrder];
+    [self.session removeObserver: self forKeyPath: TSSTTwoPageSpread];
     [pageController unbind: @"pageOrder"];
+    [pageController unbind: @"pageLayout"];
     [firstPage dealloc];
     [secondPage dealloc];
     [_pageSortDescriptor release];
@@ -71,11 +74,20 @@
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     [defaults addObserver: self forKeyPath: TSSTBackgroundColor options: 0 context: nil];
 
+
     [pageController addObserver: self forKeyPath: @"selectionIndex" options: 0 context: nil];
+    [self.session addObserver: self forKeyPath: TSSTTwoPageSpread options: 0 context: nil];
+    [self.session addObserver: self forKeyPath: TSSTPageOrder options: 0 context: nil];
+
 
     [pageController bind: @"pageOrder"
                 toObject: self.session
              withKeyPath: TSSTPageOrder
+                 options: nil];
+    
+    [pageController bind: @"pageLayout"
+                toObject: self.session
+             withKeyPath: TSSTTwoPageSpread
                  options: nil];
     
     [self setupPageLayers];
@@ -109,10 +121,15 @@
                                        [NSNull null], @"bounds",
                                        nil];
     firstPage.actions = newActions;
+    secondPage.actions = newActions;
     [newActions release];
+    
     firstPage.shadowRadius = 5.0;
     firstPage.shadowOffset = CGSizeMake(5, -5);
     firstPage.shadowOpacity = .3;
+    secondPage.shadowRadius = 5.0;
+    secondPage.shadowOffset = CGSizeMake(5, -5);
+    secondPage.shadowOpacity = .3;
 }
 
 
@@ -132,18 +149,23 @@
     if ([keyPath isEqualToString: @"selectionIndex"]) {
         [self updatePages];
     }
-    else if([keyPath isEqualToString: TSSTBackgroundColor])
-    {
+    else if([keyPath isEqualToString: TSSTBackgroundColor]) {
         NSColor * color = [NSUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
         pageView.layer.backgroundColor = [color CGColor];
     }
-    
+    else if([keyPath isEqualToString: TSSTTwoPageSpread]) {
+        [self layoutSublayersOfLayer: pageView.layer];
+    }
+    else if([keyPath isEqualToString: TSSTPageOrder]) {
+        [self layoutSublayersOfLayer: pageView.layer];
+    }
     
 }
 
 
 - (void)updatePages {
     TSSTPage * firstPageObject = pageController.firstPage;
+    TSSTPage * secondPageObject = pageController.secondPage;
     if(nil != firstPageObject) {
         firstPage.contents = firstPageObject.pageImage;
         firstPageSize = CGSizeMake([[firstPageObject valueForKey: @"width"] floatValue],
@@ -151,17 +173,61 @@
         if(![pageView.layer.sublayers containsObject: firstPage]) {
             [pageView.layer addSublayer: firstPage];
         }
-        [self layoutSublayersOfLayer: pageView.layer];
     }else {
         [firstPage removeFromSuperlayer];
+        firstPageSize = CGSizeZero;
     }
+    
+    if(nil != secondPageObject) {
+        secondPage.contents = secondPageObject.pageImage;
+        secondPageSize = CGSizeMake([[secondPageObject valueForKey: @"width"] floatValue],
+                                   [[secondPageObject valueForKey: @"height"] floatValue]);
+        if(![pageView.layer.sublayers containsObject: secondPage]) {
+            [pageView.layer addSublayer: secondPage];
+        }
+    }else {
+        [secondPage removeFromSuperlayer];
+        secondPageSize = CGSizeZero;
+
+    }
+    
+    [self layoutSublayersOfLayer: pageView.layer];
+
+    
 }
 
 
 - (void)layoutSublayersOfLayer:(CALayer *)layer {
     CGSize imageSize = CGSizeZero;
-    CGSize insetSize = CGSizeZero;
-    if([pageView.layer.sublayers containsObject: firstPage]) {
+    CGSize insetSize = CGSizeMake(pageView.frame.size.width - 20., pageView.frame.size.height - 20.);
+    float scale;
+    if([pageView.layer.sublayers containsObject: secondPage]) {
+        insetSize = CGSizeMake(pageView.frame.size.width - 30., pageView.frame.size.height - 20.);
+        imageSize = combinedImageSize(firstPageSize, secondPageSize);
+        if( insetSize.width / insetSize.height < imageSize.width / imageSize.height) {
+            scale = insetSize.width / imageSize.width;
+        } else {
+            scale = insetSize.height / imageSize.height;
+        }
+        
+        scaleSize(imageSize, scale);
+
+        firstPage.bounds = CGRectMake(0, 0, firstPageSize.width * scale, firstPageSize.height * scale);
+        secondPage.bounds = CGRectMake(0, 0, secondPageSize.width * scale, secondPageSize.height * scale);
+        
+        if([[self.session valueForKey: TSSTPageOrder] boolValue]) {
+            firstPage.position = CGPointMake(pageView.bounds.size.width / 2 + firstPage.bounds.size.width/2 + 5,
+                                             pageView.bounds.size.height / 2);
+            secondPage.position = CGPointMake(pageView.bounds.size.width / 2 - secondPage.bounds.size.width/2 - 5,
+                                              pageView.bounds.size.height / 2);
+        }else{
+            firstPage.position = CGPointMake(pageView.bounds.size.width / 2 - firstPage.bounds.size.width/2 - 5,
+                                             pageView.bounds.size.height / 2);
+            secondPage.position = CGPointMake(pageView.bounds.size.width / 2 + secondPage.bounds.size.width/2 + 5,
+                                              pageView.bounds.size.height / 2);
+        }
+
+    } else if([pageView.layer.sublayers containsObject: firstPage]) {
         insetSize = CGSizeMake(pageView.frame.size.width - 20., pageView.frame.size.height - 20.);
         imageSize = sizeConstraindedBySize(firstPageSize, insetSize);
         firstPage.bounds = CGRectMake(0, 0, imageSize.width, imageSize.height);
@@ -178,20 +244,32 @@
 - (void)keyDown:(NSEvent *)event
 {
     NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
-    
+    int modifier = [event modifierFlags];
+    BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
+
     switch ([charNumber unsignedIntValue])
     {
         case NSUpArrowFunctionKey:
-            [pageController selectNext: self];
+            [pageController selectPrevious: self];
             break;
         case NSDownArrowFunctionKey:
-            [pageController selectPrevious: self];
+            [pageController selectNext: self];
             break;
         case NSLeftArrowFunctionKey:
             [pageController pageLeft: self];
             break;
         case NSRightArrowFunctionKey:
             [pageController pageRight: self];
+            break;
+        case 0x20:	// Spacebar
+            if(shiftKey)
+            {
+                [pageController selectPrevious: self];
+            }
+            else
+            {
+                [pageController selectNext: self];
+            }
             break;
         default:
             [super keyDown: event];
