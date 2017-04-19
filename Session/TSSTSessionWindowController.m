@@ -68,14 +68,6 @@
     [segmentImage setTemplate: YES];
     segmentImage = [NSImage imageNamed: @"hor_scale"];
     [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"one_page"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"two_page"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"rl_order"];
-    [segmentImage setTemplate: YES];
-    segmentImage = [NSImage imageNamed: @"lr_order"];
-    [segmentImage setTemplate: YES];
 	segmentImage = [NSImage imageNamed: @"equal"];
     [segmentImage setTemplate: YES];
 	segmentImage = [NSImage imageNamed: @"thumbnails"];
