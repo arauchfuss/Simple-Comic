@@ -37,6 +37,8 @@ NSSize scaleSize(NSSize aSize, float scale);
 
 NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect);
 
+NSSize sizeConstraindedBySize(NSSize original, NSSize constraint);
+
 NSRect rectFromNegativeRect(NSRect rect);
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image);

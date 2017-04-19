@@ -6,6 +6,7 @@
 //  Copyright 2008 Dancing Tortoise Software. All rights reserved.
 //
 
+
 #import <Cocoa/Cocoa.h>
 @class TSSTPage;
 
@@ -16,6 +17,9 @@
 
 @property (readonly) TSSTPage * firstPage;
 @property (readonly) TSSTPage * secondPage;
+/* This is just a stub for the time being.
+    Long term there may be an arbitrary number of pages on screen. */
+@property (readonly) NSArray * visiblePages;
 
 //+ (NSSet *)keyPathsForValuesAffectingFirstPage;
 //+ (NSSet *)keyPathsForValuesAffectingSecondPage;

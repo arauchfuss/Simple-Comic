@@ -30,6 +30,7 @@
 #import "SimpleComicAppDelegate.h"
 #import <XADMaster/XADArchive.h>
 #import "TSSTSessionWindowController.h"
+#import "DTSessionWindow.h"
 #import "TSSTSortDescriptor.h"
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
@@ -295,7 +296,7 @@ static NSArray * allAvailableStringEncodings(void)
 	if(![[userDefaults valueForKey: TSSTSessionRestore] boolValue])
 	{
 		/* Goes through and deletes all active sessions if the user has auto save turned off */
-		for(TSSTSessionWindowController * sessionWindow in sessions)
+		for(DTSessionWindow * sessionWindow in sessions)
 		{
 			[[sessionWindow window] performClose: self];
 		}
@@ -534,7 +535,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (BOOL)saveContext
 {
-    TSSTSessionWindowController * controller;
+ /*   DTSessionWindow * controller;
     for (controller in sessions)
     {
         [controller updateSessionObject];
@@ -550,7 +551,7 @@ static NSArray * allAvailableStringEncodings(void)
     if (context.hasChanges && ![context save:&error]) {
         [[NSApplication sharedApplication] presentError:error];
         return NO;
-    }
+    } */
     
     return YES;
 }
@@ -567,10 +568,10 @@ static NSArray * allAvailableStringEncodings(void)
 	NSArray * existingSessions = [sessions valueForKey: @"session"];
     if([[settings valueForKey: @"images"] count] > 0 && ![existingSessions containsObject: settings])
     {
-        TSSTSessionWindowController * comicWindow = [[TSSTSessionWindowController alloc] initWithSession: settings];
+        DTSessionWindow * comicWindow = [[DTSessionWindow alloc] initWithSession: settings];
         [sessions addObject: comicWindow];
-        [comicWindow release];
         [comicWindow showWindow: self];
+        [comicWindow release];
     }
 }
 
@@ -578,7 +579,7 @@ static NSArray * allAvailableStringEncodings(void)
 
 - (void)endSession:(NSNotification *)notification
 {
-	TSSTSessionWindowController * controller = [notification object];
+	DTSessionWindow * controller = [notification object];
 	TSSTManagedSession * sessionToRemove = [[controller session] retain];
 	[sessions removeObject: controller];
 	[[self managedObjectContext] deleteObject: sessionToRemove];

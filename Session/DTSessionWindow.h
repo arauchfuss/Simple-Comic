@@ -13,6 +13,11 @@
 @interface DTSessionWindow : NSWindowController <CALayerDelegate> {
     IBOutlet NSView * pageView;
     IBOutlet DTPageArrayController * pageController;
+    
+    CALayer * firstPage;
+    CALayer * secondPage;
+    CGSize firstPageSize;
+    CGSize secondPageSize;
 }
 
 @property (readonly) TSSTManagedSession * session;
@@ -21,7 +26,8 @@
 
 
 - (id)initWithSession:(TSSTManagedSession *)newSession;
-
+- (void)updateSessionObject;
 - (void)setupPageLayers;
+- (void)updatePages;
 
 @end

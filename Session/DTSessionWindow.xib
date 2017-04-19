@@ -15,17 +15,17 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="0.0" y="607" width="480" height="480"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="480" height="480"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XkA-Gf-mAL">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </customView>
                 </subviews>
@@ -37,9 +37,9 @@
         </window>
         <arrayController id="AYU-xj-pU2" customClass="DTPageArrayController">
             <connections>
-                <binding destination="-2" name="contentSet" keyPath="session.images" id="XJn-LZ-mqG"/>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="5Bf-Y9-yeF"/>
                 <binding destination="-2" name="sortDescriptors" keyPath="pageSortDescriptor" id="2iA-RC-4i0"/>
+                <binding destination="-2" name="contentSet" keyPath="session.images" id="XJn-LZ-mqG"/>
             </connections>
         </arrayController>
         <userDefaultsController id="ThU-ym-uyT"/>

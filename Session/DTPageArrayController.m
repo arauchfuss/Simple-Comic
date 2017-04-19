@@ -19,6 +19,7 @@
 
 @dynamic firstPage;
 @dynamic secondPage;
+@dynamic visiblePages;
 
 
 //+ (NSSet *)keyPathsForValuesAffectingFirstPage
@@ -67,6 +68,11 @@
     
     
 	return self.arrangedObjects[(index + 1)];
+}
+
+
+- (NSArray *)visiblePages {
+    return nil;
 }
 
 

@@ -48,6 +48,7 @@ NSSize sizeConstrainedByDimension(NSSize size, float dimension)
     return size;
 }
 
+
 NSSize scaleSize(NSSize aSize, float scale)
 {
     if(NSEqualSizes(aSize , NSZeroSize))
@@ -82,6 +83,25 @@ NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect)
     return NSMakeRect(x, y, size.width, size.height);
 }
 
+
+NSSize sizeConstraindedBySize(NSSize original, NSSize constraint) {
+    NSSize newSize = CGSizeZero;
+    if(constraint.width < original.width || constraint.height < original.height)
+    {
+        if( original.height / original.width > constraint.height / constraint.width)
+        {
+            newSize = scaleSize(original, constraint.height / original.height);
+        }
+        else
+        {
+            newSize = scaleSize(original, constraint.width / original.width);
+        }
+    }
+    
+    return newSize;
+}
+
+
 NSRect rectFromNegativeRect(NSRect rect)
 {
 	CGFloat possibleXOrigin = rect.origin.x + rect.size.width;
@@ -91,6 +111,7 @@ NSRect rectFromNegativeRect(NSRect rect)
 					  possibleYOrigin < rect.origin.y ? possibleYOrigin : rect.origin.y,
 					  fabs(rect.size.width), fabs(rect.size.height));
 }
+
 
 NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)
 {
@@ -155,6 +176,7 @@ CGFloat DegreesToRadians(CGFloat degrees)
 {
 	return degrees * M_PI / 180;
 }
+
 
 CGFloat RadiansToDegrees(CGFloat radians) 
 {
