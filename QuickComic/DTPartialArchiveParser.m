@@ -9,6 +9,10 @@
 #import "DTPartialArchiveParser.h"
 #include <XADMaster/XADArchive.h>
 
+#if !__has_feature(objc_arc)
+#error this file needs to be compiled with Automatic Reference Counting (ARC)
+#endif
+
 @implementation DTPartialArchiveParser
 
 - (id) init
@@ -25,7 +29,7 @@
 	self=[self init];	
 	if(self)
 	{
-		searchString = [search retain];
+		searchString = search;
 		XADArchiveParser * parser = [XADArchiveParser archiveParserForPath: archivePath];
 		if(parser)
 		{
@@ -40,14 +44,6 @@
 	}
 	
 	return self;
-}
-
-
-- (void) dealloc
-{
-	[searchString release];
-	[foundData release];
-	[super dealloc];
 }
 
 
@@ -74,7 +70,7 @@
 		{
 			CSHandle * handle = [parser handleForEntryWithDictionary: dict wantChecksum:YES];
 			if(!handle) [XADException raiseDecrunchException];
-			foundData = [[handle remainingFileContents] retain];
+			foundData = [handle remainingFileContents];
 //			NSLog(@"found %@", encodedName);
 			if([handle hasChecksum]&&![handle isChecksumCorrect])
 			{

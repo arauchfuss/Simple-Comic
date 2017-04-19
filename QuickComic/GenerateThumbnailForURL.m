@@ -16,70 +16,68 @@
    ----------------------------------------------------------------------------- */
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
-    NSAutoreleasePool * pool = [NSAutoreleasePool new];
+    @autoreleasepool {
 	
-	NSString * archivePath = [(NSURL *)url path];
+		NSString * archivePath = [(__bridge NSURL *)url path];
 //	NSLog(@"base path %@",archivePath);
-	NSData * imageData = nil;
-	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
+		NSData * imageData = nil;
+		NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
 //	NSLog(@"page name %@",coverName);
-	NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO];
+		NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO];
 //	NSLog(@"rect %@",coverRectString);
-	CGRect cropRect = CGRectZero;
-	int coverIndex;
-	if(![coverName isEqualToString: @""])
-	{
+		CGRect cropRect = CGRectZero;
+		int coverIndex;
+		if(![coverName isEqualToString: @""])
+		{
 //		NSLog(@"has name");
-		DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithPath: archivePath searchString: coverName];
-		if(![coverRectString isEqualToString: @""])
-		{
-			cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
+			DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithPath: archivePath searchString: coverName];
+			if(![coverRectString isEqualToString: @""])
+			{
+				cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
+			}
+			imageData = [partialArchive searchResult];
 		}
-		imageData = [[partialArchive searchResult] retain];
-		[partialArchive release];
-	}
-	else
+		else
     {
-		XADArchive * archive = [[XADArchive alloc] initWithFile: archivePath];
-		NSMutableArray * fileList = fileListForArchive(archive);
-		
-		if([fileList count] > 0)
-		{
-			[fileList sortUsingDescriptors: fileSort()];
-			coverName = [[fileList objectAtIndex: 0] valueForKey: @"rawName"];
-			coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] intValue];
-			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
-			imageData = [archive contentsOfEntry: coverIndex];
-		}
-		[archive release];
+			XADArchive * archive = [[XADArchive alloc] initWithFile: archivePath];
+			NSMutableArray * fileList = fileListForArchive(archive);
+			
+			if([fileList count] > 0)
+			{
+				[fileList sortUsingDescriptors: fileSort()];
+				coverName = [[fileList objectAtIndex: 0] valueForKey: @"rawName"];
+				coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] intValue];
+				[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
+				imageData = [archive contentsOfEntry: coverIndex];
+			}
 
     }
 
-	if(imageData)
-	{
+		if(imageData)
+		{
 //		NSLog(@"has data");
-		CGImageSourceRef pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)imageData,  NULL);
+			CGImageSourceRef pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)imageData,  NULL);
         CGImageRef currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
         CFRelease(pageSourceRef);
-		CGRect canvasRect;
-		CGRect drawRect;
+			CGRect canvasRect;
+			CGRect drawRect;
         if(CGRectEqualToRect(cropRect, CGRectZero))
-		{
+			{
 //			NSLog(@"no crop");
-			canvasRect.size = fitSizeInSize(maxSize, CGSizeMake( CGImageGetWidth(currentImage), CGImageGetHeight(currentImage)));
-			canvasRect.origin = CGPointZero;
-			drawRect = canvasRect;
-		}
-		else
-		{
+				canvasRect.size = fitSizeInSize(maxSize, CGSizeMake( CGImageGetWidth(currentImage), CGImageGetHeight(currentImage)));
+				canvasRect.origin = CGPointZero;
+				drawRect = canvasRect;
+			}
+			else
+			{
 //			NSLog(@"crop");
-			canvasRect.size = fitSizeInSize(maxSize, cropRect.size);
-			float vertScale = canvasRect.size.height / CGImageGetHeight(currentImage);
-			float horScale = canvasRect.size.width / CGImageGetWidth(currentImage);
-			drawRect.origin = CGPointMake(-(cropRect.origin.x), -(cropRect.origin.y));
-			drawRect.size = CGSizeMake(cropRect.size.width / horScale, cropRect.size.height / vertScale);
-		}
-		
+				canvasRect.size = fitSizeInSize(maxSize, cropRect.size);
+				float vertScale = canvasRect.size.height / CGImageGetHeight(currentImage);
+				float horScale = canvasRect.size.width / CGImageGetWidth(currentImage);
+				drawRect.origin = CGPointMake(-(cropRect.origin.x), -(cropRect.origin.y));
+				drawRect.size = CGSizeMake(cropRect.size.width / horScale, cropRect.size.height / vertScale);
+			}
+			
         CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, NULL);
         if(cgContext)
         {
@@ -91,12 +89,11 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
         CFRelease(currentImage);
         QLThumbnailRequestFlushContext(thumbnail, cgContext);
         CFRelease(cgContext);
-		[imageData release];
-	}
-	
-	
-    [pool release];
+		}
+		
+		
     return noErr;
+    }
 }
 
 

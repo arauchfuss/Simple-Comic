@@ -15,6 +15,10 @@
 #import "UKXattrMetadataStore.h"
 #import <sys/xattr.h>
 
+#if !__has_feature(objc_arc)
+#error this file needs to be compiled with Automatic Reference Counting (ARC)
+#endif
+
 
 @implementation UKXattrMetadataStore
 
@@ -85,7 +89,6 @@
 								errorDescription: &errMsg];
 	if( errMsg )
 	{
-		[errMsg autorelease];
 		[NSException raise: @"UKXattrMetastoreCantSerialize" format: @"%@", errMsg];
 	}
 	else
@@ -152,7 +155,6 @@
 					errorDescription: &errMsg];
 	if( errMsg )
 	{
-		[errMsg autorelease];
 		[NSException raise: @"UKXattrMetastoreCantUnserialize" format: @"%@", errMsg];
 	}
 	
@@ -172,7 +174,7 @@
 {
 	NSMutableData*			data = [[self class] dataForKey: key atPath: path traverseLink: travLnk];
 	
-	return [[[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
+	return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }
 
 @end
