@@ -12,7 +12,7 @@
 @interface NSWindow (DTWindowExtension)
 
 
-- (float)toolbarHeight;
+- (CGFloat)toolbarHeight;
 - (BOOL)isFullscreen;
 
 @end

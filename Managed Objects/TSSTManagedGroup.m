@@ -286,18 +286,18 @@
 	if(!solidDirectory)
 	{
 		[groupLock lock];
-		imageData = [[self instance] contentsOfEntry: index];
+		imageData = [[self instance] contentsOfEntry: (int)index];
 		[groupLock unlock];
 	}
 	else
 	{
-		NSString * name = [[self instance] nameOfEntry: index];
+		NSString * name = [[self instance] nameOfEntry: (int)index];
 		NSString * fileName = [NSString stringWithFormat:@"%li.%@", (long)index, [name pathExtension]];
 		fileName = [solidDirectory stringByAppendingPathComponent: fileName];
 		if(![[NSFileManager defaultManager] fileExistsAtPath: fileName])
 		{
 			[groupLock lock];
-			imageData = [[self instance] contentsOfEntry: index];
+			imageData = [[self instance] contentsOfEntry: (int)index];
 			[groupLock unlock];
 			[imageData writeToFile: fileName options: 0 error: nil];
 		}
@@ -513,12 +513,12 @@
     NSPDFImageRep * rep = [self instance];
     TSSTPage * imageDescription;
     NSMutableSet * pageSet = [NSMutableSet set];
-    int imageCount = [rep pageCount];
-    int pageNumber;
+    NSInteger imageCount = [rep pageCount];
+    NSInteger pageNumber;
     for (pageNumber = 0; pageNumber < imageCount; ++pageNumber)
     {
         imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-        [imageDescription setValue: [NSString stringWithFormat: @"%i", pageNumber + 1] forKey: @"imagePath"];
+        [imageDescription setValue: [NSString stringWithFormat: @"%li", (long)(pageNumber + 1)] forKey: @"imagePath"];
         [imageDescription setValue: @(pageNumber) forKey: @"index"];
         [pageSet addObject: imageDescription];
     }

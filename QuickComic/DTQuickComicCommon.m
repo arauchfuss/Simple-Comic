@@ -10,6 +10,10 @@
 #import "TSSTSortDescriptor.h"
 #import <XADMaster/XADArchive.h>
 
+#if !__has_feature(objc_arc)
+#error this file needs to be compiled with Automatic Reference Counting (ARC)
+#endif
+
 
 static NSArray * fileNameSort = nil;
 
@@ -36,7 +40,7 @@ NSMutableArray * fileListForArchive(XADArchive * archive)
             [fileDescriptions addObject: fileDescription];
         }
     }
-    return [[fileDescriptions retain] autorelease];
+    return fileDescriptions;
 }
 
 
@@ -46,7 +50,6 @@ NSArray * fileSort(void)
     {
         TSSTSortDescriptor * sort = [[TSSTSortDescriptor alloc] initWithKey: @"name" ascending: YES];
         fileNameSort = [[NSArray alloc] initWithObjects: sort, nil];
-        [sort release];
     }
     
     return fileNameSort;

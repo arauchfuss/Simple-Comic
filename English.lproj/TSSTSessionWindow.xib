@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -248,14 +248,14 @@
                             </connections>
                         </button>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="quicklook" id="693" customClass="DTToolbarItem">
+                    <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="NSQuickLookTemplate" id="693" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="27" height="25"/>
                         <size key="maxSize" width="27" height="25"/>
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="12" y="14" width="27" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="quicklook" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
+                            <buttonCell key="cell" type="squareTextured" title="Set Icon" bezelStyle="texturedSquare" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -374,7 +374,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="229" height="42"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="448">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="448">
                         <rect key="frame" x="50" y="10" width="41" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="503">
@@ -393,7 +393,7 @@
                             <binding destination="12" name="maxValue" keyPath="arrangedObjects.@count" id="458"/>
                         </connections>
                     </textField>
-                    <textField verticalHuggingPriority="750" misplaced="YES" id="447">
+                    <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="447">
                         <rect key="frame" x="7" y="10" width="39" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Page:" id="502">
@@ -456,6 +456,7 @@ Gw
         <image name="Loupe" width="15" height="16"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
         <image name="Right To Left" width="38" height="38"/>
@@ -464,7 +465,6 @@ Gw
         <image name="equal" width="11" height="12"/>
         <image name="extract" width="17" height="12"/>
         <image name="hor_scale" width="14" height="12"/>
-        <image name="quicklook" width="16" height="16"/>
         <image name="rotate_l" width="10" height="12"/>
         <image name="rotate_r" width="10" height="12"/>
         <image name="thumbnails" width="12" height="12"/>
