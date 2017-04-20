@@ -697,6 +697,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 	NSMutableArray * allAllowedFilesExtensions = [[TSSTManagedArchive archiveExtensions] mutableCopy];
 	[allAllowedFilesExtensions addObjectsFromArray: [TSSTPage imageExtensions]];
+	[allAllowedFilesExtensions addObject:(NSString*)kUTTypePDF];
 #pragma TODO make a savedSearch constant?
     [allAllowedFilesExtensions addObject: @"savedSearch"];
     [addPagesModal setAllowedFileTypes:allAllowedFilesExtensions];

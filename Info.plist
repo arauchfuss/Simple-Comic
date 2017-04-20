@@ -85,7 +85,7 @@
 			<string>PDF file</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
-				<string>PDF</string>
+				<string>PDF </string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
@@ -451,7 +451,7 @@
 			<dict>
 				<key>com.apple.ostype</key>
 				<array>
-					<string>CBZ</string>
+					<string>CBZ </string>
 				</array>
 				<key>public.filename-extension</key>
 				<array>
@@ -476,7 +476,7 @@
 			<dict>
 				<key>com.apple.ostype</key>
 				<array>
-					<string>CBR</string>
+					<string>CBR </string>
 				</array>
 				<key>public.filename-extension</key>
 				<array>
@@ -500,7 +500,7 @@
 			<dict>
 				<key>com.apple.ostype</key>
 				<array>
-					<string>CB7</string>
+					<string>CB7 </string>
 				</array>
 				<key>public.filename-extension</key>
 				<array>
@@ -582,7 +582,7 @@
 			<dict>
 				<key>com.apple.ostype</key>
 				<array>
-					<string>CB7</string>
+					<string>CB7 </string>
 				</array>
 				<key>public.filename-extension</key>
 				<array>

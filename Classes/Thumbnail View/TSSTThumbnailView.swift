@@ -41,10 +41,10 @@ class TSSTThumbnailView: NSView {
 		let vertGridPos = (index / horCount) % vertCount
 		let thumbRect: NSRect
 		if (dataSource!.session.value(forKey: "pageOrder") as AnyObject?)?.boolValue ?? false {
-			thumbRect = NSMakeRect(CGFloat(horGridPos) * horSide, bounds.maxY - side - CGFloat(vertGridPos) * side, horSide, side)
+			thumbRect = NSRect(x: CGFloat(horGridPos) * horSide, y: bounds.maxY - side - CGFloat(vertGridPos) * side, width: horSide, height: side)
 		}
 		else {
-			thumbRect = NSMakeRect(NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, bounds.maxY - side - CGFloat(vertGridPos) * side, horSide, side)
+			thumbRect = NSRect(x: NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, y: bounds.maxY - side - CGFloat(vertGridPos) * side, width: horSide, height: side)
 		}
 		return thumbRect
 	}
@@ -82,7 +82,8 @@ class TSSTThumbnailView: NSView {
 			thumbLock.lock()
 			let pageCount: Int = (pageController!.content! as AnyObject).count
 			limit = 0
-			while limit < (pageCount) && localIdent == threadIdent && dataSource?.responds(to: #selector(TSSTSessionWindowController.imageForPage(at:))) ?? false {
+			while limit < (pageCount) && localIdent == threadIdent &&
+				dataSource?.responds(to: #selector(TSSTSessionWindowController.imageForPage(at:))) ?? false {
 				autoreleasepool() {
 					dataSource!.imageForPage(at: limit)
 					if (limit % 5) == 0 {
@@ -134,13 +135,16 @@ class TSSTThumbnailView: NSView {
 	}
 	
 	func dwell(_ timer: Timer) {
-		if let userInfo = timer.userInfo as? NSNumber, let hoverIndex = hoverIndex , userInfo.intValue == hoverIndex {
+		if let userInfo = timer.userInfo as? NSNumber,
+			let hoverIndex = hoverIndex,
+			userInfo.intValue == hoverIndex {
 			zoomThumbnail(at: hoverIndex)
 		}
 	}
 
 	@objc(zoomThumbnailAtIndex:) func zoomThumbnail(at index: Int) {
-		guard let arrangedObject = (pageController.arrangedObjects as? NSArray)?[index] as? NSObject, let thumb = arrangedObject.value(forKey: "pageImage") as? NSImage else {
+		guard let arrangedObject = (pageController.arrangedObjects as? NSArray)?[index] as? NSObject,
+			let thumb = arrangedObject.value(forKey: "pageImage") as? NSImage else {
 			assert(false, "could not get image at index \(index)")
 			return
 		}
