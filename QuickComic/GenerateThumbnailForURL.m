@@ -8,12 +8,12 @@
 #import "TSSTImageUtilities.h"
 #import "DTPartialArchiveParser.h"
 
-
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
 
    This function's job is to create thumbnail for designated file as fast as possible
    ----------------------------------------------------------------------------- */
+
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
 	@autoreleasepool {
@@ -50,7 +50,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO error: nil];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}
-
     }
 
 	if(imageData)
@@ -93,13 +92,10 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	
 	
 	}
-	return noErr;
+    return noErr;
 }
 
-
-void CancelThumbnailGeneration(void* thisInterface, QLThumbnailRequestRef thumbnail)
+void CancelThumbnailGeneration(void *thisInterface, QLThumbnailRequestRef thumbnail)
 {
-    // implement only if supported
+    // Implement only if supported
 }
-
-

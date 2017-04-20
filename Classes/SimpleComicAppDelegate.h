@@ -1,31 +1,21 @@
-/*	
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
 
-	Permission is hereby granted, free of charge, to any person 
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
 
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
-	
 	Simple Comic
 	SimpleComicAppDelegate.h
 */
-
 
 #import <Cocoa/Cocoa.h>
 
@@ -39,36 +29,31 @@ NS_ASSUME_NONNULL_BEGIN
 @class DTPreferencesController;
 
 extern NSString *const TSSTPageOrder;
-extern NSString *const TSSTPageZoomRate;
-extern NSString *const TSSTFullscreen;
-extern NSString *const TSSTSavedSelection;
-extern NSString *const TSSTThumbnailSize;
-extern NSString *const TSSTTwoPageSpread;
 extern NSString *const TSSTPageScaleOptions;
-extern NSString *const TSSTIgnoreDonation;
-extern NSString *const TSSTScrollPosition;
-extern NSString *const TSSTConstrainScale;
-extern NSString *const TSSTZoomLevel;
-extern NSString *const TSSTViewRotation;
+extern NSString *const TSSTTwoPageSpread;
+extern NSString *const TSSTStatusbarVisible;
 extern NSString *const TSSTBackgroundColor;
-extern NSString *const TSSTSessionRestore;
-extern NSString *const TSSTScrollersVisible;
-extern NSString *const TSSTAutoPageTurn;
+extern NSString *const TSSTConstrainScale;
 extern NSString *const TSSTWindowAutoResize;
+extern NSString *const TSSTSessionRestore;
+extern NSString *const TSSTEnableSwipe;
 extern NSString *const TSSTLoupeDiameter;
 extern NSString *const TSSTLoupePower;
-extern NSString *const TSSTStatusbarVisible;
 extern NSString *const TSSTLonelyFirstPage;
-extern NSString *const TSSTNestedArchives;
-extern NSString *const TSSTUpdateSelection;
-extern NSString *const TSSTSessionEndNotification;
-extern NSString *const SSDEnableSwipe;
+extern NSString *const TSSTScrollersVisible;
+extern NSString *const TSSTPreserveModDate;
+extern NSString *const TSSTUnifiedTitlebar;
+extern NSString *const TSSTFullscreenToolbar;
 
+extern NSString *const TSSTScrollPosition;
+extern NSString *const TSSTZoomLevel;
+extern NSString *const TSSTViewRotation;
+extern NSString *const TSSTSessionEndNotification;
 
 /*!
     This class is the application delegate.
     It handles the following:
- 
+
     The Core Data store
     File loading
     Session auto-save
@@ -86,10 +71,6 @@ extern NSString *const SSDEnableSwipe;
 @property (weak) IBOutlet NSTextField       * encodingTestField;
 @property (weak) IBOutlet NSPopUpButton     * encodingPopup;
 
-@property (weak) IBOutlet NSPanel * donationPanel;
-
-@property (weak) IBOutlet NSPanel * launchPanel;
-
 
 /* Bound to the encoding list drop down. */
 @property (assign) NSInteger encodingSelection;
@@ -106,7 +87,7 @@ extern NSString *const SSDEnableSwipe;
 @property (readonly) BOOL saveContext;
 
 
-/*  Creates a new Session object based on user prefs and then 
+/*  Creates a new Session object based on user prefs and then
     passes the files array to addFiles:toSesion: */
 - (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files NS_RETURNS_NOT_RETAINED;
 
@@ -121,7 +102,7 @@ extern NSString *const SSDEnableSwipe;
 /*  This method is called at launch, it iterates through all of the saved
     sessions calling windowForSession: for each in turn. */
 - (void)sessionRelaunch;
-    
+
 /*  This method adds any file passed to it to a session.  This includes recursive
 	parsing of archives and folders. */
 - (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session;
@@ -149,10 +130,6 @@ extern NSString *const SSDEnableSwipe;
 /*  These are called by modals that want to end */
 - (IBAction)modalOK:(nullable id)sender;
 - (IBAction)modalCancel:(nullable id)sender;
-
-/* Takes user to the Simple Comic paypal page. */
-- (IBAction)endLaunchPanel:(nullable id)sender;
-- (IBAction)actionStub:(nullable id)sender;
 
 @end
 

@@ -4,8 +4,7 @@
 //
 //  Created by Alexander Rauchfuss on 6/2/07.
 //  Copyright 2007 Dancing Tortoise Software. All rights reserved.
-
-
+//
 
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedGroup+CoreDataProperties.h"
@@ -50,7 +49,7 @@
 }
 
 - (void)didTurnIntoFault
-{	
+{
 	instance = nil;
 	groupLock = nil;
 }
@@ -63,13 +62,13 @@
                               includingResourceValuesForKeys: nil
                                                relativeToURL: nil
                                                        error: &urlError];
-    if (bookmarkData == nil || urlError != nil) {
+    if (bookmarkData == nil || urlError != nil)
+    {
         bookmarkData = nil;
         [NSApp presentError: urlError];
     }
     self.pathData = bookmarkData;
 }
-
 
 
 - (NSString *)path
@@ -81,11 +80,12 @@
                                           relativeToURL: nil
                                     bookmarkDataIsStale: &stale
                                                   error: &urlError];
-    
-    
+	
+	
 	NSString * hardPath = nil;
-    
-    if (fileURL == nil || urlError != nil) {
+	
+    if (fileURL == nil || urlError != nil)
+    {
         fileURL = nil;
         [[self managedObjectContext] deleteObject: self];
         [NSApp presentError: urlError];
@@ -108,11 +108,6 @@
     return nil;
 }
 
-- (NSData *)dataForPageName:(NSString *)name
-{
-    
-    return nil;
-}
 
 - (NSManagedObject *)topLevelGroup
 {
@@ -132,7 +127,8 @@
 	NSManagedObject * nestedDescription;
 	NSError * error = nil;
 	NSArray<NSString*> * nestedFiles = [fileManager contentsOfDirectoryAtPath: folderPath error: &error];
-	if (error) {
+	if (error)
+    {
 		NSLog(@"%@",[error localizedDescription]);
 	}
 	NSString * path, * fileExtension, * fullPath;
@@ -178,7 +174,7 @@
 				[nestedDescription setValue: fullPath forKey: @"imagePath"];
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
-            
+			
 			if(nestedDescription)
 			{
 				[nestedDescription setValue: self forKey: @"group"];
@@ -189,7 +185,7 @@
 
 /**
  Returns a set with all the images found in the key in union with the ones from other groups.
- 
+
  @return NSSet with all images found in context.
 */
 - (NSSet *)nestedImages
@@ -229,7 +225,7 @@
 + (NSArray *)quicklookExtensions
 {
 	static NSArray * extensions = nil;
-
+	
 	if(!extensions)
 	{
 		extensions = @[@"cbr", @"cbz", @"cbt"];
@@ -307,14 +303,10 @@
 			imageData = [NSData dataWithContentsOfFile: fileName];
 		}
 	}
-
+	
     return imageData;
 }
 
-- (NSData *)dataForPageName:(NSString *)name
-{
-    return nil;
-}
 
 - (NSManagedObject *)topLevelGroup
 {
@@ -349,7 +341,7 @@
 		} while (![fileManager createDirectoryAtPath: archivePath withIntermediateDirectories: YES attributes: nil error: &error]);
 		self.solidDirectory = archivePath;
 	}
-    
+	
     for (counter = 0; counter < archivedFilesCount; ++counter)
     {
         NSString *fileName = [imageArchive nameOfEntry: counter];
@@ -364,7 +356,7 @@
 				[nestedDescription setValue: fileName forKey: @"imagePath"];
 				[nestedDescription setValue: @(counter) forKey: @"index"];
             }
-            else if([[NSUserDefaults standardUserDefaults] boolForKey: TSSTNestedArchives] && [[TSSTManagedArchive archiveExtensions] containsObject: extension])
+            else if([[TSSTManagedArchive archiveExtensions] containsObject: extension])
             {
                 fileData = [imageArchive contentsOfEntry: counter];
                 nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
@@ -378,9 +370,9 @@
                     ++collision;
                 } while ([fileManager fileExistsAtPath: archivePath]);
 
-                [[NSFileManager defaultManager] createDirectoryAtPath: [archivePath stringByDeletingLastPathComponent] 
-                                          withIntermediateDirectories: YES 
-                                                           attributes: nil 
+                [[NSFileManager defaultManager] createDirectoryAtPath: [archivePath stringByDeletingLastPathComponent]
+                                          withIntermediateDirectories: YES
+                                                           attributes: nil
                                                                 error: NULL];
                 [[NSFileManager defaultManager] createFileAtPath: archivePath contents: fileData attributes: nil];
 
@@ -433,7 +425,7 @@
 
 /**  Called when Simple Comic encounters a password protected
  archive.  Brings a password dialog forward. */
--(void)archiveNeedsPassword:(XADArchive *)archive
+- (void)archiveNeedsPassword:(XADArchive *)archive
 {
     NSString * password = self.password;
     
@@ -465,7 +457,7 @@
 }
 
 - (NSData *)dataForPageIndex:(NSInteger)index
-{	
+{
     [groupLock lock];
 	PDFPage * page = [[self instance] pageAtIndex: index];
     [groupLock unlock];
@@ -488,12 +480,6 @@
 	NSData * imageData = [pageImage TIFFRepresentation];
 	
     return imageData;
-}
-
-- (NSData *)dataForPageName:(NSString *)name
-{
-    
-    return nil;
 }
 
 /**  Creates an image managedobject for every "page" in a pdf. */

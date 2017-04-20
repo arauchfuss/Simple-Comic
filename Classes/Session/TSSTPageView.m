@@ -1,27 +1,18 @@
-/*	
+/*
 	Copyright (c) 2006-2009 Dancing Tortoise Software
- 
-	Permission is hereby granted, free of charge, to any person 
+
+	Permission is hereby granted, free of charge, to any person
 	obtaining a copy of this software and associated documentation
-	files (the "Software"), to deal in the Software without 
-	restriction, including without limitation the rights to use, 
-	copy, modify, merge, publish, distribute, sublicense, and/or 
+	files (the "Software"), to deal in the Software without
+	restriction, including without limitation the rights to use,
+	copy, modify, merge, publish, distribute, sublicense, and/or
 	sell copies of the Software, and to permit persons to whom the
-	Software is furnished to do so, subject to the following 
+	Software is furnished to do so, subject to the following
 	conditions:
- 
+
 	The above copyright notice and this permission notice shall be
 	included in all copies or substantial portions of the Software.
- 
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
-	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
-	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-	NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
-	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
-	WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
-	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
-	OTHER DEALINGS IN THE SOFTWARE.
-	
+
 	Simple Comic
 	TSSTPageView.m
 */
@@ -115,23 +106,21 @@
 		firstPageImage = first;
         [self startAnimationForImage: firstPageImage];
     }
-    
+	
 	if(second != secondPageImage)
 	{
 		secondPageImage = second;
         [self startAnimationForImage: secondPageImage];
 	}
-
+	
     [self resizeView];
 //    [self correctViewPoint]; // Moved to sessionwindow
 //	[sessionController setPageTurn: 0];
 }
 
 
-
 #pragma mark -
 #pragma mark Animations
-
 
 
 /* Animated GIF method */
@@ -153,14 +142,13 @@
             frameDuration = [[testBMImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
             frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
             [NSTimer scheduledTimerWithTimeInterval: frameDuration
-                                             target: self 
-                                           selector: @selector(animateImage:) 
+                                             target: self
+                                           selector: @selector(animateImage:)
                                            userInfo: animationInfo
                                             repeats: NO];
         }
     }
 }
-
 
 
 - (void)animateImage:(NSTimer *)timer
@@ -172,26 +160,26 @@
     {
         return;
     }
-    
+	
     NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];;
     NSInteger loopCount = [[animationInfo valueForKey: @"loopCount"] integerValue];
     NSInteger frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] integerValue] - 1);
     NSInteger currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] integerValue];
-    
+	
     currentFrame = currentFrame < frameCount ? ++currentFrame : 0;
     if(currentFrame == 0 && loopCount > 1)
     {
         --loopCount;
         [animationInfo setValue: @(loopCount) forKey: @"loopCount"];
     }
-    
+	
     [testImageRep setProperty: NSImageCurrentFrame withValue: @(currentFrame)];
     if(loopCount != 1)
     {
         frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
         frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
         [NSTimer scheduledTimerWithTimeInterval: frameDuration
-                                         target: self selector: @selector(animateImage:) 
+                                         target: self selector: @selector(animateImage:)
                                        userInfo: animationInfo
                                         repeats: NO];
     }
@@ -200,10 +188,8 @@
 }
 
 
-
 #pragma mark -
 #pragma mark Drag and Drop
-
 
 
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
@@ -219,7 +205,6 @@
 }
 
 
-
 - (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pboard = [sender draggingPasteboard];
@@ -231,13 +216,11 @@
 }
 
 
-
 - (void)draggingExited:(id <NSDraggingInfo>)sender
 {
     acceptingDrag = NO;
     [self setNeedsDisplay: YES];
 }
-
 
 
 - (void)draggingEnded:(id <NSDraggingInfo>)sender
@@ -247,13 +230,11 @@
 }
 
 
-
 - (void)concludeDragOperation:(id <NSDraggingInfo>)sender
 {
     acceptingDrag = NO;
     [self setNeedsDisplay: YES];
 }
-
 
 
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
@@ -266,10 +247,8 @@
 		[(SimpleComicAppDelegate *)[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
 		return YES;
 	}
-	
 	return NO;
 }
-
 
 
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
@@ -283,10 +262,8 @@
 }
 
 
-
 #pragma mark -
 #pragma mark Drawing
-
 
 
 - (void)drawRect:(NSRect)aRect
@@ -295,37 +272,39 @@
     {
         return;
     }
-
+	
     [NSGraphicsContext saveGraphicsState];
     NSRect frame = [self frame];
     [self rotationTransformWithFrame: frame];
-
+	
     NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
     [[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
-    
+	
     [firstPageImage drawInRect: [self centerScanRect: firstPageRect]
                       fromRect: NSZeroRect
-                     operation: NSCompositeSourceOver 
+                     operation: NSCompositeSourceOver
                       fraction: 1.0];
-    
+	
     if([secondPageImage isValid])
     {
         [secondPageImage drawInRect: [self centerScanRect: secondPageRect]
                            fromRect: NSZeroRect
-                          operation: NSCompositeSourceOver 
+                          operation: NSCompositeSourceOver
                            fraction: 1.0];
     }
-
-    
+	
+	
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
 	NSBezierPath * highlight;
 	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
 		NSRect selection;
-		if (pageSelection ==0) {
+		if (pageSelection ==0)
+        {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 		}
-		else{
+		else
+        {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 		}
 
@@ -345,30 +324,30 @@
 		highlight = [NSBezierPath bezierPathWithRect: secondPageRect];
 		[highlight fill];
 	}
-
+	
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
-
+	
 	if([sessionController pageSelectionInProgress])
 	{
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment: NSCenterTextAlignment];
-		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Lucida Grande" size: 24], 
+		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
 										   NSForegroundColorAttributeName: [NSColor colorWithCalibratedWhite: 1 alpha: 1.0],
 										   NSParagraphStyleAttributeName: style};
-		NSString * selectionText = @"Click to select page";
+		NSString * selectionText = NSLocalizedString(@"Click to select page", @"");
 		if([sessionController pageSelectionCanCrop])
 		{
-			selectionText = [selectionText stringByAppendingString: @"\nDrag to crop"];
+			selectionText = [selectionText stringByAppendingString: NSLocalizedString(@"\nDrag to crop", @"")];
 		}
 		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
 		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
-		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 10);
+		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 6);
 		[bezel fill];
 		[selectionText drawInRect: bezelRect withAttributes: stringAttributes];
 	}
 	
 	[NSGraphicsContext restoreGraphicsState];
-
+	
     if(acceptingDrag)
     {
         [NSBezierPath setDefaultLineWidth: 6];
@@ -380,13 +359,13 @@
 
 
 /* This method is used to generate the composite loupe image. */
--(NSImage *)imageInRect:(NSRect)rect
+- (NSImage *)imageInRect:(NSRect)rect
 {
     if(![firstPageImage isValid])
     {
         return nil;
     }
-
+	
     NSRect imageRect = imageBounds;
     NSPoint cursorPoint = NSZeroPoint;
 	/* Re-orients the rectangle based on the current page rotation */
@@ -411,14 +390,14 @@
     default:
         break;
     }
-    
+	
 	CGFloat power = [[NSUserDefaults standardUserDefaults] doubleForKey: TSSTLoupePower];
     CGFloat scale;
     CGFloat remainder;
     NSRect firstFragment = NSZeroRect;
     NSRect secondFragment = NSZeroRect;
     NSSize zoomSize;
-
+	
     if([sessionController.session.pageOrder boolValue] || ![secondPageImage isValid])
     {
         scale = NSHeight(imageRect) / [firstPageImage size].height;
@@ -427,7 +406,7 @@
                                    cursorPoint.y / scale - zoomSize.height / 2,
                                    zoomSize.width, zoomSize.height);
         remainder = NSMaxX(firstFragment) - [firstPageImage size].width;
-        
+		
         if([secondPageImage isValid] && remainder > 0)
         {
             cursorPoint.x -= [firstPageImage size].width * scale;
@@ -456,16 +435,16 @@
                                        zoomSize.width, zoomSize.height);
         }
     }
-    
+	
     NSImage * imageFragment = [[NSImage alloc] initWithSize: rect.size];
     [imageFragment lockFocus];
         [self rotationTransformWithFrame: NSMakeRect(0, 0, NSWidth(rect), NSHeight(rect))];
-        
+		
         if(!NSEqualRects(firstFragment, NSZeroRect))
         {
             [firstPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: firstFragment operation: NSCompositeSourceOver fraction: 1.0];
         }
-        
+		
         if(!NSEqualRects(secondFragment, NSZeroRect))
         {
             [secondPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: secondFragment operation: NSCompositeSourceOver fraction: 1.0];
@@ -520,14 +499,14 @@
 	{
 		return;
 	}
-    
+	
 	if([sessionController pageTurn] == 1)
 	{
 		correctOrigin.x = (frameSize.width > viewSize.width) ? (frameSize.width - viewSize.width) : 0;
 	}
 	
 	correctOrigin.y = (frameSize.height > viewSize.height) ? (frameSize.height - viewSize.height) : 0;
-    
+	
     NSScrollView * scrollView = [self enclosingScrollView];
     NSClipView * clipView = [scrollView contentView];
     [clipView scrollToPoint: correctOrigin];
@@ -535,13 +514,12 @@
 }
 
 
-
 - (NSSize)combinedImageSizeForZoom:(CGFloat)zoomScale
 {
 //    float zoomScale = (float)(10.0 + level) / 10.0;
 	NSSize firstSize = firstPageImage ? [firstPageImage size] : NSZeroSize;
 	NSSize secondSize = secondPageImage ? [secondPageImage size] : NSZeroSize;
-    
+	
     if(firstSize.height > secondSize.height)
     {
         secondSize = scaleSize(secondSize , firstSize.height / secondSize.height);
@@ -550,9 +528,9 @@
     {
         firstSize = scaleSize(firstSize , secondSize.height / firstSize.height);
     }
-    
+	
     firstSize.width += secondSize.width;
-    
+	
     if(rotation == 1 || rotation == 3)
     {
         firstSize = NSMakeSize(firstSize.height, firstSize.width);
@@ -573,7 +551,7 @@
     CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
     NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel.doubleValue];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-
+	
     NSSize viewSize = NSZeroSize;
     CGFloat scaleToFit;
 	NSInteger scaling = sessionController.session.scaleOptions.integerValue;
@@ -596,7 +574,7 @@
         {
             scaleToFit = NSWidth(visibleRect) / imageSize.width;
         }
-        
+		
         if([defaults boolForKey: TSSTConstrainScale])
         {
             scaleToFit = scaleToFit > 1 ? 1 : scaleToFit;
@@ -608,10 +586,10 @@
     default:
         break;
     }
-    
+	
     viewSize = NSMakeSize(round(viewSize.width), round(viewSize.height));
     [self setFrameSize: viewSize];
-
+	
     if(![defaults boolForKey: TSSTConstrainScale] &&
 	sessionController.session.scaleOptions.integerValue != 0 )
     {
@@ -625,12 +603,12 @@
         }
         imageSize = scaleSize(imageSize, scaleToFit);
     }
-    
+	
     imageBounds = rectWithSizeCenteredInRect(imageSize, NSMakeRect(0,0,viewSize.width, viewSize.height));
 	NSRect imageRect = imageBounds;
     if(rotation == 1 || rotation == 3)
     {
-        imageRect = rectWithSizeCenteredInRect(NSMakeSize( NSHeight(imageRect), NSWidth(imageRect)), 
+        imageRect = rectWithSizeCenteredInRect(NSMakeSize( NSHeight(imageRect), NSWidth(imageRect)),
                                                NSMakeRect( 0, 0, NSHeight([self frame]), NSWidth([self frame])));
     }
 	firstPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
@@ -681,14 +659,16 @@
 		firstPageSide = NSMakeRect(NSMinX(firstPageRect), 0, NSWidth(bounds) - NSMinX(firstPageRect), NSHeight(bounds));
 	}
 	
-	if (selection == 1) {
+	if (selection == 1)
+    {
 		return firstPageSide;
 	}
 	else if (selection == 2)
 	{
 		return secondPageSide;
 	}
-	else {
+	else
+    {
 		return NSZeroRect;
 	}
 }
@@ -702,10 +682,12 @@
 	}
 	
 	NSRect selection;
-	if (pageSelection == 0) {
+	if (pageSelection == 0)
+    {
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 	}
-	else {
+	else
+    {
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 	}
 	
@@ -727,7 +709,7 @@
 	CGFloat scaling = originalSize.height / pageRect.size.height;
 	pageRect = NSMakeRect(pageRect.origin.x * scaling,
 						  pageRect.origin.y * scaling,
-						  selection.size.width * scaling, 
+						  selection.size.width * scaling,
 						  selection.size.height * scaling);
 	return pageRect;
 }
@@ -735,7 +717,6 @@
 
 #pragma mark -
 #pragma mark Event handling
-
 
 
 - (void)scrollWheel:(NSEvent *)theEvent
@@ -749,20 +730,20 @@
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
 	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
-		
+	
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
 		NSInteger loupeDiameter = [defaultsController integerForKey: TSSTLoupeDiameter];
-		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
-		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
+		loupeDiameter += [theEvent deltaY] > 0 ? -25 : 25;
+		loupeDiameter = loupeDiameter < 200 ? 200 : loupeDiameter;
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
 		[defaultsController setInteger: loupeDiameter forKey: TSSTLoupeDiameter];
 	}
 	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
 	{
 		CGFloat loupePower = [defaultsController doubleForKey: TSSTLoupePower];
-		loupePower += [theEvent deltaY] > 0 ? 1 : -1;
-		loupePower = loupePower < 2 ? 2 : loupePower;
+		loupePower += [theEvent deltaY] > 0 ? -0.5 : 0.5;
+		loupePower = loupePower < 1.5 ? 1.5 : loupePower;
 		loupePower = loupePower > 6 ? 6 : loupePower;
 		[defaultsController setDouble: loupePower forKey: TSSTLoupePower];
 	}
@@ -797,11 +778,10 @@
 	}
     
     
-    if ([defaultsController boolForKey:SSDEnableSwipe] && theEvent.type == NSEventTypeSwipe) {
+    if ([defaultsController boolForKey:TSSTEnableSwipe] && theEvent.type == NSEventTypeSwipe)
+    {
         CGFloat deltaX = [theEvent deltaX];
 		CGFloat deltaY = [theEvent deltaY];
-		//CGFloat deltaZ = [theEvent deltaZ];
-		
 		CGFloat ratio = deltaX / deltaY;
 		if isnan(ratio) {ratio = deltaX;}
         if (deltaX != 0.0 && fabs(ratio) >= 1.0)
@@ -846,7 +826,7 @@
     NSPoint scrollPoint = visible.origin;
     BOOL scrolling = NO;
     CGFloat delta = shiftKey ? 50 * 3 : 50;
-    
+	
 	switch (charNumber)
 	{
 		case NSUpArrowFunctionKey:
@@ -928,17 +908,16 @@
     {
         [self scrollPoint: scrollPoint];
         [sessionController refreshLoupePanel];
-        NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+        NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
             [NSDate date], @"lastTime", @(shiftKey), @"accelerate",
             nil, @"leftTurnStart", nil, @"rightTurnStart", nil];
         scrollTimer = [NSTimer scheduledTimerWithTimeInterval: 1/10
-                                                       target: self 
-                                                     selector: @selector(scroll:) 
+                                                       target: self
+                                                     selector: @selector(scroll:)
                                                      userInfo: userInfo
                                                       repeats: YES];
     }
 }
-
 
 
 - (void)pageUp
@@ -968,7 +947,7 @@
 				scrollPoint = NSMakePoint(NSMaxX(visible), 0);
 				[self scrollPoint: scrollPoint];
 			}
-			else 
+			else
 			{
 				[sessionController setPageTurn: 2];
 				[sessionController previousPage];
@@ -980,9 +959,8 @@
 		scrollPoint.y += visible.size.height;
 		[self scrollPoint: scrollPoint];
 	}
-	
-}
 
+}
 
 
 - (void)pageDown
@@ -999,7 +977,7 @@
 				scrollPoint = NSMakePoint(NSMaxX(visible), NSHeight([self bounds]) - NSHeight(visible));
 				[self scrollPoint: scrollPoint];
 			}
-			else 
+			else
 			{
 				[sessionController setPageTurn: 2];
 				[sessionController nextPage];
@@ -1017,7 +995,7 @@
 				[sessionController setPageTurn: 1];
 				[sessionController nextPage];
 			}
-		}                    
+		}
 	}
 	else
 	{
@@ -1025,7 +1003,6 @@
 		[self scrollPoint: scrollPoint];
 	}
 }
-
 
 
 - (void)keyUp:(NSEvent *)event
@@ -1051,7 +1028,6 @@
 }
 
 
-
 - (void)flagsChanged:(NSEvent *)theEvent
 {
     if([theEvent type] & NSKeyDown && [theEvent modifierFlags] & NSCommandKeyMask)
@@ -1059,7 +1035,6 @@
         scrollKeys = 0;
     }
 }
-
 
 
 - (void)scroll:(NSTimer *)timer
@@ -1072,8 +1047,7 @@
         [self setNeedsDisplay: YES];
         return;
     }
-    
-    BOOL pageTurnAllowed = [[NSUserDefaults standardUserDefaults] boolForKey: TSSTAutoPageTurn];
+	
     NSTimeInterval delay = 0.2;
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSDate * currentDate = [NSDate date];
@@ -1089,43 +1063,43 @@
     if(scrollKeys & 1)
     {
         scrollPoint.y += delta;
-        if(NSMaxY(visible) >= NSMaxY([self frame]) && pageTurnAllowed)
+        if(NSMaxY(visible) >= NSMaxY([self frame]))
         {
             turn = turnDirection ? LEFTTURN : RIGHTTURN;
         }
     }
-    
+	
     if (scrollKeys & 2)
     {
         scrollPoint.y -= delta;
-        if(scrollPoint.y <= 0 && pageTurnAllowed)
+        if(scrollPoint.y <= 0)
         {
             turn = turnDirection ? RIGHTTURN : LEFTTURN;
         }
     }
-    
+	
     if (scrollKeys & 4)
     {
         scrollPoint.x -= delta;
-        if(scrollPoint.x <= 0 && pageTurnAllowed)
+        if(scrollPoint.x <= 0)
         {
             turn = LEFTTURN;
         }
     }
-    
+	
     if (scrollKeys & 8)
     {
         scrollPoint.x += delta;
-        if(NSMaxX(visible) >= NSMaxX([self frame]) && pageTurnAllowed)
+        if(NSMaxX(visible) >= NSMaxX([self frame]))
         {
             turn = RIGHTTURN;
         }
     }
-    
+	
     if(turn != NOTURN)
     {
         difference = 0;
-        
+		
         if(turn == RIGHTTURN)
         {
             directionString = @"rightTurnStart";
@@ -1134,7 +1108,7 @@
         {
             directionString = @"leftTurnStart";
         }
-        
+		
         if(![[timer userInfo] valueForKey: directionString])
         {
             [[timer userInfo] setValue: currentDate forKey: directionString];
@@ -1143,7 +1117,7 @@
         {
             difference = [currentDate timeIntervalSinceDate: [[timer userInfo] valueForKey: directionString]];
         }
-        
+		
         if(difference >= delay)
         {
             if(turn == LEFTTURN)
@@ -1156,7 +1130,7 @@
                 [sessionController pageRight: self];
                 finishTurn = YES;
             }
-            
+			
             [scrollTimer invalidate];
             scrollTimer = nil;
         }
@@ -1166,7 +1140,7 @@
         [[timer userInfo] setValue: nil forKey: @"rightTurnStart"];
         [[timer userInfo] setValue: nil forKey: @"leftTurnStart"];
     }
-    
+	
     if(!finishTurn)
     {
         NSScrollView * scrollView = [self enclosingScrollView];
@@ -1174,10 +1148,9 @@
         [clipView scrollToPoint: [clipView constrainScrollPoint: scrollPoint]];
         [scrollView reflectScrolledClipView: clipView];
     }
-    
+	
     [sessionController refreshLoupePanel];
 }
-
 
 
 - (void)rightMouseDown:(NSEvent *)theEvent
@@ -1187,10 +1160,10 @@
 }
 
 
-
 - (void)mouseDown:(NSEvent *)theEvent
 {
-	if ([sessionController pageSelectionInProgress]) {
+	if ([sessionController pageSelectionInProgress])
+    {
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		cropRect.origin = cursor;
 	}
@@ -1317,7 +1290,7 @@
     if ([event deltaX] == 1)
 	{
         [sessionController pageLeft: self];
-    } 
+    }
 	else if ([event deltaX] == -1)
 	{
         [sessionController pageRight: self];
@@ -1329,13 +1302,13 @@
 {
     static NSTimeInterval nextValidLeft = -1;
     static NSTimeInterval nextValidRight = -1;
-    
+	
     // Prevent more than one rotation in the same direction per second
 	if ([event rotation] > 0.5 && [event timestamp] > nextValidRight)
 	{
 		[sessionController rotateLeft: self];
         nextValidRight = [event timestamp] + 0.75;
-    } 
+    }
 	else if ([event rotation] < -0.5 && [event timestamp] > nextValidLeft)
 	{
 		[sessionController rotateRight: self];
@@ -1393,7 +1366,7 @@
 
 
 - (void)resetCursorRects
-{   
+{
     if([self dragIsPossible])
     {
         [self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];
@@ -1410,4 +1383,3 @@
 
 
 @end
-

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -69,7 +70,7 @@
                 <menuItem title="File" id="255">
                     <menu key="submenu" title="File" id="256">
                         <items>
-                            <menuItem title="Open..." keyEquivalent="o" id="259">
+                            <menuItem title="Open…" keyEquivalent="o" id="259">
                                 <connections>
                                     <action selector="addPages:" target="-1" id="805"/>
                                 </connections>
@@ -94,12 +95,12 @@
                                     <action selector="setArchiveIcon:" target="-1" id="1852"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Capture Page" keyEquivalent="c" id="1866">
+                            <menuItem title="Capture Page…" keyEquivalent="s" id="1866">
                                 <connections>
                                     <action selector="extractPage:" target="-1" id="1867"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Remove Page" id="992">
+                            <menuItem title="Hide Page" id="992">
                                 <string key="keyEquivalent" base64-UTF8="YES">
 CA
 </string>
@@ -114,14 +115,12 @@ CA
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Edit" id="1870">
                         <items>
-                            <menuItem title="Cut" id="1874">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Cut" keyEquivalent="x" id="1874">
                                 <connections>
                                     <action selector="cut:" target="-1" id="1917"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Copy" id="1875">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Copy" keyEquivalent="c" id="1875">
                                 <connections>
                                     <action selector="copy:" target="-1" id="1916"/>
                                 </connections>
@@ -147,12 +146,18 @@ CA
                                     <binding destination="1021" name="value" keyPath="values.statusBarVisisble" id="1339"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Always Show Toolbar in Full Screen" id="hhx-Yd-WrR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <binding destination="1021" name="value" keyPath="values.fullscreenToolbar" id="Mg1-jl-K0Q"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Show Toolbar" keyEquivalent="\" id="1340">
                                 <connections>
                                     <action selector="toggleToolbarShown:" target="-1" id="1341"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Customize Toolbar..." id="1342">
+                            <menuItem title="Customize Toolbar…" id="1342">
                                 <connections>
                                     <action selector="runToolbarCustomizationPalette:" target="-1" id="1343"/>
                                 </connections>
@@ -165,9 +170,9 @@ CA
                                     <action selector="changePageOrder:" target="-1" id="896"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Full Screen" tag="303" keyEquivalent="f" id="338">
+                            <menuItem title="Two Page Spread" keyEquivalent="p" id="977">
                                 <connections>
-                                    <action selector="toggleFullScreen:" target="-1" id="kSJ-u1-vQQ"/>
+                                    <action selector="changeTwoPage:" target="-1" id="978"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Image Scaling" tag="304" id="984">
@@ -178,12 +183,12 @@ CA
                                                 <action selector="changeScaling:" target="-1" id="989"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Scale To Window" tag="401" keyEquivalent="2" id="988">
+                                        <menuItem title="Scale to Window" tag="401" keyEquivalent="2" id="988">
                                             <connections>
                                                 <action selector="changeScaling:" target="-1" id="990"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Scale To Width" tag="402" keyEquivalent="3" id="986">
+                                        <menuItem title="Scale to Width" tag="402" keyEquivalent="3" id="986">
                                             <connections>
                                                 <action selector="changeScaling:" target="-1" id="991"/>
                                             </connections>
@@ -191,25 +196,10 @@ CA
                                     </items>
                                 </menu>
                             </menuItem>
-                            <menuItem title="Two Page Spread" keyEquivalent="p" id="977">
-                                <connections>
-                                    <action selector="changeTwoPage:" target="-1" id="978"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="673">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Thumbnail Exposé" tag="305" keyEquivalent="t" id="670">
-                                <connections>
-                                    <action selector="togglePageExpose:" target="-1" id="1219"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Image Loupe" tag="305" keyEquivalent="u" id="1216">
-                                <connections>
-                                    <action selector="toggleLoupe:" target="-1" id="1220"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Zoom In" tag="305" keyEquivalent="=" id="1210">
+                            <menuItem title="Zoom In" tag="305" keyEquivalent="+" id="1210">
                                 <connections>
                                     <action selector="zoomIn:" target="-1" id="1211"/>
                                 </connections>
@@ -243,6 +233,27 @@ CA
                                     <action selector="noRotation:" target="-1" id="1861"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="zx8-BH-2lG">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Image Loupe" tag="305" keyEquivalent="u" id="1216">
+                                <connections>
+                                    <action selector="toggleLoupe:" target="-1" id="1220"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Thumbnail Exposé" tag="305" keyEquivalent="t" id="670">
+                                <connections>
+                                    <action selector="togglePageExpose:" target="-1" id="1219"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="6Ix-k9-HhW">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Full Screen" tag="303" keyEquivalent="f" id="338">
+                                <connections>
+                                    <action selector="toggleFullScreen:" target="-1" id="kSJ-u1-vQQ"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -271,15 +282,6 @@ CA
                                     <action selector="shiftPageLeft:" target="-1" id="872"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Jump to Page" id="1243">
-                                <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="launchJumpPanel:" target="-1" id="1281"/>
-                                </connections>
-                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="1161">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
@@ -295,16 +297,28 @@ DQ
                                     <action selector="skipLeft:" target="-1" id="1163"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="First Page" keyEquivalent="" id="1065">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="First Page" keyEquivalent="" id="1065">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
                                 <connections>
                                     <action selector="firstPage:" target="-1" id="1069"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Last Page" keyEquivalent="" id="1067">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Last Page" keyEquivalent="" id="1067">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
                                 <connections>
                                     <action selector="lastPage:" target="-1" id="1070"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="KdZ-Mv-Anm">
+                                <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                            </menuItem>
+                            <menuItem title="Jump to Page…" id="1243">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="launchJumpPanel:" target="-1" id="1281"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -364,7 +378,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="292" y="425" width="289" height="138"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="213" height="90"/>
             <view key="contentView" id="469">
                 <rect key="frame" x="0.0" y="0.0" width="289" height="138"/>
@@ -455,7 +469,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="323" y="210" width="346" height="122"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="213" height="90"/>
             <view key="contentView" id="1081">
                 <rect key="frame" x="0.0" y="0.0" width="346" height="122"/>

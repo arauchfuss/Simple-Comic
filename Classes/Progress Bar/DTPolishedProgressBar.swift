@@ -1,28 +1,19 @@
-/*	
+/*
  Copyright (c) 2006-2009 Dancing Tortoise Software
  Created by Alexander Rauchfuss
- 
- Permission is hereby granted, free of charge, to any person 
+
+ Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
- files (the "Software"), to deal in the Software without 
- restriction, including without limitation the rights to use, 
- copy, modify, merge, publish, distribute, sublicense, and/or 
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or
  sell copies of the Software, and to permit persons to whom the
- Software is furnished to do so, subject to the following 
+ Software is furnished to do so, subject to the following
  conditions:
- 
+
  The above copyright notice and this permission notice shall be
  included in all copies or substantial portions of the Software.
- 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
- EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
- OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
- NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
- HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
- WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
- FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR 
- OTHER DEALINGS IN THE SOFTWARE.
- 
+
  DTPolishedProgressBar.swift
 */
 //
@@ -37,16 +28,16 @@ private let barProgressColor = NSColor(deviceRed: 0.44, green: 0.44, blue: 0.44,
 private let borderColor = NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
 
 /**
-Configurable progress bar.  Allows the setting of various style attributes.
+Configurable progress bar. Allows the setting of various style attributes.
 Progress direction can be set.
 */
-class DTPolishedProgressBar : NSView {
-	
+class DTPolishedProgressBar: NSView {
+
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		setFrameSize(frameRect.size)
 	}
-
+	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		setFrameSize(frame.size)
@@ -56,8 +47,8 @@ class DTPolishedProgressBar : NSView {
 List of replacements for the highcontrast flag
 Highlight: NSColor if nil then layout is slightly shifted.
 barFill: This is the gradient of the empty portion of the progress bar
-progressFill: This is the gradient of the filled portion of the pr ituogress bar.
-shadow:  This is the gradient that give the illusion of depth.
+progressFill: This is the gradient of the filled portion of the progress bar.
+shadow: This is the gradient that give the illusion of depth.
 textStyle: Dictionary of string attributes.
 */
 
@@ -82,7 +73,7 @@ textStyle: Dictionary of string attributes.
 			needsDisplay = true
 		}
 	}
-
+	
 	/// This is the section of the view. Users can mouse over and click here.
 	fileprivate(set) var progressRect = NSRect()
 	
@@ -93,7 +84,7 @@ textStyle: Dictionary of string attributes.
 	fileprivate var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFont(ofSize: 10),
 	NSForegroundColorAttributeName: NSColor(deviceWhite: 0.2, alpha: 1)]
 
-	/// Translates a point within the view to an index between `0` and `maxValue`.<br>
+	/// Translates a point within the view to an index between `0` and `maxValue`.
 	/// Progress indicator direction affects the index.
 	@objc(indexForPoint:) func index(for point: NSPoint) -> Int {
 		var index: Int
@@ -102,8 +93,8 @@ textStyle: Dictionary of string attributes.
 		} else {
 			index = Int((progressRect.maxX - point.x) / progressRect.width * CGFloat(maxValue))
 		}
-		index = index >= maxValue ? maxValue - 1 : index;
-		return index;
+		index = index >= maxValue ? maxValue - 1 : index
+		return index
 	}
 
 	/// Draws the progressbar.
@@ -129,17 +120,17 @@ textStyle: Dictionary of string attributes.
 		// Determine label positions and progress rect size+position
 		if leftToRight {
 			fillRect.size.width = bounds2.width * CGFloat(currentValue + 1) / CGFloat(maxValue)
-			indicatorRect.origin.x = round(fillRect.width - 2);
+			indicatorRect.origin.x = round(fillRect.width - 2)
 			
-			leftString = progressString;
-			rightString = totalString;
+			leftString = progressString
+			rightString = totalString
 		} else {
 			fillRect.size.width = bounds2.width * CGFloat(currentValue + 1) / CGFloat(maxValue)
-			fillRect.origin.x = round(bounds2.width - fillRect.width);
+			fillRect.origin.x = round(bounds2.width - fillRect.width)
 			indicatorRect.origin.x = fillRect.minX
 			
-			leftString = totalString;
-			rightString = progressString;
+			leftString = totalString
+			rightString = progressString
 		}
 		
 		let leftSize = leftString.size(withAttributes: numberStyle)
@@ -147,27 +138,27 @@ textStyle: Dictionary of string attributes.
 		
 		// Draw progress
 		barProgressColor.set()
-		NSRectFill(fillRect);
-
+		NSRectFill(fillRect)
+		
 		// Draw indicator
 		NSColor.black.set()
-		NSRectFill(indicatorRect);
-
+		NSRectFill(indicatorRect)
+		
 		// Draw labels
-		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17);
+		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17)
 		leftString.draw(in: leftStringRect, withAttributes: numberStyle)
 		
-		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17);
+		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17)
 		rightString.draw(in: rightStringRect, withAttributes: numberStyle)
-
+		
 		// Draw borders
-		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height);
-		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height);
-
+		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height)
+		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height)
+		
 		borderColor.set()
 		
-		NSRectFillUsingOperation(leftBorder, .sourceOver);
-		NSRectFillUsingOperation(rightBorder, .sourceOver);
+		NSRectFillUsingOperation(leftBorder, .sourceOver)
+		NSRectFillUsingOperation(rightBorder, .sourceOver)
 	}
 	
 	/// This method has been over-ridden to change the progressRect porperty every time the
@@ -194,7 +185,7 @@ textStyle: Dictionary of string attributes.
 		let newArea = NSTrackingArea(rect: progressRect, options: oldArea.options, owner: oldArea.owner, userInfo: oldArea.userInfo)
 		addTrackingArea(newArea)
 	}
-
+	
 	override var mouseDownCanMoveWindow: Bool {
 		return false
 	}

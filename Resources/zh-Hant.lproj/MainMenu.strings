@@ -1,4 +1,3 @@
-//TODO: Commented-out entries are entries that have not been translated
 
 /* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; */
 "5.title" = "將此程式所有視窗移至最前";
@@ -11,15 +10,6 @@
 
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
 "24.title" = "關閉視窗";
-
-/* Class = "NSMenu"; title = "MainMenu"; ObjectID = "29"; */
-"29.title" = "MainMenu";
-
-/* Class = "NSMenuItem"; title = "Simple Comic"; ObjectID = "56"; */
-"56.title" = "Simple Comic";
-
-/* Class = "NSMenu"; title = "Simple Comic"; ObjectID = "57"; */
-"57.title" = "Simple Comic";
 
 /* Class = "NSMenuItem"; title = "About Simple Comic"; ObjectID = "58"; */
 "58.title" = "關於 Simple Comic";
@@ -54,8 +44,8 @@
 /* Class = "NSMenu"; title = "File"; ObjectID = "256"; */
 "256.title" = "檔案";
 
-/* Class = "NSMenuItem"; title = "Open..."; ObjectID = "259"; */
-"259.title" = "開啟...";
+/* Class = "NSMenuItem"; title = "Open…"; ObjectID = "259"; */
+"259.title" = "開啟…";
 
 /* Class = "NSMenuItem"; title = "View"; ObjectID = "336"; */
 "336.title" = "檢視";
@@ -111,17 +101,17 @@
 /* Class = "NSMenu"; title = "Image Scaling"; ObjectID = "985"; */
 "985.title" = "影像比例";
 
-/* Class = "NSMenuItem"; title = "Scale To Width"; ObjectID = "986"; */
+/* Class = "NSMenuItem"; title = "Scale to Width"; ObjectID = "986"; */
 "986.title" = "比例到寬度";
 
 /* Class = "NSMenuItem"; title = "Original Size"; ObjectID = "987"; */
 "987.title" = "原始大小";
 
-/* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
+/* Class = "NSMenuItem"; title = "Scale to Window"; ObjectID = "988"; */
 "988.title" = "視窗比例";
 
-/* Class = "NSMenuItem"; title = "Remove Page"; ObjectID = "992"; */
-"992.title" = "移除所選頁面";
+/* Class = "NSMenuItem"; title = "Hide Page"; ObjectID = "992"; */
+"992.title" = "移除所選頁面"; //TODO
 
 /* Class = "NSMenuItem"; title = "First Page"; ObjectID = "1065"; */
 "1065.title" = "第一頁";
@@ -131,12 +121,6 @@
 
 /* Class = "NSWindow"; title = "Encoding"; ObjectID = "1080"; */
 "1080.title" = "編碼中";
-
-/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "1083"; */
-"1083.title" = "OtherViews";
-
-/* Class = "NSMenuItem"; title = "Item1"; ObjectID = "1086"; */
-"1086.title" = "Item1";
 
 /* Class = "NSMenuItem"; title = "Rotate Left"; ObjectID = "1104"; */
 "1104.title" = "向左旋轉";
@@ -165,17 +149,17 @@
 /* Class = "NSMenuItem"; title = "Image Loupe"; ObjectID = "1216"; */
 "1216.title" = "影像放大鏡";
 
-/* Class = "NSMenuItem"; title = "Jump to Page"; ObjectID = "1243"; */
-//"1243.title" = "Jump to Page";
+/* Class = "NSMenuItem"; title = "Jump to Page…"; ObjectID = "1243"; */
+"1243.title" = "Jump to Page…";
 
 /* Class = "NSMenuItem"; title = "Status Bar"; ObjectID = "1338"; */
-//"1338.title" = "Status Bar";
+"1338.title" = "Status Bar";
 
 /* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "1340"; */
-//"1340.title" = "Show Toolbar";
+"1340.title" = "Show Toolbar";
 
-/* Class = "NSMenuItem"; title = "Customize Toolbar..."; ObjectID = "1342"; */
-//"1342.title" = "Customize Toolbar...";
+/* Class = "NSMenuItem"; title = "Customize Toolbar…"; ObjectID = "1342"; */
+"1342.title" = "Customize Toolbar…";
 
 /* Class = "NSTextFieldCell"; title = "Archive is Password Protected"; ObjectID = "1693"; */
 "1693.title" = "文件被密碼所保護";
@@ -201,14 +185,11 @@
 /* Class = "NSTextFieldCell"; title = "Encoding:"; ObjectID = "1710"; */
 "1710.title" = "編碼中︰";
 
-/* Class = "NSTextFieldCell"; title = "filename"; ObjectID = "1711"; */
-"1711.title" = "filename";
-
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1712"; */
 "1712.title" = "取消";
 
 /* Class = "NSMenuItem"; title = "Set Page as Icon"; ObjectID = "1851"; */
-//"1851.title" = "Set Page as Icon";
+"1851.title" = "Set Page as Icon";
 
 /* Class = "NSMenuItem"; title = "Open Recent"; ObjectID = "1857"; */
 "1857.title" = "最近開啟";
@@ -220,25 +201,25 @@
 "1859.title" = "清除清單";
 
 /* Class = "NSMenuItem"; title = "No Rotation"; ObjectID = "1860"; */
-//"1860.title" = "No Rotation";
+"1860.title" = "No Rotation";
 
-/* Class = "NSMenuItem"; title = "Capture Page"; ObjectID = "1866"; */
-//"1866.title" = "Capture Page";
+/* Class = "NSMenuItem"; title = "Capture Page…"; ObjectID = "1866"; */
+"1866.title" = "Capture Page…";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
-//"1869.title" = "Edit";
+"1869.title" = "Edit";
 
 /* Class = "NSMenu"; title = "Edit"; ObjectID = "1870"; */
-//"1870.title" = "Edit";
+"1870.title" = "Edit";
 
 /* Class = "NSMenuItem"; title = "Cut"; ObjectID = "1874"; */
-//"1874.title" = "Cut";
+"1874.title" = "Cut";
 
 /* Class = "NSMenuItem"; title = "Copy"; ObjectID = "1875"; */
-//"1875.title" = "Copy";
+"1875.title" = "Copy";
 
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "1876"; */
-//"1876.title" = "Paste";
+"1876.title" = "Paste";
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "1879"; */
-//"1879.title" = "Select All";
+"1879.title" = "Select All";

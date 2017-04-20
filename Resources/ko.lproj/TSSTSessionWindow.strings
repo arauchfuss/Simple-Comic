@@ -1,25 +1,6 @@
-//TODO: Commented-out entries are entries that have not been translated
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "6"; */
-"6.title" = "Window";
-
-/* Class = "NSWindow"; title = "InfoPane"; ObjectID = "350"; */
-//"350.title" = "InfoPane";
-
-/* Class = "NSWindow"; title = "Panel"; ObjectID = "363"; */
-//"363.title" = "Panel";
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "373"; */
-"373.title" = "Window";
-
-/* Class = "NSWindow"; title = "Window"; ObjectID = "483"; */
-"483.title" = "Window";
 
 /* Class = "NSTextFieldCell"; title = "Page:"; ObjectID = "502"; */
-//"502.title" = "Page:";
-
-/* Class = "NSTextFieldCell"; title = "9999"; ObjectID = "503"; */
-"503.title" = "9999";
+"502.title" = "Page:";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
 "516.ibShadowedToolTips[0]" = "실제 사이즈";
@@ -28,13 +9,13 @@
 "516.ibShadowedToolTips[1]" = "윈도우에 맞춤";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[2] = "Horizontal Scaling"; ObjectID = "516"; */
-//"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
+"516.ibShadowedToolTips[2]" = "Horizontal Scaling";
 
 /* Class = "NSToolbarItem"; label = "Page Scaling"; ObjectID = "517"; */
-//"517.label" = "Page Scaling";
+"517.label" = "Page Scaling";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Scaling"; ObjectID = "517"; */
-//"517.paletteLabel" = "Page Scaling";
+"517.paletteLabel" = "Page Scaling";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[0] = "Right to Left Page Order"; ObjectID = "519"; */
 "519.ibShadowedToolTips[0]" = "오른쪽에서 왼쪽으로";
@@ -43,10 +24,10 @@
 "519.ibShadowedToolTips[1]" = "왼쪽에서 오른쪽으로";
 
 /* Class = "NSToolbarItem"; label = "Page Order"; ObjectID = "520"; */
-//"520.label" = "Page Order";
+"520.label" = "Page Order";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Order"; ObjectID = "520"; */
-//"520.paletteLabel" = "Page Order";
+"520.paletteLabel" = "Page Order";
 
 /* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[0] = "Single Page Layout"; ObjectID = "522"; */
 "522.ibShadowedToolTips[0]" = "1 페이지 레이아웃";
@@ -55,22 +36,22 @@
 "522.ibShadowedToolTips[1]" = "양면페이지";
 
 /* Class = "NSToolbarItem"; label = "Page Layout"; ObjectID = "523"; */
-//"523.label" = "Page Layout";
+"523.label" = "Page Layout";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Layout"; ObjectID = "523"; */
-//"523.paletteLabel" = "Page Layout";
+"523.paletteLabel" = "Page Layout";
 
 /* Class = "NSToolbarItem"; label = "Turn Page"; ObjectID = "553"; */
-//"553.label" = "Turn Page";
+"553.label" = "Turn Page";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Turn Page"; ObjectID = "553"; */
-//"553.paletteLabel" = "Turn Page";
+"553.paletteLabel" = "Turn Page";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[0] = "Left Page Turn"; ObjectID = "555"; */
-//"555.ibShadowedToolTips[0]" = "Left Page Turn";
+"555.ibShadowedToolTips[0]" = "Left Page Turn";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[1] = "Right Page Turn"; ObjectID = "555"; */
-//"555.ibShadowedToolTips[1]" = "Right Page Turn";
+"555.ibShadowedToolTips[1]" = "Right Page Turn";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "558"; */
 "558.ibShadowedToolTips[0]" = "확대";
@@ -82,13 +63,13 @@
 "558.ibShadowedToolTips[2]" = "원래대로 되돌림";
 
 /* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "559"; */
-//"559.label" = "Zoom";
+"559.label" = "Zoom";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "559"; */
-//"559.paletteLabel" = "Zoom";
+"559.paletteLabel" = "Zoom";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Magnifing Glass"; ObjectID = "573"; */
-//"573.ibShadowedToolTip" = "Magnifing Glass";
+"573.ibShadowedToolTip" = "Magnifing Glass";
 
 /* Class = "NSToolbarItem"; label = "Loupe"; ObjectID = "575"; */
 "575.label" = "이미지 확대경";
@@ -97,19 +78,19 @@
 "575.paletteLabel" = "이미지 확대경";
 
 /* Class = "NSToolbarItem"; label = "Thumbnails"; ObjectID = "577"; */
-//"577.label" = "Thumbnails";
+"577.label" = "Thumbnails";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Thumbnails"; ObjectID = "577"; */
-//"577.paletteLabel" = "Thumbnails";
+"577.paletteLabel" = "Thumbnails";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Thumbnail View"; ObjectID = "578"; */
-//"578.ibShadowedToolTip" = "Thumbnail View";
+"578.ibShadowedToolTip" = "Thumbnail View";
 
 /* Class = "NSToolbarItem"; label = "Rotate"; ObjectID = "585"; */
-//"585.label" = "Rotate";
+"585.label" = "Rotate";
 
-/* Class = "NSToolbarItem"; paletteLabel = "Rotate Pages"; ObjectID = "585"; */
-//"585.paletteLabel" = "Rotate Pages";
+/* Class = "NSToolbarItem"; paletteLabel = "Rotate"; ObjectID = "585"; */
+"585.paletteLabel" = "Rotate";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
 "587.ibShadowedToolTips[0]" = "왼쪽으로 회전";
@@ -118,25 +99,37 @@
 "587.ibShadowedToolTips[1]" = "오른쪽으로 회전";
 
 /* Class = "NSToolbarItem"; label = "Capture Page"; ObjectID = "688"; */
-//"688.label" = "Capture Page";
+"688.label" = "Capture Page";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Capture Page"; ObjectID = "688"; */
-//"688.paletteLabel" = "Capture Page";
+"688.paletteLabel" = "Capture Page";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Capture Page"; ObjectID = "689"; */
-//"689.ibShadowedToolTip" = "Capture Page";
+"689.ibShadowedToolTip" = "Capture Page";
 
 /* Class = "NSToolbarItem"; label = "Set Icon"; ObjectID = "693"; */
-//"693.label" = "Set Icon";
+"693.label" = "Set Icon";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Set Icon"; ObjectID = "693"; */
-//"693.paletteLabel" = "Set Icon";
+"693.paletteLabel" = "Set Icon";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
-//"694.ibShadowedToolTip" = "Set Icon";
+"694.ibShadowedToolTip" = "Set Icon";
 
 /* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
-//"753.title" = "Jump";
+"753.title" = "Jump";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
 "755.title" = "취소";
+
+/* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "fTI-g2-r3b"; */
+"fTI-g2-r3b.label" = "Zoom";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "fTI-g2-r3b"; */
+"fTI-g2-r3b.paletteLabel" = "Zoom";
+
+/* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "lV3-24-KZL"; */
+"lV3-24-KZL.ibShadowedToolTips[0]" = "확대";
+
+/* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "lV3-24-KZL"; */
+"lV3-24-KZL.ibShadowedToolTips[1]" = "축소";

@@ -8,14 +8,14 @@
 
 import Cocoa
 
-final class TSSTInfoView : NSView {
+final class TSSTInfoView: NSView {
 	var bordered: Bool = false
 	var caretPosition: CGFloat = 0 {
 		didSet {
 			needsDisplay = true
 		}
 	}
-
+	
 	override func draw(_ dirtyRect: NSRect) {
 		let bounds = self.bounds
 		NSColor.clear.set()

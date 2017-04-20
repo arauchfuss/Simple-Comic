@@ -1,34 +1,33 @@
-//TODO: Commented-out entries are entries that have not been translated
 
-/* Class = "NSButtonCell"; title = "原始比例缩放"; ObjectID = "229"; */
+/* Class = "NSButtonCell"; title = "Page scaling constrained by resolution"; ObjectID = "229"; */
 "229.title" = "原始比例缩放";
 
-/* Class = "NSButtonCell"; title = "自动保存打开窗口"; ObjectID = "230"; */
+/* Class = "NSButtonCell"; title = "Auto-save open windows"; ObjectID = "230"; */
 "230.title" = "自动保存打开窗口";
 
-/* Class = "NSButtonCell"; title = "自动调整窗口大小"; ObjectID = "231"; */
+/* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
 "231.title" = "自动调整窗口大小";
 
-/* Class = "NSTextFieldCell"; title = "\"最适合窗口\"模式的图片缩放会保持原始比例"; ObjectID = "234"; */
+/* Class = "NSTextFieldCell"; title = "Images will not excede their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
 "234.title" = "\"最适合窗口\"模式的图片缩放会保持原始比例";
 
-/* Class = "NSTextFieldCell"; title = "窗口自动调整到最大显示大小"; ObjectID = "235"; */
+/* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
 "235.title" = "窗口自动调整到最大显示大小";
 
-/* Class = "NSTextFieldCell"; title = "下次启动软件会打开上一次窗口"; ObjectID = "236"; */
+/* Class = "NSTextFieldCell"; title = "Open windows are preserved between exit and relaunch."; ObjectID = "236"; */
 "236.title" = "下次启动软件会打开上一次窗口";
 
-/* Class = "NSTextFieldCell"; title = "背景色"; ObjectID = "239"; */
+/* Class = "NSTextFieldCell"; title = "Background color"; ObjectID = "239"; */
 "239.title" = "背景色";
 
-/* Class = "NSTextFieldCell"; title = "全屏模式下的背景颜色"; ObjectID = "244"; */
+/* Class = "NSTextFieldCell"; title = "This color is displayed around pages in fullscreen mode."; ObjectID = "244"; */
 "244.title" = "全屏模式下的背景颜色";
 
-/* Class = "NSWindow"; title = "偏好设置"; ObjectID = "246"; */
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "246"; */
 "246.title" = "偏好设置";
 
 /* Class = "NSButtonCell"; title = "Enable swipe"; ObjectID = "uvV-P7-bwd"; */
-//"uvV-P7-bwd.title" = "Enable swipe";
+"uvV-P7-bwd.title" = "Enable swipe";
 
 /* Class = "NSTextFieldCell"; title = "Enabling will allow you to navigate back and forth by swiping."; ObjectID = "v7s-SA-lNq"; */
-//"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";
+"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";

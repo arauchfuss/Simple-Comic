@@ -2,7 +2,7 @@
 "Horizontal Fit" = "水平に合わせる";
 
 /* Left to right page order menu item text */
-"Left To Right" = "左から右へ";
+"Left to Right" = "左から右へ";
 
 /* No comment provided by engineer. */
 "Left to Right Page Order" = "左から右へ";
@@ -11,7 +11,7 @@
 "Original Size" = "実際のサイズ";
 
 /* Right to left page order menu item text */
-"Right To Left" = "右から左へ";
+"Right to Left" = "右から左へ";
 
 /* No comment provided by engineer. */
 "Right to Left Page Order" = "右から左へ";
@@ -22,3 +22,18 @@
 /* Two pages are displayed side by side */
 "Two Page Layout" = "見開きページ";
 
+"Click to select page" = "Click to select page";
+
+"\nDrag to crop" = "\nDrag to crop";
+
+"Extract Page" = "Extract Page";
+
+"Extract" = "Extract";
+
+"Quit without saving session?" = "Quit without saving session?";
+
+"Could not save changes while quitting. Quit anyway?" = "Could not save changes while quitting. Quit anyway?";
+
+"Quit anyway" = "Quit anyway";
+
+"Cancel" = "Cancel";

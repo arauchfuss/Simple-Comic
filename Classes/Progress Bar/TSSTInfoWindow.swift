@@ -16,7 +16,7 @@ class TSSTInfoWindow: NSPanel {
 		isOpaque = false
 		ignoresMouseEvents = true
 
-	}	
+	}
 	
 	@objc(caretAtPoint:size:withLimitLeft:right:)
 	func caret(at point: NSPoint, size: NSSize, limitLeft left: CGFloat, limitRight right: CGFloat) {

@@ -3,21 +3,19 @@
 //  QuickComic
 //
 //  Created by Alexander Rauchfuss on 11/10/07.
-//  Copyright 2007 __MyCompanyName__. All rights reserved.
+//  Copyright 2007 Dancing Tortoise Software. All rights reserved.
 //
 
 #import "DTQuickComicCommon.h"
 #import "TSSTSortDescriptor.h"
 #import <XADMaster/XADArchive.h>
 
-
 static NSArray * fileNameSort = nil;
-
 
 NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * archive)
 {
 	NSMutableArray * fileDescriptions = [[NSMutableArray alloc] init];
-	
+
     NSDictionary * fileDescription;
     NSInteger count = [archive numberOfEntries];
     NSInteger index = 0;
@@ -39,7 +37,6 @@ NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * ar
     return fileDescriptions;
 }
 
-
 NSArray<NSSortDescriptor*> * fileSort(void)
 {
     if(!fileNameSort)
@@ -47,7 +44,5 @@ NSArray<NSSortDescriptor*> * fileSort(void)
         TSSTSortDescriptor * sort = [[TSSTSortDescriptor alloc] initWithKey: @"name" ascending: YES];
         fileNameSort = @[sort];
     }
-    
     return fileNameSort;
 }
-

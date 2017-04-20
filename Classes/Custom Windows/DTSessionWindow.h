@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface DTSessionWindow : NSWindow
 
 @property (readonly) CGFloat toolbarHeight;

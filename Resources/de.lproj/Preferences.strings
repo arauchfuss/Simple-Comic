@@ -1,0 +1,33 @@
+
+/* Class = "NSButtonCell"; title = "Page scaling constrained by resolution"; ObjectID = "229"; */
+"229.title" = "Skalierung auf Originalgröße beschränken";
+
+/* Class = "NSButtonCell"; title = "Auto-save open windows"; ObjectID = "230"; */
+"230.title" = "Geöffnete Fenster sichern";
+
+/* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
+"231.title" = "Fenstergröße automatisch anpassen";
+
+/* Class = "NSTextFieldCell"; title = "Images will not excede their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
+"234.title" = "Bilder werden in „An Fenster anpassen“-Ansicht nicht über ihre Originalgröße hinaus vergrößert.";
+
+/* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
+"235.title" = "Fenstergröße wird automatisch an die Seitengröße angepasst.";
+
+/* Class = "NSTextFieldCell"; title = "Open windows are preserved between exit and relaunch."; ObjectID = "236"; */
+"236.title" = "Geöffnete Fenster werden zwischen den Sitzungen gesichert.";
+
+/* Class = "NSTextFieldCell"; title = "Background color"; ObjectID = "239"; */
+"239.title" = "Hintergrundfarbe";
+
+/* Class = "NSTextFieldCell"; title = "This color is displayed around pages in fullscreen mode."; ObjectID = "244"; */
+"244.title" = "Diese Farbe wird in der Vollbildansicht außerhalb der Seiten angezeigt.";
+
+/* Class = "NSWindow"; title = "Preferences"; ObjectID = "246"; */
+"246.title" = "Einstellungen";
+
+/* Class = "NSButtonCell"; title = "Enable swipe"; ObjectID = "uvV-P7-bwd"; */
+"uvV-P7-bwd.title" = "Streichen aktivieren";
+
+/* Class = "NSTextFieldCell"; title = "Enabling will allow you to navigate back and forth by swiping."; ObjectID = "v7s-SA-lNq"; */
+"v7s-SA-lNq.title" = "Ermöglicht die Navigation per Wischgeste.";
