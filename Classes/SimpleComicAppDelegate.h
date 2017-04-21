@@ -84,7 +84,7 @@ extern NSString *const TSSTSessionEndNotification;
 @property (readonly, strong) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong) NSManagedObjectContext *managedObjectContext;
 @property (readonly, copy) NSString *applicationSupportFolder;
-@property (readonly) BOOL saveContext;
+- (BOOL) saveContext;
 
 
 /*  Creates a new Session object based on user prefs and then
