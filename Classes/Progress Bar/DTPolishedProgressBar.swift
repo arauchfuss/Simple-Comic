@@ -94,6 +94,10 @@ textStyle: Dictionary of string attributes.
 			index = Int((progressRect.maxX - point.x) / progressRect.width * CGFloat(maxValue))
 		}
 		index = index >= maxValue ? maxValue - 1 : index
+		// Because maxValue might be 0, making index = -1
+		guard index >= 0 else {
+			return 0
+		}
 		return index
 	}
 

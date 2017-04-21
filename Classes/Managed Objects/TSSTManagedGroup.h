@@ -42,11 +42,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSSTManagedArchive : TSSTManagedGroup
 
-+ (NSArray<NSString*> *)archiveExtensions;
-+ (NSArray<NSString*> *)quicklookExtensions;
 #if __has_feature(objc_class_property)
 @property (class, readonly, copy) NSArray<NSString*> *archiveExtensions;
+@property (class, readonly, copy) NSArray<NSString*> *archiveTypes;
 @property (class, readonly, copy) NSArray<NSString*> *quicklookExtensions;
+#else
++ (NSArray<NSString*> *)archiveExtensions;
++ (NSArray<NSString*> *)archiveTypes;
++ (NSArray<NSString*> *)quicklookExtensions;
 #endif
 /**  Recurses through archives looking for archives and images */
 - (void)nestedArchiveContents;

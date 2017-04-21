@@ -695,22 +695,21 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	[addPagesModal setAllowsMultipleSelection: YES];
     [addPagesModal setCanChooseDirectories: YES];
 
-	NSMutableArray * allAllowedFilesExtensions = [[TSSTManagedArchive archiveExtensions] mutableCopy];
-	[allAllowedFilesExtensions addObjectsFromArray: [TSSTPage imageExtensions]];
-	[allAllowedFilesExtensions addObject:(NSString*)kUTTypePDF];
+	NSMutableArray * allAllowedFileTypes = [[TSSTManagedArchive archiveTypes] mutableCopy];
+	[allAllowedFileTypes addObjectsFromArray: [TSSTPage imageTypes]];
+	[allAllowedFileTypes addObject:(NSString*)kUTTypePDF];
 #pragma TODO make a savedSearch constant?
-    [allAllowedFilesExtensions addObject: @"savedSearch"];
-    [addPagesModal setAllowedFileTypes:allAllowedFilesExtensions];
+    [allAllowedFileTypes addObject: @"com.apple.finder.smart-folder"];
+    [addPagesModal setAllowedFileTypes:allAllowedFileTypes];
 	
 	if([addPagesModal runModal] !=  NSModalResponseCancel)
 	{
 		NSArray<NSURL*> *fileURLs = [addPagesModal URLs];
         NSMutableArray<NSString*> *filePaths = [[NSMutableArray alloc] initWithCapacity:fileURLs.count];
-		NSString * filePath;
 		
         for (NSURL *fileURL in fileURLs)
         {
-            filePath = [fileURL path];
+            NSString * filePath = [fileURL path];
             [filePaths addObject:filePath];
         }
 		

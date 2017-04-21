@@ -219,6 +219,17 @@
 	return extensions;
 }
 
++ (NSArray*)archiveTypes
+{
+	static NSArray * extensions = nil;
+	if(!extensions)
+	{
+		extensions = @[@"com.rarlab.rar-archive", @"cx.c3.cbr-archive", @"public.zip-archive", @"com.pkware.zip-archive", @"cx.c3.cbz-archive", @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive", @"public.archive.lha", @"cx.c3.lha-archive", @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive"];
+	}
+	
+	return extensions;
+}
+
 /**
  @return NSArray with file extensions for which software support QuickLook for.
  */

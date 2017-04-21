@@ -45,13 +45,13 @@ static NSSize monospaceCharacterSize;
 	static NSArray * imageTypes = nil;
 	if(!imageTypes)
 	{
-		NSMutableSet *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.imageTypes.count * 2];
+		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.imageTypes.count * 2];
 		for (NSString *uti in self.imageTypes) {
 			NSArray *fileExts =
 			CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
 			[aimageTypes addObjectsFromArray:fileExts];
 		}
-		imageTypes = [aimageTypes allObjects];
+		imageTypes = [[aimageTypes allObjects] sortedArrayUsingSelector:@selector(compare:)];
 	}
 	
 	return imageTypes;

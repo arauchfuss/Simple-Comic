@@ -65,7 +65,7 @@
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>public.zip-archive</string>
+				<string>com.pkware.zip-archive</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -350,7 +350,7 @@
 			<key>CFBundleTypeName</key>
 			<string>Tar Archive</string>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.tar-archive</string>
