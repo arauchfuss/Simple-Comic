@@ -27,7 +27,7 @@
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedSession.h"
-#import "DTSessionWindow.h"
+#import "DTWindowCategory.h"
 
 #import "Simple_Comic-Swift.h"
 
@@ -918,7 +918,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
 	mouseMovedTimer = nil;
 	
-	if([(DTSessionWindow *)[self window] isFullscreen])
+	if([[self window] isFullscreen])
 	{
 		[NSCursor setHiddenUntilMouseMoves: YES];
 	}
@@ -1007,7 +1007,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     NSRect allowedRect;
     NSRect zoomFrame;
     NSRect frame;
-    if([(DTSessionWindow *)[self window] isFullscreen])
+    if([[self window] isFullscreen])
     {
         allowedRect = [[[self window] screen] frame];
         [[self window] setFrame: allowedRect display: YES animate: NO];
@@ -1173,7 +1173,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)updateSessionObject
 {
-    if(![(DTSessionWindow *)[self window] isFullscreen])
+    if(![[self window] isFullscreen])
     {
         NSValue * postionValue = [NSValue valueWithRect: [[self window] frame]];
         NSData * posData = [NSArchiver archivedDataWithRootObject: postionValue];
@@ -1199,7 +1199,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         [thumbnailPanel orderOut: self];
 		[exposeBezel orderOut: self];
 	}
-    else if([(DTSessionWindow *)[self window] isFullscreen])
+    else if([[self window] isFullscreen])
     {
         [[self window] toggleFullScreen: self];
     }
@@ -1212,7 +1212,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)killAllOptionalUIElements
 {
-    if([(DTSessionWindow *)[self window] isFullscreen])
+    if([[self window] isFullscreen])
     {
         [[self window] toggleFullScreen: self];
     }
@@ -1308,7 +1308,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     int state;
     if([menuItem action] == @selector(toggleFullScreen:))
     {
-        state = [(DTSessionWindow *)[self window] isFullscreen] ? NSOnState : NSOffState;
+        state = [[self window] isFullscreen] ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem action] == @selector(changeTwoPage:))
@@ -1511,7 +1511,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
 	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [session.zoomLevel doubleValue]];
-	CGFloat vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [(DTSessionWindow *)[self window] toolbarHeight];
+	CGFloat vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller])
 	{
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);

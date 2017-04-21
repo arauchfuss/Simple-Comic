@@ -1,5 +1,5 @@
 //
-//  DTSessionWindow.h
+//  DTWindowCategory.h
 //  SimpleComic
 //
 //  Created by Alexander Rauchfuss on 7/19/09.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface DTSessionWindow : NSWindow
+@interface NSWindow (DTWindowExtension)
 
 @property (readonly) CGFloat toolbarHeight;
 @property (getter=isFullscreen, readonly) BOOL fullscreen;

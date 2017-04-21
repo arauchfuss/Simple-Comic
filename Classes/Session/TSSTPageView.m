@@ -22,7 +22,6 @@
 #import "TSSTImageUtilities.h"
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
-#import "DTSessionWindow.h"
 #import "TSSTManagedSession.h"
 
 #define NOTURN 0

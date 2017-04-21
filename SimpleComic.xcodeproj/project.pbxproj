@@ -26,7 +26,7 @@
 		28A2660E1285C35700ED6391 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A2660C1285C35700ED6391 /* MainMenu.xib */; };
 		28A266161285C3A700ED6391 /* TSSTSessionWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */; };
 		28A266301285C73200ED6391 /* DTPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A2662F1285C73200ED6391 /* DTPreferencesController.m */; };
-		28B34A731013779B006C551C /* DTSessionWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34A721013779B006C551C /* DTSessionWindow.m */; };
+		28B34A731013779B006C551C /* DTWindowCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B34A721013779B006C551C /* DTWindowCategory.m */; };
 		28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */; };
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
@@ -289,8 +289,8 @@
 		28A2662E1285C73200ED6391 /* DTPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPreferencesController.h; sourceTree = "<group>"; };
 		28A2662F1285C73200ED6391 /* DTPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPreferencesController.m; sourceTree = "<group>"; };
 		28A8EAB00B412DE5006C036D /* TSSTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTPageView.h; sourceTree = "<group>"; };
-		28B34A711013779A006C551C /* DTSessionWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTSessionWindow.h; path = "../Custom Windows/DTSessionWindow.h"; sourceTree = "<group>"; };
-		28B34A721013779B006C551C /* DTSessionWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTSessionWindow.m; path = "../Custom Windows/DTSessionWindow.m"; sourceTree = "<group>"; };
+		28B34A711013779A006C551C /* DTWindowCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTWindowCategory.h; path = "../Custom Windows/DTWindowCategory.h"; sourceTree = "<group>"; };
+		28B34A721013779B006C551C /* DTWindowCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTWindowCategory.m; path = "../Custom Windows/DTWindowCategory.m"; sourceTree = "<group>"; };
 		28BD08E50C9836E600BD7EAF /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		28C1D55F0DF1FE37003392B4 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		28EF3FBE0E9970BD002AD2EE /* UKXattrMetadataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UKXattrMetadataStore.h; sourceTree = "<group>"; };
@@ -629,8 +629,8 @@
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D3819101249BE00A37AB2 /* DTToolbarItems.h */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.m */,
-				28B34A711013779A006C551C /* DTSessionWindow.h */,
-				28B34A721013779B006C551C /* DTSessionWindow.m */,
+				28B34A711013779A006C551C /* DTWindowCategory.h */,
+				28B34A721013779B006C551C /* DTWindowCategory.m */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -957,7 +957,7 @@
 				55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */,
 				55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */,
 				5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */,
-				28B34A731013779B006C551C /* DTSessionWindow.m in Sources */,
+				28B34A731013779B006C551C /* DTWindowCategory.m in Sources */,
 				5526278D1BDEBF29005AAF63 /* TSSTImageView.swift in Sources */,
 				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
 				28A266301285C73200ED6391 /* DTPreferencesController.m in Sources */,
