@@ -213,7 +213,13 @@
 	static NSArray * extensions = nil;
 	if(!extensions)
 	{
-		extensions = @[@"rar", @"cbr", @"zip", @"cbz", @"7z", @"cb7", @"lha", @"lzh", @"cbt", @"tar"];
+		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.archiveTypes.count];
+		for (NSString *uti in self.archiveTypes) {
+			NSArray *fileExts =
+			CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
+			[aimageTypes addObjectsFromArray:fileExts];
+		}
+		extensions = [[aimageTypes allObjects] sortedArrayUsingSelector:@selector(compare:)];
 	}
 	
 	return extensions;
@@ -224,7 +230,12 @@
 	static NSArray * extensions = nil;
 	if(!extensions)
 	{
-		extensions = @[@"com.rarlab.rar-archive", @"cx.c3.cbr-archive", @"public.zip-archive", @"com.pkware.zip-archive", @"cx.c3.cbz-archive", @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive", @"public.archive.lha", @"cx.c3.lha-archive", @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive"];
+		// TODO: have this expansive?
+		extensions = @[@"com.rarlab.rar-archive", @"cx.c3.cbr-archive",
+					   @"public.zip-archive", @"cx.c3.cbz-archive",
+					   @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive",
+					   @"public.archive.lha", @"cx.c3.lha-archive",
+					   @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive"];
 	}
 	
 	return extensions;

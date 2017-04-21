@@ -65,7 +65,7 @@
 			<string>Viewer</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>com.pkware.zip-archive</string>
+				<string>public.zip-archive</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -262,6 +262,8 @@
 			<array>
 				<string>public.jpeg</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -280,6 +282,8 @@
 			<array>
 				<string>public.png</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -299,6 +303,8 @@
 			<array>
 				<string>public.jpeg-2000</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -317,6 +323,8 @@
 			<array>
 				<string>com.compuserve.gif</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
@@ -355,6 +363,8 @@
 			<array>
 				<string>public.tar-archive</string>
 			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
