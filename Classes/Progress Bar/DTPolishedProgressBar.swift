@@ -149,15 +149,15 @@ textStyle: Dictionary of string attributes.
 		NSRectFill(indicatorRect)
 		
 		// Draw labels
-		let leftStringRect = NSMakeRect(horizontalMargin, bounds2.minY, leftSize.width, 17)
+		let leftStringRect = NSRect(x: horizontalMargin, y: bounds2.minY, width:leftSize.width, height:17)
 		leftString.draw(in: leftStringRect, withAttributes: numberStyle)
 		
-		let rightStringRect = NSMakeRect(bounds2.width - horizontalMargin - rightSize.width, bounds2.minY, rightSize.width, 17)
+		let rightStringRect = NSRect(x: bounds2.width - horizontalMargin - rightSize.width, y: bounds2.minY, width: rightSize.width, height: 17)
 		rightString.draw(in: rightStringRect, withAttributes: numberStyle)
 		
 		// Draw borders
-		let leftBorder = NSMakeRect(0, 0, 1, bounds2.height)
-		let rightBorder = NSMakeRect(bounds2.width-1, 0, 1, bounds2.height)
+		let leftBorder = NSRect(x: 0, y: 0, width: 1, height:bounds2.height)
+		let rightBorder = NSRect(x: bounds2.width - 1, y: 0,width: 1, height: bounds2.height)
 		
 		borderColor.set()
 		

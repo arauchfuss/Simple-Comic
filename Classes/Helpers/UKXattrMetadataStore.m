@@ -37,24 +37,11 @@
 	dataSize = listxattr( [path fileSystemRepresentation],
 							[listBuffer mutableBytes], [listBuffer length],
 							(travLnk ? 0 : XATTR_NOFOLLOW) );
-#if 1
 	NSString *allStrKeys = [[NSString alloc] initWithData:listBuffer encoding:NSUTF8StringEncoding];
 	[allKeys setArray:[allStrKeys componentsSeparatedByString:@"\0"]];
-	if (/*allKeys.count > 0 && */ allKeys.lastObject.length == 0) {
+	if (allKeys.lastObject.length == 0) {
 		[allKeys removeLastObject];
 	}
-#else
-	char*	nameStart = [listBuffer mutableBytes];
-	for(size_t x = 0; x < dataSize; x++ )
-	{
-		if( ((char*)[listBuffer mutableBytes])[x] == 0 )	// End of string.
-		{
-			NSString*	str = @(nameStart);
-			nameStart = [listBuffer mutableBytes] +x +1;
-			[allKeys addObject: str];
-		}
-	}
-#endif
 	
 	return [allKeys copy];
 }
