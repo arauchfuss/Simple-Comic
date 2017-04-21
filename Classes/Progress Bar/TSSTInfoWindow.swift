@@ -15,7 +15,6 @@ class TSSTInfoWindow: NSPanel {
 		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
 		isOpaque = false
 		ignoresMouseEvents = true
-
 	}
 	
 	@objc(caretAtPoint:size:withLimitLeft:right:)
@@ -30,7 +29,7 @@ class TSSTInfoWindow: NSPanel {
 	}
 	
 	@objc(centerAtPoint:)
-	func centerAtPoint(_ center: NSPoint) {
+	func center(at center: NSPoint) {
 		let frame = self.frame
 		let fo = NSPoint(x: center.x - frame.width / 2, y: center.y - frame.height / 2)
 		setFrameOrigin(fo)
@@ -38,7 +37,7 @@ class TSSTInfoWindow: NSPanel {
 	}
 	
 	@objc(resizeToDiameter:)
-	func resizeToDiameter(_ diameter: CGFloat) {
+	func resize(toDiameter diameter: CGFloat) {
 		let frame = self.frame
 		let center = NSPoint(x: frame.minX + frame.width / 2, y: frame.minY + frame.height / 2)
 		setFrame(NSRect(x: center.x - diameter / 2, y: center.y - diameter / 2, width: diameter, height: diameter),

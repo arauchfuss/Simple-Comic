@@ -9,7 +9,7 @@
 import Cocoa
 
 private let stringAttributes: [String: Any] = {
-	let style = NSParagraphStyle.default().mutableCopy() as! NSMutableParagraphStyle
+	let style = NSMutableParagraphStyle()
 	style.lineBreakMode = .byTruncatingHead
 	return [NSFontAttributeName: NSFont.labelFont(ofSize: 14),
 		NSForegroundColorAttributeName: NSColor(calibratedWhite: 1, alpha: 1),
