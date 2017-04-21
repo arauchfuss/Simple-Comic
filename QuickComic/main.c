@@ -16,6 +16,7 @@
 #include <CoreFoundation/CFPlugInCOM.h>
 #include <CoreServices/CoreServices.h>
 #include <QuickLook/QuickLook.h>
+#include "main.h"
 
 // -----------------------------------------------------------------------------
 //	constants
@@ -35,14 +36,6 @@
 // -----------------------------------------------------------------------------
 //	typedefs
 // -----------------------------------------------------------------------------
-
-// The thumbnail generation function to be implemented in GenerateThumbnailForURL.c
-OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize);
-void CancelThumbnailGeneration(void* thisInterface, QLThumbnailRequestRef thumbnail);
-
-// The preview generation function to be implemented in GeneratePreviewForURL.c
-OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options);
-void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview);
 
 // The layout for an instance of QuickLookGeneratorPlugIn
 typedef struct __QuickLookGeneratorPluginType
@@ -171,7 +164,7 @@ HRESULT QuickLookGeneratorQueryInterface(void *thisInstance, REFIID iid, LPVOID 
 //
 ULONG QuickLookGeneratorPluginAddRef(void *thisInstance)
 {
-    return ++((QLGenPlug*) thisInstance)->refCount;
+    return ++((QLGenPlug*)thisInstance)->refCount;
 }
 
 // -----------------------------------------------------------------------------
@@ -183,8 +176,8 @@ ULONG QuickLookGeneratorPluginAddRef(void *thisInstance)
 ULONG QuickLookGeneratorPluginRelease(void *thisInstance)
 {
     ((QLGenPlug*)thisInstance)->refCount -= 1;
-    if (((QLGenPlug*)thisInstance)->refCount == 0){
-        DeallocQuickLookGeneratorPluginType((QLGenPlug*)thisInstance );
+    if (((QLGenPlug*)thisInstance)->refCount == 0) {
+        DeallocQuickLookGeneratorPluginType((QLGenPlug*)thisInstance);
         return 0;
     } else {
         return ((QLGenPlug*) thisInstance )->refCount;
@@ -194,7 +187,7 @@ ULONG QuickLookGeneratorPluginRelease(void *thisInstance)
 // -----------------------------------------------------------------------------
 //  QuickLookGeneratorPluginFactory
 // -----------------------------------------------------------------------------
-void *QuickLookGeneratorPluginFactory(CFAllocatorRef allocator,CFUUIDRef typeID)
+void *QuickLookGeneratorPluginFactory(CFAllocatorRef allocator, CFUUIDRef typeID)
 {
     QLGenPlug *result;
     CFUUIDRef  uuid;

@@ -36,7 +36,7 @@
 		XADArchiveParser * parser = [XADArchiveParser archiveParserForPath: archivePath];
 		if(parser)
 		{
-			[parser setDelegate: self];
+			parser.delegate = self;
 
 			@try { [parser parse]; }
 			@catch(NSException * exception)

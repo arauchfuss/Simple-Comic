@@ -1,12 +1,13 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <CoreServices/CoreServices.h>
 #include <QuickLook/QuickLook.h>
-#include <Cocoa/Cocoa.h>
-#include <XADMaster/XADArchive.h>
+#import <Cocoa/Cocoa.h>
+#import <XADMaster/XADArchive.h>
 #import "DTQuickComicCommon.h"
 #import "UKXattrMetadataStore.h"
 #import "TSSTImageUtilities.h"
 #import "DTPartialArchiveParser.h"
+#include "main.h"
 
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file

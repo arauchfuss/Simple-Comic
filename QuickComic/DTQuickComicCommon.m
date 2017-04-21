@@ -8,6 +8,7 @@
 
 #import "DTQuickComicCommon.h"
 #import "TSSTSortDescriptor.h"
+#import <Cocoa/Cocoa.h>
 #import <XADMaster/XADArchive.h>
 
 static NSArray * fileNameSort = nil;
@@ -18,10 +19,9 @@ NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * ar
 
     NSDictionary * fileDescription;
     NSInteger count = [archive numberOfEntries];
-    NSInteger index = 0;
     NSString * fileName;
 	NSString * rawName;
-    for ( ; index < count; ++index)
+    for (NSInteger index = 0; index < count; ++index)
     {
         fileName = [archive nameOfEntry: index];
 		NSString * dataString = [archive nameOfEntry: index];

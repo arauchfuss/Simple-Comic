@@ -325,6 +325,7 @@
 		552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTTransparentView.swift; sourceTree = "<group>"; };
 		552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDManagedSmartFolder.swift; sourceTree = "<group>"; };
 		5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoView.swift; sourceTree = "<group>"; };
+		5575A1821EAA76AC00C6D178 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		5589952D1A13D4450058830B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5599515C1BDC0A3F0086661A /* Simple Comic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Comic-Bridging-Header.h"; sourceTree = "<group>"; };
 		5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPolishedProgressBar.swift; sourceTree = "<group>"; };
@@ -583,6 +584,7 @@
 				55C374141BD9E6AF006385B6 /* DTQuickComicCommon.m */,
 				55C374181BD9E6AF006385B6 /* GeneratePreviewForURL.m */,
 				55C374191BD9E6AF006385B6 /* GenerateThumbnailForURL.m */,
+				5575A1821EAA76AC00C6D178 /* main.h */,
 				55C3741B1BD9E6AF006385B6 /* main.c */,
 				55C3741A1BD9E6AF006385B6 /* Info.plist */,
 				55A6C3241CEF51F90049D381 /* QuickComic.exp */,
