@@ -472,7 +472,9 @@
 {
     if (!instance)
     {
-        instance = [[PDFDocument alloc] initWithURL: [NSURL fileURLWithPath: self.path]];
+		// This line is needed.
+		NSURL *fileURL = [NSURL fileURLWithPath: self.path];
+        instance = [[PDFDocument alloc] initWithURL: fileURL];
     }
 	
     return instance;
@@ -481,7 +483,7 @@
 - (NSData *)dataForPageIndex:(NSInteger)index
 {
     [groupLock lock];
-	PDFPage * page = [[self instance] pageAtIndex: index];
+	PDFPage * page = [(PDFDocument*)[self instance] pageAtIndex: index];
     [groupLock unlock];
 	
 	NSRect bounds = [page boundsForBox: kPDFDisplayBoxMediaBox];
@@ -507,7 +509,7 @@
 /**  Creates an image managedobject for every "page" in a pdf. */
 - (void)pdfContents
 {
-    NSPDFImageRep * rep = [self instance];
+    PDFDocument * rep = [self instance];
     TSSTPage * imageDescription;
     NSMutableSet<TSSTPage*> * pageSet = [NSMutableSet set];
     NSInteger imageCount = [rep pageCount];
