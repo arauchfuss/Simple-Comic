@@ -498,10 +498,8 @@
 			isa = PBXGroup;
 			children = (
 				55C374501BD9EA8B006385B6 /* Third-party */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				551BABFC1EB0237100EAF64E /* SimpleComic */,
 				55C373FF1BD9E61E006385B6 /* QuickComic */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -573,6 +571,16 @@
 				5500A6511D77712F00321300 /* lsar.exe */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		551BABFC1EB0237100EAF64E /* SimpleComic */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+			);
+			name = SimpleComic;
 			sourceTree = "<group>";
 		};
 		55C373FF1BD9E61E006385B6 /* QuickComic */ = {
