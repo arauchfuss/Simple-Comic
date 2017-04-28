@@ -39,7 +39,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				task.launch()
 				
 				let data = file.readDataToEndOfFile()
-				guard let resultString = String(data: data, encoding: String.Encoding.utf8) else {
+				guard let resultString = String(data: data, encoding: .utf8) else {
 					return
 				}
 				fileNames = resultString.components(separatedBy: "\n")
@@ -84,9 +84,36 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		}
 		
 		var pageNumber = 0
+		let workspace = NSWorkspace.shared()
 		
 		for path in fileNames {
 			let pathExtension = (path as NSString).pathExtension.lowercased()
+			if let fileUTI = try? workspace.type(ofFile: path) {
+				// Handles recognized image files
+				if TSSTPage.imageTypes.contains(fileUTI) {
+					let imageDescription = NSEntityDescription.insertNewObject(forEntityName: "Image", into: managedObjectContext!) as! TSSTPage
+					imageDescription.imagePath = path
+					imageDescription.index = pageNumber as NSNumber
+					pageSet.insert(imageDescription)
+					pageNumber += 1;
+					continue
+				} else if TSSTManagedArchive.archiveTypes.contains(fileUTI) {
+					let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "Archive", into: managedObjectContext!) as! TSSTManagedArchive
+					nestedDescription.name = path
+					nestedDescription.path = path
+					nestedDescription.nestedArchiveContents()
+					nestedDescription.group = self
+					continue
+				} else if UTTypeConformsTo(fileUTI as NSString, kUTTypePDF) {
+					let nestedDescription = NSEntityDescription.insertNewObject(forEntityName: "PDF", into: managedObjectContext!) as! TSSTManagedPDF
+					nestedDescription.name = path
+					nestedDescription.path = path
+					nestedDescription.pdfContents()
+					nestedDescription.group = self
+					continue
+				}
+				//Fall through if we couldn't identify it via UTI
+			}
 			// Handles recognized image files
 			if TSSTPage.imageExtensions.contains(pathExtension) {
 				var imageDescription: TSSTPage

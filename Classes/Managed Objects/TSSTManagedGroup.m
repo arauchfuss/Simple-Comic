@@ -232,7 +232,7 @@
 	{
 		// TODO: have this expansive?
 		extensions = @[@"com.rarlab.rar-archive", @"cx.c3.cbr-archive",
-					   @"public.zip-archive", @"cx.c3.cbz-archive",
+					   (NSString*)kUTTypeZipArchive, @"cx.c3.cbz-archive",
 					   @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive",
 					   @"public.archive.lha", @"cx.c3.lha-archive",
 					   @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive"];
