@@ -236,6 +236,20 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = UniversalDetector;
 		};
+		55F590851EB535D0000B4973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 551BADD11EB032B500EAF64E;
+			remoteInfo = "XADMaster-iOS";
+		};
+		55F590871EB535D0000B4973 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5591221B1EB3D07D007CF99D;
+			remoteInfo = "XADMasterSwift-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -554,8 +568,10 @@
 			isa = PBXGroup;
 			children = (
 				5500A6371D77712F00321300 /* XADMaster.framework */,
-				55A889871EA957ED002AE0DB /* XADMasterSwift.framework */,
+				55F590861EB535D0000B4973 /* XADMaster.framework */,
 				5500A6571D77716000321300 /* XADMaster.framework */,
+				55A889871EA957ED002AE0DB /* XADMasterSwift.framework */,
+				55F590881EB535D0000B4973 /* XADMasterSwift.framework */,
 				5500A6391D77712F00321300 /* libXADMaster.a */,
 				5500A63B1D77712F00321300 /* libXADMaster.win.a */,
 				5500A63D1D77712F00321300 /* libXADMaster.ios.a */,
@@ -892,6 +908,20 @@
 			fileType = "compiled.mach-o.executable";
 			path = DetectorTest;
 			remoteRef = 55C374581BD9EAA1006385B6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55F590861EB535D0000B4973 /* XADMaster.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XADMaster.framework;
+			remoteRef = 55F590851EB535D0000B4973 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55F590881EB535D0000B4973 /* XADMasterSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = XADMasterSwift.framework;
+			remoteRef = 55F590871EB535D0000B4973 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
