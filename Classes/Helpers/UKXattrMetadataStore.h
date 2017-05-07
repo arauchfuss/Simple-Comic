@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param		travLnk
  *				If <code>YES</code>, follows symlinks.
  *	@return		An \c NSArray of <code>NSString</code>s, or \c nil on failure.
- *	@discussion	Return an NSArray of NSStrings containing all xattr names currently set
+ *	@discussion	Returns an \c NSArray of <code>NSString</code>s containing all xattr names currently set
  *				for the file at the specified path.
  */
 +(nullable NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk;
@@ -83,7 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param		outError
  *				If the method does not complete successfully, upon return 
  *				contains an \c NSError object that describes the problem.
- *	@return		\c YES on success, \NO on failure.
+ *	@return		\c YES on success, \c NO on failure.
  *	@discussion	Set the xattr with name \c key to the UTF8 representation of <code>str</code>.
  */
 +(BOOL) setString:(NSString*)str forKey:(NSString*)key
@@ -155,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param		error
  *				If the method does not complete successfully, upon return
  *				contains an \c NSError object that describes the problem.
- *	@return		\c YES on success, \NO on failure.
+ *	@return		\c YES on success, \c NO on failure.
  *	@discussion	Set the xattr with name \c key to the raw data in <code>data</code>.
  */
 +(BOOL) setData:(NSData*)data forKey:(NSString*)key
@@ -226,8 +226,8 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param		error
  *				If the method does not complete successfully, upon return
  *				contains an \c NSError object that describes the problem.
- *	@return		\c YES on success, \NO on failure.
- *	@discussion	Set the xattr with name key to an XML property list representation of
+ *	@return		\c YES on success, \c NO on failure.
+ *	@discussion	Set the xattr with name \c key to an XML property list representation of
  *				the specified object (or object graph).
  */
 +(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
