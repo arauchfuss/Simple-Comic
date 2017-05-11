@@ -618,11 +618,10 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //	[[self managedObjectContext] lock];
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	BOOL isDirectory;
-    TSSTPage * fileDescription;
-    NSMutableSet<TSSTPage *> * pageSet = [[NSMutableSet alloc] initWithSet: session.images];
+    NSMutableSet<TSSTPage *> * pageSet = [session.images mutableCopy];
 	for (NSString *path in paths)
 	{
-		fileDescription = nil;
+		TSSTPage * fileDescription = nil;
 		NSString *fileExtension = [[path pathExtension] lowercaseString];
 		BOOL exists = [fileManager fileExistsAtPath: path isDirectory: &isDirectory];
 		if(exists && ![[[path lastPathComponent] substringToIndex: 1] isEqualToString: @"."])
