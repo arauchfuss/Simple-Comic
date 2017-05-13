@@ -58,7 +58,7 @@
 {
     NSError * urlError = nil;
     NSURL * fileURL = [[NSURL alloc] initFileURLWithPath: newPath];
-    NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationMinimalBookmark
+    NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
                               includingResourceValuesForKeys: nil
                                                relativeToURL: nil
                                                        error: &urlError];
@@ -76,13 +76,51 @@
     NSError * urlError = nil;
     BOOL stale = NO;
     NSURL * fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
-                                                options: NSURLBookmarkResolutionWithoutUI
+                                                options: NSURLBookmarkResolutionWithoutUI | NSURLBookmarkResolutionWithSecurityScope
                                           relativeToURL: nil
                                     bookmarkDataIsStale: &stale
                                                   error: &urlError];
 	
 	
 	NSString * hardPath = nil;
+	
+	//For backwards compatibility
+	if (fileURL == nil || urlError != nil) {
+		NSError *othErr = nil;
+		fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
+											options: NSURLBookmarkResolutionWithoutUI
+									  relativeToURL: nil
+								bookmarkDataIsStale: &stale
+											  error: &othErr];
+
+		if (fileURL && othErr == nil) {
+			NSOpenPanel *panel = [NSOpenPanel openPanel];
+			//panel.canChooseDirectories = NO;
+			panel.allowsMultipleSelection = NO;
+			//panel.expanded = YES;
+			panel.message = [NSString stringWithFormat:NSLocalizedString(@"Please re-select '%@'", @"re-select file request"), fileURL.lastPathComponent];
+			panel.directoryURL = [fileURL URLByDeletingLastPathComponent];
+			
+			if ([panel runModal] == NSFileHandlingPanelOKButton) {
+				othErr = nil;
+				NSData *bookmarkData = [panel.URL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
+										   includingResourceValuesForKeys: nil
+															relativeToURL: nil
+																	error: &othErr];
+				
+				if (bookmarkData) {
+					self.pathData = bookmarkData;
+					fileURL = [NSURL URLByResolvingBookmarkData: bookmarkData
+														options: NSURLBookmarkResolutionWithoutUI | NSURLBookmarkResolutionWithSecurityScope
+												  relativeToURL: nil
+											bookmarkDataIsStale: &stale
+														  error: &othErr];
+					
+				}
+			}
+			urlError = othErr;
+		}
+	}
 	
     if (fileURL == nil || urlError != nil)
     {
@@ -490,6 +528,13 @@
 	CGFloat dimension = 1400;
 	CGFloat scale = 1 > (NSHeight(bounds) / NSWidth(bounds)) ? dimension / NSWidth(bounds) :  dimension / NSHeight(bounds);
 	bounds.size = scaleSize(bounds.size, scale);
+	if (NSEqualRects(bounds, NSZeroRect)) {
+		// Prevent zero size exception for images
+		bounds.size = NSMakeSize(50, 50);
+	}
+	if (isinf(scale) || scale == 0) {
+		scale = 1;
+	}
 	
 	NSImage * pageImage = [[NSImage alloc] initWithSize: bounds.size];
 	[pageImage lockFocus];
