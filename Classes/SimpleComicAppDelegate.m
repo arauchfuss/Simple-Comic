@@ -259,7 +259,11 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		autoSave = [NSTimer scheduledTimerWithTimeInterval: 30.0 target: self selector: @selector(saveContext) userInfo: nil repeats: YES];
 	}
     sessions = [NSMutableArray new];
-	[self sessionRelaunch];
+	@try {
+		[self sessionRelaunch];
+	} @catch(NSException *e) {
+		NSLog(@"%@", e);
+	}
 	launchInProgress = NO;
 	
 	if (launchFiles) {

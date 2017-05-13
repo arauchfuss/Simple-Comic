@@ -108,7 +108,7 @@ class TSSTThumbnailView: NSView {
 		while counter < limit {
 			let thumbnail = dataSource!.imageForPage(at: counter)
 			var drawRect = self.rect(for: counter)
-			drawRect = rectCentered(withSize: thumbnail.size, in: drawRect.insetBy(dx: 2, dy: 2))
+			drawRect = rectCentered(with: thumbnail.size, in: drawRect.insetBy(dx: 2, dy: 2))
 			thumbnail.draw(in: drawRect, from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
 			if NSMouseInRect(mousePoint, drawRect, false) {
 				hoverIndex = counter

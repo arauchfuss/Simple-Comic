@@ -30,7 +30,7 @@ NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension) NS_SWIFT_NAME(
 NSSize scaleSize(NSSize aSize, CGFloat scale) NS_SWIFT_NAME(scaleSize(_:scale:));
 CGSize fitSizeInSize(CGSize constraint, CGSize size) NS_SWIFT_NAME(fitSize(_:in:));
 
-NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect) NS_SWIFT_NAME(rectCentered(withSize:in:));
+NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect) NS_SWIFT_NAME(rectCentered(with:in:));
 
 NSRect rectFromNegativeRect(NSRect rect);
 
