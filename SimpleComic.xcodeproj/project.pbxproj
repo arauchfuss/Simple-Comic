@@ -187,6 +187,13 @@
 			remoteGlobalIDString = 5500A44A1D776ADB00321300;
 			remoteInfo = "XADMaster-simple";
 		};
+		5567EADB1ECA3F9600404B35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 55F5908E1EB53613000B4973;
+			remoteInfo = "Static Library";
+		};
 		559951611BDC0A400086661A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
@@ -631,6 +638,7 @@
 				55C374571BD9EAA1006385B6 /* UniversalDetector.framework */,
 				55C374591BD9EAA1006385B6 /* DetectorTest */,
 				559951621BDC0A400086661A /* UniversalDetectorTests.xctest */,
+				5567EADC1ECA3F9600404B35 /* libUniversalDetector.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -880,6 +888,13 @@
 			fileType = wrapper.framework;
 			path = XADMaster.framework;
 			remoteRef = 5500A6561D77716000321300 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5567EADC1ECA3F9600404B35 /* libUniversalDetector.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libUniversalDetector.a;
+			remoteRef = 5567EADB1ECA3F9600404B35 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		559951621BDC0A400086661A /* UniversalDetectorTests.xctest */ = {

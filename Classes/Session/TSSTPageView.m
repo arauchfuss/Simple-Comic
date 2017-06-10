@@ -1144,7 +1144,11 @@
     {
         NSScrollView * scrollView = [self enclosingScrollView];
         NSClipView * clipView = [scrollView contentView];
-        [clipView scrollToPoint: [clipView constrainScrollPoint: scrollPoint]];
+		NSRect scrollRect;
+		scrollRect.origin = scrollPoint;
+		scrollRect.size = NSMakeSize(1, 1);
+		scrollRect = [clipView constrainBoundsRect:scrollRect];
+        [clipView scrollToPoint: scrollRect.origin];
         [scrollView reflectScrolledClipView: clipView];
     }
 	
