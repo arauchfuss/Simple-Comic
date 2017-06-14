@@ -162,7 +162,7 @@
 {
 	NSString * folderPath = self.path;
 	NSFileManager * fileManager = [NSFileManager defaultManager];
-	NSManagedObject * nestedDescription;
+	TSSTManagedGroup * nestedDescription;
 	NSError * error = nil;
 	NSArray<NSString*> * nestedFiles = [fileManager contentsOfDirectoryAtPath: folderPath error: &error];
 	if (error)
@@ -183,22 +183,22 @@
 			if(isDirectory)
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
-			 	[nestedDescription setValue: fullPath forKey: @"path"];
-		 		[nestedDescription setValue: path forKey: @"name"];
+				nestedDescription.path = fullPath;
+				nestedDescription.name = path;
 	 			[(TSSTManagedGroup *)nestedDescription nestedFolderContents];
 			}
 			else if([[TSSTManagedArchive archiveExtensions] containsObject: fileExtension])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
-				[nestedDescription setValue: fullPath forKey: @"path"];
-				[nestedDescription setValue: path forKey: @"name"];
+				nestedDescription.path = fullPath;
+				nestedDescription.name = path;
 				[(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
 			}
 			else if([fileExtension isEqualToString: @"pdf"])
  			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
-				[nestedDescription setValue: fullPath forKey: @"path"];
-				[nestedDescription setValue: path forKey: @"name"];
+				nestedDescription.path = fullPath;
+				nestedDescription.name = path;
 				[(TSSTManagedPDF *)nestedDescription pdfContents];
 			}
 			else if([[TSSTPage imageExtensions] containsObject: fileExtension])
@@ -209,7 +209,7 @@
 			else if ([[TSSTPage textExtensions] containsObject: fileExtension])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-				[nestedDescription setValue: fullPath forKey: @"imagePath"];
+				nestedDescription.path = fullPath;
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
 			

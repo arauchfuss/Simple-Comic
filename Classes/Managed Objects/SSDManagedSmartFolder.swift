@@ -16,7 +16,8 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		var pageSet = Set<TSSTPage>()
 		var fileNames = [String]()
 		
-		guard let filePath = value(forKey: "path") as? NSString as String?, fm.fileExists(atPath: filePath) else {
+		let filePath = self.path
+		guard fm.fileExists(atPath: filePath) else {
 			NSLog("Failed path");
 			return;
 		}
