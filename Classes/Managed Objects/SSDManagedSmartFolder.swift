@@ -11,7 +11,7 @@ import Cocoa
 class ManagedSmartFolder: TSSTManagedGroup {
 	fileprivate var metadataSemaphore = DispatchSemaphore(value: 0)
 	
-	func smartFolderContents() {
+	@objc func smartFolderContents() {
 		let fm = FileManager()
 		var pageSet = Set<TSSTPage>()
 		var fileNames = [String]()
@@ -85,7 +85,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		}
 		
 		var pageNumber = 0
-		let workspace = NSWorkspace.shared()
+		let workspace = NSWorkspace.shared
 		
 		for path in fileNames {
 			let pathExtension = (path as NSString).pathExtension.lowercased()

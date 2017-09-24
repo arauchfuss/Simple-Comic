@@ -12,7 +12,7 @@ class TSSTThumbnailView: NSView {
 	@IBOutlet weak var pageController: NSArrayController!
 	@IBOutlet weak var thumbnailView: TSSTImageView!
 	
-	weak var dataSource: TSSTSessionWindowController?
+	@objc weak var dataSource: TSSTSessionWindowController?
 	
 	fileprivate var trackingRects = IndexSet()
 	fileprivate var trackingIndexes = Set<NSNumber>()
@@ -60,7 +60,7 @@ class TSSTThumbnailView: NSView {
 		trackingIndexes.removeAll()
 	}
 	
-	func buildTrackingRects() {
+	@objc func buildTrackingRects() {
 		hoverIndex = nil
 		removeTrackingRects()
 		var trackRect: NSRect
@@ -75,7 +75,7 @@ class TSSTThumbnailView: NSView {
 		needsDisplay = true
 	}
 	
-	func processThumbs() {
+	@objc func processThumbs() {
 		autoreleasepool() {
 			threadIdent += 1
 			let localIdent = threadIdent
@@ -87,8 +87,10 @@ class TSSTThumbnailView: NSView {
 				autoreleasepool() {
 					dataSource!.imageForPage(at: limit)
 					if (limit % 5) == 0 {
-						if window!.isVisible {
-							needsDisplay = true
+						DispatchQueue.main.async {
+							if self.window!.isVisible {
+								self.needsDisplay = true
+							}
 						}
 					}
 					limit += 1
@@ -101,7 +103,7 @@ class TSSTThumbnailView: NSView {
 	
 	override func draw(_ rect: NSRect) {
 		var counter: Int = 0
-		let mouse = NSEvent.mouseLocation()
+		let mouse = NSEvent.mouseLocation
 		let point = NSMakeRect(mouse.x, mouse.y, 6.0, 6.0)
 		var mousePoint: NSPoint = window!.convertFromScreen(point).origin
 		mousePoint = convert(mousePoint, from: nil)
@@ -134,7 +136,7 @@ class TSSTThumbnailView: NSView {
 		}
 	}
 	
-	func dwell(_ timer: Timer) {
+	@objc func dwell(_ timer: Timer) {
 		if let userInfo = timer.userInfo as? NSNumber,
 			let hoverIndex = hoverIndex,
 			userInfo.intValue == hoverIndex {

@@ -29,6 +29,6 @@ import Cocoa
 class TSSTTransparentView: NSView {
 	override func draw(_ rect: NSRect) {
 		NSColor(calibratedWhite: 0, alpha: 0.7).set()
-		NSRectFill(rect)
+		rect.fill()
 	}
 }

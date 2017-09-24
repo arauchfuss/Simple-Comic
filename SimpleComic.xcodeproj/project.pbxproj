@@ -739,7 +739,7 @@
 						CreatedOnToolsVersion = 7.1;
 					};
 					8D1107260486CEB800E47090 = {
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1194,7 +1194,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
 				PRODUCT_NAME = "Simple Comic";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1225,7 +1226,8 @@
 				PRODUCT_NAME = "Simple Comic";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

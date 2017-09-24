@@ -9,7 +9,7 @@
 import Cocoa
 
 final class TSSTInfoView: NSView {
-	var bordered: Bool = false
+	@objc var bordered: Bool = false
 	var caretPosition: CGFloat = 0 {
 		didSet {
 			needsDisplay = true
@@ -19,7 +19,7 @@ final class TSSTInfoView: NSView {
 	override func draw(_ dirtyRect: NSRect) {
 		let bounds = self.bounds
 		NSColor.clear.set()
-		NSRectFill(bounds)
+		bounds.fill()
 		
 		let outline = NSBezierPath()
 		outline.move(to: NSPoint(x: caretPosition + 5, y: 5))

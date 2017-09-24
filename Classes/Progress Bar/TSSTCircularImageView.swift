@@ -13,7 +13,7 @@ class TSSTCircularImageView: NSImageView {
 	override func draw(_ dirtyRect: NSRect) {
 		let bounds = self.bounds
 		NSColor.clear.set()
-		NSRectFill(bounds)
+		bounds.fill()
 		if let _ = image {
 			// Choose j-rg's flat magnifying glass over old one. Ported from j-rg's objective-c version.
 			let circle = NSBezierPath(ovalIn: bounds.insetBy(dx: 5, dy: 5))

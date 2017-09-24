@@ -27,8 +27,8 @@
 import Cocoa
 
 class TSSTKeyWindow: NSPanel {
-	override init(contentRect rect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
-		super.init(contentRect: rect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
+	override init(contentRect rect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
+		super.init(contentRect: rect, styleMask: .borderless, backing: bufferingType, defer: flag)
 		isOpaque = false
 	}
 	

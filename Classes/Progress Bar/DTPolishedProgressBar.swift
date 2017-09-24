@@ -75,14 +75,14 @@ textStyle: Dictionary of string attributes.
 	}
 	
 	/// This is the section of the view. Users can mouse over and click here.
-	fileprivate(set) var progressRect = NSRect()
+	@objc fileprivate(set) var progressRect = NSRect()
 	
 	/// How much room is given for the text on either side.
 	fileprivate var horizontalMargin: CGFloat = 5
 
 	/// The font attributes of the progress numbers.
-	fileprivate var numberStyle: [String: AnyObject] = [NSFontAttributeName: NSFont.systemFont(ofSize: 10),
-	NSForegroundColorAttributeName: NSColor(deviceWhite: 0.2, alpha: 1)]
+	fileprivate var numberStyle: [NSAttributedStringKey: AnyObject] = [.font: NSFont.systemFont(ofSize: 10),
+	.foregroundColor: NSColor(deviceWhite: 0.2, alpha: 1)]
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.
 	/// Progress indicator direction affects the index.
@@ -114,12 +114,12 @@ textStyle: Dictionary of string attributes.
 		
 		// Draw background
 		backgroundColor.set()
-		NSRectFillUsingOperation(bounds2, .sourceOver)
+		bounds2.fill(using: .sourceOver)
 		
 		// Draw bar background
 		barBackgroundColor.set()
 		var fillRect = barRect
-		NSRectFill(fillRect)
+		fillRect.fill()
 		
 		// Determine label positions and progress rect size+position
 		if leftToRight {
@@ -142,11 +142,11 @@ textStyle: Dictionary of string attributes.
 		
 		// Draw progress
 		barProgressColor.set()
-		NSRectFill(fillRect)
+		fillRect.fill()
 		
 		// Draw indicator
 		NSColor.black.set()
-		NSRectFill(indicatorRect)
+		indicatorRect.fill()
 		
 		// Draw labels
 		let leftStringRect = NSRect(x: horizontalMargin, y: bounds2.minY, width:leftSize.width, height: 17)
@@ -161,8 +161,8 @@ textStyle: Dictionary of string attributes.
 		
 		borderColor.set()
 		
-		NSRectFillUsingOperation(leftBorder, .sourceOver)
-		NSRectFillUsingOperation(rightBorder, .sourceOver)
+		leftBorder.fill(using: .sourceOver)
+		rightBorder.fill(using: .sourceOver)
 	}
 	
 	/// This method has been over-ridden to change the progressRect porperty every time the

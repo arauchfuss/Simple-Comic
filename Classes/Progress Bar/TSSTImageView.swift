@@ -8,12 +8,12 @@
 
 import Cocoa
 
-private let stringAttributes: [String: Any] = {
+private let stringAttributes: [NSAttributedStringKey: Any] = {
 	let style = NSMutableParagraphStyle()
 	style.lineBreakMode = .byTruncatingHead
-	return [NSFontAttributeName: NSFont.labelFont(ofSize: 14),
-		NSForegroundColorAttributeName: NSColor(calibratedWhite: 1, alpha: 1),
-		NSParagraphStyleAttributeName: style.copy()]
+	return [.font: NSFont.labelFont(ofSize: 14),
+		.foregroundColor: NSColor(calibratedWhite: 1, alpha: 1),
+		.paragraphStyle: style.copy()]
 }()
 
 class TSSTImageView: NSImageView {
@@ -23,7 +23,7 @@ class TSSTImageView: NSImageView {
 	override func draw(_ dirtyRect: NSRect) {
 		if clears {
 			NSColor.clear.set()
-			NSRectFill(bounds)
+			bounds.fill()
 		}
 		
 		var imageRect = rectCentered(with: image?.size ?? .zero, in: bounds)

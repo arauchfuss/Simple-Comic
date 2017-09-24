@@ -11,8 +11,8 @@ import Cocoa
 /// This panel subclass is used by both the loupe,
 /// and the speech bubble styled page preview.
 class TSSTInfoWindow: NSPanel {
-	override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
-		super.init(contentRect: contentRect, styleMask: NSBorderlessWindowMask, backing: bufferingType, defer: flag)
+	override init(contentRect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
+		super.init(contentRect: contentRect, styleMask: .borderless, backing: bufferingType, defer: flag)
 		isOpaque = false
 		ignoresMouseEvents = true
 	}
