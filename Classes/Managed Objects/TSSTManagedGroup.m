@@ -316,7 +316,7 @@
         if([manager fileExistsAtPath: self.path])
         {
 			NSURL *aFileURL = self.fileURL;
-			BOOL success = [aFileURL startAccessingSecurityScopedResource];
+			[aFileURL startAccessingSecurityScopedResource];
             instance = [[XADArchive alloc] initWithFileURL: aFileURL delegate: self error:NULL];
 
             // Set the archive delegate so that password and encoding queries can have a modal pop up.
@@ -505,14 +505,8 @@
 {
     if (!instance)
     {
-		BOOL success = [self.fileURL startAccessingSecurityScopedResource];
+		[self.fileURL startAccessingSecurityScopedResource];
         instance = [[PDFDocument alloc] initWithURL: self.fileURL];
-		
-		if (!instance) {
-			// This line is needed.
-			NSURL *fileURL = [NSURL fileURLWithPath: self.path];
-			instance = [[PDFDocument alloc] initWithURL: fileURL];
-		}
     }
 	
     return instance;
