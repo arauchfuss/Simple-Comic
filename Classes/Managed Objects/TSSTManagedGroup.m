@@ -38,6 +38,7 @@
 
 - (void)willTurnIntoFault
 {
+	[self.fileURL stopAccessingSecurityScopedResource];
 	NSError * error = nil;
 	if([self.nested boolValue])
 	{
@@ -58,7 +59,7 @@
 {
 	NSError * urlError = nil;
 	NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
-							  includingResourceValuesForKeys: nil
+							  includingResourceValuesForKeys: @[NSURLVolumeURLForRemountingKey, NSURLVolumeUUIDStringKey]
 											   relativeToURL: nil
 													   error: &urlError];
 	if (bookmarkData == nil || urlError != nil)
@@ -67,7 +68,6 @@
 		[NSApp presentError: urlError];
 	}
 	self.pathData = bookmarkData;
-
 }
 
 - (NSURL *)fileURL
@@ -288,6 +288,7 @@
 
 - (void)willTurnIntoFault
 {
+	[super willTurnIntoFault];
 	NSError * error;
 	if([self.nested boolValue])
 	{
@@ -314,7 +315,9 @@
         NSFileManager * manager = [NSFileManager defaultManager];
         if([manager fileExistsAtPath: self.path])
         {
-            instance = [[XADArchive alloc] initWithFile: self.path delegate: self error:NULL];
+			NSURL *aFileURL = self.fileURL;
+			BOOL success = [aFileURL startAccessingSecurityScopedResource];
+            instance = [[XADArchive alloc] initWithFileURL: aFileURL delegate: self error:NULL];
 
             // Set the archive delegate so that password and encoding queries can have a modal pop up.
 			
@@ -502,9 +505,14 @@
 {
     if (!instance)
     {
-		// This line is needed.
-		NSURL *fileURL = [NSURL fileURLWithPath: self.path];
-        instance = [[PDFDocument alloc] initWithURL: fileURL];
+		BOOL success = [self.fileURL startAccessingSecurityScopedResource];
+        instance = [[PDFDocument alloc] initWithURL: self.fileURL];
+		
+		if (!instance) {
+			// This line is needed.
+			NSURL *fileURL = [NSURL fileURLWithPath: self.path];
+			instance = [[PDFDocument alloc] initWithURL: fileURL];
+		}
     }
 	
     return instance;
