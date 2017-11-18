@@ -15,6 +15,7 @@ class TSSTInfoWindow: NSPanel {
 		super.init(contentRect: contentRect, styleMask: .borderless, backing: bufferingType, defer: flag)
 		isOpaque = false
 		ignoresMouseEvents = true
+		backgroundColor = NSColor.clear
 	}
 	
 	@objc(caretAtPoint:size:withLimitLeft:right:)
