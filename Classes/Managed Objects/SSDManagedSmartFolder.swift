@@ -155,6 +155,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			}
 			if integer == index {
 				filepath = page.imagePath
+				break
 			}
 		}
 		
