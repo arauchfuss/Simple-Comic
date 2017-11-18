@@ -31,26 +31,30 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly, strong) id instance;
 
 @property (copy) NSString *path;
+@property (copy) NSURL *fileURL;
 
 - (nullable NSData *)dataForPageIndex:(NSInteger)index;
 @property (readonly, strong, nullable) NSManagedObject *topLevelGroup;
 @property (readonly, copy) NSSet<TSSTPage*> *nestedImages;
 
+/**
+ Goes through various files like pdfs, images, text files
+ from the path folder and it's subfolders and add these
+ to the Core Data for the managedObjectContext
+ with the info needed to deal with the files.
+ */
 - (void)nestedFolderContents;
 
 @end
 
 @interface TSSTManagedArchive : TSSTManagedGroup
 
-#if __has_feature(objc_class_property)
+//! An \c NSArray with archive file extensions which the software supports.
 @property (class, readonly, copy) NSArray<NSString*> *archiveExtensions;
+//! An \c NSArray with archive UTIs which the software supports.
 @property (class, readonly, copy) NSArray<NSString*> *archiveTypes;
+//! An \c NSArray with file extensions for which software support QuickLook for.
 @property (class, readonly, copy) NSArray<NSString*> *quicklookExtensions;
-#else
-+ (NSArray<NSString*> *)archiveExtensions;
-+ (NSArray<NSString*> *)archiveTypes;
-+ (NSArray<NSString*> *)quicklookExtensions;
-#endif
 /**  Recurses through archives looking for archives and images */
 - (void)nestedArchiveContents;
 @property (readonly) BOOL quicklookCompatible;
@@ -59,7 +63,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TSSTManagedPDF : TSSTManagedGroup
 
-/**  Parses PDFs into something Simple Comic can use */
+/**  Parses PDFs into something Simple Comic can use.
+ *  Creates an image \c NSManagedObject for every "page" in a pdf. */
 - (void)pdfContents;
 
 @end

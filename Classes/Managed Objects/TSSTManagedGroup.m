@@ -54,45 +54,41 @@
 	groupLock = nil;
 }
 
-- (void)setPath:(NSString *)newPath
+- (void)setFileURL:(NSURL *)fileURL
 {
-    NSError * urlError = nil;
-    NSURL * fileURL = [[NSURL alloc] initFileURLWithPath: newPath];
-    NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
-                              includingResourceValuesForKeys: nil
-                                               relativeToURL: nil
-                                                       error: &urlError];
-    if (bookmarkData == nil || urlError != nil)
-    {
-        bookmarkData = nil;
-        [NSApp presentError: urlError];
-    }
-    self.pathData = bookmarkData;
+	NSError * urlError = nil;
+	NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
+							  includingResourceValuesForKeys: nil
+											   relativeToURL: nil
+													   error: &urlError];
+	if (bookmarkData == nil || urlError != nil)
+	{
+		bookmarkData = nil;
+		[NSApp presentError: urlError];
+	}
+	self.pathData = bookmarkData;
+
 }
 
-
-- (NSString *)path
+- (NSURL *)fileURL
 {
-    NSError * urlError = nil;
-    BOOL stale = NO;
-    NSURL * fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
-                                                options: NSURLBookmarkResolutionWithoutUI | NSURLBookmarkResolutionWithSecurityScope
-                                          relativeToURL: nil
-                                    bookmarkDataIsStale: &stale
-                                                  error: &urlError];
-	
-	
-	NSString * hardPath = nil;
+	NSError * urlError = nil;
+	BOOL stale = NO;
+	NSURL * fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
+												options: NSURLBookmarkResolutionWithoutUI | NSURLBookmarkResolutionWithSecurityScope
+										  relativeToURL: nil
+									bookmarkDataIsStale: &stale
+												  error: &urlError];
 	
 	//For backwards compatibility
 	if (fileURL == nil || urlError != nil) {
 		NSError *othErr = nil;
 		fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
-											options: NSURLBookmarkResolutionWithoutUI
+											options: 0
 									  relativeToURL: nil
 								bookmarkDataIsStale: &stale
 											  error: &othErr];
-
+		
 		if (fileURL && othErr == nil) {
 			NSOpenPanel *panel = [NSOpenPanel openPanel];
 			//panel.canChooseDirectories = NO;
@@ -122,17 +118,25 @@
 		}
 	}
 	
-    if (fileURL == nil || urlError != nil)
-    {
-        fileURL = nil;
-        [[self managedObjectContext] deleteObject: self];
-        [NSApp presentError: urlError];
-    }
-    else {
-        hardPath = [fileURL path];
-    }
-	
-	return hardPath;
+	if (fileURL == nil || urlError != nil)
+	{
+		fileURL = nil;
+		[[self managedObjectContext] deleteObject: self];
+		[NSApp presentError: urlError];
+	}
+
+	return fileURL;
+}
+
+- (void)setPath:(NSString *)newPath
+{
+	self.fileURL = [[NSURL alloc] initFileURLWithPath: newPath];
+}
+
+
+- (NSString *)path
+{
+	return self.fileURL.path;
 }
 
 
@@ -152,12 +156,6 @@
 	return self;
 }
 
-/**
- Goes through various files like pdfs, images, text files
- from the path folder and it's subfolders and add these
- to the Core Data for the managedObjectContext
- with the info needed to deal with the files.
- */
 - (void)nestedFolderContents
 {
 	NSString * folderPath = self.path;
@@ -243,9 +241,6 @@
 
 @implementation TSSTManagedArchive
 
-/**
- * @returns NSArray with archieve extions which the software supports.
- */
 + (NSArray *)archiveExtensions
 {
 	static NSArray * extensions = nil;
@@ -279,9 +274,6 @@
 	return extensions;
 }
 
-/**
- @return NSArray with file extensions for which software support QuickLook for.
- */
 + (NSArray *)quicklookExtensions
 {
 	static NSArray * extensions = nil;
@@ -551,7 +543,6 @@
     return imageData;
 }
 
-/**  Creates an image managedobject for every "page" in a pdf. */
 - (void)pdfContents
 {
     PDFDocument * rep = [self instance];

@@ -21,7 +21,7 @@
      Using copy to make sure changes to groups won't cause Cocoa to complain about mutated iterators. */
 	for (TSSTManagedGroup *group in [self.groups copy])
 	{
-		[group path];
+		[group fileURL];
 	}
 }
 

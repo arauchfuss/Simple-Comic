@@ -26,15 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
     NSLock * loaderLock;
 }
 
-#if __has_feature(objc_class_property)
 @property (class, readonly, copy) NSArray<NSString*> *imageTypes;
 @property (class, readonly, copy) NSArray<NSString*> *imageExtensions;
 @property (class, readonly, copy) NSArray<NSString*> *textExtensions;
-#else
-+ (NSArray<NSString*> *)imageTypes;
-+ (NSArray<NSString*> *)imageExtensions;
-+ (NSArray<NSString*> *)textExtensions;
-#endif
 @property (readonly, copy) NSString *name;
 @property (readonly) BOOL shouldDisplayAlone;
 - (void)setOwnSizeInfoWithData:(NSData *)imageData;
