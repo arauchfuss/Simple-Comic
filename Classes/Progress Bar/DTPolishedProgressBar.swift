@@ -27,6 +27,11 @@ private let barBackgroundColor = NSColor(red: 0.75, green: 0.75, blue: 0.75, alp
 private let barProgressColor = NSColor(deviceRed: 0.44, green: 0.44, blue: 0.44, alpha: 1)
 private let borderColor = NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
 
+/// The font attributes of the progress numbers.
+private let numberStyle: [NSAttributedStringKey: Any] = [.font: NSFont.systemFont(ofSize: 10),
+														 .foregroundColor: NSColor(deviceWhite: 0.2, alpha: 1)]
+
+
 /**
 Configurable progress bar. Allows the setting of various style attributes.
 Progress direction can be set.
@@ -79,10 +84,6 @@ textStyle: Dictionary of string attributes.
 	
 	/// How much room is given for the text on either side.
 	fileprivate var horizontalMargin: CGFloat = 5
-
-	/// The font attributes of the progress numbers.
-	fileprivate var numberStyle: [NSAttributedStringKey: AnyObject] = [.font: NSFont.systemFont(ofSize: 10),
-	.foregroundColor: NSColor(deviceWhite: 0.2, alpha: 1)]
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.
 	/// Progress indicator direction affects the index.

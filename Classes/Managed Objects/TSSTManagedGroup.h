@@ -35,6 +35,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable NSData *)dataForPageIndex:(NSInteger)index;
 @property (readonly, strong, nullable) NSManagedObject *topLevelGroup;
+
+/**
+ Returns a set with all the images found in the key in union with the ones from other groups.
+ 
+ @return NSSet with all images found in context.
+ */
 @property (readonly, copy) NSSet<TSSTPage*> *nestedImages;
 
 /**

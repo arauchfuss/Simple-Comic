@@ -30,12 +30,13 @@ static NSSize monospaceCharacterSize;
 + (NSArray<NSString*>*)imageTypes
 {
 	static NSArray * imageTypes = nil;
-	if(!imageTypes) {
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		NSMutableArray<NSString*> *aimageTypes = [[NSImage imageTypes] mutableCopy];
 		[aimageTypes removeObject:(NSString*)kUTTypePDF];
 		[aimageTypes filterUsingPredicate:[NSPredicate predicateWithFormat:@"!(SELF like %@)" argumentArray:@[@"com.adobe.encapsulated-postscript"]]];
 		imageTypes = [aimageTypes copy];
-	}
+	});
 	
 	return imageTypes;
 }
@@ -43,8 +44,8 @@ static NSSize monospaceCharacterSize;
 + (NSArray *)imageExtensions
 {
 	static NSArray * imageTypes = nil;
-	if(!imageTypes)
-	{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.imageTypes.count * 2];
 		for (NSString *uti in self.imageTypes) {
 			NSArray *fileExts =
@@ -52,7 +53,7 @@ static NSSize monospaceCharacterSize;
 			[aimageTypes addObjectsFromArray:fileExts];
 		}
 		imageTypes = [[aimageTypes allObjects] sortedArrayUsingSelector:@selector(compare:)];
-	}
+	});
 	
 	return imageTypes;
 }
@@ -60,11 +61,10 @@ static NSSize monospaceCharacterSize;
 + (NSArray *)textExtensions
 {
 	static NSArray * textTypes = nil;
-	
-	if(!textTypes)
-	{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		textTypes = @[@"txt", @"nfo", @"info"];
-	}
+	});
 	
 	return textTypes;
 }

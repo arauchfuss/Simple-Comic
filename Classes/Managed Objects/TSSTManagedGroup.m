@@ -100,7 +100,7 @@
 			if ([panel runModal] == NSFileHandlingPanelOKButton) {
 				othErr = nil;
 				NSData *bookmarkData = [panel.URL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
-										   includingResourceValuesForKeys: nil
+										   includingResourceValuesForKeys: @[NSURLVolumeURLForRemountingKey, NSURLVolumeUUIDStringKey]
 															relativeToURL: nil
 																	error: &othErr];
 				
@@ -167,10 +167,10 @@
     {
 		NSLog(@"%@",[error localizedDescription]);
 	}
-	NSString * path, * fileExtension, * fullPath;
+	NSString * fileExtension, * fullPath;
 	BOOL isDirectory, exists;
 	
-	for (path in nestedFiles)
+	for (NSString *path in nestedFiles)
 	{
 		nestedDescription = nil;
 		fileExtension = [[path pathExtension] lowercaseString];
@@ -219,11 +219,6 @@
 	}
 }
 
-/**
- Returns a set with all the images found in the key in union with the ones from other groups.
-
- @return NSSet with all images found in context.
-*/
 - (NSSet *)nestedImages
 {
 	NSMutableSet * allImages = [self.images mutableCopy];
@@ -244,8 +239,8 @@
 + (NSArray *)archiveExtensions
 {
 	static NSArray * extensions = nil;
-	if(!extensions)
-	{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.archiveTypes.count];
 		for (NSString *uti in self.archiveTypes) {
 			NSArray *fileExts =
@@ -253,7 +248,7 @@
 			[aimageTypes addObjectsFromArray:fileExts];
 		}
 		extensions = [[aimageTypes allObjects] sortedArrayUsingSelector:@selector(compare:)];
-	}
+	});
 	
 	return extensions;
 }
@@ -261,15 +256,15 @@
 + (NSArray*)archiveTypes
 {
 	static NSArray * extensions = nil;
-	if(!extensions)
-	{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		// TODO: have this expansive?
 		extensions = @[@"com.rarlab.rar-archive", @"cx.c3.cbr-archive",
 					   (NSString*)kUTTypeZipArchive, @"cx.c3.cbz-archive",
 					   @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive",
 					   @"public.archive.lha", @"cx.c3.lha-archive",
 					   @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive"];
-	}
+	});
 	
 	return extensions;
 }
@@ -277,11 +272,10 @@
 + (NSArray *)quicklookExtensions
 {
 	static NSArray * extensions = nil;
-	
-	if(!extensions)
-	{
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		extensions = @[@"cbr", @"cbz", @"cbt"];
-	}
+	});
 	
 	return extensions;
 }
