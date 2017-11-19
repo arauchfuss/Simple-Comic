@@ -177,8 +177,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 @synthesize encodingPopup;
 
 
-/** Convenience method for adding metadata to the core data store.
-    Used by Simple Comic to keep track of store versioning. */
 + (void)setMetadata:(NSString *)value forKey:(NSString *)key onStoreWithURL:(NSURL *)url managedBy:(NSPersistentStoreCoordinator *)coordinator
 {
     NSPersistentStore * store = [coordinator persistentStoreForURL: url];
@@ -625,31 +623,32 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     NSMutableSet<TSSTPage *> * pageSet = [session.images mutableCopy];
 	for (NSString *path in paths)
 	{
-		TSSTPage * fileDescription = nil;
 		NSString *fileExtension = [[path pathExtension] lowercaseString];
 		BOOL exists = [fileManager fileExistsAtPath: path isDirectory: &isDirectory];
 		if(exists && ![[[path lastPathComponent] substringToIndex: 1] isEqualToString: @"."])
 		{
+			TSSTPage * fileDescription = nil;
+			TSSTManagedGroup* mgroup;
 			if(isDirectory)
 			{
-				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
-				[fileDescription setValue: path forKey: @"path"];
-				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
-				[(TSSTManagedGroup *)fileDescription nestedFolderContents];
+				mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
+				mgroup.path = path;
+				mgroup.name = path.lastPathComponent;
+				[mgroup nestedFolderContents];
 			}
 			else if([[TSSTManagedArchive archiveExtensions] containsObject: fileExtension])
 			{
-				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
-				[fileDescription setValue: path forKey: @"path"];
-				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
-				[(TSSTManagedArchive *)fileDescription nestedArchiveContents];
+				mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
+				mgroup.path = path;
+				mgroup.name = path.lastPathComponent;
+				[(TSSTManagedArchive *)mgroup nestedArchiveContents];
 			}
 			else if([fileExtension compare:@"pdf" options:NSCaseInsensitiveSearch] == NSOrderedSame)
 			{
-				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
-				[fileDescription setValue: path forKey: @"path"];
-				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
-				[(TSSTManagedPDF *)fileDescription pdfContents];
+				mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
+				mgroup.path = path;
+				mgroup.name = path.lastPathComponent;
+				[(TSSTManagedPDF *)mgroup pdfContents];
 			}
 			else if([[TSSTPage imageExtensions] containsObject: fileExtension] || [[TSSTPage textExtensions] containsObject: fileExtension])
 			{
@@ -659,23 +658,23 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 			else if([fileExtension compare:@"savedsearch" options:NSCaseInsensitiveSearch] == NSOrderedSame)
 			{
 				//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
-                fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
-				[fileDescription setValue: path forKey: @"path"];
-				[fileDescription setValue: [path lastPathComponent] forKey: @"name"];
-				[(ManagedSmartFolder*)fileDescription smartFolderContents];
+                mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
+				mgroup.path = path;
+				mgroup.name = path.lastPathComponent;
+				[(ManagedSmartFolder*)mgroup smartFolderContents];
             }
 			
-			if([fileDescription isKindOfClass:[TSSTManagedGroup class]])
+			if(mgroup)
 			{
-				[pageSet unionSet: [(TSSTManagedGroup *)fileDescription nestedImages]];
+				[pageSet unionSet: mgroup.nestedImages];
 				[fileDescription setValue: session forKey: @"session"];
 			}
-			else if ([fileDescription isKindOfClass:[TSSTPage class]])
+			else if (fileDescription)
 			{
 				[pageSet addObject: fileDescription];
             }
 			
-			if(fileDescription)
+			if(fileDescription || mgroup)
 			{
 				[[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL: [NSURL fileURLWithPath: path]];
 			}
@@ -701,7 +700,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	NSMutableArray * allAllowedFileTypes = [[TSSTManagedArchive archiveTypes] mutableCopy];
 	[allAllowedFileTypes addObjectsFromArray: [TSSTPage imageTypes]];
 	[allAllowedFileTypes addObject:(NSString*)kUTTypePDF];
-#pragma TODO make a savedSearch constant?
+	// TODO: make a savedSearch constant?
     [allAllowedFileTypes addObject: @"com.apple.finder.smart-folder"];
     [addPagesModal setAllowedFileTypes:allAllowedFileTypes];
 	

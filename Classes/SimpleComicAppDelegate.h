@@ -61,25 +61,25 @@ extern NSString *const TSSTSessionEndNotification;
     Fallback archive encoding selection
 */
 @interface SimpleComicAppDelegate : NSObject <NSApplicationDelegate>
-/*  When opening encrypted zip or rar archives this panel is
+/*! When opening encrypted zip or rar archives this panel is
  made visible as a modal so the user can enter a password. */
 @property (weak) IBOutlet NSPanel           * passwordPanel;
 @property (weak) IBOutlet NSSecureTextField * passwordField;
 
-/*  This panel appears when the text encoding auto-detection fails */
+/*! This panel appears when the text encoding auto-detection fails */
 @property (weak) IBOutlet NSPanel           * encodingPanel;
 @property (weak) IBOutlet NSTextField       * encodingTestField;
 @property (weak) IBOutlet NSPopUpButton     * encodingPopup;
 
 
-/* Bound to the encoding list drop down. */
+/*! Bound to the encoding list drop down. */
 @property (assign) NSInteger encodingSelection;
 
-/*  Convenience method for adding metadata to the core data store.
+/*! Convenience method for adding metadata to the core data store.
     Used by Simple Comic to keep track of store versioning. */
 + (void)setMetadata:(NSString *)value forKey:(NSString *)key onStoreWithURL:(NSURL *)url managedBy:(NSPersistentStoreCoordinator *)coordinator;
 
-/*  Core Data methods, slightly altered boilerplate. */
+/*! Core Data methods, slightly altered boilerplate. */
 @property (readonly, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong) NSManagedObjectContext *managedObjectContext;
@@ -87,33 +87,33 @@ extern NSString *const TSSTSessionEndNotification;
 - (BOOL) saveContext;
 
 
-/*  Creates a new Session object based on user prefs and then
+/*! Creates a new Session object based on user prefs and then
     passes the files array to addFiles:toSesion: */
 - (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files NS_RETURNS_NOT_RETAINED;
 
-/*  This method is called every time an existing session needs
+/*! This method is called every time an existing session needs
     to be made visible to a user. */
 - (void)windowForSession:(TSSTManagedSession *)session;
 
-/*  When an end session notification is received this method
+/*! When an end session notification is received this method
 	is called. */
 - (void)endSession:(NSNotification *)notification;
 
-/*  This method is called at launch, it iterates through all of the saved
+/*! This method is called at launch, it iterates through all of the saved
     sessions calling windowForSession: for each in turn. */
 - (void)sessionRelaunch;
 
-/*  This method adds any file passed to it to a session.  This includes recursive
+/*! This method adds any file passed to it to a session.  This includes recursive
 	parsing of archives and folders. */
 - (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session;
 
-/*  Called when Simple Comic encounters a password protected
+/*! Called when Simple Comic encounters a password protected
     archive.  Brings a password dialog forward. */
 - (nullable NSString*)passwordForArchiveWithPath:(NSString*)filename;
 
 
 - (void)generateEncodingMenu;
-/*  Updates the encoding menu for an archive.
+/*! Updates the encoding menu for an archive.
     Grays out all encodings that do not work with the
     argument string  */
 - (void)updateEncodingMenuTestedAgainst:(NSData *)data;
@@ -122,12 +122,12 @@ extern NSString *const TSSTSessionEndNotification;
 - (IBAction)testEncoding:(nullable id)sender;
 - (IBAction)testEncodingMenu:(nullable id)sender;
 
-/*  Launches the preferences window manager. */
+/*! Launches the preferences window manager. */
 - (IBAction)openPreferences:(nullable id)sender;
 
-/*  Starts an NSOpenPanel with auxiliary view */
+/*! Starts an NSOpenPanel with auxiliary view */
 - (IBAction)addPages:(nullable id)sender;
-/*  These are called by modals that want to end */
+/*! These are called by modals that want to end */
 - (IBAction)modalOK:(nullable id)sender;
 - (IBAction)modalCancel:(nullable id)sender;
 

@@ -42,7 +42,7 @@
 	NSError * error = nil;
 	if([self.nested boolValue])
 	{
-		if(![[NSFileManager defaultManager] removeItemAtPath: self.path error: &error])
+		if(![[NSFileManager defaultManager] removeItemAtURL: self.fileURL error: &error])
 		{
 			NSLog(@"%@",[error localizedDescription]);
 		}
@@ -284,13 +284,6 @@
 {
 	[super willTurnIntoFault];
 	NSError * error;
-	if([self.nested boolValue])
-	{
-		if(![[NSFileManager defaultManager] removeItemAtPath: self.path error: &error])
-		{
-			NSLog(@"%@",[error localizedDescription]);
-		}
-	}
 	
 	NSString * solid  = self.solidDirectory;
 	if(solid)
@@ -306,10 +299,9 @@
 {
     if (!instance)
     {
-        NSFileManager * manager = [NSFileManager defaultManager];
-        if([manager fileExistsAtPath: self.path])
+		NSURL *aFileURL = self.fileURL;
+        if([aFileURL checkResourceIsReachableAndReturnError:NULL])
         {
-			NSURL *aFileURL = self.fileURL;
 			[aFileURL startAccessingSecurityScopedResource];
             instance = [[XADArchive alloc] initWithFileURL: aFileURL delegate: self error:NULL];
 
@@ -499,8 +491,9 @@
 {
     if (!instance)
     {
-		[self.fileURL startAccessingSecurityScopedResource];
-        instance = [[PDFDocument alloc] initWithURL: self.fileURL];
+		NSURL *aURL = self.fileURL;
+		[aURL startAccessingSecurityScopedResource];
+        instance = [[PDFDocument alloc] initWithURL: aURL];
     }
 	
     return instance;
