@@ -12,7 +12,7 @@ private let stringAttributes: [NSAttributedStringKey: Any] = {
 	let style = NSMutableParagraphStyle()
 	style.lineBreakMode = .byTruncatingHead
 	return [.font: NSFont.labelFont(ofSize: 14),
-		.foregroundColor: NSColor(calibratedWhite: 1, alpha: 1),
+		.foregroundColor: NSColor.white,
 		.paragraphStyle: style.copy()]
 }()
 

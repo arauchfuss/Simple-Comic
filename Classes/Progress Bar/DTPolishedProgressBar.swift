@@ -195,7 +195,7 @@ textStyle: Dictionary of string attributes.
 		return false
 	}
 	
-	/// Changes the currentValue based on where the user clicks.
+	/// Changes the `currentValue` based on where the user clicks.
 	override func mouseDown(with theEvent: NSEvent) {
 		let cursorPoint = convert(theEvent.locationInWindow, from: nil)
 		if NSMouseInRect(cursorPoint, progressRect, isFlipped) {
