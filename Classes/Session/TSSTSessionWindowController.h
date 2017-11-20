@@ -86,7 +86,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 
 @property (copy) NSArray<NSSortDescriptor*> * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
-@property (strong) NSString * pageNames;
+@property (copy) NSString * pageNames;
 
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession;
 
@@ -135,7 +135,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 - (void)extractPageWithSelection:(NSInteger)selection;
 - (void)changeViewForSelection;
 
-/* Used by the jump to page method */
+/*! Used by the jump to page method */
 - (void)closeSheet:(NSInteger)code;
 
 - (NSImage *)imageForPageAtIndex:(NSInteger)index;
@@ -193,7 +193,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 - (void)toolbarWillAddItem:(NSNotification *)notification;
 
 
-/*	Methods that kill page expose, the loupe, and fullscreen.
+/*!	Methods that kill page expose, the loupe, and fullscreen.
 	In that order. */
 - (void)killAllOptionalUIElements;
 - (void)killTopOptionalUIElement;

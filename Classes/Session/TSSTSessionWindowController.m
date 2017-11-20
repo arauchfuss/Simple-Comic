@@ -969,7 +969,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     TSSTPage * pageTwo = (index + 1) < count ? [pageController arrangedObjects][(index + 1)] : nil;
     NSString * titleString = [pageOne valueForKey: @"name"];
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-	NSString * representationPath;
 	
     BOOL currentAllowed = ![pageOne shouldDisplayAlone] &&
         !(index == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
@@ -990,9 +989,14 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         pageTwo = nil;
     }
 	
-	representationPath = pageOne.group ? [pageOne valueForKeyPath: @"group.topLevelGroup.path"] : pageOne.imagePath;
-	[[self window] setRepresentedFilename: representationPath];
+	NSURL *representationURL = pageOne.group ? [pageOne valueForKeyPath: @"group.topLevelGroup.fileURL"] : [NSURL fileURLWithPath:pageOne.imagePath];
+	[[self window] setRepresentedURL: representationURL];
 	
+	NSString *fileName = nil;
+	[representationURL getResourceValue:&fileName forKey:NSURLLocalizedNameKey error:NULL];
+	if (fileName != nil && pageTwo == nil && pageOne.group != nil) {
+		titleString = [NSString stringWithFormat:@"%@ — %@", fileName, titleString];
+	}
     self.pageNames = titleString;
     [pageView setFirstPage: pageOne.pageImage secondPageImage: pageTwo.pageImage];
 	
