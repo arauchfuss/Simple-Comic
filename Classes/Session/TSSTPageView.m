@@ -29,25 +29,33 @@
 #define RIGHTTURN 2
 #define UNKTURN 3
 
+typedef struct {
+	CGFloat left;
+	CGFloat right;
+	CGFloat up;
+	CGFloat down;
+} direction;
+
+
 @implementation TSSTPageView {
 	NSRect firstPageRect;
 	NSRect secondPageRect;
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
 	
-	int scrollKeys;			// Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
-	NSTimer * scrollTimer;	// Timer that fires in between each keydown event to smooth out the scrolling.
+	int scrollKeys;			//!< Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
+	NSTimer * scrollTimer;	//!< Timer that fires in between each keydown event to smooth out the scrolling.
 	NSDate * interfaceDelay;
 	
 	direction scrollwheel;
 	
-	// This controls the drawing of the accepting drag-drop border highlighting
+	//! This controls the drawing of the accepting drag-drop border highlighting
 	BOOL acceptingDrag;
 	
-	/*	While page selection is in progress this method has a value of 1 or 2.
+	/*!	While page selection is in progress this method has a value of 1 or 2.
 		The selection number coresponds to a highlighted page. */
 	int pageSelection;
-	/* This is the rect describing the users page selection. */
+	/*! This is the rect describing the users page selection. */
 	NSRect cropRect;
 }
 @synthesize imageBounds;

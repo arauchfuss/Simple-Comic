@@ -24,17 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class TSSTSessionWindowController;
 
-typedef struct {
-	CGFloat left;
-	CGFloat right;
-	CGFloat up;
-	CGFloat down;
-} direction;
-
-@protocol DTPageSelection_Protocol <NSObject>
+@protocol DTPageSelectionProtocol <NSObject>
 
 - (BOOL)pageSelectionInProgress;
+@property (readonly) BOOL pageSelectionInProgress;
 - (BOOL)pageSelectionCanCrop;
+@property (readonly) BOOL pageSelectionCanCrop;
 - (void)selectedPage:(NSInteger)index withCropRect:(NSRect)crop;
 - (BOOL)canSelectPageIndex:(NSInteger)index;
 - (void)cancelPageSelection;

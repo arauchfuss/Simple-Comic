@@ -32,7 +32,7 @@ class TSSTImageView: NSImageView {
 		image?.draw(in: imageRect, from: .zero, operation: .sourceOver, fraction: 1)
 		if let imageName = imageName {
 			imageRect = imageRect.insetBy(dx: 10, dy: 10)
-			var stringRect = imageName.boundingRect(with: imageRect.size, options: [], attributes: stringAttributes)
+			var stringRect = imageName.boundingRect(with: imageRect.size, attributes: stringAttributes)
 			stringRect = rectCentered(with: stringRect.size, in: imageRect);
 			NSColor(calibratedWhite: 0, alpha: 0.8).set()
 			roundedRect(stringRect.insetBy(dx: -5, dy: -5), cornerRadius: 10).fill()

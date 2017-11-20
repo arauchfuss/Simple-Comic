@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 		- Handles the layout of the info window
 			when the user scrubs the progress bar.
 */
-@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelection_Protocol, NSWindowDelegate>
+@interface TSSTSessionWindowController : NSWindowController <NSTextFieldDelegate, DTPageSelectionProtocol, NSWindowDelegate>
 
 /*! Controller for all of the page entities related to the session object */
 @property (weak) IBOutlet NSArrayController * pageController;
