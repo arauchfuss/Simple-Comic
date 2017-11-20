@@ -967,7 +967,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     NSUInteger index = [pageController selectionIndex];
     TSSTPage * pageOne = [pageController arrangedObjects][index];
     TSSTPage * pageTwo = (index + 1) < count ? [pageController arrangedObjects][(index + 1)] : nil;
-    NSString * titleString = [pageOne valueForKey: @"name"];
+    NSString * titleString = pageOne.name;
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
     BOOL currentAllowed = ![pageOne shouldDisplayAlone] &&
@@ -994,8 +994,27 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
 	NSString *fileName = nil;
 	[representationURL getResourceValue:&fileName forKey:NSURLLocalizedNameKey error:NULL];
-	if (fileName != nil && pageTwo == nil && pageOne.group != nil) {
-		titleString = [NSString stringWithFormat:@"%@ — %@", fileName, titleString];
+	if (fileName != nil && pageOne.group != nil) {
+		if (pageOne.group != nil && pageTwo.group != nil) {
+			NSURL *page2URL = [pageTwo valueForKeyPath: @"group.topLevelGroup.fileURL"];
+			BOOL bothAreGood = YES;
+			BOOL theSame = NO;
+			id dat1, dat2;
+			
+			if (![representationURL getResourceValue:&dat1 forKey:NSURLFileResourceIdentifierKey error:NULL]) {
+				bothAreGood = NO;
+			} else if (![page2URL getResourceValue:&dat2 forKey:NSURLFileResourceIdentifierKey error:NULL]) {
+				bothAreGood = NO;
+			}
+			if (bothAreGood) {
+				theSame = [dat1 isEqual:dat2];
+			}
+			if (theSame) {
+				titleString = [NSString stringWithFormat:@"%@ — %@", fileName, titleString];
+			}
+		} else {
+			titleString = [NSString stringWithFormat:@"%@ — %@", fileName, titleString];
+		}
 	}
     self.pageNames = titleString;
     [pageView setFirstPage: pageOne.pageImage secondPageImage: pageTwo.pageImage];
