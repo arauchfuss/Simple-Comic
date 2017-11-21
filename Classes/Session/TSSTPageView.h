@@ -26,9 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol DTPageSelectionProtocol <NSObject>
 
-- (BOOL)pageSelectionInProgress;
 @property (readonly) BOOL pageSelectionInProgress;
-- (BOOL)pageSelectionCanCrop;
 @property (readonly) BOOL pageSelectionCanCrop;
 - (void)selectedPage:(NSInteger)index withCropRect:(NSRect)crop;
 - (BOOL)canSelectPageIndex:(NSInteger)index;
@@ -36,18 +34,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol DTPageLayout_Protocol <NSObject>
+@protocol DTPageLayoutProtocol <NSObject>
 
-- (NSInteger)pageScaling;
-- (BOOL)leftToRightOrder;
-- (BOOL)singlePageLayout;
+@property (readonly) NSInteger pageScaling;
+@property (readonly) BOOL leftToRightOrder;
+@property (readonly) BOOL singlePageLayout;
 
 @end
 
-@protocol DTPageSource_Protocol <NSObject>
+@protocol DTPageSourceProtocol <NSObject>
 
-- (nullable NSImage *)pageOne;
-- (nullable NSImage *)pageTwo;
+@property (readonly, nullable, copy) NSImage *pageOne;
+@property (readonly, nullable, copy) NSImage *pageTwo;
 
 @end
 

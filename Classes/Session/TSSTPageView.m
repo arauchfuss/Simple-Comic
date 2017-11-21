@@ -24,17 +24,26 @@
 #import "TSSTSessionWindowController.h"
 #import "TSSTManagedSession.h"
 
-#define NOTURN 0
-#define LEFTTURN 1
-#define RIGHTTURN 2
-#define UNKTURN 3
+typedef NS_ENUM(int, TSSTTurn) {
+	TSSTTurnNone = 0,
+	TSSTTurnLeft = 1,
+	TSSTTurnRight = 2,
+	TSSTTurnUnknown = 3,
+};
+
+typedef NS_OPTIONS(unsigned int, TSSTArrowKeys) {
+	TSSTArrowKeyUp = 1 << 0,
+	TSSTArrowKeyDown = 1 << 1,
+	TSSTArrowKeyLeft = 1 << 2,
+	TSSTArrowKeyRight = 1 << 3,
+};
 
 typedef struct {
 	CGFloat left;
 	CGFloat right;
 	CGFloat up;
 	CGFloat down;
-} direction;
+} PageViewDirection;
 
 
 @implementation TSSTPageView {
@@ -43,11 +52,11 @@ typedef struct {
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
 	
-	int scrollKeys;			//!< Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
-	NSTimer * scrollTimer;	//!< Timer that fires in between each keydown event to smooth out the scrolling.
+	TSSTArrowKeys scrollKeys;	//!< Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
+	NSTimer * scrollTimer;		//!< Timer that fires in between each keydown event to smooth out the scrolling.
 	NSDate * interfaceDelay;
 	
-	direction scrollwheel;
+	PageViewDirection scrollwheel;
 	
 	//! This controls the drawing of the accepting drag-drop border highlighting
 	BOOL acceptingDrag;
@@ -843,7 +852,7 @@ typedef struct {
 			}
 			else
 			{
-				scrollKeys |= 1;
+				scrollKeys |= TSSTArrowKeyUp;
 				scrollPoint.y += delta;
 				scrolling = YES;
 			}
@@ -855,7 +864,7 @@ typedef struct {
 			}
 			else
 			{
-				scrollKeys |= 2;
+				scrollKeys |= TSSTArrowKeyDown;
 				scrollPoint.y -= delta;
 				scrolling = YES;
 			}
@@ -867,7 +876,7 @@ typedef struct {
 			}
 			else
 			{
-				scrollKeys |= 4;
+				scrollKeys |= TSSTArrowKeyLeft;
 				scrollPoint.x -= delta;
 				scrolling = YES;
 			}
@@ -879,7 +888,7 @@ typedef struct {
 			}
 			else
 			{
-				scrollKeys |= 8;
+				scrollKeys |= TSSTArrowKeyRight;
 				scrollPoint.x += delta;
 				scrolling = YES;
 			}
@@ -1018,16 +1027,16 @@ typedef struct {
     switch (charNumber)
     {
         case NSUpArrowFunctionKey:
-            scrollKeys &= 14;
+            scrollKeys &= ~TSSTArrowKeyUp;
             break;
         case NSDownArrowFunctionKey:
-            scrollKeys &= 13;
+            scrollKeys &= ~TSSTArrowKeyDown;
             break;
         case NSLeftArrowFunctionKey:
-            scrollKeys &= 11;
+            scrollKeys &= ~TSSTArrowKeyLeft;
             break;
         case NSRightArrowFunctionKey:
-            scrollKeys &= 7;
+            scrollKeys &= ~TSSTArrowKeyRight;
             break;
         default:
             break;
@@ -1063,51 +1072,51 @@ typedef struct {
     [[timer userInfo] setValue: currentDate forKey: @"lastTime"];
     NSPoint scrollPoint = visible.origin;
     int delta = 1000 * difference * multiplier;
-    int turn = NOTURN;
+    TSSTTurn turn = TSSTTurnNone;
     NSString * directionString = nil;
     BOOL turnDirection = [sessionController.session.pageOrder boolValue];
     BOOL finishTurn = NO;
-    if(scrollKeys & 1)
+    if(scrollKeys & TSSTArrowKeyUp)
     {
         scrollPoint.y += delta;
         if(NSMaxY(visible) >= NSMaxY([self frame]))
         {
-            turn = turnDirection ? LEFTTURN : RIGHTTURN;
+            turn = turnDirection ? TSSTTurnLeft : TSSTTurnRight;
         }
     }
 	
-    if (scrollKeys & 2)
+    if (scrollKeys & TSSTArrowKeyDown)
     {
         scrollPoint.y -= delta;
         if(scrollPoint.y <= 0)
         {
-            turn = turnDirection ? RIGHTTURN : LEFTTURN;
+            turn = turnDirection ? TSSTTurnRight : TSSTTurnLeft;
         }
     }
 	
-    if (scrollKeys & 4)
+    if (scrollKeys & TSSTArrowKeyLeft)
     {
         scrollPoint.x -= delta;
         if(scrollPoint.x <= 0)
         {
-            turn = LEFTTURN;
+            turn = TSSTTurnLeft;
         }
     }
 	
-    if (scrollKeys & 8)
+    if (scrollKeys & TSSTArrowKeyRight)
     {
         scrollPoint.x += delta;
         if(NSMaxX(visible) >= NSMaxX([self frame]))
         {
-            turn = RIGHTTURN;
+            turn = TSSTTurnRight;
         }
     }
 	
-    if(turn != NOTURN)
+    if(turn != TSSTTurnNone)
     {
         difference = 0;
 		
-        if(turn == RIGHTTURN)
+        if(turn == TSSTTurnRight)
         {
             directionString = @"rightTurnStart";
         }
@@ -1127,12 +1136,12 @@ typedef struct {
 		
         if(difference >= delay)
         {
-            if(turn == LEFTTURN)
+            if(turn == TSSTTurnLeft)
             {
                 [sessionController pageLeft: self];
                 finishTurn = YES;
             }
-            else if(turn == RIGHTTURN)
+            else if(turn == TSSTTurnRight)
             {
                 [sessionController pageRight: self];
                 finishTurn = YES;
@@ -1332,7 +1341,7 @@ typedef struct {
 {
     TSSTManagedSession * session = [sessionController session];
     int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
+    CGFloat previousZoom = [[session valueForKey: TSSTZoomLevel] doubleValue];
     if(scalingOption != 0)
     {
         previousZoom = NSWidth([self imageBounds]) / [self combinedImageSizeForZoom: 1].width;
@@ -1341,9 +1350,9 @@ typedef struct {
     previousZoom += ([event magnification] * 2);
     previousZoom = previousZoom < 5 ? previousZoom : 5;
     previousZoom = previousZoom > .25 ? previousZoom : .25;
-    [session setValue: @(previousZoom) forKey: TSSTZoomLevel];
-    [session setValue: @0 forKey: TSSTPageScaleOptions];
-    
+	session.zoomLevel = @(previousZoom);
+	session.scaleOptions = @0;
+	
     [self resizeView];
 }
 
