@@ -14,14 +14,14 @@ class TSSTThumbnailView: NSView {
 	
 	@objc weak var dataSource: TSSTSessionWindowController?
 	
-	fileprivate var trackingRects = IndexSet()
-	fileprivate var trackingIndexes = Set<NSNumber>()
+	private var trackingRects = IndexSet()
+	private var trackingIndexes = Set<NSNumber>()
 	
-	fileprivate var hoverIndex: Int? = nil
-	fileprivate var limit = 0
+	private var hoverIndex: Int? = nil
+	private var limit = 0
 	
-	fileprivate var thumbLock = NSLock()
-	fileprivate var threadIdent: UInt32 = 0;
+	private var thumbLock = NSLock()
+	private var threadIdent: UInt32 = 0
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -30,7 +30,7 @@ class TSSTThumbnailView: NSView {
 		thumbnailView.clears = true
 	}
 	
-	@objc(rectForIndex:) func rect(for index: Int) -> NSRect {
+	func rect(for index: Int) -> NSRect {
 		let bounds = window!.screen!.visibleFrame
 		let ratio = bounds.height / bounds.width
 		let horCount = Int(ceil(sqrt(CGFloat((pageController!.content! as AnyObject).count) / ratio)))
@@ -49,7 +49,7 @@ class TSSTThumbnailView: NSView {
 		return thumbRect
 	}
 	
-	func removeTrackingRects() {
+	private func removeTrackingRects() {
 		thumbnailView.image = nil
 		hoverIndex = nil
 		
@@ -98,25 +98,22 @@ class TSSTThumbnailView: NSView {
 			}
 			thumbLock.unlock()
 		}
-		needsDisplay = true
+		DispatchQueue.main.sync {
+			needsDisplay = true
+		}
 	}
 	
 	override func draw(_ rect: NSRect) {
-		var counter: Int = 0
-		let mouse = NSEvent.mouseLocation
-		let point = NSMakeRect(mouse.x, mouse.y, 6.0, 6.0)
-		var mousePoint: NSPoint = window!.convertFromScreen(point).origin
-		mousePoint = convert(mousePoint, from: nil)
-		while counter < limit {
+		let mousePoint = convert(window!.mouseLocationOutsideOfEventStream, from: nil)
+		for counter in 0 ..< limit {
 			let thumbnail = dataSource!.imageForPage(at: counter)
 			var drawRect = self.rect(for: counter)
 			drawRect = rectCentered(with: thumbnail.size, in: drawRect.insetBy(dx: 2, dy: 2))
-			thumbnail.draw(in: drawRect, from: NSZeroRect, operation: .sourceOver, fraction: 1.0)
+			thumbnail.draw(in: drawRect, from: .zero, operation: .sourceOver, fraction: 1.0)
 			if NSMouseInRect(mousePoint, drawRect, false) {
 				hoverIndex = counter
 				zoomThumbnail(at: hoverIndex!)
 			}
-			counter += 1
 		}
 	}
 	
@@ -144,7 +141,7 @@ class TSSTThumbnailView: NSView {
 		}
 	}
 
-	@objc(zoomThumbnailAtIndex:) func zoomThumbnail(at index: Int) {
+	private func zoomThumbnail(at index: Int) {
 		guard let arrangedObject = (pageController.arrangedObjects as? NSArray)?[index] as? NSObject,
 			let thumb = arrangedObject.value(forKey: "pageImage") as? NSImage else {
 			assert(false, "could not get image at index \(index)")

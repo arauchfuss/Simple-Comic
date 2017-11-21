@@ -1194,7 +1194,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
 				PRODUCT_NAME = "Simple Comic";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1226,7 +1225,6 @@
 				PRODUCT_NAME = "Simple Comic";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				WRAPPER_EXTENSION = app;
 			};

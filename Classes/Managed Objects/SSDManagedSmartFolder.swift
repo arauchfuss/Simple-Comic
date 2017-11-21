@@ -9,7 +9,7 @@
 import Cocoa
 
 class ManagedSmartFolder: TSSTManagedGroup {
-	fileprivate var metadataSemaphore = DispatchSemaphore(value: 0)
+	private var metadataSemaphore = DispatchSemaphore(value: 0)
 	
 	@objc func smartFolderContents() {
 		let fm = FileManager()
