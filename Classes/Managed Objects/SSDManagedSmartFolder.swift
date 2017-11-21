@@ -89,7 +89,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		for path in fileNames.map({ return URL(fileURLWithPath: $0)}) {
 			let pathExtension = path.pathExtension.lowercased()
-			if let fileUTI = try? workspace.type(ofFile: path.path) {
+			if let fileUTI = ((try? path.resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier) ?? (try? workspace.type(ofFile: path.path)) {
 				// Handles recognized image files
 				if TSSTPage.imageTypes.contains(fileUTI) {
 					let imageDescription = NSEntityDescription.insertNewObject(forEntityName: "Image", into: managedObjectContext!) as! TSSTPage

@@ -12,8 +12,8 @@ private let stringAttributes: [NSAttributedStringKey: Any] = {
 	let style = NSMutableParagraphStyle()
 	style.lineBreakMode = .byTruncatingHead
 	return [.font: NSFont.labelFont(ofSize: 14),
-		.foregroundColor: NSColor.white,
-		.paragraphStyle: style.copy()]
+			.foregroundColor: NSColor.white,
+			.paragraphStyle: style.copy()]
 }()
 
 class TSSTImageView: NSImageView {

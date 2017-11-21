@@ -117,7 +117,7 @@ extern NSString *const TSSTSessionEndNotification;
     Grays out all encodings that do not work with the
     argument string  */
 - (void)updateEncodingMenuTestedAgainst:(NSData *)data;
-/*  Modal that displays all available string encodings
+/*! Modal that displays all available string encodings
     and allows the user to pick one. */
 - (IBAction)testEncoding:(nullable id)sender;
 - (IBAction)testEncodingMenu:(nullable id)sender;
@@ -127,8 +127,10 @@ extern NSString *const TSSTSessionEndNotification;
 
 /*! Starts an NSOpenPanel with auxiliary view */
 - (IBAction)addPages:(nullable id)sender;
-/*! These are called by modals that want to end */
+/* These are called by modals that want to end */
+/*! Kills the password and encoding modals if the OK button was clicked. */
 - (IBAction)modalOK:(nullable id)sender;
+/*! Kills the password and encoding modals if the Cancel button was clicked. */
 - (IBAction)modalCancel:(nullable id)sender;
 
 @end

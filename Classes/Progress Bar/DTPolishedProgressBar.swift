@@ -150,7 +150,7 @@ textStyle: Dictionary of string attributes.
 		indicatorRect.fill()
 		
 		// Draw labels
-		let leftStringRect = NSRect(x: horizontalMargin, y: bounds2.minY, width:leftSize.width, height: 17)
+		let leftStringRect = NSRect(x: horizontalMargin, y: bounds2.minY, width: leftSize.width, height: 17)
 		leftString.draw(in: leftStringRect, withAttributes: numberStyle)
 		
 		let rightStringRect = NSRect(x: bounds2.width - horizontalMargin - rightSize.width, y: bounds2.minY, width: rightSize.width, height: 17)

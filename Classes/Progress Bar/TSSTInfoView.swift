@@ -38,7 +38,7 @@ final class TSSTInfoView: NSView {
 			to: NSPoint(x: caretPosition + 5, y: 5),
 			radius: 5)
 		outline.close()
-		NSColor(calibratedWhite: 1, alpha: 1).set()
+		NSColor.white.set()
 		outline.fill()
 	}
 }

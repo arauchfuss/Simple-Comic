@@ -133,7 +133,7 @@ class TSSTThumbnailView: NSView {
 		}
 	}
 	
-	@objc func dwell(_ timer: Timer) {
+	@objc private func dwell(_ timer: Timer) {
 		if let userInfo = timer.userInfo as? NSNumber,
 			let hoverIndex = hoverIndex,
 			userInfo.intValue == hoverIndex {

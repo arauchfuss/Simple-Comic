@@ -720,13 +720,11 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	}
 }
 
-/*  Kills the password and encoding modals if the OK button was clicked. */
 - (IBAction)modalOK:(id)sender
 {
     [NSApp stopModalWithCode: NSModalResponseOK];
 }
 
-/*  Kills the password and encoding modals if the Cancel button was clicked. */
 - (IBAction)modalCancel:(id)sender
 {
     [NSApp stopModalWithCode: NSModalResponseCancel];
