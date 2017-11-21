@@ -37,3 +37,9 @@
 "Quit anyway" = "Quit anyway";
 
 "Cancel" = "Cancel";
+
+/* re-select file request */
+"Please re-select '%@'" = "「％@」を再度選択してください"; //Fuzzy
+
+/* PDF page number */
+"PDF page %li" = "ページ %li";

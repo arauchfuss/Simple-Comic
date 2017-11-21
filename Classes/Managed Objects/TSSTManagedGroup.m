@@ -541,7 +541,7 @@
     for (NSInteger pageNumber = 0; pageNumber < imageCount; ++pageNumber)
     {
         imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-		imageDescription.imagePath = [NSString stringWithFormat: @"%li", (long)(pageNumber + 1)];
+		imageDescription.imagePath = [NSString stringWithFormat: NSLocalizedString(@"PDF page %li", @"PDF page number"), (long)(pageNumber + 1)];
 		imageDescription.index = @(pageNumber);
         [pageSet addObject: imageDescription];
     }

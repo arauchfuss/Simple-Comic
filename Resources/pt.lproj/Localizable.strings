@@ -37,3 +37,9 @@
 "Quit anyway" = "Quit anyway";
 
 "Cancel" = "Cancel";
+
+/* re-select file request */
+"Please re-select '%@'" = "Re-selecionar ‘%@’"; //Fuzzy
+
+/* PDF page number */
+"PDF page %li" = "Página %li";

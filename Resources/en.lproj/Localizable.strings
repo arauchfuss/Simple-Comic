@@ -38,4 +38,8 @@
 
 "Cancel" = "Cancel";
 
+/* re-select file request */
 "Please re-select '%@'" = "Please re-select ‘%@’";
+
+/* PDF page number */
+"PDF page %li" = "Page %li";
