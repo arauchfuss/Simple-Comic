@@ -44,7 +44,7 @@ class TSSTThumbnailView: NSView {
 			thumbRect = NSRect(x: CGFloat(horGridPos) * horSide, y: bounds.maxY - side - CGFloat(vertGridPos) * side, width: horSide, height: side)
 		}
 		else {
-			thumbRect = NSRect(x: NSMaxX(bounds) - horSide - CGFloat(horGridPos) * horSide, y: bounds.maxY - side - CGFloat(vertGridPos) * side, width: horSide, height: side)
+			thumbRect = NSRect(x: bounds.maxX - horSide - CGFloat(horGridPos) * horSide, y: bounds.maxY - side - CGFloat(vertGridPos) * side, width: horSide, height: side)
 		}
 		return thumbRect
 	}

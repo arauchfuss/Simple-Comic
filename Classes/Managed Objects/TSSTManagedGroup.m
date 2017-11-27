@@ -520,7 +520,7 @@
 	NSImage * pageImage = [[NSImage alloc] initWithSize: bounds.size];
 	[pageImage lockFocus];
 		[[NSColor whiteColor] set];
-		NSRectFill(bounds );
+		NSRectFill(bounds);
 		NSAffineTransform * scaleTransform = [NSAffineTransform transform];
 		[scaleTransform scaleBy: scale];
 		[scaleTransform concat];
