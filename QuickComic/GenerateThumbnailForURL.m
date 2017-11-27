@@ -9,6 +9,26 @@
 #import "DTPartialArchiveParser.h"
 #include "main.h"
 
+// Undocumented properties
+extern const CFStringRef kQLThumbnailPropertyIconFlavorKey;
+
+typedef NS_ENUM(NSInteger, QLThumbnailIconFlavor)
+{
+	kQLThumbnailIconPlainFlavor		= 0,
+	kQLThumbnailIconShadowFlavor	= 1,
+	kQLThumbnailIconBookFlavor		= 2,
+	kQLThumbnailIconMovieFlavor		= 3,
+	kQLThumbnailIconAddressFlavor	= 4,
+	kQLThumbnailIconImageFlavor		= 5,
+	kQLThumbnailIconGlossFlavor		= 6,
+	kQLThumbnailIconSlideFlavor		= 7,
+	kQLThumbnailIconSquareFlavor	= 8,
+	kQLThumbnailIconBorderFlavor	= 9,
+	// = 10,
+	kQLThumbnailIconCalendarFlavor	= 11,
+	kQLThumbnailIconPatternFlavor	= 12,
+};
+
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
 
@@ -18,20 +38,20 @@
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
 	@autoreleasepool {
-	
-	NSString * archivePath = [(__bridge NSURL *)url path];
+	NSURL *archiveURL = (__bridge NSURL *)url;
+	NSString * archivePath = [archiveURL path];
 //	NSLog(@"base path %@",archivePath);
 	NSData * imageData = nil;
-	NSString * coverName = [UKXattrMetadataStore stringForKey: @"QCCoverName" atPath: archivePath traverseLink: NO error: nil] ?: @"";
+	NSString * coverName = [UKXattrMetadataStore stringForKey: SCQuickLookCoverName atPath: archivePath traverseLink: NO error: nil] ?: @"";
 //	NSLog(@"page name %@",coverName);
-	NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO error: nil] ?: @"";
+	NSString * coverRectString = [UKXattrMetadataStore stringForKey: SCQuickLookCoverRect atPath: archivePath traverseLink: NO error: nil] ?: @"";
 //	NSLog(@"rect %@",coverRectString);
 	CGRect cropRect = CGRectZero;
 	NSInteger coverIndex;
 	if(![coverName isEqualToString: @""])
 	{
 //		NSLog(@"has name");
-		DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithPath: archivePath searchString: coverName];
+		DTPartialArchiveParser * partialArchive = [[DTPartialArchiveParser alloc] initWithURL: archiveURL searchString: coverName];
 		if(![coverRectString isEqualToString: @""])
 		{
 			cropRect = NSRectToCGRect(NSRectFromString(coverRectString));
@@ -40,7 +60,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	}
 	else
     {
-		XADArchive * archive = [[XADArchive alloc] initWithFile: archivePath];
+		XADArchive * archive = [[XADArchive alloc] initWithFileURL: archiveURL delegate: nil error: NULL];
 		NSMutableArray * fileList = fileListForArchive(archive);
 		
 		if([fileList count] > 0)
@@ -48,10 +68,14 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 			[fileList sortUsingDescriptors: fileSort()];
 			coverName = [fileList.firstObject valueForKey: @"rawName"];
 			coverIndex = [[fileList.firstObject valueForKey: @"index"] integerValue];
-			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO error: nil];
+			[UKXattrMetadataStore setString: coverName forKey: SCQuickLookCoverName atPath: archivePath traverseLink: NO error: nil];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}
     }
+
+	if (QLThumbnailRequestIsCancelled(thumbnail)) {
+		return kQLReturnNoError;
+	}
 
 	if(imageData)
 	{
@@ -72,13 +96,19 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		{
 //			NSLog(@"crop");
 			canvasRect.size = fitSizeInSize(maxSize, cropRect.size);
-			float vertScale = canvasRect.size.height / CGImageGetHeight(currentImage);
-			float horScale = canvasRect.size.width / CGImageGetWidth(currentImage);
+			CGFloat vertScale = canvasRect.size.height / CGImageGetHeight(currentImage);
+			CGFloat horScale = canvasRect.size.width / CGImageGetWidth(currentImage);
 			drawRect.origin = CGPointMake(-(cropRect.origin.x), -(cropRect.origin.y));
 			drawRect.size = CGSizeMake(cropRect.size.width / horScale, cropRect.size.height / vertScale);
 		}
 		
-        CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, NULL);
+		if (QLThumbnailRequestIsCancelled(thumbnail)) {
+			CFRelease(currentImage);
+			return kQLReturnNoError;
+		}
+		
+		NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconBookFlavor)};
+		CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, (__bridge CFDictionaryRef)(properties));
         if(cgContext)
         {
 //			NSLog(@"draw");

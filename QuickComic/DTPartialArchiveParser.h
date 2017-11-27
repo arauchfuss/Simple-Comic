@@ -15,10 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DTPartialArchiveParser : NSObject 
 
 - (instancetype)initWithPath:(NSString *)archivePath searchString:(NSString *)search;
+- (instancetype)initWithURL:(NSURL *)archivePath searchString:(NSString *)search;
 @property (readonly, copy, nullable) NSData *searchResult;
-
--(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict;
--(BOOL)archiveParsingShouldStop:(XADArchiveParser *)parser;
 
 @end
 

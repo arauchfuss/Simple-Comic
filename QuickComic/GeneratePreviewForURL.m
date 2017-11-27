@@ -16,10 +16,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 {
     @autoreleasepool {
     
-		NSString * archivePath = [(__bridge NSURL *)url path];
-		
-		XADArchive * archive = [[XADArchive alloc] initWithFile: archivePath];
-    NSMutableArray * fileList = fileListForArchive(archive);
+		XADArchive * archive = [[XADArchive alloc] initWithFileURL: (__bridge NSURL *)url delegate: nil error: NULL];
+    NSMutableArray<NSDictionary<NSString*,id>*> * fileList = fileListForArchive(archive);
+
+		if (QLPreviewRequestIsCancelled(preview)) {
+			return kQLReturnNoError;
+		}
 
     if([fileList count] > 0)
     {
@@ -52,6 +54,10 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
                 CFRelease(pageSourceRef);
 					currentTime = [NSDate date];
 					counter ++;
+				if (QLPreviewRequestIsCancelled(preview)) {
+					CFRelease(cgContext);
+					return kQLReturnNoError;
+				}
             }while(1 > [currentTime timeIntervalSinceDate: pageRenderStartTime] && counter < count);
             
             QLPreviewRequestFlushContext(preview, cgContext);

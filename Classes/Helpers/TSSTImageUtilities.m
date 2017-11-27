@@ -21,6 +21,9 @@
 
 #import "TSSTImageUtilities.h"
 
+NSString *const SCQuickLookCoverName = @"QCCoverName";
+NSString *const SCQuickLookCoverRect = @"QCCoverRect";
+
 NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension)
 {
 //	if(size.width > dimension || size.height > dimension)

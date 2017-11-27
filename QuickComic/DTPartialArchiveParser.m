@@ -29,11 +29,16 @@
 
 - (instancetype)initWithPath:(NSString *)archivePath searchString:(NSString *)search
 {
-	self=[self init];	
-	if(self)
+	return self = [self initWithURL:[NSURL fileURLWithPath:archivePath] searchString:search];
+}
+
+
+- (instancetype)initWithURL:(NSURL *)archivePath searchString:(NSString *)search
+{
+	if(self=[super init])
 	{
 		searchString = search;
-		XADArchiveParser * parser = [XADArchiveParser archiveParserForPath: archivePath];
+		XADArchiveParser * parser = [XADArchiveParser archiveParserForFileURL: archivePath];
 		if(parser)
 		{
 			parser.delegate = self;
@@ -51,7 +56,7 @@
 
 #pragma mark XADArchiveParser Delegates
 
--(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary *)dict
+-(void)archiveParser:(XADArchiveParser *)parser foundEntryWithDictionary:(NSDictionary<XADArchiveKeys,id> *)dict
 {	
 	NSNumber * resnum = dict[XADIsResourceForkKey];
 	BOOL isres = resnum&&[resnum boolValue];

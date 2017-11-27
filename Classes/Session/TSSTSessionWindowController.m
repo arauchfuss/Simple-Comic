@@ -856,12 +856,12 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				NSInteger coverIndex = [selectedPage.index integerValue];
 				NSString * coverName = [(XADArchive *)[selectedGroup instance] nameOfEntry: coverIndex];
 				[UKXattrMetadataStore setString: coverName
-										 forKey: @"QCCoverName"
+										 forKey: SCQuickLookCoverName
 										 atPath: archivePath
 								   traverseLink: NO
 										  error: nil];
 				[UKXattrMetadataStore setString: NSStringFromRect(cropRect)
-										 forKey: @"QCCoverRect"
+										 forKey: SCQuickLookCoverRect
 										 atPath: archivePath
 								   traverseLink: NO
 										  error: nil];

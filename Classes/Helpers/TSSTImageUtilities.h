@@ -20,6 +20,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+extern NSString *const SCQuickLookCoverName;
+extern NSString *const SCQuickLookCoverRect;
+
 NSSize sizeScalaedToDimension(NSSize size, CGFloat dimension) NS_SWIFT_NAME(scaleSize(_:dimension:));
 
 NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension) NS_SWIFT_NAME(constrainSize(_:dimension:));
