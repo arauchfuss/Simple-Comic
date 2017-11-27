@@ -39,7 +39,7 @@
 "Cancel" = "Cancel";
 
 /* re-select file request */
-"Please re-select '%@'" = "다시 선택하십시오 '%@'"; //Fuzzy
+"Please re-select '%@'" = "'%@'을 (를) 다시 선택하십시오"; //Fuzzy
 
 /* PDF page number */
 "PDF page %li" = "페이지 %li"; //fuzzy
