@@ -19,25 +19,11 @@
 }
 @synthesize searchResult = foundData;
 
-- (instancetype) init
-{
-	if (self = [super init]) {
-	}
-	return self;
-}
-
-
-- (instancetype)initWithPath:(NSString *)archivePath searchString:(NSString *)search
-{
-	return self = [self initWithURL:[NSURL fileURLWithPath:archivePath] searchString:search];
-}
-
-
 - (instancetype)initWithURL:(NSURL *)archivePath searchString:(NSString *)search
 {
 	if(self=[super init])
 	{
-		searchString = search;
+		searchString = [search copy];
 		XADArchiveParser * parser = [XADArchiveParser archiveParserForFileURL: archivePath];
 		if(parser)
 		{
