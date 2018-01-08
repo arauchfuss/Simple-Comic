@@ -17,29 +17,29 @@
 "Right to Left Page Order" = "Ordine delle pagine da destra a sinistra";
 
 /* Only a single page is displayed at a time */
-"Single Page Layout" = "Vista a singola pagina";
+"Single Page Layout" = "Layout a pagina singola";
 
 /* Two pages are displayed side by side */
-"Two Page Layout" = "Vista a doppia pagina";
+"Two Page Layout" = "Layout a pagina doppia";
 
-"Click to select page" = "Click to select page";
+"Click to select page" = "Fai clic per selezionare la pagina";
 
-"\nDrag to crop" = "\nDrag to crop";
+"\nDrag to crop" = "\nTrascina per ritagliare";
 
-"Extract Page" = "Extract Page";
+"Extract Page" = "Estrai pagina";
 
-"Extract" = "Extract";
+"Extract" = "Estrai";
 
-"Quit without saving session?" = "Quit without saving session?";
+"Quit without saving session?" = "Uscire senza salvare la sessione?";
 
-"Could not save changes while quitting. Quit anyway?" = "Could not save changes while quitting. Quit anyway?";
+"Could not save changes while quitting. Quit anyway?" = "Impossibile salvare le modifiche durante la chiusura. Uscire comunque?";
 
-"Quit anyway" = "Quit anyway";
+"Quit anyway" = "Esci comunque";
 
-"Cancel" = "Cancel";
+"Cancel" = "Annulla";
 
 /* re-select file request */
-"Please re-select '%@'" = "Si prega di ri-selezionare ‘%@’"; //Fuzzy
+"Please re-select '%@'" = "Per favore ri-seleziona ‘%@’"; //Fuzzy
 
 /* PDF page number */
-"PDF page %li" = "Pagina %li";
+"PDF page %li" = "PDF pagina %li";
