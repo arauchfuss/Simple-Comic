@@ -30,6 +30,7 @@ class TSSTKeyWindow: NSPanel {
 	override init(contentRect rect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
 		super.init(contentRect: rect, styleMask: .borderless, backing: bufferingType, defer: flag)
 		isOpaque = false
+		backgroundColor = NSColor.clear
 	}
 	
 	override var canBecomeKey: Bool {
