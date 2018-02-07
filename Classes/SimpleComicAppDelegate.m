@@ -206,7 +206,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTLoupeDiameter: @500,
 		  TSSTLoupePower: @2.0f,
 		  TSSTLonelyFirstPage: @YES,
-		  TSSTScrollersVisible: @YES,
+		  TSSTStatusbarVisible: @YES,
 		  TSSTPreserveModDate: @NO,
 		  TSSTUnifiedTitlebar: @NO,
 		  TSSTFullscreenToolbar: @NO,
