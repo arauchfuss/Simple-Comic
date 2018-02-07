@@ -4,7 +4,7 @@
 /* Right to left page order menu item text */
 "Right to Left" = "Von rechts nach links";
 
-"Click to select page" = "Klicke um Seite auszuwählen";
+"Click to select page" = "Klicke, um Seite auszuwählen";
 
 "\nDrag to crop" = "\nZiehe zum zuschneiden";
 
@@ -12,7 +12,7 @@
 
 "Extract" = "Extrahieren";
 
-"Quit without saving session?" = "Quit without saving session?";
+"Quit without saving session?" = "Beenden, ohne Sitzung zu sichern?";
 
 "Could not save changes while quitting. Quit anyway?" = "Änderungen konnten nicht gesichert werden. Trotzdem beenden?";
 
@@ -21,7 +21,7 @@
 "Cancel" = "Abbrechen";
 
 /* re-select file request */
-"Please re-select '%@'" = "Bitte neu auswählen ‘%@’"; //Fuzzy
+"Please re-select '%@'" = "Bitte wähle „%@“ erneut aus";
 
 /* PDF page number */
-"PDF page %li" = "Blatt %li";
+"PDF page %li" = "Seite %li";

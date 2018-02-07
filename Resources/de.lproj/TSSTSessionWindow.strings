@@ -9,7 +9,7 @@
 "516.ibShadowedToolTips[1]" = "An Fenster anpassen";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[2] = "Horizontal Scaling"; ObjectID = "516"; */
-"516.ibShadowedToolTips[2]" = "An Breite anpassen";
+"516.ibShadowedToolTips[2]" = "An Seitenbreite anpassen";
 
 /* Class = "NSToolbarItem"; label = "Page Scaling"; ObjectID = "517"; */
 "517.label" = "Skalierung";
@@ -18,16 +18,16 @@
 "517.paletteLabel" = "Skalierung";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[0] = "Right to Left Page Order"; ObjectID = "519"; */
-"519.ibShadowedToolTips[0]" = "Von rects nach links";
+"519.ibShadowedToolTips[0]" = "Von rechts nach links";
 
 /* Class = "NSSegmentedCell"; 519.ibShadowedToolTips[1] = "Left to Right Page Order"; ObjectID = "519"; */
 "519.ibShadowedToolTips[1]" = "Von links nach rechts";
 
 /* Class = "NSToolbarItem"; label = "Page Order"; ObjectID = "520"; */
-"520.label" = "Reihenfolge";
+"520.label" = "Leserichtung";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Page Order"; ObjectID = "520"; */
-"520.paletteLabel" = "Reihenfolge";
+"520.paletteLabel" = "Leserichtung";
 
 /* Class = "NSSegmentedCell"; 522.ibShadowedToolTips[0] = "Single Page Layout"; ObjectID = "522"; */
 "522.ibShadowedToolTips[0]" = "Einzelseiten";
@@ -42,25 +42,25 @@
 "523.paletteLabel" = "Layout";
 
 /* Class = "NSToolbarItem"; label = "Turn Page"; ObjectID = "553"; */
-"553.label" = "Umblättern";
+"553.label" = "Blättern";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Turn Page"; ObjectID = "553"; */
-"553.paletteLabel" = "Umblättern";
+"553.paletteLabel" = "Blättern";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[0] = "Left Page Turn"; ObjectID = "555"; */
-"555.ibShadowedToolTips[0]" = "Left Page Turn";
+"555.ibShadowedToolTips[0]" = "Nach links blättern";
 
 /* Class = "NSSegmentedCell"; 555.ibShadowedToolTips[1] = "Right Page Turn"; ObjectID = "555"; */
-"555.ibShadowedToolTips[1]" = "Right Page Turn";
+"555.ibShadowedToolTips[1]" = "Nach rechts blättern";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "558"; */
-"558.ibShadowedToolTips[0]" = "Vergrößern";
+"558.ibShadowedToolTips[0]" = "Seite vergrößern";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "558"; */
-"558.ibShadowedToolTips[1]" = "Verkleinern";
+"558.ibShadowedToolTips[1]" = "Seite verkleinern";
 
 /* Class = "NSSegmentedCell"; 558.ibShadowedToolTips[2] = "Zoom Reset"; ObjectID = "558"; */
-"558.ibShadowedToolTips[2]" = "Zurücksetzen";
+"558.ibShadowedToolTips[2]" = "Originalgröße";
 
 /* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "559"; */
 "559.label" = "Zoomen";
@@ -93,34 +93,34 @@
 "585.paletteLabel" = "Drehen";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[0] = "Rotate Left"; ObjectID = "587"; */
-"587.ibShadowedToolTips[0]" = "Links drehen";
+"587.ibShadowedToolTips[0]" = "Nach links drehen";
 
 /* Class = "NSSegmentedCell"; 587.ibShadowedToolTips[1] = "Rotate Right"; ObjectID = "587"; */
-"587.ibShadowedToolTips[1]" = "Rechts frehen";
+"587.ibShadowedToolTips[1]" = "Nach rechts drehen";
 
 /* Class = "NSToolbarItem"; label = "Capture Page"; ObjectID = "688"; */
-"688.label" = "Seite sichern";
+"688.label" = "Seite extrahieren";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Capture Page"; ObjectID = "688"; */
-"688.paletteLabel" = "Seite sichern";
+"688.paletteLabel" = "Extrahieren";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Capture Page"; ObjectID = "689"; */
-"689.ibShadowedToolTip" = "Seite sichern";
+"689.ibShadowedToolTip" = "Seite als Datei extrahieren";
 
 /* Class = "NSToolbarItem"; label = "Set Icon"; ObjectID = "693"; */
-"693.label" = "Set Icon";
+"693.label" = "Icon setzen";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Set Icon"; ObjectID = "693"; */
-"693.paletteLabel" = "Set Icon";
+"693.paletteLabel" = "Icon setzen";
 
 /* Class = "NSButton"; ibShadowedToolTip = "Set Icon"; ObjectID = "694"; */
-"694.ibShadowedToolTip" = "Set Icon";
+"694.ibShadowedToolTip" = "Seite als Datei-Icon auswählen";
 
 /* Class = "NSButtonCell"; title = "Jump"; ObjectID = "753"; */
 "753.title" = "Los";
 
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
-"755.title" = "Abbr."; //Abbrechen
+"755.title" = "Abbrechen";
 
 /* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "fTI-g2-r3b"; */
 "fTI-g2-r3b.label" = "Zoomen";
@@ -129,7 +129,7 @@
 "fTI-g2-r3b.paletteLabel" = "Zoomen";
 
 /* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[0] = "Zoom In"; ObjectID = "lV3-24-KZL"; */
-"lV3-24-KZL.ibShadowedToolTips[0]" = "Vergrößern";
+"lV3-24-KZL.ibShadowedToolTips[0]" = "Seite vergrößern";
 
 /* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "lV3-24-KZL"; */
-"lV3-24-KZL.ibShadowedToolTips[1]" = "Verkleinern";
+"lV3-24-KZL.ibShadowedToolTips[1]" = "Seite verkleinern";
