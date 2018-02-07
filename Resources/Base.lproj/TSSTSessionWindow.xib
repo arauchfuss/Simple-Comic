@@ -105,10 +105,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" id="517" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="82" height="25"/>
-                        <size key="maxSize" width="82" height="25"/>
+                        <size key="minSize" width="82" height="24"/>
+                        <size key="maxSize" width="86" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
-                            <rect key="frame" x="0.0" y="14" width="82" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="86" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
                                 <font key="font" metaFont="system"/>
@@ -131,10 +131,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" id="520" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="55" height="25"/>
-                        <size key="maxSize" width="55" height="27"/>
+                        <size key="minSize" width="55" height="24"/>
+                        <size key="maxSize" width="59" height="27"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
-                            <rect key="frame" x="6" y="14" width="55" height="25"/>
+                            <rect key="frame" x="4" y="14" width="59" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
@@ -154,10 +154,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" id="523" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="62" height="25"/>
-                        <size key="maxSize" width="62" height="25"/>
+                        <size key="minSize" width="62" height="24"/>
+                        <size key="maxSize" width="66" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="521">
-                            <rect key="frame" x="5" y="14" width="62" height="25"/>
+                            <rect key="frame" x="3" y="14" width="66" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="522">
                                 <font key="font" metaFont="system"/>
@@ -192,10 +192,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C8491130-5672-4D81-9D91-76BB3F03D233" label="Zoom" paletteLabel="Zoom" id="559" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="97" height="25"/>
-                        <size key="maxSize" width="97" height="25"/>
+                        <size key="minSize" width="97" height="24"/>
+                        <size key="maxSize" width="101" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="557">
-                            <rect key="frame" x="0.0" y="14" width="97" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="101" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="558">
                                 <font key="font" metaFont="system"/>
