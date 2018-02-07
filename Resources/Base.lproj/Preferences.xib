@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -127,6 +128,8 @@
                     </textField>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="41" secondAttribute="trailing" constant="20" symbolic="YES" id="0F0-A2-T3h"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="36" secondAttribute="trailing" constant="20" symbolic="YES" id="13n-Ap-zdv"/>
                     <constraint firstItem="216" firstAttribute="trailing" secondItem="243" secondAttribute="trailing" id="31G-b9-0TS"/>
                     <constraint firstItem="243" firstAttribute="trailing" secondItem="247" secondAttribute="trailing" constant="-20" id="4TQ-rc-XlG"/>
                     <constraint firstItem="216" firstAttribute="top" secondItem="152" secondAttribute="bottom" constant="5" id="6bE-Bl-Wdl"/>
@@ -134,6 +137,8 @@
                     <constraint firstItem="213" firstAttribute="top" secondItem="36" secondAttribute="bottom" constant="5" id="8gj-5A-bt3"/>
                     <constraint firstItem="243" firstAttribute="leading" secondItem="237" secondAttribute="leading" id="A0X-c2-i2z"/>
                     <constraint firstItem="218" firstAttribute="top" secondItem="41" secondAttribute="bottom" constant="5" id="AOF-u4-1b8"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="152" secondAttribute="trailing" constant="20" symbolic="YES" id="D1H-Ya-Fnc"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uh8-1X-qIh" secondAttribute="trailing" constant="20" symbolic="YES" id="DKg-xV-8sj"/>
                     <constraint firstItem="216" firstAttribute="leading" secondItem="243" secondAttribute="leading" id="De6-Bg-wxp"/>
                     <constraint firstItem="213" firstAttribute="trailing" secondItem="243" secondAttribute="trailing" id="MBt-YZ-W8w"/>
                     <constraint firstItem="NU9-EN-59o" firstAttribute="top" secondItem="Uh8-1X-qIh" secondAttribute="bottom" constant="5" id="MZM-jC-hf3"/>
@@ -145,6 +150,7 @@
                     <constraint firstItem="238" firstAttribute="centerY" secondItem="237" secondAttribute="centerY" id="cX7-DQ-z3L"/>
                     <constraint firstAttribute="bottom" secondItem="NU9-EN-59o" secondAttribute="bottom" constant="20" symbolic="YES" id="cne-Nl-UPR"/>
                     <constraint firstItem="41" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="dAb-Zz-Tja"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="237" secondAttribute="trailing" constant="20" symbolic="YES" id="dOF-wx-d9y"/>
                     <constraint firstItem="237" firstAttribute="top" secondItem="247" secondAttribute="top" constant="20" symbolic="YES" id="fSs-MM-C78"/>
                     <constraint firstItem="NU9-EN-59o" firstAttribute="leading" secondItem="243" secondAttribute="leading" id="fZv-fm-Cog"/>
                     <constraint firstItem="152" firstAttribute="leading" secondItem="36" secondAttribute="leading" id="gli-if-d4s"/>
