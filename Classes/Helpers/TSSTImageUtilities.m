@@ -112,7 +112,7 @@ NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image)
     
     [scaledImage lockFocus];
     [[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-    [scaledImage drawInRect: scaledRect fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1.0];
+	[scaledImage drawInRect: scaledRect fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1.0];
     [scaledImage unlockFocus];
     
     return scaledImage;

@@ -298,14 +298,14 @@ typedef struct {
 	
     [firstPageImage drawInRect: [self centerScanRect: firstPageRect]
                       fromRect: NSZeroRect
-                     operation: NSCompositeSourceOver
+					 operation: NSCompositingOperationSourceOver
                       fraction: 1.0];
 	
     if([secondPageImage isValid])
     {
         [secondPageImage drawInRect: [self centerScanRect: secondPageRect]
                            fromRect: NSZeroRect
-                          operation: NSCompositeSourceOver
+						  operation: NSCompositingOperationSourceOver
                            fraction: 1.0];
     }
 	
@@ -346,7 +346,7 @@ typedef struct {
 	if([sessionController pageSelectionInProgress])
 	{
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-		[style setAlignment: NSCenterTextAlignment];
+		[style setAlignment: NSTextAlignmentCenter];
 		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
 										   NSForegroundColorAttributeName: [NSColor whiteColor],
 										   NSParagraphStyleAttributeName: style};
@@ -458,12 +458,12 @@ typedef struct {
 		
         if(!NSEqualRects(firstFragment, NSZeroRect))
         {
-            [firstPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: firstFragment operation: NSCompositeSourceOver fraction: 1.0];
+			[firstPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: firstFragment operation: NSCompositingOperationSourceOver fraction: 1.0];
         }
 		
         if(!NSEqualRects(secondFragment, NSZeroRect))
         {
-            [secondPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: secondFragment operation: NSCompositeSourceOver fraction: 1.0];
+			[secondPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: secondFragment operation: NSCompositingOperationSourceOver fraction: 1.0];
         }
     [imageFragment unlockFocus];
     return imageFragment;
@@ -747,7 +747,7 @@ typedef struct {
 	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 	
-	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
+	if((modifier & NSEventModifierFlagCommand) && [theEvent deltaY])
 	{
 		NSInteger loupeDiameter = [defaultsController integerForKey: TSSTLoupeDiameter];
 		loupeDiameter += [theEvent deltaY] > 0 ? -25 : 25;
@@ -755,7 +755,7 @@ typedef struct {
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
 		[defaultsController setInteger: loupeDiameter forKey: TSSTLoupeDiameter];
 	}
-	else if((modifier & NSAlternateKeyMask) && [theEvent deltaY])
+	else if((modifier & NSEventModifierFlagOption) && [theEvent deltaY])
 	{
 		CGFloat loupePower = [defaultsController doubleForKey: TSSTLoupePower];
 		loupePower += [theEvent deltaY] > 0 ? -0.5 : 0.5;
@@ -836,7 +836,7 @@ typedef struct {
 	}
 	
     NSEventModifierFlags modifier = [event modifierFlags];
-    BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
+	BOOL shiftKey = modifier & NSEventModifierFlagShift ? YES : NO;
     unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSPoint scrollPoint = visible.origin;
@@ -1046,7 +1046,7 @@ typedef struct {
 
 - (void)flagsChanged:(NSEvent *)theEvent
 {
-    if([theEvent type] & NSKeyDown && [theEvent modifierFlags] & NSCommandKeyMask)
+	if([theEvent type] & NSEventTypeKeyDown && [theEvent modifierFlags] & NSEventModifierFlagCommand)
     {
         scrollKeys = 0;
     }
@@ -1243,15 +1243,15 @@ typedef struct {
 	}
     else if([self dragIsPossible])
     {
-        while ([theEvent type] != NSLeftMouseUp)
+		while ([theEvent type] != NSEventTypeLeftMouseUp)
         {
-            if ([theEvent type] == NSLeftMouseDragged)
+			if ([theEvent type] == NSEventTypeLeftMouseDragged)
             {
                 currentPoint = [theEvent locationInWindow];
                 [self scrollPoint: NSMakePoint(viewOrigin.x + cursor.x - currentPoint.x,viewOrigin.y + cursor.y - currentPoint.y)];
                 [sessionController refreshLoupePanel];
             }
-            theEvent = [[self window] nextEventMatchingMask: NSLeftMouseUpMask | NSLeftMouseDraggedMask];
+			theEvent = [[self window] nextEventMatchingMask: NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged];
         }
         [[self window] invalidateCursorRectsForView: self];
     }
@@ -1281,7 +1281,7 @@ typedef struct {
     {
         if(clickPoint.x < viewSplit)
         {
-            if([theEvent modifierFlags] & NSAlternateKeyMask)
+			if([theEvent modifierFlags] & NSEventModifierFlagOption)
             {
                 [NSApp sendAction: @selector(shiftPageLeft:) to: nil from: self];
             }
@@ -1292,7 +1292,7 @@ typedef struct {
         }
         else
         {
-            if([theEvent modifierFlags] & NSAlternateKeyMask)
+			if([theEvent modifierFlags] & NSEventModifierFlagOption)
             {
                 [NSApp sendAction: @selector(shiftPageRight:) to: nil from: self];
             }
