@@ -927,7 +927,7 @@ typedef struct {
         NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
             [NSDate date], @"lastTime", @(shiftKey), @"accelerate",
             nil, @"leftTurnStart", nil, @"rightTurnStart", nil];
-        scrollTimer = [NSTimer scheduledTimerWithTimeInterval: 1/10
+        scrollTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0/10
                                                        target: self
                                                      selector: @selector(scroll:)
                                                      userInfo: userInfo
