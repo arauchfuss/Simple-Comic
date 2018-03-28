@@ -204,7 +204,7 @@
 "1860.title" = "Keine Drehung";
 
 /* Class = "NSMenuItem"; title = "Capture Page…"; ObjectID = "1866"; */
-"1866.title" = "Seite sichern …";
+"1866.title" = "Seite extrahieren …";
 
 /* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
 "1869.title" = "Bearbeiten";
@@ -223,3 +223,6 @@
 
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "1879"; */
 "1879.title" = "Alles auswählen";
+
+/* Class = "NSMenuItem"; title = "Always Show Toolbar in Full Screen"; ObjectID = "hhx-Yd-WrR"; */
+"hhx-Yd-WrR.title" = "Symbolleiste immer anzeigen";
