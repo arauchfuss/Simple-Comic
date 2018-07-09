@@ -124,6 +124,11 @@
 		[[self managedObjectContext] deleteObject: self];
 		[NSApp presentError: urlError];
 	}
+	else if (stale)
+	{
+		// regenerate stale bookmark.
+		self.fileURL = fileURL;
+	}
 
 	return fileURL;
 }
