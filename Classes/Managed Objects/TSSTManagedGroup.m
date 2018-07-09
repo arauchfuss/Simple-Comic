@@ -274,7 +274,7 @@
 	static NSArray * extensions = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		extensions = @[@"cbr", @"cbz", @"cbt"];
+		extensions = @[@"cbr", @"cbz", @"cbt", @"cb7"];
 	});
 	
 	return extensions;
