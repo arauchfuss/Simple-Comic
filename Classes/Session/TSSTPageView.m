@@ -348,7 +348,7 @@ typedef struct {
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment: NSCenterTextAlignment];
 		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
-										   NSForegroundColorAttributeName: [NSColor colorWithCalibratedWhite: 1 alpha: 1.0],
+										   NSForegroundColorAttributeName: [NSColor whiteColor],
 										   NSParagraphStyleAttributeName: style};
 		NSString * selectionText = NSLocalizedString(@"Click to select page", @"");
 		if([sessionController pageSelectionCanCrop])
