@@ -75,9 +75,9 @@ class ManagedSmartFolder: TSSTManagedGroup {
 					useTask()
 				} else {
 					query.stop()
-					fileNames = query.results.filter({ (anObj) -> Bool in
-						return anObj is String
-					}) as? [String] ?? []
+					fileNames = query.results.compactMap({ (anObj) -> String? in
+						return anObj as? String
+					})
 				}
 			} else {
 				useTask()
@@ -171,7 +171,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 
 extension ManagedSmartFolder: NSMetadataQueryDelegate {
 	func metadataQuery(_ query: NSMetadataQuery, replacementObjectForResultObject result: NSMetadataItem) -> Any {
-		guard let aResult = result.value(forAttribute: kMDItemPath as String) as? NSString else {
+		guard let aResult = result.value(forAttribute: kMDItemPath as String) as? String else {
 			return NSNull()
 		}
 		return aResult
