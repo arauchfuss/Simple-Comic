@@ -43,7 +43,7 @@ NSSize sizeConstrainedByDimension(NSSize size, CGFloat dimension)
 
 NSSize scaleSize(NSSize aSize, CGFloat scale)
 {
-    if(NSEqualSizes(aSize , NSZeroSize))
+    if(NSEqualSizes(aSize, NSZeroSize))
     {
         return NSZeroSize;
     }

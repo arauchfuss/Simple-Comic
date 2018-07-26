@@ -52,7 +52,7 @@ typedef struct {
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
 	
-	TSSTArrowKeys scrollKeys;	//!< Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
+	TSSTArrowKeys scrollKeys;	//!< Stores which arrow keys are currently depressed. This enables multi axis keyboard scrolling.
 	NSTimer * scrollTimer;		//!< Timer that fires in between each keydown event to smooth out the scrolling.
 	NSDate * interfaceDelay;
 	
