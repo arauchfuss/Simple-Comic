@@ -243,6 +243,13 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = UniversalDetector;
 		};
+		55EBBEBA210C3CBF00CCED60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 556E4F6C1F996AF100506BF3;
+			remoteInfo = UniversalDetectorSwift;
+		};
 		55F590851EB535D0000B4973 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
@@ -636,6 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				55C374571BD9EAA1006385B6 /* UniversalDetector.framework */,
+				55EBBEBB210C3CBF00CCED60 /* UniversalDetectorSwift.framework */,
 				55C374591BD9EAA1006385B6 /* DetectorTest */,
 				559951621BDC0A400086661A /* UniversalDetectorTests.xctest */,
 				5567EADC1ECA3F9600404B35 /* libUniversalDetector.a */,
@@ -925,6 +933,13 @@
 			remoteRef = 55C374581BD9EAA1006385B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		55EBBEBB210C3CBF00CCED60 /* UniversalDetectorSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UniversalDetectorSwift.framework;
+			remoteRef = 55EBBEBA210C3CBF00CCED60 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		55F590861EB535D0000B4973 /* XADMaster.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1132,7 +1147,6 @@
 		55C3740F1BD9E67D006385B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
@@ -1155,7 +1169,6 @@
 		55C374101BD9E67D006385B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
@@ -1174,7 +1187,6 @@
 		FA7257E308A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1202,7 +1214,6 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1231,6 +1242,7 @@
 		FA7257E708A6CDEB006A2A19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1280,6 +1292,7 @@
 		FA7257E808A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
