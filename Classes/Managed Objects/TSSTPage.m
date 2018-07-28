@@ -46,8 +46,9 @@ static NSSize monospaceCharacterSize;
 	static NSArray * imageTypes = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.imageTypes.count * 2];
-		for (NSString *uti in self.imageTypes) {
+		NSArray *imgTyp = self.imageTypes;
+		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:imgTyp.count * 2];
+		for (NSString *uti in imgTyp) {
 			NSArray *fileExts =
 			CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
 			[aimageTypes addObjectsFromArray:fileExts];

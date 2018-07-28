@@ -374,26 +374,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 }
 
 
-//- (BOOL)application:(NSApplication *)sender openFile:(NSString *)filename;
-//{
-//	if(!launchInProgress)
-//	{
-//		TSSTManagedSession * session;
-//		session = [self newSessionWithFiles: [NSArray arrayWithObject: filename]];
-//		[self windowForSession: session];
-//		return YES;
-//
-//	}
-//
-//	return NO;
-//
-////	else
-////	{
-////		launchFiles = [filenames retain];
-////	}
-//}
-
-
 //- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 //{
 //	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
