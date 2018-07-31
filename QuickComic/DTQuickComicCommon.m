@@ -15,20 +15,20 @@ static NSArray * fileNameSort = nil;
 
 NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * archive)
 {
-	NSMutableArray * fileDescriptions = [[NSMutableArray alloc] init];
+    NSMutableArray * fileDescriptions = [[NSMutableArray alloc] init];
 
     NSInteger count = [archive numberOfEntries];
     for (NSInteger index = 0; index < count; ++index)
     {
         NSString * fileName = [archive nameOfEntry: index];
-		NSString * rawName = [archive nameOfEntry: index];
+        NSString * rawName = [archive nameOfEntry: index];
         if([[NSImage imageFileTypes] containsObject: [fileName pathExtension]])
         {
             NSDictionary * fileDescription =
-			@{@"name": fileName,
-			  @"index": @(index),
-			  @"rawName": rawName};
-			[fileDescriptions addObject: fileDescription];
+            @{@"name": fileName,
+              @"index": @(index),
+              @"rawName": rawName};
+            [fileDescriptions addObject: fileDescription];
         }
     }
     return fileDescriptions;

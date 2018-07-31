@@ -374,7 +374,7 @@
 		55C374111BD9E6AF006385B6 /* DTPartialArchiveParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTPartialArchiveParser.h; sourceTree = "<group>"; };
 		55C374121BD9E6AF006385B6 /* DTPartialArchiveParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTPartialArchiveParser.m; sourceTree = "<group>"; };
 		55C374131BD9E6AF006385B6 /* DTQuickComicCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTQuickComicCommon.h; sourceTree = "<group>"; };
-		55C374141BD9E6AF006385B6 /* DTQuickComicCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTQuickComicCommon.m; sourceTree = "<group>"; };
+		55C374141BD9E6AF006385B6 /* DTQuickComicCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTQuickComicCommon.m; sourceTree = "<group>"; usesTabs = 0; };
 		55C374181BD9E6AF006385B6 /* GeneratePreviewForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratePreviewForURL.m; sourceTree = "<group>"; };
 		55C374191BD9E6AF006385B6 /* GenerateThumbnailForURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateThumbnailForURL.m; sourceTree = "<group>"; };
 		55C3741A1BD9E6AF006385B6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
