@@ -246,8 +246,9 @@
 	static NSArray * extensions = nil;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
-		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:self.archiveTypes.count];
-		for (NSString *uti in self.archiveTypes) {
+		NSArray *archives = self.archiveTypes;
+		NSMutableSet<NSString*> *aimageTypes = [[NSMutableSet alloc] initWithCapacity:archives.count];
+		for (NSString *uti in archives) {
 			NSArray *fileExts =
 			CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
 			[aimageTypes addObjectsFromArray:fileExts];
