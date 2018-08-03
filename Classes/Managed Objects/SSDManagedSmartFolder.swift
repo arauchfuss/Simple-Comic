@@ -58,7 +58,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				}
 
 				let emailExclusionPredicate = NSPredicate(format:"(kMDItemContentType != 'com.apple.mail.emlx') && (kMDItemContentType != '\(kUTTypeVCard as String)')");
-				let predicateToRun: NSPredicate = NSCompoundPredicate(andPredicateWithSubpredicates:[mdPred, emailExclusionPredicate]);
+				let predicateToRun = NSCompoundPredicate(andPredicateWithSubpredicates:[mdPred, emailExclusionPredicate]);
 
 				query.predicate = predicateToRun
 				query.searchScopes = (rawQuery["SearchScopes"] as? [Any]) ?? []
