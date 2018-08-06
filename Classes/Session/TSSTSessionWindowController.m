@@ -844,13 +844,13 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		NSUInteger index = [pageController selectionIndex];
 		index += selection;
 		TSSTPage * selectedPage = [pageController arrangedObjects][index];
-		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
+		TSSTManagedGroup * selectedGroup = selectedPage.group;
 		/* Makes sure that the group is both an archive and not nested */
-		if([selectedGroup class] == [TSSTManagedArchive class] &&
+		if([selectedGroup isKindOfClass:[TSSTManagedArchive class]] &&
 		   selectedGroup == [selectedGroup topLevelGroup] &&
 		   ![selectedPage.text boolValue])
 		{
-			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
+			NSString * archivePath = [selectedGroup.path stringByStandardizingPath];
 			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
 			{
 				NSInteger coverIndex = [selectedPage.index integerValue];
