@@ -201,13 +201,6 @@
 			remoteGlobalIDString = 5518C6D41BDAFDCC00D50302;
 			remoteInfo = UniversalDetectorTests;
 		};
-		55A889861EA957ED002AE0DB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 555EF0701EA7DB1F000CAE58;
-			remoteInfo = XADMasterSwift;
-		};
 		55C374561BD9EAA1006385B6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
@@ -243,26 +236,12 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = UniversalDetector;
 		};
-		55EBBEBA210C3CBF00CCED60 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 556E4F6C1F996AF100506BF3;
-			remoteInfo = UniversalDetectorSwift;
-		};
 		55F590851EB535D0000B4973 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 551BADD11EB032B500EAF64E;
 			remoteInfo = "XADMaster-iOS";
-		};
-		55F590871EB535D0000B4973 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5591221B1EB3D07D007CF99D;
-			remoteInfo = "XADMasterSwift-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -584,8 +563,6 @@
 				5500A6371D77712F00321300 /* XADMaster.framework */,
 				55F590861EB535D0000B4973 /* XADMaster.framework */,
 				5500A6571D77716000321300 /* XADMaster.framework */,
-				55A889871EA957ED002AE0DB /* XADMasterSwift.framework */,
-				55F590881EB535D0000B4973 /* XADMasterSwift.framework */,
 				5500A6391D77712F00321300 /* libXADMaster.a */,
 				5500A63B1D77712F00321300 /* libXADMaster.win.a */,
 				5500A63D1D77712F00321300 /* libXADMaster.ios.a */,
@@ -643,7 +620,6 @@
 			isa = PBXGroup;
 			children = (
 				55C374571BD9EAA1006385B6 /* UniversalDetector.framework */,
-				55EBBEBB210C3CBF00CCED60 /* UniversalDetectorSwift.framework */,
 				55C374591BD9EAA1006385B6 /* DetectorTest */,
 				559951621BDC0A400086661A /* UniversalDetectorTests.xctest */,
 				5567EADC1ECA3F9600404B35 /* libUniversalDetector.a */,
@@ -912,13 +888,6 @@
 			remoteRef = 559951611BDC0A400086661A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		55A889871EA957ED002AE0DB /* XADMasterSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XADMasterSwift.framework;
-			remoteRef = 55A889861EA957ED002AE0DB /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		55C374571BD9EAA1006385B6 /* UniversalDetector.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -933,25 +902,11 @@
 			remoteRef = 55C374581BD9EAA1006385B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		55EBBEBB210C3CBF00CCED60 /* UniversalDetectorSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = UniversalDetectorSwift.framework;
-			remoteRef = 55EBBEBA210C3CBF00CCED60 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		55F590861EB535D0000B4973 /* XADMaster.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = XADMaster.framework;
 			remoteRef = 55F590851EB535D0000B4973 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		55F590881EB535D0000B4973 /* XADMasterSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XADMasterSwift.framework;
-			remoteRef = 55F590871EB535D0000B4973 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

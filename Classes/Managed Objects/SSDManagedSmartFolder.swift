@@ -147,7 +147,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		guard let images = self.images else {
 			return nil
 		}
-		var filepath: String? = nil;
+		var filepath: String? = nil
 		
 		for page in images {
 			guard let integer = page.index?.intValue else {
@@ -158,7 +158,6 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				break
 			}
 		}
-		
 		
 		// TODO: add check to see if file exist?
 		guard let filePath = filepath else {
@@ -177,7 +176,7 @@ extension ManagedSmartFolder: NSMetadataQueryDelegate {
 		return aResult
 	}
 	
-	@objc fileprivate func queryNote(_ note: Notification) {
+	@objc private func queryNote(_ note: Notification) {
 		if note.name == NSNotification.Name.NSMetadataQueryDidFinishGathering {
 			metadataSemaphore.signal()
 		}
