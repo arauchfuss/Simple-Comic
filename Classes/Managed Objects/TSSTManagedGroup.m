@@ -58,7 +58,7 @@
 - (void)setFileURL:(NSURL *)fileURL
 {
 	NSError * urlError = nil;
-	NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
+	NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope | NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess
 							  includingResourceValuesForKeys: @[NSURLVolumeURLForRemountingKey, NSURLVolumeUUIDStringKey]
 											   relativeToURL: nil
 													   error: &urlError];
@@ -99,7 +99,7 @@
 			
 			if ([panel runModal] == NSFileHandlingPanelOKButton) {
 				othErr = nil;
-				NSData *bookmarkData = [panel.URL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope
+				NSData *bookmarkData = [panel.URL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope | NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess
 										   includingResourceValuesForKeys: @[NSURLVolumeURLForRemountingKey, NSURLVolumeUUIDStringKey]
 															relativeToURL: nil
 																	error: &othErr];
@@ -188,7 +188,7 @@
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
 				nestedDescription.path = fullPath;
 				nestedDescription.name = path;
-	 			[(TSSTManagedGroup *)nestedDescription nestedFolderContents];
+	 			[nestedDescription nestedFolderContents];
 			}
 			else if([[TSSTManagedArchive archiveExtensions] containsObject: fileExtension])
 			{

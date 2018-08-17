@@ -454,8 +454,9 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		}
     }
 	
-	NSDictionary * storeOptions = @{NSMigratePersistentStoresAutomaticallyOption: @YES};
-    url = [NSURL fileURLWithPath: [applicationSupportFolder stringByAppendingPathComponent: @"SimpleComic.sql"]];
+	NSDictionary * storeOptions = @{NSMigratePersistentStoresAutomaticallyOption: @YES,
+									NSPersistentStoreOSCompatibility: @(MAC_OS_X_VERSION_10_9)};
+    url = [[NSURL fileURLWithPath:applicationSupportFolder] URLByAppendingPathComponent: @"SimpleComic.sql"];
 	
 	error = nil;
 	NSDictionary * storeInfo = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType: NSSQLiteStoreType URL: url error: &error];
@@ -510,7 +511,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 - (NSString *)applicationSupportFolder
 {
     NSArray * paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    NSString * basePath = ([paths count] > 0) ? paths[0] : NSTemporaryDirectory();
+	NSString * basePath = paths.firstObject ?: NSTemporaryDirectory();
     return [basePath stringByAppendingPathComponent: @"Simple Comic"];
 }
 
