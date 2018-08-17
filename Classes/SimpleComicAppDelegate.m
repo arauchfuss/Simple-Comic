@@ -495,7 +495,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
 	{
-        managedObjectContext = [[NSManagedObjectContext alloc] init];
+        managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [managedObjectContext setPersistentStoreCoordinator: coordinator];
     }
 	
@@ -597,72 +597,72 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 - (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session
 {
 //	[[self managedObjectContext] retain];
-//	[[self managedObjectContext] lock];
-	NSFileManager * fileManager = [NSFileManager defaultManager];
-	BOOL isDirectory;
-    NSMutableSet<TSSTPage *> * pageSet = [session.images mutableCopy];
-	for (NSString *path in paths)
-	{
-		NSString *fileExtension = [[path pathExtension] lowercaseString];
-		BOOL exists = [fileManager fileExistsAtPath: path isDirectory: &isDirectory];
-		if(exists && ![[[path lastPathComponent] substringToIndex: 1] isEqualToString: @"."])
+	[[self managedObjectContext] performBlockAndWait:^{
+		NSFileManager * fileManager = [NSFileManager defaultManager];
+		BOOL isDirectory;
+		NSMutableSet<TSSTPage *> * pageSet = [session.images mutableCopy];
+		for (NSString *path in paths)
 		{
-			TSSTPage * fileDescription = nil;
-			TSSTManagedGroup* mgroup;
-			if(isDirectory)
+			NSString *fileExtension = [[path pathExtension] lowercaseString];
+			BOOL exists = [fileManager fileExistsAtPath: path isDirectory: &isDirectory];
+			if(exists && ![[[path lastPathComponent] substringToIndex: 1] isEqualToString: @"."])
 			{
-				mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
-				mgroup.path = path;
-				mgroup.name = path.lastPathComponent;
-				[mgroup nestedFolderContents];
-			}
-			else if([[TSSTManagedArchive archiveExtensions] containsObject: fileExtension])
-			{
-				mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
-				mgroup.path = path;
-				mgroup.name = path.lastPathComponent;
-				[(TSSTManagedArchive *)mgroup nestedArchiveContents];
-			}
-			else if([fileExtension compare:@"pdf" options:NSCaseInsensitiveSearch] == NSOrderedSame)
-			{
-				mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
-				mgroup.path = path;
-				mgroup.name = path.lastPathComponent;
-				[(TSSTManagedPDF *)mgroup pdfContents];
-			}
-			else if([[TSSTPage imageExtensions] containsObject: fileExtension] || [[TSSTPage textExtensions] containsObject: fileExtension])
-			{
-				fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-				[fileDescription setValue: path forKey: @"imagePath"];
-			}
-			else if([fileExtension compare:@"savedsearch" options:NSCaseInsensitiveSearch] == NSOrderedSame)
-			{
-				//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
-                mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
-				mgroup.path = path;
-				mgroup.name = path.lastPathComponent;
-				[(ManagedSmartFolder*)mgroup smartFolderContents];
-            }
-			
-			if(mgroup)
-			{
-				[pageSet unionSet: mgroup.nestedImages];
-				[fileDescription setValue: session forKey: @"session"];
-			}
-			else if (fileDescription)
-			{
-				[pageSet addObject: fileDescription];
-            }
-			
-			if(fileDescription || mgroup)
-			{
-				[[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL: [NSURL fileURLWithPath: path]];
+				TSSTPage * fileDescription = nil;
+				TSSTManagedGroup* mgroup;
+				if(isDirectory)
+				{
+					mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
+					mgroup.path = path;
+					mgroup.name = path.lastPathComponent;
+					[mgroup nestedFolderContents];
+				}
+				else if([[TSSTManagedArchive archiveExtensions] containsObject: fileExtension])
+				{
+					mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
+					mgroup.path = path;
+					mgroup.name = path.lastPathComponent;
+					[(TSSTManagedArchive *)mgroup nestedArchiveContents];
+				}
+				else if([fileExtension compare:@"pdf" options:NSCaseInsensitiveSearch] == NSOrderedSame)
+				{
+					mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
+					mgroup.path = path;
+					mgroup.name = path.lastPathComponent;
+					[(TSSTManagedPDF *)mgroup pdfContents];
+				}
+				else if([[TSSTPage imageExtensions] containsObject: fileExtension] || [[TSSTPage textExtensions] containsObject: fileExtension])
+				{
+					fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
+					[fileDescription setValue: path forKey: @"imagePath"];
+				}
+				else if([fileExtension compare:@"savedsearch" options:NSCaseInsensitiveSearch] == NSOrderedSame)
+				{
+					//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
+					mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
+					mgroup.path = path;
+					mgroup.name = path.lastPathComponent;
+					[(ManagedSmartFolder*)mgroup smartFolderContents];
+				}
+				
+				if(mgroup)
+				{
+					[pageSet unionSet: mgroup.nestedImages];
+					[fileDescription setValue: session forKey: @"session"];
+				}
+				else if (fileDescription)
+				{
+					[pageSet addObject: fileDescription];
+				}
+				
+				if(fileDescription || mgroup)
+				{
+					[[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL: [NSURL fileURLWithPath: path]];
+				}
 			}
 		}
-	}
-	
-    session.images = pageSet;
-//	[[self managedObjectContext] unlock];
+		
+		session.images = pageSet;
+	}];
 //	[[self managedObjectContext] release];
 }
 
