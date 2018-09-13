@@ -124,12 +124,12 @@
 - (void)startAnimationForImage:(NSImage *)image
 {
     id testImageRep = [image bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
-    int frameCount;
+    NSInteger frameCount;
     float frameDuration;
     NSDictionary * animationInfo;
     if([testImageRep class] == [NSBitmapImageRep class])
     {
-        frameCount = [[testImageRep valueForProperty: NSImageFrameCount] intValue];
+        frameCount = [[testImageRep valueForProperty: NSImageFrameCount] integerValue];
         if(frameCount > 1)
         {
             animationInfo = @{@"imageNumber": @1,
@@ -152,16 +152,16 @@
 {
     NSMutableDictionary * animationInfo = [NSMutableDictionary dictionaryWithDictionary: [timer userInfo]];
     float frameDuration;
-    NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] intValue] == 1 ? firstPageImage : secondPageImage;
+    NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] integerValue] == 1 ? firstPageImage : secondPageImage;
     if([animationInfo valueForKey: @"pageImage"] != pageImage || sessionController == nil)
     {
         return;
     }
     
     NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];;
-    int loopCount = [[animationInfo valueForKey: @"loopCount"] intValue];
-    int frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] intValue] - 1);
-    int currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] intValue];
+   NSInteger loopCount = [[animationInfo valueForKey: @"loopCount"] integerValue];
+   NSInteger frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] integerValue] - 1);
+   NSInteger currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] integerValue];
     
     currentFrame = currentFrame < frameCount ? ++currentFrame : 0;
     if(currentFrame == 0 && loopCount > 1)
@@ -570,7 +570,7 @@
 
     NSSize viewSize = NSZeroSize;
     float scaleToFit;
-	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+	NSInteger scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
     switch (scaling)
     {
@@ -607,7 +607,7 @@
     [self setFrameSize: viewSize];
 
     if(![[defaults valueForKey: TSSTConstrainScale] boolValue] && 
-	[[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue] != 0 )
+	[[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue] != 0 )
     {
         if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
         {
@@ -739,14 +739,14 @@
 		return;
 	}
 	
-	int modifier = [theEvent modifierFlags];
+	NSInteger modifier = [theEvent modifierFlags];
 	NSUserDefaults * defaultsController = [NSUserDefaults standardUserDefaults];
-	int scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] intValue];
+	NSInteger scaling = [[[sessionController session] valueForKey: TSSTPageScaleOptions] integerValue];
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 		
 	if((modifier & NSCommandKeyMask) && [theEvent deltaY])
 	{
-		int loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] intValue];
+		NSInteger loupeDiameter = [[defaultsController valueForKey: TSSTLoupeDiameter] integerValue];
 		loupeDiameter += [theEvent deltaY] > 0 ? 30 : -30;
 		loupeDiameter = loupeDiameter < 150 ? 150 : loupeDiameter;
 		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
@@ -806,7 +806,7 @@
 		return;
 	}
 	
-    int modifier = [event modifierFlags];
+    NSInteger modifier = [event modifierFlags];
     BOOL shiftKey = modifier & NSShiftKeyMask ? YES : NO;
     NSNumber * charNumber = @([[event charactersIgnoringModifiers] characterAtIndex: 0]);
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
@@ -1047,11 +1047,11 @@
     NSRect visible = [[self enclosingScrollView] documentVisibleRect];
     NSDate * currentDate = [NSDate date];
     NSTimeInterval difference = [currentDate timeIntervalSinceDate: [[timer userInfo] valueForKey: @"lastTime"]];
-    int multiplier = [[[timer userInfo] valueForKey: @"accelerate"] boolValue] ? 3 : 1;
+    NSInteger multiplier = [[[timer userInfo] valueForKey: @"accelerate"] boolValue] ? 3 : 1;
     [[timer userInfo] setValue: currentDate forKey: @"lastTime"];
     NSPoint scrollPoint = visible.origin;
-    int delta = 1000 * difference * multiplier;
-    int turn = NOTURN;
+    NSInteger delta = 1000 * difference * multiplier;
+    NSInteger turn = NOTURN;
     NSString * directionString = nil;
     BOOL turnDirection = [[[sessionController session] valueForKey: TSSTPageOrder] boolValue];
     BOOL finishTurn = NO;
@@ -1141,7 +1141,13 @@
     {
         NSScrollView * scrollView = [self enclosingScrollView];
         NSClipView * clipView = [scrollView contentView];
+#if (__MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_10)
+        NSRect proposedBounds = NSRectFromCGRect([clipView bounds]);
+        proposedBounds.origin = scrollPoint;
+        [clipView constrainBoundsRect:proposedBounds];
+#else
         [clipView scrollToPoint: [clipView constrainScrollPoint: scrollPoint]];
+#endif
         [scrollView reflectScrolledClipView: clipView];
     }
     
@@ -1253,7 +1259,7 @@
     }
 	
     NSPoint clickPoint = [theEvent locationInWindow];
-    int viewSplit = NSWidth([[self enclosingScrollView] frame]) / 2;
+    NSInteger viewSplit = NSWidth([[self enclosingScrollView] frame]) / 2;
     if(NSMouseInRect(clickPoint, [[self enclosingScrollView] frame], [[self enclosingScrollView] isFlipped]))
     {
         if(clickPoint.x < viewSplit)
@@ -1317,7 +1323,7 @@
 - (void)magnifyWithEvent:(NSEvent *)event
 {
     TSSTManagedSession * session = [sessionController session];
-    int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+    NSInteger scalingOption = [[session valueForKey: TSSTPageScaleOptions] integerValue];
     float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
     if(scalingOption != 0)
     {

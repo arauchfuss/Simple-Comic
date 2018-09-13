@@ -35,8 +35,8 @@
 */
 @interface DTPolishedProgressBar : NSView
 {
-	int maxValue;		/* The maximum value of the progress bar. */
-	int currentValue;	/* The progress bar is filled to this level. */
+	NSInteger maxValue;		/* The maximum value of the progress bar. */
+	NSInteger currentValue;	/* The progress bar is filled to this level. */
 	BOOL leftToRight;	/* The direction of the porgress bar. */
 	NSRect progressRect; /* This is the section of the view. Users can mouse over and click here. */
 	float horizontalMargin; /* How much room is given for the text on either side. */
@@ -59,8 +59,8 @@
  */
 
 @property (assign) BOOL leftToRight;
-@property (assign) int maxValue;
-@property (assign) int currentValue;
+@property (assign) NSInteger maxValue;
+@property (assign) NSInteger currentValue;
 
 @property (assign) NSRect progressRect;
 @property (assign) float horizontalMargin;
@@ -72,6 +72,6 @@
 @property (retain) NSColor * highlightColor;
 @property (retain) NSDictionary * numberStyle;
 
-- (int)indexForPoint:(NSPoint)point;
+- (NSInteger)indexForPoint:(NSPoint)point;
 
 @end

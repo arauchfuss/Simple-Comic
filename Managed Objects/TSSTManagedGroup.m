@@ -339,16 +339,16 @@
     
     NSFileManager * fileManager = [NSFileManager defaultManager];
 	NSData * fileData;
-	int collision = 0;
+	NSInteger collision = 0;
     TSSTManagedGroup * nestedDescription;
     NSString * extension, * archivePath = nil;
 	NSString * fileName = nil;
-	int counter, archivedFilesCount = [imageArchive numberOfEntries];
+	NSInteger counter, archivedFilesCount = [imageArchive numberOfEntries];
 	NSError * error;
 	if([imageArchive isSolid])
 	{
 		do {
-			archivePath = [NSString stringWithFormat: @"SC-images-%i", collision];
+			archivePath = [NSString stringWithFormat: @"SC-images-%li", collision];
 			archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: archivePath];
 			++collision;
 		} while (![fileManager createDirectoryAtPath: archivePath withIntermediateDirectories: YES attributes: nil error: &error]);
@@ -378,7 +378,7 @@
 				
                 collision = 0;
                 do {
-                    archivePath = [NSString stringWithFormat: @"%i-%@", collision, fileName];
+                    archivePath = [NSString stringWithFormat: @"%li-%@", collision, fileName];
                     archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: archivePath];
                     ++collision;
                 } while ([fileManager fileExistsAtPath: archivePath]);
@@ -403,11 +403,11 @@
             {
                 nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
                 archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
-                int collision = 0;
+                NSInteger collision = 0;
                 while([fileManager fileExistsAtPath: archivePath])
                 {
                     ++collision;
-                    fileName = [NSString stringWithFormat: @"%i-%@", collision, fileName];
+                    fileName = [NSString stringWithFormat: @"%li-%@", collision, fileName];
                     archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
                 }
 				fileData = [imageArchive contentsOfEntry: counter];
@@ -513,12 +513,12 @@
     NSPDFImageRep * rep = [self instance];
     TSSTPage * imageDescription;
     NSMutableSet * pageSet = [NSMutableSet set];
-    int imageCount = [rep pageCount];
-    int pageNumber;
+    NSInteger imageCount = [rep pageCount];
+    NSInteger pageNumber;
     for (pageNumber = 0; pageNumber < imageCount; ++pageNumber)
     {
         imageDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-        [imageDescription setValue: [NSString stringWithFormat: @"%i", pageNumber + 1] forKey: @"imagePath"];
+        [imageDescription setValue: [NSString stringWithFormat: @"%li", pageNumber + 1] forKey: @"imagePath"];
         [imageDescription setValue: @(pageNumber) forKey: @"index"];
         [pageSet addObject: imageDescription];
     }

@@ -233,7 +233,7 @@
 //		return nil;
 //	}
 //    
-//    NSInteger index = [rawValue intValue];
+//    NSInteger index = [rawValue integerValue];
 //    index = (index == NSNotFound) ? 0 : index + 1;
 //
 //    return [NSNumber numberWithInt: index];

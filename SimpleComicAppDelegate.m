@@ -133,13 +133,13 @@ static NSArray * allAvailableStringEncodings(void)
     };
     
     NSMutableArray * codeNumbers = [NSMutableArray array];
-    int counter = 0;
+    NSInteger counter = 0;
     NSStringEncoding encoding;
     while(encodings[counter] != NSNotFound)
     {
         if(encodings[counter] != 101)
         {
-            encoding = CFStringConvertEncodingToNSStringEncoding(encodings[counter]);
+            encoding = CFStringConvertEncodingToNSStringEncoding((CFStringEncoding)encodings[counter]);
         }
         else
         {
@@ -301,7 +301,7 @@ static NSArray * allAvailableStringEncodings(void)
 		}
 	}
 	
-    int reply = NSTerminateNow;
+   NSInteger reply = NSTerminateNow;
 	/* TODO: some day I really need to add the fallback error handling */
     if(![self saveContext])
     {
@@ -624,6 +624,15 @@ static NSArray * allAvailableStringEncodings(void)
 	return sessionDescription;
 }
 
+- (NSString*) fileExtensionToUTI:(NSString*)fileExtension
+{
+    NSDictionary* mapping = @{
+                              @"jpg": @"public.jpeg",
+                              @"jpeg": @"public.jpeg",
+                              @"png": @"public.png",
+                              };
+    return mapping[fileExtension];
+}
 
 
 - (void)addFiles:(NSArray *)paths toSession:(TSSTManagedSession *)session
@@ -857,8 +866,8 @@ static NSArray * allAvailableStringEncodings(void)
         [self updateEncodingMenuTestedAgainst: data];
         NSArray * encodingIdentifiers = [[encodingMenu itemArray] valueForKey: @"representedObject"];
 		
-		NSUInteger index = [encodingIdentifiers indexOfObject: @(guess)];
-		NSUInteger counter = 0;
+		NSInteger index = [encodingIdentifiers indexOfObject: @(guess)];
+		NSInteger counter = 0;
 //		NSStringEncoding encoding;
 		NSNumber * encoding;
 		while(!testText)

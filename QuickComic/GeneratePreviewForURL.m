@@ -26,7 +26,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
     if([fileList count] > 0)
     {
         [fileList sortUsingDescriptors: fileSort()];
-        int index;
+        NSInteger index;
         CGImageSourceRef pageSourceRef;
         CGImageRef currentImage;
         CGRect canvasRect;
@@ -34,14 +34,14 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
         CGContextRef cgContext = QLPreviewRequestCreatePDFContext(preview, NULL, NULL, NULL);
         if(cgContext)
         {
-            int counter = 0;
-            int count = [fileList count];
+            NSInteger counter = 0;
+            NSInteger count = [fileList count];
 //            count = count < 20 ? count : 20;
 			NSDate * pageRenderStartTime = [NSDate date];
 			NSDate * currentTime = nil;
             do
             {
-                index = [[[fileList objectAtIndex: counter] valueForKey: @"index"] intValue];
+                index = [[[fileList objectAtIndex: counter] valueForKey: @"index"] integerValue];
                 pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
                 currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
                 canvasRect = CGRectMake(0, 0, CGImageGetWidth(currentImage), CGImageGetHeight(currentImage));

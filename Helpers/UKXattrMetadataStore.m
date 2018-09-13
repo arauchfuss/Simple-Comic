@@ -38,7 +38,7 @@
 							[listBuffer mutableBytes], [listBuffer length],
 							(travLnk ? 0 : XATTR_NOFOLLOW) );
 	char*	nameStart = [listBuffer mutableBytes];
-	int x;
+	NSInteger x;
 	for( x = 0; x < dataSize; x++ )
 	{
 		if( ((char*)[listBuffer mutableBytes])[x] == 0 )	// End of string.
