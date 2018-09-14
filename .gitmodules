@@ -1,6 +1,6 @@
 [submodule "Vendor/UniversalDetector"]
 	path = Vendor/UniversalDetector
 	url = https://github.com/MaddTheSane/UniversalDetector.git
-[submodule "Vendor/XADMaster-1"]
+[submodule "XADMaster-2"]
 	path = Vendor/XADMaster
-	url = https://github.com/MaddTheSane/XADMaster-1.git
+	url = https://github.com/MaddTheSane/XADMaster-2.git
