@@ -651,7 +651,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 				if(mgroup)
 				{
 					[pageSet unionSet: mgroup.nestedImages];
-					[fileDescription setValue: session forKey: @"session"];
+					mgroup.session = session;
 				}
 				else if (fileDescription)
 				{
