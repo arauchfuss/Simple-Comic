@@ -38,7 +38,6 @@
 
 - (void)willTurnIntoFault
 {
-	[self.fileURL stopAccessingSecurityScopedResource];
 	NSError * error = nil;
 	if([self.nested boolValue])
 	{
@@ -53,6 +52,7 @@
 {
 	instance = nil;
 	groupLock = nil;
+	[self.fileURL stopAccessingSecurityScopedResource];
 }
 
 - (void)setFileURL:(NSURL *)fileURL
@@ -288,8 +288,14 @@
 
 - (void)willTurnIntoFault
 {
-	[super willTurnIntoFault];
 	NSError * error;
+	if([self.nested boolValue])
+	{
+		if(![[NSFileManager defaultManager] removeItemAtPath: self.path error: &error])
+		{
+			NSLog(@"%@",[error localizedDescription]);
+		}
+	}
 	
 	NSString * solid  = self.solidDirectory;
 	if(solid)
