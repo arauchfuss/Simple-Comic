@@ -176,7 +176,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 @synthesize encodingTestField;
 @synthesize encodingPopup;
 
-
 + (void)setMetadata:(NSString *)value forKey:(NSString *)key onStoreWithURL:(NSURL *)url managedBy:(NSPersistentStoreCoordinator *)coordinator
 {
     NSPersistentStore * store = [coordinator persistentStoreForURL: url];
@@ -522,20 +521,24 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     {
         [controller updateSessionObject];
     }
-    
+	
     NSManagedObjectContext *context = self.managedObjectContext;
-    
-    if (![context commitEditing]) {
-        NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
-    }
-    
-    NSError *error = nil;
-    if (context.hasChanges && ![context save:&error]) {
-        [[NSApplication sharedApplication] presentError:error];
-        return NO;
-    }
-    
-    return YES;
+	__block BOOL saved = YES;
+	[context performBlockAndWait:^{
+		if (![context commitEditing]) {
+			NSLog(@"%@:%@ unable to commit editing before saving", [self class], NSStringFromSelector(_cmd));
+		}
+		
+		NSError *error = nil;
+		if (context.hasChanges && ![context save:&error]) {
+			[[NSApplication sharedApplication] presentError:error];
+			saved = NO;
+		} else {
+			saved = YES;
+		}
+	}];
+	
+    return saved;
 }
 
 #pragma mark -

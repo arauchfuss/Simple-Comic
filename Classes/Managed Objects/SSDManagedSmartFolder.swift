@@ -86,9 +86,9 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		var pageNumber = 0
 		let workspace = NSWorkspace.shared
+		let fileURLs = fileNames.map({ return URL(fileURLWithPath: $0)})
 		
-		for path in fileNames.map({ return URL(fileURLWithPath: $0)}) {
-			let pathExtension = path.pathExtension.lowercased()
+		for path in fileURLs {
 			if let fileUTI = ((try? path.resourceValues(forKeys: [.typeIdentifierKey]))?.typeIdentifier) ?? (try? workspace.type(ofFile: path.path)) {
 				// Handles recognized image files
 				if TSSTPage.imageTypes.contains(fileUTI) {
@@ -115,6 +115,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				}
 				//Fall through if we couldn't identify it via UTI
 			}
+			let pathExtension = path.pathExtension.lowercased()
 			// Handles recognized image files
 			if TSSTPage.imageExtensions.contains(pathExtension) {
 				var imageDescription: TSSTPage
