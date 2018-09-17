@@ -39,15 +39,56 @@ static NSSize monospaceCharacterSize;
 
 @implementation TSSTPage
 
++ (NSArray *)imageExtensionsFromUTIs:(NSArray*)utis {
+    NSDictionary* mapping = @{
+                              @"public.jpeg": @[@"jpg", @"jpeg"],
+                              @"public.png":  @[@"png"],
+                              };
+    
+    NSMutableArray* result = [NSMutableArray arrayWithCapacity:[utis count]];
+    for (NSString* uti in utis) {
+        id extensions = mapping[uti];
+        if (extensions) {
+            if ([extensions isKindOfClass:[NSArray class]]) {
+                for (id extension in extensions) {
+                    [result addObject:extension];
+                }
+            }
+        }
+    }
+    
+    return result;
+}
+
++ (NSArray *)imageUTIs
+{
+    static NSMutableArray * imageTypes = nil;
+    if(!imageTypes)
+    {
+#if (__MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_10)
+        imageTypes = [NSMutableArray arrayWithArray: [NSImage imageTypes]];
+        [imageTypes removeObject: @"com.adobe.pdf"];
+        [imageTypes removeObject: @"com.adobe.encapsulated-postscript"];
+        [imageTypes retain];
+#endif
+    }
+    
+    return imageTypes;
+}
+
 + (NSArray *)imageExtensions
 {
 	static NSMutableArray * imageTypes = nil;
 	if(!imageTypes)
 	{
+#if (__MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_10)
+        imageTypes = [[self imageExtensionsFromUTIs:[self imageUTIs]] mutableCopy];
+#else
 		imageTypes = [NSMutableArray arrayWithArray: [NSImage imageFileTypes]];
-		[imageTypes removeObject: @"pdf"];
-		[imageTypes removeObject: @"eps"];
-		[imageTypes retain];
+        [imageTypes removeObject: @"pdf"];
+        [imageTypes removeObject: @"eps"];
+        [imageTypes retain];
+#endif
 	}
 	
 	return imageTypes;
@@ -74,7 +115,7 @@ static NSSize monospaceCharacterSize;
 	
 	NSTextTab * tabStop;
 	NSMutableArray * tabStops = [NSMutableArray array];
-	int tabSize;
+	NSInteger tabSize;
 	float tabLocation;
 	/* Loop through the tab stops */
 	for (tabSize = 8; tabSize < 120; tabSize+=8)
@@ -249,7 +290,7 @@ static NSSize monospaceCharacterSize;
 	NSData * textData;
 	if([self valueForKey: @"index"])
 	{
-		textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] intValue]];
+		textData = [[self valueForKeyPath: @"group"] dataForPageIndex: [[self valueForKey: @"index"] integerValue]];
 	}
 	else
 	{
@@ -262,12 +303,12 @@ static NSSize monospaceCharacterSize;
                                                       convertedString: nil
                                                   usedLossyConversion: &lossyConversion];
 	NSString * text = [[NSString alloc] initWithData: textData encoding: stringEncoding];
-//	int lineCount = 0;
+//	NSInteger lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;
 	
-	NSUInteger index = 0;
-	NSUInteger textLength = [text length];
+	NSInteger index = 0;
+	NSInteger textLength = [text length];
 	NSRange lineRange;
 	NSString * singleLine;
 	while(index < textLength)
@@ -307,7 +348,7 @@ static NSSize monospaceCharacterSize;
 	TSSTManagedGroup * group = [self valueForKey: @"group"];
 	if([self valueForKey: @"index"])
     {
-		int entryIndex = [[self valueForKey: @"index"] intValue];
+		NSInteger entryIndex = [[self valueForKey: @"index"] integerValue];
 		imageData = [group dataForPageIndex: entryIndex];
 	}
     else if([self valueForKey: @"imagePath"])

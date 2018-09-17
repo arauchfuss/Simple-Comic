@@ -132,7 +132,7 @@
     [exposeBezel setFloatingPanel: YES];
 	[exposeBezel setWindowController: self];
     [[self window] setAcceptsMouseMovedEvents: YES];
-    [pageController setSelectionIndex: [[session valueForKey: @"selection"] intValue]];
+    [pageController setSelectionIndex: [[session valueForKey: @"selection"] integerValue]];
 
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     
@@ -265,7 +265,7 @@
     }
 	else if([keyPath isEqualToString: TSSTLoupeDiameter])
     {
-		int loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] intValue];
+		NSInteger loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] integerValue];
 		[loupeWindow resizeToDiameter: loupeDiameter];
 	}
 	else if([keyPath isEqualToString: @"loupe"])
@@ -289,14 +289,14 @@
 
 
 
-- (NSImage *)imageForPageAtIndex:(int)index
+- (NSImage *)imageForPageAtIndex:(NSInteger)index
 {
     return [[pageController arrangedObjects][index] valueForKey: @"thumbnail"];
 }
 
 
 
-- (NSString *)nameForPageAtIndex:(int)index
+- (NSString *)nameForPageAtIndex:(NSInteger)index
 {
     return [[pageController arrangedObjects][index] valueForKey: @"name"];
 }
@@ -393,7 +393,7 @@
 - (void)infoPanelSetupAtPoint:(NSPoint)point
 {
 	NSPoint cursorPoint;
-	int index;
+	NSInteger index;
 	DTPolishedProgressBar * bar;
 
     bar = progressBar;
@@ -443,14 +443,14 @@
 
 - (IBAction)changeScaling:(id)sender
 {
-    int scaleType = [sender tag] % 400;
+    NSInteger scaleType = [sender tag] % 400;
     [session setValue: @(scaleType) forKey: TSSTPageScaleOptions];
 }
 
 
 - (IBAction)turnPage:(id)sender
 {
-    int segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
+    NSInteger segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
     if(segmentTag == 701)
     {
         [self pageLeft: self];
@@ -529,7 +529,7 @@
 
 - (IBAction)skipRight:(id)sender
 {
-    int index;
+    NSInteger index;
     if([[session valueForKey: TSSTPageOrder] boolValue])
     {
         index = ([pageController selectionIndex] + 10);
@@ -548,7 +548,7 @@
 
 - (IBAction)skipLeft:(id)sender
 {
-    int index;
+    NSInteger index;
     if(![[session valueForKey: TSSTPageOrder] boolValue])
     {
         index = ([pageController selectionIndex] + 10);
@@ -581,7 +581,7 @@
 /* Zoom method for the zoom segmented control. Each segment has its own tag. */
 - (IBAction)zoom:(id)sender
 {
-    int segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
+    NSInteger segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
     if(segmentTag == 801)
     {
         [self zoomIn: self];
@@ -600,7 +600,7 @@
 
 - (IBAction)zoomIn:(id)sender
 {
-    int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+    NSInteger scalingOption = [[session valueForKey: TSSTPageScaleOptions] integerValue];
     float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
     if(scalingOption != 0)
     {
@@ -619,7 +619,7 @@
 
 - (IBAction)zoomOut:(id)sender
 {
-    int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+    NSInteger scalingOption = [[session valueForKey: TSSTPageScaleOptions] integerValue];
     float previousZoom = [[session valueForKey: TSSTZoomLevel] floatValue];
     if(scalingOption != 0)
     {
@@ -647,7 +647,7 @@
 
 - (IBAction)rotate:(id)sender
 {
-    int segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
+    NSInteger segmentTag = [[sender cell] tagForSegment: [sender selectedSegment]];
     if(segmentTag == 901)
     {
         [self rotateLeft: self];
@@ -661,7 +661,7 @@
 
 - (IBAction)rotateRight:(id)sender
 {
-    int currentRotation = [[session valueForKey: TSSTViewRotation] intValue];
+    NSInteger currentRotation = [[session valueForKey: TSSTViewRotation] integerValue];
     currentRotation = currentRotation + 1 > 3 ? 0 : currentRotation + 1;
     [session setValue: @(currentRotation) forKey: TSSTViewRotation];
     [self resizeWindow];
@@ -671,7 +671,7 @@
 
 - (IBAction)rotateLeft:(id)sender
 {
-    int currentRotation = [[session valueForKey: TSSTViewRotation] intValue];
+    NSInteger currentRotation = [[session valueForKey: TSSTViewRotation] integerValue];
     currentRotation = currentRotation - 1 < 0 ? 3 : currentRotation - 1;
     [session setValue: @(currentRotation) forKey: TSSTViewRotation];
     [self resizeWindow];
@@ -718,7 +718,7 @@
 
 - (IBAction)launchJumpPanel:(id)sender
 {
-	[jumpField setIntValue: [pageController selectionIndex] + 1];
+	[jumpField setIntegerValue: [pageController selectionIndex] + 1];
     [self.window beginSheet: jumpPanel completionHandler:^(NSModalResponse returnCode) { }];
 }
 
@@ -733,7 +733,7 @@
 {
     if([jumpField integerValue] != NSNotFound)
     {
-        int index = [jumpField intValue] < 1 ? 0 : [jumpField intValue] - 1;
+        NSInteger index = [jumpField integerValue] < 1 ? 0 : [jumpField integerValue] - 1;
         [pageController setSelectionIndex: index];
     }
 	
@@ -801,7 +801,7 @@
 
 - (BOOL)canSelectPageIndex:(NSInteger)selection
 {
-	int index = [pageController selectionIndex];
+	NSInteger index = [pageController selectionIndex];
 	index += selection;
 	TSSTPage * selectedPage = [pageController arrangedObjects][index];
 	TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
@@ -858,7 +858,7 @@
 {
 	if(selection != -1)
 	{
-		int index = [pageController selectionIndex];
+		NSInteger index = [pageController selectionIndex];
 		index += selection;
 		TSSTPage * selectedPage = [pageController arrangedObjects][index];
 		[pageController removeObject: selectedPage];
@@ -874,7 +874,7 @@
 	 otherwise 1. */
 	if(selection != -1)
 	{
-		int index = [pageController selectionIndex];
+		NSInteger index = [pageController selectionIndex];
 		index += selection;
 		TSSTPage * selectedPage = [pageController arrangedObjects][index];
 		
@@ -894,7 +894,7 @@
 {
 	if(selection != -1)
 	{
-		int index = [pageController selectionIndex];
+		NSInteger index = [pageController selectionIndex];
 		index += selection;
 		TSSTPage * selectedPage = [pageController arrangedObjects][index];
 		TSSTManagedGroup * selectedGroup = [selectedPage valueForKey: @"group"];
@@ -906,7 +906,7 @@
 			NSString * archivePath = [[selectedGroup valueForKey: @"path"] stringByStandardizingPath];
 			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
 			{
-				int coverIndex = [[selectedPage valueForKey: @"index"] intValue];
+				NSInteger coverIndex = [[selectedPage valueForKey: @"index"] integerValue];
 				XADPath * coverName = [(XADArchive *)[selectedGroup instance] rawNameOfEntry: coverIndex];
 				[UKXattrMetadataStore setString: [coverName stringWithEncoding: NSNonLossyASCIIStringEncoding]
 										 forKey: @"QCCoverName" 
@@ -983,11 +983,11 @@
     [self scaleToWindow];
 	[self adjustStatusBar];
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    int loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] intValue];
+    NSInteger loupeDiameter = [[defaults valueForKey: TSSTLoupeDiameter] integerValue];
     [loupeWindow setFrame:NSMakeRect(0,0, loupeDiameter, loupeDiameter) display: NO];
     NSColor * color = [NSUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	[pageScrollView setBackgroundColor: color];
-    [pageView setRotation: [[session valueForKey: TSSTViewRotation] intValue]];
+    [pageView setRotation: [[session valueForKey: TSSTViewRotation] integerValue]];
     NSValue * positionValue;
     NSData * posData = [session valueForKey: @"position"];
 	
@@ -1018,8 +1018,8 @@
     and that of the next image */
 - (void)changeViewImages
 {
-    int count = [[pageController arrangedObjects] count];
-    int index = [pageController selectionIndex];
+    NSInteger count = [[pageController arrangedObjects] count];
+    NSInteger index = [pageController selectionIndex];
     TSSTPage * pageOne = [pageController arrangedObjects][index];
     TSSTPage * pageTwo = (index + 1) < count ? [pageController arrangedObjects][(index + 1)] : nil;
     NSString * titleString = [pageOne valueForKey: @"name"];
@@ -1084,7 +1084,7 @@
 {
     BOOL hasVert = NO;
     BOOL hasHor = NO;
-	int scaling = [[session valueForKey: TSSTPageScaleOptions] intValue];
+	NSInteger scaling = [[session valueForKey: TSSTPageScaleOptions] integerValue];
 	
 	if(pageSelectionInProgress || ![[[NSUserDefaults standardUserDefaults] valueForKey: TSSTScrollersVisible] boolValue])
 	{
@@ -1169,8 +1169,8 @@ images are currently visible and then skips over them.
         return;
     }
     
-    int numberOfImages = [[pageController arrangedObjects] count];
-	int selectionIndex = [pageController selectionIndex];
+    NSInteger numberOfImages = [[pageController arrangedObjects] count];
+	NSInteger selectionIndex = [pageController selectionIndex];
 	if((selectionIndex + 1) >= numberOfImages)
 	{
 		return;
@@ -1207,7 +1207,7 @@ images are currently visible and then skips over them.
         return;
     }
     
-	int selectionIndex = [pageController selectionIndex];
+	NSInteger selectionIndex = [pageController selectionIndex];
 	if((selectionIndex - 2) >= 0)
 	{
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -1337,7 +1337,7 @@ images are currently visible and then skips over them.
 
 - (BOOL)canTurnPageNext
 {
-	int selectionIndex = [pageController selectionIndex];
+	NSInteger selectionIndex = [pageController selectionIndex];
 	if([pageController selectionIndex] >= ([[pageController content] count] - 1))
 	{
 		return NO;
@@ -1369,7 +1369,7 @@ images are currently visible and then skips over them.
 	}
 	
 	BOOL valid = YES;
-    int state;
+    NSInteger state;
     if([menuItem action] == @selector(toggleFullScreen:))
     {
         state = [[self window] isFullscreen] ? NSOnState : NSOffState;
@@ -1425,29 +1425,29 @@ images are currently visible and then skips over them.
 	}
 	else if ([menuItem action] == @selector(setArchiveIcon:))
 	{
-		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+		valid = ![[session valueForKey: TSSTViewRotation] integerValue];
 	}
 	else if ([menuItem action] == @selector(extractPage:))
 	{
-		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+		valid = ![[session valueForKey: TSSTViewRotation] integerValue];
 	}
 	else if ([menuItem action] == @selector(removePages:))
 	{
-		valid = ![[session valueForKey: TSSTViewRotation] intValue];
+		valid = ![[session valueForKey: TSSTViewRotation] integerValue];
 	}
     else if([menuItem tag] == 400)
     {
-        state = [[session valueForKey: TSSTPageScaleOptions] intValue] == 0 ? NSOnState : NSOffState;
+        state = [[session valueForKey: TSSTPageScaleOptions] integerValue] == 0 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem tag] == 401)
     {
-        state = [[session valueForKey: TSSTPageScaleOptions] intValue] == 1 ? NSOnState : NSOffState;
+        state = [[session valueForKey: TSSTPageScaleOptions] integerValue] == 1 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem tag] == 402)
     {
-        state = [[session valueForKey: TSSTPageScaleOptions] intValue] == 2 ? NSOnState : NSOffState;
+        state = [[session valueForKey: TSSTPageScaleOptions] integerValue] == 2 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
 	
@@ -1461,15 +1461,15 @@ images are currently visible and then skips over them.
 
 - (BOOL)control:(NSTextField *)control didFailToFormatString:(NSString *)string errorDescription:(NSString *)error
 {
-	int pageNumber = [string intValue];
+	NSInteger pageNumber = [string integerValue];
 	if(pageNumber > [[pageController arrangedObjects] count])
 	{
-		[jumpField setIntValue: [[pageController arrangedObjects] count]];
+		[jumpField setIntegerValue:[[pageController arrangedObjects] count]];
 	}
 	else
 	{
 		NSBeep();
-		[jumpField setIntValue: [pageController selectionIndex] + 1];
+		[jumpField setIntegerValue: [pageController selectionIndex] + 1];
 	}
 	
 	return YES;
@@ -1591,7 +1591,7 @@ images are currently visible and then skips over them.
 	correctedFrame.size.width -= horOffset;
 	correctedFrame.size.height -= vertOffset;
 	NSSize newSize;
-	if([[session valueForKey: TSSTPageScaleOptions] intValue] == 1 && ![self currentPageIsText])
+	if([[session valueForKey: TSSTPageScaleOptions] integerValue] == 1 && ![self currentPageIsText])
 	{
 		float scale;
 		if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))

@@ -26,7 +26,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	NSString * coverRectString = [UKXattrMetadataStore stringForKey: @"QCCoverRect" atPath: archivePath traverseLink: NO];
 //	NSLog(@"rect %@",coverRectString);
 	CGRect cropRect = CGRectZero;
-	int coverIndex;
+	NSInteger coverIndex;
 	if(![coverName isEqualToString: @""])
 	{
 //		NSLog(@"has name");
@@ -47,7 +47,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		{
 			[fileList sortUsingDescriptors: fileSort()];
 			coverName = [[fileList objectAtIndex: 0] valueForKey: @"rawName"];
-			coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] intValue];
+			coverIndex = [[[fileList objectAtIndex: 0] valueForKey: @"index"] integerValue];
 			[UKXattrMetadataStore setString: coverName forKey: @"QCCoverName" atPath: archivePath traverseLink: NO];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}

@@ -53,7 +53,7 @@
                     <button toolTip="Windows are dynamically resized to fit the page-view and screen" imageHugsTitle="YES" id="152">
                         <rect key="frame" x="24" y="124" width="209" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Automatically resize windows" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="231">
+                        <buttonCell key="cell" type="check" title="Automatically resize windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="231">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -64,7 +64,7 @@
                     <button toolTip="Save all open comics on exit" imageHugsTitle="YES" id="41">
                         <rect key="frame" x="24" y="54" width="182" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Auto-save open windows" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="230">
+                        <buttonCell key="cell" type="check" title="Auto-save open windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="230">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -75,7 +75,7 @@
                     <button toolTip="Pages are never automatically scaled past their actual resolution" imageHugsTitle="YES" id="36">
                         <rect key="frame" x="24" y="194" width="265" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Page scaling constrained by resolution" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="229">
+                        <buttonCell key="cell" type="check" title="Page scaling constrained by resolution" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="229">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>

@@ -79,7 +79,7 @@ typedef struct {
 	NSImage	* firstPageImage;
 	NSImage	* secondPageImage;
     
-    int scrollKeys;			// Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
+    NSInteger scrollKeys;			// Stores which arrow keys are currently depressed this enables multi axis keyboard scrolling.
     NSTimer * scrollTimer;	// Timer that fires in between each keydown event to smooth out the scrolling.
 	NSDate * interfaceDelay;
 	
@@ -94,7 +94,7 @@ typedef struct {
 	
 	/*	While page selection is in progress this method has a value of 1 or 2.
 		The selection number coresponds to a highlighted page. */
-	int pageSelection;
+	NSInteger pageSelection;
 	/* This is the rect describing the users page selection. */
 	NSRect cropRect;
 }
