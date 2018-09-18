@@ -28,7 +28,7 @@ private let barProgressColor = NSColor(deviceRed: 0.44, green: 0.44, blue: 0.44,
 private let borderColor = NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
 
 /// The font attributes of the progress numbers.
-private let numberStyle: [NSAttributedStringKey: Any] = [.font: NSFont.systemFont(ofSize: 10),
+private let numberStyle: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 10),
 														 .foregroundColor: NSColor(deviceWhite: 0.2, alpha: 1)]
 
 

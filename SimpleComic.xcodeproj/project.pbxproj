@@ -194,6 +194,13 @@
 			remoteGlobalIDString = 55F5908E1EB53613000B4973;
 			remoteInfo = "Static Library";
 		};
+		557604F02150E0870023C09B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 73DA3465206B6BF1006ADB42;
+			remoteInfo = XADMasterTests;
+		};
 		559951611BDC0A400086661A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
@@ -576,6 +583,7 @@
 				5500A64D1D77712F00321300 /* lsar */,
 				5500A64F1D77712F00321300 /* unar.exe */,
 				5500A6511D77712F00321300 /* lsar.exe */,
+				557604F12150E0870023C09B /* XADMasterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -881,6 +889,13 @@
 			remoteRef = 5567EADB1ECA3F9600404B35 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		557604F12150E0870023C09B /* XADMasterTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = XADMasterTests.xctest;
+			remoteRef = 557604F02150E0870023C09B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		559951621BDC0A400086661A /* UniversalDetectorTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -1161,7 +1176,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
 				PRODUCT_NAME = "Simple Comic";
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1189,7 +1204,7 @@
 				PRODUCT_NAME = "Simple Comic";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

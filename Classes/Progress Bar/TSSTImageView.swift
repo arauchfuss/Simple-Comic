@@ -8,7 +8,7 @@
 
 import Cocoa
 
-private let stringAttributes: [NSAttributedStringKey: Any] = {
+private let stringAttributes: [NSAttributedString.Key: Any] = {
 	let style = NSMutableParagraphStyle()
 	style.lineBreakMode = .byTruncatingHead
 	return [.font: NSFont.labelFont(ofSize: 14),
