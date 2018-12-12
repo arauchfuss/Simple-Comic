@@ -1,0 +1,243 @@
+
+/* Class = "NSMenuItem"; title = "Bring All to Front"; ObjectID = "5"; */
+"5.title" = "前置全部窗口";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "19"; */
+"19.title" = "窗口";
+
+/* Class = "NSMenuItem"; title = "Minimize"; ObjectID = "23"; */
+"23.title" = "最小化";
+
+/* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
+"24.title" = "窗口";
+
+/* Class = "NSMenu"; title = "MainMenu"; ObjectID = "29"; */
+"29.title" = "主菜單";
+
+/* Class = "NSMenuItem"; title = "Simple Comic"; ObjectID = "56"; */
+"56.title" = "Simple Comic";
+
+/* Class = "NSMenu"; title = "Simple Comic"; ObjectID = "57"; */
+"57.title" = "Simple Comic";
+
+/* Class = "NSMenuItem"; title = "About Simple Comic"; ObjectID = "58"; */
+"58.title" = "關於Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "129"; */
+"129.title" = "偏好設置…";
+
+/* Class = "NSMenu"; title = "Services"; ObjectID = "130"; */
+"130.title" = "服務";
+
+/* Class = "NSMenuItem"; title = "Services"; ObjectID = "131"; */
+"131.title" = "服務";
+
+/* Class = "NSMenuItem"; title = "Hide Simple Comic"; ObjectID = "134"; */
+"134.title" = "隱藏Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Quit Simple Comic"; ObjectID = "136"; */
+"136.title" = "退出Simple Comic";
+
+/* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "145"; */
+"145.title" = "隱藏其他";
+
+/* Class = "NSMenuItem"; title = "Show All"; ObjectID = "150"; */
+"150.title" = "顯示全部";
+
+/* Class = "NSMenuItem"; title = "Zoom"; ObjectID = "197"; */
+"197.title" = "縮放";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "255"; */
+"255.title" = "文件";
+
+/* Class = "NSMenu"; title = "File"; ObjectID = "256"; */
+"256.title" = "文件";
+
+/* Class = "NSMenuItem"; title = "Open..."; ObjectID = "259"; */
+"259.title" = "打開...";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "336"; */
+"336.title" = "查看";
+
+/* Class = "NSMenu"; title = "View"; ObjectID = "337"; */
+"337.title" = "查看";
+
+/* Class = "NSMenuItem"; title = "Full Screen"; ObjectID = "338"; */
+"338.title" = "全屏";
+
+/* Class = "NSMenuItem"; title = "Change Order"; ObjectID = "385"; */
+"385.title" = "改變順序";
+
+/* Class = "NSWindow"; title = "Password"; ObjectID = "468"; */
+"468.title" = "密碼";
+
+/* Class = "NSMenuItem"; title = "Thumbnail Exposé"; ObjectID = "670"; */
+"670.title" = "縮略圖預覽";
+
+/* Class = "NSMenuItem"; title = "Zoom Out"; ObjectID = "671"; */
+"671.title" = "縮小";
+
+/* Class = "NSMenuItem"; title = "Reset Zoom"; ObjectID = "672"; */
+"672.title" = "重置縮放";
+
+/* Class = "NSMenuItem"; title = "Go"; ObjectID = "863"; */
+"863.title" = "跳轉";
+
+/* Class = "NSMenu"; title = "Go"; ObjectID = "864"; */
+"864.title" = "跳轉";
+
+/* Class = "NSMenuItem"; title = "Page Right"; ObjectID = "866"; */
+"866.title" = "向右翻頁";
+
+/* Class = "NSMenuItem"; title = "Page Left"; ObjectID = "867"; */
+"867.title" = "向左翻頁";
+
+/* Class = "NSMenuItem"; title = "Shift One Page Right"; ObjectID = "868"; */
+"868.title" = "右移一頁";
+
+/* Class = "NSMenuItem"; title = "Shift One Page Left"; ObjectID = "869"; */
+"869.title" = "左移一頁";
+
+/* Class = "NSMenuItem"; title = "Close Window"; ObjectID = "960"; */
+"960.title" = "關閉窗口";
+
+/* Class = "NSMenuItem"; title = "Two Page Spread"; ObjectID = "977"; */
+"977.title" = "雙頁";
+
+/* Class = "NSMenuItem"; title = "Image Scaling"; ObjectID = "984"; */
+"984.title" = "圖像縮放";
+
+/* Class = "NSMenu"; title = "Image Scaling"; ObjectID = "985"; */
+"985.title" = "圖像縮放";
+
+/* Class = "NSMenuItem"; title = "Scale To Width"; ObjectID = "986"; */
+"986.title" = "適合寬度";
+
+/* Class = "NSMenuItem"; title = "Original Size"; ObjectID = "987"; */
+"987.title" = "原始大小";
+
+/* Class = "NSMenuItem"; title = "Scale To Window"; ObjectID = "988"; */
+"988.title" = "適合窗口";
+
+/* Class = "NSMenuItem"; title = "Remove Page"; ObjectID = "992"; */
+"992.title" = "刪除頁面";
+
+/* Class = "NSMenuItem"; title = "First Page"; ObjectID = "1065"; */
+"1065.title" = "第一頁";
+
+/* Class = "NSMenuItem"; title = "Last Page"; ObjectID = "1067"; */
+"1067.title" = "最後一頁";
+
+/* Class = "NSWindow"; title = "Encoding"; ObjectID = "1080"; */
+"1080.title" = "編碼";
+
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "1083"; */
+"1083.title" = "其他視圖";
+
+/* Class = "NSMenuItem"; title = "Item1"; ObjectID = "1086"; */
+"1086.title" = "Item1";
+
+/* Class = "NSMenuItem"; title = "Rotate Left"; ObjectID = "1104"; */
+"1104.title" = "向左旋轉";
+
+/* Class = "NSMenuItem"; title = "Rotate Right"; ObjectID = "1105"; */
+"1105.title" = "向右旋轉";
+
+/* Class = "NSMenuItem"; title = "Skip Right"; ObjectID = "1157"; */
+"1157.title" = "向右十頁";
+
+/* Class = "NSMenuItem"; title = "Skip Left"; ObjectID = "1158"; */
+"1158.title" = "向左十頁";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "1206"; */
+"1206.title" = "幫助";
+
+/* Class = "NSMenu"; title = "Help"; ObjectID = "1207"; */
+"1207.title" = "幫助";
+
+/* Class = "NSMenuItem"; title = "Simple Comic Help"; ObjectID = "1208"; */
+"1208.title" = "Simple Comic幫助";
+
+/* Class = "NSMenuItem"; title = "Zoom In"; ObjectID = "1210"; */
+"1210.title" = "放大";
+
+/* Class = "NSMenuItem"; title = "Image Loupe"; ObjectID = "1216"; */
+"1216.title" = "圖像放大鏡";
+
+/* Class = "NSMenuItem"; title = "Jump to Page"; ObjectID = "1243"; */
+"1243.title" = "跳轉到頁";
+
+/* Class = "NSMenuItem"; title = "Status Bar"; ObjectID = "1338"; */
+"1338.title" = "狀態欄";
+
+/* Class = "NSMenuItem"; title = "Show Toolbar"; ObjectID = "1340"; */
+"1340.title" = "顯示工具欄";
+
+/* Class = "NSMenuItem"; title = "Customize Toolbar..."; ObjectID = "1342"; */
+"1342.title" = "自定義工具欄...";
+
+/* Class = "NSTextFieldCell"; title = "Archive is Password Protected"; ObjectID = "1693"; */
+"1693.title" = "壓縮文件受密碼保護";
+
+/* Class = "NSTextFieldCell"; title = "Password:"; ObjectID = "1694"; */
+"1694.title" = "密碼：";
+
+/* Class = "NSTextFieldCell"; title = "Archive will not open without a password"; ObjectID = "1695"; */
+"1695.title" = "壓縮文件沒有密碼不會打開";
+
+/* Class = "NSButtonCell"; title = "Open"; ObjectID = "1696"; */
+"1696.title" = "打開";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1697"; */
+"1697.title" = "取消";
+
+/* Class = "NSButtonCell"; title = "Select"; ObjectID = "1708"; */
+"1708.title" = "選擇";
+
+/* Class = "NSTextFieldCell"; title = "Sample filename:"; ObjectID = "1709"; */
+"1709.title" = "示例文件名：";
+
+/* Class = "NSTextFieldCell"; title = "Encoding:"; ObjectID = "1710"; */
+"1710.title" = "編碼：";
+
+/* Class = "NSTextFieldCell"; title = "filename"; ObjectID = "1711"; */
+"1711.title" = "文件名";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1712"; */
+"1712.title" = "取消";
+
+/* Class = "NSMenuItem"; title = "Set Page as Icon"; ObjectID = "1851"; */
+"1851.title" = "設置頁為圖標";
+
+/* Class = "NSMenuItem"; title = "Open Recent"; ObjectID = "1857"; */
+"1857.title" = "打開最近使用的";
+
+/* Class = "NSMenu"; title = "Open Recent"; ObjectID = "1858"; */
+"1858.title" = "打開最近使用的";
+
+/* Class = "NSMenuItem"; title = "Clear Menu"; ObjectID = "1859"; */
+"1859.title" = "清除菜單";
+
+/* Class = "NSMenuItem"; title = "No Rotation"; ObjectID = "1860"; */
+"1860.title" = "不旋轉";
+
+/* Class = "NSMenuItem"; title = "Capture Page"; ObjectID = "1866"; */
+"1866.title" = "頁面截圖";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "1869"; */
+"1869.title" = "編輯";
+
+/* Class = "NSMenu"; title = "Edit"; ObjectID = "1870"; */
+"1870.title" = "編輯";
+
+/* Class = "NSMenuItem"; title = "Cut"; ObjectID = "1874"; */
+"1874.title" = "剪切";
+
+/* Class = "NSMenuItem"; title = "Copy"; ObjectID = "1875"; */
+"1875.title" = "拷貝";
+
+/* Class = "NSMenuItem"; title = "Paste"; ObjectID = "1876"; */
+"1876.title" = "粘貼";
+
+/* Class = "NSMenuItem"; title = "Select All"; ObjectID = "1879"; */
+"1879.title" = "全選";
