@@ -18,12 +18,12 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		let filePath = self.path
 		guard fm.fileExists(atPath: filePath) else {
-			NSLog("Failed path");
-			return;
+			NSLog("Failed path")
+			return
 		}
 		do {
 			guard let dic = NSDictionary(contentsOfFile: filePath), let result = dic.object(forKey: "RawQuery") as? NSObject else {
-				return;
+				return
 			}
 			//print(result.description)
 			
@@ -33,9 +33,9 @@ class ManagedSmartFolder: TSSTManagedGroup {
 				
 				let task = Process()
 				
-				task.launchPath = "/usr/bin/mdfind";
-				task.arguments = [result.description];
-				task.standardOutput = pipe;
+				task.launchPath = "/usr/bin/mdfind"
+				task.arguments = [result.description]
+				task.standardOutput = pipe
 				
 				task.launch()
 				
@@ -148,17 +148,13 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		guard let images = self.images else {
 			return nil
 		}
-		var filepath: String? = nil
 		
-		for page in images {
+		let filepath = images.first { (page) -> Bool in
 			guard let integer = page.index?.intValue else {
-				continue
+				return false
 			}
-			if integer == index {
-				filepath = page.imagePath
-				break
-			}
-		}
+			return integer == index
+		}?.imagePath
 		
 		// TODO: add check to see if file exist?
 		guard let filePath = filepath else {
