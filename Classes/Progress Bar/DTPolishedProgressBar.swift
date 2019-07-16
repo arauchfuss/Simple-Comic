@@ -80,10 +80,10 @@ textStyle: Dictionary of string attributes.
 	}
 	
 	/// This is the section of the view. Users can mouse over and click here.
-	@objc fileprivate(set) var progressRect = NSRect()
+	@objc private(set) var progressRect = NSRect()
 	
 	/// How much room is given for the text on either side.
-	fileprivate var horizontalMargin: CGFloat = 5
+	private var horizontalMargin: CGFloat = 5
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.
 	/// Progress indicator direction affects the index.
