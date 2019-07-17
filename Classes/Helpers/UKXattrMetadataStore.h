@@ -11,7 +11,7 @@
 //	Headers:
 // -----------------------------------------------------------------------------
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 /*!
  @header UKXattrMetadataStore.h
@@ -29,7 +29,6 @@
 	should be made like bundle identifiers, e.g. @"de.zathras.myattribute".
 */
 
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
 // -----------------------------------------------------------------------------
 //	Class declaration:
 // -----------------------------------------------------------------------------
@@ -255,5 +254,3 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
-
-#endif /*MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4*/
