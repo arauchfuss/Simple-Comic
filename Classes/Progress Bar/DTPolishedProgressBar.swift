@@ -22,20 +22,51 @@
 
 import Cocoa
 
-private let backgroundColor = NSColor(calibratedRed: 1, green: 1, blue: 1, alpha: 0.55)
-private let barBackgroundColor = NSColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
-private let barProgressColor = NSColor(deviceRed: 0.44, green: 0.44, blue: 0.44, alpha: 1)
-private let borderColor = NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
+private var backgroundColor: NSColor {
+	if #available(OSX 10.14, *) {
+		return NSColor.controlColor.withAlphaComponent(0.55)
+	} else {
+		return NSColor(calibratedRed: 1, green: 1, blue: 1, alpha: 0.55)
+	}
+}
+private var barBackgroundColor: NSColor { if #available(OSX 10.14, *) {
+	return NSColor.controlColor
+} else {
+	return NSColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+	} }
+private var barProgressColor: NSColor {
+	if #available(OSX 10.14, *) {
+		return NSColor.selectedControlColor
+	} else {
+		return NSColor(deviceRed: 0.44, green: 0.44, blue: 0.44, alpha: 1)
+	}
+}
+private var borderColor: NSColor {
+	if #available(OSX 10.14, *) {
+		return NSColor.systemGray.withAlphaComponent(0.25)
+	} else {
+		return NSColor(red:0, green: 0, blue: 0, alpha: 0.25)
+	}
+}
 
 /// The font attributes of the progress numbers.
-private let numberStyle: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 10),
-														 .foregroundColor: NSColor(deviceWhite: 0.2, alpha: 1)]
+private let numberStyle: [NSAttributedString.Key: Any] = {
+	var theKeys: [NSAttributedString.Key: Any] = [.font: NSFont.systemFont(ofSize: 10)]
+	if #available(OSX 10.14, *) {
+		theKeys[.foregroundColor] = NSColor.controlTextColor
+	} else {
+		theKeys[.foregroundColor] = NSColor(deviceWhite: 0.2, alpha: 1)
+	}
+	
+	return theKeys
+}()
 
 
 /**
 Configurable progress bar. Allows the setting of various style attributes.
 Progress direction can be set.
 */
+@IBDesignable
 class DTPolishedProgressBar: NSView {
 
 	override init(frame frameRect: NSRect) {
@@ -80,10 +111,10 @@ textStyle: Dictionary of string attributes.
 	}
 	
 	/// This is the section of the view. Users can mouse over and click here.
-	@objc fileprivate(set) var progressRect = NSRect()
+	@objc private(set) var progressRect = NSRect()
 	
 	/// How much room is given for the text on either side.
-	fileprivate var horizontalMargin: CGFloat = 5
+	private var horizontalMargin: CGFloat = 5
 
 	/// Translates a point within the view to an index between `0` and `maxValue`.
 	/// Progress indicator direction affects the index.
@@ -146,7 +177,11 @@ textStyle: Dictionary of string attributes.
 		fillRect.fill()
 		
 		// Draw indicator
-		NSColor.black.set()
+		if #available(OSX 10.14, *) {
+			NSColor.controlAccentColor.set()
+		} else {
+			NSColor.black.set()
+		}
 		indicatorRect.fill()
 		
 		// Draw labels
