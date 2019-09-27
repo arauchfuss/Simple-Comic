@@ -212,7 +212,7 @@
 			else if ([[TSSTPage textExtensions] containsObject: fileExtension])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-				nestedDescription.path = fullPath;
+				[nestedDescription setValue: fullPath forKey: @"imagePath"];
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
 			

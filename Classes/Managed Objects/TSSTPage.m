@@ -270,7 +270,7 @@ static NSSize monospaceCharacterSize;
 	}
 	pageRect.size.width += 10;
 	pageRect.size.height += 10;
-	pageRect.size.height = NSHeight(pageRect) < 500 ? 500 : NSHeight(pageRect);
+	pageRect.size.height = MAX(NSHeight(pageRect), 500);
 	
 	NSImage * textImage = [[NSImage alloc] initWithSize: pageRect.size];
 	
