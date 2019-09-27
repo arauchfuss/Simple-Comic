@@ -10,7 +10,7 @@ import Cocoa
 
 final class TSSTInfoView: NSView {
 	@objc var bordered: Bool = false
-	var caretPosition: CGFloat = 0 {
+	@objc var caretPosition: CGFloat = 0 {
 		didSet {
 			needsDisplay = true
 		}
@@ -38,7 +38,11 @@ final class TSSTInfoView: NSView {
 			to: NSPoint(x: caretPosition + 5, y: 5),
 			radius: 5)
 		outline.close()
-		NSColor.white.set()
+		if #available(OSX 10.13, *) {
+			NSColor(named: "InfoBackground")?.set()
+		} else {
+			NSColor.white.set()
+		}
 		outline.fill()
 	}
 }
