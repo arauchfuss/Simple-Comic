@@ -46,13 +46,13 @@
 			NSLog(@"%@",[error localizedDescription]);
 		}
 	}
+	[self.fileURL stopAccessingSecurityScopedResource];
 }
 
 - (void)didTurnIntoFault
 {
 	instance = nil;
 	groupLock = nil;
-	[self.fileURL stopAccessingSecurityScopedResource];
 }
 
 - (void)setFileURL:(NSURL *)fileURL

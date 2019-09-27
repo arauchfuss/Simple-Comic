@@ -33,7 +33,7 @@
 //		return NSOrderedAscending;
 //	}
 	
-	NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSWidthInsensitiveSearch | NSForcedOrderingSearch;
+	const NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSWidthInsensitiveSearch | NSForcedOrderingSearch;
     return [stringOne compare: stringTwo options: comparisonOptions];
 }
 
