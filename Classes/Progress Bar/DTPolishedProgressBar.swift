@@ -29,11 +29,13 @@ private var backgroundColor: NSColor {
 		return NSColor(calibratedRed: 1, green: 1, blue: 1, alpha: 0.55)
 	}
 }
-private var barBackgroundColor: NSColor { if #available(OSX 10.14, *) {
-	return NSColor.controlColor
-} else {
-	return NSColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
-	} }
+private var barBackgroundColor: NSColor {
+	if #available(OSX 10.14, *) {
+		return NSColor.controlColor
+	} else {
+		return NSColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+	}
+}
 private var barProgressColor: NSColor {
 	if #available(OSX 10.14, *) {
 		return NSColor.selectedControlColor
@@ -61,6 +63,9 @@ private let numberStyle: [NSAttributedString.Key: Any] = {
 	return theKeys
 }()
 
+extension Notification.Name {
+    static let interfaceThemeChanged = Notification.Name("AppleInterfaceThemeChangedNotification")
+}
 
 /**
 Configurable progress bar. Allows the setting of various style attributes.
@@ -72,11 +77,23 @@ class DTPolishedProgressBar: NSView {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		setFrameSize(frameRect.size)
+		setupObserver()
 	}
 	
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		setFrameSize(frame.size)
+		setupObserver()
+	}
+
+	private func setupObserver() {
+		if #available(OSX 10.14, *) {
+			DistributedNotificationCenter.default.addObserver(self, selector: #selector(interfaceModeChanged), name: .interfaceThemeChanged, object: nil)
+		}
+	}
+	
+	@objc private func interfaceModeChanged() {
+		needsDisplay = true
 	}
 
 /*
