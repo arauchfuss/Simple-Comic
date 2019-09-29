@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14295.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -379,14 +379,14 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" nonactivatingPanel="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="292" y="425" width="289" height="138"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="213" height="90"/>
             <view key="contentView" id="469">
-                <rect key="frame" x="0.0" y="0.0" width="289" height="138"/>
+                <rect key="frame" x="0.0" y="0.0" width="289" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="470" customClass="NSSecureTextField">
-                        <rect key="frame" x="90" y="49" width="179" height="22"/>
+                        <rect key="frame" x="90" y="49" width="179" height="21"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="1692">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -394,7 +394,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="472">
-                        <rect key="frame" x="51" y="101" width="188" height="17"/>
+                        <rect key="frame" x="51" y="100" width="188" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Archive is Password Protected" id="1693">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -402,7 +402,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="474">
-                        <rect key="frame" x="35" y="79" width="219" height="14"/>
+                        <rect key="frame" x="35" y="78" width="219" height="14"/>
                         <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Archive will not open without a password" id="1695">
                             <font key="font" metaFont="smallSystem"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -436,7 +436,7 @@ Gw
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="473">
-                        <rect key="frame" x="18" y="52" width="66" height="17"/>
+                        <rect key="frame" x="18" y="52" width="66" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Password:" id="1694">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -471,14 +471,14 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="323" y="210" width="346" height="122"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="213" height="90"/>
             <view key="contentView" id="1081">
-                <rect key="frame" x="0.0" y="0.0" width="346" height="122"/>
+                <rect key="frame" x="0.0" y="0.0" width="346" height="121"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1082">
-                        <rect key="frame" x="86" y="81" width="243" height="22"/>
+                        <rect key="frame" x="86" y="80" width="243" height="22"/>
                         <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" autoenablesItems="NO" selectedItem="1086" id="1707">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
@@ -506,7 +506,7 @@ DQ
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1092">
-                        <rect key="frame" x="18" y="61" width="108" height="17"/>
+                        <rect key="frame" x="18" y="61" width="108" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Sample filename:" id="1709">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -514,7 +514,7 @@ DQ
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1100">
-                        <rect key="frame" x="18" y="86" width="65" height="17"/>
+                        <rect key="frame" x="18" y="85" width="65" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Encoding:" id="1710">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
