@@ -30,7 +30,7 @@ class TSSTThumbnailView: NSView {
 		thumbnailView.clears = true
 	}
 	
-	func rect(for index: Int) -> NSRect {
+	private func rect(for index: Int) -> NSRect {
 		let bounds = window!.screen!.visibleFrame
 		let ratio = bounds.height / bounds.width
 		let horCount = Int(ceil(sqrt(CGFloat((pageController!.content! as AnyObject).count) / ratio)))
@@ -151,7 +151,7 @@ class TSSTThumbnailView: NSView {
 		thumbnailView.needsDisplay = true
 		
 		var imageSize = thumb.size
-		thumbnailView.imageName = arrangedObject.value(forKey: "pageImage") as? String
+		thumbnailView.imageName = arrangedObject.value(forKey: "name") as? String
 		let indexRect = rect(for: index)
 		let visibleRect = window!.screen!.visibleFrame
 		var thumbPoint = NSPoint(x: indexRect.minX + indexRect.width / 2, y: indexRect.minY + indexRect.height / 2)
@@ -195,8 +195,7 @@ class TSSTThumbnailView: NSView {
 			return
 		}
 		
-		let nsChar = chars.utf16.first!
-		if nsChar == 27 {
+		if let nsChar = chars.utf16.first, nsChar == 27 {
 			(window!.windowController! as! TSSTSessionWindowController).killTopOptionalUIElement()
 		}
 	}
