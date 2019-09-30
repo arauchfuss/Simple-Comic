@@ -197,7 +197,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTPageScaleOptions: @1,
 		  TSSTTwoPageSpread: @YES,
 		  TSSTScrollersVisible: @YES,
-		  TSSTBackgroundColor: [NSArchiver archivedDataWithRootObject: [NSColor whiteColor]],
+		  TSSTBackgroundColor: [NSKeyedArchiver archivedDataWithRootObject: [NSColor whiteColor]],
 		  TSSTConstrainScale: @YES,
 		  TSSTWindowAutoResize: @YES,
 		  TSSTSessionRestore: @YES,
@@ -215,6 +215,18 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		[sharedDefaultsController setInitialValues: standardDefaults];
 		NSUserDefaults * defaults = [sharedDefaultsController defaults];
 		[defaults registerDefaults: standardDefaults];
+		// Convert old NSArchiver color key to NSKeyedArchiver, if needed
+		if (![NSKeyedUnarchiver unarchiveObjectWithData: [defaults dataForKey: TSSTBackgroundColor]]) {
+			NSData *rawKey = [defaults dataForKey: TSSTBackgroundColor];
+			NSColor *newColor = [NSUnarchiver unarchiveObjectWithData: rawKey];
+			if (newColor || [newColor isKindOfClass: [NSColor class]]) {
+				NSData *newKey = [NSKeyedArchiver archivedDataWithRootObject: newColor];
+				[defaults setObject: newKey forKey: TSSTBackgroundColor];
+			} else {
+				//shrug
+				[defaults removeObjectForKey: TSSTBackgroundColor];
+			}
+		}
 		
 		id transformer = [TSSTLastPathComponent new];
 		[NSValueTransformer setValueTransformer: transformer forName: @"TSSTLastPathComponent"];

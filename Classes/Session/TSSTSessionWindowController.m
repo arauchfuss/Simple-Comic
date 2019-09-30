@@ -234,7 +234,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
 	else if([keyPath isEqualToString: TSSTBackgroundColor])
 	{
-		NSColor * color = [NSUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
+		NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 		[pageScrollView setBackgroundColor: color];
 	}
     else if([keyPath isEqualToString: TSSTStatusbarVisible])
@@ -933,7 +933,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSInteger loupeDiameter = [defaults integerForKey: TSSTLoupeDiameter];
     [loupeWindow setFrame:NSMakeRect(0,0, loupeDiameter, loupeDiameter) display: NO];
-    NSColor * color = [NSUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
+    NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	[pageScrollView setBackgroundColor: color];
     [pageView setRotation: [session.rotation intValue]];
     NSValue * positionValue;
