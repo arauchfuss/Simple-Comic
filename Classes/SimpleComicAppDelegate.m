@@ -265,32 +265,31 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	
 	if (launchFiles) {
 		TSSTManagedSession * session;
-//		if (optionHeldAtlaunch)
-//		{
-//			NSMutableArray * looseImages = [NSMutableArray array];
-//			for(NSString * path in launchFiles)
-//			{
-//				if([[TSSTManagedArchive archiveExtensions] containsObject: [[path pathExtension] lowercaseString]])
-//				{
-//					session = [self newSessionWithFiles: [NSArray arrayWithObject: path]];
-//					[self windowForSession: session];
-//				}
-//				else {
-//					[looseImages addObject: path];
-//				}
-//
-//				if ([looseImages count]> 0) {
-//					session = [self newSessionWithFiles: looseImages];
-//					[self windowForSession: session];
-//				}
-//
-//			}
-//		}
-//		else
-//		{
+		if (optionHeldAtlaunch)
+		{
+			NSMutableArray * looseImages = [NSMutableArray array];
+			for(NSString * path in launchFiles)
+			{
+				if([[TSSTManagedArchive archiveExtensions] containsObject: [[path pathExtension] lowercaseString]])
+				{
+					session = [self newSessionWithFiles: @[path]];
+					[self windowForSession: session];
+				}
+				else {
+					[looseImages addObject: path];
+				}
+			}
+			
+			if ([looseImages count]> 0) {
+				session = [self newSessionWithFiles: looseImages];
+				[self windowForSession: session];
+			}
+		}
+		else
+		{
 			session = [self newSessionWithFiles: launchFiles];
 			[self windowForSession: session];
-//		}
+		}
 		
 		launchFiles = nil;
 	}
@@ -360,59 +359,43 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
+	BOOL option = ([NSEvent modifierFlags] & (NSEventModifierFlagOption)) != 0;
 	if(!launchInProgress)
 	{
 		TSSTManagedSession * session;
-		session = [self newSessionWithFiles: filenames];
-		[self windowForSession: session];
+		if (option)
+		{
+			NSMutableArray * looseImages = [NSMutableArray array];
+			for(NSString * path in filenames)
+			{
+				if([[TSSTManagedArchive archiveExtensions] containsObject: [[path pathExtension] lowercaseString]])
+				{
+					session = [self newSessionWithFiles: @[path]];
+					[self windowForSession: session];
+				}
+				else
+				{
+					[looseImages addObject: path];
+				}
+			}
+			
+			if ([looseImages count]> 0) {
+				session = [self newSessionWithFiles: looseImages];
+				[self windowForSession: session];
+			}
+		}
+		else
+		{
+			session = [self newSessionWithFiles: filenames];
+			[self windowForSession: session];
+		}
 	}
 	else
 	{
 		launchFiles = filenames;
+		optionHeldAtlaunch = option;
 	}
 }
-
-
-//- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
-//{
-//	BOOL option = (GetCurrentKeyModifiers()&(optionKey) != 0);
-//	if(!launchInProgress)
-//	{
-//		TSSTManagedSession * session;
-//		if (option)
-//		{
-//			NSMutableArray * looseImages = [NSMutableArray array];
-//			for(NSString * path in filenames)
-//			{
-//				if([[TSSTManagedArchive archiveExtensions] containsObject: [[path pathExtension] lowercaseString]])
-//				{
-//					session = [self newSessionWithFiles: [NSArray arrayWithObject: path]];
-//					[self windowForSession: session];
-//				}
-//				else
-//				{
-//					[looseImages addObject: path];
-//				}
-//
-//				if ([looseImages count]> 0) {
-//					session = [self newSessionWithFiles: looseImages];
-//					[self windowForSession: session];
-//				}
-//
-//			}
-//		}
-//		else
-//		{
-//			session = [self newSessionWithFiles: filenames];
-//			[self windowForSession: session];
-//		}
-//	}
-//	else
-//	{
-//		launchFiles = [filenames retain];
-//		optionHeldAtlaunch = option;
-//	}
-//}
 
 
 #pragma mark - Core Data
