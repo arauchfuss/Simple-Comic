@@ -97,7 +97,7 @@
 			panel.message = [NSString stringWithFormat:NSLocalizedString(@"Please re-select '%@'", @"re-select file request"), fileURL.lastPathComponent];
 			panel.directoryURL = [fileURL URLByDeletingLastPathComponent];
 			
-			if ([panel runModal] == NSFileHandlingPanelOKButton) {
+			if ([panel runModal] == NSModalResponseOK) {
 				othErr = nil;
 				NSData *bookmarkData = [panel.URL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope | NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess
 										   includingResourceValuesForKeys: @[NSURLVolumeURLForRemountingKey, NSURLVolumeUUIDStringKey]

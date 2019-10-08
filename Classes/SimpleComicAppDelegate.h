@@ -19,6 +19,16 @@
 
 #import <Cocoa/Cocoa.h>
 
+#if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_12)
+#define NSCompositingOperationSourceOver NSCompositeSourceOver
+#define NSEventModifierFlagCommand       NSCommandKeyMask
+#define NSEventModifierFlagOption        NSAlternateKeyMask
+#define NSEventModifierFlagShift         NSShiftKeyMask
+#define NSEventTypeKeyDown               NSKeyDown
+#define NSEventTypeLeftMouseUp           NSLeftMouseUp
+#define NSEventTypeLeftMouseDragged      NSLeftMouseDragged
+#endif
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class TSSTSessionWindowController;

@@ -829,7 +829,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		[savePanel setTitle: NSLocalizedString(@"Extract Page", @"")];
 		[savePanel setPrompt: NSLocalizedString(@"Extract", @"")];
         [savePanel setNameFieldStringValue:[selectedPage name]];
-		if(NSFileHandlingPanelOKButton == [savePanel runModal])
+		if(NSModalResponseOK == [savePanel runModal])
 		{
 			[[selectedPage pageData] writeToFile: [[savePanel URL] path] atomically: YES];
 		}
@@ -881,7 +881,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				
 				[iconImage lockFocus];
 				[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
-				[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositeSourceOver fraction: 1];
+				[[selectedPage pageImage] drawInRect: drawRect fromRect: cropRect operation: NSCompositingOperationSourceOver fraction: 1];
 				[iconImage unlockFocus];
 				
 				NSImage * shadowImage = [[NSImage alloc] initWithSize: NSMakeSize(512, 512)];
@@ -893,7 +893,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 				
 				[shadowImage lockFocus];
 				[thumbShadow set];
-				[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositeSourceOver fraction: 1];
+				[iconImage drawInRect: NSMakeRect(16, 16, 496, 496) fromRect: NSZeroRect operation: NSCompositingOperationSourceOver fraction: 1];
 				[shadowImage unlockFocus];
 				
 				[[NSWorkspace sharedWorkspace] setIcon: shadowImage forFile: archivePath options: 0];

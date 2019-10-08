@@ -187,7 +187,7 @@ static NSSize monospaceCharacterSize;
 		[[NSGraphicsContext currentContext] setImageInterpolation: NSImageInterpolationHigh];
 		[managedImage drawInRect: NSMakeRect(0, 0, pixelSize.width, pixelSize.height)
 						fromRect: NSZeroRect
-					   operation: NSCompositeSourceOver
+					   operation: NSCompositingOperationSourceOver
 						fraction: 1.0];
 		[temp unlockFocus];
 		thumbnailData = [temp TIFFRepresentation];
