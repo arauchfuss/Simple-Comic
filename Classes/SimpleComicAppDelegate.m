@@ -453,7 +453,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
     url = [[NSURL fileURLWithPath:applicationSupportFolder] URLByAppendingPathComponent: @"SimpleComic.sql"];
 	
 	error = nil;
-	NSDictionary * storeInfo = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType: NSSQLiteStoreType URL: url error: &error];
+	NSDictionary * storeInfo = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType: NSSQLiteStoreType URL: url options:@{} error: &error];
 	if(error)
 	{
 		NSLog(@"%@",[error localizedDescription]);
