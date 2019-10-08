@@ -22,3 +22,24 @@
 /* Two pages are displayed side by side */
 "Two Page Layout" = "Two Page Layout";
 
+"Click to select page" = "Click to select page";
+
+"\nDrag to crop" = "\nDrag to crop";
+
+"Extract Page" = "Extract Page";
+
+"Extract" = "Extract";
+
+"Quit without saving session?" = "Quit without saving session?";
+
+"Could not save changes while quitting. Quit anyway?" = "Could not save changes while quitting. Quit anyway?";
+
+"Quit anyway" = "Quit anyway";
+
+"Cancel" = "Cancel";
+
+/* re-select file request */
+"Please re-select '%@'" = "Please re-select ‘%@’";
+
+/* PDF page number */
+"PDF page %li" = "Page %li";

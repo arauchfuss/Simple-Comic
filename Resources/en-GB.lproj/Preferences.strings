@@ -27,10 +27,16 @@
 "236.title" = "Open windows are preserved between exit and relaunch.";
 
 /* Class = "NSTextFieldCell"; title = "Background color"; ObjectID = "239"; */
-"239.title" = "Background color";
+"239.title" = "Background colour";
 
 /* Class = "NSTextFieldCell"; title = "This color is displayed around pages in fullscreen mode."; ObjectID = "244"; */
-"244.title" = "This color is displayed around pages in fullscreen mode.";
+"244.title" = "This colour is displayed around pages in fullscreen mode.";
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "246"; */
 "246.title" = "Preferences";
+
+/* Class = "NSButtonCell"; title = "Enable swipe"; ObjectID = "uvV-P7-bwd"; */
+"uvV-P7-bwd.title" = "Enable swipe";
+
+/* Class = "NSTextFieldCell"; title = "Enabling will allow you to navigate back and forth by swiping."; ObjectID = "v7s-SA-lNq"; */
+"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";
