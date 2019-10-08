@@ -17,9 +17,11 @@
     return NSHeight([self frame]) - NSHeight([[self contentView] frame]);
 }
 
+
 - (BOOL)isFullscreen
 {
 	return (([self styleMask] & NSWindowStyleMaskFullScreen) == NSWindowStyleMaskFullScreen);
 }
+
 
 @end

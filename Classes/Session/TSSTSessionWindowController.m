@@ -671,10 +671,12 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}];
 }
 
+
 - (IBAction)cancelJumpPanel:(id)sender
 {
-	[self.window endSheet: jumpPanel returnCode: 0];
+	[self.window endSheet: jumpPanel returnCode: NSModalResponseAbort];
 }
+
 
 - (IBAction)goToPage:(id)sender
 {
@@ -684,7 +686,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         [pageController setSelectionIndex: index];
     }
 	
-	[self.window endSheet: jumpPanel returnCode: 1];
+	[self.window endSheet: jumpPanel returnCode: NSModalResponseContinue];
 }
 
 
@@ -917,7 +919,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (void)hideCursor
 {
 	mouseMovedTimer = nil;
-	
+
 	if([[self window] isFullscreen])
 	{
 		[NSCursor setHiddenUntilMouseMoves: YES];
