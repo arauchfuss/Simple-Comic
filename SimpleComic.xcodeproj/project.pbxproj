@@ -57,6 +57,7 @@
 		55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; };
 		55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7D78B1C4C0401005F40C8 /* TSSTCircularImageView.swift */; };
 		55C7D7901C4C06FF005F40C8 /* TSSTInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7D78F1C4C06FF005F40C8 /* TSSTInfoWindow.swift */; };
+		55D3544F234F90DA00BB3A99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55D3542E234F90DA00BB3A99 /* InfoPlist.strings */; };
 		55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */; };
 		55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1DB1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m */; };
 		55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */; };
@@ -325,6 +326,10 @@
 		55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = Vendor/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
 		55C7D78B1C4C0401005F40C8 /* TSSTCircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTCircularImageView.swift; sourceTree = "<group>"; };
 		55C7D78F1C4C06FF005F40C8 /* TSSTInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoWindow.swift; sourceTree = "<group>"; };
+		55D3542F234F90DA00BB3A99 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		55D35431234F90DA00BB3A99 /* en-GB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		55D35435234F90DA00BB3A99 /* zh-Hant */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		55D35459234F90F600BB3A99 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55FFF1BB1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSSTPage+CoreDataProperties.h"; sourceTree = "<group>"; };
 		55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSSTPage+CoreDataProperties.m"; sourceTree = "<group>"; };
 		55FFF1DA1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSSTManagedGroup+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -577,6 +582,7 @@
 				55C3741B1BD9E6AF006385B6 /* main.c */,
 				55C3741A1BD9E6AF006385B6 /* Info.plist */,
 				55A6C3241CEF51F90049D381 /* QuickComic.exp */,
+				55D3542E234F90DA00BB3A99 /* InfoPlist.strings */,
 			);
 			path = QuickComic;
 			sourceTree = "<group>";
@@ -856,6 +862,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55D3544F234F90DA00BB3A99 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1063,17 @@
 				B927C16521C0C8580024CCF9 /* en-GB */,
 			);
 			name = Help;
+			sourceTree = "<group>";
+		};
+		55D3542E234F90DA00BB3A99 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55D3542F234F90DA00BB3A99 /* zh-Hans */,
+				55D35431234F90DA00BB3A99 /* en-GB */,
+				55D35435234F90DA00BB3A99 /* zh-Hant */,
+				55D35459234F90F600BB3A99 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
