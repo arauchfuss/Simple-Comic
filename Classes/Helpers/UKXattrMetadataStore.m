@@ -95,10 +95,10 @@
 		[self setData: plistData forKey: key atPath: path traverseLink: travLnk error: NULL];
 }
 
-+(BOOL)	setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
++(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path traverseLink:(BOOL)travLnk format:(NSPropertyListFormat)format error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
 	// Serialize our objects into a property list XML string:
-	NSData *plistData = [NSPropertyListSerialization dataWithPropertyList:obj format:NSPropertyListXMLFormat_v1_0 options:0 error:error];
+	NSData *plistData = [NSPropertyListSerialization dataWithPropertyList:obj format:format options:0 error:error];
 
 	if( !plistData )
 	{
@@ -109,6 +109,10 @@
 		return [self setData: plistData forKey: key atPath: path traverseLink: travLnk error: error];
 }
 
++(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
+{
+	return [self setObject:obj forKey:key atPath:path traverseLink:travLnk format:NSPropertyListXMLFormat_v1_0 error:error];
+}
 
 // -----------------------------------------------------------------------------
 //	setString:forKey:atPath:traverseLink:

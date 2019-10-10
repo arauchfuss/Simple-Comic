@@ -233,6 +233,29 @@ NS_ASSUME_NONNULL_BEGIN
 	 traverseLink:(BOOL)travLnk error:(NSError**)error;
 
 /*!
+ *	@method		setObject:forKey:atPath:traverseLink:error:
+ *	@param		obj
+ *				The Property List object to set.
+ *	@param		key
+ *				the key to set \obj to.
+ *	@param		path
+ *				The file whose xattr you want to set.
+ *	@param		travLnk
+ *				If <code>YES</code>, follows symlinks.
+ *	@param		error
+ *				If the method does not complete successfully, upon return
+ *				contains an \c NSError object that describes the problem.
+ *	@param		format
+ *				The property list
+ *	@return		\c YES on success, \c NO on failure.
+ *	@discussion	Set the xattr with name \c key to a property list representation of
+ *				the specified object (or object graph). The Property list format is
+ *				specified by the \c format parameter.
+ */
++(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
+	 traverseLink:(BOOL)travLnk format:(NSPropertyListFormat)format error:(NSError**)error;
+
+/*!
  *	@method		objectForKey:atPath:traverseLink:error:
  *	@brief		Get the xattr with name \c key as a property list
  *	@param		key
@@ -246,7 +269,7 @@ NS_ASSUME_NONNULL_BEGIN
  *				contains an \c NSError object that describes the problem.
  *	@return		a Property List object from contents of \c key on succes, or \c nil on failure
  *	@discussion	Get the xattr with name \c key as a property list object (<code>NSString</code>, <code>NSArray</code>, etc...)<br>
- *				The data has to be stored as an XML property list.
+ *				The data has to be stored as a property list.
  */
 +(nullable id) objectForKey:(NSString*)key atPath:(NSString*)path
 			   traverseLink:(BOOL)travLnk error:(NSError**)outError;
