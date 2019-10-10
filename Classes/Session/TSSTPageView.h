@@ -34,9 +34,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+typedef NS_ENUM(NSInteger, DTPageScaling) {
+	DTPageScalingOriginal = 0,
+	DTPageScalingToWindow = 1,
+	DTPageScalingToWidth = 2,
+};
+
 @protocol DTPageLayoutProtocol <NSObject>
 
-@property (readonly) NSInteger pageScaling;
+@property (readonly) DTPageScaling pageScaling;
 @property (readonly) BOOL leftToRightOrder;
 @property (readonly) BOOL singlePageLayout;
 

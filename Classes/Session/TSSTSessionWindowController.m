@@ -406,7 +406,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)changeScaling:(id)sender
 {
-    int scaleType = [sender tag] % 400;
+    DTPageScaling scaleType = [sender tag] % 400;
 	session.scaleOptions = @(scaleType);
 }
 
