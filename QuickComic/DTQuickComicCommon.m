@@ -15,7 +15,7 @@ static NSArray * fileNameSort = nil;
 
 NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * archive)
 {
-    NSMutableArray * fileDescriptions = [[NSMutableArray alloc] init];
+    NSMutableArray * fileDescriptions = [[NSMutableArray alloc] initWithCapacity: [archive numberOfEntries]];
 
     NSInteger count = [archive numberOfEntries];
     for (NSInteger index = 0; index < count; ++index)
