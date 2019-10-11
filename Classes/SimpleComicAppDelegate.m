@@ -511,8 +511,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 - (BOOL)saveContext
 {
-    TSSTSessionWindowController * controller;
-    for (controller in sessions)
+    for (TSSTSessionWindowController * controller in sessions)
     {
         [controller updateSessionObject];
     }
