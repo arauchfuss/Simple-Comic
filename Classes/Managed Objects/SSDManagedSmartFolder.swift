@@ -144,9 +144,10 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		self.images = pageSet
 	}
 	
-	override func data(forPageIndex index: Int) -> Data? {
+	override func requestData(forPageIndex index: Int, callback: @escaping (Data?, Error?) -> Void) {
 		guard let images = self.images else {
-			return nil
+			callback(nil, nil)
+			return
 		}
 		
 		let filepath = images.first { (page) -> Bool in
@@ -158,10 +159,16 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		// TODO: add check to see if file exist?
 		guard let filePath = filepath else {
-			return nil
+			callback(nil, nil)
+			return
 		}
 		
-		return (try? Data(contentsOf: URL(fileURLWithPath: filePath)))
+		do {
+			let data = try Data(contentsOf: URL(fileURLWithPath: filePath))
+			callback(data, nil)
+		} catch {
+			callback(nil, error)
+		}
 	}
 }
 

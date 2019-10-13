@@ -155,6 +155,10 @@
     return nil;
 }
 
+- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
+{
+	callback(nil, [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil]);
+}
 
 - (NSManagedObject *)topLevelGroup
 {
@@ -329,7 +333,8 @@
     return instance;
 }
 
-- (NSData *)dataForPageIndex:(NSInteger)index
+
+- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
 {
 	NSString * solidDirectory = self.solidDirectory;
 	NSData * imageData;
@@ -337,7 +342,9 @@
 	{
 		[groupLock lock];
 		imageData = [[self instance] contentsOfEntry: index];
+		XADError err = [[self instance] lastError];
 		[groupLock unlock];
+		callback(imageData, err != XADErrorNone ? [NSError errorWithDomain: XADErrorDomain code: err userInfo: nil] : nil);
 	}
 	else
 	{
@@ -348,16 +355,19 @@
 		{
 			[groupLock lock];
 			imageData = [[self instance] contentsOfEntry: index];
+			XADError err = [[self instance] lastError];
 			[groupLock unlock];
 			[imageData writeToFile: fileName options: 0 error: nil];
+			callback(imageData, err != XADErrorNone ? [NSError errorWithDomain: XADErrorDomain code: err userInfo: nil] : nil);
 		}
 		else
 		{
-			imageData = [NSData dataWithContentsOfFile: fileName];
+			NSError *err = nil;
+			imageData = [NSData dataWithContentsOfFile: fileName options:0 error:&err];
+			callback(imageData, err);
+			return;
 		}
 	}
-	
-    return imageData;
 }
 
 
@@ -511,7 +521,7 @@
     return instance;
 }
 
-- (NSData *)dataForPageIndex:(NSInteger)index
+- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
 {
     [groupLock lock];
 	PDFPage * page = [(PDFDocument*)[self instance] pageAtIndex: index];
@@ -541,7 +551,7 @@
 	
 	NSData * imageData = [pageImage TIFFRepresentation];
 	
-    return imageData;
+	callback(imageData, nil);
 }
 
 - (void)pdfContents

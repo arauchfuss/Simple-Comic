@@ -33,7 +33,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy) NSString *path;
 @property (copy) NSURL *fileURL;
 
-- (nullable NSData *)dataForPageIndex:(NSInteger)index;
+- (nullable NSData *)dataForPageIndex:(NSInteger)index UNAVAILABLE_ATTRIBUTE;
+- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback;
 @property (readonly, strong, nullable) NSManagedObject *topLevelGroup;
 
 /**
