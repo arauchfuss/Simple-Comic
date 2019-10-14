@@ -231,10 +231,12 @@ static NSSize monospaceCharacterSize;
 
 - (NSImage *)textPage
 {
-	NSData * textData;
+	__block NSData * textData;
 	if(self.index)
 	{
-		textData = [self.group dataForPageIndex: [self.index integerValue]];
+		[self.group requestDataForPageIndex: [self.index integerValue] callback:^(NSData * _Nullable pageData, NSError * _Nullable error) {
+			textData = pageData;
+		}];
 	}
 	else
 	{
@@ -285,12 +287,14 @@ static NSSize monospaceCharacterSize;
 
 - (NSData *)pageData
 {
-    NSData * imageData = nil;
+    __block NSData * imageData = nil;
     TSSTManagedGroup * group = self.group;
     if(self.index)
     {
 		NSInteger entryIndex = [self.index integerValue];
-		imageData = [group dataForPageIndex: entryIndex];
+		[group requestDataForPageIndex:entryIndex callback:^(NSData * _Nullable pageData, NSError * _Nullable error) {
+			imageData = pageData;
+		}];
     }
     else if([self imagePath])
     {
