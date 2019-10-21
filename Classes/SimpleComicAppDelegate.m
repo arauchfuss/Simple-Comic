@@ -28,6 +28,7 @@
 #import "DTPreferencesController.h"
 #import "Simple_Comic-Swift.h"
 #import "TSSTManagedSession+CoreDataProperties.h"
+#import "TSSTWebPImageRep.h"
 
 
 @interface SimpleComicAppDelegate () <XADArchiveDelegate>
@@ -252,6 +253,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	launchInProgress = YES;
 	preferences = nil;
 	optionHeldAtlaunch = NO;
+	[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSession:) name: TSSTSessionEndNotification object: nil];
 	[[NSUserDefaults standardUserDefaults] addObserver: self forKeyPath: TSSTSessionRestore options: 0 context: nil];
 }

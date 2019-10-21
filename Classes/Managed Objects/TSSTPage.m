@@ -138,7 +138,12 @@ static NSSize monospaceCharacterSize;
 {
 	CGFloat aspect;
 	NSSize imageSize;
-	NSBitmapImageRep * pageRep = [NSBitmapImageRep imageRepWithData: imageData];
+	Class imgRepClass = [NSImageRep imageRepClassForData:imageData];
+	if (imgRepClass == Nil) {
+		// fall-back to bitmap image rep.
+		imgRepClass = [NSBitmapImageRep class];
+	}
+	NSImageRep * pageRep = [imgRepClass imageRepWithData: imageData];
 	imageSize = NSMakeSize([pageRep pixelsWide], [pageRep pixelsHigh]);
 	
 	if(!NSEqualSizes(NSZeroSize, imageSize))

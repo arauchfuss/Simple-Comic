@@ -41,6 +41,7 @@
 		552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */; };
 		552F38BD1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */; };
 		5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */; };
+		55871EDE235D70C100528BDF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* libwebp.a */; };
 		5589952E1A13D4450058830B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5589952D1A13D4450058830B /* Media.xcassets */; };
 		5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */; };
 		559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */; };
@@ -159,6 +160,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 73DA3465206B6BF1006ADB42;
 			remoteInfo = XADMasterTests;
+		};
+		55871ECA235D708900528BDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8FA92B8C196ED365002C72DF;
+			remoteInfo = webp;
+		};
+		55871EDC235D70A800528BDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FA92B8B196ED365002C72DF;
+			remoteInfo = webp;
 		};
 		559951611BDC0A400086661A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -298,6 +313,7 @@
 		552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSDManagedSmartFolder.swift; sourceTree = "<group>"; };
 		5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoView.swift; sourceTree = "<group>"; };
 		5575A1821EAA76AC00C6D178 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		55871EC6235D708900528BDF /* libwebp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebp.xcodeproj; path = "Vendor/ios-osx-webp-decoder/libwebp.xcodeproj"; sourceTree = "<group>"; };
 		5589952D1A13D4450058830B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		5599515C1BDC0A3F0086661A /* Simple Comic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Comic-Bridging-Header.h"; sourceTree = "<group>"; };
 		5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPolishedProgressBar.swift; sourceTree = "<group>"; };
@@ -381,6 +397,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55871EDE235D70C100528BDF /* libwebp.a in Frameworks */,
 				5500A65D1D7772CD00321300 /* XADMaster.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */,
@@ -569,6 +586,14 @@
 			name = SimpleComic;
 			sourceTree = "<group>";
 		};
+		55871EC7235D708900528BDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55871ECB235D708900528BDF /* libwebp.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		55C373FF1BD9E61E006385B6 /* QuickComic */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +615,7 @@
 		55C374501BD9EA8B006385B6 /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
+				55871EC6235D708900528BDF /* libwebp.xcodeproj */,
 				5500A6231D77712F00321300 /* XADMaster.xcodeproj */,
 				55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */,
 			);
@@ -679,6 +705,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55871EDD235D70A800528BDF /* PBXTargetDependency */,
 				5500A6541D77716000321300 /* PBXTargetDependency */,
 				55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */,
 				55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */,
@@ -732,6 +759,10 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MetaComic */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 55871EC7235D708900528BDF /* Products */;
+					ProjectRef = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
+				},
 				{
 					ProductGroup = 55C374521BD9EAA1006385B6 /* Products */;
 					ProjectRef = 55C374511BD9EAA1006385B6 /* UniversalDetector.xcodeproj */;
@@ -825,6 +856,13 @@
 			fileType = wrapper.cfbundle;
 			path = XADMasterTests.xctest;
 			remoteRef = 557604F02150E0870023C09B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55871ECB235D708900528BDF /* libwebp.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libwebp.a;
+			remoteRef = 55871ECA235D708900528BDF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		559951621BDC0A400086661A /* UniversalDetectorTests.xctest */ = {
@@ -947,6 +985,11 @@
 			isa = PBXTargetDependency;
 			name = "XADMaster-simple";
 			targetProxy = 5500A65A1D7772A400321300 /* PBXContainerItemProxy */;
+		};
+		55871EDD235D70A800528BDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = webp;
+			targetProxy = 55871EDC235D70A800528BDF /* PBXContainerItemProxy */;
 		};
 		55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1149,6 +1192,7 @@
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1179,6 +1223,7 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
