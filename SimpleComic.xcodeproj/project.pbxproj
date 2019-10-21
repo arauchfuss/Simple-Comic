@@ -42,6 +42,7 @@
 		552F38BD1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */; };
 		5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */; };
 		55871EDE235D70C100528BDF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* libwebp.a */; };
+		55871EFC235D8B2800528BDF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* libwebp.a */; };
 		5589952E1A13D4450058830B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5589952D1A13D4450058830B /* Media.xcassets */; };
 		5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */; };
 		559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */; };
@@ -169,6 +170,13 @@
 			remoteInfo = webp;
 		};
 		55871EDC235D70A800528BDF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FA92B8B196ED365002C72DF;
+			remoteInfo = webp;
+		};
+		55871EEA235D8B2200528BDF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
 			proxyType = 1;
@@ -388,6 +396,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55871EFC235D8B2800528BDF /* libwebp.a in Frameworks */,
 				5500A65C1D7772B200321300 /* XADMaster.framework in Frameworks */,
 				55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */,
 			);
@@ -684,6 +693,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				55871EEB235D8B2200528BDF /* PBXTargetDependency */,
 				5500A65B1D7772A400321300 /* PBXTargetDependency */,
 				55C3745F1BD9EFE7006385B6 /* PBXTargetDependency */,
 			);
@@ -991,6 +1001,11 @@
 			name = webp;
 			targetProxy = 55871EDC235D70A800528BDF /* PBXContainerItemProxy */;
 		};
+		55871EEB235D8B2200528BDF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = webp;
+			targetProxy = 55871EEA235D8B2200528BDF /* PBXContainerItemProxy */;
+		};
 		55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55C374041BD9E67D006385B6 /* QuickComic */;
@@ -1142,6 +1157,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -1162,6 +1178,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;

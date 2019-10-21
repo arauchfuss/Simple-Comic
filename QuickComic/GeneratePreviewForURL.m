@@ -5,6 +5,7 @@
 #import <XADMaster/XADArchive.h>
 #import "DTQuickComicCommon.h"
 #include "main.h"
+#import "TSSTWebPImageRep.h"
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file
@@ -15,11 +16,13 @@
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
     @autoreleasepool {
-    
+	[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+
 		XADArchive * archive = [[XADArchive alloc] initWithFileURL: (__bridge NSURL *)url delegate: nil error: NULL];
     NSMutableArray<NSDictionary<NSString*,id>*> * fileList = fileListForArchive(archive);
 
 		if (QLPreviewRequestIsCancelled(preview)) {
+			[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 			return kQLReturnNoError;
 		}
 
@@ -56,6 +59,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 					counter ++;
 				if (QLPreviewRequestIsCancelled(preview)) {
 					CFRelease(cgContext);
+					[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 					return kQLReturnNoError;
 				}
             }while(1 > [currentTime timeIntervalSinceDate: pageRenderStartTime] && counter < count);
@@ -64,6 +68,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
             CFRelease(cgContext);
         }
     }
+	[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
     return noErr;
     }
 }

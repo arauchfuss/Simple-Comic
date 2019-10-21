@@ -8,6 +8,7 @@
 #import "TSSTImageUtilities.h"
 #import "DTPartialArchiveParser.h"
 #include "main.h"
+#import "TSSTWebPImageRep.h"
 
 // Undocumented properties
 extern const CFStringRef kQLThumbnailPropertyIconFlavorKey;
@@ -38,6 +39,7 @@ typedef NS_ENUM(NSInteger, QLThumbnailIconFlavor)
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
 	@autoreleasepool {
+	[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
 	NSURL *archiveURL = (__bridge NSURL *)url;
 	NSString * archivePath = [archiveURL path];
 //	NSLog(@"base path %@",archivePath);
@@ -74,6 +76,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
     }
 
 	if (QLThumbnailRequestIsCancelled(thumbnail)) {
+		[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 		return kQLReturnNoError;
 	}
 
@@ -104,6 +107,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		
 		if (QLThumbnailRequestIsCancelled(thumbnail)) {
 			CFRelease(currentImage);
+			[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 			return kQLReturnNoError;
 		}
 		
@@ -121,7 +125,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		CGContextRelease(cgContext);
 	}
 	
-	
+	[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 	}
     return noErr;
 }
