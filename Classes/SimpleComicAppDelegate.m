@@ -28,7 +28,7 @@
 #import "DTPreferencesController.h"
 #import "Simple_Comic-Swift.h"
 #import "TSSTManagedSession+CoreDataProperties.h"
-#import "TSSTWebPImageRep.h"
+#import <WebPMac/TSSTWebPImageRep.h>
 
 
 @interface SimpleComicAppDelegate () <XADArchiveDelegate>

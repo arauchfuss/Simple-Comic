@@ -5,7 +5,7 @@
 #import <XADMaster/XADArchive.h>
 #import "DTQuickComicCommon.h"
 #include "main.h"
-#import "TSSTWebPImageRep.h"
+#import <WebPMac/TSSTWebPImageRep.h>
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file

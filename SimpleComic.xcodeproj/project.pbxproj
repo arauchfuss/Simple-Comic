@@ -41,8 +41,8 @@
 		552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */; };
 		552F38BD1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F38BC1CF2D12D00CD6063 /* SSDManagedSmartFolder.swift */; };
 		5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */; };
-		55871EDE235D70C100528BDF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* libwebp.a */; };
-		55871EFC235D8B2800528BDF /* libwebp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* libwebp.a */; };
+		55871EDE235D70C100528BDF /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
+		55871EFC235D8B2800528BDF /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
 		5589952E1A13D4450058830B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5589952D1A13D4450058830B /* Media.xcassets */; };
 		5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */; };
 		559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */; };
@@ -60,6 +60,7 @@
 		55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7D78B1C4C0401005F40C8 /* TSSTCircularImageView.swift */; };
 		55C7D7901C4C06FF005F40C8 /* TSSTInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7D78F1C4C06FF005F40C8 /* TSSTInfoWindow.swift */; };
 		55D3544F234F90DA00BB3A99 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55D3542E234F90DA00BB3A99 /* InfoPlist.strings */; };
+		55DC3817235EAA4200132291 /* WebPMac.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */; };
 		55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1DB1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m */; };
 		55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */; };
@@ -252,6 +253,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				55DC3817235EAA4200132291 /* WebPMac.framework in Copy Frameworks */,
 				5500A65F1D7772D400321300 /* XADMaster.framework in Copy Frameworks */,
 				284348130DA95C4A00F602E2 /* UniversalDetector.framework in Copy Frameworks */,
 			);
@@ -396,7 +398,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55871EFC235D8B2800528BDF /* libwebp.a in Frameworks */,
+				55871EFC235D8B2800528BDF /* WebPMac.framework in Frameworks */,
 				5500A65C1D7772B200321300 /* XADMaster.framework in Frameworks */,
 				55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */,
 			);
@@ -406,7 +408,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55871EDE235D70C100528BDF /* libwebp.a in Frameworks */,
+				55871EDE235D70C100528BDF /* WebPMac.framework in Frameworks */,
 				5500A65D1D7772CD00321300 /* XADMaster.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */,
@@ -598,7 +600,7 @@
 		55871EC7235D708900528BDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				55871ECB235D708900528BDF /* libwebp.a */,
+				55871ECB235D708900528BDF /* WebPMac.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -868,10 +870,10 @@
 			remoteRef = 557604F02150E0870023C09B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		55871ECB235D708900528BDF /* libwebp.a */ = {
+		55871ECB235D708900528BDF /* WebPMac.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libwebp.a;
+			fileType = wrapper.framework;
+			path = WebPMac.framework;
 			remoteRef = 55871ECA235D708900528BDF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

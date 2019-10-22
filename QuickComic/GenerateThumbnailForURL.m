@@ -8,7 +8,7 @@
 #import "TSSTImageUtilities.h"
 #import "DTPartialArchiveParser.h"
 #include "main.h"
-#import "TSSTWebPImageRep.h"
+#import <WebPMac/TSSTWebPImageRep.h>
 
 // Undocumented properties
 extern const CFStringRef kQLThumbnailPropertyIconFlavorKey;
