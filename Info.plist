@@ -629,6 +629,28 @@
 				</array>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.image</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Google's WebP</string>
+			<key>UTTypeIdentifier</key>
+			<string>public.webp</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>webp</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>image/webp</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>

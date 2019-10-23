@@ -5,6 +5,7 @@
 #import <XADMaster/XADArchive.h>
 #import "DTQuickComicCommon.h"
 #include "main.h"
+#import <WebPMac/TSSTWebPImageRep.h>
 
 /* -----------------------------------------------------------------------------
    Generate a preview for file
@@ -14,58 +15,63 @@
 
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
-    @autoreleasepool {
-    
+	@autoreleasepool {
+		// TODO: implement kQLReturnHasMore somehow
+		[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+
 		XADArchive * archive = [[XADArchive alloc] initWithFileURL: (__bridge NSURL *)url delegate: nil error: NULL];
-    NSMutableArray<NSDictionary<NSString*,id>*> * fileList = fileListForArchive(archive);
+		NSMutableArray<NSDictionary<NSString*,id>*> * fileList = fileListForArchive(archive);
 
 		if (QLPreviewRequestIsCancelled(preview)) {
+			[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 			return kQLReturnNoError;
 		}
 
-    if([fileList count] > 0)
-    {
-        [fileList sortUsingDescriptors: fileSort()];
-        NSInteger index;
-        CGImageSourceRef pageSourceRef;
-        CGImageRef currentImage;
-        CGRect canvasRect;
-        // Preview will be drawn in a vectorized context
-        CGContextRef cgContext = QLPreviewRequestCreatePDFContext(preview, NULL, NULL, NULL);
-        if(cgContext)
-        {
-            NSInteger counter = 0;
-            NSInteger count = [fileList count];
-//            count = count < 20 ? count : 20;
+		if([fileList count] > 0)
+		{
+			[fileList sortUsingDescriptors: fileSort()];
+			NSInteger index;
+			CGImageSourceRef pageSourceRef;
+			CGImageRef currentImage;
+			CGRect canvasRect;
+			// Preview will be drawn in a vectorized context
+			CGContextRef cgContext = QLPreviewRequestCreatePDFContext(preview, NULL, NULL, NULL);
+			if(cgContext)
+			{
+				NSInteger counter = 0;
+				NSInteger count = [fileList count];
+				//count = count < 20 ? count : 20;
 				NSDate * pageRenderStartTime = [NSDate date];
 				NSDate * currentTime = nil;
-            do
-            {
-                index = [[fileList[counter] valueForKey: @"index"] integerValue];
-                pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
-                currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
-                canvasRect = CGRectMake(0, 0, CGImageGetWidth(currentImage), CGImageGetHeight(currentImage));
+				do
+				{
+					index = [[fileList[counter] valueForKey: @"index"] integerValue];
+					pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
+					currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
+					canvasRect = CGRectMake(0, 0, CGImageGetWidth(currentImage), CGImageGetHeight(currentImage));
 					
-                CGContextBeginPage(cgContext, &canvasRect);
-                CGContextDrawImage(cgContext, canvasRect, currentImage);
-                CGContextEndPage(cgContext);
+					CGContextBeginPage(cgContext, &canvasRect);
+					CGContextDrawImage(cgContext, canvasRect, currentImage);
+					CGContextEndPage(cgContext);
 					
-                CFRelease(currentImage);
-                CFRelease(pageSourceRef);
+					CFRelease(currentImage);
+					CFRelease(pageSourceRef);
 					currentTime = [NSDate date];
 					counter ++;
-				if (QLPreviewRequestIsCancelled(preview)) {
-					CFRelease(cgContext);
-					return kQLReturnNoError;
-				}
-            }while(1 > [currentTime timeIntervalSinceDate: pageRenderStartTime] && counter < count);
-            
-            QLPreviewRequestFlushContext(preview, cgContext);
-            CFRelease(cgContext);
-        }
-    }
-    return noErr;
-    }
+					if (QLPreviewRequestIsCancelled(preview)) {
+						CFRelease(cgContext);
+						[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
+						return kQLReturnNoError;
+					}
+				}while(1 > [currentTime timeIntervalSinceDate: pageRenderStartTime] && counter < count);
+				
+				QLPreviewRequestFlushContext(preview, cgContext);
+				CFRelease(cgContext);
+			}
+		}
+		[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
+		return noErr;
+	}
 }
 
 void CancelPreviewGeneration(void *thisInterface, QLPreviewRequestRef preview)
