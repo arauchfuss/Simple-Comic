@@ -16,6 +16,7 @@
 OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options)
 {
 	@autoreleasepool {
+		// TODO: implement kQLReturnHasMore somehow
 		[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
 
 		XADArchive * archive = [[XADArchive alloc] initWithFileURL: (__bridge NSURL *)url delegate: nil error: NULL];
@@ -39,7 +40,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 			{
 				NSInteger counter = 0;
 				NSInteger count = [fileList count];
-//            count = count < 20 ? count : 20;
+				//count = count < 20 ? count : 20;
 				NSDate * pageRenderStartTime = [NSDate date];
 				NSDate * currentTime = nil;
 				do

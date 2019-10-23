@@ -1159,7 +1159,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Debug;
@@ -1180,7 +1179,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = qlgenerator;
 			};
 			name = Release;
@@ -1200,7 +1198,6 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
@@ -1211,7 +1208,6 @@
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1232,7 +1228,6 @@
 				GCC_THREADSAFE_STATICS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
@@ -1242,7 +1237,6 @@
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				USER_HEADER_SEARCH_PATHS = "\"${SRCROOT}\"/Vendor/ios-osx-webp-decoder/libwebp_objc";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

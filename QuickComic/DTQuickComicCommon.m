@@ -22,7 +22,7 @@ NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * ar
     {
         NSString * fileName = [archive nameOfEntry: index];
         NSString * rawName = [archive nameOfEntry: index];
-        if([[NSImage imageFileTypes] containsObject: [fileName pathExtension]])
+        if([[NSImage imageFileTypes] containsObject: [[fileName pathExtension] lowercaseString]])
         {
             NSDictionary * fileDescription =
             @{@"name": fileName,
