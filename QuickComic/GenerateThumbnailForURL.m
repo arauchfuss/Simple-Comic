@@ -61,7 +61,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		imageData = [partialArchive searchResult];
 	}
 	else
-    {
+	{
 		XADArchive * archive = [[XADArchive alloc] initWithFileURL: archiveURL delegate: nil error: NULL];
 		NSMutableArray * fileList = fileListForArchive(archive);
 		
@@ -73,22 +73,22 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 			[UKXattrMetadataStore setString: coverName forKey: SCQuickLookCoverName atPath: archivePath traverseLink: NO error: nil];
 			imageData = [archive contentsOfEntry: coverIndex];
 		}
-    }
-
+	}
+	
 	if (QLThumbnailRequestIsCancelled(thumbnail)) {
 		[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 		return kQLReturnNoError;
 	}
-
+	
 	if(imageData)
 	{
 //		NSLog(@"has data");
 		CGImageSourceRef pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)imageData,  NULL);
-        CGImageRef currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
-        CFRelease(pageSourceRef);
+		CGImageRef currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
+		CFRelease(pageSourceRef);
 		CGRect canvasRect;
 		CGRect drawRect;
-        if(CGRectEqualToRect(cropRect, CGRectZero))
+		if(CGRectEqualToRect(cropRect, CGRectZero))
 		{
 //			NSLog(@"no crop");
 			canvasRect.size = fitSizeInSize(maxSize, CGSizeMake( CGImageGetWidth(currentImage), CGImageGetHeight(currentImage)));
@@ -113,15 +113,15 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		
 		NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconBookFlavor)};
 		CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, (__bridge CFDictionaryRef)(properties));
-        if(cgContext)
-        {
+		if(cgContext)
+		{
 //			NSLog(@"draw");
-            CGContextDrawImage(cgContext, drawRect, currentImage);
-        }
-
+			CGContextDrawImage(cgContext, drawRect, currentImage);
+		}
+		
 //		NSLog(@"release");
-        CFRelease(currentImage);
-        QLThumbnailRequestFlushContext(thumbnail, cgContext);
+		CFRelease(currentImage);
+		QLThumbnailRequestFlushContext(thumbnail, cgContext);
 		CGContextRelease(cgContext);
 	}
 	
