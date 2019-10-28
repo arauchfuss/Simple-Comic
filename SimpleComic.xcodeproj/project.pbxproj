@@ -34,7 +34,7 @@
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
 		5500A65C1D7772B200321300 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
 		5500A65D1D7772CD00321300 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
-		5500A65F1D7772D400321300 /* XADMaster.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6571D77716000321300 /* XADMaster.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5500A65F1D7772D400321300 /* XADMaster.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5526278D1BDEBF29005AAF63 /* TSSTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526278C1BDEBF29005AAF63 /* TSSTImageView.swift */; };
 		552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */; };
 		552627951BDEEF85005AAF63 /* TSSTTransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */; };
@@ -128,26 +128,19 @@
 			remoteGlobalIDString = 1B91D2EE11E694860081E40A;
 			remoteInfo = lsar.exe;
 		};
-		5500A6531D77716000321300 /* PBXContainerItemProxy */ = {
+		550CB1E62366E88C00FAC663 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 5500A44A1D776ADB00321300;
-			remoteInfo = "XADMaster-simple";
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = XADMaster;
 		};
-		5500A6561D77716000321300 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5500A60F1D776ADB00321300;
-			remoteInfo = "XADMaster-simple";
-		};
-		5500A65A1D7772A400321300 /* PBXContainerItemProxy */ = {
+		550CB1F92366E8AD00FAC663 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 5500A44A1D776ADB00321300;
-			remoteInfo = "XADMaster-simple";
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = XADMaster;
 		};
 		5567EADB1ECA3F9600404B35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -574,7 +567,6 @@
 			children = (
 				5500A6371D77712F00321300 /* XADMaster.framework */,
 				55F590861EB535D0000B4973 /* XADMaster.framework */,
-				5500A6571D77716000321300 /* XADMaster.framework */,
 				5500A6391D77712F00321300 /* libXADMaster.a */,
 				5500A63B1D77712F00321300 /* libXADMaster.win.a */,
 				5500A63D1D77712F00321300 /* libXADMaster.ios.a */,
@@ -696,7 +688,7 @@
 			);
 			dependencies = (
 				55871EEB235D8B2200528BDF /* PBXTargetDependency */,
-				5500A65B1D7772A400321300 /* PBXTargetDependency */,
+				550CB1FA2366E8AD00FAC663 /* PBXTargetDependency */,
 				55C3745F1BD9EFE7006385B6 /* PBXTargetDependency */,
 			);
 			name = QuickComic;
@@ -718,7 +710,7 @@
 			);
 			dependencies = (
 				55871EDD235D70A800528BDF /* PBXTargetDependency */,
-				5500A6541D77716000321300 /* PBXTargetDependency */,
+				550CB1E72366E88C00FAC663 /* PBXTargetDependency */,
 				55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */,
 				55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */,
 			);
@@ -847,13 +839,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = lsar.exe;
 			remoteRef = 5500A6501D77712F00321300 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		5500A6571D77716000321300 /* XADMaster.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XADMaster.framework;
-			remoteRef = 5500A6561D77716000321300 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5567EADC1ECA3F9600404B35 /* libUniversalDetector.a */ = {
@@ -988,15 +973,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5500A6541D77716000321300 /* PBXTargetDependency */ = {
+		550CB1E72366E88C00FAC663 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "XADMaster-simple";
-			targetProxy = 5500A6531D77716000321300 /* PBXContainerItemProxy */;
+			name = XADMaster;
+			targetProxy = 550CB1E62366E88C00FAC663 /* PBXContainerItemProxy */;
 		};
-		5500A65B1D7772A400321300 /* PBXTargetDependency */ = {
+		550CB1FA2366E8AD00FAC663 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "XADMaster-simple";
-			targetProxy = 5500A65A1D7772A400321300 /* PBXContainerItemProxy */;
+			name = XADMaster;
+			targetProxy = 550CB1F92366E8AD00FAC663 /* PBXContainerItemProxy */;
 		};
 		55871EDD235D70A800528BDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
