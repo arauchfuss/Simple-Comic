@@ -23,7 +23,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 		NSMutableArray<NSDictionary<NSString*,id>*> * fileList = fileListForArchive(archive);
 
 		if (QLPreviewRequestIsCancelled(preview)) {
-			[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 			return kQLReturnNoError;
 		}
 
@@ -60,7 +59,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 					counter ++;
 					if (QLPreviewRequestIsCancelled(preview)) {
 						CFRelease(cgContext);
-						[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 						return kQLReturnNoError;
 					}
 				}while(1 > [currentTime timeIntervalSinceDate: pageRenderStartTime] && counter < count);
@@ -69,7 +67,6 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 				CFRelease(cgContext);
 			}
 		}
-		[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 		return noErr;
 	}
 }

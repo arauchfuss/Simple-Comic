@@ -76,7 +76,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 	}
 	
 	if (QLThumbnailRequestIsCancelled(thumbnail)) {
-		[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 		return kQLReturnNoError;
 	}
 	
@@ -107,7 +106,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		
 		if (QLThumbnailRequestIsCancelled(thumbnail)) {
 			CFRelease(currentImage);
-			[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 			return kQLReturnNoError;
 		}
 		
@@ -125,7 +123,6 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		CGContextRelease(cgContext);
 	}
 	
-	[NSImageRep unregisterImageRepClass:[TSSTWebPImageRep class]];
 	}
     return noErr;
 }
