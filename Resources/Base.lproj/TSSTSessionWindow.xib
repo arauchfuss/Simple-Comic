@@ -62,19 +62,30 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="607" customClass="DTPolishedProgressBar" customModule="Simple_Comic" customModuleProvider="target">
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ShP-Tj-ekF">
                         <rect key="frame" x="12" y="-1" width="436" height="23"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="23" id="3cZ-PQ-goe"/>
-                        </constraints>
-                    </customView>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="607" customClass="DTPolishedProgressBar" customModule="Simple_Comic" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="436" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="3cZ-PQ-goe"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="607" firstAttribute="leading" secondItem="7" secondAttribute="leading" constant="12" id="Cbb-ui-60Z"/>
-                    <constraint firstAttribute="bottom" secondItem="607" secondAttribute="bottom" constant="-1" id="KTi-PI-gyf"/>
+                    <constraint firstItem="ShP-Tj-ekF" firstAttribute="top" secondItem="236" secondAttribute="bottom" constant="1" id="7hV-AO-JFm"/>
                     <constraint firstItem="236" firstAttribute="leading" secondItem="7" secondAttribute="leading" id="TcW-oG-0wp"/>
-                    <constraint firstItem="236" firstAttribute="centerX" secondItem="607" secondAttribute="centerX" id="cY8-5u-obv"/>
-                    <constraint firstItem="607" firstAttribute="top" secondItem="236" secondAttribute="bottom" constant="1" id="pzR-Ku-VUC"/>
+                    <constraint firstAttribute="bottom" secondItem="ShP-Tj-ekF" secondAttribute="bottom" constant="-1" id="bCK-8Z-p1g"/>
+                    <constraint firstItem="ShP-Tj-ekF" firstAttribute="centerX" secondItem="7" secondAttribute="centerX" id="bNu-wP-FE4"/>
+                    <constraint firstItem="ShP-Tj-ekF" firstAttribute="leading" secondItem="7" secondAttribute="leading" constant="12" id="dIE-fK-hLq"/>
                     <constraint firstItem="236" firstAttribute="top" secondItem="7" secondAttribute="top" id="rKH-gc-7Bo"/>
                     <constraint firstAttribute="trailing" secondItem="236" secondAttribute="trailing" id="rnt-uU-bky"/>
                 </constraints>
