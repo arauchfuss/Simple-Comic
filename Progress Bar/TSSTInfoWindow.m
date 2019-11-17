@@ -8,6 +8,7 @@
 
 #import "TSSTInfoWindow.h"
 #import "TSSTImageUtilities.h"
+#import <QuartzCore/CAShapeLayer.h>
 
 
 @implementation TSSTInfoWindow
@@ -45,6 +46,7 @@
 {
     NSRect frame = [self frame];
     [self setFrameOrigin: NSMakePoint(center.x - NSWidth(frame) / 2, center.y - NSHeight(frame) / 2)];
+    [outerView resizeToDiameter:frame.size.width];
 	[self invalidateShadow];
 }
 
@@ -57,8 +59,32 @@
 	[self setFrame: NSMakeRect(center.x - diameter / 2,  center.y - diameter / 2, diameter, diameter) 
 		   display: YES 
 		   animate: NO];
+  [outerView resizeToDiameter:diameter];
 }
 
+@end
+
+
+@implementation TSSTOuterInfoView
+
+- (void)awakeFromNib {
+  [super awakeFromNib];
+
+  CALayer *baseLayer = [[CALayer alloc] init];
+  baseLayer.backgroundColor = NSColor.clearColor.CGColor;
+  self.superview.layer = baseLayer;
+}
+
+- (void)resizeToDiameter:(float)diameter {
+  if (lastDiameter != diameter) {
+    CAShapeLayer *shapeLayer = [[CAShapeLayer alloc] init];
+    CGPathRef path = CGPathCreateWithEllipseInRect(NSMakeRect(0, 0, diameter, diameter), nil);
+    shapeLayer.path = path;
+    CGPathRelease(path);
+    self.superview.layer.mask = shapeLayer;
+    lastDiameter = diameter;
+  }
+}
 
 @end
 
