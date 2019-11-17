@@ -92,21 +92,21 @@ static NSSize monospaceCharacterSize;
 	[style setTabStops: tabStops];
 	
 	TSSTInfoPageAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Menlo" size: 14],
-							  NSParagraphStyleAttributeName: style};
+							   NSParagraphStyleAttributeName: style};
 }
 
 - (void)awakeFromInsert
 {
-    [super awakeFromInsert];
-    thumbLock = [NSLock new];
-    loaderLock = [NSLock new];
+	[super awakeFromInsert];
+	thumbLock = [NSLock new];
+	loaderLock = [NSLock new];
 }
 
 - (void)awakeFromFetch
 {
-    [super awakeFromFetch];
-    thumbLock = [NSLock new];
-    loaderLock = [NSLock new];
+	[super awakeFromFetch];
+	thumbLock = [NSLock new];
+	loaderLock = [NSLock new];
 }
 
 - (void)didTurnIntoFault
@@ -126,7 +126,7 @@ static NSSize monospaceCharacterSize;
 	CGFloat aspect = [self.aspectRatio doubleValue];
 	if(!aspect)
 	{
-        NSData * imageData = [self pageData];
+		NSData * imageData = [self pageData];
 		[self setOwnSizeInfoWithData: imageData];
 		aspect = [self.aspectRatio doubleValue];
 	}
@@ -158,7 +158,7 @@ static NSSize monospaceCharacterSize;
 
 - (NSString *)name
 {
-    return [self.imagePath lastPathComponent];
+	return [self.imagePath lastPathComponent];
 }
 
 - (NSImage *)thumbnail
@@ -176,7 +176,7 @@ static NSSize monospaceCharacterSize;
 		thumbnail = [[NSImage alloc] initWithData: thumbnailData];
 	}
 	
-    return thumbnail;
+	return thumbnail;
 }
 
 - (NSData *)prepThumbnail
@@ -210,29 +210,29 @@ static NSSize monospaceCharacterSize;
 		return [self textPage];
 	}
 	
-    NSImage * imageFromData = nil;
-    NSData * imageData = [self pageData];
+	NSImage * imageFromData = nil;
+	NSData * imageData = [self pageData];
 	
-    if(imageData)
-    {
+	if(imageData)
+	{
 		[self setOwnSizeInfoWithData: imageData];
-        imageFromData = [[NSImage alloc] initWithData: imageData];
-    }
+		imageFromData = [[NSImage alloc] initWithData: imageData];
+	}
 	
-    NSSize imageSize =  NSMakeSize([self.width doubleValue], [self.height doubleValue]);
-    
-    if(!imageFromData || NSEqualSizes(NSZeroSize, imageSize))
-    {
-        imageFromData = nil;
-    }
-    else
-    {
-        [imageFromData setCacheMode: NSImageCacheNever];
-        [imageFromData setSize: imageSize];
-        [imageFromData setCacheMode: NSImageCacheBySize];
-    }
+	NSSize imageSize =  NSMakeSize([self.width doubleValue], [self.height doubleValue]);
 	
-    return imageFromData;
+	if(!imageFromData || NSEqualSizes(NSZeroSize, imageSize))
+	{
+		imageFromData = nil;
+	}
+	else
+	{
+		[imageFromData setCacheMode: NSImageCacheNever];
+		[imageFromData setSize: imageSize];
+		[imageFromData setCacheMode: NSImageCacheBySize];
+	}
+	
+	return imageFromData;
 }
 
 - (NSImage *)textPage
@@ -249,13 +249,13 @@ static NSSize monospaceCharacterSize;
 		textData = [NSData dataWithContentsOfFile: self.imagePath];
 	}
 	
-    BOOL lossyConversion = NO;
-    NSStringEncoding stringEncoding = [NSString stringEncodingForData: textData
-                                                      encodingOptions: nil
-                                                      convertedString: nil
-                                                  usedLossyConversion: &lossyConversion];
+	BOOL lossyConversion = NO;
+	NSStringEncoding stringEncoding = [NSString stringEncodingForData: textData
+													  encodingOptions: nil
+													  convertedString: nil
+												  usedLossyConversion: &lossyConversion];
 	NSString * text = [[NSString alloc] initWithData: textData encoding: stringEncoding];
-//	int lineCount = 0;
+	//	int lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;
 	
@@ -293,21 +293,21 @@ static NSSize monospaceCharacterSize;
 
 - (NSData *)pageData
 {
-    __block NSData * imageData = nil;
-    TSSTManagedGroup * group = self.group;
-    if(self.index)
-    {
+	__block NSData * imageData = nil;
+	TSSTManagedGroup * group = self.group;
+	if(self.index)
+	{
 		NSInteger entryIndex = [self.index integerValue];
 		[group requestDataForPageIndex:entryIndex callback:^(NSData * _Nullable pageData, NSError * _Nullable error) {
 			imageData = pageData;
 		}];
-    }
-    else if([self imagePath])
-    {
-        imageData = [NSData dataWithContentsOfFile: self.imagePath];
-    }
-    
-    return imageData;
+	}
+	else if([self imagePath])
+	{
+		imageData = [NSData dataWithContentsOfFile: self.imagePath];
+	}
+	
+	return imageData;
 }
 
 @end

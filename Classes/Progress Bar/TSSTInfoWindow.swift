@@ -42,7 +42,7 @@ class TSSTInfoWindow: NSPanel {
 		let frame = self.frame
 		let center = NSPoint(x: frame.minX + frame.width / 2, y: frame.minY + frame.height / 2)
 		setFrame(NSRect(x: center.x - diameter / 2, y: center.y - diameter / 2, width: diameter, height: diameter),
-			display: true,
-			animate: false)
+				 display: true,
+				 animate: false)
 	}
 }

@@ -12,8 +12,8 @@
 
 - (instancetype)init
 {
-    self = [super initWithWindowNibName: @"Preferences"];
-    return self;
+	self = [super initWithWindowNibName: @"Preferences"];
+	return self;
 }
 
 @end

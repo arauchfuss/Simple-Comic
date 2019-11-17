@@ -266,7 +266,7 @@
 		281954E70C1201E5001F5E95 /* TSSTManagedGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTManagedGroup.h; sourceTree = "<group>"; };
 		281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTManagedGroup.m; sourceTree = "<group>"; };
 		28195B410C166DF5001F5E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
-		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; };
+		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; usesTabs = 0; };
 		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
 		284D3819101249BE00A37AB2 /* DTToolbarItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTToolbarItems.h; sourceTree = "<group>"; };
 		284D381A101249BE00A37AB2 /* DTToolbarItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTToolbarItems.m; sourceTree = "<group>"; };

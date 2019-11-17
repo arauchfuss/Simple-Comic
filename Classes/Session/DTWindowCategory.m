@@ -14,7 +14,7 @@
 
 - (CGFloat)toolbarHeight
 {
-    return NSHeight([self frame]) - NSHeight([[self contentView] frame]);
+	return NSHeight([self frame]) - NSHeight([[self contentView] frame]);
 }
 
 

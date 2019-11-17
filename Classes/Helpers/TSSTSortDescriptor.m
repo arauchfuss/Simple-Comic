@@ -34,7 +34,7 @@
 //	}
 	
 	const NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch | NSNumericSearch | NSWidthInsensitiveSearch | NSForcedOrderingSearch;
-    return [stringOne compare: stringTwo options: comparisonOptions];
+	return [stringOne compare: stringTwo options: comparisonOptions];
 }
 
 @end

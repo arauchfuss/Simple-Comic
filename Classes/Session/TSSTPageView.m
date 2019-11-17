@@ -62,7 +62,7 @@ typedef struct {
 	BOOL acceptingDrag;
 	
 	/*!	While page selection is in progress this method has a value of 1 or 2.
-		The selection number coresponds to a highlighted page. */
+	 The selection number coresponds to a highlighted page. */
 	int pageSelection;
 	/*! This is the rect describing the users page selection. */
 	NSRect cropRect;
@@ -76,7 +76,7 @@ typedef struct {
 {
 	[super awakeFromNib];
 	/* Doing this so users can drag archives into the view. */
-    [self registerForDraggedTypes: @[NSFilenamesPboardType]];
+	[self registerForDraggedTypes: @[NSFilenamesPboardType]];
 }
 
 
@@ -85,7 +85,7 @@ typedef struct {
 	if((self = [super initWithFrame: aRectangle]))
 	{
 		[self setFirstPage: nil secondPageImage: nil];
-        scrollKeys = 0;
+		scrollKeys = 0;
 		scrollwheel.left = 0;
 		scrollwheel.right = 0;
 		scrollwheel.up = 0;
@@ -93,8 +93,8 @@ typedef struct {
 		cropRect = NSZeroRect;
 		firstPageRect = NSZeroRect;
 		secondPageRect = NSZeroRect;
-        scrollTimer = nil;
-        acceptingDrag = NO;
+		scrollTimer = nil;
+		acceptingDrag = NO;
 		pageSelection = -1;
 		self.acceptsTouchEvents = YES;
 	}
@@ -104,7 +104,7 @@ typedef struct {
 
 - (void) dealloc
 {
-    [scrollTimer invalidate];
+	[scrollTimer invalidate];
 }
 
 
@@ -116,20 +116,20 @@ typedef struct {
 
 - (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second
 {
-    scrollKeys = 0;
-    if(first != firstPageImage)
+	scrollKeys = 0;
+	if(first != firstPageImage)
 	{
 		firstPageImage = first;
-        [self startAnimationForImage: firstPageImage];
-    }
+		[self startAnimationForImage: firstPageImage];
+	}
 	
 	if(second != secondPageImage)
 	{
 		secondPageImage = second;
-        [self startAnimationForImage: secondPageImage];
+		[self startAnimationForImage: secondPageImage];
 	}
 	
-    [self resizeView];
+	[self resizeView];
 //    [self correctViewPoint]; // Moved to sessionwindow
 //	[sessionController setPageTurn: 0];
 }
@@ -142,65 +142,65 @@ typedef struct {
 /* Animated GIF method */
 - (void)startAnimationForImage:(NSImage *)image
 {
-    NSImageRep *testImageRep = [image bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
-    NSInteger frameCount;
-    CGFloat frameDuration;
-    NSDictionary * animationInfo;
-    if([testImageRep isKindOfClass:[NSBitmapImageRep class]])
-    {
+	NSImageRep *testImageRep = [image bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
+	NSInteger frameCount;
+	CGFloat frameDuration;
+	NSDictionary * animationInfo;
+	if([testImageRep isKindOfClass:[NSBitmapImageRep class]])
+	{
 		NSBitmapImageRep *testBMImageRep = (NSBitmapImageRep*)testImageRep;
 		frameCount = [[testBMImageRep valueForProperty: NSImageFrameCount] integerValue];
-        if(frameCount > 1)
-        {
-            animationInfo = @{@"imageNumber": @1,
-                @"pageImage": firstPageImage,
-                @"loopCount": [testBMImageRep valueForProperty: NSImageLoopCount]};
-            frameDuration = [[testBMImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
-            frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
-            [NSTimer scheduledTimerWithTimeInterval: frameDuration
-                                             target: self
-                                           selector: @selector(animateImage:)
-                                           userInfo: animationInfo
-                                            repeats: NO];
-        }
-    }
+		if(frameCount > 1)
+		{
+			animationInfo = @{@"imageNumber": @1,
+							  @"pageImage": firstPageImage,
+							  @"loopCount": [testBMImageRep valueForProperty: NSImageLoopCount]};
+			frameDuration = [[testBMImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
+			frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
+			[NSTimer scheduledTimerWithTimeInterval: frameDuration
+											 target: self
+										   selector: @selector(animateImage:)
+										   userInfo: animationInfo
+											repeats: NO];
+		}
+	}
 }
 
 
 - (void)animateImage:(NSTimer *)timer
 {
-    NSMutableDictionary * animationInfo = [[NSMutableDictionary alloc] initWithDictionary: [timer userInfo]];
-    CGFloat frameDuration;
-    NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] integerValue] == 1 ? firstPageImage : secondPageImage;
-    if([animationInfo valueForKey: @"pageImage"] != pageImage || sessionController == nil)
-    {
-        return;
-    }
+	NSMutableDictionary * animationInfo = [[NSMutableDictionary alloc] initWithDictionary: [timer userInfo]];
+	CGFloat frameDuration;
+	NSImage * pageImage = [[animationInfo valueForKey: @"imageNumber"] integerValue] == 1 ? firstPageImage : secondPageImage;
+	if([animationInfo valueForKey: @"pageImage"] != pageImage || sessionController == nil)
+	{
+		return;
+	}
 	
-    NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];;
-    NSInteger loopCount = [[animationInfo valueForKey: @"loopCount"] integerValue];
-    NSInteger frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] integerValue] - 1);
-    NSInteger currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] integerValue];
+	NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];;
+	NSInteger loopCount = [[animationInfo valueForKey: @"loopCount"] integerValue];
+	NSInteger frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] integerValue] - 1);
+	NSInteger currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] integerValue];
 	
-    currentFrame = currentFrame < frameCount ? ++currentFrame : 0;
-    if(currentFrame == 0 && loopCount > 1)
-    {
-        --loopCount;
-        [animationInfo setValue: @(loopCount) forKey: @"loopCount"];
-    }
+	currentFrame = currentFrame < frameCount ? ++currentFrame : 0;
+	if(currentFrame == 0 && loopCount > 1)
+	{
+		--loopCount;
+		[animationInfo setValue: @(loopCount) forKey: @"loopCount"];
+	}
 	
-    [testImageRep setProperty: NSImageCurrentFrame withValue: @(currentFrame)];
-    if(loopCount != 1)
-    {
-        frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
-        frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
-        [NSTimer scheduledTimerWithTimeInterval: frameDuration
-                                         target: self selector: @selector(animateImage:)
-                                       userInfo: animationInfo
-                                        repeats: NO];
-    }
+	[testImageRep setProperty: NSImageCurrentFrame withValue: @(currentFrame)];
+	if(loopCount != 1)
+	{
+		frameDuration = [[testImageRep valueForProperty: NSImageCurrentFrameDuration] doubleValue];
+		frameDuration = frameDuration > 0.1 ? frameDuration : 0.1;
+		[NSTimer scheduledTimerWithTimeInterval: frameDuration
+										 target: self selector: @selector(animateImage:)
+									   userInfo: animationInfo
+										repeats: NO];
+	}
 	
-    [self setNeedsDisplay: YES];
+	[self setNeedsDisplay: YES];
 }
 
 
@@ -213,8 +213,8 @@ typedef struct {
 	NSPasteboard *pboard = [sender draggingPasteboard];
 	if([[pboard types] containsObject: NSFilenamesPboardType])
 	{
-        acceptingDrag = YES;
-        [self setNeedsDisplay: YES];
+		acceptingDrag = YES;
+		[self setNeedsDisplay: YES];
 		return NSDragOperationGeneric;
 	}
 	return NSDragOperationNone;
@@ -241,15 +241,15 @@ typedef struct {
 
 - (void)draggingEnded:(id <NSDraggingInfo>)sender
 {
-    acceptingDrag = NO;
-    [self setNeedsDisplay: YES];
+	acceptingDrag = NO;
+	[self setNeedsDisplay: YES];
 }
 
 
 - (void)concludeDragOperation:(id <NSDraggingInfo>)sender
 {
-    acceptingDrag = NO;
-    [self setNeedsDisplay: YES];
+	acceptingDrag = NO;
+	[self setNeedsDisplay: YES];
 }
 
 
@@ -259,7 +259,7 @@ typedef struct {
 	if([[pboard types] containsObject: NSFilenamesPboardType])
 	{
 		NSArray<NSString *> * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
-        [sessionController updateSessionObject];
+		[sessionController updateSessionObject];
 		[(SimpleComicAppDelegate *)[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
 		return YES;
 	}
@@ -284,30 +284,30 @@ typedef struct {
 
 - (void)drawRect:(NSRect)aRect
 {
-    if(!firstPageImage)
-    {
-        return;
-    }
+	if(!firstPageImage)
+	{
+		return;
+	}
 	
-    [NSGraphicsContext saveGraphicsState];
-    NSRect frame = [self frame];
-    [self rotationTransformWithFrame: frame];
+	[NSGraphicsContext saveGraphicsState];
+	NSRect frame = [self frame];
+	[self rotationTransformWithFrame: frame];
 	
-    NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
-    [[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
+	NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
+	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
 	
-    [firstPageImage drawInRect: [self centerScanRect: firstPageRect]
-                      fromRect: NSZeroRect
+	[firstPageImage drawInRect: [self centerScanRect: firstPageRect]
+					  fromRect: NSZeroRect
 					 operation: NSCompositingOperationSourceOver
-                      fraction: 1.0];
+					  fraction: 1.0];
 	
-    if([secondPageImage isValid])
-    {
-        [secondPageImage drawInRect: [self centerScanRect: secondPageRect]
-                           fromRect: NSZeroRect
+	if([secondPageImage isValid])
+	{
+		[secondPageImage drawInRect: [self centerScanRect: secondPageRect]
+						   fromRect: NSZeroRect
 						  operation: NSCompositingOperationSourceOver
-                           fraction: 1.0];
-    }
+						   fraction: 1.0];
+	}
 	
 	
 	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
@@ -316,14 +316,14 @@ typedef struct {
 	{
 		NSRect selection;
 		if (pageSelection ==0)
-        {
+		{
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 		}
 		else
-        {
+		{
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 		}
-
+		
 		highlight = [NSBezierPath bezierPathWithRect: selection];
 		[highlight fill];
 		[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
@@ -348,8 +348,8 @@ typedef struct {
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[style setAlignment: NSTextAlignmentCenter];
 		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
-										   NSForegroundColorAttributeName: [NSColor whiteColor],
-										   NSParagraphStyleAttributeName: style};
+											NSForegroundColorAttributeName: [NSColor whiteColor],
+											NSParagraphStyleAttributeName: style};
 		NSString * selectionText = NSLocalizedString(@"Click to select page", @"");
 		if([sessionController pageSelectionCanCrop])
 		{
@@ -364,12 +364,12 @@ typedef struct {
 	
 	[NSGraphicsContext restoreGraphicsState];
 	
-    if(acceptingDrag)
-    {
-        [NSBezierPath setDefaultLineWidth: 6];
-        [[NSColor keyboardFocusIndicatorColor] set];
-        [NSBezierPath strokeRect: [[self enclosingScrollView] documentVisibleRect]];
-    }
+	if(acceptingDrag)
+	{
+		[NSBezierPath setDefaultLineWidth: 6];
+		[[NSColor keyboardFocusIndicatorColor] set];
+		[NSBezierPath strokeRect: [[self enclosingScrollView] documentVisibleRect]];
+	}
 }
 
 
@@ -377,96 +377,96 @@ typedef struct {
 /* This method is used to generate the composite loupe image. */
 - (NSImage *)imageInRect:(NSRect)rect
 {
-    if(![firstPageImage isValid])
-    {
-        return nil;
-    }
-	
-    NSRect imageRect = imageBounds;
-    NSPoint cursorPoint = NSZeroPoint;
-	/* Re-orients the rectangle based on the current page rotation */
-    switch (rotation)
+	if(![firstPageImage isValid])
 	{
-    case 0:
-        cursorPoint = NSMakePoint(NSMinX(rect) - NSMinX(imageBounds), NSMinY(rect) - NSMinY(imageBounds));
-        break;
-    case 1:
-        cursorPoint = NSMakePoint(NSMaxY(imageBounds) - NSMinY(rect), NSMinX(rect) - NSMinX(imageBounds));
-        imageRect.size.width = NSHeight(imageBounds);
-        imageRect.size.height = NSWidth(imageBounds);
-        break;
-    case 2:
-        cursorPoint = NSMakePoint(NSMaxX(imageBounds) - NSMinX(rect), NSMaxY(imageBounds) - NSMinY(rect));
-        break;
-    case 3:
-        cursorPoint = NSMakePoint(NSMinY(rect) - NSMinY(imageBounds), NSMaxX(imageBounds) - NSMinX(rect));
-        imageRect.size.width = NSHeight(imageBounds);
-        imageRect.size.height = NSWidth(imageBounds);
-        break;
-    default:
-        break;
-    }
+		return nil;
+	}
+	
+	NSRect imageRect = imageBounds;
+	NSPoint cursorPoint = NSZeroPoint;
+	/* Re-orients the rectangle based on the current page rotation */
+	switch (rotation)
+	{
+		case 0:
+			cursorPoint = NSMakePoint(NSMinX(rect) - NSMinX(imageBounds), NSMinY(rect) - NSMinY(imageBounds));
+			break;
+		case 1:
+			cursorPoint = NSMakePoint(NSMaxY(imageBounds) - NSMinY(rect), NSMinX(rect) - NSMinX(imageBounds));
+			imageRect.size.width = NSHeight(imageBounds);
+			imageRect.size.height = NSWidth(imageBounds);
+			break;
+		case 2:
+			cursorPoint = NSMakePoint(NSMaxX(imageBounds) - NSMinX(rect), NSMaxY(imageBounds) - NSMinY(rect));
+			break;
+		case 3:
+			cursorPoint = NSMakePoint(NSMinY(rect) - NSMinY(imageBounds), NSMaxX(imageBounds) - NSMinX(rect));
+			imageRect.size.width = NSHeight(imageBounds);
+			imageRect.size.height = NSWidth(imageBounds);
+			break;
+		default:
+			break;
+	}
 	
 	CGFloat power = [[NSUserDefaults standardUserDefaults] doubleForKey: TSSTLoupePower];
-    CGFloat scale;
-    CGFloat remainder;
-    NSRect firstFragment = NSZeroRect;
-    NSRect secondFragment = NSZeroRect;
-    NSSize zoomSize;
+	CGFloat scale;
+	CGFloat remainder;
+	NSRect firstFragment = NSZeroRect;
+	NSRect secondFragment = NSZeroRect;
+	NSSize zoomSize;
 	
-    if([sessionController.session.pageOrder boolValue] || ![secondPageImage isValid])
-    {
-        scale = NSHeight(imageRect) / [firstPageImage size].height;
-        zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
-        firstFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
-                                   cursorPoint.y / scale - zoomSize.height / 2,
-                                   zoomSize.width, zoomSize.height);
-        remainder = NSMaxX(firstFragment) - [firstPageImage size].width;
+	if([sessionController.session.pageOrder boolValue] || ![secondPageImage isValid])
+	{
+		scale = NSHeight(imageRect) / [firstPageImage size].height;
+		zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
+		firstFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
+								   cursorPoint.y / scale - zoomSize.height / 2,
+								   zoomSize.width, zoomSize.height);
+		remainder = NSMaxX(firstFragment) - [firstPageImage size].width;
 		
-        if([secondPageImage isValid] && remainder > 0)
-        {
-            cursorPoint.x -= [firstPageImage size].width * scale;
+		if([secondPageImage isValid] && remainder > 0)
+		{
+			cursorPoint.x -= [firstPageImage size].width * scale;
 			scale = NSHeight(imageRect) / [secondPageImage size].height;
-            zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
-            secondFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
-                                        cursorPoint.y / scale - zoomSize.height / 2,
-                                        zoomSize.width, zoomSize.height);
-        }
-    }
-    else
-    {
-        scale = NSHeight(imageRect) / [secondPageImage size].height;
-        zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
-        secondFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
-                                    cursorPoint.y / scale - zoomSize.height / 2,
-                                    zoomSize.width, zoomSize.height);
-        remainder = NSMaxX(secondFragment) - [secondPageImage size].width;
-        if(remainder > 0)
-        {
-            cursorPoint.x -= [secondPageImage size].width * scale;
+			zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
+			secondFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
+										cursorPoint.y / scale - zoomSize.height / 2,
+										zoomSize.width, zoomSize.height);
+		}
+	}
+	else
+	{
+		scale = NSHeight(imageRect) / [secondPageImage size].height;
+		zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
+		secondFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
+									cursorPoint.y / scale - zoomSize.height / 2,
+									zoomSize.width, zoomSize.height);
+		remainder = NSMaxX(secondFragment) - [secondPageImage size].width;
+		if(remainder > 0)
+		{
+			cursorPoint.x -= [secondPageImage size].width * scale;
 			scale = NSHeight(imageRect) / [firstPageImage size].height;
-            zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
-            firstFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
-                                       cursorPoint.y / scale - zoomSize.height / 2,
-                                       zoomSize.width, zoomSize.height);
-        }
-    }
+			zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
+			firstFragment = NSMakeRect(cursorPoint.x / scale - zoomSize.width / 2,
+									   cursorPoint.y / scale - zoomSize.height / 2,
+									   zoomSize.width, zoomSize.height);
+		}
+	}
 	
-    NSImage * imageFragment = [[NSImage alloc] initWithSize: rect.size];
-    [imageFragment lockFocus];
-        [self rotationTransformWithFrame: NSMakeRect(0, 0, NSWidth(rect), NSHeight(rect))];
-		
-        if(!NSEqualRects(firstFragment, NSZeroRect))
-        {
-			[firstPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: firstFragment operation: NSCompositingOperationSourceOver fraction: 1.0];
-        }
-		
-        if(!NSEqualRects(secondFragment, NSZeroRect))
-        {
-			[secondPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: secondFragment operation: NSCompositingOperationSourceOver fraction: 1.0];
-        }
-    [imageFragment unlockFocus];
-    return imageFragment;
+	NSImage * imageFragment = [[NSImage alloc] initWithSize: rect.size];
+	[imageFragment lockFocus];
+	[self rotationTransformWithFrame: NSMakeRect(0, 0, NSWidth(rect), NSHeight(rect))];
+	
+	if(!NSEqualRects(firstFragment, NSZeroRect))
+	{
+		[firstPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: firstFragment operation: NSCompositingOperationSourceOver fraction: 1.0];
+	}
+	
+	if(!NSEqualRects(secondFragment, NSZeroRect))
+	{
+		[secondPageImage drawInRect: NSMakeRect(0,0,NSWidth(rect), NSHeight(rect)) fromRect: secondFragment operation: NSCompositingOperationSourceOver fraction: 1.0];
+	}
+	[imageFragment unlockFocus];
+	return imageFragment;
 }
 
 
@@ -476,41 +476,41 @@ typedef struct {
 
 - (void)setRotation:(NSInteger)rot
 {
-    rotation = rot;
-    [self resizeView];
+	rotation = rot;
+	[self resizeView];
 }
 
 
 - (void)rotationTransformWithFrame:(NSRect)rect
 {
-    NSAffineTransform * transform = [NSAffineTransform transform];
-    switch (rotation)
-    {
-        case 1:
-            [transform rotateByDegrees: 270];
-            [transform translateXBy: - NSHeight(rect) yBy: 0];
-            break;
-        case 2:
-            [transform rotateByDegrees: 180];
-            [transform translateXBy: - NSWidth(rect) yBy: - NSHeight(rect)];
-            break;
-        case 3:
-            [transform rotateByDegrees: 90];
-            [transform translateXBy: 0 yBy: - NSWidth(rect)];
-            break;
-        default:
-            break;
-    }
-    [transform concat];
+	NSAffineTransform * transform = [NSAffineTransform transform];
+	switch (rotation)
+	{
+		case 1:
+			[transform rotateByDegrees: 270];
+			[transform translateXBy: - NSHeight(rect) yBy: 0];
+			break;
+		case 2:
+			[transform rotateByDegrees: 180];
+			[transform translateXBy: - NSWidth(rect) yBy: - NSHeight(rect)];
+			break;
+		case 3:
+			[transform rotateByDegrees: 90];
+			[transform translateXBy: 0 yBy: - NSWidth(rect)];
+			break;
+		default:
+			break;
+	}
+	[transform concat];
 }
 
 
 /*  This fixes clipping rect of the scrollview after a page turn. */
 - (void)correctViewPoint
 {
-    NSPoint correctOrigin = NSZeroPoint;
-    NSSize frameSize = [self frame].size;
-    NSSize viewSize = [[self enclosingScrollView] documentVisibleRect].size;
+	NSPoint correctOrigin = NSZeroPoint;
+	NSSize frameSize = [self frame].size;
+	NSSize viewSize = [[self enclosingScrollView] documentVisibleRect].size;
 	if(NSEqualSizes(frameSize, NSZeroSize))
 	{
 		return;
@@ -523,10 +523,10 @@ typedef struct {
 	
 	correctOrigin.y = (frameSize.height > viewSize.height) ? (frameSize.height - viewSize.height) : 0;
 	
-    NSScrollView * scrollView = [self enclosingScrollView];
-    NSClipView * clipView = [scrollView contentView];
-    [clipView scrollToPoint: correctOrigin];
-    [scrollView reflectScrolledClipView: clipView];
+	NSScrollView * scrollView = [self enclosingScrollView];
+	NSClipView * clipView = [scrollView contentView];
+	[clipView scrollToPoint: correctOrigin];
+	[scrollView reflectScrolledClipView: clipView];
 }
 
 
@@ -536,21 +536,21 @@ typedef struct {
 	NSSize firstSize = firstPageImage ? [firstPageImage size] : NSZeroSize;
 	NSSize secondSize = secondPageImage ? [secondPageImage size] : NSZeroSize;
 	
-    if(firstSize.height > secondSize.height)
-    {
-        secondSize = scaleSize(secondSize , firstSize.height / secondSize.height);
-    }
-    else if(firstSize.height < secondSize.height)
-    {
-        firstSize = scaleSize(firstSize , secondSize.height / firstSize.height);
-    }
+	if(firstSize.height > secondSize.height)
+	{
+		secondSize = scaleSize(secondSize , firstSize.height / secondSize.height);
+	}
+	else if(firstSize.height < secondSize.height)
+	{
+		firstSize = scaleSize(firstSize , secondSize.height / firstSize.height);
+	}
 	
-    firstSize.width += secondSize.width;
+	firstSize.width += secondSize.width;
 	
-    if(rotation == 1 || rotation == 3)
-    {
-        firstSize = NSMakeSize(firstSize.height, firstSize.width);
-    }
+	if(rotation == 1 || rotation == 3)
+	{
+		firstSize = NSMakeSize(firstSize.height, firstSize.width);
+	}
 	
 	NSSize zoomedSize = scaleSize(firstSize, zoomScale);
 	return zoomedSize;
@@ -561,72 +561,72 @@ typedef struct {
 {
 	firstPageRect = NSZeroRect;
 	secondPageRect = NSZeroRect;
-    NSRect visibleRect = [[self enclosingScrollView] documentVisibleRect];
-    NSRect frameRect = [self frame];
-    CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
-    CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
-    NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel.doubleValue];
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	NSRect visibleRect = [[self enclosingScrollView] documentVisibleRect];
+	NSRect frameRect = [self frame];
+	CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
+	CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
+	NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel.doubleValue];
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
-    NSSize viewSize = NSZeroSize;
-    CGFloat scaleToFit;
+	NSSize viewSize = NSZeroSize;
+	CGFloat scaleToFit;
 	NSInteger scaling = sessionController.session.scaleOptions.integerValue;
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
-    switch (scaling)
-    {
-    case 0:
-        viewSize.width = imageSize.width > NSWidth(visibleRect) ? imageSize.width : NSWidth(visibleRect);
-        viewSize.height = imageSize.height > NSHeight(visibleRect) ? imageSize.height : NSHeight(visibleRect);
-        break;
-    case 1:
-        viewSize = visibleRect.size;
-        break;
-    case 2:
-        if(rotation == 1 || rotation == 3)
-        {
-            scaleToFit = NSHeight(visibleRect) / imageSize.height;
-        }
-        else
-        {
-            scaleToFit = NSWidth(visibleRect) / imageSize.width;
-        }
-		
-        if([defaults boolForKey: TSSTConstrainScale])
-        {
-            scaleToFit = scaleToFit > 1 ? 1 : scaleToFit;
-        }
-        viewSize = scaleSize(imageSize, scaleToFit);
-        viewSize.width = viewSize.width > NSWidth(visibleRect) ? viewSize.width : NSWidth(visibleRect);
-        viewSize.height = viewSize.height > NSHeight(visibleRect) ? viewSize.height : NSHeight(visibleRect);
-        break;
-    default:
-        break;
-    }
+	switch (scaling)
+	{
+		case 0:
+			viewSize.width = imageSize.width > NSWidth(visibleRect) ? imageSize.width : NSWidth(visibleRect);
+			viewSize.height = imageSize.height > NSHeight(visibleRect) ? imageSize.height : NSHeight(visibleRect);
+			break;
+		case 1:
+			viewSize = visibleRect.size;
+			break;
+		case 2:
+			if(rotation == 1 || rotation == 3)
+			{
+				scaleToFit = NSHeight(visibleRect) / imageSize.height;
+			}
+			else
+			{
+				scaleToFit = NSWidth(visibleRect) / imageSize.width;
+			}
+			
+			if([defaults boolForKey: TSSTConstrainScale])
+			{
+				scaleToFit = scaleToFit > 1 ? 1 : scaleToFit;
+			}
+			viewSize = scaleSize(imageSize, scaleToFit);
+			viewSize.width = viewSize.width > NSWidth(visibleRect) ? viewSize.width : NSWidth(visibleRect);
+			viewSize.height = viewSize.height > NSHeight(visibleRect) ? viewSize.height : NSHeight(visibleRect);
+			break;
+		default:
+			break;
+	}
 	
-    viewSize = NSMakeSize(round(viewSize.width), round(viewSize.height));
-    [self setFrameSize: viewSize];
+	viewSize = NSMakeSize(round(viewSize.width), round(viewSize.height));
+	[self setFrameSize: viewSize];
 	
-    if(![defaults boolForKey: TSSTConstrainScale] &&
-	sessionController.session.scaleOptions.integerValue != 0 )
-    {
-        if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
-        {
-            scaleToFit = viewSize.width / imageSize.width;
-        }
-        else
-        {
-            scaleToFit = viewSize.height / imageSize.height;
-        }
-        imageSize = scaleSize(imageSize, scaleToFit);
-    }
+	if(![defaults boolForKey: TSSTConstrainScale] &&
+	   sessionController.session.scaleOptions.integerValue != 0 )
+	{
+		if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
+		{
+			scaleToFit = viewSize.width / imageSize.width;
+		}
+		else
+		{
+			scaleToFit = viewSize.height / imageSize.height;
+		}
+		imageSize = scaleSize(imageSize, scaleToFit);
+	}
 	
-    imageBounds = rectWithSizeCenteredInRect(imageSize, NSMakeRect(0,0,viewSize.width, viewSize.height));
+	imageBounds = rectWithSizeCenteredInRect(imageSize, NSMakeRect(0,0,viewSize.width, viewSize.height));
 	NSRect imageRect = imageBounds;
-    if(rotation == 1 || rotation == 3)
-    {
-        imageRect = rectWithSizeCenteredInRect(NSMakeSize( NSHeight(imageRect), NSWidth(imageRect)),
-                                               NSMakeRect( 0, 0, NSHeight([self frame]), NSWidth([self frame])));
-    }
+	if(rotation == 1 || rotation == 3)
+	{
+		imageRect = rectWithSizeCenteredInRect(NSMakeSize( NSHeight(imageRect), NSWidth(imageRect)),
+											   NSMakeRect( 0, 0, NSHeight([self frame]), NSWidth([self frame])));
+	}
 	firstPageRect.size = scaleSize([firstPageImage size] , NSHeight(imageRect) / [firstPageImage size].height);
 	if([secondPageImage isValid])
 	{
@@ -647,11 +647,11 @@ typedef struct {
 		firstPageRect.origin = imageRect.origin;
 	}
 	
-    CGFloat xOrigin = viewSize.width * xpercent;
-    CGFloat yOrigin = viewSize.height * ypercent;
-    NSPoint recenter = NSMakePoint(xOrigin - visibleRect.size.width / 2, yOrigin - visibleRect.size.height / 2);
-    [self scrollPoint: recenter];
-    [self setNeedsDisplay: YES];
+	CGFloat xOrigin = viewSize.width * xpercent;
+	CGFloat yOrigin = viewSize.height * ypercent;
+	NSPoint recenter = NSMakePoint(xOrigin - visibleRect.size.width / 2, yOrigin - visibleRect.size.height / 2);
+	[self scrollPoint: recenter];
+	[self setNeedsDisplay: YES];
 }
 
 
@@ -676,7 +676,7 @@ typedef struct {
 	}
 	
 	if (selection == 1)
-    {
+	{
 		return firstPageSide;
 	}
 	else if (selection == 2)
@@ -684,7 +684,7 @@ typedef struct {
 		return secondPageSide;
 	}
 	else
-    {
+	{
 		return NSZeroRect;
 	}
 }
@@ -699,11 +699,11 @@ typedef struct {
 	
 	NSRect selection;
 	if (pageSelection == 0)
-    {
+	{
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), firstPageRect);
 	}
 	else
-    {
+	{
 		selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 	}
 	
@@ -765,26 +765,26 @@ typedef struct {
 	}
 	else if(scaling == 1)
 	{
-        float deltaX = [theEvent deltaX];
-        if (deltaX != 0.0)
-        {
-            [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
-                        dampenAmountThresholdMin:-1.0
-                                             max:1.0
-                                    usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
-                                    }];
-        }
-        
-        
-        if (deltaX > 0.0)
-        {
-            [sessionController pageLeft: self];
-        }
-        else if (deltaX < 0.0)
-        {
-            [sessionController pageRight: self];
-        }
-
+		float deltaX = [theEvent deltaX];
+		if (deltaX != 0.0)
+		{
+			[theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
+						dampenAmountThresholdMin:-1.0
+											 max:1.0
+									usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+			}];
+		}
+		
+		
+		if (deltaX > 0.0)
+		{
+			[sessionController pageLeft: self];
+		}
+		else if (deltaX < 0.0)
+		{
+			[sessionController pageRight: self];
+		}
+		
 	}
 	else
 	{
@@ -794,20 +794,20 @@ typedef struct {
 	}
     
     
-    if ([defaultsController boolForKey:TSSTEnableSwipe] && theEvent.type == NSEventTypeSwipe)
-    {
-        CGFloat deltaX = [theEvent deltaX];
+	if ([defaultsController boolForKey:TSSTEnableSwipe] && theEvent.type == NSEventTypeSwipe)
+	{
+		CGFloat deltaX = [theEvent deltaX];
 		CGFloat deltaY = [theEvent deltaY];
 		CGFloat ratio = deltaX / deltaY;
 		if isnan(ratio) {ratio = deltaX;}
-        if (deltaX != 0.0 && fabs(ratio) >= 1.0)
-        {
-            [theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
-                        dampenAmountThresholdMin:-1.0
-                                             max:1.0
-                                    usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
-										//NSLog(@"gesture amount: %f, phase %04lx, is complete: %@", gestureAmount, (unsigned long)phase, isComplete ? @"YES" : @"NO");
-                                    }];
+		if (deltaX != 0.0 && fabs(ratio) >= 1.0)
+		{
+			[theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
+						dampenAmountThresholdMin:-1.0
+											 max:1.0
+									usingHandler:^(CGFloat gestureAmount, NSEventPhase phase, BOOL isComplete, BOOL *stop) {
+				//NSLog(@"gesture amount: %f, phase %04lx, is complete: %@", gestureAmount, (unsigned long)phase, isComplete ? @"YES" : @"NO");
+			}];
 			
 			if (deltaX > 0.0)
 			{
@@ -817,10 +817,10 @@ typedef struct {
 			{
 				[sessionController pageRight: self];
 			}
-        }
-    }
+		}
+	}
 	
-    [sessionController refreshLoupePanel];
+	[sessionController refreshLoupePanel];
 }
 
 
@@ -835,13 +835,13 @@ typedef struct {
 		return;
 	}
 	
-    NSEventModifierFlags modifier = [event modifierFlags];
+	NSEventModifierFlags modifier = [event modifierFlags];
 	BOOL shiftKey = modifier & NSEventModifierFlagShift ? YES : NO;
-    unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
-    NSRect visible = [[self enclosingScrollView] documentVisibleRect];
-    NSPoint scrollPoint = visible.origin;
-    BOOL scrolling = NO;
-    CGFloat delta = shiftKey ? 50 * 3 : 50;
+	unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
+	NSRect visible = [[self enclosingScrollView] documentVisibleRect];
+	NSPoint scrollPoint = visible.origin;
+	BOOL scrolling = NO;
+	CGFloat delta = shiftKey ? 50 * 3 : 50;
 	
 	switch (charNumber)
 	{
@@ -920,27 +920,27 @@ typedef struct {
 			break;
 	}
 	
-    if(scrolling && !scrollTimer)
-    {
-        [self scrollPoint: scrollPoint];
-        [sessionController refreshLoupePanel];
-        NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-            [NSDate date], @"lastTime", @(shiftKey), @"accelerate",
-            nil, @"leftTurnStart", nil, @"rightTurnStart", nil];
-        scrollTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0/10
-                                                       target: self
-                                                     selector: @selector(scroll:)
-                                                     userInfo: userInfo
-                                                      repeats: YES];
-    }
+	if(scrolling && !scrollTimer)
+	{
+		[self scrollPoint: scrollPoint];
+		[sessionController refreshLoupePanel];
+		NSMutableDictionary * userInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+										  [NSDate date], @"lastTime", @(shiftKey), @"accelerate",
+										  nil, @"leftTurnStart", nil, @"rightTurnStart", nil];
+		scrollTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0/10
+													   target: self
+													 selector: @selector(scroll:)
+													 userInfo: userInfo
+													  repeats: YES];
+	}
 }
 
 
 - (void)pageUp
 {
 	NSRect visible = [[self enclosingScrollView] documentVisibleRect];
-    NSPoint scrollPoint = visible.origin;
-
+	NSPoint scrollPoint = visible.origin;
+	
 	if(NSMaxY([self bounds]) <= NSMaxY(visible))
 	{
 		if([sessionController.session.pageOrder boolValue])
@@ -975,7 +975,6 @@ typedef struct {
 		scrollPoint.y += visible.size.height;
 		[self scrollPoint: scrollPoint];
 	}
-
 }
 
 
@@ -1023,174 +1022,174 @@ typedef struct {
 
 - (void)keyUp:(NSEvent *)event
 {
-    unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
-    switch (charNumber)
-    {
-        case NSUpArrowFunctionKey:
-            scrollKeys &= ~TSSTArrowKeyUp;
-            break;
-        case NSDownArrowFunctionKey:
-            scrollKeys &= ~TSSTArrowKeyDown;
-            break;
-        case NSLeftArrowFunctionKey:
-            scrollKeys &= ~TSSTArrowKeyLeft;
-            break;
-        case NSRightArrowFunctionKey:
-            scrollKeys &= ~TSSTArrowKeyRight;
-            break;
-        default:
-            break;
-    }
+	unichar charNumber = [[event charactersIgnoringModifiers] characterAtIndex: 0];
+	switch (charNumber)
+	{
+		case NSUpArrowFunctionKey:
+			scrollKeys &= ~TSSTArrowKeyUp;
+			break;
+		case NSDownArrowFunctionKey:
+			scrollKeys &= ~TSSTArrowKeyDown;
+			break;
+		case NSLeftArrowFunctionKey:
+			scrollKeys &= ~TSSTArrowKeyLeft;
+			break;
+		case NSRightArrowFunctionKey:
+			scrollKeys &= ~TSSTArrowKeyRight;
+			break;
+		default:
+			break;
+	}
 }
 
 
 - (void)flagsChanged:(NSEvent *)theEvent
 {
 	if([theEvent type] & NSEventTypeKeyDown && [theEvent modifierFlags] & NSEventModifierFlagCommand)
-    {
-        scrollKeys = 0;
-    }
+	{
+		scrollKeys = 0;
+	}
 }
 
 
 - (void)scroll:(NSTimer *)timer
 {
-    if(!scrollKeys)
-    {
-        [scrollTimer invalidate];
-        scrollTimer = nil;
-        // This is to reset the interpolation.
-        [self setNeedsDisplay: YES];
-        return;
-    }
+	if(!scrollKeys)
+	{
+		[scrollTimer invalidate];
+		scrollTimer = nil;
+		// This is to reset the interpolation.
+		[self setNeedsDisplay: YES];
+		return;
+	}
 	
-    NSTimeInterval delay = 0.2;
-    NSRect visible = [[self enclosingScrollView] documentVisibleRect];
-    NSDate * currentDate = [NSDate date];
-    NSTimeInterval difference = [currentDate timeIntervalSinceDate: [[timer userInfo] valueForKey: @"lastTime"]];
-    int multiplier = [[[timer userInfo] valueForKey: @"accelerate"] boolValue] ? 3 : 1;
-    [[timer userInfo] setValue: currentDate forKey: @"lastTime"];
-    NSPoint scrollPoint = visible.origin;
-    int delta = 1000 * difference * multiplier;
-    TSSTTurn turn = TSSTTurnNone;
-    NSString * directionString = nil;
-    BOOL turnDirection = [sessionController.session.pageOrder boolValue];
-    BOOL finishTurn = NO;
-    if(scrollKeys & TSSTArrowKeyUp)
-    {
-        scrollPoint.y += delta;
-        if(NSMaxY(visible) >= NSMaxY([self frame]))
-        {
-            turn = turnDirection ? TSSTTurnLeft : TSSTTurnRight;
-        }
-    }
+	NSTimeInterval delay = 0.2;
+	NSRect visible = [[self enclosingScrollView] documentVisibleRect];
+	NSDate * currentDate = [NSDate date];
+	NSTimeInterval difference = [currentDate timeIntervalSinceDate: [[timer userInfo] valueForKey: @"lastTime"]];
+	int multiplier = [[[timer userInfo] valueForKey: @"accelerate"] boolValue] ? 3 : 1;
+	[[timer userInfo] setValue: currentDate forKey: @"lastTime"];
+	NSPoint scrollPoint = visible.origin;
+	int delta = 1000 * difference * multiplier;
+	TSSTTurn turn = TSSTTurnNone;
+	NSString * directionString = nil;
+	BOOL turnDirection = [sessionController.session.pageOrder boolValue];
+	BOOL finishTurn = NO;
+	if(scrollKeys & TSSTArrowKeyUp)
+	{
+		scrollPoint.y += delta;
+		if(NSMaxY(visible) >= NSMaxY([self frame]))
+		{
+			turn = turnDirection ? TSSTTurnLeft : TSSTTurnRight;
+		}
+	}
 	
-    if (scrollKeys & TSSTArrowKeyDown)
-    {
-        scrollPoint.y -= delta;
-        if(scrollPoint.y <= 0)
-        {
-            turn = turnDirection ? TSSTTurnRight : TSSTTurnLeft;
-        }
-    }
+	if (scrollKeys & TSSTArrowKeyDown)
+	{
+		scrollPoint.y -= delta;
+		if(scrollPoint.y <= 0)
+		{
+			turn = turnDirection ? TSSTTurnRight : TSSTTurnLeft;
+		}
+	}
 	
-    if (scrollKeys & TSSTArrowKeyLeft)
-    {
-        scrollPoint.x -= delta;
-        if(scrollPoint.x <= 0)
-        {
-            turn = TSSTTurnLeft;
-        }
-    }
+	if (scrollKeys & TSSTArrowKeyLeft)
+	{
+		scrollPoint.x -= delta;
+		if(scrollPoint.x <= 0)
+		{
+			turn = TSSTTurnLeft;
+		}
+	}
 	
-    if (scrollKeys & TSSTArrowKeyRight)
-    {
-        scrollPoint.x += delta;
-        if(NSMaxX(visible) >= NSMaxX([self frame]))
-        {
-            turn = TSSTTurnRight;
-        }
-    }
+	if (scrollKeys & TSSTArrowKeyRight)
+	{
+		scrollPoint.x += delta;
+		if(NSMaxX(visible) >= NSMaxX([self frame]))
+		{
+			turn = TSSTTurnRight;
+		}
+	}
 	
-    if(turn != TSSTTurnNone)
-    {
-        difference = 0;
+	if(turn != TSSTTurnNone)
+	{
+		difference = 0;
 		
-        if(turn == TSSTTurnRight)
-        {
-            directionString = @"rightTurnStart";
-        }
-        else
-        {
-            directionString = @"leftTurnStart";
-        }
+		if(turn == TSSTTurnRight)
+		{
+			directionString = @"rightTurnStart";
+		}
+		else
+		{
+			directionString = @"leftTurnStart";
+		}
 		
-        if(![[timer userInfo] valueForKey: directionString])
-        {
-            [[timer userInfo] setValue: currentDate forKey: directionString];
-        }
-        else
-        {
-            difference = [currentDate timeIntervalSinceDate: [[timer userInfo] valueForKey: directionString]];
-        }
+		if(![[timer userInfo] valueForKey: directionString])
+		{
+			[[timer userInfo] setValue: currentDate forKey: directionString];
+		}
+		else
+		{
+			difference = [currentDate timeIntervalSinceDate: [[timer userInfo] valueForKey: directionString]];
+		}
 		
-        if(difference >= delay)
-        {
-            if(turn == TSSTTurnLeft)
-            {
-                [sessionController pageLeft: self];
-                finishTurn = YES;
-            }
-            else if(turn == TSSTTurnRight)
-            {
-                [sessionController pageRight: self];
-                finishTurn = YES;
-            }
+		if(difference >= delay)
+		{
+			if(turn == TSSTTurnLeft)
+			{
+				[sessionController pageLeft: self];
+				finishTurn = YES;
+			}
+			else if(turn == TSSTTurnRight)
+			{
+				[sessionController pageRight: self];
+				finishTurn = YES;
+			}
 			
-            [scrollTimer invalidate];
-            scrollTimer = nil;
-        }
-    }
-    else
-    {
-        [[timer userInfo] setValue: nil forKey: @"rightTurnStart"];
-        [[timer userInfo] setValue: nil forKey: @"leftTurnStart"];
-    }
+			[scrollTimer invalidate];
+			scrollTimer = nil;
+		}
+	}
+	else
+	{
+		[[timer userInfo] setValue: nil forKey: @"rightTurnStart"];
+		[[timer userInfo] setValue: nil forKey: @"leftTurnStart"];
+	}
 	
-    if(!finishTurn)
-    {
-        NSScrollView * scrollView = [self enclosingScrollView];
-        NSClipView * clipView = [scrollView contentView];
+	if(!finishTurn)
+	{
+		NSScrollView * scrollView = [self enclosingScrollView];
+		NSClipView * clipView = [scrollView contentView];
 		NSRect scrollRect;
 		scrollRect.origin = scrollPoint;
 		scrollRect.size = NSMakeSize(1, 1);
 		scrollRect = [clipView constrainBoundsRect:scrollRect];
-        [clipView scrollToPoint: scrollRect.origin];
-        [scrollView reflectScrolledClipView: clipView];
-    }
+		[clipView scrollToPoint: scrollRect.origin];
+		[scrollView reflectScrolledClipView: clipView];
+	}
 	
-    [sessionController refreshLoupePanel];
+	[sessionController refreshLoupePanel];
 }
 
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
 	BOOL loupe = !sessionController.session.loupe.boolValue;
-    sessionController.session.loupe = @(loupe);
+	sessionController.session.loupe = @(loupe);
 }
 
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
 	if ([sessionController pageSelectionInProgress])
-    {
+	{
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		cropRect.origin = cursor;
 	}
 	else if([self dragIsPossible])
-    {
-        [[NSCursor closedHandCursor] set];
-    }
+	{
+		[[NSCursor closedHandCursor] set];
+	}
 }
 
 
@@ -1217,14 +1216,13 @@ typedef struct {
 	{
 		[super mouseMoved: theEvent];
 	}
-
 }
 
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
 	NSPoint viewOrigin = [[self enclosingScrollView] documentVisibleRect].origin;
-    NSPoint cursor = [theEvent locationInWindow];
+	NSPoint cursor = [theEvent locationInWindow];
 	NSPoint currentPoint;
 	if ([sessionController pageSelectionInProgress])
 	{
@@ -1241,20 +1239,20 @@ typedef struct {
 		}
 		[self setNeedsDisplay: YES];
 	}
-    else if([self dragIsPossible])
-    {
+	else if([self dragIsPossible])
+	{
 		while ([theEvent type] != NSEventTypeLeftMouseUp)
-        {
+		{
 			if ([theEvent type] == NSEventTypeLeftMouseDragged)
-            {
-                currentPoint = [theEvent locationInWindow];
-                [self scrollPoint: NSMakePoint(viewOrigin.x + cursor.x - currentPoint.x,viewOrigin.y + cursor.y - currentPoint.y)];
-                [sessionController refreshLoupePanel];
-            }
+			{
+				currentPoint = [theEvent locationInWindow];
+				[self scrollPoint: NSMakePoint(viewOrigin.x + cursor.x - currentPoint.x,viewOrigin.y + cursor.y - currentPoint.y)];
+				[sessionController refreshLoupePanel];
+			}
 			theEvent = [[self window] nextEventMatchingMask: NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged];
-        }
-        [[self window] invalidateCursorRectsForView: self];
-    }
+		}
+		[[self window] invalidateCursorRectsForView: self];
+	}
 }
 
 
@@ -1265,95 +1263,95 @@ typedef struct {
 		[sessionController selectedPage: pageSelection withCropRect: [self imageCropRectangle]];
 		pageSelection = -1;
 		cropRect = NSZeroRect;
-
+		
 		[self setNeedsDisplay: YES];
 		return;
 	}
 	
-    if([self dragIsPossible])
-    {
-        [[NSCursor openHandCursor] set];
-    }
+	if([self dragIsPossible])
+	{
+		[[NSCursor openHandCursor] set];
+	}
 	
-    NSPoint clickPoint = [theEvent locationInWindow];
-    int viewSplit = NSWidth([[self enclosingScrollView] frame]) / 2;
-    if(NSMouseInRect(clickPoint, [[self enclosingScrollView] frame], [[self enclosingScrollView] isFlipped]))
-    {
-        if(clickPoint.x < viewSplit)
-        {
+	NSPoint clickPoint = [theEvent locationInWindow];
+	int viewSplit = NSWidth([[self enclosingScrollView] frame]) / 2;
+	if(NSMouseInRect(clickPoint, [[self enclosingScrollView] frame], [[self enclosingScrollView] isFlipped]))
+	{
+		if(clickPoint.x < viewSplit)
+		{
 			if([theEvent modifierFlags] & NSEventModifierFlagOption)
-            {
-                [NSApp sendAction: @selector(shiftPageLeft:) to: nil from: self];
-            }
-            else
-            {
-                [NSApp sendAction: @selector(pageLeft:) to: nil from: self];
-            }
-        }
-        else
-        {
+			{
+				[NSApp sendAction: @selector(shiftPageLeft:) to: nil from: self];
+			}
+			else
+			{
+				[NSApp sendAction: @selector(pageLeft:) to: nil from: self];
+			}
+		}
+		else
+		{
 			if([theEvent modifierFlags] & NSEventModifierFlagOption)
-            {
-                [NSApp sendAction: @selector(shiftPageRight:) to: nil from: self];
-            }
-            else
-            {
-                [NSApp sendAction: @selector(pageRight:) to: nil from: self];
-            }
-        }
-    }
+			{
+				[NSApp sendAction: @selector(shiftPageRight:) to: nil from: self];
+			}
+			else
+			{
+				[NSApp sendAction: @selector(pageRight:) to: nil from: self];
+			}
+		}
+	}
 }
 
 //NOTE: This is for the THREE-finger swipe, not two finger
 - (void)swipeWithEvent:(NSEvent *)event
 {
-    if ([event deltaX] == 1)
+	if ([event deltaX] == 1)
 	{
-        [sessionController pageLeft: self];
-    }
+		[sessionController pageLeft: self];
+	}
 	else if ([event deltaX] == -1)
 	{
-        [sessionController pageRight: self];
-    }
+		[sessionController pageRight: self];
+	}
 }
 
 
 - (void)rotateWithEvent:(NSEvent *)event
 {
-    static NSTimeInterval nextValidLeft = -1;
-    static NSTimeInterval nextValidRight = -1;
+	static NSTimeInterval nextValidLeft = -1;
+	static NSTimeInterval nextValidRight = -1;
 	
-    // Prevent more than one rotation in the same direction per second
+	// Prevent more than one rotation in the same direction per second
 	if ([event rotation] > 0.5 && [event timestamp] > nextValidRight)
 	{
 		[sessionController rotateLeft: self];
-        nextValidRight = [event timestamp] + 0.75;
-    }
+		nextValidRight = [event timestamp] + 0.75;
+	}
 	else if ([event rotation] < -0.5 && [event timestamp] > nextValidLeft)
 	{
 		[sessionController rotateRight: self];
-        nextValidLeft = [event timestamp] + 0.75;
-    }
+		nextValidLeft = [event timestamp] + 0.75;
+	}
 }
 
 
 - (void)magnifyWithEvent:(NSEvent *)event
 {
-    TSSTManagedSession * session = [sessionController session];
-    int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
-    CGFloat previousZoom = [[session valueForKey: TSSTZoomLevel] doubleValue];
-    if(scalingOption != 0)
-    {
-        previousZoom = NSWidth([self imageBounds]) / [self combinedImageSizeForZoom: 1].width;
-    }
-    
-    previousZoom += ([event magnification] * 2);
-    previousZoom = previousZoom < 5 ? previousZoom : 5;
-    previousZoom = previousZoom > .25 ? previousZoom : .25;
+	TSSTManagedSession * session = [sessionController session];
+	int scalingOption = [[session valueForKey: TSSTPageScaleOptions] intValue];
+	CGFloat previousZoom = [[session valueForKey: TSSTZoomLevel] doubleValue];
+	if(scalingOption != 0)
+	{
+		previousZoom = NSWidth([self imageBounds]) / [self combinedImageSizeForZoom: 1].width;
+	}
+	
+	previousZoom += ([event magnification] * 2);
+	previousZoom = previousZoom < 5 ? previousZoom : 5;
+	previousZoom = previousZoom > .25 ? previousZoom : .25;
 	session.zoomLevel = @(previousZoom);
 	session.scaleOptions = @0;
 	
-    [self resizeView];
+	[self resizeView];
 }
 
 - (void)smartMagnifyWithEvent:(NSEvent *)event
@@ -1363,42 +1361,42 @@ typedef struct {
 
 - (BOOL)dragIsPossible
 {
-    return ([self horizontalScrollIsPossible] ||
+	return ([self horizontalScrollIsPossible] ||
 			([self verticalScrollIsPossible] &&
-			![sessionController pageSelectionInProgress]));
+			 ![sessionController pageSelectionInProgress]));
 }
 
 
 - (BOOL)horizontalScrollIsPossible
 {
-    NSSize total = imageBounds.size;
-    NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    return (visible.width < round(total.width));
+	NSSize total = imageBounds.size;
+	NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
+	return (visible.width < round(total.width));
 }
 
 
 - (BOOL)verticalScrollIsPossible
 {
 	NSSize total = imageBounds.size;
-    NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
-    return (visible.height < round(total.height));
+	NSSize visible = [[self enclosingScrollView] documentVisibleRect].size;
+	return (visible.height < round(total.height));
 }
 
 
 - (void)resetCursorRects
 {
-    if([self dragIsPossible])
-    {
-        [self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];
-    }
+	if([self dragIsPossible])
+	{
+		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];
+	}
 //	else if(canCrop)
 //	{
 //		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor crosshairCursor]];
 //	}
-    else
-    {
-        [super resetCursorRects];
-    }
+	else
+	{
+		[super resetCursorRects];
+	}
 }
 
 

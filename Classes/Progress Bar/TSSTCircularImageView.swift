@@ -9,7 +9,6 @@
 import Cocoa
 
 class TSSTCircularImageView: NSImageView {
-
 	override func draw(_ dirtyRect: NSRect) {
 		let bounds = self.bounds
 		NSColor.clear.set()

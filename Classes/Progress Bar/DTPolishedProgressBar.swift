@@ -73,7 +73,6 @@ Progress direction can be set.
 */
 @IBDesignable
 class DTPolishedProgressBar: NSView {
-
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		setFrameSize(frameRect.size)
@@ -85,7 +84,7 @@ class DTPolishedProgressBar: NSView {
 		setFrameSize(frame.size)
 		setupObserver()
 	}
-
+	
 	private func setupObserver() {
 		if #available(OSX 10.14, *) {
 			DistributedNotificationCenter.default.addObserver(self, selector: #selector(interfaceModeChanged), name: .interfaceThemeChanged, object: nil)
@@ -95,7 +94,7 @@ class DTPolishedProgressBar: NSView {
 	@objc private func interfaceModeChanged() {
 		needsDisplay = true
 	}
-
+	
 /*
 List of replacements for the highcontrast flag
 Highlight: NSColor if nil then layout is slightly shifted.
@@ -104,7 +103,7 @@ progressFill: This is the gradient of the filled portion of the progress bar.
 shadow: This is the gradient that give the illusion of depth.
 textStyle: Dictionary of string attributes.
 */
-
+	
 	/// The direction of the progress bar.
 	@IBInspectable
 	dynamic var leftToRight: Bool = true {

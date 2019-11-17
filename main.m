@@ -30,5 +30,5 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 
 int main(int argc, char *argv[])
 {
-    return NSApplicationMain(argc,  (const char **) argv);
+	return NSApplicationMain(argc,  (const char **) argv);
 }

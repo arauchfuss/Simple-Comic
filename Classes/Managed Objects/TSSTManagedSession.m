@@ -16,9 +16,9 @@
 - (void)awakeFromFetch
 {
 	[super awakeFromFetch];
-    /* By calling path for all children, groups with unresolved bookmarks
-     are deleted. 
-     Using copy to make sure changes to groups won't cause Cocoa to complain about mutated iterators. */
+	/* By calling path for all children, groups with unresolved bookmarks
+	 are deleted.
+	 Using copy to make sure changes to groups won't cause Cocoa to complain about mutated iterators. */
 	for (TSSTManagedGroup *group in [self.groups copy])
 	{
 		[group fileURL];

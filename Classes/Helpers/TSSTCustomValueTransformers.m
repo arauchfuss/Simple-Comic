@@ -24,20 +24,20 @@
 
 + (Class)transformedValueClass
 {
-    return [NSString class];
+	return [NSString class];
 }
 
 + (BOOL)allowsReverseTransformation
 {
-    return NO;
+	return NO;
 }
 
 - (id)transformedValue:(NSString*)beforeObject
 {
 	if(!beforeObject)
 		return nil;
-
-    return [beforeObject lastPathComponent];
+	
+	return [beforeObject lastPathComponent];
 }
 
 @end
