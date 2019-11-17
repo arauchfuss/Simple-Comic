@@ -8,12 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 
+@interface TSSTOuterInfoView : NSView {
+  float lastDiameter;
+}
+- (void)resizeToDiameter:(float)diameter;
+@end
 
 /*
  This panel subclass is used by both the loupe and the speach bubble styled
  page preview.
  */
-@interface TSSTInfoWindow : NSPanel { }
+@interface TSSTInfoWindow : NSPanel {
+  IBOutlet TSSTOuterInfoView *outerView;
+}
 
 - (void)caretAtPoint:(NSPoint)point size:(NSSize)size withLimitLeft:(float)left right:(float)right;
 - (void)centerAtPoint:(NSPoint)center;
