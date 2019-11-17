@@ -216,11 +216,11 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		[sharedDefaultsController setInitialValues: standardDefaults];
 		NSUserDefaults * defaults = [sharedDefaultsController defaults];
 		[defaults registerDefaults: standardDefaults];
+		NSData *colorData = [defaults dataForKey: TSSTBackgroundColor];
 		// Convert old NSArchiver color key to NSKeyedArchiver, if needed
-		if (![NSKeyedUnarchiver unarchiveObjectWithData: [defaults dataForKey: TSSTBackgroundColor]]) {
-			NSData *rawKey = [defaults dataForKey: TSSTBackgroundColor];
-			NSColor *newColor = [NSUnarchiver unarchiveObjectWithData: rawKey];
-			if (newColor || [newColor isKindOfClass: [NSColor class]]) {
+		if ([NSKeyedUnarchiver unarchiveObjectWithData: colorData] != nil) {
+			NSColor *newColor = [NSUnarchiver unarchiveObjectWithData: colorData];
+			if (newColor && [newColor isKindOfClass: [NSColor class]]) {
 				NSData *newKey = [NSKeyedArchiver archivedDataWithRootObject: newColor];
 				[defaults setObject: newKey forKey: TSSTBackgroundColor];
 			} else {
@@ -537,8 +537,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	return saved;
 }
 
-#pragma mark -
-#pragma mark Session Managment
+#pragma mark - Session Managment
 
 - (void)windowForSession:(TSSTManagedSession *)settings
 {
@@ -666,8 +665,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 //	[[self managedObjectContext] release];
 }
 
-#pragma mark -
-#pragma mark Actions
+#pragma mark - Actions
 
 // Launches open modal.
 - (IBAction)addPages:(id)sender
@@ -777,9 +775,9 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 }
 
 - (NSStringEncoding)archive:(XADArchive *)archive
-		   encodingForData:(NSData *)data
-					 guess:(NSStringEncoding)guess
-				confidence:(float)confidence
+			encodingForData:(NSData *)data
+					  guess:(NSStringEncoding)guess
+				 confidence:(float)confidence
 {
 	NSString * testText = [[NSString alloc] initWithData: data encoding: guess];
 	if (confidence < 0.8 || !testText) {
@@ -789,7 +787,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		
 		NSUInteger index = [encodingIdentifiers indexOfObject: @(guess)];
 		NSUInteger counter = 0;
-		//		NSStringEncoding encoding;
 		NSNumber * encoding;
 		while (!testText) {
 			encoding = encodingIdentifiers[counter];
