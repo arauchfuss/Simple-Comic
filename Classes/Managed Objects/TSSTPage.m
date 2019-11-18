@@ -75,24 +75,22 @@ static NSSize monospaceCharacterSize;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		/* Figure out the size of a single monospace character to set the tab stops */
-		NSDictionary * fontAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Menlo" size: 14]};
+		NSFont * menlo14 = [NSFont fontWithName: @"Menlo" size: 14];
+		NSDictionary * fontAttributes = @{NSFontAttributeName: menlo14};
 		monospaceCharacterSize = [@"A" boundingRectWithSize: NSZeroSize options: 0 attributes: fontAttributes].size;
 		
-		NSTextTab * tabStop;
-		NSMutableArray * tabStops = [NSMutableArray array];
-		NSInteger tabSize;
-		CGFloat tabLocation;
+		NSMutableArray<NSTextTab*> * tabStops = [NSMutableArray arrayWithCapacity:120/8-1];
 		/* Loop through the tab stops */
-		for (tabSize = 8; tabSize < 120; tabSize+=8) {
-			tabLocation = tabSize * monospaceCharacterSize.width;
-			tabStop = [[NSTextTab alloc] initWithType: NSLeftTabStopType location: tabLocation];
+		for (NSInteger tabSize = 8; tabSize < 120; tabSize+=8) {
+			CGFloat tabLocation = tabSize * monospaceCharacterSize.width;
+			NSTextTab * tabStop = [[NSTextTab alloc] initWithType: NSLeftTabStopType location: tabLocation];
 			[tabStops addObject: tabStop];
 		}
 		
 		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-		[style setTabStops: tabStops];
+		style.tabStops = tabStops;
 		
-		TSSTInfoPageAttributes = @{NSFontAttributeName: [NSFont fontWithName: @"Menlo" size: 14],
+		TSSTInfoPageAttributes = @{NSFontAttributeName: menlo14,
 								   NSParagraphStyleAttributeName: style};
 	});
 }
