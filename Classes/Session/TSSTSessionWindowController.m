@@ -1537,15 +1537,15 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
 	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [session.zoomLevel doubleValue]];
 	CGFloat vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [[self window] toolbarHeight];
-	if([pageScrollView hasHorizontalScroller])
+	if([pageScrollView hasHorizontalScroller] && pageScrollView.horizontalScroller.scrollerStyle == NSScrollerStyleLegacy)
 	{
 		vertOffset += NSHeight([[pageScrollView horizontalScroller] frame]);
 	}
-	CGFloat horOffset = [pageScrollView hasVerticalScroller] ? NSWidth([[pageScrollView verticalScroller] frame]) : 0;
+	CGFloat horOffset = [pageScrollView hasVerticalScroller] && pageScrollView.verticalScroller.scrollerStyle == NSScrollerStyleLegacy ? [NSScroller scrollerWidthForControlSize:pageScrollView.verticalScroller.controlSize scrollerStyle:pageScrollView.verticalScroller.scrollerStyle] : 0;
 	NSSize minSize = [[self window] minSize];
 	NSRect correctedFrame = boundingRect;
-	correctedFrame.size.width = NSWidth(correctedFrame) < minSize.width ? minSize.width : NSWidth(correctedFrame);
-	correctedFrame.size.height = NSHeight(correctedFrame) < minSize.height ? minSize.height : NSHeight(correctedFrame);
+	correctedFrame.size.width = MAX(NSWidth(correctedFrame), minSize.width);
+	correctedFrame.size.height = MAX(NSHeight(correctedFrame), minSize.height);
 	correctedFrame.size.width -= horOffset;
 	correctedFrame.size.height -= vertOffset;
 	NSSize newSize;
