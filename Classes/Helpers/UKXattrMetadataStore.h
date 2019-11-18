@@ -214,6 +214,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*!
  *	@method		setObject:forKey:atPath:traverseLink:error:
+ *	@brief		Sets the xattr with name \c key to an XML property list representation of
+ *				the specified object (or object graph).
  *	@param		obj
  *				The Property List object to set.
  *	@param		key
@@ -228,6 +230,8 @@ NS_ASSUME_NONNULL_BEGIN
  *	@return		\c YES on success, \c NO on failure.
  *	@discussion	Set the xattr with name \c key to an XML property list representation of
  *				the specified object (or object graph).
+ *
+ *				This is the same as calling \c +setObject:forKey:atPath:traverseLink:format:error: with \c NSPropertyListXMLFormat_v1_0 as the \c format
  */
 +(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
 	 traverseLink:(BOOL)travLnk error:(NSError**)error;
@@ -246,7 +250,9 @@ NS_ASSUME_NONNULL_BEGIN
  *				If the method does not complete successfully, upon return
  *				contains an \c NSError object that describes the problem.
  *	@param		format
- *				The property list
+ *				The property list format to save the encoded data.
+ *				Remember: Foundation does not support generating
+ *				\c NSPropertyListOpenStepFormat property lists.
  *	@return		\c YES on success, \c NO on failure.
  *	@discussion	Set the xattr with name \c key to a property list representation of
  *				the specified object (or object graph). The Property list format is
