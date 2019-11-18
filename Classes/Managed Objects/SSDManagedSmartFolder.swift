@@ -22,8 +22,9 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			return
 		}
 		do {
-			guard let dic = NSDictionary(contentsOfFile: filePath), let result = dic.object(forKey: "RawQuery") as? NSObject else {
-				return
+			guard let dic = NSDictionary(contentsOfFile: filePath),
+				let result = dic.object(forKey: "RawQuery") as? NSObject else {
+					return
 			}
 			//print(result.description)
 			
@@ -49,7 +50,6 @@ class ManagedSmartFolder: TSSTManagedGroup {
 			if let rawQuery = dic.object(forKey: "RawQueryDict") as? NSDictionary as? [String: Any],
 				let mdStr = result as? String,
 				let mdPred = NSPredicate(fromMetadataQueryString: mdStr) {
-				
 				let query = NSMetadataQuery()
 				let nf = NotificationCenter.default
 				nf.addObserver(self, selector: #selector(ManagedSmartFolder.queryNote(_:)), name: nil, object: query)
@@ -146,7 +146,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 	
 	override func requestData(forPageIndex index: Int, callback: @escaping (Data?, Error?) -> Void) {
 		guard let images = self.images else {
-			callback(nil, nil)
+			callback(nil, CocoaError(.persistentStoreIncompleteSave))
 			return
 		}
 		
@@ -159,7 +159,7 @@ class ManagedSmartFolder: TSSTManagedGroup {
 		
 		// TODO: add check to see if file exist?
 		guard let filePath = filepath else {
-			callback(nil, nil)
+			callback(nil, CocoaError(.fileNoSuchFile))
 			return
 		}
 		
@@ -188,9 +188,7 @@ extension ManagedSmartFolder: NSMetadataQueryDelegate {
 }
 
 extension ManagedSmartFolder {
-	
 	@nonobjc public class func fetchRequest() -> NSFetchRequest<ManagedSmartFolder> {
 		return NSFetchRequest<ManagedSmartFolder>(entityName: "SmartFolder");
 	}
 }
-
