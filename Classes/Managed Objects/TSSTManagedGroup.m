@@ -58,10 +58,12 @@
 - (void)setFileURL:(NSURL *)fileURL
 {
 	NSError * urlError = nil;
+	[fileURL startAccessingSecurityScopedResource];
 	NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope | NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess
 							  includingResourceValuesForKeys: @[NSURLVolumeURLForRemountingKey, NSURLVolumeUUIDStringKey]
 											   relativeToURL: nil
 													   error: &urlError];
+	[fileURL stopAccessingSecurityScopedResource];
 	if (bookmarkData == nil || urlError != nil)
 	{
 		bookmarkData = nil;
