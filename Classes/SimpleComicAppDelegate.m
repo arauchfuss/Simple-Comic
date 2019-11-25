@@ -692,15 +692,8 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	if([addPagesModal runModal] !=  NSModalResponseCancel)
 	{
 		NSArray<NSURL*> *fileURLs = [addPagesModal URLs];
-		NSMutableArray<NSString*> *filePaths = [[NSMutableArray alloc] initWithCapacity:fileURLs.count];
 		
-		for (NSURL *fileURL in fileURLs)
-		{
-			NSString * filePath = [fileURL path];
-			[filePaths addObject:filePath];
-		}
-		
-		TSSTManagedSession * session = [self newSessionWithFiles: filePaths];
+		TSSTManagedSession * session = [self newSessionWithFileURLs: fileURLs];
 		[self windowForSession: session];
 	}
 }

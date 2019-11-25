@@ -394,7 +394,7 @@
 	NSData * fileData;
 	NSInteger collision = 0;
 	NSString * archivePath = nil;
-	NSInteger counter, archivedFilesCount = [imageArchive numberOfEntries];
+	const NSInteger archivedFilesCount = [imageArchive numberOfEntries];
 	NSError * error;
 	if([imageArchive isSolid])
 	{
@@ -406,7 +406,7 @@
 		self.solidDirectory = archivePath;
 	}
 	
-	for (counter = 0; counter < archivedFilesCount; ++counter)
+	for (NSInteger counter = 0; counter < archivedFilesCount; ++counter)
 	{
 		NSString *fileName = [imageArchive nameOfEntry: counter];
 		TSSTManagedGroup *nestedDescription = nil;
