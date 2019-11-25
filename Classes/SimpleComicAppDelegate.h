@@ -97,9 +97,14 @@ extern NSString *const TSSTSessionEndNotification;
 - (BOOL) saveContext;
 
 
+
 /*! Creates a new Session object based on user prefs and then
-    passes the files array to addFiles:toSesion: */
+    passes the files array to \c addFileURLs:toSesion: */
 - (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files NS_RETURNS_NOT_RETAINED;
+
+/*! Creates a new Session object based on user prefs and then
+    passes the files array to \c addFileURLs:toSesion: */
+- (TSSTManagedSession *)newSessionWithFileURLs:(NSArray<NSURL*> *)files NS_RETURNS_NOT_RETAINED;
 
 /*! This method is called every time an existing session needs
     to be made visible to a user. */
@@ -113,9 +118,9 @@ extern NSString *const TSSTSessionEndNotification;
     sessions calling windowForSession: for each in turn. */
 - (void)sessionRelaunch;
 
-/*! This method adds any file passed to it to a session.  This includes recursive
+/*! This method adds any file URLs passed to it to a session.  This includes recursive
 	parsing of archives and folders. */
-- (void)addFiles:(NSArray<NSString*> *)paths toSession:(TSSTManagedSession *)session;
+- (void)addFileURLs:(NSArray<NSURL*> *)paths toSession:(TSSTManagedSession *)session;
 
 /*! Called when Simple Comic encounters a password protected
     archive.  Brings a password dialog forward. */

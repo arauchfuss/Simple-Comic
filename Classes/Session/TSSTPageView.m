@@ -211,7 +211,7 @@ typedef struct {
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pboard = [sender draggingPasteboard];
-	if([[pboard types] containsObject: NSFilenamesPboardType])
+	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: (__bridge NSString*)kUTTypeFileURL])
 	{
 		acceptingDrag = YES;
 		[self setNeedsDisplay: YES];
@@ -224,7 +224,7 @@ typedef struct {
 - (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pboard = [sender draggingPasteboard];
-	if([[pboard types] containsObject: NSFilenamesPboardType])
+	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: (__bridge NSString*)kUTTypeFileURL])
 	{
 		return NSDragOperationGeneric;
 	}
@@ -256,11 +256,17 @@ typedef struct {
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard * pboard = [sender draggingPasteboard];
-	if([[pboard types] containsObject: NSFilenamesPboardType])
+	NSString *fileURLUTI;
+	if (@available(macOS 10.13, *)) {
+		fileURLUTI = NSPasteboardTypeFileURL;
+	} else {
+		fileURLUTI = (__bridge NSString*)kUTTypeFileURL;
+	}
+	if([[pboard types] containsObject: fileURLUTI])
 	{
-		NSArray<NSString *> * filePaths = [pboard propertyListForType: NSFilenamesPboardType];
+		NSArray<NSURL *> * filePaths = [pboard readObjectsForClasses:@[[NSURL class]] options:@{NSPasteboardURLReadingFileURLsOnlyKey: @YES}];
 		[sessionController updateSessionObject];
-		[(SimpleComicAppDelegate *)[NSApp delegate] addFiles: filePaths toSession: [sessionController session]];
+		[(SimpleComicAppDelegate *)[NSApp delegate] addFileURLs: filePaths toSession: [sessionController session]];
 		return YES;
 	}
 	return NO;
@@ -270,7 +276,7 @@ typedef struct {
 - (BOOL)prepareForDragOperation:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pboard = [sender draggingPasteboard];
-	if([[pboard types] containsObject: NSFilenamesPboardType])
+	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: (__bridge NSString*)kUTTypeFileURL])
 	{
 		return YES;
 	}
