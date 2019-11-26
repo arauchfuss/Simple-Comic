@@ -1,5 +1,5 @@
 # Simple Comic
-Simple Comic is a streamlined comic viewer for OS-X.
+Simple Comic is a streamlined comic viewer for macOS.
 
 The basic feature drive is to reduce the number of interactions required to browse a comic.
 
@@ -11,17 +11,6 @@ For this to build you need to get the submodules. For that you need to run the f
 
 ```
 git submodule init
-git submodule sync
-git submodule update
+git submodule sync --recursive
+git submodule update --recursive
 ```
-
-### NOTICE
-The newest XADMaster might lack support for RAR for the time being, if this is a problem you encounter, and you want to keep using RAR do the following:
-
-1. Go into Vendor/XADMaster in a terminal and run this: 
-```
-git checkout fe62093f62dc6dd3f944d7ffb57f677822009940
-```
-2. Remove reference to XADPMArc1Handle.h and XADPMArc1Handle.m
-
-Hopefully the RAR issue will be fixed in our XADMaster soon.
