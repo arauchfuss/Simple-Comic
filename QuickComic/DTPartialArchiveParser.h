@@ -6,9 +6,7 @@
 //  Copyright 2009 Dancing Tortoise Software. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
-@class XADArchiveParser, XADString;
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

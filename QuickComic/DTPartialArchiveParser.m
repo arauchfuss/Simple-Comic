@@ -7,7 +7,7 @@
 //
 
 #import "DTPartialArchiveParser.h"
-#import <XADMaster/XADArchive.h>
+#import <XADMaster/XADArchiveParser.h>
 
 @interface DTPartialArchiveParser () <XADArchiveParserDelegate>
 
@@ -51,7 +51,7 @@
 	if(!isres)
 	{
 		XADString * name = dict[XADFileNameKey];
-		NSString * encodedName = [name stringWithEncoding: NSNonLossyASCIIStringEncoding];
+		NSString * encodedName = [name stringWithEncodingName:parser.encodingName];
 		// NSLog(@"Encoded Name: %@", encodedName);
 		if([searchString isEqualToString: encodedName])
 		{
