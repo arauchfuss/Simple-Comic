@@ -168,56 +168,54 @@
 
 - (void)nestedFolderContents
 {
-	NSString * folderPath = self.path;
+	NSURL * folderPath = self.fileURL;
 	NSFileManager * fileManager = [NSFileManager defaultManager];
 	TSSTManagedGroup * nestedDescription;
 	NSError * error = nil;
-	NSArray<NSString*> * nestedFiles = [fileManager contentsOfDirectoryAtPath: folderPath error: &error];
+	NSArray<NSURL*> * nestedFiles = [fileManager contentsOfDirectoryAtURL:folderPath includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsSubdirectoryDescendants | NSDirectoryEnumerationSkipsHiddenFiles) error:&error];
 	if (error)
 	{
 		NSLog(@"%@",[error localizedDescription]);
 	}
-	NSString * fileExtension, * fullPath;
-	BOOL isDirectory, exists;
+	BOOL isDirectory;
 	
-	for (NSString *path in nestedFiles)
+	for (NSURL *path in nestedFiles)
 	{
 		nestedDescription = nil;
-		fileExtension = [[path pathExtension] lowercaseString];
-		fullPath = [folderPath stringByAppendingPathComponent: path];
-		exists = [fileManager fileExistsAtPath: fullPath isDirectory: &isDirectory];
+		NSString *fileExtension = [[path pathExtension] lowercaseString];
+		BOOL exists = [fileManager fileExistsAtPath: path.path isDirectory: &isDirectory];
 		if(exists && ![[[path lastPathComponent] substringToIndex: 1] isEqualToString: @"."])
 		{
 			if(isDirectory)
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"ImageGroup" inManagedObjectContext: [self managedObjectContext]];
-				nestedDescription.path = fullPath;
-				nestedDescription.name = path;
+				nestedDescription.fileURL = path;
+				nestedDescription.name = path.relativePath ?: path.path;
 				[nestedDescription nestedFolderContents];
 			}
 			else if([[TSSTManagedArchive archiveExtensions] containsObject: fileExtension])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
-				nestedDescription.path = fullPath;
-				nestedDescription.name = path;
+				nestedDescription.fileURL = path;
+				nestedDescription.name = path.relativePath ?: path.path;
 				[(TSSTManagedArchive *)nestedDescription nestedArchiveContents];
 			}
 			else if([fileExtension isEqualToString: @"pdf"])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
-				nestedDescription.path = fullPath;
-				nestedDescription.name = path;
+				nestedDescription.fileURL = path;
+				nestedDescription.name = path.relativePath ?: path.path;
 				[(TSSTManagedPDF *)nestedDescription pdfContents];
 			}
 			else if([[TSSTPage imageExtensions] containsObject: fileExtension])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-				[nestedDescription setValue: fullPath forKey: @"imagePath"];
+				[nestedDescription setValue: path.path forKey: @"imagePath"];
 			}
 			else if ([[TSSTPage textExtensions] containsObject: fileExtension])
 			{
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
-				[nestedDescription setValue: fullPath forKey: @"imagePath"];
+				[nestedDescription setValue: path.path forKey: @"imagePath"];
 				[nestedDescription setValue: @YES forKey: @"text"];
 			}
 			
@@ -380,7 +378,7 @@
 	while(group)
 	{
 		group = [group valueForKeyPath: @"group"];
-		parentGroup = group && [group class] == [TSSTManagedArchive class] ? group : parentGroup;
+		parentGroup = group && [group isMemberOfClass:[TSSTManagedArchive class]] ? group : parentGroup;
 	}
 	
 	return parentGroup;
