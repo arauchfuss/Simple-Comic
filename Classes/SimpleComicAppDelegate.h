@@ -99,7 +99,7 @@ extern NSString *const TSSTSessionEndNotification;
 
 
 /*! Converts \c files into an array of NSURLs, then passes them
- *	to \c newSessionWithFileURLs: */
+ *  to \c newSessionWithFileURLs: */
 - (TSSTManagedSession *)newSessionWithFiles:(NSArray<NSString*> *)files NS_RETURNS_NOT_RETAINED;
 
 /*! Creates a new Session object based on user prefs and then

@@ -72,7 +72,7 @@ typedef NS_ENUM(NSInteger, DTPageScaling) {
 /*!  This is where it all begins sets the two pages.
     Starts any animations
     Calls resize view
-    Calls correctViewPoint */
+    Calls \c correctViewPoint */
 - (void)setFirstPage:(nullable NSImage *)first secondPageImage:(nullable NSImage *)second;
 
 

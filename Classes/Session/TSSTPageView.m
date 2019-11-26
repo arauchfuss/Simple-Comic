@@ -316,7 +316,11 @@ typedef struct {
 	}
 	
 	
-	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
+	if (@available(macOS 10.14, *)) {
+		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.5] set];
+	} else {
+		[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
+	}
 	NSBezierPath * highlight;
 	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
@@ -332,7 +336,11 @@ typedef struct {
 		
 		highlight = [NSBezierPath bezierPathWithRect: selection];
 		[highlight fill];
-		[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
+		if (@available(macOS 10.14, *)) {
+			[[NSColor.controlAccentColor colorWithAlphaComponent:0.8] set];
+		} else {
+			[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
+		}
 		[NSBezierPath setDefaultLineWidth: 2];
 		[NSBezierPath strokeRect: selection];
 	}
@@ -347,7 +355,11 @@ typedef struct {
 		[highlight fill];
 	}
 	
-	[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
+	if (@available(macOS 10.14, *)) {
+		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.8] set];
+	} else {
+		[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
+	}
 	
 	if([sessionController pageSelectionInProgress])
 	{
