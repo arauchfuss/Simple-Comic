@@ -76,7 +76,7 @@ typedef struct {
 {
 	[super awakeFromNib];
 	/* Doing this so users can drag archives into the view. */
-	[self registerForDraggedTypes: @[NSFilenamesPboardType]];
+	[self registerForDraggedTypes: @[NSFilenamesPboardType, (__bridge NSString*)kUTTypeFileURL]];
 }
 
 

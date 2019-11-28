@@ -188,7 +188,6 @@ NS_ASSUME_NONNULL_BEGIN
  *				If the method does not complete successfully, upon return
  *				contains an \c NSError object that describes the problem.
  *	@return		an \c NSData containing the contents of \c key on succes, or \c nil on failure
- *	@discussion	Get the xattr with name \c key as a UTF8 string
  */
 +(nullable NSData*) dataForKey:(NSString*)key atPath:(NSString*)path
 				  traverseLink:(BOOL)travLnk error:(NSError**)error;
@@ -241,7 +240,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param		obj
  *				The Property List object to set.
  *	@param		key
- *				the key to set \obj to.
+ *				the key to set \c obj to.
  *	@param		path
  *				The file whose xattr you want to set.
  *	@param		travLnk
