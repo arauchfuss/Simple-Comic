@@ -1632,7 +1632,10 @@ images are currently visible and then skips over them.
 
 - (BOOL)currentPageIsText
 {
-	TSSTPage * page = [pageController selectedObjects][0];
+    NSArray* selectedObjects = [pageController selectedObjects];
+    if (selectedObjects.count == 0) return false;
+    
+	TSSTPage * page = selectedObjects[0];
 	return [[page valueForKey: @"text"] boolValue];
 }
 
