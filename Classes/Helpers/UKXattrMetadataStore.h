@@ -49,6 +49,21 @@ NS_ASSUME_NONNULL_BEGIN
  */
 +(nullable NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk;
 
+/*!
+ *	@method		allKeysAtPath:traverseLink:
+ *	@param		path
+ *				The file to get xattr names from.
+ *	@param		travLnk
+ *				If <code>YES</code>, follows symlinks.
+ *	@param		error
+ *				If the method does not complete successfully, upon return
+ *				contains an \c NSError object that describes the problem.
+ *	@return		An \c NSArray of <code>NSString</code>s, or \c nil on failure.
+ *	@discussion	Returns an \c NSArray of <code>NSString</code>s containing all xattr names currently set
+ *				for the file at the specified path.
+ */
++(nullable NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error;
+
 #pragma mark Store UTF8 strings:
 /*!
  *	@method		setString:forKey:atPath:traverseLink:
