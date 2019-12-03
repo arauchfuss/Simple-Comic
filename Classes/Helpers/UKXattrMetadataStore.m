@@ -18,12 +18,6 @@
 
 @implementation UKXattrMetadataStore
 
-// -----------------------------------------------------------------------------
-//	allKeysAtPath:traverseLink:
-//		Return an NSArray of NSStrings containing all xattr names currently set
-//		for the file at the specified path.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
 
 +(NSArray*) allKeysAtPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
@@ -60,17 +54,14 @@
 }
 
 
-// -----------------------------------------------------------------------------
-//	setData:forKey:atPath:traverseLink:
-//		Set the xattr with name key to a block of raw binary data.
-//		path is the file whose xattr you want to set.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
+#pragma mark - Setters
+
 
 +(void) setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	[self setData:data forKey:key atPath:path traverseLink:travLnk error:NULL];
 }
+
 
 +(BOOL) setData: (NSData*)data forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)error
 {
@@ -85,13 +76,7 @@
 	}
 	return YES;
 }
-// -----------------------------------------------------------------------------
-//	setObject:forKey:atPath:traverseLink:
-//		Set the xattr with name key to an XML property list representation of
-//		the specified object (or object graph).
-//		path is the file whose xattr you want to set.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
+
 
 +(void)	setObject: (id)obj forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
@@ -108,6 +93,7 @@
 		[self setData: plistData forKey: key atPath: path traverseLink: travLnk error: NULL];
 }
 
+
 +(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path traverseLink:(BOOL)travLnk format:(NSPropertyListFormat)format error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
 	// Serialize our objects into a property list XML string:
@@ -122,18 +108,12 @@
 		return [self setData: plistData forKey: key atPath: path traverseLink: travLnk error: error];
 }
 
+
 +(BOOL) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
 	return [self setObject:obj forKey:key atPath:path traverseLink:travLnk format:NSPropertyListXMLFormat_v1_0 error:error];
 }
 
-// -----------------------------------------------------------------------------
-//	setString:forKey:atPath:traverseLink:
-//		Set the xattr with name key to an XML property list representation of
-//		the specified object (or object graph).
-//		path is the file whose xattr you want to set.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
 
 +(void)	setString: (NSString*)str forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
@@ -144,6 +124,7 @@
 	
 	[[self class] setData: data forKey: key atPath: path traverseLink: travLnk error: nil];
 }
+
 
 +(BOOL)	setString: (NSString*)str forKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)outError
 {
@@ -162,17 +143,15 @@
 	return [self setData: data forKey: key atPath: path traverseLink: travLnk error: outError];
 }
 
-// -----------------------------------------------------------------------------
-//	dataForKey:atPath:traverseLink:
-//		Retrieve the xattr with name key as a raw block of data.
-//		path is the file whose xattr you want to set.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
+
+#pragma mark - Getters
+
 
 +(NSData*) dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	return [self dataForKey:key atPath:path traverseLink:travLnk error:NULL];
 }
+
 
 +(NSData*) dataForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {
@@ -199,14 +178,6 @@
 }
 
 
-// -----------------------------------------------------------------------------
-//	objectForKey:atPath:traverseLink:
-//		Retrieve the xattr with name key, which is an XML property list
-//		and unserialize it back into an object or object graph.
-//		path is the file whose xattr you want to set.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
-
 +(id) objectForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSError		*err = nil;
@@ -217,6 +188,7 @@
 	
 	return obj;
 }
+
 
 +(nullable id) objectForKey: (NSString*)key atPath: (NSString*)path
 			   traverseLink: (BOOL)travLnk error: (NSError**)outError
@@ -238,14 +210,6 @@
 }
 
 
-// -----------------------------------------------------------------------------
-//	stringForKey:atPath:traverseLink:
-//		Retrieve the xattr with name key, which is an XML property list
-//		and unserialize it back into an object or object graph.
-//		path is the file whose xattr you want to set.
-//		If travLnk == YES, it follows symlinks.
-// -----------------------------------------------------------------------------
-
 +(NSString*) stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk
 {
 	NSData *data = [[self class] dataForKey: key atPath: path traverseLink: travLnk error: nil];
@@ -255,6 +219,7 @@
 	
 	return [[NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }
+
 
 +(NSString*) stringForKey: (NSString*)key atPath: (NSString*)path traverseLink:(BOOL)travLnk error:(NSError * _Nullable __autoreleasing * _Nullable)error
 {

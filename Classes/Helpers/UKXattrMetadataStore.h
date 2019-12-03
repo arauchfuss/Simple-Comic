@@ -23,7 +23,7 @@
 	names.
 	
 	It also includes some conveniences for storing/retrieving UTF8 strings,
-	and objects as XML property lists in addition to the raw data.
+	and objects as property lists in addition to the raw data.
 	
 	NOTE: keys (i.e. xattr names) are strings of 127 characters or less and
 	should be made like bundle identifiers, e.g. @"de.zathras.myattribute".
@@ -35,6 +35,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/*!
+ *	@class		UKXattrMetadataStore
+ *	@discussion	This is a wrapper around The Mac OS X 10.4 and later xattr
+ *	API that lets you attach arbitrary metadata to a file. Currently it
+ *	allows querying and changing the attributes of a file, as well as
+ *	retrieving a list of attribute names.
+ *
+ *	It also includes some conveniences for storing/retrieving UTF8 strings,
+ *	and objects as property lists in addition to the raw data.
+ *
+ *	NOTE: keys (i.e. xattr names) are strings of 127 characters or less and
+ *	should be made like bundle identifiers, e.g. @"de.zathras.myattribute".
+ */
 @interface UKXattrMetadataStore : NSObject
 
 /*!
@@ -47,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@discussion	Returns an \c NSArray of <code>NSString</code>s containing all xattr names currently set
  *				for the file at the specified path.
  */
-+(nullable NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk;
++(nullable NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("");
 
 /*!
  *	@method		allKeysAtPath:traverseLink:
@@ -149,8 +162,6 @@ NS_ASSUME_NONNULL_BEGIN
  *				The file whose xattr you want to set.
  *	@param		travLnk
  *				If <code>YES</code>, follows symlinks.
- *	@discussion	Set the xattr with name key to an XML property list representation of
- *				the specified object (or object graph).
  *	@deprecated	This method has no way of indicating success or failure.
  */
 +(void) setData:(NSData*)data forKey:(NSString*)key
