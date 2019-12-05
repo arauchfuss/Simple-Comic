@@ -329,26 +329,6 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>savedSearch</string>
-			</array>
-			<key>CFBundleTypeMIMETypes</key>
-			<array>
-				<string>application/xml</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>Smart Folder</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>com.apple.finder.smart-folder</string>
-			</array>
-			<key>LSTypeIsPackage</key>
-			<false/>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
 				<string>tar</string>
 			</array>
 			<key>CFBundleTypeMIMETypes</key>
@@ -423,27 +403,6 @@
 	</array>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>Smart Folder</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.apple.finder.smart-folder</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>com.apple.ostype</key>
-				<array>
-					<string>sfld</string>
-				</array>
-				<key>public.filename-extension</key>
-				<array>
-					<string>savedSearch</string>
-				</array>
-			</dict>
-		</dict>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
@@ -636,7 +595,7 @@
 				<string>public.image</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Google's WebP</string>
+			<string>Google&apos;s WebP</string>
 			<key>UTTypeIdentifier</key>
 			<string>public.webp</string>
 			<key>UTTypeTagSpecification</key>

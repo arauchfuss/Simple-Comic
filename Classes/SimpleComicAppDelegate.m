@@ -461,7 +461,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		NSLog(@"%@",[error localizedDescription]);
 	}
 	
-	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1708"])
+	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1709"])
 	{
 		if(![fileManager removeItemAtURL: url error: &error])
 		{
@@ -476,7 +476,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		[[NSApplication sharedApplication] presentError: error];
 	}
 	
-	[SimpleComicAppDelegate setMetadata: @"Version 1708" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
+	[SimpleComicAppDelegate setMetadata: @"Version 1709" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
 	
 	return persistentStoreCoordinator;
 }
@@ -642,14 +642,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 					fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Image" inManagedObjectContext: [self managedObjectContext]];
 					[fileDescription setValue: path.path forKey: @"imagePath"];
 				}
-				else if([fileExtension compare:@"savedsearch" options:NSCaseInsensitiveSearch] == NSOrderedSame)
-				{
-					//fileDescription = [NSEntityDescription insertNewObjectForEntityForName: @"SavedSearch" inManagedObjectContext: [self managedObjectContext]];
-					mgroup = [NSEntityDescription insertNewObjectForEntityForName: @"SmartFolder" inManagedObjectContext: [self managedObjectContext]];
-					mgroup.fileURL = path;
-					mgroup.name = path.lastPathComponent;
-					[(ManagedSmartFolder*)mgroup smartFolderContents];
-				}
 				
 				if(mgroup)
 				{
@@ -685,8 +677,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	NSMutableArray * allAllowedFileTypes = [[TSSTManagedArchive archiveTypes] mutableCopy];
 	[allAllowedFileTypes addObjectsFromArray: [TSSTPage imageTypes]];
 	[allAllowedFileTypes addObject:(NSString*)kUTTypePDF];
-	// TODO: make a savedSearch constant?
-	[allAllowedFileTypes addObject: @"com.apple.finder.smart-folder"];
 	[addPagesModal setAllowedFileTypes:allAllowedFileTypes];
 	
 	if([addPagesModal runModal] !=  NSModalResponseCancel)
