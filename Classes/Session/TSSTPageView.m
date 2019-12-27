@@ -769,21 +769,21 @@ typedef struct {
 	{
 		NSInteger loupeDiameter = [defaultsController integerForKey: TSSTLoupeDiameter];
 		loupeDiameter += [theEvent deltaY] > 0 ? -25 : 25;
-		loupeDiameter = loupeDiameter < 200 ? 200 : loupeDiameter;
-		loupeDiameter = loupeDiameter > 500 ? 500 : loupeDiameter;
+		loupeDiameter = MAX(loupeDiameter, 200);
+		loupeDiameter = MIN(loupeDiameter, 500);
 		[defaultsController setInteger: loupeDiameter forKey: TSSTLoupeDiameter];
 	}
 	else if((modifier & NSEventModifierFlagOption) && [theEvent deltaY])
 	{
 		CGFloat loupePower = [defaultsController doubleForKey: TSSTLoupePower];
 		loupePower += [theEvent deltaY] > 0 ? -0.5 : 0.5;
-		loupePower = loupePower < 1.5 ? 1.5 : loupePower;
-		loupePower = loupePower > 6 ? 6 : loupePower;
+		loupePower = MAX(loupePower, 1.5);
+		loupePower = MIN(loupePower, 6);
 		[defaultsController setDouble: loupePower forKey: TSSTLoupePower];
 	}
 	else if(scaling == 1)
 	{
-		float deltaX = [theEvent deltaX];
+		CGFloat deltaX = [theEvent deltaX];
 		if (deltaX != 0.0)
 		{
 			[theEvent trackSwipeEventWithOptions:NSEventSwipeTrackingLockDirection
