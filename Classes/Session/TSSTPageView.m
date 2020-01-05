@@ -581,6 +581,9 @@ typedef struct {
 	secondPageRect = NSZeroRect;
 	NSRect visibleRect = [[self enclosingScrollView] documentVisibleRect];
 	NSRect frameRect = [self frame];
+	if (frameRect.size.width <= 0 || frameRect.size.height <= 0) {
+		return; //TODO: How did we get here?
+	}
 	CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
 	CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
 	NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel.doubleValue];
