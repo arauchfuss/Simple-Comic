@@ -461,7 +461,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		NSLog(@"%@",[error localizedDescription]);
 	}
 	
-	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1709"])
+	if(![[storeInfo valueForKey: @"viewVersion"] isEqualToString: @"Version 1708"])
 	{
 		if(![fileManager removeItemAtURL: url error: &error])
 		{
@@ -476,7 +476,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		[[NSApplication sharedApplication] presentError: error];
 	}
 	
-	[SimpleComicAppDelegate setMetadata: @"Version 1709" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
+	[SimpleComicAppDelegate setMetadata: @"Version 1708" forKey: @"viewVersion" onStoreWithURL: url managedBy: persistentStoreCoordinator];
 	
 	return persistentStoreCoordinator;
 }

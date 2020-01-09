@@ -92,7 +92,7 @@
 		
 		if (fileURL && othErr == nil) {
 			NSOpenPanel *panel = [NSOpenPanel openPanel];
-			//panel.canChooseDirectories = NO;
+			panel.canChooseDirectories = YES;
 			panel.allowsMultipleSelection = NO;
 			//panel.expanded = YES;
 			panel.message = [NSString stringWithFormat:NSLocalizedString(@"Please re-select '%@'", @"re-select file request"), fileURL.lastPathComponent];
