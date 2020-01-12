@@ -541,9 +541,9 @@
 				28195B410C166DF5001F5E95 /* Info.plist */,
 				281314590C0A7D5200EC007B /* Credits.rtf */,
 				287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */,
+				55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */,
 				8F0D3FC31CCDC28E005D3B49 /* Simple Comic.entitlements */,
 				8F54DD521CCA336B001403DA /* container-migration.plist */,
-				55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
