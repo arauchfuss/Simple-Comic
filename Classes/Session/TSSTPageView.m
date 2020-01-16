@@ -432,7 +432,7 @@ typedef struct {
 	NSRect secondFragment = NSZeroRect;
 	NSSize zoomSize;
 	
-	if([sessionController.session.pageOrder boolValue] || ![secondPageImage isValid])
+	if(sessionController.session.pageOrder || ![secondPageImage isValid])
 	{
 		scale = NSHeight(imageRect) / [firstPageImage size].height;
 		zoomSize = NSMakeSize(NSWidth(rect) / (power * scale), NSHeight(rect) / (power * scale));
@@ -586,12 +586,12 @@ typedef struct {
 	}
 	CGFloat xpercent = NSMidX(visibleRect) / frameRect.size.width;
 	CGFloat ypercent = NSMidY(visibleRect) / frameRect.size.height;
-	NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel.doubleValue];
+	NSSize imageSize = [self combinedImageSizeForZoom: sessionController.session.zoomLevel];
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
 	NSSize viewSize = NSZeroSize;
 	CGFloat scaleToFit;
-	NSInteger scaling = sessionController.session.scaleOptions.integerValue;
+	NSInteger scaling = sessionController.session.scaleOptions;
 	scaling = [sessionController currentPageIsText] ? 2 : scaling;
 	switch (scaling)
 	{
@@ -628,7 +628,7 @@ typedef struct {
 	[self setFrameSize: viewSize];
 	
 	if(![defaults boolForKey: TSSTConstrainScale] &&
-	   sessionController.session.scaleOptions.integerValue != 0 )
+	   sessionController.session.scaleOptions != 0 )
 	{
 		if( viewSize.width / viewSize.height < imageSize.width / imageSize.height)
 		{
@@ -652,7 +652,7 @@ typedef struct {
 	if([secondPageImage isValid])
 	{
 		secondPageRect.size = scaleSize([secondPageImage size] , NSHeight(imageRect) / [secondPageImage size].height);
-		if([sessionController.session.pageOrder boolValue])
+		if(sessionController.session.pageOrder)
 		{
 			firstPageRect.origin = imageRect.origin;
 			secondPageRect.origin = NSMakePoint(NSMaxX(firstPageRect), NSMinY(imageRect));
@@ -685,7 +685,7 @@ typedef struct {
 		firstPageSide = bounds;
 		secondPageSide = NSZeroRect;
 	}
-	else if([sessionController.session.pageOrder boolValue])
+	else if(sessionController.session.pageOrder)
 	{
 		firstPageSide = NSMakeRect(0, 0, NSMaxX(firstPageRect), NSHeight(bounds));
 		secondPageSide = NSMakeRect(NSMinX(secondPageRect), 0, NSWidth(bounds) - NSMinX(secondPageRect), NSHeight(bounds));
@@ -964,7 +964,7 @@ typedef struct {
 	
 	if(NSMaxY([self bounds]) <= NSMaxY(visible))
 	{
-		if([sessionController.session.pageOrder boolValue])
+		if(sessionController.session.pageOrder)
 		{
 			if(NSMinX(visible) > 0)
 			{
@@ -1006,7 +1006,7 @@ typedef struct {
 	
 	if(scrollPoint.y <= 0)
 	{
-		if([sessionController.session.pageOrder boolValue])
+		if(sessionController.session.pageOrder)
 		{
 			if(NSMaxX(visible) < NSWidth([self bounds]))
 			{
@@ -1094,7 +1094,7 @@ typedef struct {
 	int delta = 1000 * difference * multiplier;
 	TSSTTurn turn = TSSTTurnNone;
 	NSString * directionString = nil;
-	BOOL turnDirection = [sessionController.session.pageOrder boolValue];
+	BOOL turnDirection = sessionController.session.pageOrder;
 	BOOL finishTurn = NO;
 	if(scrollKeys & TSSTArrowKeyUp)
 	{
@@ -1195,8 +1195,8 @@ typedef struct {
 
 - (void)rightMouseDown:(NSEvent *)theEvent
 {
-	BOOL loupe = !sessionController.session.loupe.boolValue;
-	sessionController.session.loupe = @(loupe);
+	BOOL loupe = !sessionController.session.loupe;
+	sessionController.session.loupe = loupe;
 }
 
 
@@ -1369,8 +1369,8 @@ typedef struct {
 	previousZoom += ([event magnification] * 2);
 	previousZoom = previousZoom < 5 ? previousZoom : 5;
 	previousZoom = previousZoom > .25 ? previousZoom : .25;
-	session.zoomLevel = @(previousZoom);
-	session.scaleOptions = @0;
+	session.zoomLevel = previousZoom;
+	session.scaleOptions = 0;
 	
 	[self resizeView];
 }

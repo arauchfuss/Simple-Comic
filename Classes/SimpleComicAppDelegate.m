@@ -592,9 +592,9 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	TSSTManagedSession * sessionDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Session" inManagedObjectContext: [self managedObjectContext]];
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
-	sessionDescription.scaleOptions = [defaults valueForKey: TSSTPageScaleOptions];
-	sessionDescription.pageOrder = [defaults valueForKey: TSSTPageOrder];
-	sessionDescription.twoPageSpread = [defaults valueForKey: TSSTTwoPageSpread];
+	sessionDescription.scaleOptions = [defaults integerForKey: TSSTPageScaleOptions];
+	sessionDescription.pageOrder = [defaults boolForKey: TSSTPageOrder];
+	sessionDescription.twoPageSpread = [defaults boolForKey: TSSTTwoPageSpread];
 	
 	[self addFileURLs: files toSession: sessionDescription];
 	

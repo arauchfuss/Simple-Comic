@@ -117,18 +117,18 @@ static NSSize monospaceCharacterSize;
 
 - (BOOL)shouldDisplayAlone
 {   
-	if([self.text boolValue])
+	if(self.text)
 	{
 		return YES;
 	}
 	
 	CGFloat defaultAspect = 1;
-	CGFloat aspect = [self.aspectRatio doubleValue];
+	CGFloat aspect = self.aspectRatio;
 	if(!aspect)
 	{
 		NSData * imageData = [self pageData];
 		[self setOwnSizeInfoWithData: imageData];
-		aspect = [self.aspectRatio doubleValue];
+		aspect = self.aspectRatio;
 	}
 	
 	return aspect != 0 ? aspect > defaultAspect : YES;
@@ -150,9 +150,9 @@ static NSSize monospaceCharacterSize;
 	if(!NSEqualSizes(NSZeroSize, imageSize))
 	{
 		aspect = imageSize.width / imageSize.height;
-		self.width = @(imageSize.width);
-		self.height = @(imageSize.height);
-		self.aspectRatio = @(aspect);
+		self.width = imageSize.width;
+		self.height = imageSize.height;
+		self.aspectRatio = aspect;
 	}
 }
 
@@ -205,7 +205,7 @@ static NSSize monospaceCharacterSize;
 
 - (NSImage *)pageImage
 {
-	if([self.text boolValue])
+	if(self.text)
 	{
 		return [self textPage];
 	}
@@ -219,7 +219,7 @@ static NSSize monospaceCharacterSize;
 		imageFromData = [[NSImage alloc] initWithData: imageData];
 	}
 	
-	NSSize imageSize =  NSMakeSize([self.width doubleValue], [self.height doubleValue]);
+	NSSize imageSize =  NSMakeSize(self.width, self.height);
 	
 	if(!imageFromData || NSEqualSizes(NSZeroSize, imageSize))
 	{

@@ -17,13 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<TSSTPage *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSNumber *aspectRatio;
-@property (nullable, nonatomic, copy) NSNumber *height;
+@property (nonatomic) float aspectRatio;
+@property (nonatomic) double height;
 @property (nullable, nonatomic, copy) NSString *imagePath;
 @property (nullable, nonatomic, copy) NSNumber *index;
-@property (nullable, nonatomic, copy) NSNumber *text;
+@property (nonatomic) BOOL text;
 @property (nullable, nonatomic, retain) NSData *thumbnailData;
-@property (nullable, nonatomic, copy) NSNumber *width;
+@property (nonatomic) double width;
 @property (nullable, nonatomic, retain) TSSTManagedGroup *group;
 @property (nullable, nonatomic, retain) TSSTManagedSession *session;
 

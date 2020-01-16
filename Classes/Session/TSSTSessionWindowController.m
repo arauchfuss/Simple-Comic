@@ -81,7 +81,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		BOOL cascade = session.position ? NO : YES;
 		[self setShouldCascadeWindows: cascade];
 		/* Make sure that the session does not start out in fullscreen, nor with the loupe enabled. */
-		session.loupe = @NO;
+		session.loupe = NO;
 		/* Images are sorted by group and then image name. */
 		TSSTSortDescriptor * fileNameSort = [[TSSTSortDescriptor alloc] initWithKey: @"imagePath" ascending: YES];
 		TSSTSortDescriptor * archivePathSort = [[TSSTSortDescriptor alloc] initWithKey: @"group.path" ascending: YES];
@@ -118,7 +118,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[exposeBezel setFloatingPanel: YES];
 	[exposeBezel setWindowController: self];
 	[[self window] setAcceptsMouseMovedEvents: YES];
-	[pageController setSelectionIndex: [session.selection integerValue]];
+	[pageController setSelectionIndex: session.selection];
 	
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
@@ -217,19 +217,19 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
 	else if([keyPath isEqualToString: TSSTPageOrder])
 	{
-		[defaults setValue: session.pageOrder forKey: TSSTPageOrder];
+		[defaults setBool: session.pageOrder forKey: TSSTPageOrder];
 		[(TSSTThumbnailView *)exposeView setNeedsDisplay: YES];
 		[(TSSTThumbnailView *)exposeView buildTrackingRects];
 		[self changeViewImages];
 	}
 	else if([keyPath isEqualToString: TSSTPageScaleOptions])
 	{
-		[defaults setValue: session.scaleOptions forKey: TSSTPageScaleOptions];
+		[defaults setInteger: session.scaleOptions forKey: TSSTPageScaleOptions];
 		[self scaleToWindow];
 	}
 	else if([keyPath isEqualToString: TSSTTwoPageSpread])
 	{
-		[defaults setValue: session.twoPageSpread forKey: TSSTTwoPageSpread];
+		[defaults setBool: session.twoPageSpread forKey: TSSTTwoPageSpread];
 		[self changeViewImages];
 	}
 	else if([keyPath isEqualToString: TSSTBackgroundColor])
@@ -323,7 +323,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)refreshLoupePanel
 {
-	BOOL loupe = [session.loupe boolValue];
+	BOOL loupe = session.loupe;
 	NSPoint mouse = [NSEvent mouseLocation];
 	
 	NSRect point = NSMakeRect(mouse.x, mouse.y, 0, 0);
@@ -392,22 +392,22 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)changeTwoPage:(id)sender
 {
-	BOOL spread = ![session.twoPageSpread boolValue];
-	session.twoPageSpread = @(spread);
+	BOOL spread = !session.twoPageSpread;
+	session.twoPageSpread = spread;
 }
 
 
 - (IBAction)changePageOrder:(id)sender
 {
-	BOOL pageOrder = ![session.pageOrder boolValue];
-	session.pageOrder = @(pageOrder);
+	BOOL pageOrder = !session.pageOrder;
+	session.pageOrder = pageOrder;
 }
 
 
 - (IBAction)changeScaling:(id)sender
 {
 	DTPageScaling scaleType = [sender tag] % 400;
-	session.scaleOptions = @(scaleType);
+	session.scaleOptions = scaleType;
 }
 
 
@@ -431,7 +431,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (IBAction)pageRight:(id)sender
 {
 	[self setPageTurn: 2];
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
 	{
 		[self nextPage];
 	}
@@ -449,7 +449,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
 	[self setPageTurn: 1];
 	
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
 	{
 		[self previousPage];
 	}
@@ -462,7 +462,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)shiftPageRight:(id)sender
 {
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
 	{
 		[pageController selectNext: sender];
 	}
@@ -475,7 +475,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)shiftPageLeft:(id)sender
 {
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
 	{
 		[pageController selectPrevious: sender];
 	}
@@ -489,7 +489,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (IBAction)skipRight:(id)sender
 {
 	NSUInteger index;
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
 	{
 		index = ([pageController selectionIndex] + 10);
 		index = index < [[pageController content] count] ? index : [[pageController content] count] - 1;
@@ -507,7 +507,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (IBAction)skipLeft:(id)sender
 {
 	NSUInteger index;
-	if(![session.pageOrder boolValue])
+	if(!session.pageOrder)
 	{
 		index = ([pageController selectionIndex] + 10);
 		index = index < [[pageController content] count] ? index : [[pageController content] count] - 1;
@@ -553,16 +553,16 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)zoomIn:(id)sender
 {
-	int scalingOption = [session.scaleOptions intValue];
-	CGFloat previousZoom = [session.zoomLevel doubleValue];
+	int scalingOption = session.scaleOptions;
+	CGFloat previousZoom = session.zoomLevel;
 	if(scalingOption != 0)
 	{
 		previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
 	}
 	
 	previousZoom += 0.1;
-	session.zoomLevel = @(previousZoom);
-	session.scaleOptions = @0;
+	session.zoomLevel = previousZoom;
+	session.scaleOptions = 0;
 	
 	[pageView resizeView];
 	[self refreshLoupePanel];
@@ -570,8 +570,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)zoomOut:(id)sender
 {
-	int scalingOption = [session.scaleOptions intValue];
-	CGFloat previousZoom = [session.zoomLevel doubleValue];
+	int scalingOption = session.scaleOptions;
+	CGFloat previousZoom = session.zoomLevel;
 	if(scalingOption != 0)
 	{
 		previousZoom = NSWidth([pageView imageBounds]) / [pageView combinedImageSizeForZoom: 1].width;
@@ -579,8 +579,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
 	previousZoom -= 0.1;
 	previousZoom = previousZoom < 0.1 ? 0.1 : previousZoom;
-	session.zoomLevel = @(previousZoom);
-	session.scaleOptions = @0;
+	session.zoomLevel = previousZoom;
+	session.scaleOptions = 0;
 	
 	[pageView resizeView];
 	[self refreshLoupePanel];
@@ -588,8 +588,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)zoomReset:(id)sender
 {
-	session.scaleOptions = @0;
-	session.zoomLevel = @1.0;
+	session.scaleOptions = 0;
+	session.zoomLevel = 1.0;
 	[pageView resizeView];
 	[self refreshLoupePanel];
 }
@@ -610,25 +610,25 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)rotateRight:(id)sender
 {
-	int currentRotation = session.rotation.intValue;
+	int currentRotation = session.rotation;
 	currentRotation = currentRotation + 1 > 3 ? 0 : currentRotation + 1;
-	session.rotation = @(currentRotation);
+	session.rotation = currentRotation;
 	[self resizeWindow];
 	[self refreshLoupePanel];
 }
 
 - (IBAction)rotateLeft:(id)sender
 {
-	int currentRotation = session.rotation.intValue;
+	int currentRotation = session.rotation;
 	currentRotation = currentRotation - 1 < 0 ? 3 : currentRotation - 1;
-	session.rotation = @(currentRotation);
+	session.rotation = currentRotation;
 	[self resizeWindow];
 	[self refreshLoupePanel];
 }
 
 - (IBAction)noRotation:(id)sender
 {
-	session.rotation = @0;
+	session.rotation = 0;
 	[self resizeWindow];
 	[self refreshLoupePanel];
 }
@@ -636,9 +636,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (IBAction)toggleLoupe:(id)sender
 {
-	BOOL loupe = [session.loupe boolValue];
+	BOOL loupe = session.loupe;
 	loupe = !loupe;
-	session.loupe = @(loupe);
+	session.loupe = loupe;
 }
 
 
@@ -725,7 +725,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	gutter around the images for cropping. */
 - (void)changeViewForSelection
 {
-	savedZoom = [session.zoomLevel doubleValue];
+	savedZoom = session.zoomLevel;
 	[pageScrollView setHasVerticalScroller: NO];
 	[pageScrollView setHasHorizontalScroller: NO];
 	[self refreshLoupePanel];
@@ -743,7 +743,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		factor = scrollerBounds.height / imageSize.height;
 	}
 	
-	session.zoomLevel = @(factor);
+	session.zoomLevel = factor;
 	[pageView resizeView];
 }
 
@@ -757,7 +757,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	/* Makes sure that the group is both an archive and not nested */
 	if([selectedGroup class] == [TSSTManagedArchive class] &&
 	   selectedGroup == [selectedGroup topLevelGroup] &&
-	   ![selectedPage.text boolValue])
+	   !selectedPage.text)
 	{
 		return YES;
 	}
@@ -774,7 +774,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)cancelPageSelection
 {
-	session.zoomLevel = @(savedZoom);
+	session.zoomLevel = savedZoom;
 	pageSelectionInProgress = PageSelectionModeNone;
 	[self scaleToWindow];
 }
@@ -797,7 +797,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 			break;
 	}
 	
-	session.zoomLevel = @(savedZoom);
+	session.zoomLevel = savedZoom;
 	pageSelectionInProgress = PageSelectionModeNone;
 	[self scaleToWindow];
 }
@@ -850,7 +850,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		/* Makes sure that the group is both an archive and not nested */
 		if([selectedGroup isKindOfClass:[TSSTManagedArchive class]] &&
 		   selectedGroup == [selectedGroup topLevelGroup] &&
-		   ![selectedPage.text boolValue])
+		   !selectedPage.text)
 		{
 			NSString * archivePath = [selectedGroup.path stringByStandardizingPath];
 			if([(TSSTManagedArchive *)selectedGroup quicklookCompatible])
@@ -903,7 +903,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		}
 	}
 	
-	session.zoomLevel = @(savedZoom);
+	session.zoomLevel = savedZoom;
 }
 
 
@@ -937,7 +937,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[loupeWindow setFrame:NSMakeRect(0,0, loupeDiameter, loupeDiameter) display: NO];
 	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	[pageScrollView setBackgroundColor: color];
-	[pageView setRotation: [session.rotation intValue]];
+	[pageView setRotation: session.rotation];
 	NSValue * positionValue;
 	NSData * posData = [session valueForKey: @"position"];
 	
@@ -975,9 +975,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	BOOL currentAllowed = ![pageOne shouldDisplayAlone] &&
 	!(index == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
 	
-	if(currentAllowed && [session.twoPageSpread boolValue] && pageTwo && ![pageTwo shouldDisplayAlone])
+	if(currentAllowed && session.twoPageSpread && pageTwo && ![pageTwo shouldDisplayAlone])
 	{
-		if([session.pageOrder boolValue])
+		if(session.pageOrder)
 		{
 			titleString = [NSString stringWithFormat:@"%@ %@", titleString, pageTwo.name];
 		}
@@ -1054,7 +1054,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 {
     BOOL hasVert = NO;
     BOOL hasHor = NO;
-	int scaling = [session.scaleOptions intValue];
+	int scaling = session.scaleOptions;
 	
 	if(pageSelectionInProgress || ![[NSUserDefaults standardUserDefaults] boolForKey: TSSTScrollersVisible])
 	{
@@ -1072,7 +1072,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		hasHor = YES;
 		break;
 	case  2:
-        session.zoomLevel = @1.0;
+        session.zoomLevel = 1.0;
 		if([pageView rotation] == 1 || [pageView rotation] == 3)
 		{
 			hasHor = YES;
@@ -1083,7 +1083,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		}
 		break;
 	default:
-        session.zoomLevel = @1.0;
+        session.zoomLevel = 1.0;
 		break;
 	}
 	
@@ -1130,7 +1130,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)nextPage
 {
-    if(![session.twoPageSpread boolValue])
+    if(!session.twoPageSpread)
     {
         [pageController selectNext: self];
         return;
@@ -1165,7 +1165,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)previousPage
 {
-    if(![session.twoPageSpread boolValue])
+    if(!session.twoPageSpread)
     {
         [pageController selectPrevious: self];
         return;
@@ -1228,9 +1228,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     {
         [[self window] toggleFullScreen: self];
     }
-	else if([session.loupe boolValue])
+	else if(session.loupe)
 	{
-        session.loupe = @NO;
+        session.loupe = NO;
 	}
 }
 
@@ -1241,7 +1241,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     {
         [[self window] toggleFullScreen: self];
     }
-    session.loupe = @NO;
+    session.loupe = NO;
     [self refreshLoupePanel];
 	[exposeBezel removeChildWindow: thumbnailPanel];
 	[thumbnailPanel orderOut: self];
@@ -1263,7 +1263,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (BOOL)canTurnPageLeft
 {
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
     {
         return [self canTurnPreviousPage];
     }
@@ -1276,7 +1276,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (BOOL)canTurnPageRight
 {
-	if([session.pageOrder boolValue])
+	if(session.pageOrder)
     {
         return [self canTurnPageNext];
     }
@@ -1303,7 +1303,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 		return NO;
 	}
 	
-	if((selectionIndex + 1) == ([[pageController content] count] - 1) && [session.twoPageSpread boolValue])
+	if((selectionIndex + 1) == ([[pageController content] count] - 1) && session.twoPageSpread)
 	{
 		NSArray * arrangedPages = [pageController arrangedObjects];
 		BOOL displayCurrentAlone = [arrangedPages[selectionIndex] shouldDisplayAlone];
@@ -1338,12 +1338,12 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     }
     else if([menuItem action] == @selector(changeTwoPage:))
     {
-        state = [session.twoPageSpread boolValue] ? NSOnState : NSOffState;
+        state = session.twoPageSpread ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem action] == @selector(changePageOrder:))
     {
-        if([session.pageOrder boolValue])
+        if(session.pageOrder)
         {
             [menuItem setTitle: NSLocalizedString(@"Right to Left", @"Right to left page order menu item text")];
         }
@@ -1386,29 +1386,29 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
 	else if ([menuItem action] == @selector(setArchiveIcon:))
 	{
-		valid = ![session.rotation intValue];
+		valid = !session.rotation;
 	}
 	else if ([menuItem action] == @selector(extractPage:))
 	{
-		valid = ![session.rotation intValue];
+		valid = !session.rotation;
 	}
 	else if ([menuItem action] == @selector(removePages:))
 	{
-		valid = ![session.rotation intValue];
+		valid = !session.rotation;
 	}
     else if([menuItem tag] == 400)
     {
-        state = session.scaleOptions.intValue == 0 ? NSOnState : NSOffState;
+        state = session.scaleOptions == 0 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem tag] == 401)
     {
-        state = session.scaleOptions.intValue == 1 ? NSOnState : NSOffState;
+        state = session.scaleOptions == 1 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
     else if([menuItem tag] == 402)
     {
-        state = session.scaleOptions.intValue == 2 ? NSOnState : NSOffState;
+        state = session.scaleOptions == 2 ? NSOnState : NSOffState;
         [menuItem setState: state];
     }
 	
@@ -1468,7 +1468,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     if([aNotification object] == [self window])
     {
         [NSApp setPresentationOptions: NSApplicationPresentationDefault];
-		if([session.loupe boolValue])
+		if(session.loupe)
 		{
 			[NSCursor hide];
 		}
@@ -1535,7 +1535,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (NSRect)optimalPageViewRectForRect:(NSRect)boundingRect
 {
-	NSSize maxImageSize = [pageView combinedImageSizeForZoom: [session.zoomLevel doubleValue]];
+	NSSize maxImageSize = [pageView combinedImageSizeForZoom: session.zoomLevel];
 	CGFloat vertOffset = [[self window] contentBorderThicknessForEdge: NSMinYEdge] + [[self window] toolbarHeight];
 	if([pageScrollView hasHorizontalScroller] && pageScrollView.horizontalScroller.scrollerStyle == NSScrollerStyleLegacy)
 	{
@@ -1549,7 +1549,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	correctedFrame.size.width -= horOffset;
 	correctedFrame.size.height -= vertOffset;
 	NSSize newSize;
-	if([session.scaleOptions intValue] == 1 && ![self currentPageIsText])
+	if(session.scaleOptions == 1 && ![self currentPageIsText])
 	{
 		CGFloat scale;
 		if( maxImageSize.width < NSWidth(correctedFrame) && maxImageSize.height < NSHeight(correctedFrame))
@@ -1590,7 +1590,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 - (BOOL)currentPageIsText
 {
 	TSSTPage * page = [pageController selectedObjects][0];
-	return [page.text boolValue];
+	return page.text;
 }
 
 
