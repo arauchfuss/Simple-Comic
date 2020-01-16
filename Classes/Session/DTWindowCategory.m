@@ -7,8 +7,6 @@
 //
 
 #import "DTWindowCategory.h"
-#import "TSSTSessionWindowController.h"
-#import "SimpleComicAppDelegate.h"
 
 @implementation NSWindow (DTWindowExtension)
 
