@@ -23,7 +23,7 @@
         <attribute name="pathData" attributeType="Binary" syncable="YES"/>
         <relationship name="group" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ImageGroup" inverseName="groups" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageGroup" inverseName="group" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
-        <relationship name="images" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" destinationEntity="Image" inverseName="group" inverseEntity="Image" indexed="YES" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Image" inverseName="group" inverseEntity="Image" indexed="YES" syncable="YES"/>
         <relationship name="session" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="groups" inverseEntity="Session" indexed="YES" syncable="YES"/>
     </entity>
     <entity name="PDF" representedClassName="TSSTManagedPDF" parentEntity="ImageGroup" syncable="YES"/>

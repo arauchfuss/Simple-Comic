@@ -943,13 +943,19 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
 	if(posData)
 	{
-		positionValue = [NSUnarchiver unarchiveObjectWithData: posData];
+		positionValue = [NSKeyedUnarchiver unarchiveObjectWithData: posData];
+		if (!positionValue) {
+			positionValue = [NSUnarchiver unarchiveObjectWithData: posData];
+		}
 		[[self window] setFrame: [positionValue rectValue] display: NO];
 		NSData * scrollData = session.scrollPosition;
 		if(scrollData)
 		{
 			[self setShouldCascadeWindows: NO];
-			positionValue = [NSUnarchiver unarchiveObjectWithData: scrollData];
+			positionValue = [NSKeyedUnarchiver unarchiveObjectWithData: scrollData];
+			if (!positionValue) {
+				positionValue = [NSUnarchiver unarchiveObjectWithData: scrollData];
+			}
 			[pageView scrollPoint: [positionValue pointValue]];
 		}
 	}
@@ -1201,11 +1207,11 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     if(![[self window] isFullscreen])
     {
         NSValue * postionValue = [NSValue valueWithRect: [[self window] frame]];
-        NSData * posData = [NSArchiver archivedDataWithRootObject: postionValue];
+        NSData * posData = [NSKeyedArchiver archivedDataWithRootObject: postionValue];
         session.position = posData;
         
         postionValue = [NSValue valueWithPoint: [[pageView enclosingScrollView] documentVisibleRect].origin];
-        posData = [NSArchiver archivedDataWithRootObject: postionValue];
+        posData = [NSKeyedArchiver archivedDataWithRootObject: postionValue];
         session.scrollPosition = posData;
     }
     else
