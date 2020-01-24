@@ -218,7 +218,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		[defaults registerDefaults: standardDefaults];
 		NSData *colorData = [defaults dataForKey: TSSTBackgroundColor];
 		// Convert old NSArchiver color key to NSKeyedArchiver, if needed
-		if ([NSKeyedUnarchiver unarchiveObjectWithData: colorData] != nil) {
+		if ([NSKeyedUnarchiver unarchiveObjectWithData: colorData] == nil) {
 			NSColor *newColor = [NSUnarchiver unarchiveObjectWithData: colorData];
 			if (newColor && [newColor isKindOfClass: [NSColor class]]) {
 				NSData *newKey = [NSKeyedArchiver archivedDataWithRootObject: newColor];
