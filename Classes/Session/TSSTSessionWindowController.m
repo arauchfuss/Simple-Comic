@@ -1595,7 +1595,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (BOOL)currentPageIsText
 {
-	TSSTPage * page = [pageController selectedObjects][0];
+	TSSTPage * page = [pageController selectedObjects].firstObject;
 	return page.text;
 }
 
