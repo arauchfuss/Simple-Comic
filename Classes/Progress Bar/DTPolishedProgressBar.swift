@@ -24,7 +24,7 @@ import Cocoa
 
 private var backgroundColor: NSColor {
 	if #available(OSX 10.14, *) {
-		return NSColor.controlColor.withAlphaComponent(0.55)
+		return NSColor.clear
 	} else {
 		return NSColor(calibratedRed: 1, green: 1, blue: 1, alpha: 0.55)
 	}
