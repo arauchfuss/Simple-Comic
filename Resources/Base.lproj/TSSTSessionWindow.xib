@@ -420,7 +420,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="448">
-                        <rect key="frame" x="63" y="11" width="43" height="21"/>
+                        <rect key="frame" x="63" y="11" width="41" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="JaI-oV-G1J"/>
                         </constraints>
@@ -441,7 +441,7 @@
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="752">
-                        <rect key="frame" x="113.5" y="9" width="56" height="23"/>
+                        <rect key="frame" x="112" y="9" width="56" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="Jump" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="753">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -454,7 +454,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="754">
-                        <rect key="frame" x="176.5" y="9" width="56" height="23"/>
+                        <rect key="frame" x="176" y="9" width="56" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="755">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -470,7 +470,7 @@ Gw
                         <rect key="frame" x="18" y="14" width="39" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page:" id="502">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
