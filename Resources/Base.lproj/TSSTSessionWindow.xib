@@ -245,7 +245,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="39" height="25"/>
                         <size key="maxSize" width="39" height="25"/>
-                        <button key="view" toolTip="Magnifing Glass" verticalHuggingPriority="750" id="573">
+                        <button key="view" toolTip="Magnifying Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="1" y="14" width="39" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="loupeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">

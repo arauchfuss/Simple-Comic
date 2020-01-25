@@ -8,8 +8,8 @@
 /* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
 "231.title" = "Automatically resize windows";
 
-/* Class = "NSTextFieldCell"; title = "Images will not excede their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
-"234.title" = "Images will not excede their actual resolution in \"fit to window\" scaling modes.";
+/* Class = "NSTextFieldCell"; title = "Images will not exceed their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
+"234.title" = "Images will not exceed their actual resolution in \"fit to window\" scaling modes.";
 
 /* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
 "235.title" = "Windows automatically resize to maximize viewing area.";

@@ -1,4 +1,0 @@
-/* Localized versions of Info.plist keys */
-
-CFBundleGetInfoString = "QuickComic version 0.3, Copyright © 2007 Dancing Tortoise Software.";
-NSHumanReadableCopyright = "Copyright © 2007 Dancing Tortoise Software.";

@@ -17,7 +17,7 @@
 /* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
 "231.title" = "自動調整窗口尺寸";
 
-/* Class = "NSTextFieldCell"; title = "Images will not excede their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
+/* Class = "NSTextFieldCell"; title = "Images will not exceed their actual resolution in \"fit to window\" scaling modes."; ObjectID = "234"; */
 "234.title" = "「適合窗口」縮放模式中圖片不會超過其實際分辨率。";
 
 /* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
