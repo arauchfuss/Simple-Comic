@@ -31,8 +31,6 @@
 			<array>
 				<string>rar</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>rar</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/rar</string>
@@ -57,8 +55,6 @@
 			<array>
 				<string>zip</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>zip</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/zip</string>
@@ -111,8 +107,6 @@
 			<array>
 				<string>7z</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>7z</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/x-7z-compressed</string>
@@ -138,8 +132,6 @@
 				<string>lha</string>
 				<string>lzh</string>
 			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>lzh</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/x-lzh-compressed</string>
@@ -405,10 +397,6 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUFeedURL</key>
-	<string>http://www.dancingtortoise.com/simplecomic/simplecomic.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
@@ -515,8 +503,6 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>LHA Archive</string>
-			<key>UTTypeIconFile</key>
-			<string>lha</string>
 			<key>UTTypeIdentifier</key>
 			<string>public.archive.lha</string>
 			<key>UTTypeTagSpecification</key>
@@ -548,8 +534,6 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>7z Archive</string>
-			<key>UTTypeIconFile</key>
-			<string>7z</string>
 			<key>UTTypeIdentifier</key>
 			<string>org.7-zip.7-zip-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -573,8 +557,6 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>7z Comic Archive Archive</string>
-			<key>UTTypeIconFile</key>
-			<string>7z</string>
 			<key>UTTypeIdentifier</key>
 			<string>org.7-zip.7-zip-comic-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -601,8 +583,6 @@
 			</array>
 			<key>UTTypeDescription</key>
 			<string>RAR Archive</string>
-			<key>UTTypeIconFile</key>
-			<string>rar</string>
 			<key>UTTypeIdentifier</key>
 			<string>com.rarlab.rar-archive</string>
 			<key>UTTypeTagSpecification</key>
