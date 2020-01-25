@@ -109,7 +109,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 				return kQLReturnNoError;
 			}
 			
-			NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconBookFlavor)};
+			NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconShadowFlavor)};
 			CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, (__bridge CFDictionaryRef)(properties));
 			if(cgContext)
 			{
