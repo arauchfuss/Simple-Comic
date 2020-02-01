@@ -562,7 +562,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 {
 	TSSTManagedSession * session;
 	NSFetchRequest * sessionRequest = [TSSTManagedSession fetchRequest];
-	//[sessionRequest setEntity: [NSEntityDescription entityForName: @"Session" inManagedObjectContext: [self managedObjectContext]]];
 	NSError * fetchError;
 	NSArray * managedSessions = [[self managedObjectContext] executeFetchRequest: sessionRequest error: &fetchError];
 	for(session in managedSessions)
