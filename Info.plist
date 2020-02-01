@@ -595,7 +595,7 @@
 				<string>public.image</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Google&apos;s WebP</string>
+			<string>Google's WebP</string>
 			<key>UTTypeIdentifier</key>
 			<string>public.webp</string>
 			<key>UTTypeTagSpecification</key>
