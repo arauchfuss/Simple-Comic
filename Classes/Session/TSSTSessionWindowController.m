@@ -376,9 +376,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[infoPicture setFrameSize: thumbSize];
 	[infoPicture setImage: thumb];
 	
-	NSRect area = NSMakeRect(point.x, point.y, 0, 0);
-	cursorPoint = [[self window] convertRectToScreen: area].origin;
-	
 	cursorPoint = [[bar window] convertRectToScreen: (NSRect){point, NSZeroSize}].origin;
 	
 	[infoWindow caretAtPoint: cursorPoint size: NSMakeSize(thumbSize.width, thumbSize.height)
