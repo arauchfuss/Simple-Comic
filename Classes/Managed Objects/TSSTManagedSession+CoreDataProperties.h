@@ -18,16 +18,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<TSSTManagedSession *> *)fetchRequest;
 
-@property (nullable, nonatomic, copy) NSNumber *fullscreen;
-@property (nullable, nonatomic, copy) NSNumber *loupe;
-@property (nullable, nonatomic, copy) NSNumber *pageOrder;
+@property (nonatomic) BOOL fullscreen;
+@property (nonatomic) BOOL loupe;
+@property (nonatomic) BOOL pageOrder;
 @property (nullable, nonatomic, retain) NSData *position;
-@property (nullable, nonatomic, copy) NSNumber *rotation;
-@property (nullable, nonatomic, copy) NSNumber *scaleOptions;
+@property (nonatomic) int16_t rotation;
+@property (nonatomic) int16_t scaleOptions;
 @property (nullable, nonatomic, retain) NSData *scrollPosition;
-@property (nullable, nonatomic, copy) NSNumber *selection;
-@property (nullable, nonatomic, copy) NSNumber *twoPageSpread;
-@property (nullable, nonatomic, copy) NSNumber *zoomLevel;
+@property (nonatomic) int16_t selection;
+@property (nonatomic) BOOL twoPageSpread;
+@property (nonatomic) float zoomLevel;
 @property (nullable, nonatomic, retain) NSSet<TSSTManagedGroup *> *groups;
 @property (nullable, nonatomic, retain) NSSet<TSSTPage *> *images;
 

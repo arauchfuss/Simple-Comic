@@ -152,6 +152,9 @@ textStyle: Dictionary of string attributes.
 	/// Draws the progressbar.
 	override func draw(_ dirtyRect: NSRect) {
 		let totalString = String(maxValue)
+		guard currentValue != NSNotFound else {
+			return
+		}
 		let progressString = String(currentValue + 1)
 		let leftString: String
 		let rightString: String

@@ -218,7 +218,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		[defaults registerDefaults: standardDefaults];
 		NSData *colorData = [defaults dataForKey: TSSTBackgroundColor];
 		// Convert old NSArchiver color key to NSKeyedArchiver, if needed
-		if ([NSKeyedUnarchiver unarchiveObjectWithData: colorData] != nil) {
+		if ([NSKeyedUnarchiver unarchiveObjectWithData: colorData] == nil) {
 			NSColor *newColor = [NSUnarchiver unarchiveObjectWithData: colorData];
 			if (newColor && [newColor isKindOfClass: [NSColor class]]) {
 				NSData *newKey = [NSKeyedArchiver archivedDataWithRootObject: newColor];
@@ -561,8 +561,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 - (void)sessionRelaunch
 {
 	TSSTManagedSession * session;
-	NSFetchRequest * sessionRequest = [NSFetchRequest new];
-	[sessionRequest setEntity: [NSEntityDescription entityForName: @"Session" inManagedObjectContext: [self managedObjectContext]]];
+	NSFetchRequest * sessionRequest = [TSSTManagedSession fetchRequest];
 	NSError * fetchError;
 	NSArray * managedSessions = [[self managedObjectContext] executeFetchRequest: sessionRequest error: &fetchError];
 	for(session in managedSessions)
@@ -592,9 +591,9 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	TSSTManagedSession * sessionDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Session" inManagedObjectContext: [self managedObjectContext]];
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	
-	sessionDescription.scaleOptions = [defaults valueForKey: TSSTPageScaleOptions];
-	sessionDescription.pageOrder = [defaults valueForKey: TSSTPageOrder];
-	sessionDescription.twoPageSpread = [defaults valueForKey: TSSTTwoPageSpread];
+	sessionDescription.scaleOptions = [defaults integerForKey: TSSTPageScaleOptions];
+	sessionDescription.pageOrder = [defaults boolForKey: TSSTPageOrder];
+	sessionDescription.twoPageSpread = [defaults boolForKey: TSSTTwoPageSpread];
 	
 	[self addFileURLs: files toSession: sessionDescription];
 	

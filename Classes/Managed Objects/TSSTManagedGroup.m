@@ -39,7 +39,7 @@
 - (void)willTurnIntoFault
 {
 	NSError * error = nil;
-	if([self.nested boolValue])
+	if(self.nested)
 	{
 		if(![[NSFileManager defaultManager] removeItemAtURL: self.fileURL error: &error])
 		{
@@ -292,7 +292,7 @@
 - (void)willTurnIntoFault
 {
 	NSError * error;
-	if([self.nested boolValue])
+	if(self.nested)
 	{
 		if(![[NSFileManager defaultManager] removeItemAtPath: self.path error: &error])
 		{
@@ -423,7 +423,7 @@
 				fileData = [imageArchive contentsOfEntry: counter];
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"Archive" inManagedObjectContext: [self managedObjectContext]];
 				nestedDescription.name = fileName;
-				nestedDescription.nested = @YES;
+				nestedDescription.nested = YES;
 				
 				collision = 0;
 				do {
@@ -463,7 +463,7 @@
 				[fileData writeToFile: archivePath atomically: YES];
 				
 				nestedDescription.path = archivePath;
-				nestedDescription.nested = @YES;
+				nestedDescription.nested = YES;
 				[(TSSTManagedPDF *)nestedDescription pdfContents];
 			}
 			

@@ -12,5 +12,5 @@ For this to build you need to get the submodules. For that you need to run the f
 ```
 git submodule init
 git submodule sync --recursive
-git submodule update --recursive
+git submodule update --init --recursive
 ```

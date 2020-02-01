@@ -31,7 +31,10 @@ class TSSTThumbnailView: NSView {
 	}
 	
 	private func rect(for index: Int) -> NSRect {
-		let bounds = window!.screen!.visibleFrame
+		var bounds = window!.screen!.visibleFrame
+		let fullBounds = window!.screen!.frame
+		bounds.origin.x -= fullBounds.origin.x
+		bounds.origin.y -= fullBounds.origin.y
 		let ratio = bounds.height / bounds.width
 		let horCount = Int(ceil(sqrt(CGFloat((pageController!.content! as AnyObject).count) / ratio)))
 		let vertCount = Int(ceil(CGFloat((pageController!.content! as AnyObject).count) / CGFloat(horCount)))
@@ -40,7 +43,7 @@ class TSSTThumbnailView: NSView {
 		let horGridPos = index % horCount
 		let vertGridPos = (index / horCount) % vertCount
 		let thumbRect: NSRect
-		if (dataSource!.session.value(forKey: "pageOrder") as AnyObject?)?.boolValue ?? false {
+		if dataSource!.session.pageOrder {
 			thumbRect = NSRect(x: CGFloat(horGridPos) * horSide, y: bounds.maxY - side - CGFloat(vertGridPos) * side, width: horSide, height: side)
 		}
 		else {
