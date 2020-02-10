@@ -1336,12 +1336,12 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
     int state;
     if([menuItem action] == @selector(toggleFullScreen:))
     {
-        state = [[self window] isFullscreen] ? NSOnState : NSOffState;
+        state = [[self window] isFullscreen] ? NSControlStateValueOn : NSControlStateValueOff;
         [menuItem setState: state];
     }
     else if([menuItem action] == @selector(changeTwoPage:))
     {
-        state = session.twoPageSpread ? NSOnState : NSOffState;
+        state = session.twoPageSpread ? NSControlStateValueOn : NSControlStateValueOff;
         [menuItem setState: state];
     }
     else if([menuItem action] == @selector(changePageOrder:))
@@ -1401,17 +1401,17 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
     else if([menuItem tag] == 400)
     {
-        state = session.scaleOptions == 0 ? NSOnState : NSOffState;
+        state = session.scaleOptions == 0 ? NSControlStateValueOn : NSControlStateValueOff;
         [menuItem setState: state];
     }
     else if([menuItem tag] == 401)
     {
-        state = session.scaleOptions == 1 ? NSOnState : NSOffState;
+        state = session.scaleOptions == 1 ? NSControlStateValueOn : NSControlStateValueOff;
         [menuItem setState: state];
     }
     else if([menuItem tag] == 402)
     {
-        state = session.scaleOptions == 2 ? NSOnState : NSOffState;
+        state = session.scaleOptions == 2 ? NSControlStateValueOn : NSControlStateValueOff;
         [menuItem setState: state];
     }
 	
