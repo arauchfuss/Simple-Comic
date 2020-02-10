@@ -65,6 +65,7 @@
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		8F381FB323F0DBCA004B7DB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F381FB123F0DBCA004B7DB2 /* InfoPlist.strings */; };
 		8F54DD531CCA336B001403DA /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F54DD521CCA336B001403DA /* container-migration.plist */; };
 		FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */; };
 /* End PBXBuildFile section */
@@ -361,6 +362,7 @@
 		8D1107320486CEB800E47090 /* Simple Comic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Comic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0D3FC31CCDC28E005D3B49 /* Simple Comic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = "Simple Comic.entitlements"; path = "../Simple Comic.entitlements"; sourceTree = "<group>"; };
 		8F1A8E1B1C2180CD005D88FF /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Preferences.strings; sourceTree = "<group>"; };
+		8F381FB223F0DBCA004B7DB2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8F54DD521CCA336B001403DA /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "container-migration.plist"; sourceTree = SOURCE_ROOT; };
 		B927C15A21C0BE780024CCF9 /* zh-Hant */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		B927C15B21C0BE780024CCF9 /* zh-Hant */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				2813145C0C0A7D7900EC007B /* Localizable.strings */,
 				28F6603B1067255600EC8A34 /* Help */,
 				28195B410C166DF5001F5E95 /* Info.plist */,
+				8F381FB123F0DBCA004B7DB2 /* InfoPlist.strings */,
 				281314590C0A7D5200EC007B /* Credits.rtf */,
 				287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */,
 				55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */,
@@ -898,6 +901,7 @@
 				28A2660A1285C34300ED6391 /* Preferences.xib in Resources */,
 				28A2660E1285C35700ED6391 /* MainMenu.xib in Resources */,
 				8F54DD531CCA336B001403DA /* container-migration.plist in Resources */,
+				8F381FB323F0DBCA004B7DB2 /* InfoPlist.strings in Resources */,
 				28A266161285C3A700ED6391 /* TSSTSessionWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,6 +1078,15 @@
 				28F6603C1067255600EC8A34 /* en */,
 			);
 			name = Help;
+			sourceTree = "<group>";
+		};
+		8F381FB123F0DBCA004B7DB2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8F381FB223F0DBCA004B7DB2 /* de */,
+			);
+			name = InfoPlist.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
