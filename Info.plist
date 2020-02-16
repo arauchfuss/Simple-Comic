@@ -15,6 +15,8 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.directory</string>
@@ -39,6 +41,8 @@
 			<string>RAR archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.rarlab.rar-archive</string>
@@ -63,6 +67,8 @@
 			<string>ZIP archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.zip-archive</string>
@@ -89,6 +95,8 @@
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.adobe.pdf</string>
@@ -113,6 +121,8 @@
 			<string>7-Zip Archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>org.7-zip.7-zip-archive</string>
@@ -142,6 +152,8 @@
 			<string>LhA Archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.archive.lha</string>
@@ -163,6 +175,8 @@
 			<string>Comic Zip</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.macitbetter.cbz-archive</string>
@@ -188,6 +202,8 @@
 			<string>Comic 7-Zip</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.macitbetter.cb7-archive</string>
@@ -210,6 +226,8 @@
 			<string>Comic Rar</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.macitbetter.cbr-archive</string>
@@ -235,6 +253,8 @@
 			<string>Comic Tar</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.dancingtortoise.simplecomic.cbt</string>
@@ -258,6 +278,8 @@
 			<string>JPEG Image</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.jpeg</string>
@@ -278,6 +300,8 @@
 			<string>PNG Image</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.png</string>
@@ -299,6 +323,8 @@
 			<string>JPEG200 Image</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.jpeg-2000</string>
@@ -319,6 +345,8 @@
 			<string>GIF Image</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.compuserve.gif</string>
@@ -339,6 +367,8 @@
 			<string>Tar Archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.tar-archive</string>
@@ -595,7 +625,7 @@
 				<string>public.image</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Google&apos;s WebP</string>
+			<string>Google's WebP</string>
 			<key>UTTypeIdentifier</key>
 			<string>public.webp</string>
 			<key>UTTypeTagSpecification</key>

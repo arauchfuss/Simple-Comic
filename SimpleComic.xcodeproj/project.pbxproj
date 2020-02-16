@@ -733,9 +733,13 @@
 				TargetAttributes = {
 					55C374041BD9E67D006385B6 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 3D9SMH4RWM;
+						ProvisioningStyle = Automatic;
 					};
 					8D1107260486CEB800E47090 = {
+						DevelopmentTeam = 3D9SMH4RWM;
 						LastSwiftMigration = 1100;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -1128,9 +1132,12 @@
 		55C3740F1BD9E67D006385B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 257;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1142,8 +1149,9 @@
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks $(inherited)";
 				MARKETING_VERSION = 0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.quickcomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
@@ -1152,18 +1160,22 @@
 		55C374101BD9E67D006385B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 257;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = QuickComic/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks $(inherited)";
 				MARKETING_VERSION = 0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.quickcomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = qlgenerator;
 			};
@@ -1176,10 +1188,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Simple Comic.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 255;
+				CURRENT_PROJECT_VERSION = 257;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1190,8 +1204,9 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				MARKETING_VERSION = 1.8.3;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -1206,11 +1221,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Simple Comic.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 255;
+				CURRENT_PROJECT_VERSION = 257;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_THREADSAFE_STATICS = YES;
@@ -1220,8 +1237,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
 				MARKETING_VERSION = 1.8.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tsst.simplecomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
