@@ -15,7 +15,9 @@
 - (void)validate
 {
 	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
-	[(NSControl *)[self view] setEnabled: ![toolbarDelegate pageSelectionInProgress]];
+	if ([toolbarDelegate respondsToSelector:@selector(pageSelectionInProgress)]) {
+		[(NSControl *)[self view] setEnabled: ![toolbarDelegate pageSelectionInProgress]];
+	}
 }
 
 @end
@@ -26,8 +28,12 @@
 - (void)validate
 {
 	TSSTSessionWindowController * toolbarDelegate = (TSSTSessionWindowController *)[[self toolbar] delegate];
-	[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageLeft] forSegment: 0];
-	[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageRight] forSegment: 1];
+	if ([toolbarDelegate respondsToSelector:@selector(canTurnPageLeft)]) {
+		[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageLeft] forSegment: 0];
+	}
+	if ([toolbarDelegate respondsToSelector:@selector(canTurnPageRight)]) {
+		[(NSSegmentedControl *)[self view] setEnabled: [toolbarDelegate canTurnPageRight] forSegment: 1];
+	}
 	[super validate];
 }
 
