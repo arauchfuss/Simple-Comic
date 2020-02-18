@@ -1,0 +1,13 @@
+//
+//  No Sign.xcconfig
+//  SimpleComic
+//
+//  Created by C.W. Betts on 2/18/20.
+//  Copyright © 2020 Dancing Tortoise Software. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+//:configuration = Debug
+CODE_SIGN_IDENTITY = -
+CODE_SIGN_STYLE = Manual
