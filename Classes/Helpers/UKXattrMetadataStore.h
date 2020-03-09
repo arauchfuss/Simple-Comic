@@ -29,6 +29,8 @@
 	should be made like bundle identifiers, e.g. @"de.zathras.myattribute".
 */
 
+#define UKXDEPRECATED(x, y) __attribute__((availability(swift, unavailable, message="Use '" x "' instead"))) __attribute__((deprecated("Use '" y "' instead")))
+
 // -----------------------------------------------------------------------------
 //	Class declaration:
 // -----------------------------------------------------------------------------
@@ -60,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@discussion	Returns an \c NSArray of <code>NSString</code>s containing all xattr names currently set
  *				for the file at the specified path.
  */
-+(nullable NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("");
++(NSArray<NSString*>*) allKeysAtPath:(NSString*)path traverseLink:(BOOL)travLnk UKXDEPRECATED("allKeys(atPath:traverseLink:) throws", "+allKeysAtPath:traverseLink:error:");
 
 /*!
  *	@method		allKeysAtPath:traverseLink:
@@ -94,7 +96,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@deprecated	This method throws an Obj-C exception. No other error information is provided, not even if it was successful.
  */
 +(void) setString:(NSString*)str forKey:(NSString*)key
-		   atPath:(NSString*)path traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'setString(_:forKey:atPath:traverseLink:) throws' instead");
+		   atPath:(NSString*)path traverseLink:(BOOL)travLnk UKXDEPRECATED("setString(_:forKey:atPath:traverseLink:) throws", "+setString:forKey:atPath:traverseLink:error:");
 
 /*!
  *	@method		setString:forKey:atPath:traverseLink:error:
@@ -130,7 +132,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@deprecated	This method has no error handling.
  */
 +(nullable NSString*) stringForKey:(NSString*)key atPath:(NSString*)path
-					  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'string(forKey:atPath:traverseLink:) throws' instead");
+					  traverseLink:(BOOL)travLnk UKXDEPRECATED("string(forKey:atPath:traverseLink:) throws", "+stringForKey:atPath:traverseLink:error:");
 
 /*!
  *	@method		stringForKey:atPath:traverseLink:error:
@@ -165,7 +167,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@deprecated	This method has no way of indicating success or failure.
  */
 +(void) setData:(NSData*)data forKey:(NSString*)key
-		 atPath:(NSString*)path traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'setData(_:forKey:atPath:traverseLink:) throws' instead");
+		 atPath:(NSString*)path traverseLink:(BOOL)travLnk UKXDEPRECATED("setData(_:forKey:atPath:traverseLink:) throws", "+setData:forKey:atPath:traverseLink:error:");
 /*!
  *	@method		setData:forKey:atPath:traverseLink:error:
  *	@brief		Set the xattr with name \c key to the raw data in <code>data</code>.
@@ -200,7 +202,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@deprecated	This method throws an Obj-C exception. No other error information is provoded on failure.
  */
 +(nullable NSData*) dataForKey:(NSString*)key atPath:(NSString*)path
-				  traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'data(forKey:atPath:traverseLink:) throws' instead");
+				  traverseLink:(BOOL)travLnk UKXDEPRECATED("data(forKey:atPath:traverseLink:) throws", "+dataForKey:atPath:traverseLink:error:");
 /*!
  *	@method		dataForKey:atPath:traverseLink:error:
  *	@brief		Get the xattr with name \c key as raw data.
@@ -235,7 +237,7 @@ NS_ASSUME_NONNULL_BEGIN
  *				not even if it was successful.
  */
 +(void) setObject:(id)obj forKey:(NSString*)key atPath:(NSString*)path
-	 traverseLink:(BOOL)travLnk DEPRECATED_ATTRIBUTE NS_SWIFT_UNAVAILABLE("Use 'setObject(_:forKey:atPath:traverseLink:) throws' instead");
+	 traverseLink:(BOOL)travLnk UKXDEPRECATED("setObject(_:forKey:atPath:traverseLink:format:) throws", "+setObject:forKey:atPath:traverseLink:format:error:");
 
 /*!
  *	@method		setObject:forKey:atPath:traverseLink:error:
