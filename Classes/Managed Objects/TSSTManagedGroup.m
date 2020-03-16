@@ -114,6 +114,8 @@
 														  error: &othErr];
 					
 				}
+			} else {
+				fileURL = nil;
 			}
 			urlError = othErr;
 		}
