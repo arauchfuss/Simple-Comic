@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -13,19 +13,16 @@
 			<array>
 				<string>cx.c3.cbr-archive</string>
 				<string>cx.c3.cbz-archive</string>
-				<string>cx.c3.cb7-archive</string>
 				<string>com.macitbetter.cbr-archive</string>
 				<string>com.macitbetter.cbz-archive</string>
-				<string>com.macitbetter.cb7-archive</string>
+				<string>com.yacreader.yacreader.cbr</string>
+				<string>com.yacreader.yacreader.cbz</string>
 				<string>public.cbr-archive</string>
 				<string>public.cbz-archive</string>
-				<string>org.7-zip.7-zip-comic-archive</string>
-				<string>com.bitcartel.comicbooklover.cbz</string>
-				<string>com.bitcartel.comicbooklover.cbr</string>
-				<string>com.milke.cbz-archive</string>
-				<string>com.milke.cbr-archive</string>
-				<string>public.archive.cbz</string>
-				<string>public.archive.cbr</string>
+				<string>com.simplecomic.cbr-archive</string>
+				<string>com.simplecomic.cbz-archive</string>
+				<string>com.simplecomic.cb7-archive</string>
+				<string>com.simplecomic.cbt-archive</string>
 			</array>
 		</dict>
 	</array>
@@ -38,11 +35,9 @@
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
-	<string>BNDL</string>
+	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
-	<key>CFBundleSignature</key>
-	<string>TSST</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CFPlugInDynamicRegisterFunction</key>

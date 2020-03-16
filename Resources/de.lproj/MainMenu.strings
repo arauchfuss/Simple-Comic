@@ -78,16 +78,16 @@
 "864.title" = "Gehe zu";
 
 /* Class = "NSMenuItem"; title = "Page Right"; ObjectID = "866"; */
-"866.title" = "Nach rechts";
+"866.title" = "Nächste Seite";
 
 /* Class = "NSMenuItem"; title = "Page Left"; ObjectID = "867"; */
-"867.title" = "Nach links";
+"867.title" = "Vorherige Seite";
 
 /* Class = "NSMenuItem"; title = "Shift One Page Right"; ObjectID = "868"; */
-"868.title" = "Eine Seite rechts";
+"868.title" = "Eine Seite weiter";
 
 /* Class = "NSMenuItem"; title = "Shift One Page Left"; ObjectID = "869"; */
-"869.title" = "Eine Seite links";
+"869.title" = "Eine Seite zurück";
 
 /* Class = "NSMenuItem"; title = "Close Window"; ObjectID = "960"; */
 "960.title" = "Fenster schließen";
@@ -129,10 +129,10 @@
 "1105.title" = "Rechts drehen";
 
 /* Class = "NSMenuItem"; title = "Skip Right"; ObjectID = "1157"; */
-"1157.title" = "Rechts blättern";
+"1157.title" = "Vorblättern";
 
 /* Class = "NSMenuItem"; title = "Skip Left"; ObjectID = "1158"; */
-"1158.title" = "Links blättern";
+"1158.title" = "Zurückblättern";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "1206"; */
 "1206.title" = "Hilfe";

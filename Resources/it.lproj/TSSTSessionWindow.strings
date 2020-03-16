@@ -68,7 +68,7 @@
 /* Class = "NSToolbarItem"; paletteLabel = "Zoom"; ObjectID = "559"; */
 "559.paletteLabel" = "Zoom";
 
-/* Class = "NSButton"; ibShadowedToolTip = "Magnifing Glass"; ObjectID = "573"; */
+/* Class = "NSButton"; ibShadowedToolTip = "Magnifying Glass"; ObjectID = "573"; */
 "573.ibShadowedToolTip" = "Lente d'ingrandimento";
 
 /* Class = "NSToolbarItem"; label = "Loupe"; ObjectID = "575"; */

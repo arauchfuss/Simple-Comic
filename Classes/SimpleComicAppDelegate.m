@@ -279,7 +279,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	
 	if (launchFiles) {
 		TSSTManagedSession * session;
-		if (optionHeldAtlaunch)
+		if (!optionHeldAtlaunch)
 		{
 			NSMutableArray * looseImages = [NSMutableArray array];
 			for(NSString * path in launchFiles)
@@ -377,7 +377,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	if(!launchInProgress)
 	{
 		TSSTManagedSession * session;
-		if (option)
+		if (!option)
 		{
 			NSMutableArray * looseImages = [NSMutableArray array];
 			for(NSString * path in filenames)
