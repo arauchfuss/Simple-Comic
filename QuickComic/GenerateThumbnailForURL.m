@@ -83,6 +83,12 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 		{
 //		NSLog(@"has data");
 			CGImageSourceRef pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)imageData,  NULL);
+			if (!pageSourceRef) {
+				// If CoreGraphics failed, use NSImage
+				NSImage *img = [[NSImage alloc] initWithData:imageData];
+				NSData *imgData = img.TIFFRepresentation;
+				pageSourceRef = CGImageSourceCreateWithData((CFDataRef)imgData, NULL);
+			}
 			CGImageRef currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
 			CFRelease(pageSourceRef);
 			CGRect canvasRect;

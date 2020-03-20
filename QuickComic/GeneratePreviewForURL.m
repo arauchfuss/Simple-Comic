@@ -46,6 +46,13 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 				{
 					index = [[fileList[counter] valueForKey: @"index"] integerValue];
 					pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
+					if (!pageSourceRef) {
+						// If CoreGraphics failed, use NSImage
+						NSData *imgData = [archive contentsOfEntry: index];
+						NSImage *img = [[NSImage alloc] initWithData:imgData];
+						imgData = img.TIFFRepresentation;
+						pageSourceRef = CGImageSourceCreateWithData((CFDataRef)imgData, NULL);
+					}
 					currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
 					canvasRect = CGRectMake(0, 0, CGImageGetWidth(currentImage), CGImageGetHeight(currentImage));
 					
