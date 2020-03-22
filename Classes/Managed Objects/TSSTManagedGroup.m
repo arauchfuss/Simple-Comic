@@ -274,7 +274,8 @@
 					   (NSString*)kUTTypeZipArchive, @"cx.c3.cbz-archive",
 					   @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive",
 					   @"public.archive.lha", @"cx.c3.lha-archive",
-					   @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive"];
+					   @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive",
+					   @"com.yacreader.yacreader.cbr", @"com.yacreader.yacreader.cbz"];
 	});
 	
 	return extensions;

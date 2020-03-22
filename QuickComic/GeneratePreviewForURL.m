@@ -45,12 +45,12 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 				do
 				{
 					index = [[fileList[counter] valueForKey: @"index"] integerValue];
-					pageSourceRef = CGImageSourceCreateWithData( (CFDataRef)[archive contentsOfEntry: index],  NULL);
+					NSData *fileData = [archive contentsOfEntry: index];;
+					pageSourceRef = CGImageSourceCreateWithData((CFDataRef)fileData, NULL);
 					if (!pageSourceRef) {
 						// If CoreGraphics failed, use NSImage
-						NSData *imgData = [archive contentsOfEntry: index];
-						NSImage *img = [[NSImage alloc] initWithData:imgData];
-						imgData = img.TIFFRepresentation;
+						NSImage *img = [[NSImage alloc] initWithData:fileData];
+						NSData *imgData = img.TIFFRepresentation;
 						pageSourceRef = CGImageSourceCreateWithData((CFDataRef)imgData, NULL);
 					}
 					currentImage = CGImageSourceCreateImageAtIndex(pageSourceRef, 0, NULL);
