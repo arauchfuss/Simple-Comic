@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     id instance;
     NSLock * groupLock;
+	NSURL *_url;
 }
 
 @property (readonly, strong) id instance;

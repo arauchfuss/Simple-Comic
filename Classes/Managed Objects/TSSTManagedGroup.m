@@ -55,8 +55,14 @@
 	groupLock = nil;
 }
 
+@synthesize fileURL=_url;
+
 - (void)setFileURL:(NSURL *)fileURL
 {
+	if (_url && _url != fileURL) {
+		[fileURL stopAccessingSecurityScopedResource];
+	}
+	_url = fileURL;
 	NSError * urlError = nil;
 	[fileURL startAccessingSecurityScopedResource];
 	NSData * bookmarkData = [fileURL bookmarkDataWithOptions: NSURLBookmarkCreationWithSecurityScope | NSURLBookmarkCreationSecurityScopeAllowOnlyReadAccess
@@ -73,6 +79,9 @@
 
 - (NSURL *)fileURL
 {
+	if (_url && [_url checkResourceIsReachableAndReturnError:NULL]) {
+		return _url;
+	}
 	NSError * urlError = nil;
 	BOOL stale = NO;
 	NSURL * fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
