@@ -140,6 +140,9 @@
 	{
 		// regenerate stale bookmark.
 		self.fileURL = fileURL;
+	} else {
+		//cache fileURL
+		_url = fileURL;
 	}
 	
 	return fileURL;
