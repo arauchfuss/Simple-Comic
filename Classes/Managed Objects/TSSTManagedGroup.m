@@ -465,6 +465,8 @@
 			}
 			else if([extension isEqualToString: @"pdf"])
 			{
+				NSString *fullFileName = fileName;
+				fileName = [fileName lastPathComponent];
 				nestedDescription = [NSEntityDescription insertNewObjectForEntityForName: @"PDF" inManagedObjectContext: [self managedObjectContext]];
 				archivePath = [NSTemporaryDirectory() stringByAppendingPathComponent: fileName];
 				NSInteger collision = 0;
@@ -479,6 +481,7 @@
 				
 				nestedDescription.path = archivePath;
 				nestedDescription.nested = YES;
+				nestedDescription.name = fullFileName;
 				[(TSSTManagedPDF *)nestedDescription pdfContents];
 			}
 			
