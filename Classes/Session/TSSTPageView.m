@@ -302,19 +302,26 @@ typedef struct {
 	NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
 	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
 	
-	[firstPageImage drawInRect: [self centerScanRect: firstPageRect]
-					  fromRect: NSZeroRect
-					 operation: NSCompositingOperationSourceOver
-					  fraction: 1.0];
-	
+	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
+    CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
+    CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
+
+	CALayer *firstPageLayer = [CALayer layer];
+	firstPageLayer.contents = (__bridge id) firstPageImageRef;
+	[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
+	[self.layer addSublayer:firstPageLayer];
+
 	if([secondPageImage isValid])
 	{
-		[secondPageImage drawInRect: [self centerScanRect: secondPageRect]
-						   fromRect: NSZeroRect
-						  operation: NSCompositingOperationSourceOver
-						   fraction: 1.0];
+		NSData *secondPageImageData = secondPageImage.TIFFRepresentation;
+		CGImageSourceRef secondPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)secondPageImageData, NULL);
+		CGImageRef secondPageImageRef =  CGImageSourceCreateImageAtIndex(secondPageImageSource, 0, NULL);
+		
+		CALayer *secondPageLayer = [CALayer layer];
+		secondPageLayer.contents = (__bridge id) secondPageImageRef;
+		[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
+		[self.layer addSublayer:secondPageLayer];
 	}
-	
 	
 	if (@available(macOS 10.14, *)) {
 		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.5] set];
