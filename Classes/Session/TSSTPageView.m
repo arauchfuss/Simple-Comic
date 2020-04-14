@@ -305,22 +305,26 @@ typedef struct {
 	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
     CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
     CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
+	CFRelease(firstPageImageSource);
 
 	CALayer *firstPageLayer = [CALayer layer];
 	firstPageLayer.contents = (__bridge id) firstPageImageRef;
 	[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
 	[self.layer addSublayer:firstPageLayer];
+	CFRelease(firstPageImageRef);
 
 	if([secondPageImage isValid])
 	{
 		NSData *secondPageImageData = secondPageImage.TIFFRepresentation;
 		CGImageSourceRef secondPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)secondPageImageData, NULL);
 		CGImageRef secondPageImageRef =  CGImageSourceCreateImageAtIndex(secondPageImageSource, 0, NULL);
+		CFRelease(secondPageImageSource);
 		
 		CALayer *secondPageLayer = [CALayer layer];
 		secondPageLayer.contents = (__bridge id) secondPageImageRef;
 		[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
 		[self.layer addSublayer:secondPageLayer];
+		CFRelease(secondPageImageRef);
 	}
 	
 	if (@available(macOS 10.14, *)) {
