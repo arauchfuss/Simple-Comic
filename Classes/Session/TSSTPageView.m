@@ -303,7 +303,10 @@ typedef struct {
 	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
 	
 	self.layer.sublayers = nil;
-	self.layer.backgroundColor = [[NSColor blackColor]CGColor];
+	
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
+	self.layer.backgroundColor = [color CGColor];
 	
 	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
     CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
