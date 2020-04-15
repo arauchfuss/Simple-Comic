@@ -302,6 +302,12 @@ typedef struct {
 	NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
 	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
 	
+	self.layer.sublayers = nil;
+	
+	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
+	self.layer.backgroundColor = [color CGColor];
+	
 	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
     CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
     CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
