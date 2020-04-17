@@ -295,16 +295,11 @@ typedef struct {
 	{
 		return;
 	}
-	
-	[NSGraphicsContext saveGraphicsState];
-	NSRect frame = [self frame];
-	[self rotationTransformWithFrame: frame];
-	
-	NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
-	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
-	
+
 	self.layer.sublayers = nil;
 
+	CALayer* newLayer = [[CALayer alloc]init];
+	
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	self.layer.backgroundColor = [color CGColor];
@@ -317,7 +312,7 @@ typedef struct {
 	CALayer *firstPageLayer = [CALayer layer];
 	firstPageLayer.contents = (__bridge id) firstPageImageRef;
 	[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
-	[self.layer addSublayer:firstPageLayer];
+	[newLayer addSublayer:firstPageLayer];
 	CFRelease(firstPageImageRef);
 
 	if([secondPageImage isValid])
@@ -330,7 +325,7 @@ typedef struct {
 		CALayer *secondPageLayer = [CALayer layer];
 		secondPageLayer.contents = (__bridge id) secondPageImageRef;
 		[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
-		[self.layer addSublayer:secondPageLayer];
+		[newLayer addSublayer:secondPageLayer];
 		CFRelease(secondPageImageRef);
 	}
 	
@@ -361,21 +356,21 @@ typedef struct {
 		[selectionLayer setBorderColor:[selectionBorderColor CGColor]];
 		[selectionLayer setBorderWidth:2.0];
 		[selectionLayer setFrame:selection];
-		[self.layer addSublayer:selectionLayer];
+		[newLayer addSublayer:selectionLayer];
 	}
 	else if(pageSelection == 0)
 	{
 		CALayer* selectionLayer = [[CALayer alloc]init];
 		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
 		[selectionLayer setFrame:firstPageRect];
-		[self.layer addSublayer:selectionLayer];
+		[newLayer addSublayer:selectionLayer];
 	}
 	else if(pageSelection == 1)
 	{
 		CALayer* selectionLayer = [[CALayer alloc]init];
 		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
 		[selectionLayer setFrame:secondPageRect];
-		[self.layer addSublayer:selectionLayer];
+		[newLayer addSublayer:selectionLayer];
 	}
 	
 	NSColor* labelBackgroundColor;
@@ -409,7 +404,7 @@ typedef struct {
 		[label setForegroundColor:[[NSColor whiteColor] CGColor]];
 		[label setCornerRadius: 6];
 		
-		[self.layer addSublayer:label];
+		[newLayer addSublayer:label];
 	}
 	
 	[NSGraphicsContext restoreGraphicsState];
@@ -421,8 +416,15 @@ typedef struct {
 		[selectionLayer setBorderColor:[[NSColor keyboardFocusIndicatorColor]CGColor]];
 		CGRect frame = self.enclosingScrollView.documentVisibleRect;
 		[selectionLayer setFrame: frame];
-		[self.layer addSublayer:selectionLayer];
+		[newLayer addSublayer:selectionLayer];
 	}
+	
+	NSRect frame = [self frame];
+	CGAffineTransform rotationTransform = [self rotationCGTransformWithFrame:frame];
+	
+	[newLayer setAffineTransform:rotationTransform];
+	
+	[self.layer addSublayer:newLayer];
 }
 
 
@@ -533,8 +535,34 @@ typedef struct {
 	[self resizeView];
 }
 
+- (CGAffineTransform)rotationCGTransformWithFrame:(NSRect)rect
+{
+	CGAffineTransform identity = CGAffineTransformIdentity;
+	CGAffineTransform rotated;
+	
+	switch (rotation)
+	{
+		case 1:
+			rotated = CGAffineTransformRotate(identity, 270 * 3.14 / 180);
+			rotated = CGAffineTransformTranslate(rotated, - NSHeight(rect), 0);
+			break;
+		case 2:
+			rotated = CGAffineTransformRotate(identity, 180 * 3.14 / 180);
+			rotated = CGAffineTransformTranslate(rotated, - NSWidth(rect), - NSHeight(rect));
+			break;
+		case 3:
+			rotated = CGAffineTransformRotate(identity, 90 * 3.14 / 180);
+			rotated = CGAffineTransformTranslate(rotated, 0, - NSWidth(rect));
+			break;
+		default:
+			rotated = identity;
+			break;
+	}
+	
+	return rotated;
+}
 
-- (void)rotationTransformWithFrame:(NSRect)rect
+- (NSAffineTransform*)rotationTransformWithFrame:(NSRect)rect
 {
 	NSAffineTransform * transform = [NSAffineTransform transform];
 	switch (rotation)
@@ -555,6 +583,7 @@ typedef struct {
 			break;
 	}
 	[transform concat];
+	return transform;
 }
 
 
