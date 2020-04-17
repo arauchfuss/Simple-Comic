@@ -416,9 +416,12 @@ typedef struct {
 	
 	if(acceptingDrag)
 	{
-		[NSBezierPath setDefaultLineWidth: 6];
-		[[NSColor keyboardFocusIndicatorColor] set];
-		[NSBezierPath strokeRect: [[self enclosingScrollView] documentVisibleRect]];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBorderWidth:6.0];
+		[selectionLayer setBorderColor:[[NSColor keyboardFocusIndicatorColor]CGColor]];
+		CGRect frame = self.enclosingScrollView.documentVisibleRect;
+		[selectionLayer setFrame: frame];
+		[self.layer addSublayer:selectionLayer];
 	}
 }
 
