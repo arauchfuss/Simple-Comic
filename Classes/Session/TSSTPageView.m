@@ -304,11 +304,11 @@ typedef struct {
 	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
 	
 	self.layer.sublayers = nil;
-	
+
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	self.layer.backgroundColor = [color CGColor];
-	
+
 	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
     CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
     CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
@@ -326,7 +326,7 @@ typedef struct {
 		CGImageSourceRef secondPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)secondPageImageData, NULL);
 		CGImageRef secondPageImageRef =  CGImageSourceCreateImageAtIndex(secondPageImageSource, 0, NULL);
 		CFRelease(secondPageImageSource);
-		
+
 		CALayer *secondPageLayer = [CALayer layer];
 		secondPageLayer.contents = (__bridge id) secondPageImageRef;
 		[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
@@ -334,12 +334,16 @@ typedef struct {
 		CFRelease(secondPageImageRef);
 	}
 	
+	NSColor* selectionBackgroundColor;
+	NSColor* selectionBorderColor;
 	if (@available(macOS 10.14, *)) {
-		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.5] set];
+		selectionBackgroundColor = [NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.5];
+		selectionBorderColor =  [NSColor.controlAccentColor colorWithAlphaComponent:0.8];
 	} else {
-		[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
+		selectionBackgroundColor = [NSColor colorWithCalibratedWhite: .2 alpha: 0.5];
+		selectionBorderColor = [NSColor colorWithCalibratedWhite: 1 alpha: 0.8];
 	}
-	NSBezierPath * highlight;
+
 	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
 		NSRect selection;
@@ -352,25 +356,26 @@ typedef struct {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 		}
 		
-		highlight = [NSBezierPath bezierPathWithRect: selection];
-		[highlight fill];
-		if (@available(macOS 10.14, *)) {
-			[[NSColor.controlAccentColor colorWithAlphaComponent:0.8] set];
-		} else {
-			[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
-		}
-		[NSBezierPath setDefaultLineWidth: 2];
-		[NSBezierPath strokeRect: selection];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
+		[selectionLayer setBorderColor:[selectionBorderColor CGColor]];
+		[selectionLayer setBorderWidth:2.0];
+		[selectionLayer setFrame:selection];
+		[self.layer addSublayer:selectionLayer];
 	}
 	else if(pageSelection == 0)
 	{
-		highlight = [NSBezierPath bezierPathWithRect: firstPageRect];
-		[highlight fill];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
+		[selectionLayer setFrame:firstPageRect];
+		[self.layer addSublayer:selectionLayer];
 	}
 	else if(pageSelection == 1)
 	{
-		highlight = [NSBezierPath bezierPathWithRect: secondPageRect];
-		[highlight fill];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
+		[selectionLayer setFrame:secondPageRect];
+		[self.layer addSublayer:selectionLayer];
 	}
 	
 	NSColor* labelBackgroundColor;
