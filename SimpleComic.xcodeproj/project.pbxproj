@@ -31,6 +31,7 @@
 		28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28C1D55F0DF1FE37003392B4 /* QuickLook.framework */; };
 		28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		28F660461067255600EC8A34 /* Help in Resources */ = {isa = PBXBuildFile; fileRef = 28F6603B1067255600EC8A34 /* Help */; };
+		42D9A8BF2449ABC400AF2FB6 /* CenteredTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42D9A8BE2449ABC400AF2FB6 /* CenteredTextLayer.m */; };
 		5500A65C1D7772B200321300 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
 		5500A65D1D7772CD00321300 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
 		5500A65F1D7772D400321300 /* XADMaster.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -293,6 +294,8 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* SimpleComic_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleComic_Prefix.pch; sourceTree = "<group>"; };
+		42D9A8BD2449ABC400AF2FB6 /* CenteredTextLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CenteredTextLayer.h; sourceTree = "<group>"; };
+		42D9A8BE2449ABC400AF2FB6 /* CenteredTextLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CenteredTextLayer.m; sourceTree = "<group>"; };
 		5500A6231D77712F00321300 /* XADMaster.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = XADMaster.xcodeproj; path = Vendor/XADMaster/XADMaster.xcodeproj; sourceTree = "<group>"; };
 		551361B32399B97D002BA9BF /* Sessions_DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Sessions_DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		5518C6A81BDAABA600D50302 /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -446,6 +449,8 @@
 				286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */,
 				280FB7A50CD577730053F375 /* TSSTCustomValueTransformers.h */,
 				FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */,
+				42D9A8BD2449ABC400AF2FB6 /* CenteredTextLayer.h */,
+				42D9A8BE2449ABC400AF2FB6 /* CenteredTextLayer.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */,
 				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
+				42D9A8BF2449ABC400AF2FB6 /* CenteredTextLayer.m in Sources */,
 				55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */,
 				55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */,
 				5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */,

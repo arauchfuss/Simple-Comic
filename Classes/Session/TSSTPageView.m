@@ -23,6 +23,7 @@
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
 #import "TSSTManagedSession.h"
+#import "CenteredTextLayer.h"
 
 typedef NS_ENUM(int, TSSTTurn) {
 	TSSTTurnNone = 0,
@@ -372,29 +373,38 @@ typedef struct {
 		[highlight fill];
 	}
 	
+	NSColor* labelBackgroundColor;
 	if (@available(macOS 10.14, *)) {
-		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.8] set];
+		labelBackgroundColor = [NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.8];
 	} else {
-		[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
+		labelBackgroundColor = [NSColor colorWithCalibratedWhite: .2 alpha: 0.8];
 	}
 	
 	if([sessionController pageSelectionInProgress])
 	{
-		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-		[style setAlignment: NSTextAlignmentCenter];
-		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
-											NSForegroundColorAttributeName: [NSColor whiteColor],
-											NSParagraphStyleAttributeName: style};
 		NSString * selectionText = NSLocalizedString(@"Click to select page", @"");
 		if([sessionController pageSelectionCanCrop])
 		{
 			selectionText = [selectionText stringByAppendingString: NSLocalizedString(@"\nDrag to crop", @"")];
 		}
-		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
-		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
-		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 6);
-		[bezel fill];
-		[selectionText drawInRect: bezelRect withAttributes: stringAttributes];
+		
+		CenteredTextLayer *label = [[CenteredTextLayer alloc] init];
+		NSFont* labelFont = [NSFont systemFontOfSize: 24];
+		[label setFont: (__bridge CFTypeRef _Nullable)(labelFont)];
+		[label setFontSize: 24];
+		[label setAlignmentMode:kCAAlignmentCenter];
+		[label setString:selectionText];
+		
+		NSRect labelRect = rectWithSizeCenteredInRect(label.preferredFrameSize, imageBounds);
+		NSRect layerRect = CGRectInset(labelRect, -4, -4);
+		
+		[label setFrame: layerRect];
+		
+		[label setBackgroundColor: [labelBackgroundColor CGColor]];
+		[label setForegroundColor:[[NSColor whiteColor] CGColor]];
+		[label setCornerRadius: 6];
+		
+		[self.layer addSublayer:label];
 	}
 	
 	[NSGraphicsContext restoreGraphicsState];
