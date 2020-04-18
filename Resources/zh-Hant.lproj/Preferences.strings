@@ -1,18 +1,5 @@
-
-/* Class = "NSButton"; ibShadowedToolTip = "Pages are never automatically scaled past their actual resolution"; ObjectID = "36"; */
-"36.ibShadowedToolTip" = "頁面永遠不會自動縮放到超過其實際分辨率";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Save all open comics on exit"; ObjectID = "41"; */
-"41.ibShadowedToolTip" = "在退出前保存所有打開的漫畫";
-
-/* Class = "NSButton"; ibShadowedToolTip = "Windows are dynamically resized to fit the page-view and screen"; ObjectID = "152"; */
-"152.ibShadowedToolTip" = "窗口會動態調整大小以適應頁面視圖和屏幕";
-
 /* Class = "NSButtonCell"; title = "Page scaling constrained by resolution"; ObjectID = "229"; */
 "229.title" = "頁面縮放受分辨率限制";
-
-/* Class = "NSButtonCell"; title = "Auto-save open windows"; ObjectID = "230"; */
-"230.title" = "自動保存打開的窗口";
 
 /* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
 "231.title" = "自動調整窗口尺寸";
@@ -22,9 +9,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
 "235.title" = "窗口會自動調整以最大限度利用可視面積。";
-
-/* Class = "NSTextFieldCell"; title = "Open windows are preserved between exit and relaunch."; ObjectID = "236"; */
-"236.title" = "打開的窗口會在退出和重新啓動時保存。";
 
 /* Class = "NSTextFieldCell"; title = "Background color"; ObjectID = "239"; */
 "239.title" = "背景顏色";
