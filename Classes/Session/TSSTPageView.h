@@ -112,7 +112,11 @@ typedef NS_ENUM(NSInteger, DTPageScaling) {
 
 /*!	Concatinates an affine transform to the context.
 	This is what enables the page rotation. */
-- (void)rotationTransformWithFrame:(NSRect)rect;
+- (NSAffineTransform *)rotationTransformWithFrame:(NSRect)rect;
+
+/*!	Returns an affine transform to apply to a CALayer.
+This is what enables the page rotation. */
+- (CGAffineTransform)rotationCGTransformWithFrame:(NSRect)rect;
 
 @property (readonly) BOOL horizontalScrollIsPossible;
 @property (readonly) BOOL verticalScrollIsPossible;

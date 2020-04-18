@@ -23,6 +23,7 @@
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
 #import "TSSTManagedSession.h"
+#import "CenteredTextLayer.h"
 
 typedef NS_ENUM(int, TSSTTurn) {
 	TSSTTurnNone = 0,
@@ -294,20 +295,15 @@ typedef struct {
 	{
 		return;
 	}
-	
-	[NSGraphicsContext saveGraphicsState];
-	NSRect frame = [self frame];
-	[self rotationTransformWithFrame: frame];
-	
-	NSImageInterpolation interpolation = [self inLiveResize] || scrollKeys ? NSImageInterpolationLow : NSImageInterpolationHigh;
-	[[NSGraphicsContext currentContext] setImageInterpolation: interpolation];
-	
+
 	self.layer.sublayers = nil;
+
+	CALayer* newLayer = [[CALayer alloc]init];
 	
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	self.layer.backgroundColor = [color CGColor];
-	
+
 	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
     CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
     CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
@@ -316,7 +312,7 @@ typedef struct {
 	CALayer *firstPageLayer = [CALayer layer];
 	firstPageLayer.contents = (__bridge id) firstPageImageRef;
 	[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
-	[self.layer addSublayer:firstPageLayer];
+	[newLayer addSublayer:firstPageLayer];
 	CFRelease(firstPageImageRef);
 
 	if([secondPageImage isValid])
@@ -325,20 +321,24 @@ typedef struct {
 		CGImageSourceRef secondPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)secondPageImageData, NULL);
 		CGImageRef secondPageImageRef =  CGImageSourceCreateImageAtIndex(secondPageImageSource, 0, NULL);
 		CFRelease(secondPageImageSource);
-		
+
 		CALayer *secondPageLayer = [CALayer layer];
 		secondPageLayer.contents = (__bridge id) secondPageImageRef;
 		[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
-		[self.layer addSublayer:secondPageLayer];
+		[newLayer addSublayer:secondPageLayer];
 		CFRelease(secondPageImageRef);
 	}
 	
+	NSColor* selectionBackgroundColor;
+	NSColor* selectionBorderColor;
 	if (@available(macOS 10.14, *)) {
-		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.5] set];
+		selectionBackgroundColor = [NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.5];
+		selectionBorderColor =  [NSColor.controlAccentColor colorWithAlphaComponent:0.8];
 	} else {
-		[[NSColor colorWithCalibratedWhite: .2 alpha: 0.5] set];
+		selectionBackgroundColor = [NSColor colorWithCalibratedWhite: .2 alpha: 0.5];
+		selectionBorderColor = [NSColor colorWithCalibratedWhite: 1 alpha: 0.8];
 	}
-	NSBezierPath * highlight;
+
 	if(!NSEqualRects(cropRect, NSZeroRect))
 	{
 		NSRect selection;
@@ -351,60 +351,80 @@ typedef struct {
 			selection = NSIntersectionRect(rectFromNegativeRect(cropRect), secondPageRect);
 		}
 		
-		highlight = [NSBezierPath bezierPathWithRect: selection];
-		[highlight fill];
-		if (@available(macOS 10.14, *)) {
-			[[NSColor.controlAccentColor colorWithAlphaComponent:0.8] set];
-		} else {
-			[[NSColor colorWithCalibratedWhite: 1 alpha: 0.8] set];
-		}
-		[NSBezierPath setDefaultLineWidth: 2];
-		[NSBezierPath strokeRect: selection];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
+		[selectionLayer setBorderColor:[selectionBorderColor CGColor]];
+		[selectionLayer setBorderWidth:2.0];
+		[selectionLayer setFrame:selection];
+		[newLayer addSublayer:selectionLayer];
 	}
 	else if(pageSelection == 0)
 	{
-		highlight = [NSBezierPath bezierPathWithRect: firstPageRect];
-		[highlight fill];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
+		[selectionLayer setFrame:firstPageRect];
+		[newLayer addSublayer:selectionLayer];
 	}
 	else if(pageSelection == 1)
 	{
-		highlight = [NSBezierPath bezierPathWithRect: secondPageRect];
-		[highlight fill];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBackgroundColor: [selectionBackgroundColor CGColor]];
+		[selectionLayer setFrame:secondPageRect];
+		[newLayer addSublayer:selectionLayer];
 	}
 	
+	NSColor* labelBackgroundColor;
 	if (@available(macOS 10.14, *)) {
-		[[NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.8] set];
+		labelBackgroundColor = [NSColor.selectedContentBackgroundColor colorWithAlphaComponent:0.8];
 	} else {
-		[[NSColor colorWithCalibratedWhite: .2 alpha: 0.8] set];
+		labelBackgroundColor = [NSColor colorWithCalibratedWhite: .2 alpha: 0.8];
 	}
 	
 	if([sessionController pageSelectionInProgress])
 	{
-		NSMutableParagraphStyle * style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-		[style setAlignment: NSTextAlignmentCenter];
-		NSDictionary * stringAttributes = @{NSFontAttributeName: [NSFont systemFontOfSize: 24],
-											NSForegroundColorAttributeName: [NSColor whiteColor],
-											NSParagraphStyleAttributeName: style};
 		NSString * selectionText = NSLocalizedString(@"Click to select page", @"");
 		if([sessionController pageSelectionCanCrop])
 		{
 			selectionText = [selectionText stringByAppendingString: NSLocalizedString(@"\nDrag to crop", @"")];
 		}
-		NSSize textSize = [selectionText sizeWithAttributes: stringAttributes];
-		NSRect bezelRect = rectWithSizeCenteredInRect(textSize, imageBounds);
-		NSBezierPath * bezel = roundedRectWithCornerRadius(NSInsetRect(bezelRect, -8, -4), 6);
-		[bezel fill];
-		[selectionText drawInRect: bezelRect withAttributes: stringAttributes];
+		
+		CenteredTextLayer *label = [[CenteredTextLayer alloc] init];
+		NSFont* labelFont = [NSFont systemFontOfSize: 24];
+		[label setFont: (__bridge CFTypeRef _Nullable)(labelFont)];
+		[label setFontSize: 24];
+		[label setAlignmentMode:kCAAlignmentCenter];
+		[label setString:selectionText];
+		
+		NSRect labelRect = rectWithSizeCenteredInRect(label.preferredFrameSize, imageBounds);
+		NSRect layerRect = CGRectInset(labelRect, -4, -4);
+		
+		[label setFrame: layerRect];
+		
+		[label setBackgroundColor: [labelBackgroundColor CGColor]];
+		[label setForegroundColor:[[NSColor whiteColor] CGColor]];
+		[label setCornerRadius: 6];
+		
+		[newLayer addSublayer:label];
 	}
 	
 	[NSGraphicsContext restoreGraphicsState];
 	
 	if(acceptingDrag)
 	{
-		[NSBezierPath setDefaultLineWidth: 6];
-		[[NSColor keyboardFocusIndicatorColor] set];
-		[NSBezierPath strokeRect: [[self enclosingScrollView] documentVisibleRect]];
+		CALayer* selectionLayer = [[CALayer alloc]init];
+		[selectionLayer setBorderWidth:6.0];
+		[selectionLayer setBorderColor:[[NSColor keyboardFocusIndicatorColor]CGColor]];
+		CGRect frame = self.enclosingScrollView.documentVisibleRect;
+		[selectionLayer setFrame: frame];
+		[newLayer addSublayer:selectionLayer];
 	}
+	
+	NSRect frame = [self frame];
+	CGAffineTransform rotationTransform = [self rotationCGTransformWithFrame:frame];
+	
+	[newLayer setAffineTransform:rotationTransform];
+	
+	[self.layer addSublayer:newLayer];
 }
 
 
@@ -515,8 +535,34 @@ typedef struct {
 	[self resizeView];
 }
 
+- (CGAffineTransform)rotationCGTransformWithFrame:(NSRect)rect
+{
+	CGAffineTransform identity = CGAffineTransformIdentity;
+	CGAffineTransform rotated;
+	
+	switch (rotation)
+	{
+		case 1:
+			rotated = CGAffineTransformRotate(identity, 270 * 3.14 / 180);
+			rotated = CGAffineTransformTranslate(rotated, - NSHeight(rect), 0);
+			break;
+		case 2:
+			rotated = CGAffineTransformRotate(identity, 180 * 3.14 / 180);
+			rotated = CGAffineTransformTranslate(rotated, - NSWidth(rect), - NSHeight(rect));
+			break;
+		case 3:
+			rotated = CGAffineTransformRotate(identity, 90 * 3.14 / 180);
+			rotated = CGAffineTransformTranslate(rotated, 0, - NSWidth(rect));
+			break;
+		default:
+			rotated = identity;
+			break;
+	}
+	
+	return rotated;
+}
 
-- (void)rotationTransformWithFrame:(NSRect)rect
+- (NSAffineTransform*)rotationTransformWithFrame:(NSRect)rect
 {
 	NSAffineTransform * transform = [NSAffineTransform transform];
 	switch (rotation)
@@ -537,6 +583,7 @@ typedef struct {
 			break;
 	}
 	[transform concat];
+	return transform;
 }
 
 
