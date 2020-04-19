@@ -31,7 +31,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
             <rect key="contentRect" x="40" y="225" width="460" height="529"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="400" height="200"/>
             <view key="contentView" id="7">
                 <rect key="frame" x="0.0" y="0.0" width="460" height="529"/>
@@ -94,7 +94,7 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="ADD2836D-8728-474F-9355-80FA8EA9972C" label="Turn Page" paletteLabel="Turn Page" sizingBehavior="auto" id="553" customClass="DTPageTurnToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="554">
-                            <rect key="frame" x="7" y="14" width="47" height="24"/>
+                            <rect key="frame" x="0.0" y="14" width="61" height="27"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="555">
                                 <font key="font" metaFont="system"/>
@@ -110,7 +110,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="D01E117F-B172-435D-8B8C-CFC587DA6020" label="Page End" paletteLabel="Page End" sizingBehavior="auto" id="dMP-Th-vKR" customClass="DTPageTurnToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="U2R-Pp-TY8">
-                            <rect key="frame" x="1" y="14" width="55" height="24"/>
+                            <rect key="frame" x="0.0" y="14" width="59" height="27"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="msg-5l-0tY">
                                 <font key="font" metaFont="system"/>
@@ -126,14 +126,14 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" sizingBehavior="auto" id="517" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
-                            <rect key="frame" x="4" y="14" width="67" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="94" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Original Size" image="equalTemplate"/>
-                                    <segment toolTip="Scale to Window" image="winScaleTemplate" tag="1"/>
-                                    <segment toolTip="Horizontal Scaling" image="horScaleTemplate" tag="2"/>
+                                    <segment toolTip="Original Size" image="equalTemplate" imageScaling="none"/>
+                                    <segment toolTip="Scale to Window" image="winScaleTemplate" imageScaling="none" tag="1"/>
+                                    <segment toolTip="Horizontal Scaling" image="horScaleTemplate" imageScaling="none" tag="2"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -143,13 +143,13 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" sizingBehavior="auto" id="520" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
-                            <rect key="frame" x="6" y="14" width="55" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="72" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Right to Left Page Order" image="rightLeftOrderTemplate"/>
-                                    <segment toolTip="Left to Right Page Order" image="leftRightOrderTemplate"/>
+                                    <segment toolTip="Right to Left Page Order" image="rightLeftOrderTemplate" imageScaling="none"/>
+                                    <segment toolTip="Left to Right Page Order" image="leftRightOrderTemplate" imageScaling="none"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -159,12 +159,12 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" sizingBehavior="auto" id="523" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="521">
-                            <rect key="frame" x="6" y="14" width="60" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="77" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="522">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Single Page Layout" image="onePageTemplate"/>
+                                    <segment toolTip="Single Page Layout" image="onePageTemplate" imageScaling="none"/>
                                     <segment toolTip="Two Page Layout" image="twoPageTemplate" imageScaling="none"/>
                                 </segments>
                             </segmentedCell>
@@ -175,7 +175,7 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2FEB6E2E-5C3E-4725-B4B7-D5204BC8F2A8" label="Rotate" paletteLabel="Rotate" sizingBehavior="auto" id="585" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="586">
-                            <rect key="frame" x="0.0" y="14" width="59" height="24"/>
+                            <rect key="frame" x="0.0" y="14" width="65" height="27"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="587">
                                 <font key="font" metaFont="system"/>
@@ -191,14 +191,14 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C8491130-5672-4D81-9D91-76BB3F03D233" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="559" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="557">
-                            <rect key="frame" x="0.0" y="14" width="71" height="23"/>
+                            <rect key="frame" x="0.0" y="14" width="91" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="momentary" id="558">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Zoom Out" image="NSRemoveTemplate" tag="802"/>
-                                    <segment toolTip="Zoom In" image="NSAddTemplate" tag="801"/>
-                                    <segment toolTip="Zoom Reset" image="equalTemplate" tag="803"/>
+                                    <segment toolTip="Zoom Out" image="NSRemoveTemplate" imageScaling="none" tag="802"/>
+                                    <segment toolTip="Zoom In" image="NSAddTemplate" imageScaling="none" tag="801"/>
+                                    <segment toolTip="Zoom Reset" image="equalTemplate" imageScaling="none" tag="803"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -208,13 +208,13 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A580F497-94D7-4752-971B-01FBBAD86DEF" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="fTI-g2-r3b" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
                         <segmentedControl key="view" verticalHuggingPriority="750" id="cCY-vp-GHz">
-                            <rect key="frame" x="0.0" y="14" width="57" height="20"/>
+                            <rect key="frame" x="0.0" y="14" width="65" height="27"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="momentary" id="lV3-24-KZL">
                                 <font key="font" metaFont="cellTitle"/>
                                 <segments>
-                                    <segment toolTip="Zoom Out" image="NSRemoveTemplate" tag="802"/>
-                                    <segment toolTip="Zoom In" image="NSAddTemplate" tag="801"/>
+                                    <segment toolTip="Zoom Out" image="NSRemoveTemplate" imageScaling="none" tag="802"/>
+                                    <segment toolTip="Zoom In" image="NSAddTemplate" imageScaling="none" tag="801"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -226,7 +226,7 @@
                         <button key="view" toolTip="Magnifying Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="5" y="14" width="30" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="loupeTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="574">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="loupeTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="574">
                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -239,7 +239,7 @@
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="21" y="14" width="27" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="579">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSIconViewTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="579">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -252,7 +252,7 @@
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
                             <rect key="frame" x="25" y="14" width="29" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="extractTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="690">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="extractTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="690">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -265,7 +265,7 @@
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="9" y="14" width="33" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="695">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="only" alignment="center" borderStyle="border" inset="2" id="695">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -316,7 +316,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="222" y="490" width="200" height="200"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="200" height="24"/>
             <view key="contentView" id="351" customClass="TSSTInfoView" customModule="Simple_Comic" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -335,7 +335,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="932" y="284" width="200" height="200"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="175" height="107"/>
             <view key="contentView" id="364">
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -355,7 +355,7 @@
             <windowCollectionBehavior key="collectionBehavior" transient="YES" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="545" y="211" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="374" customClass="TSSTTransparentView" customModule="Simple_Comic" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
@@ -382,13 +382,13 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="468" width="252" height="42"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
-            <view key="contentView" misplaced="YES" id="446">
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="446">
                 <rect key="frame" x="0.0" y="0.0" width="252" height="42"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="448">
-                        <rect key="frame" x="63" y="10" width="41" height="21"/>
+                        <rect key="frame" x="63" y="11" width="43" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="41" id="JaI-oV-G1J"/>
                         </constraints>
@@ -407,7 +407,7 @@
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="752">
-                        <rect key="frame" x="111" y="8" width="58" height="23"/>
+                        <rect key="frame" x="113.5" y="9" width="56" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="Jump" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="753">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -420,7 +420,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="754">
-                        <rect key="frame" x="175" y="8" width="58" height="23"/>
+                        <rect key="frame" x="176.5" y="9" width="56" height="23"/>
                         <buttonCell key="cell" type="roundTextured" title="Cancel" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="755">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -433,7 +433,7 @@ Gw
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="447">
-                        <rect key="frame" x="18" y="13" width="39" height="16"/>
+                        <rect key="frame" x="18" y="14" width="39" height="16"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page:" id="502">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -464,7 +464,7 @@ Gw
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="160" width="350" height="350"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="484">
                 <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -479,24 +479,24 @@ Gw
         </window>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="14" height="13"/>
-        <image name="NSIconViewTemplate" width="15" height="14"/>
-        <image name="NSLeftFacingTriangleTemplate" width="10" height="14"/>
-        <image name="NSQuickLookTemplate" width="21" height="13"/>
-        <image name="NSRemoveTemplate" width="14" height="4"/>
-        <image name="NSRightFacingTriangleTemplate" width="10" height="14"/>
-        <image name="NSTouchBarSkipToEndTemplate" width="15" height="13"/>
-        <image name="NSTouchBarSkipToStartTemplate" width="15" height="13"/>
-        <image name="equalTemplate" width="9" height="6"/>
-        <image name="extractTemplate" width="17" height="13"/>
-        <image name="horScaleTemplate" width="12" height="8"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
+        <image name="NSIconViewTemplate" width="14" height="10"/>
+        <image name="NSLeftFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSTouchBarSkipToEndTemplate" width="12" height="30"/>
+        <image name="NSTouchBarSkipToStartTemplate" width="12" height="30"/>
+        <image name="equalTemplate" width="12" height="6"/>
+        <image name="extractTemplate" width="18" height="18"/>
+        <image name="horScaleTemplate" width="15" height="14"/>
         <image name="leftRightOrderTemplate" width="16" height="14"/>
         <image name="loupeTemplate" width="18" height="18"/>
         <image name="onePageTemplate" width="12" height="14"/>
         <image name="rightLeftOrderTemplate" width="16" height="14"/>
-        <image name="rotateLeftTemplate" width="16" height="13"/>
-        <image name="rotateRightTemplate" width="16" height="13"/>
+        <image name="rotateLeftTemplate" width="11" height="14"/>
+        <image name="rotateRightTemplate" width="11" height="14"/>
         <image name="twoPageTemplate" width="25" height="14"/>
-        <image name="winScaleTemplate" width="12" height="12"/>
+        <image name="winScaleTemplate" width="10" height="14"/>
     </resources>
 </document>
