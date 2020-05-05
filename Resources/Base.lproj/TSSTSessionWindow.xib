@@ -113,6 +113,27 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D01E117F-B172-435D-8B8C-CFC587DA6020" label="Page End" paletteLabel="Page End" id="dMP-Th-vKR" customClass="DTPageTurnToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="51" height="25"/>
+                        <size key="maxSize" width="59" height="27"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="U2R-Pp-TY8">
+                            <rect key="frame" x="0.0" y="14" width="59" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="msg-5l-0tY">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Left Page End" image="NSTouchBarSkipToStartTemplate" width="24" tag="701">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Right Page Turn" image="NSTouchBarSkipToEndTemplate" width="24" tag="702"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="pageEnd:" target="-2" id="kQf-6a-gFn"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" id="517" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <size key="minSize" width="82" height="24"/>
@@ -519,6 +540,8 @@ Gw
         <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
+        <image name="NSTouchBarSkipToEndTemplate" width="12" height="30"/>
+        <image name="NSTouchBarSkipToStartTemplate" width="12" height="30"/>
         <image name="equalTemplate" width="9" height="6"/>
         <image name="extractTemplate" width="17" height="13"/>
         <image name="horScaleTemplate" width="12" height="8"/>

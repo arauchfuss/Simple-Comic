@@ -421,6 +421,18 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
 }
 
+- (IBAction)pageEnd:(id)sender
+{
+	BOOL right = ([sender selectedSegment] > 0);
+	if(session.pageOrder ^ right)
+	{
+		[self firstPage:sender];
+	}
+	else
+	{
+		[self lastPage:sender];
+	}
+}
 
 /*! Method flips the page to the right calling nextPage or previousPage
 	depending on the prefered page ordering.
