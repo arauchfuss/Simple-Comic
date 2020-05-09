@@ -348,6 +348,7 @@
 		55C7D78B1C4C0401005F40C8 /* TSSTCircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTCircularImageView.swift; sourceTree = "<group>"; };
 		55C7D78F1C4C06FF005F40C8 /* TSSTInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoWindow.swift; sourceTree = "<group>"; };
 		55E21B1123FBCCF900D53932 /* No Sign.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "No Sign.xcconfig"; path = "Classes/No Sign.xcconfig"; sourceTree = SOURCE_ROOT; };
+		55FA8AA224667346005D33BB /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55FFF1BB1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSSTPage+CoreDataProperties.h"; sourceTree = "<group>"; };
 		55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSSTPage+CoreDataProperties.m"; sourceTree = "<group>"; };
 		55FFF1DA1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSSTManagedGroup+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -1090,6 +1091,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8F381FB223F0DBCA004B7DB2 /* de */,
+				55FA8AA224667346005D33BB /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
