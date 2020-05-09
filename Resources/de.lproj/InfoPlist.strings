@@ -22,3 +22,7 @@
 /* (No Comment) */
 "ZIP comic archive" = "ZIP-Comicarchiv";
 
+"com.simplecomic.cbz-archive" = "ZIP-Comicarchiv";
+"com.simplecomic.cbr-archive" = "RAR-Comicarchiv";
+"com.simplecomic.cb7-archive" = "7-Zip-Comicarchiv";
+"com.simplecomic.cbt-archive" = "Tar-Comicarchiv";
