@@ -960,7 +960,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	{
 		newSession = YES;
 		[self setShouldCascadeWindows: YES];
-		[[self window] zoom: self];
+		NSLog(@"isZoomed = %d", [[self window] isZoomed]);
+//		[[self window] zoom: self];
 		[pageView correctViewPoint];
 	}
 }
