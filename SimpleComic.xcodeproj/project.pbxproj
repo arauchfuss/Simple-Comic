@@ -44,6 +44,8 @@
 		55871EDE235D70C100528BDF /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
 		55871EFC235D8B2800528BDF /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
 		5589952E1A13D4450058830B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5589952D1A13D4450058830B /* Media.xcassets */; };
+		5590EB3924A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5590EB3724A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.m */; };
+		5590EB3A24A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5590EB3824A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m */; };
 		5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */; };
 		559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559EF3EA1BDD473B00FAAA0A /* TSSTThumbnailView.swift */; };
 		55C374251BD9E6AF006385B6 /* DTPartialArchiveParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C374111BD9E6AF006385B6 /* DTPartialArchiveParser.h */; };
@@ -320,6 +322,10 @@
 		55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = V1ToV2.xcmappingmodel; sourceTree = "<group>"; };
 		55871EC6235D708900528BDF /* libwebp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebp.xcodeproj; path = "Vendor/ios-osx-webp-decoder/libwebp.xcodeproj"; sourceTree = "<group>"; };
 		5589952D1A13D4450058830B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		5590EB3524A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ManagedSmartFolder+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5590EB3624A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ManagedSmartFolder+CoreDataClass.h"; sourceTree = "<group>"; };
+		5590EB3724A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ManagedSmartFolder+CoreDataClass.m"; sourceTree = "<group>"; };
+		5590EB3824A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ManagedSmartFolder+CoreDataProperties.m"; sourceTree = "<group>"; };
 		5599515C1BDC0A3F0086661A /* Simple Comic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Simple Comic-Bridging-Header.h"; sourceTree = "<group>"; };
 		5599515D1BDC0A400086661A /* DTPolishedProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTPolishedProgressBar.swift; sourceTree = "<group>"; };
 		559EF3DF1BDD38F400FAAA0A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -493,6 +499,10 @@
 				2803B2FF0D5E541800CD7906 /* TSSTManagedSession.m */,
 				55FFF1E31DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.h */,
 				55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */,
+				5590EB3524A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.h */,
+				5590EB3824A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m */,
+				5590EB3624A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.h */,
+				5590EB3724A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.m */,
 			);
 			path = "Managed Objects";
 			sourceTree = "<group>";
@@ -938,6 +948,7 @@
 				55861E3923C68B3700390CD3 /* V1ToV2.xcmappingmodel in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */,
+				5590EB3A24A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m in Sources */,
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */,
@@ -947,6 +958,7 @@
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
 				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
 				281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */,
+				5590EB3924A1FD0900DA060E /* ManagedSmartFolder+CoreDataClass.m in Sources */,
 				286AEDB70C4161C20031E3D9 /* TSSTSortDescriptor.m in Sources */,
 				55C7D7901C4C06FF005F40C8 /* TSSTInfoWindow.swift in Sources */,
 				283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */,

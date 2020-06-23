@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="18G1012" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17162.0.1" systemVersion="19F101" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="Archive" representedClassName="TSSTManagedArchive" parentEntity="ImageGroup" syncable="YES">
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="solidDirectory" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,7 +41,7 @@
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ImageGroup" inverseName="session" inverseEntity="ImageGroup" indexed="YES" syncable="YES"/>
         <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Image" inverseName="session" inverseEntity="Image" indexed="YES" syncable="YES"/>
     </entity>
-    <entity name="SmartFolder" representedClassName="ManagedSmartFolder" parentEntity="ImageGroup" syncable="YES" codeGenerationType="class"/>
+    <entity name="SmartFolder" representedClassName="ManagedSmartFolder" parentEntity="ImageGroup" syncable="YES"/>
     <elements>
         <element name="Archive" positionX="342" positionY="15" width="90" height="73"/>
         <element name="Image" positionX="72" positionY="162" width="92" height="178"/>
