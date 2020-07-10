@@ -679,6 +679,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	[addPagesModal setCanChooseDirectories: YES];
 	
 	NSMutableArray * allAllowedFileTypes = [[TSSTManagedArchive archiveTypes] mutableCopy];
+	[allAllowedFileTypes addObjectsFromArray: TSSTManagedArchive.quicklookExtensions];
 	[allAllowedFileTypes addObjectsFromArray: [TSSTPage imageTypes]];
 	[allAllowedFileTypes addObject:(NSString*)kUTTypePDF];
 	[addPagesModal setAllowedFileTypes:allAllowedFileTypes];
