@@ -178,12 +178,16 @@ typedef struct {
 		return;
 	}
 	
-	NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];;
+	NSBitmapImageRep * testImageRep = (NSBitmapImageRep *)[pageImage bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
 	NSInteger loopCount = [[animationInfo valueForKey: @"loopCount"] integerValue];
 	NSInteger frameCount = ([[testImageRep valueForProperty: NSImageFrameCount] integerValue] - 1);
 	NSInteger currentFrame = [[testImageRep valueForProperty: NSImageCurrentFrame] integerValue];
 	
-	currentFrame = currentFrame < frameCount ? ++currentFrame : 0;
+	if (currentFrame < frameCount) {
+		currentFrame++;
+	} else {
+		currentFrame = 0;
+	}
 	if(currentFrame == 0 && loopCount > 1)
 	{
 		--loopCount;
