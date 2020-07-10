@@ -15,6 +15,19 @@ static NSArray * fileNameSort = nil;
 
 NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * archive)
 {
+    static NSSet<NSString*> *imageFileTypes;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray<NSString*> *imageTypes = NSImage.imageTypes;
+        NSMutableSet<NSString*> *imageExtensions = [NSMutableSet new];
+        for (NSString *uti in imageTypes) {
+            NSArray *filenameExtensions =
+            CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
+            [imageExtensions addObjectsFromArray:filenameExtensions];
+        }
+        imageFileTypes = imageExtensions;
+    });
+    
     NSMutableArray * fileDescriptions = [[NSMutableArray alloc] initWithCapacity: [archive numberOfEntries]];
 
     NSInteger count = [archive numberOfEntries];
@@ -22,7 +35,7 @@ NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * ar
     {
         NSString * fileName = [archive nameOfEntry: index];
         NSString * rawName = [archive nameOfEntry: index];
-        if([[NSImage imageFileTypes] containsObject: [[fileName pathExtension] lowercaseString]])
+        if([imageFileTypes containsObject: [[fileName pathExtension] lowercaseString]])
         {
             NSDictionary * fileDescription =
             @{@"name": fileName,
