@@ -309,28 +309,46 @@ typedef struct {
 	self.layer.backgroundColor = [color CGColor];
 
 	NSData *firstPageImageData = firstPageImage.TIFFRepresentation;
-    CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
-    CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
-	CFRelease(firstPageImageSource);
 
-	CALayer *firstPageLayer = [CALayer layer];
-	firstPageLayer.contents = (__bridge id) firstPageImageRef;
-	[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
-	[newLayer addSublayer:firstPageLayer];
-	CFRelease(firstPageImageRef);
+	if(firstPageImageData != nil)
+	{
+		CGImageSourceRef firstPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)firstPageImageData, NULL);
+		CGImageRef firstPageImageRef =  CGImageSourceCreateImageAtIndex(firstPageImageSource, 0, NULL);
+		CFRelease(firstPageImageSource);
+
+		CALayer *firstPageLayer = [CALayer layer];
+		firstPageLayer.contents = (__bridge id) firstPageImageRef;
+		[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
+		[newLayer addSublayer:firstPageLayer];
+		CFRelease(firstPageImageRef);
+	} else {
+		[firstPageImage drawInRect: [self centerScanRect: firstPageRect]
+						  fromRect: NSZeroRect
+						 operation: NSCompositingOperationSourceOver
+						  fraction: 1.0];
+	}
 
 	if([secondPageImage isValid])
 	{
 		NSData *secondPageImageData = secondPageImage.TIFFRepresentation;
-		CGImageSourceRef secondPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)secondPageImageData, NULL);
-		CGImageRef secondPageImageRef =  CGImageSourceCreateImageAtIndex(secondPageImageSource, 0, NULL);
-		CFRelease(secondPageImageSource);
 
-		CALayer *secondPageLayer = [CALayer layer];
-		secondPageLayer.contents = (__bridge id) secondPageImageRef;
-		[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
-		[newLayer addSublayer:secondPageLayer];
-		CFRelease(secondPageImageRef);
+		if(secondPageImageData != nil)
+		{
+			CGImageSourceRef secondPageImageSource = CGImageSourceCreateWithData((__bridge CFDataRef)secondPageImageData, NULL);
+			CGImageRef secondPageImageRef =  CGImageSourceCreateImageAtIndex(secondPageImageSource, 0, NULL);
+			CFRelease(secondPageImageSource);
+
+			CALayer *secondPageLayer = [CALayer layer];
+			secondPageLayer.contents = (__bridge id) secondPageImageRef;
+			[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
+			[newLayer addSublayer:secondPageLayer];
+			CFRelease(secondPageImageRef);
+		} else {
+			[secondPageImage drawInRect: [self centerScanRect: secondPageRect]
+							   fromRect: NSZeroRect
+							  operation: NSCompositingOperationSourceOver
+							   fraction: 1.0];
+		}
 	}
 	
 	NSColor* selectionBackgroundColor;
