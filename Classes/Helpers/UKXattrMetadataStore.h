@@ -246,7 +246,7 @@ NS_ASSUME_NONNULL_BEGIN
  *	@param		obj
  *				The Property List object to set.
  *	@param		key
- *				the key to set \obj to.
+ *				The key to set \c obj to.
  *	@param		path
  *				The file whose xattr you want to set.
  *	@param		travLnk
