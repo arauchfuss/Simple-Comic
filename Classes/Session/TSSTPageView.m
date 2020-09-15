@@ -304,6 +304,7 @@ typedef struct {
 
 	CALayer* newLayer = [[CALayer alloc]init];
 	
+	NSGraphicsContext *gcontext = NSGraphicsContext.currentContext;
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	self.layer.backgroundColor = [color CGColor];
@@ -429,7 +430,7 @@ typedef struct {
 		[newLayer addSublayer:label];
 	}
 	
-	[NSGraphicsContext restoreGraphicsState];
+	[gcontext restoreGraphicsState];
 	
 	if(acceptingDrag)
 	{
