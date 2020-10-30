@@ -39,7 +39,9 @@ typedef NS_ENUM(NSInteger, QLThumbnailIconFlavor)
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
 	@autoreleasepool {
-		[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+		if (![NSImageRep imageRepClassForType:@"public.webp"]) {
+			[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+		}
 		NSURL *archiveURL = (__bridge NSURL *)url;
 		NSString * archivePath = [archiveURL path];
 //	NSLog(@"base path %@",archivePath);
