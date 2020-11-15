@@ -173,6 +173,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbz</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>ZIP comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -202,6 +204,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cb7</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>7-Zip comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -228,6 +232,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbr</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>RAR comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -257,6 +263,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbt</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>tar comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -471,6 +479,11 @@
 			<string>ZIP comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cbz</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cbz</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>cx.c3.cbz-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -492,6 +505,11 @@
 			<string>RAR comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cbr</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cbr</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>cx.c3.cbr-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -513,6 +531,11 @@
 			<string>tar comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cbt</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cbt</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.dancingtortoise.simplecomic.cbt</string>
 			<key>UTTypeTagSpecification</key>
@@ -594,6 +617,11 @@
 			<string>7-Zip comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cb7</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cb7</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>org.7-zip.7-zip-comic-archive</string>
 			<key>UTTypeTagSpecification</key>
