@@ -111,6 +111,27 @@
                             </connections>
                         </segmentedControl>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D01E117F-B172-435D-8B8C-CFC587DA6020" label="Page End" paletteLabel="Page End" id="dMP-Th-vKR" customClass="DTPageTurnToolbarItem">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="51" height="25"/>
+                        <size key="maxSize" width="59" height="27"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="U2R-Pp-TY8">
+                            <rect key="frame" x="0.0" y="14" width="59" height="27"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="msg-5l-0tY">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment toolTip="Left End Page" image="NSTouchBarSkipToStartTemplate" width="24" tag="701">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Right End Page" image="NSTouchBarSkipToEndTemplate" width="24" tag="702"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="pageEnd:" target="-2" id="kQf-6a-gFn"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" sizingBehavior="auto" id="517" customClass="DTToolbarItem">
                         <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
@@ -491,6 +512,8 @@ Gw
         </window>
     </objects>
     <resources>
+        <image name="NSTouchBarSkipToEndTemplate" width="12" height="30"/>
+        <image name="NSTouchBarSkipToStartTemplate" width="12" height="30"/>
         <image name="NSAddTemplate" width="14" height="13"/>
         <image name="NSIconViewTemplate" width="15" height="14"/>
         <image name="NSLeftFacingTriangleTemplate" width="10" height="14"/>
