@@ -39,7 +39,9 @@ typedef NS_ENUM(NSInteger, QLThumbnailIconFlavor)
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
 	@autoreleasepool {
-		[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+		if (![NSImageRep imageRepClassForType:@"public.webp"]) {
+			[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+		}
 		NSURL *archiveURL = (__bridge NSURL *)url;
 		NSString * archivePath = [archiveURL path];
 //	NSLog(@"base path %@",archivePath);
@@ -115,7 +117,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 				return kQLReturnNoError;
 			}
 			
-			NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconShadowFlavor)};
+			NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconBookFlavor)};
 			CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, (__bridge CFDictionaryRef)(properties));
 			if(cgContext)
 			{

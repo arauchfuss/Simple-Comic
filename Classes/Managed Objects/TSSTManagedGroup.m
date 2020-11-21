@@ -287,7 +287,9 @@
 					   @"org.7-zip.7-zip-archive", @"cx.c3.cb7-archive",
 					   @"public.archive.lha", @"cx.c3.lha-archive",
 					   @"com.dancingtortoise.simplecomic.cbt", @"public.tar-archive",
-					   @"com.yacreader.yacreader.cbr", @"com.yacreader.yacreader.cbz"];
+					   @"com.yacreader.yacreader.cbr", @"com.yacreader.yacreader.cbz",
+					   @"com.simplecomic.cbz-archive", @"com.simplecomic.cbr-archive",
+					   @"com.simplecomic.cb7-archive", @"com.simplecomic.cbt-archive"];
 	});
 	
 	return extensions;

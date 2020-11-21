@@ -9,6 +9,10 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>directory</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>fold</string>
+			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -33,6 +37,7 @@
 			<array>
 				<string>application/vnd.rar</string>
 				<string>application/x-rar-compressed</string>
+				<string>application/rar</string>
 			</array>
 			<key>CFBundleTypeName</key>
 			<string>RAR archive</string>
@@ -54,6 +59,8 @@
 			<array>
 				<string>zip</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>zip</string>
 			<key>CFBundleTypeMIMETypes</key>
 			<array>
 				<string>application/zip</string>
@@ -84,6 +91,10 @@
 			</array>
 			<key>CFBundleTypeName</key>
 			<string>PDF file</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>PDF </string>
+			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -162,12 +173,14 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbz</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>ZIP comic archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
-			<string>Alternate</string>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.simplecomic.cbz-archive</string>
@@ -175,6 +188,9 @@
 				<string>public.cbz-archive</string>
 				<string>cx.c3.cbz-archive</string>
 				<string>com.yacreader.yacreader.cbz</string>
+				<string>com.milke.cbz-archive</string>
+				<string>com.bitcartel.comicbooklover.cbz</string>
+				<string>public.archive.cbz</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -188,16 +204,21 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cb7</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>7-Zip comic archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
-			<string>Alternate</string>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.simplecomic.cb7-archive</string>
 				<string>public.cb7-archive</string>
+				<string>com.macitbetter.cb7-archive</string>
+				<string>cx.c3.cb7-archive</string>
+				<string>org.7-zip.7-zip-comic-archive</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -211,18 +232,23 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbr</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>RAR comic archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
-			<string>Alternate</string>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.simplecomic.cbr-archive</string>
 				<string>com.macitbetter.cbr-archive</string>
 				<string>public.cbr-archive</string>
 				<string>cx.c3.cbr-archive</string>
+				<string>com.bitcartel.comicbooklover.cbr</string>
+				<string>com.milke.cbr-archive</string>
+				<string>public.archive.cbr</string>
 				<string>com.yacreader.yacreader.cbr</string>
 			</array>
 			<key>LSTypeIsPackage</key>
@@ -237,15 +263,18 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbt</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<false/>
 			<key>CFBundleTypeName</key>
 			<string>tar comic archive</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
-			<string>Alternate</string>
+			<string>Default</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>com.simplecomic.cbt-archive</string>
+				<string>com.dancingtortoise.simplecomic.cbt</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -386,7 +415,29 @@
 				<string>public.webp</string>
 			</array>
 			<key>LSTypeIsPackage</key>
-			<integer>0</integer>
+			<false/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>heic</string>
+			</array>
+			<key>CFBundleTypeMIMETypes</key>
+			<array>
+				<string>image/heic</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>HEIC Image</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.heic</string>
+			</array>
+			<key>LSTypeIsPackage</key>
+			<false/>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
@@ -428,8 +479,13 @@
 			<string>ZIP comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cbz</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cbz</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.simplecomic.cbz-archive</string>
+			<string>cx.c3.cbz-archive</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -449,34 +505,18 @@
 			<string>RAR comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cbr</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cbr</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.simplecomic.cbr-archive</string>
+			<string>cx.c3.cbr-archive</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
 					<string>cbr</string>
-				</array>
-			</dict>
-		</dict>
-		<dict>
-			<key>UTTypeConformsTo</key>
-			<array>
-				<string>public.data</string>
-				<string>public.archive</string>
-				<string>org.7-zip.7-zip-archive</string>
-			</array>
-			<key>UTTypeDescription</key>
-			<string>7-Zip comic archive</string>
-			<key>UTTypeIconFile</key>
-			<string>cb7</string>
-			<key>UTTypeIdentifier</key>
-			<string>com.simplecomic.cb7-archive</string>
-			<key>UTTypeTagSpecification</key>
-			<dict>
-				<key>public.filename-extension</key>
-				<array>
-					<string>cb7</string>
 				</array>
 			</dict>
 		</dict>
@@ -491,8 +531,13 @@
 			<string>tar comic archive</string>
 			<key>UTTypeIconFile</key>
 			<string>cbt</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cbt</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
-			<string>com.simplecomic.cbt-archive</string>
+			<string>com.dancingtortoise.simplecomic.cbt</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -518,6 +563,10 @@
 			<string>public.archive.lha</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
+				<key>com.apple.ostype</key>
+				<array>
+					<string>LHA </string>
+				</array>
 				<key>public.filename-extension</key>
 				<array>
 					<string>lha</string>
@@ -554,6 +603,36 @@
 				<key>public.mime-type</key>
 				<array>
 					<string>application/x-7z-compressed</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.archive</string>
+				<string>org.7-zip.7-zip-archive</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>7-Zip comic archive</string>
+			<key>UTTypeIconFile</key>
+			<string>cb7</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconText</key>
+				<string>cb7</string>
+			</dict>
+			<key>UTTypeIdentifier</key>
+			<string>org.7-zip.7-zip-comic-archive</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cb7</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/x-cb7-compressed</string>
 				</array>
 			</dict>
 		</dict>

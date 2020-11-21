@@ -972,7 +972,14 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	{
 		newSession = YES;
 		[self setShouldCascadeWindows: YES];
-		[[self window] zoom: self];
+		
+		if (![[self window] isZoomed])
+		{
+			[[self window] zoom: self];
+		} else {
+			NSLog(@"Window is already zoomed – zoom not toggled");
+		}
+		
 		[pageView correctViewPoint];
 	}
 }

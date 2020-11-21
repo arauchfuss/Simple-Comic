@@ -17,7 +17,9 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 {
 	@autoreleasepool {
 		// TODO: implement kQLReturnHasMore somehow
-		[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+		if (![NSImageRep imageRepClassForType:@"public.webp"]) {
+			[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
+		}
 
 		XADArchive * archive = [[XADArchive alloc] initWithFileURL: (__bridge NSURL *)url delegate: nil error: NULL];
 		NSMutableArray<NSDictionary<NSString*,id>*> * fileList = fileListForArchive(archive);

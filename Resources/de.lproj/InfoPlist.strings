@@ -22,3 +22,7 @@
 /* (No Comment) */
 "ZIP comic archive" = "ZIP-Comicarchiv";
 
+"cx.c3.cbz-archive" = "ZIP-Comicarchiv";
+"cx.c3.cbr-archive" = "RAR-Comicarchiv";
+"org.7-zip.7-zip-comic-archive" = "7-Zip-Comicarchiv";
+"com.dancingtortoise.simplecomic.cbt" = "Tar-Comicarchiv";
