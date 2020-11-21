@@ -27,7 +27,6 @@
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedSession.h"
-#import "DTWindowCategory.h"
 
 #import "Simple_Comic-Swift.h"
 
