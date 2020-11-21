@@ -121,10 +121,10 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="msg-5l-0tY">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Left Page End" image="NSTouchBarSkipToStartTemplate" width="24" tag="701">
+                                    <segment toolTip="Left End Page" image="NSTouchBarSkipToStartTemplate" width="24" tag="701">
                                         <nil key="label"/>
                                     </segment>
-                                    <segment toolTip="Right Page Turn" image="NSTouchBarSkipToEndTemplate" width="24" tag="702"/>
+                                    <segment toolTip="Right End Page" image="NSTouchBarSkipToEndTemplate" width="24" tag="702"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
