@@ -10,26 +10,6 @@
 #include "main.h"
 #import <WebPMac/TSSTWebPImageRep.h>
 
-// Undocumented properties
-extern const CFStringRef kQLThumbnailPropertyIconFlavorKey;
-
-typedef NS_ENUM(NSInteger, QLThumbnailIconFlavor)
-{
-	kQLThumbnailIconPlainFlavor		= 0,
-	kQLThumbnailIconShadowFlavor	= 1,
-	kQLThumbnailIconBookFlavor		= 2,
-	kQLThumbnailIconMovieFlavor		= 3,
-	kQLThumbnailIconAddressFlavor	= 4,
-	kQLThumbnailIconImageFlavor		= 5,
-	kQLThumbnailIconGlossFlavor		= 6,
-	kQLThumbnailIconSlideFlavor		= 7,
-	kQLThumbnailIconSquareFlavor	= 8,
-	kQLThumbnailIconBorderFlavor	= 9,
-	// = 10,
-	kQLThumbnailIconCalendarFlavor	= 11,
-	kQLThumbnailIconPatternFlavor	= 12,
-};
-
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
 
@@ -117,7 +97,7 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 				return kQLReturnNoError;
 			}
 			
-			NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconBookFlavor)};
+			NSDictionary *properties = @{};
 			CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, (__bridge CFDictionaryRef)(properties));
 			if(cgContext)
 			{
