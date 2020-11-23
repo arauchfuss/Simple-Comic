@@ -1,6 +1,24 @@
 
+/* Class = "NSWindow"; title = "Window"; ObjectID = "6"; */
+"6.title" = "Window";
+
+/* Class = "NSWindow"; title = "InfoPane"; ObjectID = "350"; */
+"350.title" = "InfoPane";
+
+/* Class = "NSWindow"; title = "Panel"; ObjectID = "363"; */
+"363.title" = "Panel";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "373"; */
+"373.title" = "Window";
+
+/* Class = "NSWindow"; title = "Window"; ObjectID = "483"; */
+"483.title" = "Window";
+
 /* Class = "NSTextFieldCell"; title = "Page:"; ObjectID = "502"; */
 "502.title" = "Pagina:";
+
+/* Class = "NSTextFieldCell"; title = "9999"; ObjectID = "503"; */
+"503.title" = "9999";
 
 /* Class = "NSSegmentedCell"; 516.ibShadowedToolTips[0] = "Original Size"; ObjectID = "516"; */
 "516.ibShadowedToolTips[0]" = "Dimensione originale";
@@ -122,6 +140,12 @@
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "755"; */
 "755.title" = "Annulla";
 
+/* Class = "NSToolbarItem"; label = "Page End"; ObjectID = "dMP-Th-vKR"; */
+"dMP-Th-vKR.label" = "Page End";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Page End"; ObjectID = "dMP-Th-vKR"; */
+"dMP-Th-vKR.paletteLabel" = "Page End";
+
 /* Class = "NSToolbarItem"; label = "Zoom"; ObjectID = "fTI-g2-r3b"; */
 "fTI-g2-r3b.label" = "Zoom";
 
@@ -133,3 +157,9 @@
 
 /* Class = "NSSegmentedCell"; lV3-24-KZL.ibShadowedToolTips[1] = "Zoom Out"; ObjectID = "lV3-24-KZL"; */
 "lV3-24-KZL.ibShadowedToolTips[1]" = "Riduci";
+
+/* Class = "NSSegmentedCell"; msg-5l-0tY.ibShadowedToolTips[0] = "Left End Page"; ObjectID = "msg-5l-0tY"; */
+"msg-5l-0tY.ibShadowedToolTips[0]" = "Left End Page";
+
+/* Class = "NSSegmentedCell"; msg-5l-0tY.ibShadowedToolTips[1] = "Right End Page"; ObjectID = "msg-5l-0tY"; */
+"msg-5l-0tY.ibShadowedToolTips[1]" = "Right End Page";
