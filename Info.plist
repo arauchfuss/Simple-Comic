@@ -412,7 +412,7 @@
 			<string>Alternate</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>public.webp</string>
+				<string>org.webmproject.webp</string>
 			</array>
 			<key>LSTypeIsPackage</key>
 			<false/>
@@ -670,7 +670,7 @@
 			<key>UTTypeDescription</key>
 			<string>WebP image</string>
 			<key>UTTypeIdentifier</key>
-			<string>public.webp</string>
+			<string>org.webmproject.webp</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
