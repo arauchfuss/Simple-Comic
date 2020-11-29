@@ -39,6 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*!
  *	@class		UKXattrMetadataStore
+ *	@brief		\c xattr wrapper class.
  *	@discussion	This is a wrapper around The Mac OS X 10.4 and later xattr
  *	API that lets you attach arbitrary metadata to a file. Currently it
  *	allows querying and changing the attributes of a file, as well as
