@@ -292,6 +292,22 @@ NS_ASSUME_NONNULL_BEGIN
 	 traverseLink:(BOOL)travLnk format:(NSPropertyListFormat)format error:(NSError**)error;
 
 /*!
+ *	@method		objectForKey:atPath:traverseLink:
+ *	@param		key
+ *				the key to get the Property List object from.
+ *	@param		path
+ *				The file whose xattr you want to get.
+ *	@param		travLnk
+ *				If <code>YES</code>, follows symlinks.
+ *	@return		a Property List object from contents of \c key
+ *	@discussion	Retrieve the xattr with name key, which is an XML property list
+ *				and unserialize it back into an object or object graph.
+ *	@deprecated	This method throws an Obj-C exception on failure.
+ */
++(nullable id) objectForKey:(NSString*)key atPath:(NSString*)path
+			   traverseLink:(BOOL)travLnk UKXDEPRECATED("object(forKey:atPath:traverseLink:) throws", "+objectForKey:atPath:traverseLink:error:");
+
+/*!
  *	@method		objectForKey:atPath:traverseLink:error:
  *	@brief		Get the xattr with name \c key as a property list
  *	@param		key
