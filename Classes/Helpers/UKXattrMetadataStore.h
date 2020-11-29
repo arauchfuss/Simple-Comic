@@ -265,7 +265,9 @@ NS_ASSUME_NONNULL_BEGIN
 	 traverseLink:(BOOL)travLnk error:(NSError**)error;
 
 /*!
- *	@method		setObject:forKey:atPath:traverseLink:error:
+ *	@method		setObject:forKey:atPath:traverseLink:format:error:
+ *	@brief		Sets the xattr with name \c key to a property list representation of
+ *				the specified object (or object graph) using the specified format.
  *	@param		obj
  *				The Property List object to set.
  *	@param		key
@@ -302,11 +304,29 @@ NS_ASSUME_NONNULL_BEGIN
  *				If the method does not complete successfully, upon return
  *				contains an \c NSError object that describes the problem.
  *	@return		a Property List object from contents of \c key on succes, or \c nil on failure
- *	@discussion	Get the xattr with name \c key as a property list object (<code>NSString</code>, <code>NSArray</code>, etc...)<br>
+ *	@discussion	Get the xattr with name \c key as a property list object (<code>NSString</code>, <code>NSArray</code>, etc...)
+ *
  *				The data has to be stored as a property list.
  */
 +(nullable id) objectForKey:(NSString*)key atPath:(NSString*)path
 			   traverseLink:(BOOL)travLnk error:(NSError**)outError;
+
+/*!
+ *	@method		removeKey:atPath:traverseLink:error:
+ *	@brief		Removes the xattr with name \c key
+ *	@param		key
+ *				the key to delete.
+ *	@param		path
+ *				The file whose xattr you want to remove.
+ *	@param		travLnk
+ *				If <code>YES</code>, follows symlinks.
+ *	@param		outError
+ *				If the method does not complete successfully, upon return
+ *				contains an \c NSError object that describes the problem.
+ *	@return		\c YES on success, \c NO on failure.
+ */
++(BOOL) removeKey:(NSString*)key atPath:(NSString*)path
+	 traverseLink:(BOOL)travLnk error:(NSError**)outError;
 
 @end
 
