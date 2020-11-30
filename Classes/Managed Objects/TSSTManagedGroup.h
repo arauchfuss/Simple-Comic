@@ -29,7 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 	NSURL *_url;
 }
 
-@property (readonly, strong) id instance;
+@property (readonly, strong, nullable) id instance;
 
 @property (copy) NSString *path;
 @property (copy) NSURL *fileURL;
