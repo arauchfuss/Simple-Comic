@@ -17,7 +17,7 @@ OSStatus GeneratePreviewForURL(void *thisInterface, QLPreviewRequestRef preview,
 {
 	@autoreleasepool {
 		// TODO: implement kQLReturnHasMore somehow
-		if (![NSImageRep imageRepClassForType:@"public.webp"]) {
+		if (![NSImageRep imageRepClassForType:@"org.webmproject.webp"]) {
 			[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
 		}
 
