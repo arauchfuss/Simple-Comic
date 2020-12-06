@@ -19,7 +19,7 @@
 OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thumbnail, CFURLRef url, CFStringRef contentTypeUTI, CFDictionaryRef options, CGSize maxSize)
 {
 	@autoreleasepool {
-		if (![NSImageRep imageRepClassForType:@"public.webp"]) {
+		if (![NSImageRep imageRepClassForType:@"org.webmproject.webp"]) {
 			[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
 		}
 		NSURL *archiveURL = (__bridge NSURL *)url;

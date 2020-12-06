@@ -245,6 +245,21 @@
 	return toRet;
 }
 
++(BOOL) removeKey:(NSString*)key atPath:(NSString*)path traverseLink:(BOOL)travLnk error:(NSError**)outError
+{
+	int success = removexattr(path.fileSystemRepresentation, key.UTF8String, (travLnk ? 0 : XATTR_NOFOLLOW));
+	
+	if (success == -1) {
+		if (outError) {
+			*outError = [NSError errorWithDomain:NSPOSIXErrorDomain
+											code:errno
+										userInfo:
+						 @{NSFilePathErrorKey: path}];
+		}
+		return NO;
+	}
+	return YES;
+}
 
 @end
 

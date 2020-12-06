@@ -305,6 +305,7 @@ typedef struct {
 	CALayer* newLayer = [[CALayer alloc]init];
 	
 	NSGraphicsContext *gcontext = NSGraphicsContext.currentContext;
+	[gcontext saveGraphicsState];
 	NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 	NSColor * color = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults valueForKey: TSSTBackgroundColor]];
 	self.layer.backgroundColor = [color CGColor];

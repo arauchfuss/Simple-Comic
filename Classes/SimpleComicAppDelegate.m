@@ -253,7 +253,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	launchInProgress = YES;
 	preferences = nil;
 	optionHeldAtlaunch = NO;
-	if (![NSImageRep imageRepClassForType:@"public.webp"]) {
+	if (![NSImageRep imageRepClassForType:@"org.webmproject.webp"]) {
 		[NSImageRep registerImageRepClass:[TSSTWebPImageRep class]];
 	}
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endSession:) name: TSSTSessionEndNotification object: nil];
