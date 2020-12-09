@@ -319,7 +319,6 @@
                 </connections>
             </toolbar>
             <connections>
-                <binding destination="-2" name="title" keyPath="pageNames" id="272"/>
                 <outlet property="delegate" destination="-2" id="39"/>
                 <outlet property="initialFirstResponder" destination="235" id="649"/>
             </connections>
