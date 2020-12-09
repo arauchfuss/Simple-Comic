@@ -210,8 +210,8 @@
                         <segmentedControl key="view" verticalHuggingPriority="750" id="cCY-vp-GHz">
                             <rect key="frame" x="0.0" y="14" width="65" height="27"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="roundRect" trackingMode="momentary" id="lV3-24-KZL">
-                                <font key="font" metaFont="cellTitle"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="lV3-24-KZL">
+                                <font key="font" metaFont="system"/>
                                 <segments>
                                     <segment toolTip="Zoom Out" image="NSRemoveTemplate" imageScaling="none" tag="802"/>
                                     <segment toolTip="Zoom In" image="NSAddTemplate" imageScaling="none" tag="801"/>
