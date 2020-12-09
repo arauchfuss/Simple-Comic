@@ -13,7 +13,7 @@
 		281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 281954E80C1201E5001F5E95 /* TSSTManagedGroup.m */; };
 		283C4D5E0C43DE6900DB4FE9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
 		284348130DA95C4A00F602E2 /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55C374571BD9EAA1006385B6 /* UniversalDetector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 284D381A101249BE00A37AB2 /* DTToolbarItems.m */; };
+		284D381B101249BE00A37AB2 /* DTToolbarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284D381A101249BE00A37AB2 /* DTToolbarItems.swift */; };
 		285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */; };
 		285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 285FE32F0F945E2300CD8F96 /* Carbon.framework */; };
 		286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286236010AADDB6200B83E77 /* QuartzCore.framework */; };
@@ -269,8 +269,7 @@
 		28195B410C166DF5001F5E95 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTImageUtilities.m; sourceTree = "<group>"; usesTabs = 0; };
 		283C4D5D0C43DE6800DB4FE9 /* TSSTImageUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSTImageUtilities.h; sourceTree = "<group>"; };
-		284D3819101249BE00A37AB2 /* DTToolbarItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTToolbarItems.h; sourceTree = "<group>"; };
-		284D381A101249BE00A37AB2 /* DTToolbarItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTToolbarItems.m; sourceTree = "<group>"; };
+		284D381A101249BE00A37AB2 /* DTToolbarItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTToolbarItems.swift; sourceTree = "<group>"; };
 		285FE32F0F945E2300CD8F96 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		286236010AADDB6200B83E77 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSTSortDescriptor.m; sourceTree = "<group>"; };
@@ -651,8 +650,7 @@
 				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
-				284D3819101249BE00A37AB2 /* DTToolbarItems.h */,
-				284D381A101249BE00A37AB2 /* DTToolbarItems.m */,
+				284D381A101249BE00A37AB2 /* DTToolbarItems.swift */,
 				28B34A721013779B006C551C /* NSWindow+Extensions.swift */,
 			);
 			path = Session;
@@ -961,7 +959,7 @@
 				28C1D4080DF18251003392B4 /* TSSTManagedSession.m in Sources */,
 				28EF3FC00E9970BD002AD2EE /* UKXattrMetadataStore.m in Sources */,
 				55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */,
-				284D381B101249BE00A37AB2 /* DTToolbarItems.m in Sources */,
+				284D381B101249BE00A37AB2 /* DTToolbarItems.swift in Sources */,
 				42D9A8BF2449ABC400AF2FB6 /* CenteredTextLayer.m in Sources */,
 				55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */,
 				55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */,
