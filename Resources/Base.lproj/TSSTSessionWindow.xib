@@ -93,16 +93,13 @@
             <toolbar key="toolbar" implicitIdentifier="1A96E21F-07EA-4D3B-B356-508A45D1FCBB" displayMode="iconOnly" sizeMode="regular" id="507">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="ADD2836D-8728-474F-9355-80FA8EA9972C" label="Turn Page" paletteLabel="Turn Page" sizingBehavior="auto" id="553" customClass="DTPageTurnToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="554">
                             <rect key="frame" x="7" y="14" width="47" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="555">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Left Page Turn" image="NSLeftFacingTriangleTemplate" tag="701">
-                                        <nil key="label"/>
-                                    </segment>
+                                    <segment toolTip="Left Page Turn" image="NSLeftFacingTriangleTemplate" tag="701"/>
                                     <segment toolTip="Right Page Turn" image="NSRightFacingTriangleTemplate" tag="702"/>
                                 </segments>
                             </segmentedCell>
@@ -112,16 +109,13 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="D01E117F-B172-435D-8B8C-CFC587DA6020" label="Page End" paletteLabel="Page End" sizingBehavior="auto" id="dMP-Th-vKR" customClass="DTPageTurnToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="U2R-Pp-TY8">
                             <rect key="frame" x="1" y="14" width="55" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="msg-5l-0tY">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Left End Page" image="NSTouchBarSkipToStartTemplate" width="24" tag="701">
-                                        <nil key="label"/>
-                                    </segment>
+                                    <segment toolTip="Left End Page" image="NSTouchBarSkipToStartTemplate" width="24" tag="701"/>
                                     <segment toolTip="Right End Page" image="NSTouchBarSkipToEndTemplate" width="24" tag="702"/>
                                 </segments>
                             </segmentedCell>
@@ -131,22 +125,15 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E33C7D17-8160-4B40-8EDF-78600C84FE8C" label="Page Scaling" paletteLabel="Page Scaling" sizingBehavior="auto" id="517" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="515">
                             <rect key="frame" x="4" y="14" width="67" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="516">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Original Size" image="equalTemplate">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="Scale to Window" image="winScaleTemplate" tag="1">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="Horizontal Scaling" image="horScaleTemplate" tag="2">
-                                        <nil key="label"/>
-                                    </segment>
+                                    <segment toolTip="Original Size" image="equalTemplate"/>
+                                    <segment toolTip="Scale to Window" image="winScaleTemplate" tag="1"/>
+                                    <segment toolTip="Horizontal Scaling" image="horScaleTemplate" tag="2"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -155,19 +142,14 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9C25BD8E-6129-4874-917D-C4C5F75BD24F" label="Page Order" paletteLabel="Page Order" sizingBehavior="auto" id="520" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="518">
                             <rect key="frame" x="6" y="14" width="55" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="519">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Right to Left Page Order" image="rightLeftOrderTemplate">
-                                        <nil key="label"/>
-                                    </segment>
-                                    <segment toolTip="Left to Right Page Order" image="leftRightOrderTemplate">
-                                        <nil key="label"/>
-                                    </segment>
+                                    <segment toolTip="Right to Left Page Order" image="rightLeftOrderTemplate"/>
+                                    <segment toolTip="Left to Right Page Order" image="leftRightOrderTemplate"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -176,7 +158,6 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="57633342-20D2-433A-9828-1C85F79205A8" label="Page Layout" paletteLabel="Page Layout" sizingBehavior="auto" id="523" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="521">
                             <rect key="frame" x="6" y="14" width="60" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -193,7 +174,6 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="2FEB6E2E-5C3E-4725-B4B7-D5204BC8F2A8" label="Rotate" paletteLabel="Rotate" sizingBehavior="auto" id="585" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="586">
                             <rect key="frame" x="0.0" y="14" width="59" height="24"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -210,7 +190,6 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="C8491130-5672-4D81-9D91-76BB3F03D233" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="559" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="557">
                             <rect key="frame" x="0.0" y="14" width="71" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -219,9 +198,7 @@
                                 <segments>
                                     <segment toolTip="Zoom In" image="NSAddTemplate" tag="801"/>
                                     <segment toolTip="Zoom Out" image="NSRemoveTemplate" tag="802"/>
-                                    <segment toolTip="Zoom Reset" image="equalTemplate" tag="803">
-                                        <nil key="label"/>
-                                    </segment>
+                                    <segment toolTip="Zoom Reset" image="equalTemplate" tag="803"/>
                                 </segments>
                             </segmentedCell>
                             <connections>
@@ -230,7 +207,6 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A580F497-94D7-4752-971B-01FBBAD86DEF" label="Zoom" paletteLabel="Zoom" sizingBehavior="auto" id="fTI-g2-r3b" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="cCY-vp-GHz">
                             <rect key="frame" x="0.0" y="14" width="57" height="20"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -247,7 +223,6 @@
                         </segmentedControl>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="55B2F7CD-2E3A-405A-BF65-65B5A68E94BD" label="Loupe" paletteLabel="Loupe" image="loupeTemplate" sizingBehavior="auto" id="575" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <button key="view" toolTip="Magnifying Glass" verticalHuggingPriority="750" id="573">
                             <rect key="frame" x="5" y="14" width="30" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -261,7 +236,6 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="AB4BCD46-EE79-45CC-9A97-733E3740BA34" label="Thumbnails" paletteLabel="Thumbnails" image="NSIconViewTemplate" sizingBehavior="auto" id="577" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <button key="view" toolTip="Thumbnail View" verticalHuggingPriority="750" id="578">
                             <rect key="frame" x="21" y="14" width="27" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -275,7 +249,6 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="7D6CA1DF-7F26-421E-874E-21596C513A14" label="Capture Page" paletteLabel="Capture Page" image="extractTemplate" sizingBehavior="auto" id="688" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <button key="view" toolTip="Capture Page" verticalHuggingPriority="750" id="689">
                             <rect key="frame" x="25" y="14" width="29" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -289,7 +262,6 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="7ACC3052-A491-4940-83A9-B40928F5C001" label="Set Icon" paletteLabel="Set Icon" image="NSQuickLookTemplate" sizingBehavior="auto" id="693" customClass="DTToolbarItem" customModule="Simple_Comic" customModuleProvider="target">
-                        <nil key="toolTip"/>
                         <button key="view" toolTip="Set Icon" verticalHuggingPriority="750" id="694">
                             <rect key="frame" x="9" y="14" width="33" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -423,8 +395,6 @@
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" title="9999" drawsBackground="YES" id="503">
                             <numberFormatter key="formatter" formatterBehavior="custom10_4" positiveFormat="#1" negativeFormat="#1" generatesDecimalNumbers="YES" allowsFloats="NO" usesGroupingSeparator="NO" paddingCharacter="*" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" decimalSeparator="." groupingSeparator="," currencyDecimalSeparator="." plusSign="+" minusSign="-" notANumberSymbol="NaN" perMillSymbol="‰" percentSymbol="%" exponentSymbol="E" positivePrefix="" positiveSuffix="" negativePrefix="-" negativeSuffix="" id="454">
                                 <integer key="roundingIncrement" value="1"/>
-                                <nil key="negativeInfinitySymbol"/>
-                                <nil key="positiveInfinitySymbol"/>
                                 <real key="maximum" value="9999"/>
                             </numberFormatter>
                             <font key="font" metaFont="system"/>
