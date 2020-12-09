@@ -23,7 +23,7 @@
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
 #import "TSSTManagedSession.h"
-#import "CenteredTextLayer.h"
+#import "Simple_Comic-Swift.h"
 
 typedef NS_ENUM(int, TSSTTurn) {
 	TSSTTurnNone = 0,
