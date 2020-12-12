@@ -10,6 +10,15 @@
 #include "main.h"
 #import <WebPMac/TSSTWebPImageRep.h>
 
+#ifdef NON_APPSTORE
+extern const CFStringRef kQLThumbnailPropertyIconFlavorKey;
+
+typedef NS_ENUM(NSInteger, QLThumbnailIconFlavor)
+{
+	kQLThumbnailIconShadowFlavor = 1,
+};
+#endif
+
 /* -----------------------------------------------------------------------------
     Generate a thumbnail for file
 
@@ -97,7 +106,11 @@ OSStatus GenerateThumbnailForURL(void *thisInterface, QLThumbnailRequestRef thum
 				return kQLReturnNoError;
 			}
 			
+#ifdef NON_APPSTORE
+			NSDictionary *properties = @{(__bridge NSString *)kQLThumbnailPropertyIconFlavorKey: @(kQLThumbnailIconShadowFlavor)};
+#else
 			NSDictionary *properties = @{};
+#endif
 			CGContextRef cgContext = QLThumbnailRequestCreateContext(thumbnail, canvasRect.size, false, (__bridge CFDictionaryRef)(properties));
 			if(cgContext)
 			{
