@@ -25,7 +25,6 @@
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedSession.h"
 #import "TSSTCustomValueTransformers.h"
-#import "DTPreferencesController.h"
 #import "Simple_Comic-Swift.h"
 #import "TSSTManagedSession+CoreDataProperties.h"
 #import <WebPMac/TSSTWebPImageRep.h>

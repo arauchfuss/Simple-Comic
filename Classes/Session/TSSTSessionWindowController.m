@@ -27,7 +27,6 @@
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedSession.h"
-#import "DTWindowCategory.h"
 
 #import "Simple_Comic-Swift.h"
 
@@ -39,7 +38,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	TSSTManagedSession * session;
 	
 	/** This var is bound to the session window name */
-	NSString *pageNames;
 	NSInteger pageTurn;
 	
 	/** Exactly what it sounds like */
@@ -54,7 +52,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	CGFloat savedZoom;
 }
 
-@synthesize pageTurn, pageNames, pageSortDescriptor;
+@synthesize pageTurn, pageSortDescriptor;
 @synthesize pageController;
 @synthesize pageView;
 @synthesize pageScrollView;
@@ -1040,7 +1038,12 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 			titleString = [NSString stringWithFormat:@"%@ — %@", fileName, titleString];
 		}
 	}
-	self.pageNames = titleString;
+	if (@available(macOS 11.0, *)) {
+		self.window.title = fileName;
+		self.window.subtitle = [titleString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@ — ", fileName] withString:@""];
+	} else {
+		self.window.title = titleString;
+	}
 	[pageView setFirstPage: pageOne.pageImage secondPageImage: pageTwo.pageImage];
 	
 	[self scaleToWindow];

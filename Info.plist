@@ -9,10 +9,6 @@
 		<dict>
 			<key>CFBundleTypeName</key>
 			<string>directory</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>fold</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -91,10 +87,6 @@
 			</array>
 			<key>CFBundleTypeName</key>
 			<string>PDF file</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>PDF </string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSHandlerRank</key>
@@ -173,8 +165,6 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbz</string>
-			<key>CFBundleTypeIconSystemGenerated</key>
-			<false/>
 			<key>CFBundleTypeName</key>
 			<string>ZIP comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -204,8 +194,6 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cb7</string>
-			<key>CFBundleTypeIconSystemGenerated</key>
-			<false/>
 			<key>CFBundleTypeName</key>
 			<string>7-Zip comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -232,8 +220,6 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbr</string>
-			<key>CFBundleTypeIconSystemGenerated</key>
-			<false/>
 			<key>CFBundleTypeName</key>
 			<string>RAR comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -263,8 +249,6 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbt</string>
-			<key>CFBundleTypeIconSystemGenerated</key>
-			<false/>
 			<key>CFBundleTypeName</key>
 			<string>tar comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -443,9 +427,9 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>Help</string>
+	<string>SimpleComic Help.help</string>
 	<key>CFBundleHelpBookName</key>
-	<string>Simple Comic Help</string>
+	<string>com.ToWatchList.SimpleComic.help</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -483,6 +467,8 @@
 			<string>cbz</string>
 			<key>UTTypeIcons</key>
 			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>comic-fill</string>
 				<key>UTTypeIconText</key>
 				<string>cbz</string>
 			</dict>
@@ -509,6 +495,8 @@
 			<string>cbr</string>
 			<key>UTTypeIcons</key>
 			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>comic-fill</string>
 				<key>UTTypeIconText</key>
 				<string>cbr</string>
 			</dict>
@@ -535,6 +523,8 @@
 			<string>cbt</string>
 			<key>UTTypeIcons</key>
 			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>comic-fill</string>
 				<key>UTTypeIconText</key>
 				<string>cbt</string>
 			</dict>
@@ -561,6 +551,13 @@
 			<string>LHA archive</string>
 			<key>UTTypeIconFile</key>
 			<string>lha</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>archive-fill</string>
+				<key>UTTypeIconText</key>
+				<string>lha</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>public.archive.lha</string>
 			<key>UTTypeTagSpecification</key>
@@ -594,6 +591,13 @@
 			<string>7-Zip archive</string>
 			<key>UTTypeIconFile</key>
 			<string>7z</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>archive-fill</string>
+				<key>UTTypeIconText</key>
+				<string>7z</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>org.7-zip.7-zip-archive</string>
 			<key>UTTypeTagSpecification</key>
@@ -621,6 +625,8 @@
 			<string>cb7</string>
 			<key>UTTypeIcons</key>
 			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>comic-fill</string>
 				<key>UTTypeIconText</key>
 				<string>cb7</string>
 			</dict>
@@ -648,6 +654,13 @@
 			<string>RAR archive</string>
 			<key>UTTypeIconFile</key>
 			<string>rar</string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBackgroundName</key>
+				<string>archive-fill</string>
+				<key>UTTypeIconText</key>
+				<string>rar</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>com.rarlab.rar-archive</string>
 			<key>UTTypeTagSpecification</key>

@@ -86,7 +86,6 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 
 @property (copy) NSArray<NSSortDescriptor*> * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
-@property (copy) NSString * pageNames;
 
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession;
 
