@@ -58,7 +58,7 @@ extension TSSTSessionWindowController: NSTouchBarDelegate {
 			return item
 
 		case .pageLayout:
-			let item = NSCustomTouchBarItem(identifier: .pageOrder)
+			let item = NSCustomTouchBarItem(identifier: .pageLayout)
 			item.customizationLabel = NSLocalizedString("523.label", tableName: "TSSTSessionWindow", comment: "Page Layout")
 
 			let prevNext = NSSegmentedControl(images: [NSImage(named: "onePageTemplate")!, NSImage(named: "twoPageTemplate")!], trackingMode: .selectOne, target: nil, action: nil)
@@ -69,7 +69,7 @@ extension TSSTSessionWindowController: NSTouchBarDelegate {
 			return item
 
 		case .pageScaling:
-			let item = NSCustomTouchBarItem(identifier: .pageOrder)
+			let item = NSCustomTouchBarItem(identifier: .pageScaling)
 			item.customizationLabel = NSLocalizedString("517.label", tableName: "TSSTSessionWindow", comment: "Page Scaling")
 
 			let prevNext = NSSegmentedControl(images: [NSImage(named: "equalTemplate")!, NSImage(named: "winScaleTemplate")!, NSImage(named: "horScaleTemplate")!], trackingMode: .selectOne, target: nil, action: nil)
