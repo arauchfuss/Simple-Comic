@@ -308,6 +308,11 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		
 		launchFiles = nil;
 	}
+	
+	// Allow users to customize the app's Touch Bar items.
+	if (@available(macOS 10.12.2, *)) {
+		NSApplication.sharedApplication.automaticCustomizeTouchBarMenuItemEnabled = true;
+	}
 }
 
 
