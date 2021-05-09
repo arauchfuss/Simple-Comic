@@ -8,8 +8,6 @@
 
 import Cocoa
 
-//static const NSTouchBarItemIdentifier prevNextTouch = @"com.ToWatchList.prevNextButton";
-
 @available(macOS 10.12.2, *)
 extension NSTouchBarItem.Identifier {
 	static let prevNextTouch = NSTouchBarItem.Identifier("com.ToWatchList.prevNextButton")
@@ -31,7 +29,7 @@ extension TSSTSessionWindowController: NSTouchBarDelegate {
 		switch identifier {
 		case .prevNextTouch:
 			let item = NSCustomTouchBarItem(identifier: .prevNextTouch)
-			item.customizationLabel = NSLocalizedString("Prev/Next Comic", comment: "")
+			item.customizationLabel = NSLocalizedString("Prev/Next Comic", comment: "Prev/Next TouchBar Comic")
 			
 			let prevNext = NSSegmentedControl(images: [NSImage(named: NSImage.touchBarGoBackTemplateName)!, NSImage(named: NSImage.touchBarGoForwardTemplateName)!], trackingMode: .momentary, target: self, action: #selector(self.touchBarPrevNextAction(_:)))
 			
