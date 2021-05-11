@@ -53,6 +53,7 @@ static NSSize monospaceCharacterSize;
 			CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
 			[aimageTypes addObjectsFromArray:fileExts];
 		}
+		[aimageTypes addObject:@"jfif"];
 		imageTypes = [[aimageTypes allObjects] sortedArrayUsingSelector:@selector(compare:)];
 	});
 	
