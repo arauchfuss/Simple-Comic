@@ -29,7 +29,7 @@ extension TSSTSessionWindowController: NSTouchBarDelegate {
 		touchBar.delegate = self
 		touchBar.customizationIdentifier = .touchBar
 		touchBar.defaultItemIdentifiers = [.prevNext, .pageOrder, NSTouchBarItem.Identifier.otherItemsProxy]
-		touchBar.customizationAllowedItemIdentifiers = [.prevNext, .pageOrder, .pageLayout, .rotate, .pageScaling]
+		touchBar.customizationAllowedItemIdentifiers = [.prevNext, .pageOrder, .pageLayout, .rotate, .pageScaling, .fixedSpaceSmall, .fixedSpaceLarge, .flexibleSpace]
 		
 		return touchBar
 	}
