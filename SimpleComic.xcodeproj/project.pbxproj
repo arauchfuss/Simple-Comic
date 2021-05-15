@@ -414,6 +414,7 @@
 				5599515C1BDC0A3F0086661A /* Simple Comic-Bridging-Header.h */,
 				77C8280B06725ACE000B614F /* SimpleComicAppDelegate.h */,
 				77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */,
+				55E6DCED2650698E003D7861 /* Touch Bar */,
 				FAA1C3E808BAB158006F7EC4 /* Session */,
 				288C0C420DCDAB7200EAFF46 /* Thumbnail View */,
 				289CD7620BF15CCC00B5AE01 /* Progress Bar */,
@@ -635,6 +636,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		55E6DCED2650698E003D7861 /* Touch Bar */ = {
+			isa = PBXGroup;
+			children = (
+				554A1C0126478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift */,
+			);
+			path = "Touch Bar";
+			sourceTree = "<group>";
+		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,7 +657,6 @@
 			children = (
 				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
 				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
-				554A1C0126478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.swift */,
