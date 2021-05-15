@@ -23,7 +23,7 @@ extension NSTouchBar.CustomizationIdentifier {
 }
 
 @available(macOS 10.12.2, *)
-extension TSSTSessionWindowController: NSTouchBarDelegate, NSScrubberDataSource {
+extension TSSTSessionWindowController: NSTouchBarDelegate {
 	open override func makeTouchBar() -> NSTouchBar? {
 		let touchBar = NSTouchBar()
 		touchBar.delegate = self
@@ -112,15 +112,5 @@ extension TSSTSessionWindowController: NSTouchBarDelegate, NSScrubberDataSource 
 		default:
 			break
 		}
-	}
-	
-	public func numberOfItems(for scrubber: NSScrubber) -> Int {
-		return (pageController!.arrangedObjects as! NSArray).count
-	}
-	
-	public func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
-		let imageScrubber = NSScrubberImageItemView()
-		imageScrubber.image = imageForPage(at: index)
-		return imageScrubber
 	}
 }
