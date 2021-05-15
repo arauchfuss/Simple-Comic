@@ -25,3 +25,6 @@
 
 /* PDF page number */
 "PDF page %li" = "Seite %li";
+
+/* Prev/Next TouchBar Comic */
+"Prev/Next Comic" = "Prev/Next Comic";

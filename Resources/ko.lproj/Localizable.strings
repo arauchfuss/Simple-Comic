@@ -43,3 +43,6 @@
 
 /* PDF page number */
 "PDF page %li" = "페이지 %li"; //fuzzy
+
+/* Prev/Next TouchBar Comic */
+"Prev/Next Comic" = "Prev/Next Comic";

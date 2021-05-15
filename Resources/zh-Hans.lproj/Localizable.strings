@@ -43,3 +43,6 @@
 
 /* PDF page number */
 "PDF page %li" = "Page %li";
+
+/* Prev/Next TouchBar Comic */
+"Prev/Next Comic" = "Prev/Next Comic";
