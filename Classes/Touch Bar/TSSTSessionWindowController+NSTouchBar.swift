@@ -99,7 +99,7 @@ extension TSSTSessionWindowController: NSTouchBarDelegate, NSScrubberDataSource 
 			
 		case .scrubber:
 			let item = TSSTScrubberBarItem(identifier: .scrubber)
-			item.customizationLabel = NSLocalizedString("Scrubber", comment: "")
+			item.customizationLabel = NSLocalizedString("Scrubber", comment: "Scrubber")
 			item.sessionController = self
 			(item.view as! NSScrubber).dataSource = self
 //			(item.view as! NSScrubber).bind(.selectedIndex, to: self, withKeyPath: "selectionIndex", options: nil)
