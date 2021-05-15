@@ -15,6 +15,7 @@ extension NSTouchBarItem.Identifier {
 	static let pageLayout = NSTouchBarItem.Identifier("com.ToWatchList.pageLayout")
 	static let pageScaling = NSTouchBarItem.Identifier("com.ToWatchList.pageScaling")
 	static let rotate = NSTouchBarItem.Identifier("com.ToWatchList.rotatePage")
+	static let scrubber = NSTouchBarItem.Identifier("com.ToWatchList.scrubberBar")
 }
 
 @available(macOS 10.12.2, *)
@@ -23,13 +24,13 @@ extension NSTouchBar.CustomizationIdentifier {
 }
 
 @available(macOS 10.12.2, *)
-extension TSSTSessionWindowController: NSTouchBarDelegate {
+extension TSSTSessionWindowController: NSTouchBarDelegate, NSScrubberDataSource {
 	open override func makeTouchBar() -> NSTouchBar? {
 		let touchBar = NSTouchBar()
 		touchBar.delegate = self
 		touchBar.customizationIdentifier = .touchBar
-		touchBar.defaultItemIdentifiers = [.prevNext, .pageOrder, NSTouchBarItem.Identifier.otherItemsProxy]
-		touchBar.customizationAllowedItemIdentifiers = [.prevNext, .pageOrder, .pageLayout, .rotate, .pageScaling, .fixedSpaceSmall, .fixedSpaceLarge, .flexibleSpace]
+		touchBar.defaultItemIdentifiers = [.prevNext, .scrubber, .pageOrder, NSTouchBarItem.Identifier.otherItemsProxy]
+		touchBar.customizationAllowedItemIdentifiers = [.prevNext, .pageOrder, .pageLayout, .rotate, .pageScaling, .scrubber, .flexibleSpace]
 		
 		return touchBar
 	}
@@ -95,6 +96,14 @@ extension TSSTSessionWindowController: NSTouchBarDelegate {
 			item.view = prevNext
 			
 			return item
+			
+		case .scrubber:
+			let item = TSSTScrubberBarItem(identifier: .scrubber)
+			item.customizationLabel = NSLocalizedString("Scrubber", comment: "")
+			item.sessionController = self
+			(item.view as! NSScrubber).dataSource = self
+//			(item.view as! NSScrubber).bind(.selectedIndex, to: self, withKeyPath: "selectionIndex", options: nil)
+			return item
 
 		default:
 			return nil
@@ -112,5 +121,22 @@ extension TSSTSessionWindowController: NSTouchBarDelegate {
 		default:
 			break
 		}
+	}
+	
+	public func numberOfItems(for scrubber: NSScrubber) -> Int {
+		return (pageController!.arrangedObjects as! NSArray).count
+	}
+	
+	public func scrubber(_ scrubber: NSScrubber, viewForItemAt index: Int) -> NSScrubberItemView {
+		var returnItemView = NSScrubberItemView()
+		if let itemView =
+			scrubber.makeItem(withIdentifier: TSSTScrubberBarItem.itemViewIdentifier,
+							  owner: nil) as? TSSTThumbnailItemView {
+			let item = (pageController!.arrangedObjects as! NSArray).object(at: index) as? TSSTPage
+			itemView.page = item
+			
+			returnItemView = itemView
+		}
+		return returnItemView
 	}
 }
