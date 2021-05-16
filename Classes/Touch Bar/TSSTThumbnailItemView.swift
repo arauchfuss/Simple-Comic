@@ -81,12 +81,20 @@ class TSSTThumbnailItemView: NSScrubberItemView {
 			
 			let imageSize = fullImage.size
 			let thumbnailHeight: CGFloat = 30
-			let thumbnailSize = NSSize(width: ceil(thumbnailHeight * imageSize.width / imageSize.height), height: thumbnailHeight)
+			let thumbnailSize = NSSize(width: max(ceil(thumbnailHeight * imageSize.width / imageSize.height), 50), height: thumbnailHeight)
+			let fromRect: NSRect
+			if thumbnailSize.width == 50 {
+				// shortcut: thumbnails are constrained to 256 points
+				let cutImage: CGFloat = imageSize.width / thumbnailSize.width * thumbnailHeight
+				fromRect = NSRect(x: 0, y: imageSize.height - cutImage, width: imageSize.width, height: cutImage)
+			} else {
+				fromRect = NSRect(origin: .zero, size: imageSize)
+			}
 			
 			let thumbnail = NSImage(size: thumbnailSize)
 			thumbnail.lockFocus()
 			fullImage.draw(in: NSRect(origin: .zero, size: thumbnailSize),
-						   from: NSRect(origin: .zero, size: imageSize),
+						   from: fromRect,
 						   operation: .sourceOver,
 						   fraction: 1.0)
 			thumbnail.unlockFocus()
