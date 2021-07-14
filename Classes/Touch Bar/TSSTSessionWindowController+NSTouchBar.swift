@@ -19,16 +19,14 @@ extension NSTouchBarItem.Identifier {
 }
 
 @available(macOS 10.12.2, *)
-extension NSTouchBar.CustomizationIdentifier {
-	static let touchBar = "com.ToWatchList.touchBar"
-}
-
-@available(macOS 10.12.2, *)
 extension TSSTSessionWindowController: NSTouchBarDelegate, NSScrubberDataSource {
+	
+	static let touchBar: NSTouchBar.CustomizationIdentifier = "com.ToWatchList.touchBar"
+	
 	open override func makeTouchBar() -> NSTouchBar? {
 		let touchBar = NSTouchBar()
 		touchBar.delegate = self
-		touchBar.customizationIdentifier = .touchBar
+		touchBar.customizationIdentifier = TSSTSessionWindowController.touchBar
 		touchBar.defaultItemIdentifiers = [.prevNext, .scrubber, .pageOrder, NSTouchBarItem.Identifier.otherItemsProxy]
 		touchBar.customizationAllowedItemIdentifiers = [.prevNext, .pageOrder, .pageLayout, .rotate, .pageScaling, .scrubber, .flexibleSpace]
 		
