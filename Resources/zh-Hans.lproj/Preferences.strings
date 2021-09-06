@@ -2,9 +2,6 @@
 /* Class = "NSButtonCell"; title = "Page scaling constrained by resolution"; ObjectID = "229"; */
 "229.title" = "原始比例缩放";
 
-/* Class = "NSButtonCell"; title = "Auto-save open windows"; ObjectID = "230"; */
-"230.title" = "自动保存打开窗口";
-
 /* Class = "NSButtonCell"; title = "Automatically resize windows"; ObjectID = "231"; */
 "231.title" = "自动调整窗口大小";
 
@@ -13,9 +10,6 @@
 
 /* Class = "NSTextFieldCell"; title = "Windows automatically resize to maximize viewing area."; ObjectID = "235"; */
 "235.title" = "窗口自动调整到最大显示大小";
-
-/* Class = "NSTextFieldCell"; title = "Open windows are preserved between exit and relaunch."; ObjectID = "236"; */
-"236.title" = "下次启动软件会打开上一次窗口";
 
 /* Class = "NSTextFieldCell"; title = "Background color"; ObjectID = "239"; */
 "239.title" = "背景色";

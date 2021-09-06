@@ -428,6 +428,8 @@ typedef struct {
 		[label setForegroundColor:[[NSColor whiteColor] CGColor]];
 		[label setCornerRadius: 6];
 		
+		label.contentsScale = NSScreen.mainScreen.backingScaleFactor;
+		
 		[newLayer addSublayer:label];
 	}
 	

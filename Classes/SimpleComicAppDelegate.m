@@ -41,7 +41,7 @@ NSString *const TSSTStatusbarVisible =  @"statusBarVisisble";
 NSString *const TSSTBackgroundColor =   @"pageBackgroundColor";
 NSString *const TSSTConstrainScale =    @"constrainScale";
 NSString *const TSSTWindowAutoResize =  @"windowAutoResize";
-NSString *const TSSTSessionRestore =    @"sessionRestore";
+NSString *const TSSTSessionRestore =    @"NSQuitAlwaysKeepsWindows";
 NSString *const TSSTEnableSwipe =       @"enableSwipe";
 NSString *const TSSTLoupeDiameter =     @"loupeDiameter";
 NSString *const TSSTLoupePower =        @"loupePower";
@@ -200,7 +200,6 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		  TSSTBackgroundColor: [NSKeyedArchiver archivedDataWithRootObject: [NSColor whiteColor]],
 		  TSSTConstrainScale: @YES,
 		  TSSTWindowAutoResize: @YES,
-		  TSSTSessionRestore: @YES,
 		  TSSTEnableSwipe: @NO,
 		  TSSTLoupeDiameter: @500,
 		  TSSTLoupePower: @2.0f,
@@ -680,6 +679,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	[addPagesModal setCanChooseDirectories: YES];
 	
 	NSMutableArray * allAllowedFileTypes = [[TSSTManagedArchive archiveTypes] mutableCopy];
+	[allAllowedFileTypes addObjectsFromArray: TSSTManagedArchive.quicklookExtensions];
 	[allAllowedFileTypes addObjectsFromArray: [TSSTPage imageTypes]];
 	[allAllowedFileTypes addObject:(NSString*)kUTTypePDF];
 	[addPagesModal setAllowedFileTypes:allAllowedFileTypes];
