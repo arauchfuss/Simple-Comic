@@ -165,6 +165,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbz</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>ZIP comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -194,6 +196,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cb7</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>7-Zip comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -220,6 +224,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbr</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>RAR comic archive</string>
 			<key>CFBundleTypeRole</key>
@@ -249,6 +255,8 @@
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>cbt</string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>tar comic archive</string>
 			<key>CFBundleTypeRole</key>
