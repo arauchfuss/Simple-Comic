@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19158" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19158"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -115,8 +115,8 @@
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="separated" trackingMode="momentary" id="msg-5l-0tY">
                                 <font key="font" metaFont="system"/>
                                 <segments>
-                                    <segment toolTip="Left End Page" image="firstPageTemplate" imageScaling="none" width="24" tag="701"/>
-                                    <segment toolTip="Right End Page" image="lastPageTemplate" imageScaling="none" width="24" tag="702"/>
+                                    <segment toolTip="Left End Page" image="firstPageTemplate" width="24" tag="701"/>
+                                    <segment toolTip="Right End Page" image="lastPageTemplate" width="24" tag="702"/>
                                 </segments>
                             </segmentedCell>
                             <connections>

@@ -39,7 +39,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="152">
+                    <button toolTip="Windows are dynamically resized to fit the page-view and screen" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="152">
                         <rect key="frame" x="18" y="52" width="204" height="18"/>
                         <buttonCell key="cell" type="check" title="Automatically resize windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="231">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -49,7 +49,7 @@
                             <binding destination="42" name="value" keyPath="values.windowAutoResize" id="154"/>
                         </connections>
                     </button>
-                    <button imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
+                    <button toolTip="Pages are never automatically scaled past their actual resolution" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
                         <rect key="frame" x="18" y="121" width="260" height="18"/>
                         <buttonCell key="cell" type="check" title="Page scaling constrained by resolution" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="229">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
