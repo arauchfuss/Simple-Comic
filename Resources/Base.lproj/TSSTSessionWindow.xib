@@ -279,7 +279,6 @@
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="553"/>
-                    <toolbarItem reference="582"/>
                     <toolbarItem reference="520"/>
                     <toolbarItem reference="523"/>
                     <toolbarItem reference="517"/>

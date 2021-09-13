@@ -73,6 +73,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		8F381FB323F0DBCA004B7DB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8F381FB123F0DBCA004B7DB2 /* InfoPlist.strings */; };
 		8F54DD531CCA336B001403DA /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F54DD521CCA336B001403DA /* container-migration.plist */; };
+		8FBFF02E26EF71BF00E3CFC8 /* TSSTSessionWindowController+NSToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBFF02D26EF71BF00E3CFC8 /* TSSTSessionWindowController+NSToolbarDelegate.swift */; };
 		FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9FB53408AADA270085AA55 /* TSSTCustomValueTransformers.m */; };
 /* End PBXBuildFile section */
 
@@ -376,6 +377,7 @@
 		8F1A8E1B1C2180CD005D88FF /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Preferences.strings; sourceTree = "<group>"; };
 		8F381FB223F0DBCA004B7DB2 /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8F54DD521CCA336B001403DA /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "container-migration.plist"; sourceTree = SOURCE_ROOT; };
+		8FBFF02D26EF71BF00E3CFC8 /* TSSTSessionWindowController+NSToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSSTSessionWindowController+NSToolbarDelegate.swift"; sourceTree = "<group>"; };
 		B927C15A21C0BE780024CCF9 /* zh-Hant */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Preferences.strings"; sourceTree = "<group>"; };
 		B927C15B21C0BE780024CCF9 /* zh-Hant */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		B927C16121C0C8580024CCF9 /* en-GB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Preferences.strings"; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 			children = (
 				28FA4FA40B8AA28000496668 /* TSSTSessionWindowController.h */,
 				28FA4FA50B8AA28000496668 /* TSSTSessionWindowController.m */,
+				8FBFF02D26EF71BF00E3CFC8 /* TSSTSessionWindowController+NSToolbarDelegate.swift */,
 				28A8EAB00B412DE5006C036D /* TSSTPageView.h */,
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.swift */,
@@ -985,6 +988,7 @@
 				28B34A731013779B006C551C /* NSWindow+Extensions.swift in Sources */,
 				5526278D1BDEBF29005AAF63 /* TSSTImageView.swift in Sources */,
 				287D0C1210F0595900207768 /* Sessions_DataModel.xcdatamodel in Sources */,
+				8FBFF02E26EF71BF00E3CFC8 /* TSSTSessionWindowController+NSToolbarDelegate.swift in Sources */,
 				28A266301285C73200ED6391 /* DTPreferencesController.swift in Sources */,
 				559EF3EB1BDD473B00FAAA0A /* TSSTThumbnailView.swift in Sources */,
 			);
