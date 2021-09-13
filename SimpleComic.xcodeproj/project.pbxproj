@@ -721,9 +721,9 @@
 			);
 			dependencies = (
 				55871EDD235D70A800528BDF /* PBXTargetDependency */,
+				55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */,
 				550CB1E72366E88C00FAC663 /* PBXTargetDependency */,
 				55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */,
-				55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";

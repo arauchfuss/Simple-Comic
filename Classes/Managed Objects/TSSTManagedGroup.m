@@ -357,10 +357,10 @@
 	if(!solidDirectory)
 	{
 		[groupLock lock];
-		imageData = [[self instance] contentsOfEntry: index];
-		XADError err = [[self instance] lastError];
+		NSError *err;
+		imageData = [[self instance] contentsOfEntry: index error: &err];
 		[groupLock unlock];
-		callback(imageData, err != XADErrorNone ? [NSError errorWithDomain: XADErrorDomain code: err userInfo: nil] : nil);
+		callback(imageData, err);
 	}
 	else
 	{
@@ -370,11 +370,11 @@
 		if(![[NSFileManager defaultManager] fileExistsAtPath: fileName])
 		{
 			[groupLock lock];
-			imageData = [[self instance] contentsOfEntry: index];
-			XADError err = [[self instance] lastError];
+			NSError *err;
+			imageData = [[self instance] contentsOfEntry: index error: &err];
 			[groupLock unlock];
 			[imageData writeToFile: fileName options: 0 error: nil];
-			callback(imageData, err != XADErrorNone ? [NSError errorWithDomain: XADErrorDomain code: err userInfo: nil] : nil);
+			callback(imageData, err);
 		}
 		else
 		{

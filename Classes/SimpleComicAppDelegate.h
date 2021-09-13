@@ -63,7 +63,7 @@ extern NSString *const TSSTFullscreenToolbar;
 extern NSString *const TSSTScrollPosition;
 extern NSString *const TSSTZoomLevel;
 extern NSString *const TSSTViewRotation;
-extern NSString *const TSSTSessionEndNotification;
+extern NSNotificationName const TSSTSessionEndNotification;
 
 /*!
     This class is the application delegate.
