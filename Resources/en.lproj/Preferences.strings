@@ -19,9 +19,3 @@
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "246"; */
 "246.title" = "Preferences";
-
-/* Class = "NSButtonCell"; title = "Enable swipe"; ObjectID = "uvV-P7-bwd"; */
-"uvV-P7-bwd.title" = "Enable swipe";
-
-/* Class = "NSTextFieldCell"; title = "Enabling will allow you to navigate back and forth by swiping."; ObjectID = "v7s-SA-lNq"; */
-"v7s-SA-lNq.title" = "Enabling will allow you to navigate back and forth by swiping.";

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19158" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19158"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,9 +18,9 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="140" y="154" width="312" height="223"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <view key="contentView" id="247">
-                <rect key="frame" x="0.0" y="0.0" width="312" height="223"/>
+                <rect key="frame" x="0.0" y="0.0" width="312" height="227"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="216">
@@ -32,15 +32,15 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="213">
-                        <rect key="frame" x="36" y="87" width="258" height="28"/>
+                        <rect key="frame" x="36" y="89" width="258" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Images will not exceed their actual resolution in &quot;fit to window&quot; scaling modes." id="234">
                             <font key="font" metaFont="menu" size="11"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button toolTip="Windows are dynamically resized to fit the page-view and screen" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="152">
-                        <rect key="frame" x="18" y="51" width="200" height="18"/>
+                    <button imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="152">
+                        <rect key="frame" x="18" y="52" width="204" height="18"/>
                         <buttonCell key="cell" type="check" title="Automatically resize windows" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="231">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -49,8 +49,8 @@
                             <binding destination="42" name="value" keyPath="values.windowAutoResize" id="154"/>
                         </connections>
                     </button>
-                    <button toolTip="Pages are never automatically scaled past their actual resolution" imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
-                        <rect key="frame" x="18" y="118" width="256" height="18"/>
+                    <button imageHugsTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
+                        <rect key="frame" x="18" y="121" width="260" height="18"/>
                         <buttonCell key="cell" type="check" title="Page scaling constrained by resolution" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="229">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -60,7 +60,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="237">
-                        <rect key="frame" x="36" y="187" width="111" height="16"/>
+                        <rect key="frame" x="36" y="191" width="111" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Background color" id="239">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -68,7 +68,7 @@
                         </textFieldCell>
                     </textField>
                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="238">
-                        <rect key="frame" x="14" y="185" width="20" height="20"/>
+                        <rect key="frame" x="14" y="189" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="LcY-29-3Cg"/>
                             <constraint firstAttribute="height" constant="20" id="oZD-F6-H5Q"/>
@@ -83,7 +83,7 @@
                         </connections>
                     </colorWell>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="243">
-                        <rect key="frame" x="36" y="154" width="258" height="28"/>
+                        <rect key="frame" x="36" y="158" width="258" height="28"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This color is displayed around pages in fullscreen mode." id="244">
                             <font key="font" metaFont="menu" size="11"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
