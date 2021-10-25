@@ -241,7 +241,7 @@ static NSSize monospaceCharacterSize;
 	__block NSData * textData;
 	if(self.index)
 	{
-		[self.group requestDataForPageIndex: [self.index integerValue] callback:^(NSData * _Nullable pageData, NSError * _Nullable error) {
+		[self.group requestDataForPageIndex: [self.index integerValue] completionHandler:^(NSData * _Nullable pageData, NSError * _Nullable error) {
 			textData = pageData;
 		}];
 	}
@@ -299,7 +299,7 @@ static NSSize monospaceCharacterSize;
 	if(self.index)
 	{
 		NSInteger entryIndex = [self.index integerValue];
-		[group requestDataForPageIndex:entryIndex callback:^(NSData * _Nullable pageData, NSError * _Nullable error) {
+		[group requestDataForPageIndex:entryIndex completionHandler:^(NSData * _Nullable pageData, NSError * _Nullable error) {
 			imageData = pageData;
 		}];
 	}

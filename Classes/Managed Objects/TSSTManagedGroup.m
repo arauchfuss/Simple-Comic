@@ -170,7 +170,7 @@
 	return nil;
 }
 
-- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
+- (void)requestDataForPageIndex:(NSInteger)index completionHandler:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
 {
 	callback(nil, [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil]);
 }
@@ -350,7 +350,7 @@
 }
 
 
-- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
+- (void)requestDataForPageIndex:(NSInteger)index completionHandler:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
 {
 	NSString * solidDirectory = self.solidDirectory;
 	NSData * imageData;
@@ -540,7 +540,7 @@
 	return instance;
 }
 
-- (void)requestDataForPageIndex:(NSInteger)index callback:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
+- (void)requestDataForPageIndex:(NSInteger)index completionHandler:(void(^)(NSData *_Nullable pageData, NSError *_Nullable error))callback
 {
 	[groupLock lock];
 	PDFPage * page = [(PDFDocument*)[self instance] pageAtIndex: index];
