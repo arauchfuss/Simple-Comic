@@ -746,11 +746,11 @@
 				TargetAttributes = {
 					55C374041BD9E67D006385B6 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 3D9SMH4RWM;
+						DevelopmentTeam = 2X3M9VFULE;
 						ProvisioningStyle = Automatic;
 					};
 					8D1107260486CEB800E47090 = {
-						DevelopmentTeam = 3D9SMH4RWM;
+						DevelopmentTeam = 2X3M9VFULE;
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1127,7 +1127,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 273;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1139,7 +1139,7 @@
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks $(inherited)";
 				MARKETING_VERSION = 0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic.quickcomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1156,14 +1156,14 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 273;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = QuickComic/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks $(inherited)";
 				MARKETING_VERSION = 0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic.quickcomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1184,8 +1184,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 274;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				CURRENT_PROJECT_VERSION = 275;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1194,9 +1194,9 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MARKETING_VERSION = 1.9.2;
+				MARKETING_VERSION = 1.9.3;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_SWIFT_SYMBOLS = NO;
@@ -1218,9 +1218,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 274;
+				CURRENT_PROJECT_VERSION = 275;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_THREADSAFE_STATICS = YES;
@@ -1229,8 +1229,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MARKETING_VERSION = 1.9.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
+				MARKETING_VERSION = 1.9.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -1269,7 +1269,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Nicholas Vance (3D9SMH4RWM)";
+				CODE_SIGN_IDENTITY = "Apple Development: David Phillip Oster (FSSYVLKLJK)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1320,7 +1320,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Nicholas Vance (3D9SMH4RWM)";
+				CODE_SIGN_IDENTITY = "Apple Development: David Phillip Oster (FSSYVLKLJK)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

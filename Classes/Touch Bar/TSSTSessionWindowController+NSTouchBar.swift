@@ -10,18 +10,18 @@ import Cocoa
 
 @available(macOS 10.12.2, *)
 extension NSTouchBarItem.Identifier {
-	static let prevNext = NSTouchBarItem.Identifier("com.ToWatchList.prevNextButton")
-	static let pageOrder = NSTouchBarItem.Identifier("com.ToWatchList.pageOrder")
-	static let pageLayout = NSTouchBarItem.Identifier("com.ToWatchList.pageLayout")
-	static let pageScaling = NSTouchBarItem.Identifier("com.ToWatchList.pageScaling")
-	static let rotate = NSTouchBarItem.Identifier("com.ToWatchList.rotatePage")
-	static let scrubber = NSTouchBarItem.Identifier("com.ToWatchList.scrubberBar")
+	static let prevNext = NSTouchBarItem.Identifier("com.turbozen.prevNextButton")
+	static let pageOrder = NSTouchBarItem.Identifier("com.turbozen.pageOrder")
+	static let pageLayout = NSTouchBarItem.Identifier("com.turbozen.pageLayout")
+	static let pageScaling = NSTouchBarItem.Identifier("com.turbozen.pageScaling")
+	static let rotate = NSTouchBarItem.Identifier("com.turbozen.rotatePage")
+	static let scrubber = NSTouchBarItem.Identifier("com.turbozen.scrubberBar")
 }
 
 @available(macOS 10.12.2, *)
 extension TSSTSessionWindowController: NSTouchBarDelegate, NSScrubberDataSource {
 	
-	static let touchBar: NSTouchBar.CustomizationIdentifier = "com.ToWatchList.touchBar"
+	static let touchBar: NSTouchBar.CustomizationIdentifier = "com.turbozen.touchBar"
 	
 	open override func makeTouchBar() -> NSTouchBar? {
 		let touchBar = NSTouchBar()
