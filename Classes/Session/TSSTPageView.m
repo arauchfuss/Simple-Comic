@@ -61,6 +61,9 @@ typedef struct {
 	
 	//! This controls the drawing of the accepting drag-drop border highlighting
 	BOOL acceptingDrag;
+
+	/// YES while we are actively dragging
+	BOOL isInDrag;
 	
 	/*!	While page selection is in progress this method has a value of 1 or 2.
 	 The selection number coresponds to a highlighted page. */
@@ -1352,6 +1355,7 @@ typedef struct {
 	}
 	else if([self dragIsPossible])
 	{
+		isInDrag = YES;
 		while ([theEvent type] != NSEventTypeLeftMouseUp)
 		{
 			if ([theEvent type] == NSEventTypeLeftMouseDragged)
@@ -1362,6 +1366,7 @@ typedef struct {
 			}
 			theEvent = [[self window] nextEventMatchingMask: NSEventMaskLeftMouseUp | NSEventMaskLeftMouseDragged];
 		}
+		isInDrag = NO;
 		[[self window] invalidateCursorRectsForView: self];
 	}
 }
@@ -1498,7 +1503,8 @@ typedef struct {
 {
 	if([self dragIsPossible])
 	{
-		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: [NSCursor openHandCursor]];
+		NSCursor *cursor = isInDrag ? [NSCursor closedHandCursor] : [NSCursor openHandCursor];
+		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: cursor];
 	}
 //	else if(canCrop)
 //	{
