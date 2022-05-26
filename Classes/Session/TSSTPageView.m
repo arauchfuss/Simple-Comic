@@ -19,6 +19,8 @@
 
 #include <tgmath.h>
 #import "TSSTPageView.h"
+
+#import "OCRTracker.h"
 #import "TSSTImageUtilities.h"
 #import "SimpleComicAppDelegate.h"
 #import "TSSTSessionWindowController.h"
