@@ -55,7 +55,7 @@ static CGPathRef CGPathFromNSBezierQuadPath(NSBezierPath *path)
 - (void)drawInContext:(CGContextRef)ctx
 {
 	CGContextSaveGState(ctx);
-	CGContextSetFillColorWithColor(ctx, [[NSColor.yellowColor colorWithAlphaComponent:0.4] CGColor]);
+	CGContextSetFillColorWithColor(ctx, [[NSColor.controlAccentColor colorWithAlphaComponent:0.5] CGColor]);
 	NSAffineTransform *transform = [NSAffineTransform transform];
 	[transform scaleXBy:self.bounds.size.width yBy:self.bounds.size.height];
 	for (VNRecognizedTextObservation *piece in self.textPieces)
