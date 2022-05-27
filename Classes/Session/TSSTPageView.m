@@ -1330,6 +1330,10 @@ typedef struct {
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		cropRect.origin = cursor;
 	}
+	else if([tracker didMouseDown:theEvent])
+	{
+		/* done */
+	}
 	else if([self dragIsPossible])
 	{
 		[[NSCursor closedHandCursor] set];
@@ -1382,6 +1386,10 @@ typedef struct {
 			pageSelection = 1;
 		}
 		[self setNeedsDisplay: YES];
+	}
+	else if([tracker didMouseDragged:theEvent])
+	{
+		/* done */
 	}
 	else if([self dragIsPossible])
 	{
@@ -1531,7 +1539,11 @@ typedef struct {
 
 - (void)resetCursorRects
 {
-	if([self dragIsPossible])
+	if([tracker didResetCursorRects])
+	{
+		/* done */
+	}
+	else if([self dragIsPossible])
 	{
 		NSCursor *cursor = isInDrag ? [NSCursor closedHandCursor] : [NSCursor openHandCursor];
 		[self addCursorRect: [[self enclosingScrollView] documentVisibleRect] cursor: cursor];
