@@ -72,6 +72,8 @@ typedef struct {
 	int pageSelection;
 	/*! This is the rect describing the users page selection. */
 	NSRect cropRect;
+		/*! handles mouse tracking of the OCR'ed text */
+	OCRTracker *tracker;
 }
 @synthesize imageBounds;
 @synthesize rotation;
@@ -102,6 +104,7 @@ typedef struct {
 		scrollTimer = nil;
 		acceptingDrag = NO;
 		pageSelection = -1;
+		tracker = [[OCRTracker alloc] initWithView:self];
 		self.acceptsTouchEvents = YES;
 	}
 	return self;
@@ -119,6 +122,11 @@ typedef struct {
 	return YES;
 }
 
+- (BOOL)becomeFirstResponder
+{
+	[tracker becomeNextResponder];
+  return YES;
+}
 
 - (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second
 {
@@ -126,13 +134,19 @@ typedef struct {
 	if(first != firstPageImage)
 	{
 		firstPageImage = first;
-		[self startAnimationForImage: firstPageImage];
+		if(![self didStartAnimationForImage: firstPageImage])
+		{
+			[tracker ocrImage:firstPageImage];
+		}
 	}
 	
 	if(second != secondPageImage)
 	{
 		secondPageImage = second;
-		[self startAnimationForImage: secondPageImage];
+		if(![self didStartAnimationForImage: secondPageImage])
+		{
+			[tracker ocrImage:secondPageImage];
+		}
 	}
 	
 	[self resizeView];
@@ -146,7 +160,7 @@ typedef struct {
 
 
 /* Animated GIF method */
-- (void)startAnimationForImage:(NSImage *)image
+- (BOOL)didStartAnimationForImage:(NSImage *)image
 {
 	NSImageRep *testImageRep = [image bestRepresentationForRect: NSZeroRect context: [NSGraphicsContext currentContext] hints: nil];
 	NSInteger frameCount;
@@ -168,8 +182,15 @@ typedef struct {
 										   selector: @selector(animateImage:)
 										   userInfo: animationInfo
 											repeats: NO];
+			return YES;
 		}
 	}
+	return NO;
+}
+
+- (void)startAnimationForImage:(NSImage *)image
+{
+	[self didStartAnimationForImage:image];
 }
 
 
@@ -325,9 +346,14 @@ typedef struct {
 
 		CALayer *firstPageLayer = [CALayer layer];
 		firstPageLayer.contents = (__bridge id) firstPageImageRef;
-		[firstPageLayer setFrame:[self centerScanRect: firstPageRect]];
+		NSRect frame = [self centerScanRect: firstPageRect];
+		[firstPageLayer setFrame:frame];
 		[newLayer addSublayer:firstPageLayer];
 		CFRelease(firstPageImageRef);
+		CALayer *selectionLayer = [tracker layerForImage:firstPageImage imageLayer:firstPageLayer];
+		if (selectionLayer) {
+			[firstPageLayer addSublayer:selectionLayer];
+		}
 	} else {
 		[firstPageImage drawInRect: [self centerScanRect: firstPageRect]
 						  fromRect: NSZeroRect
@@ -347,8 +373,10 @@ typedef struct {
 
 			CALayer *secondPageLayer = [CALayer layer];
 			secondPageLayer.contents = (__bridge id) secondPageImageRef;
-			[secondPageLayer setFrame:[self centerScanRect: secondPageRect]];
+			NSRect frame = [self centerScanRect: secondPageRect];
+			[secondPageLayer setFrame:frame];
 			[newLayer addSublayer:secondPageLayer];
+			[secondPageLayer addSublayer:[tracker layerForImage:secondPageImage imageLayer:secondPageLayer]];
 			CFRelease(secondPageImageRef);
 		} else {
 			[secondPageImage drawInRect: [self centerScanRect: secondPageRect]

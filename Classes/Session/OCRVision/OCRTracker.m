@@ -6,12 +6,13 @@
 
 #import "OCRTracker.h"
 
+#import "OCRSelectionLayer.h"
 #import "OCRVision.h"
 #import <Vision/Vision.h>
 
 /// @return the quadrilateral of the rect observation as a NSBezierPath/
 API_AVAILABLE(macos(10.15))
-static NSBezierPath *BezierPathFromRectObservation(VNRectangleObservation *piece)
+static NSBezierPath *OCRBezierPathFromRectObservation(VNRectangleObservation *piece)
 {
 	NSBezierPath *path = [NSBezierPath bezierPath];
 	[path moveToPoint:piece.topLeft];
@@ -26,12 +27,12 @@ static NSBezierPath *BezierPathFromRectObservation(VNRectangleObservation *piece
 /// @param r - the range of the string of the TextObservation
 /// @return the quadrilateral of the text observation as a NSBezierPath/
 API_AVAILABLE(macos(10.15))
-static NSBezierPath *BezierPathFromTextObservationRange(VNRecognizedTextObservation *piece, NSRange r)
+NSBezierPath *OCRBezierPathFromTextObservationRange(VNRecognizedTextObservation *piece, NSRange r)
 {
 	VNRecognizedText *recognizedText = [[piece topCandidates:1] firstObject];
 	// VNRectangleObservation is a superclass of VNRecognizedTextObservation. On error, use the whole thing.
 	VNRectangleObservation *rect = [recognizedText boundingBoxForRange:r error:NULL] ?: piece;
-	return BezierPathFromRectObservation(rect);
+	return OCRBezierPathFromRectObservation(rect);
 }
 
 
@@ -104,35 +105,18 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
   return YES;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	if (self.textPieces == nil)
+/// @return a layer of the selection for image scaled to frame.
+- (nullable CALayer *)layerForImage:(NSImage *)image imageLayer:(CALayer *)imageLayer {
+	CALayer *layer = nil;
+	if (@available(macOS 10.15, *))
 	{
-		if (@available(macOS 10.15, *))
+		if (self.textPieces != nil)
 		{
-			// temporary, to show we haven't run the OCR yet.
-			[[NSColor.yellowColor colorWithAlphaComponent:0.4] set];
-			CGRect smallBounds = CGRectInset(self.view.bounds, 20, 20);
-			NSRectFill(smallBounds);
-		}
-	} else {
-		if (@available(macOS 10.15, *))
-		{
-			NSAffineTransform *transform = [NSAffineTransform transform];
-			[transform scaleXBy:self.view.bounds.size.width yBy:self.view.bounds.size.height];
-			for (VNRecognizedTextObservation *piece in self.textPieces)
-			{
-				NSValue *rangeValue = self.selectionPieces[piece];
-				if (rangeValue != nil)
-				{
-					NSBezierPath *path = BezierPathFromTextObservationRange(piece, rangeValue.rangeValue);
-					[path transformUsingAffineTransform:transform];
-					[[NSColor.yellowColor colorWithAlphaComponent:0.4] set];
-					[path fill];
-				}
-			}
+			return [[OCRSelectionLayer alloc] initWithObservations:self.textPieces selection:self.selectionPieces imageLayer:imageLayer];
 		}
 	}
+	return layer;
+
 }
 
 #pragma mark Model
@@ -232,7 +216,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 	NSAffineTransform *transform = [NSAffineTransform transform];
 	[transform scaleXBy:self.view.bounds.size.width yBy:self.view.bounds.size.height];
-	NSBezierPath *path = BezierPathFromTextObservationRange(piece, charRange);
+	NSBezierPath *path = OCRBezierPathFromTextObservationRange(piece, charRange);
 	CGRect r = path.bounds;
 	r.origin = [transform transformPoint:r.origin];
 	r.size = [transform transformSize:r.size];
@@ -316,11 +300,11 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 {
 	NSValue *rangeValue = self.selectionPieces[textPiece];
 	if (rangeValue != nil && (theEvent.modifierFlags & NSEventModifierFlagControl) != 0) {
-		NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
-		[theMenu insertItemWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"" atIndex:0];
+		NSMenu *theMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Contextual Menu", @"")];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Copy", @"") action:@selector(copy:) keyEquivalent:@"" atIndex:0];
 		[theMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
-		[theMenu insertItemWithTitle:@"Start Speaking" action:@selector(startSpeaking:) keyEquivalent:@"" atIndex:2];
-		[theMenu insertItemWithTitle:@"Stop Speaking" action:@selector(stopSpeaking:) keyEquivalent:@"" atIndex:3];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Start Speaking", @"") action:@selector(startSpeaking:) keyEquivalent:@"" atIndex:2];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Stop Speaking", @"") action:@selector(stopSpeaking:) keyEquivalent:@"" atIndex:3];
 		[NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self.view];
 	} else {
 		[[NSCursor IBeamCursor] set];
@@ -498,7 +482,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	if ([menuItem action] == @selector(copy:))
 	{
 		BOOL isValid = [self.selectionPieces count] != 0;
-		menuItem.title = isValid ? @"Copy Text" : @"Copy";
+		menuItem.title = isValid ? NSLocalizedString(@"Copy Text", @"") : NSLocalizedString(@"Copy", @"");
 		return isValid;
 	}
 	else if ([menuItem action] == @selector(selectAll:))
@@ -546,6 +530,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 {
 	if (@available(macOS 10.15, *))
 	{
+		self.selectionPieces = [NSMutableDictionary dictionary];
 		for (VNRecognizedTextObservation *piece in self.textPieces)
 		{
 			NSArray<VNRecognizedText *> *text1 = [piece topCandidates:1];

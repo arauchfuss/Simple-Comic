@@ -70,6 +70,7 @@
 		55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */; };
 		6304B5D42840190B009E7D61 /* OCRVision.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D32840190B009E7D61 /* OCRVision.m */; };
 		6304B5D7284019EC009E7D61 /* OCRTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D5284019EC009E7D61 /* OCRTracker.m */; };
+		6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B60928411F13009E7D61 /* OCRSelectionLayer.m */; };
 		638E5C4C2832138400BFDAA4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638E5C3C2832138400BFDAA4 /* Vision.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -371,6 +372,8 @@
 		6304B5D32840190B009E7D61 /* OCRVision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRVision.m; sourceTree = "<group>"; };
 		6304B5D5284019EC009E7D61 /* OCRTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRTracker.m; sourceTree = "<group>"; };
 		6304B5D6284019EC009E7D61 /* OCRTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRTracker.h; sourceTree = "<group>"; };
+		6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRSelectionLayer.h; sourceTree = "<group>"; };
+		6304B60928411F13009E7D61 /* OCRSelectionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRSelectionLayer.m; sourceTree = "<group>"; };
 		638E5C3C2832138400BFDAA4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		64777B8D1A4213150064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -665,6 +668,8 @@
 		6304B5C2284018E9009E7D61 /* OCRVision */ = {
 			isa = PBXGroup;
 			children = (
+				6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */,
+				6304B60928411F13009E7D61 /* OCRSelectionLayer.m */,
 				6304B5D6284019EC009E7D61 /* OCRTracker.h */,
 				6304B5D5284019EC009E7D61 /* OCRTracker.m */,
 				6304B5D22840190B009E7D61 /* OCRVision.h */,
@@ -981,6 +986,7 @@
 				5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */,
 				55861E3923C68B3700390CD3 /* V1ToV2.xcmappingmodel in Sources */,
 				6304B5D42840190B009E7D61 /* OCRVision.m in Sources */,
+				6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */,
 				5590EB3A24A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m in Sources */,
