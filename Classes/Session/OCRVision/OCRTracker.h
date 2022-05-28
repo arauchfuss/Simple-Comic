@@ -18,11 +18,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// all the text on the page. nil if not available.
 @property(readonly, nullable) NSString *allText;
 
-/// Run the ocr engine on the image in the default language.
-- (void)ocrImage:(NSImage *)image;
+/// Run the ocr engine on the first page image in the default language.
+/// @param image - OCRed, then used as a cache key for mouse tracking the result. Pass nil to clear the cache entry
+- (void)ocrImage:(nullable NSImage *)image;
 
-/// Run the ocr engine on the CGimage in the default language.
-- (void)ocrCGImage:(CGImageRef)cgImage;
+/// Run the ocr engine on the second page image in the default language.
+/// @param image - OCRed, then used as a cache key for mouse tracking the result. Pass nil to clear the cache entry
+- (void)ocrImage2:(nullable NSImage *)image;
+
 
 - (instancetype)initWithView:(NSView *)view NS_DESIGNATED_INITIALIZER;
 

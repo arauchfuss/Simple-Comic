@@ -1,6 +1,6 @@
 //  OCRVision.h
 //
-//  Created by David Phillip Oster on 5/19/2022.
+//  Created by David Phillip Oster on 5/19/2022. Apache Version 2 open source license.
 //
 
 #import "OCRVision.h"

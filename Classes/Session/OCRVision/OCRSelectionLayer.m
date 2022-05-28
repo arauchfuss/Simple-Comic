@@ -35,12 +35,13 @@ static CGPathRef CGPathFromNSBezierQuadPath(NSBezierPath *path)
 
 @implementation OCRSelectionLayer
 
-- (instancetype)initWithObservations:(NSArray *)observations selection:(NSDictionary *)selection  imageLayer:(CALayer *)imageLayer
+- (instancetype)initWithObservations:(NSArray *)observations selection:(NSDictionary *)selection imageLayer:(CALayer *)imageLayer
 {
 	self = [super init];
 	if (self) {
 		[self setPosition:imageLayer.position];
 		[self setBounds:imageLayer.bounds];
+		[self setFrame:imageLayer.bounds];
 		NSAffineTransform *transform = [NSAffineTransform transform];
 		[transform scaleXBy:self.bounds.size.width yBy:self.bounds.size.height];
 		self.fillColor = [NSColor.controlAccentColor CGColor];
@@ -60,8 +61,6 @@ static CGPathRef CGPathFromNSBezierQuadPath(NSBezierPath *path)
 		}
 		self.path = pAll;
 		CGPathRelease(pAll);
-
-		[self setNeedsDisplay];
 	}
 	return self;
 }

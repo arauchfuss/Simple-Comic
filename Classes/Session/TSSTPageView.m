@@ -134,8 +134,10 @@ typedef struct {
 	if(first != firstPageImage)
 	{
 		firstPageImage = first;
-		if(![self didStartAnimationForImage: firstPageImage])
+		if([self didStartAnimationForImage: firstPageImage])
 		{
+			[tracker ocrImage:nil];
+		} else {
 			[tracker ocrImage:firstPageImage];
 		}
 	}
@@ -143,9 +145,11 @@ typedef struct {
 	if(second != secondPageImage)
 	{
 		secondPageImage = second;
-		if(![self didStartAnimationForImage: secondPageImage])
+		if([self didStartAnimationForImage: secondPageImage])
 		{
-			[tracker ocrImage:secondPageImage];
+			[tracker ocrImage2:nil];
+		} else {
+			[tracker ocrImage2:secondPageImage];
 		}
 	}
 	
@@ -376,8 +380,11 @@ typedef struct {
 			NSRect frame = [self centerScanRect: secondPageRect];
 			[secondPageLayer setFrame:frame];
 			[newLayer addSublayer:secondPageLayer];
-			[secondPageLayer addSublayer:[tracker layerForImage:secondPageImage imageLayer:secondPageLayer]];
 			CFRelease(secondPageImageRef);
+			CALayer *selectionLayer = [tracker layerForImage:secondPageImage imageLayer:secondPageLayer];
+			if (selectionLayer) {
+				[secondPageLayer addSublayer:selectionLayer];
+			}
 		} else {
 			[secondPageImage drawInRect: [self centerScanRect: secondPageRect]
 							   fromRect: NSZeroRect
