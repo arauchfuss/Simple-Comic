@@ -5,10 +5,10 @@ The basic feature drive is to reduce the number of interactions required to brow
 
 Quick Comic is a bundled quicklook preview and thumbnail generation plugin for cbr and cbz files.
 
-## Oster's changes
+## Apple's Live Text support
 
-Simple Comic uses Apple's Optical Character Recognition to make text in comics selectable for
-copying and text-to-speech.
+Simple Comic uses Apple's Optical Character Recognition, on Apple Silicon Macintoshes, to make text
+in comics selectable for copying and text-to-speech.
 
 * The mouse cursor changes from the Arrow to the i-Beam when over selectable text.
 * Click-and-drag to select live text. Recognized words within the dragged out rectangle are selected.
@@ -16,9 +16,7 @@ copying and text-to-speech.
 * Control-click on selected text for a contextual menu with **Copy** and **Speak**
 * ⌘-click-and-drag to add a new selection rectangle to the existing selection.
 
-### TODO: Oster's changes
-
-* two page spreads. Coming soon!
+* Two page spreads, rotations, page ordering, and zooming all work as expected.
 
 ## Privacy
 
