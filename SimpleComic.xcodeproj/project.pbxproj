@@ -68,6 +68,10 @@
 		55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */; };
 		55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1DB1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m */; };
 		55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */; };
+		6304B5D42840190B009E7D61 /* OCRVision.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D32840190B009E7D61 /* OCRVision.m */; };
+		6304B5D7284019EC009E7D61 /* OCRTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D5284019EC009E7D61 /* OCRTracker.m */; };
+		6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B60928411F13009E7D61 /* OCRSelectionLayer.m */; };
+		638E5C4C2832138400BFDAA4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638E5C3C2832138400BFDAA4 /* Vision.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -364,6 +368,13 @@
 		55FFF1DB1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSSTManagedGroup+CoreDataProperties.m"; sourceTree = "<group>"; };
 		55FFF1E31DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSSTManagedSession+CoreDataProperties.h"; sourceTree = "<group>"; };
 		55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSSTManagedSession+CoreDataProperties.m"; sourceTree = "<group>"; };
+		6304B5D22840190B009E7D61 /* OCRVision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRVision.h; sourceTree = "<group>"; };
+		6304B5D32840190B009E7D61 /* OCRVision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRVision.m; sourceTree = "<group>"; };
+		6304B5D5284019EC009E7D61 /* OCRTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRTracker.m; sourceTree = "<group>"; };
+		6304B5D6284019EC009E7D61 /* OCRTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRTracker.h; sourceTree = "<group>"; };
+		6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRSelectionLayer.h; sourceTree = "<group>"; };
+		6304B60928411F13009E7D61 /* OCRSelectionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRSelectionLayer.m; sourceTree = "<group>"; };
+		638E5C3C2832138400BFDAA4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		64777B8D1A4213150064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		64777B8E1A42131A0064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
@@ -405,6 +416,7 @@
 				5500A65D1D7772CD00321300 /* XADMaster.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				286236020AADDB6200B83E77 /* QuartzCore.framework in Frameworks */,
+				638E5C4C2832138400BFDAA4 /* Vision.framework in Frameworks */,
 				28BD08E60C9836E600BD7EAF /* Quartz.framework in Frameworks */,
 				28C1D5600DF1FE37003392B4 /* QuickLook.framework in Frameworks */,
 				285FE3300F945E2300CD8F96 /* Carbon.framework in Frameworks */,
@@ -557,6 +569,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				638E5C3C2832138400BFDAA4 /* Vision.framework */,
 				559EF3E11BDD390000FAAA0A /* libbz2.tbd */,
 				559EF3DF1BDD38F400FAAA0A /* libz.tbd */,
 				285FE32F0F945E2300CD8F96 /* Carbon.framework */,
@@ -652,6 +665,19 @@
 			path = "Touch Bar";
 			sourceTree = "<group>";
 		};
+		6304B5C2284018E9009E7D61 /* OCRVision */ = {
+			isa = PBXGroup;
+			children = (
+				6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */,
+				6304B60928411F13009E7D61 /* OCRSelectionLayer.m */,
+				6304B5D6284019EC009E7D61 /* OCRTracker.h */,
+				6304B5D5284019EC009E7D61 /* OCRTracker.m */,
+				6304B5D22840190B009E7D61 /* OCRVision.h */,
+				6304B5D32840190B009E7D61 /* OCRVision.m */,
+			);
+			path = OCRVision;
+			sourceTree = "<group>";
+		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +696,7 @@
 				FA7257EF08A6CE2E006A2A19 /* TSSTPageView.m */,
 				284D381A101249BE00A37AB2 /* DTToolbarItems.swift */,
 				28B34A721013779B006C551C /* NSWindow+Extensions.swift */,
+				6304B5C2284018E9009E7D61 /* OCRVision */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -746,11 +773,11 @@
 				TargetAttributes = {
 					55C374041BD9E67D006385B6 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 3D9SMH4RWM;
+						DevelopmentTeam = 2X3M9VFULE;
 						ProvisioningStyle = Automatic;
 					};
 					8D1107260486CEB800E47090 = {
-						DevelopmentTeam = 3D9SMH4RWM;
+						DevelopmentTeam = 2X3M9VFULE;
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -958,9 +985,12 @@
 			files = (
 				5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */,
 				55861E3923C68B3700390CD3 /* V1ToV2.xcmappingmodel in Sources */,
+				6304B5D42840190B009E7D61 /* OCRVision.m in Sources */,
+				6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */,
 				5590EB3A24A1FD0900DA060E /* ManagedSmartFolder+CoreDataProperties.m in Sources */,
+				6304B5D7284019EC009E7D61 /* OCRTracker.m in Sources */,
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */,
@@ -1127,7 +1157,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 273;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1139,7 +1169,7 @@
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks $(inherited)";
 				MARKETING_VERSION = 0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic.quickcomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1156,14 +1186,14 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 273;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				EXPORTED_SYMBOLS_FILE = QuickComic/QuickComic.exp;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = QuickComic/Info.plist;
 				INSTALL_PATH = /Library/QuickLook;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../../../../../Frameworks $(inherited)";
 				MARKETING_VERSION = 0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic.quickcomic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic.quickcomic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1184,8 +1214,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 274;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				CURRENT_PROJECT_VERSION = 275;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1194,9 +1224,9 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MARKETING_VERSION = 1.9.2;
+				MARKETING_VERSION = 1.9.3;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_SWIFT_SYMBOLS = NO;
@@ -1218,9 +1248,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 274;
+				CURRENT_PROJECT_VERSION = 275;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				DEVELOPMENT_TEAM = 2X3M9VFULE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_THREADSAFE_STATICS = YES;
@@ -1229,8 +1259,8 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MARKETING_VERSION = 1.9.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
+				MARKETING_VERSION = 1.9.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.turbozen.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
@@ -1269,7 +1299,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Nicholas Vance (3D9SMH4RWM)";
+				CODE_SIGN_IDENTITY = "Apple Development: David Phillip Oster (FSSYVLKLJK)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1320,7 +1350,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Apple Distribution: Nicholas Vance (3D9SMH4RWM)";
+				CODE_SIGN_IDENTITY = "Apple Development: David Phillip Oster (FSSYVLKLJK)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
