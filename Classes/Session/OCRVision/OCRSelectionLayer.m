@@ -33,45 +33,37 @@ static CGPathRef CGPathFromNSBezierQuadPath(NSBezierPath *path)
 	return p;
 }
 
-@interface OCRSelectionLayer ()
-@property NSArray *textPieces;
-@property NSDictionary *selection;
-@end
-
 @implementation OCRSelectionLayer
+
 - (instancetype)initWithObservations:(NSArray *)observations selection:(NSDictionary *)selection  imageLayer:(CALayer *)imageLayer
 {
 	self = [super init];
 	if (self) {
-		_textPieces = observations;
-		_selection = selection;
 		[self setPosition:imageLayer.position];
 		[self setBounds:imageLayer.bounds];
+		NSAffineTransform *transform = [NSAffineTransform transform];
+		[transform scaleXBy:self.bounds.size.width yBy:self.bounds.size.height];
+		self.fillColor = [NSColor.controlAccentColor CGColor];
+		self.opacity = 0.4;
+		CGMutablePathRef pAll = CGPathCreateMutable();
+		for (VNRecognizedTextObservation *piece in observations)
+		{
+			NSValue *rangeValue = selection[piece];
+			if (rangeValue != nil)
+			{
+				NSBezierPath *path1 = OCRBezierPathFromTextObservationRange(piece, rangeValue.rangeValue);
+				[path1 transformUsingAffineTransform:transform];
+				CGPathRef p = CGPathFromNSBezierQuadPath(path1);
+				CGPathAddPath(pAll, NULL, p);
+				CGPathRelease(p);
+			}
+		}
+		self.path = pAll;
+		CGPathRelease(pAll);
+
 		[self setNeedsDisplay];
 	}
 	return self;
-}
-
-- (void)drawInContext:(CGContextRef)ctx
-{
-	CGContextSaveGState(ctx);
-	CGContextSetFillColorWithColor(ctx, [[NSColor.controlAccentColor colorWithAlphaComponent:0.5] CGColor]);
-	NSAffineTransform *transform = [NSAffineTransform transform];
-	[transform scaleXBy:self.bounds.size.width yBy:self.bounds.size.height];
-	for (VNRecognizedTextObservation *piece in self.textPieces)
-	{
-		NSValue *rangeValue = self.selection[piece];
-		if (rangeValue != nil)
-		{
-			NSBezierPath *path1 = OCRBezierPathFromTextObservationRange(piece, rangeValue.rangeValue);
-			[path1 transformUsingAffineTransform:transform];
-			CGPathRef p = CGPathFromNSBezierQuadPath(path1);
-			CGContextAddPath(ctx, p);
-			CGContextFillPath(ctx);
-			CGPathRelease(p);
-		}
-	}
-	CGContextRestoreGState(ctx);
 }
 
 @end
