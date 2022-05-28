@@ -73,7 +73,7 @@ typedef struct {
 	/*! This is the rect describing the users page selection. */
 	NSRect cropRect;
 		/*! handles mouse tracking of the OCR'ed text */
-	OCRTracker *tracker;
+	OCRTracker *ocrTracker;
 }
 @synthesize imageBounds;
 @synthesize rotation;
@@ -104,7 +104,7 @@ typedef struct {
 		scrollTimer = nil;
 		acceptingDrag = NO;
 		pageSelection = -1;
-		tracker = [[OCRTracker alloc] initWithView:self];
+		ocrTracker = [[OCRTracker alloc] initWithView:self];
 		self.acceptsTouchEvents = YES;
 	}
 	return self;
@@ -124,7 +124,7 @@ typedef struct {
 
 - (BOOL)becomeFirstResponder
 {
-	[tracker becomeNextResponder];
+	[ocrTracker becomeNextResponder];
   return YES;
 }
 
@@ -136,9 +136,9 @@ typedef struct {
 		firstPageImage = first;
 		if([self didStartAnimationForImage: firstPageImage])
 		{
-			[tracker ocrImage:nil];
+			[ocrTracker ocrImage:nil];
 		} else {
-			[tracker ocrImage:firstPageImage];
+			[ocrTracker ocrImage:firstPageImage];
 		}
 	}
 	
@@ -147,9 +147,9 @@ typedef struct {
 		secondPageImage = second;
 		if([self didStartAnimationForImage: secondPageImage])
 		{
-			[tracker ocrImage2:nil];
+			[ocrTracker ocrImage2:nil];
 		} else {
-			[tracker ocrImage2:secondPageImage];
+			[ocrTracker ocrImage2:secondPageImage];
 		}
 	}
 	
@@ -354,7 +354,7 @@ typedef struct {
 		[firstPageLayer setFrame:frame];
 		[newLayer addSublayer:firstPageLayer];
 		CFRelease(firstPageImageRef);
-		CALayer *selectionLayer = [tracker layerForImage:firstPageImage imageLayer:firstPageLayer];
+		CALayer *selectionLayer = [ocrTracker layerForImage:firstPageImage imageLayer:firstPageLayer];
 		if (selectionLayer) {
 			[firstPageLayer addSublayer:selectionLayer];
 		}
@@ -381,7 +381,7 @@ typedef struct {
 			[secondPageLayer setFrame:frame];
 			[newLayer addSublayer:secondPageLayer];
 			CFRelease(secondPageImageRef);
-			CALayer *selectionLayer = [tracker layerForImage:secondPageImage imageLayer:secondPageLayer];
+			CALayer *selectionLayer = [ocrTracker layerForImage:secondPageImage imageLayer:secondPageLayer];
 			if (selectionLayer) {
 				[secondPageLayer addSublayer:selectionLayer];
 			}
@@ -1337,7 +1337,7 @@ typedef struct {
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		cropRect.origin = cursor;
 	}
-	else if([tracker didMouseDown:theEvent])
+	else if([ocrTracker didMouseDown:theEvent])
 	{
 		/* done */
 	}
@@ -1394,7 +1394,7 @@ typedef struct {
 		}
 		[self setNeedsDisplay: YES];
 	}
-	else if([tracker didMouseDragged:theEvent])
+	else if([ocrTracker didMouseDragged:theEvent])
 	{
 		/* done */
 	}
@@ -1546,7 +1546,7 @@ typedef struct {
 
 - (void)resetCursorRects
 {
-	if([tracker didResetCursorRects])
+	if([ocrTracker didResetCursorRects])
 	{
 		/* done */
 	}
