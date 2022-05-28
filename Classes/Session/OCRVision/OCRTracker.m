@@ -499,7 +499,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	{
 		if (@available(macOS 10.15, *))
 		{
-			return [self.textPieces count] != 0;
+			return [self.selectionPieces count] != 0;
 		} else {
 			return  NO;
 		}
