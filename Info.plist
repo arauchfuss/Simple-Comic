@@ -437,7 +437,7 @@
 	<key>CFBundleHelpBookFolder</key>
 	<string>SimpleComic Help.help</string>
 	<key>CFBundleHelpBookName</key>
-	<string>com.turbozen.SimpleComic.help</string>
+	<string>com.ToWatchList.SimpleComic.help</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>

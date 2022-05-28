@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en-us</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.turbozen.SimpleComic.help</string>
+	<string>com.ToWatchList.SimpleComic.help</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -23,7 +23,7 @@
 	<key>HPDBookIndexPath</key>
 	<string>search.helpindex</string>
 	<key>HPDBookKBProduct</key>
-	<string>com.turbozen.SimpleComic.help</string>
+	<string>com.ToWatchList.SimpleComic.help</string>
 	<key>HPDBookIconPath</key>
 	<string>shared/icon.png</string>
 	<key>HPDBookTitle</key>
