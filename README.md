@@ -7,7 +7,7 @@ Quick Comic is a bundled quicklook preview and thumbnail generation plugin for c
 
 ## Live Text support
 
-Simple Comic uses Apple's Optical Character Recognition, on Apple Silicon Macintoshes, to make text in comics selectable for copying and text-to-speech.
+Simple Comic uses Apple's Optical Character Recognition, on Apple Silicon Macs, to make text in comics selectable for copying and text-to-speech.
 
 * The mouse cursor changes from the Arrow to the I-Beam when over selectable text.
 * Click-and-drag to select live text. Recognized words within the dragged out rectangle are selected.
