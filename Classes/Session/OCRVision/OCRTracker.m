@@ -86,6 +86,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 @interface OCRTracker()
 @property BOOL isDragging;
+@property BOOL needsInvalidateCursorRects;
 
 @property NSArray<OCRDatum *> *datums;
 
@@ -192,6 +193,11 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		{
 			OCRSelectionLayer *selectionLayer =  [[OCRSelectionLayer alloc] initWithObservations:datum.textPieces selection:datum.selectionPieces imageLayer:imageLayer];
 			datum.selectionLayer = selectionLayer;
+			if (self.needsInvalidateCursorRects)
+			{
+				[self.view.window invalidateCursorRectsForView:self.view];
+				self.needsInvalidateCursorRects = NO;
+			}
 			return selectionLayer;
 		}
 	}
@@ -323,7 +329,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		datum.textPieces = textPieces;
 		[datum.selectionPieces removeAllObjects];
 		[self.view setNeedsDisplay:YES];
-		[self.view.window invalidateCursorRectsForView:self.view];
+		self.needsInvalidateCursorRects = YES;
 	});
 }
 
