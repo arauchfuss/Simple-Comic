@@ -1,0 +1,1 @@
+Please be aware Simple Comic is a viewer application like Preview. Nothing will show up when the app is first launched. To test usage, please use the application to open the attached public-domain `Public-Domain-Comic-Jessie-James.cbz` which is zipped inside the attached archive `Public-Domain-Comic-Jessie-James.cbz.zip`
