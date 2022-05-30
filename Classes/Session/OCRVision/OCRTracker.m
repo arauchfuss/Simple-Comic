@@ -402,11 +402,11 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		}
 	}
 	if (rangeValue != nil && (theEvent.modifierFlags & NSEventModifierFlagControl) != 0) {
-		NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
-		[theMenu insertItemWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"" atIndex:0];
+		NSMenu *theMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Contextual Menu", @"")];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Copy", @"") action:@selector(copy:) keyEquivalent:@"" atIndex:0];
 		[theMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
-		[theMenu insertItemWithTitle:@"Start Speaking" action:@selector(startSpeaking:) keyEquivalent:@"" atIndex:2];
-		[theMenu insertItemWithTitle:@"Stop Speaking" action:@selector(stopSpeaking:) keyEquivalent:@"" atIndex:3];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Start Speaking", @"") action:@selector(startSpeaking:) keyEquivalent:@"" atIndex:2];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Stop Speaking", @"") action:@selector(stopSpeaking:) keyEquivalent:@"" atIndex:3];
 		[NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self.view];
 	} else {
 		[[NSCursor IBeamCursor] set];
