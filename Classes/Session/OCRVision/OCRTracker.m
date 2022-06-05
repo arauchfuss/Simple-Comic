@@ -71,6 +71,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 @property(weak) NSImage *image;
 
+/// non-nil while this is actively OCRing.
+@property OCRVision *activeOCR API_AVAILABLE(macos(10.15));
+
 @property(weak) CALayer *selectionLayer;
 
 /// <VNRecognizedTextObservation *> - 10.15 and newer
@@ -317,7 +320,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 - (void)ocrDidFinish:(id<OCRVisionResults>)results image:(NSImage *)image index:(NSInteger)index
 {
 	NSArray *textPieces = @[];
+	NSError *error = results.ocrError;
 	if (@available(macOS 10.15, *)) {
+		self.datums[index].activeOCR = nil;
 		textPieces = results.textObservations;
 	}
 	// Since we are changing state that affects the U.I., we do it on the main thread in the future,
@@ -325,8 +330,8 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	// by the block.
 	dispatch_async(dispatch_get_main_queue(), ^{
 		OCRDatum *datum = self.datums[index];
-		datum.image = image;
-		datum.textPieces = textPieces;
+		datum.image = (error == nil) ? image : nil;
+		datum.textPieces = (error == nil) ? textPieces : @[];
 		[datum.selectionPieces removeAllObjects];
 		[self.view setNeedsDisplay:YES];
 		self.needsInvalidateCursorRects = YES;
@@ -338,14 +343,18 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	if (@available(macOS 10.15, *)) {
 		OCRDatum *datum = self.datums[index];
 		datum.image = nil;
+		[datum.activeOCR cancel];
+		datum.activeOCR = nil;
 		datum.textPieces = @[];
 		[datum.selectionPieces removeAllObjects];
 		if (image)
 		{
 			__block OCRVision *ocrVision = [[OCRVision alloc] init];
+			datum.activeOCR = ocrVision;
+			__weak typeof(self) weakSelf = self;
 			dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
 				[ocrVision ocrImage:image completion:^(id<OCRVisionResults> _Nonnull complete) {
-					[self ocrDidFinish:complete image:image index:index];
+					[weakSelf ocrDidFinish:complete image:image index:index];
 					ocrVision = nil;
 				}];
 			});
