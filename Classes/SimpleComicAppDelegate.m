@@ -310,7 +310,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	
 	// Allow users to customize the app's Touch Bar items.
 	if (@available(macOS 10.12.2, *)) {
-		NSApplication.sharedApplication.automaticCustomizeTouchBarMenuItemEnabled = true;
+		NSApplication.sharedApplication.automaticCustomizeTouchBarMenuItemEnabled = YES;
 	}
 }
 
@@ -565,11 +565,10 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 
 - (void)sessionRelaunch
 {
-	TSSTManagedSession * session;
 	NSFetchRequest * sessionRequest = [TSSTManagedSession fetchRequest];
 	NSError * fetchError;
 	NSArray * managedSessions = [[self managedObjectContext] executeFetchRequest: sessionRequest error: &fetchError];
-	for(session in managedSessions)
+	for(TSSTManagedSession *session in managedSessions)
 	{
 		if([session.groups count] <= 0)
 		{
