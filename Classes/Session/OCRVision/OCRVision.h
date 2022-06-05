@@ -58,6 +58,9 @@ API_AVAILABLE(macos(10.15))
 /// @param completion - a block passed an object that corresponds to the OCRVision protocol.
 - (void)ocrCGImage:(CGImageRef)cgImage completion:(void (^)(id<OCRVisionResults> _Nonnull ocrResults))completion;
 
+/// if an OCR task is currently running, attempt to cancel it. Always safe to call.
+- (void)cancel;
+
 @end
 
 NS_ASSUME_NONNULL_END

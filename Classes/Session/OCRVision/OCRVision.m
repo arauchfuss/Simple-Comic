@@ -16,6 +16,12 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 
 /// Rather than allocate a new object to pass the results, just make the OCRVision object do double duty.
 @interface OCRVision()<OCRVisionResults>
+
+/// non nil while processing the request
+///
+/// Assumes caller will create a new OCRVision for each image to analyze.
+@property(nullable) VNRecognizeTextRequest *activeTextRequest;
+
 @property(readwrite) NSArray<VNRecognizedTextObservation *> *textObservations;
 @property(readwrite, nullable, setter=setOCRError:) NSError *ocrError;
 @end
@@ -110,6 +116,10 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 	else if ([request isKindOfClass:[VNRecognizeTextRequest class]])
 	{
 		VNRecognizeTextRequest *textRequests = (VNRecognizeTextRequest *)request;
+		if (textRequests == self.activeTextRequest)
+		{
+			self.activeTextRequest = nil;
+		}
 		NSMutableArray<VNRecognizedTextObservation *> *pieces = [NSMutableArray array];
 		NSArray *results = textRequests.results;
 		for (id rawResult in results)
@@ -152,9 +162,10 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 		}
 		NSError *error = nil;
     VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:cgImage options:@{}];
+		self.activeTextRequest = textRequest;
 		if (![handler performRequests:@[textRequest] error:&error])
 		{
-			[self callCompletion:completion observations:@[] error:error];
+			[weakSelf callCompletion:completion observations:@[] error:error];
 		}
   } else {
 		NSString *desc = @"Could not create text request";
@@ -182,6 +193,11 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 			CFRelease(imageSource);
 		}
 	}
+}
+
+- (void)cancel
+{
+	[self.activeTextRequest cancel];
 }
 
 @end
