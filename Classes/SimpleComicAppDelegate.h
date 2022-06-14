@@ -30,8 +30,8 @@
 #endif
 
 #if (MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_13)
-#define NSControlStateValueOn            NSOnState];
-#define NSControlStateValueOff           NSOffState];
+#define NSControlStateValueOn            NSOnState
+#define NSControlStateValueOff           NSOffState
 #endif
 
 NS_ASSUME_NONNULL_BEGIN
