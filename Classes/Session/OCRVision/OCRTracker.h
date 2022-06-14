@@ -7,6 +7,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/// A key for NSUserDefaults boolForKey: - it true the entire OCR system is turned  off.
+extern NSString *const OCRDisableKey;
+
 @class VNRecognizedTextObservation;
 
 /// Provide mouse tracking services for an NSImageView to track the recognized text.
@@ -27,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)ocrImage2:(nullable NSImage *)image;
 
 
-- (instancetype)initWithView:(NSView *)view NS_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithView:(NSView *)view NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;
 

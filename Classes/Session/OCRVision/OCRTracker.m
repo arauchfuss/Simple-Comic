@@ -10,6 +10,8 @@
 #import "OCRVision.h"
 #import <Vision/Vision.h>
 
+NSString *const OCRDisableKey = @"OCRDisableKey";
+
 /// @return the quadrilateral of the rect observation as a NSBezierPath/
 API_AVAILABLE(macos(10.15))
 static NSBezierPath *OCRBezierPathFromRectObservation(VNRectangleObservation *piece)
@@ -101,6 +103,10 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (instancetype)initWithView:(NSView *)view
 {
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	if ([userDefaults	boolForKey:OCRDisableKey]) {
+		return nil;
+	}
 	self = [super init];
 	if (self)
 	{
