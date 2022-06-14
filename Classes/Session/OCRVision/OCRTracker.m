@@ -104,7 +104,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 - (instancetype)initWithView:(NSView *)view
 {
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults	boolForKey:OCRDisableKey]) {
+	if ([userDefaults boolForKey:OCRDisableKey]) {
 		return nil;
 	}
 	self = [super init];
