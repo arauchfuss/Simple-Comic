@@ -12,6 +12,8 @@
 
 NSString *const OCRDisableKey = @"OCRDisableKey";
 
+static BOOL sIsEnabled = YES;
+
 /// @return the quadrilateral of the rect observation as a NSBezierPath/
 API_AVAILABLE(macos(10.15))
 static NSBezierPath *OCRBezierPathFromRectObservation(VNRectangleObservation *piece)
@@ -84,9 +86,11 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 // Key is VNRecognizedTextObservation.
 // The value is the NSRange of the underlying string to show as selected.
 @property NSMutableDictionary<NSObject *, NSValue *> *selectionPieces;
+
 @end
 
 @implementation OCRDatum
+
 @end
 
 @interface OCRTracker()
@@ -103,11 +107,6 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (instancetype)initWithView:(NSView *)view
 {
-	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-	if ([userDefaults boolForKey:OCRDisableKey])
-	{
-		return nil;
-	}
 	self = [super init];
 	if (self)
 	{
@@ -116,8 +115,17 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 			[[OCRDatum alloc] init],
 			[[OCRDatum alloc] init],
 		];
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults addObserver:self forKeyPath:OCRDisableKey options:0 context:NULL];
+		sIsEnabled = ![defaults boolForKey:OCRDisableKey];
 	}
 	return self;
+}
+
+- (void)dealloc
+{
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		[defaults removeObjectForKey:OCRDisableKey];
 }
 
 - (void)becomeNextResponder {
@@ -131,6 +139,24 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 - (BOOL)acceptsFirstResponder
 {
   return YES;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+											ofObject:(id)object
+												change:(NSDictionary *)change
+											 context:(void *)context
+{
+	if ([keyPath isEqual:OCRDisableKey])
+	{
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		if (defaults == object)
+		{
+			sIsEnabled = ![defaults boolForKey:OCRDisableKey];
+			[self.view setNeedsDisplay:YES];
+			self.needsInvalidateCursorRects = NO;
+			[self.view.window invalidateCursorRectsForView:self.view];
+		}
+	}
 }
 
 - (OCRDatum *)datumOfImage:(NSImage *)image
@@ -195,6 +221,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 /// @return a layer of the selection for image scaled to frame.
 - (nullable CALayer *)layerForImage:(NSImage *)image imageLayer:(CALayer *)imageLayer {
+	if (!sIsEnabled) {
+		return nil;
+	}
 	CALayer *layer = nil;
 	if (@available(macOS 10.15, *))
 	{
@@ -354,7 +383,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		datum.activeOCR = nil;
 		datum.textPieces = @[];
 		[datum.selectionPieces removeAllObjects];
-		if (image)
+		if (sIsEnabled && image)
 		{
 			__block OCRVision *ocrVision = [[OCRVision alloc] init];
 			datum.activeOCR = ocrVision;
@@ -384,6 +413,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (BOOL)didMouseDown:(NSEvent *)theEvent
 {
+	if (!sIsEnabled) {
+		return NO;
+	}
 	NSObject *textPiece = nil;
 	if (@available(macOS 10.15, *)) {
 		textPiece = [self textPieceForMouseEvent:theEvent];
@@ -407,6 +439,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (void)mouseDown:(NSEvent *)theEvent textPiece:(NSObject *)textPiece
 {
+	if (!sIsEnabled) {
+		return;
+	}
 	NSInteger i = 0;
 	NSValue *rangeValue = nil;
 	for (;i < self.datums.count; ++i) {
@@ -439,6 +474,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (BOOL)didMouseDragged:(NSEvent *)theEvent
 {
+	if (!sIsEnabled) {
+		return NO;
+	}
 	NSObject *textPiece = nil;
 	if (@available(macOS 10.15, *)) {
 		textPiece = [self textPieceForMouseEvent:theEvent];
@@ -641,6 +679,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
+	if (!sIsEnabled) {
+		return NO;
+	}
 	if ([menuItem action] == @selector(copy:))
 	{
 		BOOL isAnySelected = self.isAnySelected;
@@ -690,7 +731,6 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (void)selectAll:(id)sender
 {
-
 	if (@available(macOS 10.15, *))
 	{
 		for (OCRDatum *datum in self.datums)
@@ -728,7 +768,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (id)validRequestorForSendType:(NSString *)sendType returnType:(NSString *)returnType
 {
-  if (([sendType isEqual:NSPasteboardTypeString] || [sendType isEqual:NSStringPboardType]) && self.isAnySelected)
+  if (sIsEnabled && (([sendType isEqual:NSPasteboardTypeString] || [sendType isEqual:NSStringPboardType]) && self.isAnySelected))
 	{
     return self;
   }
@@ -737,7 +777,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (BOOL)writeSelectionToPasteboard:(NSPasteboard *)pboard types:(NSArray *)types
 {
-  if (([types containsObject:NSPasteboardTypeString] || [types containsObject:NSStringPboardType]) && self.isAnySelected)
+  if (sIsEnabled && (([types containsObject:NSPasteboardTypeString] || [types containsObject:NSStringPboardType]) && self.isAnySelected))
 	{
     [self copyToPasteboard:pboard];
     return YES;

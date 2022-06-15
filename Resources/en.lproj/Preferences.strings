@@ -19,3 +19,13 @@
 
 /* Class = "NSWindow"; title = "Preferences"; ObjectID = "246"; */
 "246.title" = "Preferences";
+
+/* Class = "NSTextFieldCell"; title = "Recognize Text so you can select and copy it."; ObjectID = "251"; */
+"251.title" = "Recognize Text so you can select and copy it.";
+
+/* Class = "NSButton"; ibShadowedToolTip = "Recognize Text so you can select and copy it."; ObjectID = "252"; */
+"252.ibShadowedToolTip" = "Recognize Text so you can select and copy it. Requires macOS 11 or newer.";
+
+/* Class = "NSButtonCell"; title = "Recognize Text"; ObjectID = "253"; */
+"253.title" = "Recognize Text";
+
