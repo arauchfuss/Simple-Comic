@@ -125,7 +125,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 - (void)dealloc
 {
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		[defaults removeObjectForKey:OCRDisableKey];
+		[defaults removeObserver:self forKeyPath:OCRDisableKey context:NULL];
 }
 
 - (void)becomeNextResponder {
