@@ -99,6 +99,7 @@ extern NSNotificationName const TSSTSessionEndNotification;
 @property (readonly, strong) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong) NSManagedObjectContext *managedObjectContext;
 @property (readonly, copy) NSString *applicationSupportFolder;
+@property (readonly) NSArray<TSSTSessionWindowController *> *sessions;
 - (BOOL) saveContext;
 
 
