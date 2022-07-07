@@ -41,7 +41,8 @@
 	NSError * error = nil;
 	if(self.nested)
 	{
-		if(![[NSFileManager defaultManager] removeItemAtURL: self.fileURL error: &error])
+		NSURL *fileURL = self.fileURL;
+		if(fileURL != nil && ![[NSFileManager defaultManager] removeItemAtURL:fileURL  error: &error])
 		{
 			NSLog(@"%@",[error localizedDescription]);
 		}
@@ -84,11 +85,11 @@
 	}
 	NSError * urlError = nil;
 	BOOL stale = NO;
-	NSURL * fileURL = [NSURL URLByResolvingBookmarkData: self.pathData
+	NSURL * fileURL = self.pathData ? [NSURL URLByResolvingBookmarkData: self.pathData
 												options: NSURLBookmarkResolutionWithoutUI | NSURLBookmarkResolutionWithSecurityScope
 										  relativeToURL: nil
 									bookmarkDataIsStale: &stale
-												  error: &urlError];
+												  error: &urlError] : nil;
 	
 	//For backwards compatibility
 	if (fileURL == nil || urlError != nil) {
@@ -565,7 +566,11 @@
 		NSAffineTransform * scaleTransform = [NSAffineTransform transform];
 		[scaleTransform scaleBy: scale];
 		[scaleTransform concat];
-		[page drawWithBox: kPDFDisplayBoxMediaBox];
+		if (@available(macOS 10.12, *)) {
+			[page drawWithBox: kPDFDisplayBoxMediaBox toContext:[[NSGraphicsContext currentContext] CGContext]];
+		} else {
+			[page drawWithBox: kPDFDisplayBoxMediaBox];
+		}
 	[pageImage unlockFocus];
 	
 	NSData * imageData = [pageImage TIFFRepresentation];

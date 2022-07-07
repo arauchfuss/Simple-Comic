@@ -826,7 +826,7 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	
 	if(!testText)
 	{
-		testText = @"invalid Selection";
+		testText = NSLocalizedString(@"invalid Selection", @"test - Do not localize");
 	}
 	
 	[encodingTestField setStringValue: testText];

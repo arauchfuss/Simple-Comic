@@ -41,7 +41,10 @@
 		return nil;
 	}
 	NSMutableData*	listBuffer = [NSMutableData dataWithLength: dataSize];
-	dataSize = listxattr( [path fileSystemRepresentation],
+	/* was: dataSize = …
+	   but Value stored to 'dataSize' is never read
+	 */
+	listxattr( [path fileSystemRepresentation],
 							[listBuffer mutableBytes], [listBuffer length],
 							(travLnk ? 0 : XATTR_NOFOLLOW) );
 	NSString *allStrKeys = [[NSString alloc] initWithData:listBuffer encoding:NSUTF8StringEncoding];
