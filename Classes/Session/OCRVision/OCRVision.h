@@ -1,11 +1,14 @@
 //  OCRVision.h
 //
-//  Created by David Phillip Oster on 5/19/2022 Apache Version 2 open source license.
+//  Created by David Phillip Oster on 5/19/2022  license.txt applies.
 //
 
 #import <Cocoa/Cocoa.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+/// Live text recognition language. Set to empty string to disable live text recognition. in User Defaults.
+extern NSString *const OCRLanguageKey;
 
 // OCRedTextView use this NSError Domain
 extern NSErrorDomain const OCRVisionDomain;
@@ -38,8 +41,8 @@ API_AVAILABLE(macos(10.15))
 /// The list of languages the VisionFramework will accept. en_US is the default. Empty array means the VisionFramework is not available.
 @property(class, readonly) NSArray<NSString *> *ocrLanguages;
 
-/// The language the VisionFramework will use. getting nil means the VisionFramework is not available. setting nil restores default.
-@property(class, nullable, setter=setOCRLanguage:) NSString *ocrLanguage;
+/// The language the VisionFramework will use. from the ocrLanguage in UserDefaults
+@property(class, readonly) NSString *ocrLanguage;
 
 
 /// Run the ocr engine on the image in the default language. When it's done, call the completion passing an object that implements the OCRVisionResults protocol
@@ -58,7 +61,7 @@ API_AVAILABLE(macos(10.15))
 /// @param completion - a block passed an object that corresponds to the OCRVision protocol.
 - (void)ocrCGImage:(CGImageRef)cgImage completion:(void (^)(id<OCRVisionResults> _Nonnull ocrResults))completion;
 
-/// if an OCR task is currently running, attempt to cancel it. Always safe to call.
+/// if a OCR task is currently running, attempt to cancel it. Always safe to call.
 - (void)cancel;
 
 @end

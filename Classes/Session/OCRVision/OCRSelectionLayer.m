@@ -1,6 +1,6 @@
 //  OCRSelectionLayer.m
 //
-//  Created by David Phillip Oster on 5/26/2022 Apache Version 2 open source license.
+//  Created by David Phillip Oster on 5/26/2022  license.txt applies.
 //
 
 #import "OCRSelectionLayer.h"
@@ -8,7 +8,7 @@
 #import "OCRTracker.h"
 #import <Vision/Vision.h>
 
-static CGPathRef CGPathFromNSBezierQuadPath(NSBezierPath *path)
+static CGPathRef CGPathCreateFromNSBezierQuadPath(NSBezierPath *path)
 {
 	CGMutablePathRef p = CGPathCreateMutable();
 	NSInteger numElements = [path elementCount];
@@ -54,7 +54,7 @@ static CGPathRef CGPathFromNSBezierQuadPath(NSBezierPath *path)
 			{
 				NSBezierPath *path1 = OCRBezierPathFromTextObservationRange(piece, rangeValue.rangeValue);
 				[path1 transformUsingAffineTransform:transform];
-				CGPathRef p = CGPathFromNSBezierQuadPath(path1);
+				CGPathRef p = CGPathCreateFromNSBezierQuadPath(path1);
 				CGPathAddPath(pAll, NULL, p);
 				CGPathRelease(p);
 			}

@@ -72,8 +72,6 @@ typedef struct {
 	int pageSelection;
 	/*! This is the rect describing the users page selection. */
 	NSRect cropRect;
-		/*! handles mouse tracking of the OCR'ed text */
-	OCRTracker *ocrTracker;
 }
 @synthesize imageBounds;
 @synthesize rotation;
@@ -104,7 +102,6 @@ typedef struct {
 		scrollTimer = nil;
 		acceptingDrag = NO;
 		pageSelection = -1;
-		ocrTracker = [[OCRTracker alloc] initWithView:self];
 		self.acceptsTouchEvents = YES;
 	}
 	return self;
@@ -124,7 +121,7 @@ typedef struct {
 
 - (BOOL)becomeFirstResponder
 {
-	[ocrTracker becomeNextResponder];
+	[sessionController.tracker becomeNextResponder];
   return YES;
 }
 
@@ -136,9 +133,9 @@ typedef struct {
 		firstPageImage = first;
 		if([self didStartAnimationForImage: firstPageImage])
 		{
-			[ocrTracker ocrImage:nil];
+			[sessionController.tracker ocrImage:nil];
 		} else {
-			[ocrTracker ocrImage:firstPageImage];
+			[sessionController.tracker ocrImage:firstPageImage];
 		}
 	}
 	
@@ -147,9 +144,9 @@ typedef struct {
 		secondPageImage = second;
 		if([self didStartAnimationForImage: secondPageImage])
 		{
-			[ocrTracker ocrImage2:nil];
+			[sessionController.tracker ocrImage2:nil];
 		} else {
-			[ocrTracker ocrImage2:secondPageImage];
+			[sessionController.tracker ocrImage2:secondPageImage];
 		}
 	}
 	
@@ -354,7 +351,7 @@ typedef struct {
 		[firstPageLayer setFrame:frame];
 		[newLayer addSublayer:firstPageLayer];
 		CFRelease(firstPageImageRef);
-		CALayer *selectionLayer = [ocrTracker layerForImage:firstPageImage imageLayer:firstPageLayer];
+		CALayer *selectionLayer = [sessionController.tracker layerForImage:firstPageImage imageLayer:firstPageLayer];
 		if (selectionLayer) {
 			[firstPageLayer addSublayer:selectionLayer];
 		}
@@ -381,7 +378,7 @@ typedef struct {
 			[secondPageLayer setFrame:frame];
 			[newLayer addSublayer:secondPageLayer];
 			CFRelease(secondPageImageRef);
-			CALayer *selectionLayer = [ocrTracker layerForImage:secondPageImage imageLayer:secondPageLayer];
+			CALayer *selectionLayer = [sessionController.tracker layerForImage:secondPageImage imageLayer:secondPageLayer];
 			if (selectionLayer) {
 				[secondPageLayer addSublayer:selectionLayer];
 			}
@@ -1337,7 +1334,7 @@ typedef struct {
 		NSPoint cursor = [self convertPoint: [theEvent locationInWindow] fromView: nil];
 		cropRect.origin = cursor;
 	}
-	else if([ocrTracker didMouseDown:theEvent])
+	else if([sessionController.tracker didMouseDown:theEvent])
 	{
 		/* done */
 	}
@@ -1394,7 +1391,7 @@ typedef struct {
 		}
 		[self setNeedsDisplay: YES];
 	}
-	else if([ocrTracker didMouseDragged:theEvent])
+	else if([sessionController.tracker didMouseDragged:theEvent])
 	{
 		/* done */
 	}
@@ -1546,7 +1543,7 @@ typedef struct {
 
 - (void)resetCursorRects
 {
-	if([ocrTracker didResetCursorRects])
+	if([sessionController.tracker didResetCursorRects])
 	{
 		/* done */
 	}

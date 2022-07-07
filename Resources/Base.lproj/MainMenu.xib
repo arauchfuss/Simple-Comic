@@ -131,23 +131,50 @@ CA
                                     <action selector="paste:" target="-1" id="1922"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Select All" keyEquivalent="a" id="1879">
+                            <menuItem title="Select All" tag="1879" keyEquivalent="a" id="1879">
                                 <connections>
                                     <action selector="selectAll:" target="-1" id="1935"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="y8y-na-2L3"/>
-                            <menuItem title="Speech" id="gQR-E6-GF3">
+                            <menuItem isSeparatorItem="YES" tag="1901" id="y8y-na-2L3"/>
+                            <menuItem title="Find" tag="1902" id="1902">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Speech" id="smE-UL-OGJ">
+                                <menu key="submenu" title="Find" id="1910">
                                     <items>
-                                        <menuItem title="Start Speaking" id="3QS-jN-jJ4">
+                                        <menuItem title="Find…" tag="1" keyEquivalent="f" id="1904">
+                                            <connections>
+                                                <action selector="performOCRFindAction:" target="-1" id="nUT-xA-6Ei"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Find Next" tag="2" keyEquivalent="g" id="1901">
+                                            <connections>
+                                                <action selector="performOCRFindAction:" target="-1" id="C8g-vX-gV3"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Find Previous" tag="3" keyEquivalent="G" id="1905">
+                                            <connections>
+                                                <action selector="performOCRFindAction:" target="-1" id="1907"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Use Selection for Find" tag="7" keyEquivalent="e" id="1903">
+                                            <connections>
+                                                <action selector="performOCRFindAction:" target="-1" id="CPG-yq-DiZ"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Speech" tag="1906" id="1906">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Speech" id="1911">
+                                    <items>
+                                        <menuItem title="Start Speaking" id="1908">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="startSpeaking:" target="-1" id="2Br-e6-ei5"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Stop Speaking" id="iTX-FZ-Cma">
+                                        <menuItem title="Stop Speaking" id="1909">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="stopSpeaking:" target="-1" id="DgK-rt-oah"/>
@@ -167,7 +194,7 @@ CA
                                     <binding destination="1021" name="value" keyPath="values.statusBarVisisble" id="1339"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Always Show Toolbar in Full Screen" id="hhx-Yd-WrR">
+                            <menuItem title="Always Show Toolbar in Full Screen" id="1877">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <binding destination="1021" name="value" keyPath="values.fullscreenToolbar" id="Mg1-jl-K0Q"/>
@@ -271,6 +298,7 @@ CA
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
                             <menuItem title="Full Screen" tag="303" keyEquivalent="f" id="338">
+                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
                                     <action selector="toggleFullScreen:" target="-1" id="kSJ-u1-vQQ"/>
                                 </connections>

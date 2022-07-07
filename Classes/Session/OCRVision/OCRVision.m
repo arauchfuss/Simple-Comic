@@ -1,15 +1,20 @@
 //  OCRVision.h
 //
-//  Created by David Phillip Oster on 5/19/2022. Apache Version 2 open source license.
+//  Created by David Phillip Oster on 5/19/2022.  license.txt applies.
 //
 
 #import "OCRVision.h"
 
 #import <Vision/Vision.h>
 
+NSString *const OCRLanguageKey = @"OCRLanguageKey";
+
 static NSString *sOCRLanguage;
 
 static NSArray<NSString *> *sOCRLanguages;
+
+// Omit any VNRecognizedTextObservation that have a confidence value below this threshold.
+static CGFloat OCRConfidence = 0.5;
 
 // ocrErrors use this NSError Domain
 NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
@@ -33,7 +38,25 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 	[super initialize];
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
+		NSString *defaultOCRLanguage = @"";	// i.e., off.
+		if (@available(macOS 12.0, *))
+		{
+			defaultOCRLanguage = @"en-US";
+		}
+		NSDictionary* standardDefaults =
+		@{
+			OCRLanguageKey: defaultOCRLanguage,
+		};
+		NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+		[defaults registerDefaults: standardDefaults];
 		NSUInteger revision = VNRecognizeTextRequestRevision1;
+#if defined(MAC_OS_VERSION_13_0) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_13_0
+#warn "if you can see this, it's time to remove the #if."
+			if (@available(macOS 13.0, *))
+			{
+				revision = VNRecognizeTextRequestRevision3;
+			} else
+#endif
 		if (@available(macOS 11.0, *))
 		{
 			revision = VNRecognizeTextRequestRevision2;
@@ -45,7 +68,7 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 		} else {
 			sOCRLanguages = [VNRecognizeTextRequest supportedRecognitionLanguagesForTextRecognitionLevel:VNRequestTextRecognitionLevelAccurate revision:revision error:NULL];
 		}
-		sOCRLanguage = sOCRLanguages.firstObject;
+		sOCRLanguage = sOCRLanguages.firstObject ?: @"";
 	});
 }
 
@@ -57,20 +80,11 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 
 + (NSString *)ocrLanguage
 {
-	return sOCRLanguage;
-}
-
-+ (void)setOCRLanguage:(NSString *)ocrLanguage
-{
-	if (nil != ocrLanguage)
-	{
-		if ([[self ocrLanguages] containsObject:ocrLanguage])
-		{
-			sOCRLanguage = ocrLanguage;
-		}
-	} else {
-		sOCRLanguage = sOCRLanguages.firstObject;
+	NSString *defaultLanguage = [[NSUserDefaults standardUserDefaults] stringForKey:OCRLanguageKey];
+	if (defaultLanguage != nil && [self.ocrLanguages containsObject:defaultLanguage]) {
+		return defaultLanguage;
 	}
+	return sOCRLanguage;
 }
 
 #pragma mark OCR
@@ -120,21 +134,16 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 		{
 			self.activeTextRequest = nil;
 		}
-		NSMutableArray<VNRecognizedTextObservation *> *pieces = [NSMutableArray array];
-		NSArray *results = textRequests.results;
-		for (id rawResult in results)
+		// Remove the low confidence recognitions.
+		NSMutableArray<VNRecognizedTextObservation*> *results = [NSMutableArray array];
+		for (VNRecognizedTextObservation *observation in textRequests.results)
 		{
-			if ([rawResult isKindOfClass:[VNRecognizedTextObservation class]])
-			{
-				VNRecognizedTextObservation *textO = (VNRecognizedTextObservation *)rawResult;
-				NSArray<VNRecognizedText *> *text1 = [textO topCandidates:1];
-				if (text1.count)
-				{
-					[pieces addObject:textO];
-				}
+            NSArray<VNRecognizedText *> *text1 = [observation topCandidates:1];
+			if (OCRConfidence <= observation.confidence && text1.count != 0) {
+				[results addObject:observation];
 			}
 		}
-		[self callCompletion:completion observations:pieces error:nil];
+		[self callCompletion:completion observations:results error:nil];
 	} else {
 		NSString *desc = @"Unrecognized text request";
 		NSError *err = [NSError errorWithDomain:@""
@@ -155,14 +164,21 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
   if (textRequest)
   {
 		NSString *ocrLanguage = [[self class] ocrLanguage];
-		if (ocrLanguage)
+		if (ocrLanguage.length != 0)
 		{
 			textRequest.recognitionLanguages = @[ocrLanguage];
 			textRequest.usesLanguageCorrection = YES;
+#if defined(MAC_OS_VERSION_13_0) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_13_0
+#warn "if you can see this, it's time to remove the #if."
+			if (@available(macOS 13.0, *))
+			{
+				textRequest.automaticallyDetectsLanguage = YES;
+			}
+#endif
 		}
 		NSError *error = nil;
     VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:cgImage options:@{}];
-		self.activeTextRequest = textRequest;
+    self.activeTextRequest = textRequest;
 		if (![handler performRequests:@[textRequest] error:&error])
 		{
 			[weakSelf callCompletion:completion observations:@[] error:error];

@@ -1,6 +1,6 @@
 //  OCRSelectionLayer.h
 //
-//  Created by David Phillip Oster on 5/26/2022 Apache Version 2 open source license.
+//  Created by David Phillip Oster on 5/26/2022  license.txt applies.
 //
 
 #import <Cocoa/Cocoa.h>

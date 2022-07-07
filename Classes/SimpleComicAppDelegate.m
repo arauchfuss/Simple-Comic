@@ -27,6 +27,8 @@
 #import "TSSTCustomValueTransformers.h"
 #import "Simple_Comic-Swift.h"
 #import "TSSTManagedSession+CoreDataProperties.h"
+#import "OCRTracker.h"
+
 #import <WebPMac/TSSTWebPImageRep.h>
 
 
@@ -238,6 +240,14 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	[[NSUserDefaults standardUserDefaults] removeObserver: self forKeyPath: TSSTSessionRestore];
 }
 
+/// Bound to the enable of the preferences checkbox for recognizing text.
+- (BOOL)isAtLeast10_15
+{
+	if (@available(macOS 10.15, *)) {
+		return YES;
+	}
+	return NO;
+}
 
 #pragma mark - Application Delegate Methods
 
@@ -307,7 +317,10 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 		
 		launchFiles = nil;
 	}
-	
+
+	// If we are on a mac to old for Optical Character Recognition, hide the OCR menu items.
+	[OCRTracker hideOCRMenusIfUnavailable];
+
 	// Allow users to customize the app's Touch Bar items.
 	if (@available(macOS 10.12.2, *)) {
 		NSApplication.sharedApplication.automaticCustomizeTouchBarMenuItemEnabled = YES;

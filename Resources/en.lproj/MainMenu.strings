@@ -11,6 +11,15 @@
 /* Class = "NSMenu"; title = "Window"; ObjectID = "24"; */
 "24.title" = "Window";
 
+/* Class = "NSMenu"; title = "MainMenu"; ObjectID = "29"; */
+"29.title" = "MainMenu";
+
+/* Class = "NSMenuItem"; title = "Simple Comic"; ObjectID = "56"; */
+"56.title" = "Simple Comic";
+
+/* Class = "NSMenu"; title = "Simple Comic"; ObjectID = "57"; */
+"57.title" = "Simple Comic";
+
 /* Class = "NSMenuItem"; title = "About Simple Comic"; ObjectID = "58"; */
 "58.title" = "About Simple Comic";
 
@@ -122,6 +131,12 @@
 /* Class = "NSWindow"; title = "Encoding"; ObjectID = "1080"; */
 "1080.title" = "Encoding";
 
+/* Class = "NSMenu"; title = "OtherViews"; ObjectID = "1083"; */
+"1083.title" = "OtherViews";
+
+/* Class = "NSMenuItem"; title = "Item1"; ObjectID = "1086"; */
+"1086.title" = "Item1";
+
 /* Class = "NSMenuItem"; title = "Rotate Left"; ObjectID = "1104"; */
 "1104.title" = "Rotate Left";
 
@@ -185,6 +200,9 @@
 /* Class = "NSTextFieldCell"; title = "Encoding:"; ObjectID = "1710"; */
 "1710.title" = "Encoding:";
 
+/* Class = "NSTextFieldCell"; title = "filename"; ObjectID = "1711"; */
+"1711.title" = "filename";
+
 /* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "1712"; */
 "1712.title" = "Cancel";
 
@@ -221,5 +239,38 @@
 /* Class = "NSMenuItem"; title = "Paste"; ObjectID = "1876"; */
 "1876.title" = "Paste";
 
+/* Class = "NSMenuItem"; title = "Always Show Toolbar in Full Screen"; ObjectID = "1877"; */
+"1877.title" = "Always Show Toolbar in Full Screen";
+
 /* Class = "NSMenuItem"; title = "Select All"; ObjectID = "1879"; */
 "1879.title" = "Select All";
+
+/* Class = "NSMenuItem"; title = "Find Next"; ObjectID = "1901"; */
+"1901.title" = "Find Next";
+
+/* Class = "NSMenuItem"; title = "Find"; ObjectID = "1902"; */
+"1902.title" = "Find";
+
+/* Class = "NSMenuItem"; title = "Use Selection for Find"; ObjectID = "1903"; */
+"1903.title" = "Use Selection for Find";
+
+/* Class = "NSMenuItem"; title = "Find…"; ObjectID = "1904"; */
+"1904.title" = "Find…";
+
+/* Class = "NSMenuItem"; title = "Find Previous"; ObjectID = "1905"; */
+"1905.title" = "Find Previous";
+
+/* Class = "NSMenuItem"; title = "Speech"; ObjectID = "1906"; */
+"1906.title" = "Speech";
+
+/* Class = "NSMenuItem"; title = "Start Speaking"; ObjectID = "1908"; */
+"1908.title" = "Start Speaking";
+
+/* Class = "NSMenuItem"; title = "Stop Speaking"; ObjectID = "1909"; */
+"1909.title" = "Stop Speaking";
+
+/* Class = "NSMenu"; title = "Find"; ObjectID = "1910"; */
+"1910.title" = "Find";
+
+/* Class = "NSMenu"; title = "Speech"; ObjectID = "1911"; */
+"1911.title" = "Speech";

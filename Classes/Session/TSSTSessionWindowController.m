@@ -27,10 +27,21 @@
 #import "TSSTPage.h"
 #import "TSSTManagedGroup.h"
 #import "TSSTManagedSession.h"
+#import "OCRFind.h"
+#import "OCRFindViewController.h"
+#import "OCRTracker.h"
+#import "OCRVision.h"
 
 #import "Simple_Comic-Swift.h"
 
 NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
+
+
+
+@interface TSSTSessionWindowController()<OCRFindDelegate, OCRTrackerDelegate>
+@property(nonatomic, readonly) OCRFind *find;
+@property OCRVision *ocrVision API_AVAILABLE(macos(10.15));
+@end
 
 @implementation TSSTSessionWindowController
 {
@@ -45,7 +56,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	
 	/** Manages the cursor hiding while in fullscreen */
 	NSTimer *mouseMovedTimer;
-	
+
 	BOOL newSession;
 	
 	PageSelectionMode pageSelectionInProgress;
@@ -53,6 +64,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 @synthesize pageTurn, pageSortDescriptor;
+@synthesize find = _find;
 @synthesize pageController;
 @synthesize pageView;
 @synthesize pageScrollView;
@@ -146,6 +158,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[progressBar bind: @"leftToRight" toObject: session withKeyPath: TSSTPageOrder options: nil];
 	
 	[pageView bind: TSSTViewRotation toObject: session withKeyPath: TSSTViewRotation options: nil];
+	_tracker = [[OCRTracker alloc] initWithView:pageView];
+	_tracker.delegate = self;
+
 	NSTrackingArea * newArea = [[NSTrackingArea alloc] initWithRect: [progressBar progressRect]
 															options: NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow | NSTrackingActiveInActiveApp
 															  owner: self
@@ -921,6 +936,76 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[jumpPanel close];
 }
 
+#pragma mark - Find
+
+
+- (IBAction)performOCRFindAction:(id)sender
+{
+	[self.find performAction:[sender tag]];
+}
+
+- (OCRFind *)find
+{
+	if (_find == nil)
+	{
+		_find = [[OCRFind alloc] init];
+		_find.delegate = self;
+	}
+	return _find;
+}
+
+- (id<NSTextFinderBarContainer>)findBarContainer
+{
+	return self.pageScrollView;
+}
+
+- (NSInteger)findCount
+{
+	return [[pageController arrangedObjects] count];
+}
+
+- (NSInteger)findIndex
+{
+	return [pageController selectionIndex];
+}
+
+- (void)setFindIndex:(NSInteger)index
+{
+	[pageController setSelectionIndex:index];
+	[pageView displayIfNeeded];
+}
+
+- (void)observationsForFindIndex:(NSInteger)index completion:(void (^)(NSArray<VNRecognizedTextObservation *> *pieces)) completion
+{
+	if (@available(macOS 10.15, *))
+	{
+		NSImage *image = [[[[self pageController] arrangedObjects] objectAtIndex:index] pageImage];
+		if (image)
+		{
+			self.ocrVision = [[OCRVision alloc] init];
+			__weak typeof(self) weakSelf = self;
+			[self.ocrVision ocrImage:image completion:^(id<OCRVisionResults> ocrResults) {
+				NSArray<VNRecognizedTextObservation *> *textObservations = ocrResults.textObservations;
+				weakSelf.ocrVision = nil;
+				completion(textObservations ?: @[]);
+			}];
+		} else {
+			completion( @[] );
+		}
+	} else {
+		completion( @[] );
+	}
+}
+
+- (void)cancelObservations
+{
+	if (@available(macOS 10.15, *))
+	{
+		[self.ocrVision cancel];
+		self.ocrVision = nil;
+	}
+}
+
 #pragma mark - Applescript
 
 - (NSScriptObjectSpecifier *)objectSpecifier
@@ -1389,7 +1474,6 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 #pragma mark Menus
 
-
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
 {
 	if(pageSelectionInProgress)
@@ -1463,6 +1547,11 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	else if ([menuItem action] == @selector(removePages:))
 	{
 		valid = !session.rotation;
+	}
+	else if ([menuItem action] == @selector(performOCRFindAction:))
+	{
+		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+		return ![defaults boolForKey:OCRDisableKey] && [self.find validateAction:[menuItem tag]];
 	}
     else if([menuItem tag] == 400)
     {
