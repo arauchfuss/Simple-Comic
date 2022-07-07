@@ -72,6 +72,7 @@
 		6304B5D7284019EC009E7D61 /* OCRTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D5284019EC009E7D61 /* OCRTracker.m */; };
 		6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B60928411F13009E7D61 /* OCRSelectionLayer.m */; };
 		638E5C4C2832138400BFDAA4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638E5C3C2832138400BFDAA4 /* Vision.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		63BA27152874BEF100E540C0 /* SimpleComic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 63BA27052874BEF100E540C0 /* SimpleComic.sdef */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -375,6 +376,7 @@
 		6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRSelectionLayer.h; sourceTree = "<group>"; };
 		6304B60928411F13009E7D61 /* OCRSelectionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRSelectionLayer.m; sourceTree = "<group>"; };
 		638E5C3C2832138400BFDAA4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		63BA27052874BEF100E540C0 /* SimpleComic.sdef */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleComic.sdef; sourceTree = SOURCE_ROOT; };
 		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		64777B8D1A4213150064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		64777B8E1A42131A0064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				2813145C0C0A7D7900EC007B /* Localizable.strings */,
 				551275E12584AE5D0030269F /* SimpleComic Help.help */,
 				28195B410C166DF5001F5E95 /* Info.plist */,
+				63BA27052874BEF100E540C0 /* SimpleComic.sdef */,
 				8F381FB123F0DBCA004B7DB2 /* InfoPlist.strings */,
 				281314590C0A7D5200EC007B /* Credits.rtf */,
 				287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */,
@@ -955,6 +958,7 @@
 				551275F12584AE5D0030269F /* SimpleComic Help.help in Resources */,
 				28A2660A1285C34300ED6391 /* Preferences.xib in Resources */,
 				28A2660E1285C35700ED6391 /* MainMenu.xib in Resources */,
+				63BA27152874BEF100E540C0 /* SimpleComic.sdef in Resources */,
 				8F54DD531CCA336B001403DA /* container-migration.plist in Resources */,
 				8F381FB323F0DBCA004B7DB2 /* InfoPlist.strings in Resources */,
 				28A266161285C3A700ED6391 /* TSSTSessionWindow.xib in Resources */,

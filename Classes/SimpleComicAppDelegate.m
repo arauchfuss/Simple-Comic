@@ -604,6 +604,15 @@ static NSArray<NSNumber*> * allAvailableStringEncodings(void)
 	return sessionDescription;
 }
 
+- (BOOL)application:(NSApplication *)sender delegateHandlesKey:(NSString *)key
+{
+	return [@"sessions" isEqual:key];
+}
+
+- (NSArray *)sessions
+{
+	return sessions;
+}
 
 - (void)addFileURLs:(NSArray<NSURL*> *)paths toSession:(TSSTManagedSession *)session
 {

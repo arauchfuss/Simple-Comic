@@ -921,6 +921,47 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	[jumpPanel close];
 }
 
+#pragma mark - Applescript
+
+- (NSScriptObjectSpecifier *)objectSpecifier
+{
+    NSUInteger i = [[(SimpleComicAppDelegate *)[NSApp delegate] sessions] indexOfObject:self];
+    NSScriptClassDescription *desc = [NSScriptClassDescription classDescriptionForClass:[self class]];
+    NSIndexSpecifier *spec = [[NSIndexSpecifier alloc] initWithContainerClassDescription:desc containerSpecifier:nil key:@"docu" index:i];
+    return spec;
+}
+
+- (nullable id)handleCloseScriptCommand:(NSCloseCommand *)command
+{
+    return [[self window] handleCloseScriptCommand:command];
+}
+
+- (NSInteger)pageSelectionIndex
+{
+    return [[self pageController] selectionIndex] + 1;
+}
+
+- (void)setPageSelectionIndex:(NSInteger)index
+{
+    [[self pageController] setSelectionIndex:index - 1];
+}
+
+- (NSArray *)pages
+{
+    return [[self pageController] arrangedObjects];
+}
+
+- (NSString *)displayName
+{
+    return [[self window] title];
+}
+
+- (NSURL *)fileURL
+{
+    NSUInteger index = [pageController selectionIndex];
+    TSSTPage * pageOne = [pageController arrangedObjects][index];
+    return pageOne.group ? [pageOne valueForKeyPath: @"group.topLevelGroup.fileURL"] : [NSURL fileURLWithPath:pageOne.imagePath];
+}
 
 #pragma mark - Convenience Methods
 

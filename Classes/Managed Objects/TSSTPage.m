@@ -17,7 +17,8 @@ Copyright (c) 2006-2009 Dancing Tortoise Software
 */
 
 #import "TSSTPage.h"
-#import "SimpleComicAppDelegate.h"
+#import "SimpleComicAppDelegate.h" // AppleScript
+#import "TSSTSessionWindowController.h"	// AppleScript
 #import "TSSTImageUtilities.h"
 #import "TSSTManagedGroup.h"
 #import <XADMaster/XADArchive.h>
@@ -309,6 +310,25 @@ static NSSize monospaceCharacterSize;
 	}
 	
 	return imageData;
+}
+
+#pragma mark - Applescript
+
+- (NSScriptObjectSpecifier *)objectSpecifier
+{
+	TSSTManagedSession *session = self.session;
+	NSArray<TSSTSessionWindowController *> *controllers = [(SimpleComicAppDelegate *)[NSApp delegate] sessions];
+	for (TSSTSessionWindowController *controller in controllers) {
+		if (controller.session == session) {
+			NSScriptObjectSpecifier *parent = [controller objectSpecifier];
+			NSScriptClassDescription *desc = [NSScriptClassDescription classDescriptionForClass:[self class]];
+			return [[NSIndexSpecifier alloc] initWithContainerClassDescription:desc
+																											containerSpecifier:parent
+																																		 key:@"page"
+																																	 index:[self.index integerValue]];
+		}
+	}
+	return nil;
 }
 
 @end

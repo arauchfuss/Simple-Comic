@@ -454,6 +454,10 @@
 	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.entertainment</string>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
+	<key>OSAScriptingDefinition</key>
+	<string>SimpleComic.sdef</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2010 Dancing Tortoise Software.</string>
 	<key>NSMainNibFile</key>
