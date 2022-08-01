@@ -9,7 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Copy and Extend NSStringCompareOptions
 typedef NS_OPTIONS(NSUInteger, OCRStringCompareOptions) {
-    OCRCaseInsensitiveSearch = (1 << 0),
+    OCRCaseInsensitiveSearch = (1 << 0), /* Always on in Simple Comic */
     OCRLiteralSearch =  (1 << 1),		/* Exact character-by-character equivalence */
     OCRBackwardSearch =  (1 << 2),		/* Search from end of source string */
     OCRAnchoredSearch = (1 << 3),		/* Search is limited to start (or end, if NSBackwardsSearch) of source string */

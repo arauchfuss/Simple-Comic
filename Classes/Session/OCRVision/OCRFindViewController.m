@@ -94,7 +94,6 @@
 	menuRoot.textFinder = self;
 	NSMenu *findOptionsMenu = [[NSMenu alloc] initWithTitle:@""];
 	NSArray *items = @[
-		[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Ignore Case", @"") action:@selector(findOption:) keyEquivalent:@""],
 		[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Wrap around", @"") action:@selector(findOption:) keyEquivalent:@""],
 		[NSMenuItem separatorItem],
 		[[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Contains", @"") action:@selector(findOption:) keyEquivalent:@""],
@@ -117,15 +116,13 @@
 }
 
 - (void)updateFindOptionsMenu {
-	NSMenuItem *ignoreCase = [self.findOptionsMenu itemWithTag:1];
-	ignoreCase.state = (self.engine.options & OCRCaseInsensitiveSearch) ? NSControlStateValueOn : NSControlStateValueOff;
-	NSMenuItem *wrap = [self.findOptionsMenu itemWithTag:2];
+	NSMenuItem *wrap = [self.findOptionsMenu itemWithTag:1];
 	wrap.state = self.engine.wrap ? NSControlStateValueOn : NSControlStateValueOff;
-	NSMenuItem *contains = [self.findOptionsMenu itemWithTag:3];
+	NSMenuItem *contains = [self.findOptionsMenu itemWithTag:2];
 	contains.state = ((self.engine.options & (OCRStartWith | OCREndWith)) == 0) ? NSControlStateValueOn : NSControlStateValueOff;
-	NSMenuItem *starts = [self.findOptionsMenu itemWithTag:4];
+	NSMenuItem *starts = [self.findOptionsMenu itemWithTag:3];
 	starts.state = ((self.engine.options & (OCRStartWith | OCREndWith)) == OCRStartWith) ? NSControlStateValueOn : NSControlStateValueOff;
-	NSMenuItem *full = [self.findOptionsMenu itemWithTag:5];
+	NSMenuItem *full = [self.findOptionsMenu itemWithTag:4];
 	full.state = ((self.engine.options & (OCRStartWith | OCREndWith)) == (OCRStartWith | OCREndWith)) ? NSControlStateValueOn : NSControlStateValueOff;
 }
 
@@ -264,11 +261,10 @@
 {
 	if ([sender isKindOfClass:[NSMenuItem class]]) {
 		switch([sender tag]){
-			case 1: self.engine.options ^= OCRCaseInsensitiveSearch; break;
-			case 2: self.engine.wrap = !self.engine.wrap; break;
-			case 3: self.engine.options &= ~(OCRStartWith|OCREndWith); break;
-			case 4: self.engine.options = (self.engine.options & ~OCREndWith) | OCRStartWith; break;
-			case 5: self.engine.options |= (OCRStartWith|OCREndWith); break;
+			case 1: self.engine.wrap = !self.engine.wrap; break;
+			case 2: self.engine.options &= ~(OCRStartWith|OCREndWith); break;
+			case 3: self.engine.options = (self.engine.options & ~OCREndWith) | OCRStartWith; break;
+			case 4: self.engine.options |= (OCRStartWith|OCREndWith); break;
 			default:
 				break;
 		}

@@ -65,3 +65,14 @@
 /* Contextual menu item */
 "Stop Speaking" = "Stop Speaking";
 
+/* Find options menu item */
+"Contains" = "Contains";
+
+/* Find options menu item */
+"Full Word" = "Full Word";
+
+/* Find options menu item */
+"Starts with" = "Starts with";
+
+/* Find options menu item */
+"Wrap around" = "Wrap around";

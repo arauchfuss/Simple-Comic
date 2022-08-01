@@ -67,9 +67,7 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 		[nc addObserver:self selector:@selector(becameActive:) name:NSApplicationDidBecomeActiveNotification object:NSApp];
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 		self.options = CompareOptionsFromInteger([defaults integerForKey:OCRSearchKindKey]);
-		if ([defaults boolForKey:OCRIgnoreCaseKey]) {
-			self.options |= OCRCaseInsensitiveSearch;
-		}
+		self.options |= OCRCaseInsensitiveSearch;	// Always case insensitive.
 		self.wrap = [defaults boolForKey:OCRWrapAroundKey];
 	}
 	return self;
@@ -90,6 +88,7 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 - (void)setOptions:(OCRStringCompareOptions)options
 {
 	if (_options != options) {
+		options |= OCRCaseInsensitiveSearch;	// Always case insensitive.
 		_options = options;
 
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
