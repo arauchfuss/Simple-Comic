@@ -1,18 +1,31 @@
 //  OCRTracker.m
 //  MockSimpleComic
 //
-//  Created by David Phillip Oster on 5/21/2022 Apache Version 2 open source license.
+//  Created by David Phillip Oster on 5/21/2022  license.txt applies.
 //
 
 #import "OCRTracker.h"
 
 #import "OCRSelectionLayer.h"
+#import "OCRFind.h"
 #import "OCRVision.h"
 #import <Vision/Vision.h>
 
 NSString *const OCRDisableKey = @"OCRDisableKey";
 
 static BOOL sIsEnabled = YES;
+
+// Tags on menu items, for: hideOCRMenusIfUnavailable
+enum {
+  PREDECESSOR_TAG = 1879,
+	SEPARATOR_TAG = 1901,
+	FIND_TAG = 1902,
+	SPEEK_TAG = 1906,
+};
+
+// When the menu items that depend on recognized text are hidden, save those items here.
+static NSMutableArray<NSMenuItem *> *sStashedMenuItems = nil;
+
 
 /// @return the quadrilateral of the rect observation as a NSBezierPath/
 API_AVAILABLE(macos(10.15))
@@ -70,10 +83,15 @@ static NSRange UnionRanges(NSRange early, NSRange late)
 
 static NSSpeechSynthesizer *sSpeechSynthesizer;
 
-/// Bundle up all the data associated with our client's image.
+/// Bundle up all the data associated with one our client's images.
 @interface OCRDatum : NSObject
 
+/// The image associated with these textPieces. Weak, because the client of this owns it.
 @property(weak) NSImage *image;
+
+/// The image that would have been current, but we are disabled. Weak, because the client of this owns it.
+/// Only used for the transition from disabled to enabled.
+@property(weak) NSImage *imageWhileDisabled;
 
 /// non-nil while this is actively OCRing.
 @property OCRVision *activeOCR API_AVAILABLE(macos(10.15));
@@ -81,15 +99,48 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 @property(weak) CALayer *selectionLayer;
 
 /// <VNRecognizedTextObservation *> - 10.15 and newer
-@property NSArray *textPieces;
+@property(nonatomic) NSArray *textPieces;
 
 // Key is VNRecognizedTextObservation.
 // The value is the NSRange of the underlying string to show as selected.
 @property NSMutableDictionary<NSObject *, NSValue *> *selectionPieces;
 
+@property(nonatomic, readonly) NSUInteger totalStringLength;
+
+- (void)reset;
+
 @end
 
 @implementation OCRDatum
+@synthesize totalStringLength = _totalStringLength;
+
+- (void)setTextPieces:(NSArray *)textPieces
+{
+	_textPieces = textPieces;
+	_totalStringLength = NSNotFound;
+}
+
+- (NSUInteger)totalStringLength
+{
+	if (@available(macOS 10.15, *))
+	{
+		if (_totalStringLength == NSNotFound) {
+			_totalStringLength = 0;
+			for (VNRecognizedTextObservation *piece in self.textPieces) {
+				_totalStringLength += [[[[piece topCandidates:1] firstObject] string] length];
+			}
+		}
+		return _totalStringLength;
+	}
+	return 0;
+}
+
+- (void)reset
+{
+	self.image = nil;
+	self.textPieces = @[];
+	[self.selectionPieces removeAllObjects];
+}
 
 @end
 
@@ -99,11 +150,52 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 @property NSArray<OCRDatum *> *datums;
 
-@property (weak, nullable) NSView *view;
+@property (weak, readwrite, nullable) NSView *view;
 
 @end
 
 @implementation OCRTracker
+
++ (void)hideOCRMenusIfUnavailable {
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:OCRDisableKey]) {
+		if (sStashedMenuItems) {
+			//  If we'd previously removed menu items, put them back in the menu bar.
+			NSArray<NSMenuItem *> *mainMenu = [[NSApp mainMenu] itemArray];
+			for (NSMenuItem *topItem in mainMenu) {
+				NSUInteger count = topItem.submenu.itemArray.count;
+				for (NSUInteger i = 0; i < count; ++i) {
+					NSMenuItem *oldItem = topItem.submenu.itemArray[i];
+					if ([oldItem tag] == PREDECESSOR_TAG) {
+						NSMutableArray *newItems = [topItem.submenu.itemArray mutableCopy];
+						while (sStashedMenuItems.count) {
+							[newItems insertObject:sStashedMenuItems.firstObject atIndex:i+1];
+							[sStashedMenuItems removeObjectAtIndex:0];
+						}
+						sStashedMenuItems = nil;
+						[topItem.submenu setItemArray:newItems];
+						break;
+					}
+				}
+			}
+		}
+		return;
+	}
+	// Hide the Find and Speak submenus.
+	NSArray<NSMenuItem *> *mainMenu = [[NSApp mainMenu] itemArray];
+	int tags[] = {SPEEK_TAG, FIND_TAG, SEPARATOR_TAG};
+	for(int i = 0; i < sizeof(tags)/sizeof(*tags); ++i) {
+		for (NSMenuItem *topItem in mainMenu) {
+			NSInteger index = [topItem.submenu indexOfItemWithTag:tags[i]];
+			if (0 < index) {
+				if (sStashedMenuItems == nil) {
+					sStashedMenuItems = [NSMutableArray array];
+				}
+				[sStashedMenuItems addObject:[topItem.submenu itemAtIndex:index]];
+				[topItem.submenu removeItemAtIndex:index];
+			}
+		}
+	}
+}
 
 - (instancetype)initWithView:(NSView *)view
 {
@@ -146,15 +238,27 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 												change:(NSDictionary *)change
 											 context:(void *)context
 {
-	if ([keyPath isEqual:OCRDisableKey])
-	{
+	if ([keyPath isEqual:OCRDisableKey]) {
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		if (defaults == object)
-		{
+		if (defaults == object) {
 			sIsEnabled = ![defaults boolForKey:OCRDisableKey];
+			if (sIsEnabled) {
+				NSUInteger count = self.datums.count;
+				for (NSUInteger i = 0; i < count; ++i)
+				{
+					OCRDatum *datum = self.datums[i];
+					NSImage *image = datum.imageWhileDisabled;
+					if (image)
+					{
+						datum.imageWhileDisabled = nil;
+						[self ocrImage:image index:i];
+					}
+				}
+			}
 			[self.view setNeedsDisplay:YES];
-			self.needsInvalidateCursorRects = NO;
+			self.needsInvalidateCursorRects = YES;
 			[self.view.window invalidateCursorRectsForView:self.view];
+			[[self class] hideOCRMenusIfUnavailable];
 		}
 	}
 }
@@ -245,7 +349,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 #pragma mark Model
 
-- (NSString *)allText
+- (NSString *)allTextJoinedBy:(NSString *)join
 {
 	if (@available(macOS 10.15, *))
 	{
@@ -261,12 +365,94 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 				}
 			}
 		}
-		return [a componentsJoinedByString:@"\n"];
+		return [a componentsJoinedByString:join];
 	}
-	return nil;
+	return @"";
 }
 
-- (NSString *)selection
+- (NSString *)allText
+{
+	return [self allTextJoinedBy:@"\n"];
+}
+
+- (NSRange)allTextSelection
+{
+	NSRange result = NSMakeRange(0, 0);
+	NSInteger location = 0;
+	if (@available(macOS 10.15, *))
+	{
+		for (OCRDatum *datum in self.datums)
+		{
+			if (datum.image != nil)
+			{
+				for (VNRecognizedTextObservation *piece in datum.textPieces)
+				{
+					NSArray<VNRecognizedText *> *text1 = [piece topCandidates:1];
+					location += text1.firstObject.string.length;
+					NSValue *rangeInAValue = datum.selectionPieces[piece];
+					if (rangeInAValue != nil)
+					{
+						NSRange r = [rangeInAValue rangeValue];
+						location += r.location;
+						return NSMakeRange(location, r.length);
+					} else {
+						location += 1;
+					}
+				}
+			}
+		}
+	}
+	return result;
+}
+
+- (void)setAllTextSelection:(NSRange)candidateSelection
+{
+	if (@available(macOS 10.15, *))
+	{
+		NSInteger location = candidateSelection.location;
+		if (candidateSelection.length == 0 || candidateSelection.location == NSNotFound)
+		{
+			[self clearSelection];
+			return;
+		}
+		for (OCRDatum *datum in self.datums)
+		{
+			if (datum.image != nil)
+			{
+				for (VNRecognizedTextObservation *piece in datum.textPieces)
+				{
+					NSArray<VNRecognizedText *> *text1 = [piece topCandidates:1];
+					if (text1.firstObject.string.length < location)
+					{
+						location -= text1.firstObject.string.length + 1;
+					} else {
+						NSRange r = NSMakeRange(location,
+								MIN(candidateSelection.length, text1.firstObject.string.length));
+						[datum.selectionPieces removeAllObjects];
+						datum.selectionPieces[piece] = [NSValue valueWithRange:r];
+						[self.view setNeedsDisplay:YES];
+						return;
+					}
+				}
+			}
+		}
+	}
+}
+
+- (void)clearSelection
+{
+	for (OCRDatum *datum in self.datums)
+	{
+		if (datum.image != nil && datum.selectionPieces.count != 0)
+		{
+			[datum.selectionPieces removeAllObjects];
+			[self.view setNeedsDisplay:YES];
+		}
+	}
+}
+
+
+- (NSString *)selectionJoinedBy:(NSString *)join
 {
 	NSMutableArray *a = [NSMutableArray array];
 	if (@available(macOS 10.15, *))
@@ -289,8 +475,14 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 			}
 		}
 	}
-	return [a componentsJoinedByString:@"\n"];
+	return [a componentsJoinedByString:join];
 }
+
+- (NSString *)selection
+{
+	return [self selectionJoinedBy:@"\n"];
+}
+
 
 - (nullable VNRecognizedTextObservation *)textPieceForMouseEvent:(NSEvent *)theEvent API_AVAILABLE(macos(10.15))
 {
@@ -346,6 +538,14 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	return path.bounds;
 }
 
+- (NSArray *)textPieces
+{
+	NSMutableArray *a = [NSMutableArray array];
+	for (OCRDatum *datum in self.datums) {
+		[a addObjectsFromArray:datum.textPieces];
+	}
+	return a;
+}
 
 #pragma mark OCR
 
@@ -383,7 +583,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		datum.activeOCR = nil;
 		datum.textPieces = @[];
 		[datum.selectionPieces removeAllObjects];
-		if (sIsEnabled && image)
+		if (image)
 		{
 			__block OCRVision *ocrVision = [[OCRVision alloc] init];
 			datum.activeOCR = ocrVision;
@@ -400,12 +600,22 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 
 - (void)ocrImage:(NSImage *)image
 {
-	[self ocrImage:image index:0];
+	if (sIsEnabled) {
+		[self ocrImage:image index:0];
+	} else {
+		[self.datums[0] reset];
+		self.datums[0].imageWhileDisabled = image;
+	}
 }
 
 - (void)ocrImage2:(NSImage *)image
 {
-	[self ocrImage:image index:1];
+	if (sIsEnabled) {
+		[self ocrImage:image index:1];
+	} else {
+		[self.datums[1] reset];
+		self.datums[1].imageWhileDisabled = image;
+	}
 }
 
 
@@ -675,6 +885,108 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	return NO;
 }
 
+#pragma mark Find
+
+- (NSValue *)range:(NSRange)target withinRanges:(NSArray<NSValue *> *)selectedRanges {
+	for (NSValue *rangep in selectedRanges) {
+		NSRange range = [rangep rangeValue];
+		if (NSLocationInRange(range.location, target)) {
+			return rangep;
+		}
+	}
+	return nil;
+}
+
+- (NSArray<NSValue *> *)selectedFindRanges
+{
+	NSMutableArray<NSValue *> *selectedRanges = [NSMutableArray array];
+	NSUInteger offset = 0;
+	for (OCRDatum *datum in self.datums)
+	{
+		if (datum.image != nil)
+		{
+			for (VNRecognizedTextObservation *piece in datum.textPieces)
+			{
+				NSValue *rangePtr = datum.selectionPieces[piece];
+				if (rangePtr != nil)
+				{
+					NSRange r = [rangePtr rangeValue];
+					r.location += offset;
+					[selectedRanges addObject:[NSValue valueWithRange:r]];
+				}
+				NSArray<VNRecognizedText *> *text1 = [piece topCandidates:1];
+				offset += text1.firstObject.string.length + 1;
+			}
+		}
+	}
+	return selectedRanges;
+}
+
+- (void)setSelectedFindRange:(NSRange)selectedR
+{
+	NSUInteger offset = 0;
+	for (OCRDatum *datum in self.datums)
+	{
+		datum.selectionPieces = [NSMutableDictionary dictionary];
+	}
+	if (selectedR.location == NSNotFound) {
+		return;
+	}
+	for (OCRDatum *datum in self.datums)
+	{
+		if (datum.image != nil)
+		{
+			for (VNRecognizedTextObservation *piece in datum.textPieces)
+			{
+				NSArray<VNRecognizedText *> *text1 = [piece topCandidates:1];
+				NSRange allText1 = NSMakeRange(offset, text1.firstObject.string.length);
+				if (NSLocationInRange(selectedR.location, allText1)) {
+					NSRange localText = selectedR;
+					localText.location -= offset;
+					NSInteger fullLength = localText.length;
+					localText.length = MIN(allText1.length - localText.location, localText.length);
+					datum.selectionPieces[piece] = [NSValue valueWithRange:localText];
+					[self.view setNeedsDisplay:YES];
+					if (fullLength - localText.length <= 1) {
+						return;
+					} else {
+						selectedR.location += localText.length+1;
+						selectedR.length -= localText.length+1;
+					}
+				}
+				offset += text1.firstObject.string.length + 1;
+			}
+		}
+	}
+}
+
+- (void)scrollFindRangeToVisible:(NSRange)findRange
+{
+	NSUInteger offset = 0;
+	for (OCRDatum *datum in self.datums)
+	{
+		if (datum.image != nil)
+		{
+			for (VNRecognizedTextObservation *piece in datum.textPieces)
+			{
+				NSArray<VNRecognizedText *> *text1 = [piece topCandidates:1];
+				NSRange allText1 = NSMakeRange(offset, text1.firstObject.string.length);
+				if (NSLocationInRange(findRange.location, allText1)) {
+					findRange.location -= offset;	// Converts the range to textPiece coordinates
+					VNRectangleObservation *rectObserved = [text1.firstObject boundingBoxForRange:findRange error:NULL] ?: piece;
+
+					CGSize imageSize = datum.selectionLayer.bounds.size;
+					CGRect r = VNImageRectForNormalizedRect(rectObserved.boundingBox, imageSize.width, imageSize.height);
+					CGRect viewRect = [datum.selectionLayer convertRect:r toLayer:self.view.layer];
+					[self.view scrollRectToVisible:viewRect];
+					return;
+				}
+				offset += text1.firstObject.string.length + 1;
+			}
+		}
+	}
+}
+
 #pragma mark Menubar
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem
@@ -692,7 +1004,8 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	{
 		if (@available(macOS 10.15, *))
 		{
-			return self.totalTextPiecesCount != 0 && self.totalTextPiecesCount != self.totalSelectionPiecesCount;
+			NSInteger totalTextPiecesCount = self.totalTextPiecesCount;
+			return totalTextPiecesCount != 0 && totalTextPiecesCount != self.totalSelectionPiecesCount;
 		} else {
 			return  NO;
 		}
@@ -712,8 +1025,18 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	{
 		return [sSpeechSynthesizer isSpeaking];
 	}
+	else if ([menuItem action] == @selector(performOCRFindAction:))
+	{
+		return [self.delegate.find validateAction:[menuItem tag]];
+	}
 	return NO;
 }
+
+- (IBAction)performOCRFindAction:(id)sender
+{
+	[self.delegate.find performAction:[sender tag]];
+}
+
 
 - (void)startSpeaking:(id)sender
 {

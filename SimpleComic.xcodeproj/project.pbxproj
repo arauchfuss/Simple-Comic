@@ -71,8 +71,14 @@
 		6304B5D42840190B009E7D61 /* OCRVision.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D32840190B009E7D61 /* OCRVision.m */; };
 		6304B5D7284019EC009E7D61 /* OCRTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B5D5284019EC009E7D61 /* OCRTracker.m */; };
 		6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B60928411F13009E7D61 /* OCRSelectionLayer.m */; };
+		6323E4D228613F83007F240B /* OCR_NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6323E4C228613F83007F240B /* OCR_NSStringTests.m */; };
+		6323E4D528613FBE007F240B /* OCR_NSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6323E4D428613FBE007F240B /* OCR_NSString.m */; };
+		6323E4DB2861400B007F240B /* OCRFind.m in Sources */ = {isa = PBXBuildFile; fileRef = 6323E4D72861400B007F240B /* OCRFind.m */; };
+		6323E4DC2861400B007F240B /* OCRFindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6323E4D82861400B007F240B /* OCRFindViewController.m */; };
 		638E5C4C2832138400BFDAA4 /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638E5C3C2832138400BFDAA4 /* Vision.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		63A57A152872683F00D0A88B /* OCRFindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63A57A172872683F00D0A88B /* OCRFindViewController.xib */; };
 		63BA27152874BEF100E540C0 /* SimpleComic.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 63BA27052874BEF100E540C0 /* SimpleComic.sdef */; };
+		63E5A9072870D1C200A9FFD5 /* OCRRangeEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E5A9062870D1C200A9FFD5 /* OCRRangeEnumerator.m */; };
 		77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* SimpleComicAppDelegate.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -237,6 +243,13 @@
 			remoteGlobalIDString = 551BADD11EB032B500EAF64E;
 			remoteInfo = "XADMaster-iOS";
 		};
+		63BF686E28590BF6005962F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
+			remoteInfo = "Simple Comic";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -375,8 +388,20 @@
 		6304B5D6284019EC009E7D61 /* OCRTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRTracker.h; sourceTree = "<group>"; };
 		6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRSelectionLayer.h; sourceTree = "<group>"; };
 		6304B60928411F13009E7D61 /* OCRSelectionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRSelectionLayer.m; sourceTree = "<group>"; };
+		6323E4C228613F83007F240B /* OCR_NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCR_NSStringTests.m; sourceTree = "<group>"; };
+		6323E4D328613FBE007F240B /* OCR_NSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCR_NSString.h; sourceTree = "<group>"; };
+		6323E4D428613FBE007F240B /* OCR_NSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCR_NSString.m; sourceTree = "<group>"; };
+		6323E4D62861400B007F240B /* OCRFindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRFindViewController.h; sourceTree = "<group>"; };
+		6323E4D72861400B007F240B /* OCRFind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRFind.m; sourceTree = "<group>"; };
+		6323E4D82861400B007F240B /* OCRFindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRFindViewController.m; sourceTree = "<group>"; };
+		6323E4DA2861400B007F240B /* OCRFind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRFind.h; sourceTree = "<group>"; };
 		638E5C3C2832138400BFDAA4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
+		63A57A162872683F00D0A88B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OCRFindViewController.xib; sourceTree = "<group>"; };
+		63A57A1B287268E300D0A88B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OCRFindViewController.strings; sourceTree = "<group>"; };
 		63BA27052874BEF100E540C0 /* SimpleComic.sdef */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleComic.sdef; sourceTree = SOURCE_ROOT; };
+		63BF686A28590BF6005962F4 /* OCR Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OCR Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63E5A8F62870D1C200A9FFD5 /* OCRRangeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRRangeEnumerator.h; sourceTree = "<group>"; };
+		63E5A9062870D1C200A9FFD5 /* OCRRangeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRRangeEnumerator.m; sourceTree = "<group>"; };
 		64777B8C1A4213100064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TSSTSessionWindow.strings"; sourceTree = "<group>"; };
 		64777B8D1A4213150064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		64777B8E1A42131A0064A356 /* zh-Hans */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Preferences.strings"; sourceTree = "<group>"; };
@@ -407,6 +432,13 @@
 				55871EFC235D8B2800528BDF /* WebPMac.framework in Frameworks */,
 				5500A65C1D7772B200321300 /* XADMaster.framework in Frameworks */,
 				55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		63BF686728590BF6005962F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +492,7 @@
 			children = (
 				8D1107320486CEB800E47090 /* Simple Comic.app */,
 				55C374051BD9E67D006385B6 /* QuickComic.qlgenerator */,
+				63BF686A28590BF6005962F4 /* OCR Unit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -551,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				5589952D1A13D4450058830B /* Media.xcassets */,
+				63A57A172872683F00D0A88B /* OCRFindViewController.xib */,
 				28A266081285C34300ED6391 /* Preferences.xib */,
 				28A2660C1285C35700ED6391 /* MainMenu.xib */,
 				28A266141285C3A700ED6391 /* TSSTSessionWindow.xib */,
@@ -671,14 +705,31 @@
 		6304B5C2284018E9009E7D61 /* OCRVision */ = {
 			isa = PBXGroup;
 			children = (
+				63BF687328590C61005962F4 /* OCR Unit Tests */,
+				6323E4D328613FBE007F240B /* OCR_NSString.h */,
+				6323E4D428613FBE007F240B /* OCR_NSString.m */,
 				6304B5F928411F13009E7D61 /* OCRSelectionLayer.h */,
 				6304B60928411F13009E7D61 /* OCRSelectionLayer.m */,
+				6323E4DA2861400B007F240B /* OCRFind.h */,
+				6323E4D72861400B007F240B /* OCRFind.m */,
+				6323E4D62861400B007F240B /* OCRFindViewController.h */,
+				6323E4D82861400B007F240B /* OCRFindViewController.m */,
+				63E5A8F62870D1C200A9FFD5 /* OCRRangeEnumerator.h */,
+				63E5A9062870D1C200A9FFD5 /* OCRRangeEnumerator.m */,
 				6304B5D6284019EC009E7D61 /* OCRTracker.h */,
 				6304B5D5284019EC009E7D61 /* OCRTracker.m */,
 				6304B5D22840190B009E7D61 /* OCRVision.h */,
 				6304B5D32840190B009E7D61 /* OCRVision.m */,
 			);
 			path = OCRVision;
+			sourceTree = "<group>";
+		};
+		63BF687328590C61005962F4 /* OCR Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6323E4C228613F83007F240B /* OCR_NSStringTests.m */,
+			);
+			path = "OCR Unit Tests";
 			sourceTree = "<group>";
 		};
 		FA9FB59508AAE3690085AA55 /* Preferences */ = {
@@ -740,6 +791,24 @@
 			productReference = 55C374051BD9E67D006385B6 /* QuickComic.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
+		63BF686928590BF6005962F4 /* OCR Unit Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63BF687028590BF6005962F4 /* Build configuration list for PBXNativeTarget "OCR Unit Tests" */;
+			buildPhases = (
+				63BF686628590BF6005962F4 /* Sources */,
+				63BF686728590BF6005962F4 /* Frameworks */,
+				63BF686828590BF6005962F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				63BF686F28590BF6005962F4 /* PBXTargetDependency */,
+			);
+			name = "OCR Unit Tests";
+			productName = "OCR Unit Tests";
+			productReference = 63BF686A28590BF6005962F4 /* OCR Unit Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8D1107260486CEB800E47090 /* Simple Comic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA7257E208A6CDEB006A2A19 /* Build configuration list for PBXNativeTarget "Simple Comic" */;
@@ -778,6 +847,12 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 3D9SMH4RWM;
 						ProvisioningStyle = Automatic;
+					};
+					63BF686928590BF6005962F4 = {
+						CreatedOnToolsVersion = 13.3;
+						DevelopmentTeam = 3D9SMH4RWM;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8D1107260486CEB800E47090;
 					};
 					8D1107260486CEB800E47090 = {
 						DevelopmentTeam = 3D9SMH4RWM;
@@ -828,6 +903,7 @@
 			targets = (
 				8D1107260486CEB800E47090 /* Simple Comic */,
 				55C374041BD9E67D006385B6 /* QuickComic */,
+				63BF686928590BF6005962F4 /* OCR Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -961,6 +1037,7 @@
 				63BA27152874BEF100E540C0 /* SimpleComic.sdef in Resources */,
 				8F54DD531CCA336B001403DA /* container-migration.plist in Resources */,
 				8F381FB323F0DBCA004B7DB2 /* InfoPlist.strings in Resources */,
+				63A57A152872683F00D0A88B /* OCRFindViewController.xib in Resources */,
 				28A266161285C3A700ED6391 /* TSSTSessionWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -983,11 +1060,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63BF686628590BF6005962F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6323E4D228613F83007F240B /* OCR_NSStringTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5599515E1BDC0A400086661A /* DTPolishedProgressBar.swift in Sources */,
+				6323E4DB2861400B007F240B /* OCRFind.m in Sources */,
+				63E5A9072870D1C200A9FFD5 /* OCRRangeEnumerator.m in Sources */,
 				55861E3923C68B3700390CD3 /* V1ToV2.xcmappingmodel in Sources */,
 				6304B5D42840190B009E7D61 /* OCRVision.m in Sources */,
 				6304B60A28411F13009E7D61 /* OCRSelectionLayer.m in Sources */,
@@ -998,10 +1085,12 @@
 				77C8280E06725ACE000B614F /* SimpleComicAppDelegate.m in Sources */,
 				FA9FB53508AADA270085AA55 /* TSSTCustomValueTransformers.m in Sources */,
 				552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */,
+				6323E4D528613FBE007F240B /* OCR_NSString.m in Sources */,
 				55B2B1CD26506CE50099ADA5 /* TSSTThumbnailItemView.swift in Sources */,
 				552627951BDEEF85005AAF63 /* TSSTTransparentView.swift in Sources */,
 				552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */,
 				2895F9DA0B67D224008683C6 /* TSSTPage.m in Sources */,
+				6323E4DC2861400B007F240B /* OCRFindViewController.m in Sources */,
 				286BA1110C4D5F3100E9D06D /* TSSTSessionWindowController.m in Sources */,
 				285B4A700B9B9F23006A4727 /* TSSTPageView.m in Sources */,
 				281954EA0C1201E6001F5E95 /* TSSTManagedGroup.m in Sources */,
@@ -1065,6 +1154,11 @@
 			isa = PBXTargetDependency;
 			name = UniversalDetector;
 			targetProxy = 55C3745E1BD9EFE7006385B6 /* PBXContainerItemProxy */;
+		};
+		63BF686F28590BF6005962F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* Simple Comic */;
+			targetProxy = 63BF686E28590BF6005962F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1141,6 +1235,15 @@
 			name = TSSTSessionWindow.xib;
 			sourceTree = "<group>";
 		};
+		63A57A172872683F00D0A88B /* OCRFindViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63A57A162872683F00D0A88B /* Base */,
+				63A57A1B287268E300D0A88B /* en */,
+			);
+			name = OCRFindViewController.xib;
+			sourceTree = "<group>";
+		};
 		8F381FB123F0DBCA004B7DB2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1202,6 +1305,70 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = qlgenerator;
+			};
+			name = Release;
+		};
+		63BF687128590BF6005962F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.OCR-Unit-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Comic.app/Contents/MacOS/Simple Comic";
+			};
+			name = Debug;
+		};
+		63BF687228590BF6005962F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.OCR-Unit-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Comic.app/Contents/MacOS/Simple Comic";
 			};
 			name = Release;
 		};
@@ -1298,7 +1465,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1350,7 +1517,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1384,6 +1551,15 @@
 			buildConfigurations = (
 				55C3740F1BD9E67D006385B6 /* Debug */,
 				55C374101BD9E67D006385B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63BF687028590BF6005962F4 /* Build configuration list for PBXNativeTarget "OCR Unit Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63BF687128590BF6005962F4 /* Debug */,
+				63BF687228590BF6005962F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -56,6 +56,11 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
+                            <binding destination="-3" name="enabled" keyPath="delegate.isAtLeast10_15" id="2Tw-HJ-Hal">
+                                <dictionary key="options">
+                                    <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
+                                </dictionary>
+                            </binding>
                             <binding destination="42" name="value" keyPath="values.OCRDisableKey" id="IWS-kZ-RmP">
                                 <dictionary key="options">
                                     <string key="NSValueTransformerName">NSNegateBoolean</string>

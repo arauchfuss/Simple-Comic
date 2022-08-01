@@ -27,6 +27,7 @@
 @class DTPolishedProgressBar;
 @class TSSTInfoWindow;
 @class TSSTManagedSession;
+@class OCRTracker;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -86,6 +87,9 @@ typedef NS_ENUM(NSInteger, PageSelectionMode)  {
 
 @property (copy) NSArray<NSSortDescriptor*> * pageSortDescriptor;
 @property (assign) NSInteger pageTurn;
+
+/*! maps recognized text to locations */
+@property (nonatomic, readonly) OCRTracker *tracker;
 
 - (instancetype)initWithSession:(TSSTManagedSession *)aSession;
 
