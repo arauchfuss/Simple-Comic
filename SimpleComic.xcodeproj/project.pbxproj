@@ -398,7 +398,7 @@
 		638E5C3C2832138400BFDAA4 /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		63A57A162872683F00D0A88B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OCRFindViewController.xib; sourceTree = "<group>"; };
 		63A57A1B287268E300D0A88B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OCRFindViewController.strings; sourceTree = "<group>"; };
-		63BA27052874BEF100E540C0 /* SimpleComic.sdef */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleComic.sdef; sourceTree = SOURCE_ROOT; };
+		63BA27052874BEF100E540C0 /* SimpleComic.sdef */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SimpleComic.sdef; sourceTree = SOURCE_ROOT; };
 		63BF686A28590BF6005962F4 /* OCR Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "OCR Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63E5A8F62870D1C200A9FFD5 /* OCRRangeEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCRRangeEnumerator.h; sourceTree = "<group>"; };
 		63E5A9062870D1C200A9FFD5 /* OCRRangeEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCRRangeEnumerator.m; sourceTree = "<group>"; };
@@ -797,7 +797,6 @@
 			buildPhases = (
 				63BF686628590BF6005962F4 /* Sources */,
 				63BF686728590BF6005962F4 /* Frameworks */,
-				63BF686828590BF6005962F4 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1385,7 +1384,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 290;
+				CURRENT_PROJECT_VERSION = 299;
 				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1395,7 +1394,7 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.5;
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
@@ -1419,7 +1418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 290;
+				CURRENT_PROJECT_VERSION = 299;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1430,7 +1429,7 @@
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)";
-				MARKETING_VERSION = 1.9.4;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ToWatchList.SimpleComic;
 				PRODUCT_NAME = "Simple Comic";
 				PROVISIONING_PROFILE_SPECIFIER = "";
