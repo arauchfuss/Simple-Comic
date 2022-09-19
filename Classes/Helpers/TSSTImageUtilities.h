@@ -35,7 +35,7 @@ NSRect rectWithSizeCenteredInRect(NSSize size, NSRect rect) NS_SWIFT_NAME(rectCe
 
 NSRect rectFromNegativeRect(NSRect rect);
 
-NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image) NS_SWIFT_NAME(scaleImage(to:fromImage:));
+NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image) NS_SWIFT_NAME(scaleImage(to:from:));
 
 NSPoint centerPointOfRect(NSRect rect) NS_SWIFT_NAME(centerPoint(of:));
 
