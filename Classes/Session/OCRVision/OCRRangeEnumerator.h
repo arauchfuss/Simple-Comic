@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init NS_UNAVAILABLE;
 
-/// returns NSNotFound when exhausted
+/// returns \c NSNotFound when exhausted
 - (NSUInteger)next;
 
 @end

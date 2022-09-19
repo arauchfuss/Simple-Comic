@@ -35,7 +35,7 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 	OCRIndicatorBackWrap,
 };
 
-@interface OCRFind()<OCRFindEngine>
+@interface OCRFind() <OCRFindEngine>
 
 @property(nonatomic) OCRFindViewController *findVC;
 

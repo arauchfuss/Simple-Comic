@@ -51,7 +51,7 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 		[defaults registerDefaults: standardDefaults];
 		NSUInteger revision = VNRecognizeTextRequestRevision1;
 #if defined(MAC_OS_VERSION_13_0) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_13_0
-#warn "if you can see this, it's time to remove the #if."
+#warning if you can see this, it's time to remove the #if.
 			if (@available(macOS 13.0, *))
 			{
 				revision = VNRecognizeTextRequestRevision3;
@@ -169,7 +169,7 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 			textRequest.recognitionLanguages = @[ocrLanguage];
 			textRequest.usesLanguageCorrection = YES;
 #if defined(MAC_OS_VERSION_13_0) && MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_13_0
-#warn "if you can see this, it's time to remove the #if."
+#warning if you can see this, it's time to remove the #if.
 			if (@available(macOS 13.0, *))
 			{
 				textRequest.automaticallyDetectsLanguage = YES;

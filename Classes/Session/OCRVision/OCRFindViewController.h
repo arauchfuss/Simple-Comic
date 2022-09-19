@@ -10,10 +10,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol OCRFindEngine;
 
-/// U.I. for OCRFind
+/// UI for \c OCRFind
 @interface OCRFindViewController : NSViewController
 
-/// Provides requirements of the OCRFindViewController
+/// Provides requirements of the \c OCRFindViewController
 @property (nullable, weak) id <OCRFindEngine> engine;
 
 /// setting findPageIndex shows it in the find progress panel.

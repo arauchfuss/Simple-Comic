@@ -7,7 +7,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// A key for NSUserDefaults boolForKey: - it true the entire OCR system is turned  off.
+/// A key for NSUserDefaults \c boolForKey: - if true the entire OCR system is turned  off.
 extern NSString *const OCRDisableKey;
 
 @class VNRecognizedTextObservation;
@@ -35,11 +35,11 @@ extern NSString *const OCRDisableKey;
 + (void)hideOCRMenusIfUnavailable;
 
 /// Run the ocr engine on the first page image in the default language.
-/// @param image - OCRed, then used as a cache key for mouse tracking the result. Pass nil to clear the cache entry
+/// @param image OCRed, then used as a cache key for mouse tracking the result. Pass \c nil to clear the cache entry
 - (void)ocrImage:(nullable NSImage *)image;
 
 /// Run the ocr engine on the second page image in the default language.
-/// @param image - OCRed, then used as a cache key for mouse tracking the result. Pass nil to clear the cache entry
+/// @param image OCRed, then used as a cache key for mouse tracking the result. Pass \c nil to clear the cache entry
 - (void)ocrImage2:(nullable NSImage *)image;
 
 - (nullable instancetype)initWithView:(NSView *)view NS_DESIGNATED_INITIALIZER;
@@ -96,9 +96,9 @@ extern NSString *const OCRDisableKey;
 - (OCRFind *)find;
 @end
 
-///  Get the bezierPath of a part of a text observation.
+/// Get the bezierPath of a part of a text observation.
 ///
-///  Used by both OCRTtracker and OCRSelectionLayer
+/// Used by both \c OCRTtracker and \c OCRSelectionLayer
 ///
 /// @param piece - the TextObservation
 /// @param r - the range of the string of the TextObservation

@@ -9,13 +9,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Copy and Extend NSStringCompareOptions
 typedef NS_OPTIONS(NSUInteger, OCRStringCompareOptions) {
-    OCRCaseInsensitiveSearch = (1 << 0), /* Always on in Simple Comic */
-    OCRLiteralSearch =  (1 << 1),		/* Exact character-by-character equivalence */
-    OCRBackwardSearch =  (1 << 2),		/* Search from end of source string */
-    OCRAnchoredSearch = (1 << 3),		/* Search is limited to start (or end, if NSBackwardsSearch) of source string */
-		OCRStartWith = (1 << 4),	/* applies to ocr_rangeOfString:  only. Resulting match must start on a 'word' boundary */
-    OCREndWith = (1 << 5),		/* applies to ocr_rangeOfString:  only. Resulting match must end on a 'word' boundary */
-    OCRNumericSearch = (1 << 6),		/* Numbers within strings are compared using numeric value. only applies to compare methods, not find */
+	/*! Always on in Simple Comic */
+    OCRCaseInsensitiveSearch = (1 << 0),
+	/*! Exact character-by-character equivalence */
+    OCRLiteralSearch =  (1 << 1),
+	/*! Search from end of source string */
+    OCRBackwardSearch =  (1 << 2),
+	/*! Search is limited to start (or end, if NSBackwardsSearch) of source string */
+    OCRAnchoredSearch = (1 << 3),
+	/*! applies to \c ocr_rangeOfString:  only. Resulting match must start on a 'word' boundary */
+	OCRStartWith = (1 << 4),
+	/*! applies to \c ocr_rangeOfString:  only. Resulting match must end on a 'word' boundary */
+    OCREndWith = (1 << 5),
+	/*! Numbers within strings are compared using numeric value. only applies to compare methods, not find */
+    OCRNumericSearch = (1 << 6),
+	
 		OCRDiacriticInsensitiveSearch  = (1 << 7),
 		OCRWidthInsensitiveSearch  = (1 << 8),
 		OCRForcedOrderingSearch = (1 << 9),
