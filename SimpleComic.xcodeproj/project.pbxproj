@@ -721,8 +721,11 @@
 				6304B5D22840190B009E7D61 /* OCRVision.h */,
 				6304B5D32840190B009E7D61 /* OCRVision.m */,
 			);
+			indentWidth = 4;
 			path = OCRVision;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 1;
 		};
 		63BF687328590C61005962F4 /* OCR Unit Tests */ = {
 			isa = PBXGroup;
