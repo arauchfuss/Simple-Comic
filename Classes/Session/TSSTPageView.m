@@ -122,7 +122,7 @@ typedef struct {
 - (BOOL)becomeFirstResponder
 {
 	[sessionController.tracker becomeNextResponder];
-  return YES;
+	return YES;
 }
 
 - (void)setFirstPage:(NSImage *)first secondPageImage:(NSImage *)second
@@ -266,8 +266,8 @@ typedef struct {
 
 - (void)draggingExited:(id <NSDraggingInfo>)sender
 {
-    acceptingDrag = NO;
-    [self setNeedsDisplay: YES];
+	acceptingDrag = NO;
+	[self setNeedsDisplay: YES];
 }
 
 
@@ -940,8 +940,8 @@ typedef struct {
 		NSPoint scrollPoint = NSMakePoint(NSMinX(visible) - ([theEvent deltaX] * 5), NSMinY(visible) + ([theEvent deltaY] * 5));
 		[self scrollPoint: scrollPoint];
 	}
-    
-    
+	
+	
 	if ([defaultsController boolForKey:TSSTEnableSwipe] && theEvent.type == NSEventTypeSwipe)
 	{
 		CGFloat deltaX = [theEvent deltaX];

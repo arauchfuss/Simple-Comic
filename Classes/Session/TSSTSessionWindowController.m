@@ -110,8 +110,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)windowDidLoad
 {
-	if ([[NSUserDefaults standardUserDefaults] boolForKey: TSSTUnifiedTitlebar])
-	{
+	if ([[NSUserDefaults standardUserDefaults] boolForKey: TSSTUnifiedTitlebar]) {
 		[super windowDidLoad];
 		self.window.titleVisibility = NSWindowTitleHidden;
 	} else {
@@ -1220,24 +1219,24 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 	switch (scaling)
 	{
-	case  0:
-		hasVert = YES;
-		hasHor = YES;
-		break;
-	case  2:
-        session.zoomLevel = 1.0;
-		if([pageView rotation] == 1 || [pageView rotation] == 3)
-		{
-			hasHor = YES;
-		}
-		else
-		{
+		case  0:
 			hasVert = YES;
-		}
-		break;
-	default:
-        session.zoomLevel = 1.0;
-		break;
+			hasHor = YES;
+			break;
+		case  2:
+			session.zoomLevel = 1.0;
+			if([pageView rotation] == 1 || [pageView rotation] == 3)
+			{
+				hasHor = YES;
+			}
+			else
+			{
+				hasVert = YES;
+			}
+			break;
+		default:
+			session.zoomLevel = 1.0;
+			break;
 	}
 	
     [pageScrollView setHasVerticalScroller: hasVert];
@@ -1331,7 +1330,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
         
         BOOL previousPage = ![[pageController arrangedObjects][(selectionIndex - 1)] shouldDisplayAlone];
 		BOOL pageBeforeLast = ![[pageController arrangedObjects][(selectionIndex - 2)] shouldDisplayAlone] &&
-            !((selectionIndex - 2) == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
+		!((selectionIndex - 2) == 0 && [defaults boolForKey: TSSTLonelyFirstPage]);
         
         if(!previousPage || !pageBeforeLast)
 		{

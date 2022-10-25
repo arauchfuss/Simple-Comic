@@ -234,9 +234,9 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
-											ofObject:(id)object
-												change:(NSDictionary *)change
-											 context:(void *)context
+					  ofObject:(id)object
+						change:(NSDictionary *)change
+					   context:(void *)context
 {
 	if ([keyPath isEqual:OCRDisableKey]) {
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -427,7 +427,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 						location -= text1.firstObject.string.length + 1;
 					} else {
 						NSRange r = NSMakeRange(location,
-								MIN(candidateSelection.length, text1.firstObject.string.length));
+												MIN(candidateSelection.length, text1.firstObject.string.length));
 						[datum.selectionPieces removeAllObjects];
 						datum.selectionPieces[piece] = [NSValue valueWithRange:r];
 						[self.view setNeedsDisplay:YES];

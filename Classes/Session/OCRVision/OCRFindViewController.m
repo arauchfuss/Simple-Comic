@@ -172,9 +172,9 @@
 			[self previous:nil];
 			break;
 		case NSTextFinderActionSetSearchString: {
-				NSString *selection = self.engine.selection;
-				self.engine.findString = [selection substringToIndex:MIN(512, selection.length)];
-			}
+			NSString *selection = self.engine.selection;
+			self.engine.findString = [selection substringToIndex:MIN(512, selection.length)];
+		}
 			break;
 		case NSTextFinderActionHideFindInterface:
 			[self cancelOperation:nil];

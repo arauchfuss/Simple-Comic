@@ -173,9 +173,9 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 
 
 - (void)find:(NSString *)findString
-		 options:(OCRStringCompareOptions)options
-	enumerator:(OCRRangeEnumerator *)rangeEnumerator
-	findCompletion:(void (^)(NSInteger index, NSRange r, NSArray<VNRecognizedTextObservation *> *pieces))findCompletion API_AVAILABLE(macos(10.15))
+	 options:(OCRStringCompareOptions)options
+  enumerator:(OCRRangeEnumerator *)rangeEnumerator
+findCompletion:(void (^)(NSInteger index, NSRange r, NSArray<VNRecognizedTextObservation *> *pieces))findCompletion API_AVAILABLE(macos(10.15))
 {
 	NSUInteger current = [rangeEnumerator next];
 	if (current != NSNotFound && self.findState == OCRFindStateInProgress) {
@@ -200,9 +200,9 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 - (void)didHideFindBar
 {
 	NSView *view = self.tracker.view;
-  if ([view acceptsFirstResponder]) {
+	if ([view acceptsFirstResponder]) {
 		[view.window makeFirstResponder:view];
-  }
+	}
 }
 
 - (void)didNotFind
@@ -224,12 +224,12 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 }
 
 - (void)find:(NSString *)findString
-			 options:(OCRStringCompareOptions)options
-	 anchorIndex:(NSInteger)anchorIndex
-	anchorRanges:(NSArray<NSValue *> *)anchorRanges
-				 start:(NSInteger)start
-					 end:(NSInteger)end
-					wrap:(BOOL)wrap
+	 options:(OCRStringCompareOptions)options
+ anchorIndex:(NSInteger)anchorIndex
+anchorRanges:(NSArray<NSValue *> *)anchorRanges
+	   start:(NSInteger)start
+		 end:(NSInteger)end
+		wrap:(BOOL)wrap
 {
 	NSInteger count = self.delegate.findCount;
 
@@ -253,31 +253,31 @@ typedef NS_OPTIONS(NSUInteger, OCRIndicator) {
 		OCRRangeEnumerator *rangeEnumerator = [[OCRRangeEnumerator alloc] initWithStart:start end:end increment:increment];
 		__weak typeof(self) weakSelf = self;
 		[weakSelf find:findString options:options enumerator:rangeEnumerator findCompletion:
-			^(NSInteger index, NSRange r, NSArray<VNRecognizedTextObservation *> *pieces)
-			{
-				if (index != NSNotFound) {
-					[weakSelf didFindIndex:index range:r];
-				} else if (wrap) {
-					NSInteger start1 = (options & OCRBackwardSearch) ? self.delegate.findCount - 1 : 0;
-					NSInteger end1 = anchorIndex;
-					[self flashImage:(options & OCRBackwardSearch) ? @"OCRBackWrap" : @"OCRWrap"];
-					OCRRangeEnumerator *rangeEnumerator1 = [[OCRRangeEnumerator alloc] initWithStart:start1 end:end1 increment:increment];
-					[weakSelf find:findString options:options enumerator:rangeEnumerator1 findCompletion:
-						^(NSInteger index, NSRange r, NSArray<VNRecognizedTextObservation *> *pieces)
-						{
-							if (index != NSNotFound) {
-								[weakSelf didFindIndex:index range:r];
-							} else {
-								[weakSelf didNotFind];
-							}
-						}
-					];
-				} else {
-					[weakSelf didNotFind];
+			 ^(NSInteger index, NSRange r, NSArray<VNRecognizedTextObservation *> *pieces)
+		 {
+			if (index != NSNotFound) {
+				[weakSelf didFindIndex:index range:r];
+			} else if (wrap) {
+				NSInteger start1 = (options & OCRBackwardSearch) ? self.delegate.findCount - 1 : 0;
+				NSInteger end1 = anchorIndex;
+				[self flashImage:(options & OCRBackwardSearch) ? @"OCRBackWrap" : @"OCRWrap"];
+				OCRRangeEnumerator *rangeEnumerator1 = [[OCRRangeEnumerator alloc] initWithStart:start1 end:end1 increment:increment];
+				[weakSelf find:findString options:options enumerator:rangeEnumerator1 findCompletion:
+					 ^(NSInteger index, NSRange r, NSArray<VNRecognizedTextObservation *> *pieces)
+				 {
+					if (index != NSNotFound) {
+						[weakSelf didFindIndex:index range:r];
+					} else {
+						[weakSelf didNotFind];
+					}
 				}
+				];
+			} else {
+				[weakSelf didNotFind];
 			}
+		}
 		];
-  }
+	}
 }
 
 

@@ -50,12 +50,9 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 		NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 		[defaults registerDefaults: standardDefaults];
 		NSUInteger revision = VNRecognizeTextRequestRevision1;
-			if (@available(macOS 13.0, *))
-			{
-				revision = VNRecognizeTextRequestRevision3;
-			} else
-		if (@available(macOS 11.0, *))
-		{
+		if (@available(macOS 13.0, *)) {
+			revision = VNRecognizeTextRequestRevision3;
+		} else if (@available(macOS 11.0, *)) {
 			revision = VNRecognizeTextRequestRevision2;
 		}
 		if (@available(macOS 12.0, *))
@@ -87,8 +84,8 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 #pragma mark OCR
 
 - (void)callCompletion:(void (^)(id<OCRVisionResults> _Nonnull))completion
-					observations:(NSArray<VNRecognizedTextObservation *> *)observations
-								 error:(NSError *)error
+		  observations:(NSArray<VNRecognizedTextObservation *> *)observations
+				 error:(NSError *)error
 {
 	self.textObservations = observations;
 	self.ocrError = error;
@@ -117,8 +114,8 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 /// @param request - The VNRecognizeTextRequest
 /// @param error - if non-nil, the VNRecognizeTextRequest is reporting an error.
 - (void)handleTextRequest:(nullable VNRequest *)request
-							 completion:(void (^)(id<OCRVisionResults> _Nonnull))completion
-										error:(nullable NSError *)error
+			   completion:(void (^)(id<OCRVisionResults> _Nonnull))completion
+					error:(nullable NSError *)error
 {
 	if (error)
 	{
@@ -135,7 +132,7 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 		NSMutableArray<VNRecognizedTextObservation*> *results = [NSMutableArray array];
 		for (VNRecognizedTextObservation *observation in textRequests.results)
 		{
-            NSArray<VNRecognizedText *> *text1 = [observation topCandidates:1];
+			NSArray<VNRecognizedText *> *text1 = [observation topCandidates:1];
 			if (OCRConfidence <= observation.confidence && text1.count != 0) {
 				[results addObject:observation];
 			}
@@ -144,22 +141,22 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 	} else {
 		NSString *desc = @"Unrecognized text request";
 		NSError *err = [NSError errorWithDomain:@""
-																			 code:OCRVisionErrUnrecognized
-																	 userInfo:@{NSLocalizedDescriptionKey : desc}];
+										   code:OCRVisionErrUnrecognized
+									   userInfo:@{NSLocalizedDescriptionKey : desc}];
 		[self callCompletion:completion observations:@[] error:err];
 	}
 }
 
 - (void)ocrCGImage:(CGImageRef)cgImage completion:(void (^)(id<OCRVisionResults> _Nonnull))completion
 {
-  __weak typeof(self) weakSelf = self;
-  VNRecognizeTextRequest *textRequest =
-      [[VNRecognizeTextRequest alloc] initWithCompletionHandler:^(VNRequest *request, NSError *error)
-			{
-				[weakSelf handleTextRequest:request completion:completion error:error];
-			}];
-  if (textRequest)
-  {
+	__weak typeof(self) weakSelf = self;
+	VNRecognizeTextRequest *textRequest =
+	[[VNRecognizeTextRequest alloc] initWithCompletionHandler:^(VNRequest *request, NSError *error)
+	 {
+		[weakSelf handleTextRequest:request completion:completion error:error];
+	}];
+	if (textRequest)
+	{
 		NSString *ocrLanguage = [[self class] ocrLanguage];
 		if (ocrLanguage.length != 0)
 		{
@@ -171,19 +168,19 @@ NSErrorDomain const OCRVisionDomain = @"OCRVisionDomain";
 			}
 		}
 		NSError *error = nil;
-    VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:cgImage options:@{}];
-    self.activeTextRequest = textRequest;
+		VNImageRequestHandler *handler = [[VNImageRequestHandler alloc] initWithCGImage:cgImage options:@{}];
+		self.activeTextRequest = textRequest;
 		if (![handler performRequests:@[textRequest] error:&error])
 		{
 			[weakSelf callCompletion:completion observations:@[] error:error];
 		}
-  } else {
+	} else {
 		NSString *desc = @"Could not create text request";
 		NSError *err = [NSError errorWithDomain:OCRVisionDomain
-																			 code:OCRVisionErrNoCreate
-																	 userInfo:@{NSLocalizedDescriptionKey : desc}];
-			[self callCompletion:completion observations:@[] error:err];
-  }
+										   code:OCRVisionErrNoCreate
+									   userInfo:@{NSLocalizedDescriptionKey : desc}];
+		[self callCompletion:completion observations:@[] error:err];
+	}
 }
 
 - (void)ocrImage:(NSImage *)image completion:(void (^)(id<OCRVisionResults> _Nonnull))completion
