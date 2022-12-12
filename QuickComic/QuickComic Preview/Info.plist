@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>QLIsDataBasedPreview</key>
+			<true/>
+			<key>QLSupportedContentTypes</key>
+			<array>
+				<string>cx.c3.cbr-archive</string>
+				<string>cx.c3.cbz-archive</string>
+				<string>cx.c3.cb7-archive</string>
+				<string>com.macitbetter.cbr-archive</string>
+				<string>com.macitbetter.cbz-archive</string>
+				<string>com.macitbetter.cb7-archive</string>
+				<string>com.yacreader.yacreader.cbr</string>
+				<string>com.yacreader.yacreader.cbz</string>
+				<string>public.cbr-archive</string>
+				<string>public.cbz-archive</string>
+				<string>com.simplecomic.cbr-archive</string>
+				<string>com.simplecomic.cbz-archive</string>
+				<string>com.simplecomic.cb7-archive</string>
+				<string>com.simplecomic.cbt-archive</string>
+				<string>org.7-zip.7-zip-comic-archive</string>
+				<string>com.bitcartel.comicbooklover.cbz</string>
+				<string>com.bitcartel.comicbooklover.cbr</string>
+				<string>com.milke.cbz-archive</string>
+				<string>com.milke.cbr-archive</string>
+				<string>public.archive.cbz</string>
+				<string>public.archive.cbr</string>
+			</array>
+			<key>QLSupportsSearchableItems</key>
+			<false/>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.quicklook.preview</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).PreviewProvider</string>
+	</dict>
+</dict>
+</plist>

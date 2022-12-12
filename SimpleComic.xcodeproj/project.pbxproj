@@ -65,6 +65,12 @@
 		55C7D78C1C4C0401005F40C8 /* TSSTCircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7D78B1C4C0401005F40C8 /* TSSTCircularImageView.swift */; };
 		55C7D7901C4C06FF005F40C8 /* TSSTInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7D78F1C4C06FF005F40C8 /* TSSTInfoWindow.swift */; };
 		55DC3817235EAA4200132291 /* WebPMac.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55EE6BB02945CA5B00C1AAE7 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
+		55EE6BB52945CA5B00C1AAE7 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE6BB42945CA5B00C1AAE7 /* PreviewProvider.swift */; };
+		55EE6BD52945CD4500C1AAE7 /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
+		55EE6BD62945CD4500C1AAE7 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
+		55EE6BD92945D40300C1AAE7 /* QuickComicCommonSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE6BD82945D40300C1AAE7 /* QuickComicCommonSwift.swift */; };
+		55EE6BDF2945D4AA00C1AAE7 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
 		55FFF1BE1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */; };
 		55FFF1DF1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1DB1DB020470080B059 /* TSSTManagedGroup+CoreDataProperties.m */; };
 		55FFF1E61DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 55FFF1E41DB0275C0080B059 /* TSSTManagedSession+CoreDataProperties.m */; };
@@ -236,6 +242,20 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = UniversalDetector;
 		};
+		55EE6BD12945CD3500C1AAE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FA92B8B196ED365002C72DF;
+			remoteInfo = WebPMac;
+		};
+		55EE6BD32945CD3500C1AAE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = XADMaster;
+		};
 		55F590851EB535D0000B4973 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
@@ -375,6 +395,12 @@
 		55C7D78B1C4C0401005F40C8 /* TSSTCircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTCircularImageView.swift; sourceTree = "<group>"; };
 		55C7D78F1C4C06FF005F40C8 /* TSSTInfoWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoWindow.swift; sourceTree = "<group>"; };
 		55E21B1123FBCCF900D53932 /* No Sign.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "No Sign.xcconfig"; path = "Classes/No Sign.xcconfig"; sourceTree = SOURCE_ROOT; };
+		55EE6BAF2945CA5B00C1AAE7 /* QuickComic Preview.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickComic Preview.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55EE6BB42945CA5B00C1AAE7 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		55EE6BB92945CA5B00C1AAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55EE6BBA2945CA5B00C1AAE7 /* QuickComic_Preview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickComic_Preview.entitlements; sourceTree = "<group>"; };
+		55EE6BD82945D40300C1AAE7 /* QuickComicCommonSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickComicCommonSwift.swift; sourceTree = "<group>"; };
+		55EE6BDC2945D49A00C1AAE7 /* QuickComic Preview-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickComic Preview-Bridging-Header.h"; sourceTree = "<group>"; };
 		55FA8AA224667346005D33BB /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55FFF1BB1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TSSTPage+CoreDataProperties.h"; sourceTree = "<group>"; };
 		55FFF1BC1DB01C5E0080B059 /* TSSTPage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TSSTPage+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -432,6 +458,16 @@
 				55871EFC235D8B2800528BDF /* WebPMac.framework in Frameworks */,
 				5500A65C1D7772B200321300 /* XADMaster.framework in Frameworks */,
 				55C374611BD9F03B006385B6 /* UniversalDetector.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EE6BAC2945CA5B00C1AAE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EE6BD52945CD4500C1AAE7 /* WebPMac.framework in Frameworks */,
+				55EE6BD62945CD4500C1AAE7 /* XADMaster.framework in Frameworks */,
+				55EE6BB02945CA5B00C1AAE7 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +529,7 @@
 				8D1107320486CEB800E47090 /* Simple Comic.app */,
 				55C374051BD9E67D006385B6 /* QuickComic.qlgenerator */,
 				63BF686A28590BF6005962F4 /* OCR Unit Tests.xctest */,
+				55EE6BAF2945CA5B00C1AAE7 /* QuickComic Preview.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -667,6 +704,7 @@
 				55C3741B1BD9E6AF006385B6 /* main.c */,
 				55C3741A1BD9E6AF006385B6 /* Info.plist */,
 				55A6C3241CEF51F90049D381 /* QuickComic.exp */,
+				55EE6BB12945CA5B00C1AAE7 /* QuickComic Preview */,
 			);
 			path = QuickComic;
 			sourceTree = "<group>";
@@ -700,6 +738,18 @@
 				55B2B1CC26506CE50099ADA5 /* TSSTThumbnailItemView.swift */,
 			);
 			path = "Touch Bar";
+			sourceTree = "<group>";
+		};
+		55EE6BB12945CA5B00C1AAE7 /* QuickComic Preview */ = {
+			isa = PBXGroup;
+			children = (
+				55EE6BD82945D40300C1AAE7 /* QuickComicCommonSwift.swift */,
+				55EE6BB42945CA5B00C1AAE7 /* PreviewProvider.swift */,
+				55EE6BB92945CA5B00C1AAE7 /* Info.plist */,
+				55EE6BBA2945CA5B00C1AAE7 /* QuickComic_Preview.entitlements */,
+				55EE6BDC2945D49A00C1AAE7 /* QuickComic Preview-Bridging-Header.h */,
+			);
+			path = "QuickComic Preview";
 			sourceTree = "<group>";
 		};
 		6304B5C2284018E9009E7D61 /* OCRVision */ = {
@@ -794,6 +844,25 @@
 			productReference = 55C374051BD9E67D006385B6 /* QuickComic.qlgenerator */;
 			productType = "com.apple.product-type.bundle";
 		};
+		55EE6BAE2945CA5B00C1AAE7 /* QuickComic Preview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55EE6BD02945CA5B00C1AAE7 /* Build configuration list for PBXNativeTarget "QuickComic Preview" */;
+			buildPhases = (
+				55EE6BAB2945CA5B00C1AAE7 /* Sources */,
+				55EE6BAC2945CA5B00C1AAE7 /* Frameworks */,
+				55EE6BAD2945CA5B00C1AAE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55EE6BD22945CD3500C1AAE7 /* PBXTargetDependency */,
+				55EE6BD42945CD3500C1AAE7 /* PBXTargetDependency */,
+			);
+			name = "QuickComic Preview";
+			productName = "QuickComic Preview";
+			productReference = 55EE6BAF2945CA5B00C1AAE7 /* QuickComic Preview.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		63BF686928590BF6005962F4 /* OCR Unit Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63BF687028590BF6005962F4 /* Build configuration list for PBXNativeTarget "OCR Unit Tests" */;
@@ -842,12 +911,19 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TSST;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = "Dancing Tortoise Software";
 				TargetAttributes = {
 					55C374041BD9E67D006385B6 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 3D9SMH4RWM;
+						ProvisioningStyle = Automatic;
+					};
+					55EE6BAE2945CA5B00C1AAE7 = {
+						CreatedOnToolsVersion = 14.1;
+						DevelopmentTeam = 3D9SMH4RWM;
+						LastSwiftMigration = 1410;
 						ProvisioningStyle = Automatic;
 					};
 					63BF686928590BF6005962F4 = {
@@ -906,6 +982,7 @@
 				8D1107260486CEB800E47090 /* Simple Comic */,
 				55C374041BD9E67D006385B6 /* QuickComic */,
 				63BF686928590BF6005962F4 /* OCR Unit Tests */,
+				55EE6BAE2945CA5B00C1AAE7 /* QuickComic Preview */,
 			);
 		};
 /* End PBXProject section */
@@ -1026,6 +1103,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55EE6BAD2945CA5B00C1AAE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1059,6 +1143,16 @@
 				55C374261BD9E6AF006385B6 /* DTPartialArchiveParser.m in Sources */,
 				55C3743A1BD9E85A006385B6 /* TSSTSortDescriptor.m in Sources */,
 				55C3742A1BD9E6AF006385B6 /* GeneratePreviewForURL.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55EE6BAB2945CA5B00C1AAE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55EE6BDF2945D4AA00C1AAE7 /* TSSTSortDescriptor.m in Sources */,
+				55EE6BD92945D40300C1AAE7 /* QuickComicCommonSwift.swift in Sources */,
+				55EE6BB52945CA5B00C1AAE7 /* PreviewProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1156,6 +1250,16 @@
 			isa = PBXTargetDependency;
 			name = UniversalDetector;
 			targetProxy = 55C3745E1BD9EFE7006385B6 /* PBXContainerItemProxy */;
+		};
+		55EE6BD22945CD3500C1AAE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WebPMac;
+			targetProxy = 55EE6BD12945CD3500C1AAE7 /* PBXContainerItemProxy */;
+		};
+		55EE6BD42945CD3500C1AAE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = XADMaster;
+			targetProxy = 55EE6BD32945CD3500C1AAE7 /* PBXContainerItemProxy */;
 		};
 		63BF686F28590BF6005962F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1310,6 +1414,84 @@
 			};
 			name = Release;
 		};
+		55EE6BBF2945CA5B00C1AAE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QuickComic/QuickComic Preview/QuickComic_Preview.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickComic/QuickComic Preview/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QuickComic Preview";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Preview";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QuickComic/QuickComic Preview/QuickComic Preview-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55EE6BC02945CA5B00C1AAE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "QuickComic/QuickComic Preview/QuickComic_Preview.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickComic/QuickComic Preview/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QuickComic Preview";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Preview";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QuickComic/QuickComic Preview/QuickComic Preview-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		63BF687128590BF6005962F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1378,6 +1560,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 55E21B1123FBCCF900D53932 /* No Sign.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -1412,6 +1595,7 @@
 		FA7257E408A6CDEB006A2A19 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "Accent Color";
 				CLANG_ENABLE_MODULES = YES;
@@ -1553,6 +1737,15 @@
 			buildConfigurations = (
 				55C3740F1BD9E67D006385B6 /* Debug */,
 				55C374101BD9E67D006385B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55EE6BD02945CA5B00C1AAE7 /* Build configuration list for PBXNativeTarget "QuickComic Preview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55EE6BBF2945CA5B00C1AAE7 /* Debug */,
+				55EE6BC02945CA5B00C1AAE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
