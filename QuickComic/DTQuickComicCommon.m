@@ -49,10 +49,10 @@ NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * ar
 
 NSArray<NSSortDescriptor*> * fileSort(void)
 {
-    if(!fileNameSort)
-    {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         TSSTSortDescriptor * sort = [[TSSTSortDescriptor alloc] initWithKey: @"name" ascending: YES];
         fileNameSort = @[sort];
-    }
+    });
     return fileNameSort;
 }
