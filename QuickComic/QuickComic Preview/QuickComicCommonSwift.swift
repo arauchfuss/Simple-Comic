@@ -23,11 +23,6 @@ private let imageFileTypes = {
 		if let aUT = UTType(uti),
 		   let tmpExt = aUT.tags[.filenameExtension] {
 			imageExtensions.formUnion(tmpExt)
-		} else {
-			if let filenameExtensions = UTTypeCopyAllTagsWithClass(uti as NSString, kUTTagClassFilenameExtension)?.takeRetainedValue(),
-			   let fileUnwrapped = filenameExtensions as? [String] {
-				imageExtensions.formUnion(fileUnwrapped)
-			}
 		}
 	}
 	return imageExtensions
