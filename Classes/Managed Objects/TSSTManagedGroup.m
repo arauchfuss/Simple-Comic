@@ -566,11 +566,7 @@
 		NSAffineTransform * scaleTransform = [NSAffineTransform transform];
 		[scaleTransform scaleBy: scale];
 		[scaleTransform concat];
-		if (@available(macOS 10.12, *)) {
-			[page drawWithBox: kPDFDisplayBoxMediaBox toContext:[[NSGraphicsContext currentContext] CGContext]];
-		} else {
-			[page drawWithBox: kPDFDisplayBoxMediaBox];
-		}
+		[page drawWithBox: kPDFDisplayBoxMediaBox toContext:[[NSGraphicsContext currentContext] CGContext]];
 	[pageImage unlockFocus];
 	
 	NSData * imageData = [pageImage TIFFRepresentation];

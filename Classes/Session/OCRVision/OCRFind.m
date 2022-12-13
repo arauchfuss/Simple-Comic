@@ -346,10 +346,10 @@ anchorRanges:(NSArray<NSValue *> *)anchorRanges
 }
 
 - (void)readFindBoard {
-	NSPasteboard *findBoard = [NSPasteboard pasteboardWithName:NSFindPboard];
-	NSString *bestType = [findBoard availableTypeFromArray:@[NSStringPboardType]];
-	if ([bestType isEqual:NSStringPboardType]) {
-		[self setFindString:[findBoard stringForType:NSStringPboardType]];
+	NSPasteboard *findBoard = [NSPasteboard pasteboardWithName:NSPasteboardNameFind];
+	NSString *bestType = [findBoard availableTypeFromArray:@[NSPasteboardTypeString]];
+	if ([bestType isEqual:NSPasteboardTypeString]) {
+		[self setFindString:[findBoard stringForType:NSPasteboardTypeString]];
 	}
 }
 
@@ -357,10 +357,10 @@ anchorRanges:(NSArray<NSValue *> *)anchorRanges
 	if (![self.findString isEqual:findString]) {
 		_findString = [findString copy];
 		if (findString.length != 0) {
-			NSPasteboard *findBoard = [NSPasteboard pasteboardWithName:NSFindPboard];
+			NSPasteboard *findBoard = [NSPasteboard pasteboardWithName:NSPasteboardNameFind];
 			[findBoard clearContents];
-			[findBoard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
-			[findBoard setString:findString forType:NSStringPboardType];
+			[findBoard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:nil];
+			[findBoard setString:findString forType:NSPasteboardTypeString];
 		}
 		[self.findVC updateFindString];
 	}

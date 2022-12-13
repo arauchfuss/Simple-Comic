@@ -82,7 +82,7 @@ typedef struct {
 {
 	[super awakeFromNib];
 	/* Doing this so users can drag archives into the view. */
-	[self registerForDraggedTypes: @[NSFilenamesPboardType, (__bridge NSString*)kUTTypeFileURL]];
+	[self registerForDraggedTypes: @[NSFilenamesPboardType, NSPasteboardTypeFileURL]];
 }
 
 
@@ -102,7 +102,7 @@ typedef struct {
 		scrollTimer = nil;
 		acceptingDrag = NO;
 		pageSelection = -1;
-		self.acceptsTouchEvents = YES;
+		self.allowedTouchTypes = NSTouchTypeMaskDirect | NSTouchTypeMaskIndirect;
 	}
 	return self;
 }
@@ -288,12 +288,7 @@ typedef struct {
 - (BOOL)performDragOperation:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard * pboard = [sender draggingPasteboard];
-	NSString *fileURLUTI;
-	if (@available(macOS 10.13, *)) {
-		fileURLUTI = NSPasteboardTypeFileURL;
-	} else {
-		fileURLUTI = (__bridge NSString*)kUTTypeFileURL;
-	}
+	NSString *fileURLUTI = NSPasteboardTypeFileURL;
 	if([[pboard types] containsObject: fileURLUTI])
 	{
 		NSArray<NSURL *> * filePaths = [pboard readObjectsForClasses:@[[NSURL class]] options:@{NSPasteboardURLReadingFileURLsOnlyKey: @YES}];
