@@ -41,6 +41,16 @@
 		552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */; };
 		5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */; };
 		554A1C0226478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554A1C0126478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift */; };
+		55517ACC294BD686009734A9 /* QuickLookThumbnailing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55517ACB294BD686009734A9 /* QuickLookThumbnailing.framework */; };
+		55517ACD294BD686009734A9 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
+		55517AD0294BD686009734A9 /* ThumbnailProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55517ACF294BD686009734A9 /* ThumbnailProvider.swift */; };
+		55517AEC294BD7D2009734A9 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
+		55517AED294BD7EA009734A9 /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
+		55517AEE294BD837009734A9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
+		55517AF0294BD8EE009734A9 /* PartialArchiveParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55517AEF294BD8EE009734A9 /* PartialArchiveParser.swift */; };
+		55517AF5294BD929009734A9 /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
+		55517AF6294BD929009734A9 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
+		55517AF7294E3D90009734A9 /* QuickComicCommonSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE6BD82945D40300C1AAE7 /* QuickComicCommonSwift.swift */; };
 		55861E3923C68B3700390CD3 /* V1ToV2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */; };
 		55871EDE235D70C100528BDF /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
 		55871EFC235D8B2800528BDF /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
@@ -164,6 +174,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = XADMaster;
+		};
+		55517AD3294BD686009734A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55517AC9294BD686009734A9;
+			remoteInfo = "QuickComic Thumbnailer";
+		};
+		55517AF1294BD91B009734A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FA92B8B196ED365002C72DF;
+			remoteInfo = WebPMac;
+		};
+		55517AF3294BD91B009734A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = XADMaster;
+		};
+		55517AF8294E46B7009734A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55EE6BAE2945CA5B00C1AAE7;
+			remoteInfo = "QuickComic Preview";
 		};
 		5567EADB1ECA3F9600404B35 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -297,6 +335,16 @@
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55517AD6294BD687009734A9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -357,6 +405,13 @@
 		552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTTransparentView.swift; sourceTree = "<group>"; };
 		5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSSTInfoView.swift; sourceTree = "<group>"; };
 		554A1C0126478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TSSTSessionWindowController+NSTouchBar.swift"; sourceTree = "<group>"; };
+		55517ACA294BD686009734A9 /* QuickComic Thumbnailer.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "QuickComic Thumbnailer.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55517ACB294BD686009734A9 /* QuickLookThumbnailing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLookThumbnailing.framework; path = System/Library/Frameworks/QuickLookThumbnailing.framework; sourceTree = SDKROOT; };
+		55517ACF294BD686009734A9 /* ThumbnailProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailProvider.swift; sourceTree = "<group>"; };
+		55517AD1294BD686009734A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55517AD2294BD686009734A9 /* QuickComic_Thumbnailer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuickComic_Thumbnailer.entitlements; sourceTree = "<group>"; };
+		55517AE9294BD7A8009734A9 /* QuickComic Thumbnailer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QuickComic Thumbnailer-Bridging-Header.h"; sourceTree = "<group>"; };
+		55517AEF294BD8EE009734A9 /* PartialArchiveParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialArchiveParser.swift; sourceTree = "<group>"; };
 		5575A1821EAA76AC00C6D178 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = V1ToV2.xcmappingmodel; sourceTree = "<group>"; };
 		55871EC6235D708900528BDF /* libwebp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libwebp.xcodeproj; path = "Vendor/ios-osx-webp-decoder/libwebp.xcodeproj"; sourceTree = "<group>"; };
@@ -451,6 +506,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		55517AC7294BD686009734A9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55517AF5294BD929009734A9 /* WebPMac.framework in Frameworks */,
+				55517AF6294BD929009734A9 /* XADMaster.framework in Frameworks */,
+				55517ACC294BD686009734A9 /* QuickLookThumbnailing.framework in Frameworks */,
+				55517ACD294BD686009734A9 /* Quartz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55C374011BD9E67D006385B6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -530,6 +596,7 @@
 				55C374051BD9E67D006385B6 /* QuickComic.qlgenerator */,
 				63BF686A28590BF6005962F4 /* OCR Unit Tests.xctest */,
 				55EE6BAF2945CA5B00C1AAE7 /* QuickComic Preview.appex */,
+				55517ACA294BD686009734A9 /* QuickComic Thumbnailer.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -651,6 +718,7 @@
 				28BD08E50C9836E600BD7EAF /* Quartz.framework */,
 				286236010AADDB6200B83E77 /* QuartzCore.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				55517ACB294BD686009734A9 /* QuickLookThumbnailing.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -683,6 +751,18 @@
 			name = SimpleComic;
 			sourceTree = "<group>";
 		};
+		55517ACE294BD686009734A9 /* QuickComic Thumbnailer */ = {
+			isa = PBXGroup;
+			children = (
+				55517ACF294BD686009734A9 /* ThumbnailProvider.swift */,
+				55517AD1294BD686009734A9 /* Info.plist */,
+				55517AD2294BD686009734A9 /* QuickComic_Thumbnailer.entitlements */,
+				55517AE9294BD7A8009734A9 /* QuickComic Thumbnailer-Bridging-Header.h */,
+				55517AEF294BD8EE009734A9 /* PartialArchiveParser.swift */,
+			);
+			path = "QuickComic Thumbnailer";
+			sourceTree = "<group>";
+		};
 		55871EC7235D708900528BDF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +785,7 @@
 				55C3741A1BD9E6AF006385B6 /* Info.plist */,
 				55A6C3241CEF51F90049D381 /* QuickComic.exp */,
 				55EE6BB12945CA5B00C1AAE7 /* QuickComic Preview */,
+				55517ACE294BD686009734A9 /* QuickComic Thumbnailer */,
 			);
 			path = QuickComic;
 			sourceTree = "<group>";
@@ -823,6 +904,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55517AC9294BD686009734A9 /* QuickComic Thumbnailer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55517AE8294BD687009734A9 /* Build configuration list for PBXNativeTarget "QuickComic Thumbnailer" */;
+			buildPhases = (
+				55517AC6294BD686009734A9 /* Sources */,
+				55517AC7294BD686009734A9 /* Frameworks */,
+				55517AC8294BD686009734A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55517AF2294BD91B009734A9 /* PBXTargetDependency */,
+				55517AF4294BD91B009734A9 /* PBXTargetDependency */,
+			);
+			name = "QuickComic Thumbnailer";
+			productName = "QuickComic Thumbnailer";
+			productReference = 55517ACA294BD686009734A9 /* QuickComic Thumbnailer.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		55C374041BD9E67D006385B6 /* QuickComic */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55C3740E1BD9E67D006385B6 /* Build configuration list for PBXNativeTarget "QuickComic" */;
@@ -889,6 +989,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				280B6BBA0A1BB34600EE91B0 /* Copy Frameworks */,
 				28073E0A0FFC305400D2602B /* Copy Quicklook plugin */,
+				55517AD6294BD687009734A9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -897,6 +998,8 @@
 				55C3745D1BD9EFE2006385B6 /* PBXTargetDependency */,
 				550CB1E72366E88C00FAC663 /* PBXTargetDependency */,
 				55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */,
+				55517AF9294E46B7009734A9 /* PBXTargetDependency */,
+				55517AD4294BD686009734A9 /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";
@@ -911,10 +1014,16 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TSST;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Dancing Tortoise Software";
 				TargetAttributes = {
+					55517AC9294BD686009734A9 = {
+						CreatedOnToolsVersion = 14.2;
+						DevelopmentTeam = 3D9SMH4RWM;
+						LastSwiftMigration = 1420;
+						ProvisioningStyle = Automatic;
+					};
 					55C374041BD9E67D006385B6 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = 3D9SMH4RWM;
@@ -983,6 +1092,7 @@
 				55C374041BD9E67D006385B6 /* QuickComic */,
 				63BF686928590BF6005962F4 /* OCR Unit Tests */,
 				55EE6BAE2945CA5B00C1AAE7 /* QuickComic Preview */,
+				55517AC9294BD686009734A9 /* QuickComic Thumbnailer */,
 			);
 		};
 /* End PBXProject section */
@@ -1096,6 +1206,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		55517AC8294BD686009734A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55C374031BD9E67D006385B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1131,6 +1248,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		55517AC6294BD686009734A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55517AEE294BD837009734A9 /* TSSTImageUtilities.m in Sources */,
+				55517AEC294BD7D2009734A9 /* TSSTSortDescriptor.m in Sources */,
+				55517AF7294E3D90009734A9 /* QuickComicCommonSwift.swift in Sources */,
+				55517AF0294BD8EE009734A9 /* PartialArchiveParser.swift in Sources */,
+				55517AD0294BD686009734A9 /* ThumbnailProvider.swift in Sources */,
+				55517AED294BD7EA009734A9 /* UKXattrMetadataStore.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55C374001BD9E67D006385B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1225,6 +1355,26 @@
 			isa = PBXTargetDependency;
 			name = XADMaster;
 			targetProxy = 550CB1F92366E8AD00FAC663 /* PBXContainerItemProxy */;
+		};
+		55517AD4294BD686009734A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55517AC9294BD686009734A9 /* QuickComic Thumbnailer */;
+			targetProxy = 55517AD3294BD686009734A9 /* PBXContainerItemProxy */;
+		};
+		55517AF2294BD91B009734A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WebPMac;
+			targetProxy = 55517AF1294BD91B009734A9 /* PBXContainerItemProxy */;
+		};
+		55517AF4294BD91B009734A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = XADMaster;
+			targetProxy = 55517AF3294BD91B009734A9 /* PBXContainerItemProxy */;
+		};
+		55517AF9294E46B7009734A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55EE6BAE2945CA5B00C1AAE7 /* QuickComic Preview */;
+			targetProxy = 55517AF8294E46B7009734A9 /* PBXContainerItemProxy */;
 		};
 		55871EDD235D70A800528BDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1362,6 +1512,73 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		55517AD7294BD687009734A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "QuickComic/QuickComic Thumbnailer/QuickComic_Thumbnailer.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickComic/QuickComic Thumbnailer/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QuickComic Thumbnailer";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Thumbnailer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QuickComic/QuickComic Thumbnailer/QuickComic Thumbnailer-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		55517AD8294BD687009734A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = "QuickComic/QuickComic Thumbnailer/QuickComic_Thumbnailer.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3D9SMH4RWM;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "QuickComic/QuickComic Thumbnailer/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "QuickComic Thumbnailer";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Thumbnailer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "QuickComic/QuickComic Thumbnailer/QuickComic Thumbnailer-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		55C3740F1BD9E67D006385B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 55E21B1123FBCCF900D53932 /* No Sign.xcconfig */;
@@ -1418,14 +1635,9 @@
 		55EE6BBF2945CA5B00C1AAE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "QuickComic/QuickComic Preview/QuickComic_Preview.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -1446,8 +1658,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Preview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1455,21 +1665,15 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "QuickComic/QuickComic Preview/QuickComic Preview-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		55EE6BC02945CA5B00C1AAE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "QuickComic/QuickComic Preview/QuickComic_Preview.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1486,13 +1690,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Preview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "QuickComic/QuickComic Preview/QuickComic Preview-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1594,7 +1796,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_SWIFT_SYMBOLS = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1629,7 +1830,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_INSTALLED_PRODUCT = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Classes/Simple Comic-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1640,10 +1840,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1662,6 +1865,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Nicholas Vance (3D9SMH4RWM)";
@@ -1680,11 +1884,13 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1693,10 +1899,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -1715,6 +1924,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Nicholas Vance (3D9SMH4RWM)";
@@ -1733,14 +1943,25 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55517AE8294BD687009734A9 /* Build configuration list for PBXNativeTarget "QuickComic Thumbnailer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55517AD7294BD687009734A9 /* Debug */,
+				55517AD8294BD687009734A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55C3740E1BD9E67D006385B6 /* Build configuration list for PBXNativeTarget "QuickComic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
