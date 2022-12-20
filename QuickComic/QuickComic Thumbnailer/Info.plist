@@ -29,6 +29,8 @@
 				<string>com.milke.cbr-archive</string>
 				<string>public.archive.cbz</string>
 				<string>public.archive.cbr</string>
+				<string>com.rarlab.rar-comic-archive</string>
+				<string>public.zip-comic-archive</string>
 			</array>
 			<key>QLThumbnailMinimumDimension</key>
 			<integer>0</integer>
