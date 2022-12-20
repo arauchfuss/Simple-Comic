@@ -25,7 +25,7 @@ class ThumbnailProvider: QLThumbnailProvider {
 			var imageData: Data? = nil
 			var cropRect = CGRect.zero
 			if coverName != "" {
-				let partialArchive = PartialArchiveParser(with: archiveURL, searchString: coverName)
+				let partialArchive = try PartialArchiveParser(with: archiveURL, searchString: coverName)
 				if coverRectString != "" {
 					cropRect = NSRectFromString(coverRectString)
 				}
@@ -51,7 +51,7 @@ class ThumbnailProvider: QLThumbnailProvider {
 			var imageSize = cropRect.isEmpty ? image.size : cropRect.size
 			imageSize = fitSize(imageSize, in: request.maximumSize)
 			
-			handler(QLThumbnailReply(contextSize: imageSize, currentContextDrawing: { () -> Bool in
+			let reply = QLThumbnailReply(contextSize: imageSize, currentContextDrawing: { () -> Bool in
 
 				var canvasRect: CGRect = .zero
 				var drawRect: CGRect = .zero
@@ -72,7 +72,9 @@ class ThumbnailProvider: QLThumbnailProvider {
 				image.draw(in: canvasRect, from: drawRect, operation: .copy, fraction: 1)
 				
 				return true
-			}), nil)
+			})
+			
+			handler(reply, nil)
 
 		} catch {
 			handler(nil, error)

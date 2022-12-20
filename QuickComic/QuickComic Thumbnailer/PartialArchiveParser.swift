@@ -15,16 +15,12 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 	private(set) var searchResult: Data? = nil
 	private var searchString: String
 	
-	init(with url:URL, searchString: String) {
+	init(with url:URL, searchString: String) throws {
 		self.searchString = searchString
 		super.init()
-		do {
-			let parser = try XADArchiveParser.archiveParser(for: url)
-			parser.delegate = self
-			try parser.parse()
-		} catch let error as NSError {
-			NSLog("Caught error: $@", error.description)
-		}
+		let parser = try XADArchiveParser.archiveParser(for: url)
+		parser.delegate = self
+		try parser.parse()
 	}
 	
 	
