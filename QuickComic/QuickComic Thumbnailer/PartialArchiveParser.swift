@@ -36,7 +36,7 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 		let encodedName = name?.string(with: parser.encodingName)
 		if searchString == encodedName {
 			let handle = try parser.handleForEntry(with: dict, wantChecksum: true)
-			searchResult = handle.remainingFileContents()
+			searchResult = try handle.remainingFileContents()
 			if handle.hasChecksum && !handle.isChecksumCorrect {
 				throw XADError(.checksum)
 			}
