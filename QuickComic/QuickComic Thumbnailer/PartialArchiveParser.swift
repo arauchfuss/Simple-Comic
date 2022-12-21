@@ -13,7 +13,7 @@ import XADMaster.XADArchiveParser
 
 internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 	private(set) var searchResult: Data? = nil
-	private var searchString: String
+	private let searchString: String
 	
 	init(with url:URL, searchString: String) throws {
 		self.searchString = searchString
@@ -25,14 +25,14 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 	
 	
 	func archiveParser(_ parser: XADArchiveParser, foundEntryWith dict: [XADArchiveKeys : Any]) throws {
-		let resnum = dict[.isResourceForkKey] as? Bool
+		let resnum = dict[.isResourceFork] as? Bool
 		let isRes = resnum ?? false
 		searchResult = nil
 		
 		guard !isRes else {
 			return
 		}
-		let name = dict[.fileNameKey] as? XADString
+		let name = dict[.fileName] as? XADString
 		let encodedName = name?.string(with: parser.encodingName)
 		if searchString == encodedName {
 			let handle = try parser.handleForEntry(with: dict, wantChecksum: true)

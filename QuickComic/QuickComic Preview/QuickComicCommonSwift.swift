@@ -11,7 +11,7 @@ import XADMaster
 import UniformTypeIdentifiers
 
 
-let fileSort: [NSSortDescriptor] = {
+internal let fileSort: [NSSortDescriptor] = {
 	let sort = TSSTSortDescriptor(key: "name", ascending: true)
 	return [sort]
 }()
@@ -28,7 +28,7 @@ private let imageFileTypes = {
 	return imageExtensions
 }()
 
-func fileList(for archive: XADArchive) -> [[String: Any]] {
+internal func fileList(for archive: XADArchive) -> [[String: Any]] {
 	let numEntries = archive.numberOfEntries
 	var fileDescriptions = [[String: Any]]()
 	fileDescriptions.reserveCapacity(numEntries)

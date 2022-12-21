@@ -62,6 +62,10 @@ class PreviewProvider: QLPreviewProvider, QLPreviewingController {
 					continue
 				}
 				document.insert(page, at: index1)
+				// Only load so many pages.
+				guard index1 < 10 else {
+					break
+				}
 			}
 			
 			return document
