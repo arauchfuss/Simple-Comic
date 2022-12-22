@@ -252,11 +252,16 @@ static NSSize monospaceCharacterSize;
 	}
 	
 	BOOL lossyConversion = NO;
+	NSString * text;
 	NSStringEncoding stringEncoding = [NSString stringEncodingForData: textData
-													  encodingOptions: nil
-													  convertedString: nil
+													  encodingOptions: @{NSStringEncodingDetectionFromWindowsKey: @YES}
+													  convertedString: &text
 												  usedLossyConversion: &lossyConversion];
-	NSString * text = [[NSString alloc] initWithData: textData encoding: stringEncoding];
+	if (stringEncoding == 0 && text == nil) {
+		// get back something, even if it's garbled.
+		stringEncoding = NSMacOSRomanStringEncoding;
+		text = [[NSString alloc] initWithData: textData encoding: stringEncoding];
+	}
 	//	int lineCount = 0;
 	NSRect lineRect;
 	NSRect pageRect = NSZeroRect;
