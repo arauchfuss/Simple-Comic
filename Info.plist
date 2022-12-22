@@ -710,6 +710,24 @@
 				</array>
 			</dict>
 		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.image</string>
+			</array>
+			<key>UTTypeIdentifier</key>
+			<string>com.microsoft.cur</string>
+			<key>UTTypeDescription</key>
+			<string>Windows Cursor</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>cur</string>
+				</array>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
