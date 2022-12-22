@@ -38,6 +38,8 @@
 		5526278D1BDEBF29005AAF63 /* TSSTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526278C1BDEBF29005AAF63 /* TSSTImageView.swift */; };
 		552627911BDEEC5E005AAF63 /* TSSTKeyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627901BDEEC5E005AAF63 /* TSSTKeyWindow.swift */; };
 		552627951BDEEF85005AAF63 /* TSSTTransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552627941BDEEF85005AAF63 /* TSSTTransparentView.swift */; };
+		5528C69C2953D19D0005EE8B /* QuickComic Preview.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55EE6BAF2945CA5B00C1AAE7 /* QuickComic Preview.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5528C69F2953D19E0005EE8B /* QuickComic Thumbnailer.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 55517ACA294BD686009734A9 /* QuickComic Thumbnailer.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		552F38B71CF2CE1000CD6063 /* Sessions_DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 287D0C0310F058BB00207768 /* Sessions_DataModel.xcdatamodeld */; };
 		5538C2021C0E1A7C00744130 /* TSSTInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5538C2011C0E1A7C00744130 /* TSSTInfoView.swift */; };
 		554A1C0226478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554A1C0126478396009FE60D /* TSSTSessionWindowController+NSTouchBar.swift */; };
@@ -174,6 +176,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = XADMaster;
+		};
+		5528C69D2953D19E0005EE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55EE6BAE2945CA5B00C1AAE7;
+			remoteInfo = "QuickComic Preview";
+		};
+		5528C6A02953D19E0005EE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55517AC9294BD686009734A9;
+			remoteInfo = "QuickComic Thumbnailer";
 		};
 		55517AD3294BD686009734A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -341,6 +357,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				5528C69C2953D19D0005EE8B /* QuickComic Preview.appex in Embed Foundation Extensions */,
+				5528C69F2953D19E0005EE8B /* QuickComic Thumbnailer.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1000,6 +1018,8 @@
 				55C3745B1BD9EFE2006385B6 /* PBXTargetDependency */,
 				55517AF9294E46B7009734A9 /* PBXTargetDependency */,
 				55517AD4294BD686009734A9 /* PBXTargetDependency */,
+				5528C69E2953D19E0005EE8B /* PBXTargetDependency */,
+				5528C6A12953D19E0005EE8B /* PBXTargetDependency */,
 			);
 			name = "Simple Comic";
 			productInstallPath = "$(HOME)/Applications";
@@ -1356,6 +1376,16 @@
 			name = XADMaster;
 			targetProxy = 550CB1F92366E8AD00FAC663 /* PBXContainerItemProxy */;
 		};
+		5528C69E2953D19E0005EE8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55EE6BAE2945CA5B00C1AAE7 /* QuickComic Preview */;
+			targetProxy = 5528C69D2953D19E0005EE8B /* PBXContainerItemProxy */;
+		};
+		5528C6A12953D19E0005EE8B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55517AC9294BD686009734A9 /* QuickComic Thumbnailer */;
+			targetProxy = 5528C6A02953D19E0005EE8B /* PBXContainerItemProxy */;
+		};
 		55517AD4294BD686009734A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55517AC9294BD686009734A9 /* QuickComic Thumbnailer */;
@@ -1523,7 +1553,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 299;
 				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1537,7 +1567,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Thumbnailer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1560,7 +1590,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 299;
 				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1569,7 +1599,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Thumbnailer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1642,7 +1672,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 299;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1657,7 +1687,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Preview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1678,7 +1708,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 299;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 3D9SMH4RWM;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1689,7 +1719,7 @@
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Dancing Tortoise Software. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.9.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ToWatchList.SimpleComic.QuickComic-Preview";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
