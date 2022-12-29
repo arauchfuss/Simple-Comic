@@ -49,7 +49,7 @@ class ThumbnailProvider: QLThumbnailProvider {
 			}
 			
 			var imageSize = cropRect.isEmpty ? image.size : cropRect.size
-			imageSize = fitSize(imageSize, in: request.maximumSize)
+			imageSize = constrainSize(imageSize, dimension: request.maximumSize.height)
 			
 			let reply = QLThumbnailReply(contextSize: imageSize, currentContextDrawing: { () -> Bool in
 
@@ -58,8 +58,8 @@ class ThumbnailProvider: QLThumbnailProvider {
 
 				if cropRect.isEmpty {
 					// no crop
-					canvasRect = NSRect(origin: .zero, size: fitSize(imageSize, in: image.size))
-					drawRect = canvasRect
+					canvasRect = NSRect(origin: .zero, size: imageSize)
+					drawRect = NSRect(origin: .zero, size: fitSize(imageSize, in: image.size))
 				} else {
 					// crop
 					canvasRect.size = fitSize(imageSize, in: cropRect.size)

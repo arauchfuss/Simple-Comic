@@ -20,7 +20,11 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 		super.init()
 		let parser = try XADArchiveParser.archiveParser(for: url)
 		parser.delegate = self
-		try parser.parse()
+		do {
+			try parser.parse()
+		} catch XADError.break {
+			
+		}
 	}
 	
 	
@@ -32,7 +36,7 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 		guard !isRes else {
 			return
 		}
-		let name = dict[.fileName] as? XADString
+		let name = dict[.fileName] as? XADStringProtocol
 		let encodedName = name?.string(with: parser.encodingName)
 		if searchString == encodedName {
 			let handle = try parser.handleForEntry(with: dict, wantChecksum: true)
