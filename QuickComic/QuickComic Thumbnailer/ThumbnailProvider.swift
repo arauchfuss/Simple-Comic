@@ -8,14 +8,10 @@
 
 import QuickLookThumbnailing
 import XADMaster
-import WebPMac
 
 class ThumbnailProvider: QLThumbnailProvider {
     
     override func provideThumbnail(for request: QLFileThumbnailRequest, _ handler: @escaping (QLThumbnailReply?, Error?) -> Void) {
-		if NSImageRep.class(forType: "org.webmproject.webp") == nil {
-			NSImageRep.registerClass(TSSTWebPImageRep.self)
-		}
 		do {
 			let archiveURL = request.fileURL
 			let archivePath = archiveURL.path

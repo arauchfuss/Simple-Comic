@@ -10,7 +10,6 @@ import Cocoa
 import Quartz
 import XADMaster
 import UniformTypeIdentifiers
-import WebPMac
 
 private func newPDFPage(from image: NSImage) -> PDFPage? {
 	if #available(macOSApplicationExtension 13.0, *) {
@@ -23,10 +22,6 @@ private func newPDFPage(from image: NSImage) -> PDFPage? {
 class PreviewProvider: QLPreviewProvider, QLPreviewingController {
     
     func providePreview(for request: QLFilePreviewRequest) async throws -> QLPreviewReply {
-		if NSImageRep.class(forType: "org.webmproject.webp") == nil {
-			NSImageRep.registerClass(TSSTWebPImageRep.self)
-		}
-		
 		let archive = try XADArchive(fileURL: request.fileURL, delegate: nil)
 		var fList = fileList(for: archive)
 		

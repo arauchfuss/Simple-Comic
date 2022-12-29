@@ -50,7 +50,6 @@
 		55517AED294BD7EA009734A9 /* UKXattrMetadataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28EF3FBF0E9970BD002AD2EE /* UKXattrMetadataStore.m */; };
 		55517AEE294BD837009734A9 /* TSSTImageUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 283C4D5C0C43DE6800DB4FE9 /* TSSTImageUtilities.m */; };
 		55517AF0294BD8EE009734A9 /* PartialArchiveParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55517AEF294BD8EE009734A9 /* PartialArchiveParser.swift */; };
-		55517AF5294BD929009734A9 /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
 		55517AF6294BD929009734A9 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
 		55517AF7294E3D90009734A9 /* QuickComicCommonSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE6BD82945D40300C1AAE7 /* QuickComicCommonSwift.swift */; };
 		55861E3923C68B3700390CD3 /* V1ToV2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 55861E3823C68B3700390CD3 /* V1ToV2.xcmappingmodel */; };
@@ -79,7 +78,6 @@
 		55DC3817235EAA4200132291 /* WebPMac.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55EE6BB02945CA5B00C1AAE7 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28BD08E50C9836E600BD7EAF /* Quartz.framework */; };
 		55EE6BB52945CA5B00C1AAE7 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE6BB42945CA5B00C1AAE7 /* PreviewProvider.swift */; };
-		55EE6BD52945CD4500C1AAE7 /* WebPMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55871ECB235D708900528BDF /* WebPMac.framework */; };
 		55EE6BD62945CD4500C1AAE7 /* XADMaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5500A6371D77712F00321300 /* XADMaster.framework */; };
 		55EE6BD92945D40300C1AAE7 /* QuickComicCommonSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EE6BD82945D40300C1AAE7 /* QuickComicCommonSwift.swift */; };
 		55EE6BDF2945D4AA00C1AAE7 /* TSSTSortDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 286AEDB60C4161C20031E3D9 /* TSSTSortDescriptor.m */; };
@@ -198,13 +196,6 @@
 			remoteGlobalIDString = 55517AC9294BD686009734A9;
 			remoteInfo = "QuickComic Thumbnailer";
 		};
-		55517AF1294BD91B009734A9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8FA92B8B196ED365002C72DF;
-			remoteInfo = WebPMac;
-		};
 		55517AF3294BD91B009734A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
@@ -296,26 +287,12 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = UniversalDetector;
 		};
-		55EE6BD12945CD3500C1AAE7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55871EC6235D708900528BDF /* libwebp.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8FA92B8B196ED365002C72DF;
-			remoteInfo = WebPMac;
-		};
 		55EE6BD32945CD3500C1AAE7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = XADMaster;
-		};
-		55F590851EB535D0000B4973 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5500A6231D77712F00321300 /* XADMaster.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 551BADD11EB032B500EAF64E;
-			remoteInfo = "XADMaster-iOS";
 		};
 		63BF686E28590BF6005962F4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -528,7 +505,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55517AF5294BD929009734A9 /* WebPMac.framework in Frameworks */,
 				55517AF6294BD929009734A9 /* XADMaster.framework in Frameworks */,
 				55517ACC294BD686009734A9 /* QuickLookThumbnailing.framework in Frameworks */,
 				55517ACD294BD686009734A9 /* Quartz.framework in Frameworks */,
@@ -549,7 +525,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55EE6BD52945CD4500C1AAE7 /* WebPMac.framework in Frameworks */,
 				55EE6BD62945CD4500C1AAE7 /* XADMaster.framework in Frameworks */,
 				55EE6BB02945CA5B00C1AAE7 /* Quartz.framework in Frameworks */,
 			);
@@ -746,7 +721,6 @@
 			isa = PBXGroup;
 			children = (
 				5500A6371D77712F00321300 /* XADMaster.framework */,
-				55F590861EB535D0000B4973 /* XADMaster.framework */,
 				5500A6391D77712F00321300 /* libXADMaster.a */,
 				5500A63B1D77712F00321300 /* libXADMaster.win.a */,
 				5500A63D1D77712F00321300 /* libXADMaster.ios.a */,
@@ -933,7 +907,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				55517AF2294BD91B009734A9 /* PBXTargetDependency */,
 				55517AF4294BD91B009734A9 /* PBXTargetDependency */,
 			);
 			name = "QuickComic Thumbnailer";
@@ -973,7 +946,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				55EE6BD22945CD3500C1AAE7 /* PBXTargetDependency */,
 				55EE6BD42945CD3500C1AAE7 /* PBXTargetDependency */,
 			);
 			name = "QuickComic Preview";
@@ -1216,13 +1188,6 @@
 			remoteRef = 55C374581BD9EAA1006385B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		55F590861EB535D0000B4973 /* XADMaster.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = XADMaster.framework;
-			remoteRef = 55F590851EB535D0000B4973 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1391,11 +1356,6 @@
 			target = 55517AC9294BD686009734A9 /* QuickComic Thumbnailer */;
 			targetProxy = 55517AD3294BD686009734A9 /* PBXContainerItemProxy */;
 		};
-		55517AF2294BD91B009734A9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = WebPMac;
-			targetProxy = 55517AF1294BD91B009734A9 /* PBXContainerItemProxy */;
-		};
 		55517AF4294BD91B009734A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = XADMaster;
@@ -1430,11 +1390,6 @@
 			isa = PBXTargetDependency;
 			name = UniversalDetector;
 			targetProxy = 55C3745E1BD9EFE7006385B6 /* PBXContainerItemProxy */;
-		};
-		55EE6BD22945CD3500C1AAE7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = WebPMac;
-			targetProxy = 55EE6BD12945CD3500C1AAE7 /* PBXContainerItemProxy */;
 		};
 		55EE6BD42945CD3500C1AAE7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
