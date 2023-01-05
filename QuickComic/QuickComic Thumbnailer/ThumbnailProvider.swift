@@ -63,6 +63,7 @@ class ThumbnailProvider: QLThumbnailProvider {
 					let horScale = canvasRect.size.width / image.size.width
 					drawRect.origin = CGPoint(x: -(cropRect.origin.x), y: -(cropRect.origin.y))
 					drawRect.size = CGSize(width: cropRect.size.width / horScale, height: cropRect.size.height / vertScale)
+					canvasRect.size = imageSize
 				}
 				
 				image.draw(in: canvasRect, from: drawRect, operation: .copy, fraction: 1)
