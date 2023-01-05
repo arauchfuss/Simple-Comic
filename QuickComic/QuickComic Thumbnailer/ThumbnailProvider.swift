@@ -71,7 +71,6 @@ class ThumbnailProvider: QLThumbnailProvider {
 			})
 			
 			handler(reply, nil)
-
 		} catch {
 			handler(nil, error)
 		}

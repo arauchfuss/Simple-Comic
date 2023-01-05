@@ -22,11 +22,10 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 		parser.delegate = self
 		do {
 			try parser.parse()
-		} catch XADError.break {
-			
+		} catch XADError.`break` {
+			// Gobble up any XADError.break errors.
 		}
 	}
-	
 	
 	func archiveParser(_ parser: XADArchiveParser, foundEntryWith dict: [XADArchiveKeys : Any]) throws {
 		let resnum = dict[.isResourceFork] as? Bool
