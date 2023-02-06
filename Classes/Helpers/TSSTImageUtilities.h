@@ -41,8 +41,6 @@ NSPoint centerPointOfRect(NSRect rect) NS_SWIFT_NAME(centerPoint(of:));
 
 NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius) NS_SWIFT_NAME(roundedRect(_:cornerRadius:));
 
-CGImageRef __nullable CGImageRefNamed(NSImageName name) CF_RETURNS_RETAINED;
-
 CGFloat RadiansToDegrees(CGFloat radians);
 
 CGFloat DegreesToRadians(CGFloat degrees);
