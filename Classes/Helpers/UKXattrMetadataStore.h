@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
  *				The file to get xattr names from.
  *	@param		travLnk
  *				If <code>YES</code>, follows symlinks.
- *	@return		An \c NSArray of <code>NSString</code>s, or \c nil on failure.
+ *	@return		An \c NSArray of <code>NSString</code>s, or an empty \c NSArray on failure.
  *	@discussion	Returns an \c NSArray of <code>NSString</code>s containing all xattr names currently set
  *				for the file at the specified path.
  */

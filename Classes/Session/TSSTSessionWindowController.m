@@ -1610,7 +1610,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 }
 
 
-- (BOOL)windowShouldClose:(id)sender
+- (BOOL)windowShouldClose:(NSWindow *)sender
 {
 	[self prepareToEnd];
 	[[NSNotificationCenter defaultCenter] postNotificationName: TSSTSessionEndNotification object: self];

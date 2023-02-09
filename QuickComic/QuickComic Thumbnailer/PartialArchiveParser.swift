@@ -15,7 +15,7 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 	private(set) var searchResult: Data? = nil
 	private let searchString: String
 	
-	init(with url:URL, searchString: String) throws {
+	init(with url: URL, searchString: String) throws {
 		self.searchString = searchString
 		super.init()
 		let parser = try XADArchiveParser.archiveParser(for: url)
@@ -27,7 +27,7 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 		}
 	}
 	
-	func archiveParser(_ parser: XADArchiveParser, foundEntryWith dict: [XADArchiveKeys : Any]) throws {
+	func archiveParser(_ parser: XADArchiveParser, foundEntryWith dict: [XADArchiveParser.Keys : Any]) throws {
 		let resnum = dict[.isResourceFork] as? Bool
 		let isRes = resnum ?? false
 		searchResult = nil

@@ -20,7 +20,7 @@ class ThumbnailProvider: QLThumbnailProvider {
 			
 			var imageData: Data? = nil
 			var cropRect = CGRect.zero
-			if coverName != "" {
+			if !coverName.isEmpty {
 				let partialArchive = try PartialArchiveParser(with: archiveURL, searchString: coverName)
 				if coverRectString != "" {
 					cropRect = NSRectFromString(coverRectString)
