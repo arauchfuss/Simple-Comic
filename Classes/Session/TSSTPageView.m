@@ -243,7 +243,7 @@ typedef struct {
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pboard = [sender draggingPasteboard];
-	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: (__bridge NSString*)kUTTypeFileURL])
+	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: NSPasteboardTypeFileURL])
 	{
 		acceptingDrag = YES;
 		[self setNeedsDisplay: YES];
@@ -256,7 +256,7 @@ typedef struct {
 - (NSDragOperation)draggingUpdated:(id <NSDraggingInfo>)sender
 {
 	NSPasteboard *pboard = [sender draggingPasteboard];
-	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: (__bridge NSString*)kUTTypeFileURL])
+	if([[pboard types] containsObject: NSFilenamesPboardType] || [[pboard types] containsObject: NSPasteboardTypeFileURL])
 	{
 		return NSDragOperationGeneric;
 	}

@@ -36,8 +36,8 @@ internal class PartialArchiveParser: NSObject, XADArchiveParserDelegate {
 			return
 		}
 		let name = dict[.fileName] as? XADStringProtocol
-		let encodedName = name?.string(with: parser.encodingName)
-		if searchString == encodedName {
+		if let encodedName = name?.string(with: parser.encodingName),
+		   searchString == encodedName {
 			let handle = try parser.handleForEntry(with: dict, wantChecksum: true)
 			searchResult = try handle.remainingFileContents()
 			if handle.hasChecksum && !handle.isChecksumCorrect {
