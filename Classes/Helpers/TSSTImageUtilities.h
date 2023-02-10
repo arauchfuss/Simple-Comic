@@ -39,8 +39,6 @@ NSImage * imageScaledToSizeFromImage(NSSize size, NSImage * image) NS_SWIFT_NAME
 
 NSPoint centerPointOfRect(NSRect rect) NS_SWIFT_NAME(centerPoint(of:));
 
-NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius) NS_SWIFT_NAME(roundedRect(_:cornerRadius:));
-
 CGFloat RadiansToDegrees(CGFloat radians);
 
 CGFloat DegreesToRadians(CGFloat degrees);

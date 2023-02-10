@@ -126,11 +126,6 @@ NSPoint centerPointOfRect(NSRect rect)
     return point;
 }
 
-NSBezierPath * roundedRectWithCornerRadius(NSRect aRect, CGFloat radius)
-{
-    return [NSBezierPath bezierPathWithRoundedRect: aRect xRadius: radius yRadius: radius];
-}
-
 CGFloat DegreesToRadians(CGFloat degrees) 
 {
     return degrees * M_PI / 180;

@@ -35,10 +35,16 @@ class TSSTImageView: NSImageView {
 			var stringRect = imageName.boundingRect(with: imageRect.size, attributes: stringAttributes)
 			stringRect = rectCentered(with: stringRect.size, in: imageRect);
 			NSColor(calibratedWhite: 0, alpha: 0.8).set()
-			roundedRect(stringRect.insetBy(dx: -5, dy: -5), cornerRadius: 10).fill()
+			NSBezierPath(roundedRect: stringRect.insetBy(dx: -5, dy: -5), cornerRadius: 10).fill()
 			imageName.draw(in: stringRect, withAttributes: stringAttributes)
 		}
 		
 		//[NSGraphicsContext restoreGraphicsState];
+	}
+}
+
+extension NSBezierPath {
+	@inlinable convenience init(roundedRect aRect: NSRect, cornerRadius radius: CGFloat) {
+		self.init(roundedRect: aRect, xRadius: radius, yRadius: radius)
 	}
 }
