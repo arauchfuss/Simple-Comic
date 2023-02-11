@@ -16,6 +16,12 @@
 /* No comment provided by engineer. */
 "Left to Right Page Order" = "Left to Right Page Order";
 
+/* Contextual menu command to look up the selected word */
+"Look Up" = "Look Up";
+
+/* Contextual menu command to look up the word */
+"Look Up “%@”" = "Look Up “%@”";
+
 /* Pages are not scaled */
 "Original Size" = "Original Size";
 

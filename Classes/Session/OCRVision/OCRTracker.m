@@ -663,11 +663,13 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		}
 	}
 	if (rangeValue != nil && (theEvent.modifierFlags & NSEventModifierFlagControl) != 0) {
+		NSInteger i = 0;
 		NSMenu *theMenu = [[NSMenu alloc] initWithTitle:NSLocalizedString(@"Contextual Menu", @"")];
-		[theMenu insertItemWithTitle:NSLocalizedString(@"Copy", @"") action:@selector(copy:) keyEquivalent:@"" atIndex:0];
-		[theMenu insertItem:[NSMenuItem separatorItem] atIndex:1];
-		[theMenu insertItemWithTitle:NSLocalizedString(@"Start Speaking", @"") action:@selector(startSpeaking:) keyEquivalent:@"" atIndex:2];
-		[theMenu insertItemWithTitle:NSLocalizedString(@"Stop Speaking", @"") action:@selector(stopSpeaking:) keyEquivalent:@"" atIndex:3];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Copy", @"") action:@selector(copy:) keyEquivalent:@"" atIndex:i++];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Look up", @"") action:@selector(lookUp:) keyEquivalent:@"" atIndex:i++];
+		[theMenu insertItem:[NSMenuItem separatorItem] atIndex:i++];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Start Speaking", @"") action:@selector(startSpeaking:) keyEquivalent:@"" atIndex:i++];
+		[theMenu insertItemWithTitle:NSLocalizedString(@"Stop Speaking", @"") action:@selector(stopSpeaking:) keyEquivalent:@"" atIndex:i++];
 		[NSMenu popUpContextMenu:theMenu withEvent:theEvent forView:self.view];
 	} else {
 		[[NSCursor IBeamCursor] set];
@@ -1000,6 +1002,13 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		menuItem.title = isAnySelected ? NSLocalizedString(@"Copy Text", @"") : NSLocalizedString(@"Copy", @"");
 		return isAnySelected;
 	}
+	else if ([menuItem action] == @selector(lookUp:))
+	{
+		NSString *lookUpString = [self lookUpString];
+		menuItem.title = (0 != lookUpString.length) ? [NSString stringWithFormat: NSLocalizedString(@"Look Up “%@”", @""), lookUpString] :
+				NSLocalizedString(@"Look Up", @"");
+		return 0 != lookUpString.length;
+	}
 	else if ([menuItem action] == @selector(selectAll:))
 	{
 		if (@available(macOS 10.15, *))
@@ -1072,6 +1081,59 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 		[self.view setNeedsDisplay:YES];
 		[self.view.window invalidateCursorRectsForView:self.view];
 	}
+}
+
+/// @return the string for the dictionary panel.
+- (NSString *)lookUpString {
+	if (1 != self.totalSelectionPiecesCount)
+	{
+		return nil;
+	}
+	NSString *s = [self selection];
+	s = [s stringByTrimmingCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
+	return s;
+}
+
+/// @return bounding rect, in view coordinates, of the VNRecognizedTextObservation
+- (CGRect)rectForPiece:(VNRecognizedTextObservation *)piece datum:(OCRDatum *)datum API_AVAILABLE(macos(10.15)) {
+	CGRect container = [[[self view] enclosingScrollView] documentVisibleRect];
+	CGSize imageSize = datum.selectionLayer.bounds.size;
+	CGRect r = VNImageRectForNormalizedRect(piece.boundingBox, imageSize.width, imageSize.height);
+	r = [datum.selectionLayer convertRect:r toLayer:self.view.layer];
+	return CGRectIntersection(r, container);
+}
+
+  /// @return point for the dictionary panel.
+- (NSPoint)lookUpPoint {
+	if (@available(macOS 10.15, *))
+	{
+		for (OCRDatum *datum in self.datums)
+		{
+			if (datum.image != nil)
+			{
+				for (VNRecognizedTextObservation *piece in datum.textPieces)
+				{
+					NSValue *rangeInAValue = datum.selectionPieces[piece];
+					if (rangeInAValue != nil)
+					{
+						CGRect r = [self rectForPiece:piece datum:datum];
+						if (!CGRectIsEmpty(r))
+						{
+							return CGPointMake(r.origin.x + r.size.width/2, r.origin.y + r.size.height/2);
+						}
+					}
+				}
+			}
+		}
+	}
+	return CGPointZero;
+}
+
+/// Show the dictionary panel for the current selection.
+- (void)lookUp:(id)sender
+{
+  NSAttributedString *s =  [[NSAttributedString alloc] initWithString:[self lookUpString]];
+  [self.view showDefinitionForAttributedString:s atPoint:[self lookUpPoint]];
 }
 
 - (void)copy:(id)sender
