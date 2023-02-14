@@ -16,7 +16,7 @@ NSString *const OCRDisableKey = @"OCRDisableKey";
 static BOOL sIsEnabled = YES;
 
 // Tags on menu items, for: hideOCRMenusIfUnavailable
-enum {
+NS_ENUM(NSInteger) {
   PREDECESSOR_TAG = 1879,
 	SEPARATOR_TAG = 1901,
 	FIND_TAG = 1902,
@@ -182,7 +182,7 @@ static NSSpeechSynthesizer *sSpeechSynthesizer;
 	}
 	// Hide the Find and Speak submenus.
 	NSArray<NSMenuItem *> *mainMenu = [[NSApp mainMenu] itemArray];
-	int tags[] = {SPEEK_TAG, FIND_TAG, SEPARATOR_TAG};
+	NSInteger tags[] = {SPEEK_TAG, FIND_TAG, SEPARATOR_TAG};
 	for(int i = 0; i < sizeof(tags)/sizeof(*tags); ++i) {
 		for (NSMenuItem *topItem in mainMenu) {
 			NSInteger index = [topItem.submenu indexOfItemWithTag:tags[i]];
