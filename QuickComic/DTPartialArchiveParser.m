@@ -50,7 +50,7 @@
 
 	if(!isres)
 	{
-		XADString * name = dict[XADFileNameKey];
+		id<XADString> name = dict[XADFileNameKey];
 		NSString * encodedName = [name stringWithEncodingName:parser.encodingName];
 		// NSLog(@"Encoded Name: %@", encodedName);
 		if([searchString isEqualToString: encodedName])

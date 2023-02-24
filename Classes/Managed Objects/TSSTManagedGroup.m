@@ -135,7 +135,9 @@
 	{
 		fileURL = nil;
 		[[self managedObjectContext] deleteObject: self];
-		[NSApp presentError: urlError];
+		if (urlError) {
+			[NSApp presentError: urlError];
+		}
 	}
 	else if (stale)
 	{

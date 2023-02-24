@@ -1165,6 +1165,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 			titleString = [NSString stringWithFormat:@"%@ — %@", fileName, titleString];
 		}
 	}
+	if (fileName == nil) {
+		fileName = representationURL.lastPathComponent;
+	}
 	if (@available(macOS 11.0, *)) {
 		self.window.title = fileName;
 		self.window.subtitle = [titleString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@ — ", fileName] withString:@""];

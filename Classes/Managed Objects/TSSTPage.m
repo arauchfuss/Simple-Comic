@@ -240,7 +240,7 @@ static NSSize monospaceCharacterSize;
 - (NSImage *)textPage
 {
 	__block NSData * textData;
-	if(self.index)
+	if(self.index != nil)
 	{
 		[self.group requestDataForPageIndex: [self.index integerValue] completionHandler:^(NSData * _Nullable pageData, NSError * _Nullable error) {
 			textData = pageData;
@@ -302,7 +302,7 @@ static NSSize monospaceCharacterSize;
 {
 	__block NSData * imageData = nil;
 	TSSTManagedGroup * group = self.group;
-	if(self.index)
+	if(self.index != nil)
 	{
 		NSInteger entryIndex = [self.index integerValue];
 		[group requestDataForPageIndex:entryIndex completionHandler:^(NSData * _Nullable pageData, NSError * _Nullable error) {
