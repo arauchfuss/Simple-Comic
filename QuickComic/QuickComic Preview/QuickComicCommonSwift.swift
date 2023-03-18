@@ -25,6 +25,7 @@ private let imageFileTypes = {
 			imageExtensions.formUnion(tmpExt)
 		}
 	}
+	imageExtensions.insert("jfif")
 	return imageExtensions
 }()
 

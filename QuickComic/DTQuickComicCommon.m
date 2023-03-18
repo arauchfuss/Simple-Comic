@@ -25,7 +25,8 @@ NSMutableArray<NSDictionary<NSString*,id>*> * fileListForArchive(XADArchive * ar
             CFBridgingRelease(UTTypeCopyAllTagsWithClass((__bridge CFStringRef)uti, kUTTagClassFilenameExtension));
             [imageExtensions addObjectsFromArray:filenameExtensions];
         }
-        imageFileTypes = imageExtensions;
+        [imageExtensions addObject:@"jfif"];
+        imageFileTypes = [imageExtensions copy];
     });
     
     NSMutableArray * fileDescriptions = [[NSMutableArray alloc] initWithCapacity: [archive numberOfEntries]];
