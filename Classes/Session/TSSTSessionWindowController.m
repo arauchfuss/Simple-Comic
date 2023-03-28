@@ -1063,6 +1063,7 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)hideCursor
 {
+	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
 	[NSCursor setHiddenUntilMouseMoves: YES];
 }
