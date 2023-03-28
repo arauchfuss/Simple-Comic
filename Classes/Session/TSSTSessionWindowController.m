@@ -304,6 +304,8 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 	}
 	
 	[self refreshLoupePanel];
+	
+	[self handleFullscreenCursorHiding];
 }
 
 
@@ -397,6 +399,15 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 					   right: NSMaxX([[bar window] frame])];
 }
 
+- (void)handleFullscreenCursorHiding
+{
+	if ([[self window] isFullscreen])
+	{
+		// Invalidate eventual previous timer to prevent cursor flickering
+		[mouseMovedTimer invalidate];
+		mouseMovedTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideCursor) userInfo:nil repeats:NO];
+	}
+}
 
 #pragma mark - Actions
 
@@ -1052,12 +1063,9 @@ NSString * const TSSTMouseDragNotification = @"SCMouseDragNotification";
 
 - (void)hideCursor
 {
+	[mouseMovedTimer invalidate];
 	mouseMovedTimer = nil;
-
-	if([[self window] isFullscreen])
-	{
-		[NSCursor setHiddenUntilMouseMoves: YES];
-	}
+	[NSCursor setHiddenUntilMouseMoves: YES];
 }
 
 
